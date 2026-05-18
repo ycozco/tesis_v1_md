@@ -15,6 +15,7 @@ SECTION_ORDER = [
     "30-capitulo3", "40-capitulo4", "50-capitulo5", "60-conclusiones",
     "70-recomendaciones", "80-glosario", "90-referencias",
     "A1-anexo-usabilidad", "A2-anexo-modelcards", "A3-anexo-datasheet", "A4-anexo-ia",
+    "A5-resumen-general",
 ]
 
 def main():

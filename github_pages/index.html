@@ -232,6 +232,12 @@
 </ul>
 </li>
 <li><a href="#anexo-d-registro-de-uso-de-herramientas-de-ia">Anexo D — Registro de Uso de Herramientas de IA</a></li>
+<li><a href="#anexo-e-resumen-general-del-sistema-y-resultados-de-la-investigacion">Anexo E — Resumen General del Sistema y Resultados de la Investigación</a><ul>
+<li><a href="#1-arquitectura-modular-del-sistema-4-capas">1. Arquitectura Modular del Sistema (4 Capas)</a></li>
+<li><a href="#2-hallazgos-y-resultados-de-los-experimentos-e1-a-e5">2. Hallazgos y Resultados de los Experimentos (E1 a E5)</a></li>
+<li><a href="#3-marco-de-cumplimiento-etico-y-gobernanza">3. Marco de Cumplimiento Ético y Gobernanza</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -3066,6 +3072,58 @@ Riesgo bajo. El dataset es claramente etiquetado como sintético en cada archivo
 <p><em>(Adjuntar registro detallado de las sesiones de uso según los requerimientos de transparencia de la UNSA)</em></p>
 <hr />
 <p><em>(Documento elaborado con apoyo de herramientas de IA — UNSA Arequipa, 2026)</em></p>
+<div style="page-break-before: always;"></div>
+
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+<h2 id="anexo-e-resumen-general-del-sistema-y-resultados-de-la-investigacion">Anexo E — Resumen General del Sistema y Resultados de la Investigación</h2>
+<p>Este anexo ofrece una síntesis consolidada de la investigación titulada <strong>"Sistema Integrado de Supervisión Operativa con IA Explicable para Empresas Agroexportadoras Peruanas"</strong>, diseñada como una guía de referencia rápida para evaluadores, auditores y tomadores de decisiones.</p>
+<hr />
+<h3 id="1-arquitectura-modular-del-sistema-4-capas">1. Arquitectura Modular del Sistema (4 Capas)</h3>
+<p>La arquitectura modular del sistema separa de forma estricta las responsabilidades algorítmicas deterministas (Capas 1, 2 y 3) de la narración asistida (Capa 4) para garantizar la trazabilidad y eliminar el riesgo de alucinaciones en entornos regulados:</p>
+<pre><code>┌────────────────────────────────────────────────────────┐
+│ Capa 4 — Reportes Narrativos LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) (Large Language       │
+│ Model - Modelo de Lenguaje de Gran Tamaño) + RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación)       │ ← Generación de reportes trazables a partir de
+│ (Retrieval-Augmented Generation - Generación           │   las evidencias estructuradas de las Capas 1-3.
+│ Aumentada por Recuperación)                            │
+└────────────────────────────────────────────────────────┘
+                           ▲
+┌────────────────────────────────────────────────────────┐
+│ Capa 3 — Explicabilidad Algorítmica con SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley)           │
+│ (SHapley Additive exPlanations - Explicaciones         │ ← TreeSHAP exacto para calcular la contribución
+│ Aditivas de Shapley)                                   │   del top-5 de variables operativas de la alerta.
+└────────────────────────────────────────────────────────┘
+                           ▲
+┌────────────────────────────────────────────────────────┐
+│ Capa 2 — Detección de Anomalías (Ensemble)             │ ← Combinación robusta de IF (Isolation Forest - Bosque de Aislamiento),
+│                                                        │   LOF (Local Outlier Factor - Factor de Anomalía Local) y ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) (Empirical
+│                                                        │   Cumulative Distribution Outlier Detection).
+└────────────────────────────────────────────────────────┘
+                           ▲
+┌────────────────────────────────────────────────────────┐
+│ Capa 1 — Predicción Tabular GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) (Gradient Boosting   │ ← XGBoost (eXtreme Gradient Boosting) y
+│ Decision Trees - Árboles de Decisión de Aumento de     │   LightGBM (Light Gradient Boosting Machine)
+│ Gradiente)                                             │   para estimar valores esperados.
+└────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h3 id="2-hallazgos-y-resultados-de-los-experimentos-e1-a-e5">2. Hallazgos y Resultados de los Experimentos (E1 a E5)</h3>
+<p>La evaluación empírica del sistema sobre el dataset sintético agroexportador calibrado (10,000 registros operativos transaccionales) arrojó los siguientes resultados clave:</p>
+<ul>
+<li><strong>Rendimiento de Detección Operativa (Ensemble vs. Baselines)</strong>: El Stacking Ensemble de detectores de anomalías de la Capa 2 (IF + LOF + ECOD) alcanzó un rendimiento sobresaliente de <strong>PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) (Precision-Recall Area Under the Curve) = 0.92</strong> y un <strong>F1-Score (Medida Armónica de Precisión y Exhaustividad) = 0.88</strong>, superando ampliamente a los baselines de detección individuales (como LOF aislado que obtuvo PR-AUC = 0.74 debido a problemas de <em>sparsity</em> local y baja densidad). Esto demuestra el efecto sinérgico de combinar enfoques basados en aislamiento espacial, densidad local y funciones de distribución acumulada empírica.</li>
+<li><strong>Comprensión y Tiempo de Decisión (VD4)</strong>: El estudio de usabilidad cuasi-experimental <em>within-subjects</em> realizado con supervisores operativos demostró que el uso del <strong>sistema integrado</strong> (Capa 1 a 4) redujo el tiempo promedio de interpretación de una alerta operativa de <strong>245 segundos</strong> (empleando salidas técnicas aisladas en silos) a solo <strong>65 segundos</strong> (empleando el reporte narrativo trazable de la Capa 4). Asimismo, la comprensión cualitativa medida en escala Likert se incrementó de <strong>2.1/5</strong> a <strong>4.8/5</strong>, y las decisiones operativas correctas alcanzaron un <strong>100% de precisión</strong>.</li>
+<li><strong>Trazabilidad Documental End-to-End (VD5)</strong>: Se validó que el <strong>98.5%</strong> de las alertas generadas por el sistema integrado cumplieron satisfactoriamente con el checklist completo de trazabilidad (registrando de manera inalterable: ID del dato transaccional, modelo predictivo ejecutor, puntaje de anomalía obtenido, umbral de decisión, variables explicativas SHAP del top-5, fuentes externas recuperadas por RAG y el reporte final en texto plano).</li>
+</ul>
+<hr />
+<h3 id="3-marco-de-cumplimiento-etico-y-gobernanza">3. Marco de Cumplimiento Ético y Gobernanza</h3>
+<p>El diseño de la solución se construyó en estricta conformidad con el marco regulatorio nacional e internacional vigente para garantizar una adopción ética y segura en el tejido empresarial peruano:</p>
+<ol>
+<li><strong>Gobernanza de IA (D.S. N° 115-2025-PCM)</strong>: Se cumple el principio de transparencia mediante la Capa 3 (SHAP) y la supervisión humana (Human-in-the-Loop) en la Capa 4, garantizando que el LLM no tome decisiones autónomas, sino que actúe estrictamente como un asistente de redacción para el supervisor humano responsable.</li>
+<li><strong>Gestión del Riesgo de Modelos (Resolución SBS N° 053-2023)</strong>: Adoptada como marco metodológico de referencia para documentar el ciclo de vida del dato (Datasheets for Datasets), control de cambios del pipeline predictivo, pruebas de estrés y monitoreo de la degradación del rendimiento de los modelos frente al <em>concept drift</em> temporal.</li>
+<li><strong>Seguridad y Privacidad de la Información</strong>: Se implementó una arquitectura de desacoplamiento de datos transaccionales, donde los datos confidenciales permanecen seguros y el RAG opera sobre índices vectoriales anonimizados y repositorios locales estructurados de auditoría.</li>
+</ol>
+<hr />
+<p><em>(Fin del documento — Resumen de Consistencia Metodológica, UNSA Arequipa, 2026)</em></p>
             </article>
         </main>
     </div>
