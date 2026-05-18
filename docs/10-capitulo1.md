@@ -159,13 +159,17 @@ Adicionalmente, una detección temprana de anomalías operativas protege a las e
 
 ## 1.8 Alcance
 
-**Alcance temático**: Predicción con GBDT, detección de anomalías mediante ensemble, explicabilidad SHAP, generación de reportes con LLM+RAG, documentación de datasets y trazabilidad de alertas operativas. **Excluye**: modelos de Deep Learning puro para datos tabulares como propuesta principal, implementación productiva en tiempo real, reemplazo de la decisión humana y análisis legal profundo de regulación sectorial.
+<!-- GUÍA ACADÉMICA: El alcance define los límites temáticos, geográficos y temporales de la tesis. Aquí se delimita explícitamente que la investigación se centra en datos tabulares y agroexportación peruana, excluyendo modelos de Deep Learning tabulares puros (de acuerdo con el benchmark de Grinsztajn et al., 2022) o despliegues productivos en tiempo real. -->
+
+**Alcance temático**: Predicción con GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente), detección de anomalías mediante ensemble, explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), generación de reportes con LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) + RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación), documentación de datasets y trazabilidad de alertas operativas. **Excluye**: modelos de Deep Learning puro para datos tabulares como propuesta principal, implementación productiva en tiempo real, reemplazo de la decisión humana y análisis legal profundo de regulación sectorial.
 
 **Alcance geográfico**: Empresas agroexportadoras peruanas, con énfasis en productos representativos como arándanos, uvas, paltas, cacao y espárragos. La investigación utiliza fuentes públicas oficiales y dataset sintético documentado; los datos privados de empresa quedan como extensión futura u opcional.
 
 **Alcance temporal**: Evaluación en dataset estático o semiestático, sin monitoreo en producción. Estudio en 5 meses. Evaluación de comprensión y tiempo de decisión con supervisores, auditores internos o evaluadores simulados según disponibilidad.
 
 ## 1.9 Línea, Tipo y Nivel de la Investigación
+
+<!-- GUÍA ACADÉMICA: En esta sección se fundamenta la investigación bajo la línea de IA e Ingeniería de Software Aplicada de la UNSA. Se adopta un marco epistemológico post-positivista, justificando por qué combinamos métricas técnicas duras (como PR-AUC) con evaluaciones subjetivas (como escalas Likert de usabilidad). Se clasifica la investigación como aplicada y el nivel como explicativo-evaluativo (utilizando análisis ablativo). -->
 
 ### 1.9.1 Línea de Investigación
 
@@ -188,6 +192,8 @@ El nivel de la investigación es **explicativo-evaluativo**. Se parte de un diag
 El diseño es **cuasi-experimental con grupos contrabalanceados** para la evaluación de utilidad operativa (VD4): cada participante del estudio de usabilidad evalúa ambas condiciones (sistema integrado y componentes aislados) en orden aleatorizado, controlando por el efecto de aprendizaje mediante diseño within-subjects. Para las variables técnicas (VD1, VD2, VD3, VD5) el diseño es **comparativo en condiciones controladas**: el mismo dataset, mismas particiones train/test temporales (sin solapamiento) y misma semilla aleatoria se aplican a todas las configuraciones experimentales (E1–E5), variando únicamente la condición evaluada (detector individual vs. ensemble, sin SHAP vs. con SHAP, sin RAG vs. con RAG, sin pipeline integrado vs. con pipeline integrado).
 
 ## 1.10 Técnicas e Instrumentos de Recolección de Información
+
+<!-- GUÍA ACADÉMICA: Define las técnicas (revisión de literatura, análisis documental, experimentos, pruebas de usabilidad) y los instrumentos específicos de recolección de información. Cada instrumento debe estar mapeado directamente a la variable dependiente (VD) que mide, garantizando la consistencia del diseño experimental. -->
 
 ### 1.10.1 Técnicas
 
