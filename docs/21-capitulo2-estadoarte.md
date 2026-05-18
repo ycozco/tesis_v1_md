@@ -18,7 +18,7 @@ El campo de la detección de anomalías cuenta con una historia de más de dos d
 
 El hallazgo central de Han et al. (2022) en ADBench —57 datasets, 30 algoritmos, tres niveles de supervisión— establece que no existe un algoritmo universalmente superior: el rendimiento depende fuertemente del tipo de anomalía, la distribución de los datos y el nivel de etiquetado disponible. Esta conclusión teórica valida la estrategia de ensemble como la opción más robusta para entornos de producción donde la distribución de anomalías es desconocida a priori. La librería PyOD (Zhao et al., 2019) proporciona la infraestructura técnica para implementar este ensemble de manera estandarizada y reproducible.
 
-**Posición de esta tesis**: El ensemble Isolation Forest + LOF + Deep SVDD (coordinado mediante PyOD) es más robusto que cualquier detector individual. Esta decisión está respaldada por ADBench (Han et al., 2022) como fundamento teórico.
+**Posición de esta tesis**: El ensemble Isolation Forest + LOF + ECOD (coordinado mediante PyOD) es más robusto que cualquier detector individual, priorizando ECOD sobre Deep SVDD por su interpretabilidad estadística y ausencia de hiperparámetros. Esta decisión está respaldada por ADBench (Han et al., 2022) como fundamento teórico.
 
 ### 2.2.3 LLM como Detector versus LLM como Generador de Reportes
 
@@ -52,12 +52,12 @@ La revisión sistemática de los bloques temáticos permite identificar la brech
 
 **Tabla 2.1 — Comparativa de Sistemas de Supervisión con IA**
 
-| Característica | **Esta tesis** | AuditCopilot (Kadir et al., 2025) | Park 2024 (Park, 2024) | AuditMAI (Waltersdorfer et al., 2024) | (JRFM, 2025) |
+| Característica | **Esta tesis** | AuditCopilot (Kadir et al., 2025) | Park 2024 (Park, 2024) | AuditMAI (Waltersdorfer et al., 2024) | Almalki & Masud (2025) / JRFM (2025) |
 |---|---|---|---|---|---|
-| Predicción tabular GBDT | ✅ XGB+LGBM+CatBoost | ❌ | ❌ Solo LLMs | ❌ | ✅ Stacking |
+| Predicción tabular GBDT | ✅ XGBoost+LightGBM | ❌ | ❌ Solo LLMs | ❌ | ✅ Stacking |
 | Benchmark público reproducible | ✅ Datos públicos + sintéticos agroexportadores; BAF complementario | ❌ Dataset propio | ❌ S&P 500 | ❌ Conceptual | ⚠️ Dataset propio |
-| Forecasting series temporales (TFT) | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Ensemble de anomalías (ADBench) | ✅ IF+LOF+SVDD | ⚠️ Parcial | ❌ | ❌ | ❌ |
+| Forecasting DL (ej. TFT) | ❌ (Solo tabular GBDT) | ❌ | ❌ | ❌ | ❌ |
+| Ensemble de anomalías (ADBench) | ✅ IF+LOF+ECOD | ⚠️ Parcial | ❌ | ❌ | ❌ |
 | Explicabilidad SHAP | ✅ TreeSHAP | ❌ | ❌ | ❌ | ✅ SHAP+Anchor |
 | Generación LLM de reportes | ✅ RAG determinista | ✅ LLM narrativo | ✅ Multi-agente | ❌ | ❌ |
 | Restricción anti-alucinación (RAG+SHAP) | ✅ | ❌ | ❌ | — | — |
@@ -76,10 +76,10 @@ La revisión sistemática de los bloques temáticos permite identificar la brech
 | 4 | Gorishniy et al. (Gorishniy et al., 2021) | 2021 | FT-Transformer: primer Transformer robusto para datos tabulares mediante feature embeddings |
 | 5 | Arik & Pfister (Arik & Pfister, 2021) | 2021 | TabNet: atención secuencial interpretable para tablas, combina rendimiento e interpretabilidad |
 | 6 | Grinsztajn et al. (Grinsztajn et al., 2022) | 2022 | GBDT supera a DL en el 95% de datasets ≤50K muestras; cierra el debate en contexto empresarial |
-| 7 | Lim et al. (Lim et al., 2021) | 2021 | TFT: forecasting multi-horizonte con gating de covariables e interpretabilidad incorporada |
+| 7 | Li et al. (Li et al., 2022) | 2022 | ECOD: detección no supervisada basada en distribución empírica acumulada, sin hiperparámetros |
 | 8 | Liu et al. (Liu et al., 2008) | 2008 | Isolation Forest: aislamiento aleatorio O(n), sin perfil de normalidad, escalable a millones de registros |
 | 9 | Breunig et al. (Breunig et al., 2000) | 2000 | LOF: densidad local relativa k-NN, detecta anomalías locales heterogéneas |
-| 10 | Ruff et al. (Ruff et al., 2018) | 2018 | Deep SVDD: detección one-class en espacio latente profundo para patrones no lineales |
+| 10 | Almalki & Masud (Almalki & Masud, 2025) | 2025 | Stacking ensemble de GBDT con explicabilidad SHAP para detección en datos críticos |
 | 11 | Han et al. (Han et al., 2022) | 2022 | ADBench: benchmark de 30 algoritmos en 57 datasets; ensembles son más robustos que detectores únicos |
 | 12 | Lundberg & Lee (Lundberg & Lee, 2017) | 2017 | SHAP: valores Shapley con consistencia axiomática; TreeSHAP exacto para GBDT |
 | 13 | Kadir et al. (Kadir et al., 2025) | 2025 | AuditCopilot: LLM+detección en asientos contables; antecedente metodológico para reportes automáticos |

@@ -99,22 +99,22 @@ Esta sección triangula los resultados experimentales propios con tres bloques e
 
 La Tabla 4.8 sitúa el rendimiento del sistema propuesto frente a los cinco trabajos más cercanos identificados en la búsqueda sistemática (`busqueda-sistematica-gap.md`). La comparación se realiza considerando que cada trabajo opera en un dominio y dataset distintos, por lo que los valores absolutos no son directamente comparables; lo que se compara es la cobertura modular y la consistencia direccional de los resultados.
 
-| Atributo | Esta tesis | AuditCopilot (Kadir et al., 2025) | Park (2024) | JRFM (2025) | Almalki & Masud (2025) | AuditMAI (Waltersdorfer et al., 2024) |
-|---|---|---|---|---|---|---|
-| Predicción tabular GBDT | XGBoost + LightGBM | No reportada | No (solo LLMs) | Stacking GBDT | Stacking GBDT | No |
-| Ensemble de detección | IF + LOF + ECOD | Parcial | No | No | No | No |
-| Explicabilidad SHAP estructurada | TreeSHAP top-k | No | No | SHAP | SHAP | No |
-| Generación LLM bajo RAG | RAG anclado en SHAP | LLM libre | Multi-agente | No | No | No |
-| Restricción anti-alucinación | Sí (validación numérica posterior) | No documentada | No | N/A | N/A | N/A |
-| PR-AUC reportado | _pendiente_ | No reporta | No reporta | 0.93 | _pendiente_ verificar | No |
-| Dominio | Agroexportador peruano | Asientos contables | S&P 500 | Fraude financiero | Fraude financiero | Auditoría de IA |
-| Contexto regulatorio | D.S. 115-2025-PCM + NIST AI RMF | No especificado | No | No | No | No |
-| Evaluación con usuarios | Sí (N ≥ 15) | No | No | No | No | No |
-| Dataset abierto disponible | Sí (CC BY 4.0) | No | No | No | Parcial | N/A |
+| Atributo | Esta tesis | AuditCopilot (Kadir et al., 2025) | Park (2024) | AuditMAI (Waltersdorfer et al., 2024) | Almalki & Masud (2025) / JRFM (2025) |
+|---|---|---|---|---|---|
+| Predicción tabular GBDT | XGBoost + LightGBM | No reportada | No (solo LLMs) | No | Stacking GBDT |
+| Ensemble de detección | IF + LOF + ECOD | Parcial | No | No | No |
+| Explicabilidad SHAP estructurada | TreeSHAP top-k | No | No | No | SHAP |
+| Generación LLM bajo RAG | RAG anclado en SHAP | LLM libre | Multi-agente | No | No |
+| Restricción anti-alucinación | Sí (validación numérica posterior) | No documentada | No | N/A | N/A |
+| PR-AUC reportado | _pendiente_ | No reporta | No reporta | No | > 0.90 |
+| Dominio | Agroexportador peruano | Asientos contables | S&P 500 | Auditoría de IA | Fraude financiero |
+| Contexto regulatorio | D.S. 115-2025-PCM + NIST AI RMF | No especificado | No | No | No |
+| Evaluación con usuarios | Sí (N ≥ 15) | No | No | No | No |
+| Dataset abierto disponible | Sí (CC BY 4.0) | No | No | N/A | Parcial / No |
 
 **Lectura del cruce 1**:
 - La cobertura modular del sistema propuesto (cuatro capas con restricción anti-alucinación) es estrictamente mayor que cualquier trabajo individual de la literatura revisada.
-- El trabajo más cercano en cobertura es JRFM (2025) que combina GBDT y SHAP en fraude financiero, pero carece de detección no supervisada, módulo LLM y contexto regulatorio.
+- Los trabajos más cercanos en cobertura metodológica (Almalki & Masud, 2025; JRFM, 2025) combinan GBDT y SHAP en fraude financiero, pero carecen de detección no supervisada, módulo LLM y contexto regulatorio.
 - AuditCopilot (Kadir et al., 2025) es el único que combina detección con generación LLM, pero opera en asientos contables sin SHAP estructurado ni restricción anti-alucinación.
 
 ### 4.4.3 Cruce 2 — Contraste de hipótesis (Tabla 4.9)

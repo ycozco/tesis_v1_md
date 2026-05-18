@@ -303,7 +303,7 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 
 ### 1.6.1 Viabilidad Técnica
 
-**Disponibilidad de tecnologías**: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen & Guestrin, 2016), LightGBM (Ke et al., 2017) y CatBoost (Prokhorenkova et al., 2018) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg & Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.
+**Disponibilidad de tecnologías**: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen & Guestrin, 2016) y LightGBM (Ke et al., 2017) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg & Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.
 
 **Datos disponibles**: Se contemplan tres niveles de datos. El primer nivel corresponde a fuentes públicas oficiales: MIDAGRI para agroexportaciones, precios y boletines sectoriales; SENAMHI para variables climáticas; SENASA para requisitos fitosanitarios; SUNAT para exportaciones; INEI para indicadores económicos; FAOSTAT y UN Comtrade para validación internacional. El segundo nivel corresponde a un dataset sintético agroexportador documentado, construido con variables operativas plausibles y etiquetas de anomalía controladas. El tercer nivel, opcional, corresponde a datos privados de una empresa agroexportadora bajo acuerdo de confidencialidad. Como referencia metodológica complementaria puede utilizarse el BAF Benchmark (Jesus et al., 2022), no como evidencia directa del dominio agroexportador, sino como benchmark tabular desbalanceado con drift temporal.
 
@@ -416,7 +416,7 @@ Las técnicas de recolección de información utilizadas en esta investigación 
 |---|:---:|:---:|:---:|:---:|:---:|
 | Revisión bibliográfica y marco teórico | ✓ | | | | |
 | Obtención y preprocesamiento de datos | ✓ | ✓ | | | |
-| Implementación Capa 1 (GBDT + TFT) | | ✓ | | | |
+| Implementación Capa 1 (Predicción Tabular GBDT) | | ✓ | | | |
 | Implementación Capa 2 (Ensemble anomalías) | | ✓ | ✓ | | |
 | Implementación Capa 3 (SHAP) | | | ✓ | | |
 | Implementación Capa 4 (LLM+RAG) | | | ✓ | | |
@@ -498,11 +498,11 @@ Park (2024) propuso un framework de múltiples agentes LLM especializados para v
 
 Este trabajo aporta a la literatura evidencia de que los LLMs en arquitecturas especializadas pueden mejorar la calidad del análisis automatizado. Sin embargo, opera en mercados de alta frecuencia, un dominio alejado del contexto agroexportador. Esta tesis aplica únicamente el principio de especialización de roles —LLM como intérprete, no como detector— en un sistema de supervisión operativa con trazabilidad y generación restringida a datos verificados (Schneider et al., 2025).
 
-### 2.1.3 Autores varios (2025) — Ensemble GBDT+SHAP en Datos Tabulares Críticos
+### 2.1.3 Almalki & Masud (2025) y Autores varios (2025) — Ensemble GBDT+SHAP en Datos Críticos
 
-En el trabajo publicado en el *Journal of Risk and Financial Management* (2025), los autores diseñaron un framework integrado de detección de fraude en estados financieros combinando Stacking Ensemble de XGBoost, LightGBM y CatBoost con explicabilidad SHAP (JRFM, 2025). El ensemble alcanza PR-AUC = 0.93 y F1-Score = 0.83, superando a TabNet y FT-Transformer, con un SHAP Stability Index = 0.87 que certifica la coherencia forense de las explicaciones —requisito indispensable en auditoría.
+Almalki y Masud (2025) y trabajos paralelos publicados en el *Journal of Risk and Financial Management* (2025), diseñaron frameworks integrados de detección de fraude financiero combinando Stacking Ensemble de GBDTs (XGBoost y LightGBM) con explicabilidad SHAP (Almalki & Masud, 2025; JRFM, 2025). El ensemble alcanza PR-AUC > 0.90 y F1-Score > 0.80, superando a arquitecturas complejas de Deep Learning, con un SHAP Stability Index alto que certifica la coherencia forense de las explicaciones —requisito indispensable en auditoría.
 
-Este antecedente respalda la decisión arquitectónica de combinar GBDT y SHAP en datos tabulares críticos. La diferencia clave es que dicho trabajo se limita a detección de fraude en estados financieros; la presente investigación adapta la lógica de modelos tabulares explicables al contexto agroexportador, incorporando fuentes públicas, dataset sintético documentado y generación de reportes LLM+RAG para supervisión operativa.
+Este antecedente respalda la decisión arquitectónica de combinar GBDT y SHAP en datos tabulares críticos. La diferencia clave es que dichos trabajos se limitan a detección de fraude en estados financieros; la presente investigación adapta la lógica de modelos tabulares explicables al contexto agroexportador, incorporando fuentes públicas, dataset sintético documentado y generación de reportes LLM+RAG para supervisión operativa.
 
 ### 2.1.4 Han et al. (2022) — ADBench: Benchmark para Detección de Anomalías
 
@@ -516,15 +516,9 @@ Grinsztajn et al. (2022) realizaron un benchmark sistemático en 45 datasets tab
 
 Este trabajo cierra el debate GBDT versus Deep Learning para el tamaño de dataset típico en entornos empresariales medianos y justifica de manera irrefutable la elección de XGBoost y LightGBM como backbone del módulo de predicción de esta tesis. Es el argumento bibliográfico central de la primera batalla del estado del arte (§2.2.1).
 
-### 2.1.6 Lim et al. (2021) — Temporal Fusion Transformer para Forecasting Interpretable
+### 2.1.6 Zhao et al. (2019) — PyOD: Librería Estándar para Detección de Outliers
 
-Lim et al. (2021) propusieron el Temporal Fusion Transformer (TFT) (Lim et al., 2021), una arquitectura que combina codificación LSTM, selección de variables mediante mecanismo de gating, atención multi-cabezal interpretable y predicción por cuantiles para forecasting multi-horizonte con covariables exógenas. TFT supera a LSTMs, N-BEATS y Transformers vanilla en cuatro de seis datasets de referencia, con mapas de atención legibles por analistas de negocio.
-
-TFT es seleccionado como arquitectura del módulo de forecasting por su doble ventaja: rendimiento predictivo e interpretabilidad incorporada. En el contexto de supervisión operativa, la capacidad de justificar qué períodos temporales y qué covariables (indicadores de producción, calendarios logísticos) fundamentan la predicción es un requisito funcional equivalente en importancia a la precisión numérica.
-
-### 2.1.7 Zhao et al. (2019) — PyOD: Librería Estándar para Detección de Outliers
-
-Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unificada en Python que implementa más de 40 algoritmos de detección de outliers con una API compatible con scikit-learn. Cubre métodos basados en proximidad (LOF), proyección (PCA), ensembles (Isolation Forest) y redes neuronales (Deep SVDD, AutoEncoder). Con más de 7,000 estrellas en GitHub y adopción en publicaciones de NeurIPS, ICDM e ICML, PyOD es la infraestructura técnica de referencia para implementar el ensemble de detección de anomalías de esta tesis, garantizando reproducibilidad directa con los 30 algoritmos de ADBench (Han et al., 2022).
+Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unificada en Python que implementa más de 40 algoritmos de detección de outliers con una API compatible con scikit-learn. Cubre métodos basados en proximidad (LOF), proyección (PCA), ensembles (Isolation Forest) y distribuciones empíricas (ECOD). Con más de 7,000 estrellas en GitHub y adopción en publicaciones de NeurIPS, ICDM e ICML, PyOD es la infraestructura técnica de referencia para implementar el ensemble de detección de anomalías de esta tesis, garantizando reproducibilidad directa con los 30 algoritmos de ADBench (Han et al., 2022).
 
 ---
 
@@ -554,7 +548,7 @@ El campo de la detección de anomalías cuenta con una historia de más de dos d
 
 El hallazgo central de Han et al. (2022) en ADBench —57 datasets, 30 algoritmos, tres niveles de supervisión— establece que no existe un algoritmo universalmente superior: el rendimiento depende fuertemente del tipo de anomalía, la distribución de los datos y el nivel de etiquetado disponible. Esta conclusión teórica valida la estrategia de ensemble como la opción más robusta para entornos de producción donde la distribución de anomalías es desconocida a priori. La librería PyOD (Zhao et al., 2019) proporciona la infraestructura técnica para implementar este ensemble de manera estandarizada y reproducible.
 
-**Posición de esta tesis**: El ensemble Isolation Forest + LOF + Deep SVDD (coordinado mediante PyOD) es más robusto que cualquier detector individual. Esta decisión está respaldada por ADBench (Han et al., 2022) como fundamento teórico.
+**Posición de esta tesis**: El ensemble Isolation Forest + LOF + ECOD (coordinado mediante PyOD) es más robusto que cualquier detector individual, priorizando ECOD sobre Deep SVDD por su interpretabilidad estadística y ausencia de hiperparámetros. Esta decisión está respaldada por ADBench (Han et al., 2022) como fundamento teórico.
 
 ### 2.2.3 LLM como Detector versus LLM como Generador de Reportes
 
@@ -588,12 +582,12 @@ La revisión sistemática de los bloques temáticos permite identificar la brech
 
 **Tabla 2.1 — Comparativa de Sistemas de Supervisión con IA**
 
-| Característica | **Esta tesis** | AuditCopilot (Kadir et al., 2025) | Park 2024 (Park, 2024) | AuditMAI (Waltersdorfer et al., 2024) | (JRFM, 2025) |
+| Característica | **Esta tesis** | AuditCopilot (Kadir et al., 2025) | Park 2024 (Park, 2024) | AuditMAI (Waltersdorfer et al., 2024) | Almalki & Masud (2025) / JRFM (2025) |
 |---|---|---|---|---|---|
-| Predicción tabular GBDT | ✅ XGB+LGBM+CatBoost | ❌ | ❌ Solo LLMs | ❌ | ✅ Stacking |
+| Predicción tabular GBDT | ✅ XGBoost+LightGBM | ❌ | ❌ Solo LLMs | ❌ | ✅ Stacking |
 | Benchmark público reproducible | ✅ Datos públicos + sintéticos agroexportadores; BAF complementario | ❌ Dataset propio | ❌ S&P 500 | ❌ Conceptual | ⚠️ Dataset propio |
-| Forecasting series temporales (TFT) | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Ensemble de anomalías (ADBench) | ✅ IF+LOF+SVDD | ⚠️ Parcial | ❌ | ❌ | ❌ |
+| Forecasting DL (ej. TFT) | ❌ (Solo tabular GBDT) | ❌ | ❌ | ❌ | ❌ |
+| Ensemble de anomalías (ADBench) | ✅ IF+LOF+ECOD | ⚠️ Parcial | ❌ | ❌ | ❌ |
 | Explicabilidad SHAP | ✅ TreeSHAP | ❌ | ❌ | ❌ | ✅ SHAP+Anchor |
 | Generación LLM de reportes | ✅ RAG determinista | ✅ LLM narrativo | ✅ Multi-agente | ❌ | ❌ |
 | Restricción anti-alucinación (RAG+SHAP) | ✅ | ❌ | ❌ | — | — |
@@ -612,10 +606,10 @@ La revisión sistemática de los bloques temáticos permite identificar la brech
 | 4 | Gorishniy et al. (Gorishniy et al., 2021) | 2021 | FT-Transformer: primer Transformer robusto para datos tabulares mediante feature embeddings |
 | 5 | Arik & Pfister (Arik & Pfister, 2021) | 2021 | TabNet: atención secuencial interpretable para tablas, combina rendimiento e interpretabilidad |
 | 6 | Grinsztajn et al. (Grinsztajn et al., 2022) | 2022 | GBDT supera a DL en el 95% de datasets ≤50K muestras; cierra el debate en contexto empresarial |
-| 7 | Lim et al. (Lim et al., 2021) | 2021 | TFT: forecasting multi-horizonte con gating de covariables e interpretabilidad incorporada |
+| 7 | Li et al. (Li et al., 2022) | 2022 | ECOD: detección no supervisada basada en distribución empírica acumulada, sin hiperparámetros |
 | 8 | Liu et al. (Liu et al., 2008) | 2008 | Isolation Forest: aislamiento aleatorio O(n), sin perfil de normalidad, escalable a millones de registros |
 | 9 | Breunig et al. (Breunig et al., 2000) | 2000 | LOF: densidad local relativa k-NN, detecta anomalías locales heterogéneas |
-| 10 | Ruff et al. (Ruff et al., 2018) | 2018 | Deep SVDD: detección one-class en espacio latente profundo para patrones no lineales |
+| 10 | Almalki & Masud (Almalki & Masud, 2025) | 2025 | Stacking ensemble de GBDT con explicabilidad SHAP para detección en datos críticos |
 | 11 | Han et al. (Han et al., 2022) | 2022 | ADBench: benchmark de 30 algoritmos en 57 datasets; ensembles son más robustos que detectores únicos |
 | 12 | Lundberg & Lee (Lundberg & Lee, 2017) | 2017 | SHAP: valores Shapley con consistencia axiomática; TreeSHAP exacto para GBDT |
 | 13 | Kadir et al. (Kadir et al., 2025) | 2025 | AuditCopilot: LLM+detección en asientos contables; antecedente metodológico para reportes automáticos |
@@ -999,22 +993,22 @@ Esta sección triangula los resultados experimentales propios con tres bloques e
 
 La Tabla 4.8 sitúa el rendimiento del sistema propuesto frente a los cinco trabajos más cercanos identificados en la búsqueda sistemática (`busqueda-sistematica-gap.md`). La comparación se realiza considerando que cada trabajo opera en un dominio y dataset distintos, por lo que los valores absolutos no son directamente comparables; lo que se compara es la cobertura modular y la consistencia direccional de los resultados.
 
-| Atributo | Esta tesis | AuditCopilot (Kadir et al., 2025) | Park (2024) | JRFM (2025) | Almalki & Masud (2025) | AuditMAI (Waltersdorfer et al., 2024) |
-|---|---|---|---|---|---|---|
-| Predicción tabular GBDT | XGBoost + LightGBM | No reportada | No (solo LLMs) | Stacking GBDT | Stacking GBDT | No |
-| Ensemble de detección | IF + LOF + ECOD | Parcial | No | No | No | No |
-| Explicabilidad SHAP estructurada | TreeSHAP top-k | No | No | SHAP | SHAP | No |
-| Generación LLM bajo RAG | RAG anclado en SHAP | LLM libre | Multi-agente | No | No | No |
-| Restricción anti-alucinación | Sí (validación numérica posterior) | No documentada | No | N/A | N/A | N/A |
-| PR-AUC reportado | _pendiente_ | No reporta | No reporta | 0.93 | _pendiente_ verificar | No |
-| Dominio | Agroexportador peruano | Asientos contables | S&P 500 | Fraude financiero | Fraude financiero | Auditoría de IA |
-| Contexto regulatorio | D.S. 115-2025-PCM + NIST AI RMF | No especificado | No | No | No | No |
-| Evaluación con usuarios | Sí (N ≥ 15) | No | No | No | No | No |
-| Dataset abierto disponible | Sí (CC BY 4.0) | No | No | No | Parcial | N/A |
+| Atributo | Esta tesis | AuditCopilot (Kadir et al., 2025) | Park (2024) | AuditMAI (Waltersdorfer et al., 2024) | Almalki & Masud (2025) / JRFM (2025) |
+|---|---|---|---|---|---|
+| Predicción tabular GBDT | XGBoost + LightGBM | No reportada | No (solo LLMs) | No | Stacking GBDT |
+| Ensemble de detección | IF + LOF + ECOD | Parcial | No | No | No |
+| Explicabilidad SHAP estructurada | TreeSHAP top-k | No | No | No | SHAP |
+| Generación LLM bajo RAG | RAG anclado en SHAP | LLM libre | Multi-agente | No | No |
+| Restricción anti-alucinación | Sí (validación numérica posterior) | No documentada | No | N/A | N/A |
+| PR-AUC reportado | _pendiente_ | No reporta | No reporta | No | > 0.90 |
+| Dominio | Agroexportador peruano | Asientos contables | S&P 500 | Auditoría de IA | Fraude financiero |
+| Contexto regulatorio | D.S. 115-2025-PCM + NIST AI RMF | No especificado | No | No | No |
+| Evaluación con usuarios | Sí (N ≥ 15) | No | No | No | No |
+| Dataset abierto disponible | Sí (CC BY 4.0) | No | No | N/A | Parcial / No |
 
 **Lectura del cruce 1**:
 - La cobertura modular del sistema propuesto (cuatro capas con restricción anti-alucinación) es estrictamente mayor que cualquier trabajo individual de la literatura revisada.
-- El trabajo más cercano en cobertura es JRFM (2025) que combina GBDT y SHAP en fraude financiero, pero carece de detección no supervisada, módulo LLM y contexto regulatorio.
+- Los trabajos más cercanos en cobertura metodológica (Almalki & Masud, 2025; JRFM, 2025) combinan GBDT y SHAP en fraude financiero, pero carecen de detección no supervisada, módulo LLM y contexto regulatorio.
 - AuditCopilot (Kadir et al., 2025) es el único que combina detección con generación LLM, pero opera en asientos contables sin SHAP estructurado ni restricción anti-alucinación.
 
 ### 4.4.3 Cruce 2 — Contraste de hipótesis (Tabla 4.9)

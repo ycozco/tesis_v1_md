@@ -105,7 +105,7 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 
 ### 1.6.1 Viabilidad Técnica
 
-**Disponibilidad de tecnologías**: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen & Guestrin, 2016), LightGBM (Ke et al., 2017) y CatBoost (Prokhorenkova et al., 2018) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg & Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.
+**Disponibilidad de tecnologías**: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen & Guestrin, 2016) y LightGBM (Ke et al., 2017) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg & Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.
 
 **Datos disponibles**: Se contemplan tres niveles de datos. El primer nivel corresponde a fuentes públicas oficiales: MIDAGRI para agroexportaciones, precios y boletines sectoriales; SENAMHI para variables climáticas; SENASA para requisitos fitosanitarios; SUNAT para exportaciones; INEI para indicadores económicos; FAOSTAT y UN Comtrade para validación internacional. El segundo nivel corresponde a un dataset sintético agroexportador documentado, construido con variables operativas plausibles y etiquetas de anomalía controladas. El tercer nivel, opcional, corresponde a datos privados de una empresa agroexportadora bajo acuerdo de confidencialidad. Como referencia metodológica complementaria puede utilizarse el BAF Benchmark (Jesus et al., 2022), no como evidencia directa del dominio agroexportador, sino como benchmark tabular desbalanceado con drift temporal.
 
@@ -218,7 +218,7 @@ Las técnicas de recolección de información utilizadas en esta investigación 
 |---|:---:|:---:|:---:|:---:|:---:|
 | Revisión bibliográfica y marco teórico | ✓ | | | | |
 | Obtención y preprocesamiento de datos | ✓ | ✓ | | | |
-| Implementación Capa 1 (GBDT + TFT) | | ✓ | | | |
+| Implementación Capa 1 (Predicción Tabular GBDT) | | ✓ | | | |
 | Implementación Capa 2 (Ensemble anomalías) | | ✓ | ✓ | | |
 | Implementación Capa 3 (SHAP) | | | ✓ | | |
 | Implementación Capa 4 (LLM+RAG) | | | ✓ | | |
