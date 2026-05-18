@@ -1,3 +1,5 @@
+<div style="background-color: orange; color: white; padding: 10px; text-align: center; font-weight: bold; margin-bottom: 20px; border-radius: 5px;">⚠️ EN DESARROLLO</div>
+
 # CAPÍTULO III: PROPUESTA METODOLÓGICA
 
 ## 3.1 Arquitectura del Sistema Integrado

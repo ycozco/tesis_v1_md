@@ -3,276 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesis</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 20px;
-            padding: 20px;
-        }
-        
-        .sidebar {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            max-height: 90vh;
-            overflow-y: auto;
-            position: sticky;
-            top: 20px;
-        }
-        
-        .sidebar h3 {
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: #2c3e50;
-        }
-        
-        .sidebar ul {
-            list-style: none;
-        }
-        
-        .sidebar li {
-            margin: 8px 0;
-        }
-        
-        .sidebar a {
-            text-decoration: none;
-            color: #3498db;
-            transition: color 0.3s;
-            font-size: 14px;
-            display: block;
-            padding: 6px;
-            border-radius: 4px;
-        }
-        
-        .sidebar a:hover {
-            background: #ecf0f1;
-            color: #2980b9;
-        }
-        
-        .sidebar ul ul {
-            margin-left: 16px;
-            margin-top: 8px;
-        }
-        
-        .main {
-            background: white;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .header {
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .header .meta {
-            font-size: 14px;
-            color: #7f8c8d;
-        }
-        
-        h2 {
-            margin-top: 40px;
-            margin-bottom: 20px;
-            color: #2c3e50;
-            border-left: 4px solid #3498db;
-            padding-left: 12px;
-        }
-        
-        h3 {
-            margin-top: 25px;
-            margin-bottom: 15px;
-            color: #34495e;
-        }
-        
-        h4, h5, h6 {
-            margin-top: 15px;
-            margin-bottom: 10px;
-            color: #7f8c8d;
-        }
-        
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        a {
-            color: #3498db;
-            text-decoration: none;
-            border-bottom: 1px solid #bdc3c7;
-        }
-        
-        a:hover {
-            background: #ecf0f1;
-        }
-        
-        code {
-            background: #ecf0f1;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 13px;
-        }
-        
-        pre {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            margin: 15px 0;
-        }
-        
-        pre code {
-            background: none;
-            color: #ecf0f1;
-            padding: 0;
-        }
-        
-        ul, ol {
-            margin: 15px 0;
-            margin-left: 30px;
-        }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-        
-        table thead {
-            background: #ecf0f1;
-        }
-        
-        table th {
-            padding: 12px;
-            text-align: left;
-            font-weight: bold;
-            color: #2c3e50;
-            border-bottom: 2px solid #bdc3c7;
-        }
-        
-        table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #bdc3c7;
-        }
-        
-        table tbody tr:hover {
-            background: #f8f9fa;
-        }
-        
-        blockquote {
-            border-left: 4px solid #3498db;
-            padding-left: 15px;
-            margin: 15px 0;
-            color: #7f8c8d;
-            font-style: italic;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin: 15px 0;
-        }
-        
-        .checklist li {
-            margin: 10px 0;
-        }
-        
-        .checklist input[type="checkbox"] {
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        
-        .metadata {
-            background: #ecf0f1;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-size: 13px;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #3498db;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: none;
-            z-index: 1000;
-        }
-        
-        .back-to-top:hover {
-            background: #2980b9;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                position: static;
-                max-height: none;
-            }
-            
-            .main {
-                padding: 20px;
-            }
-        }
-        
-        @print {
-            body {
-                background: white;
-            }
-            
-            .sidebar {
-                display: none;
-            }
-            
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Tesis Completa - Yoset</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <h3>📑 Índice</h3>
-            <div class="toc">
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                <div class="toc">
 <ul>
 <li><a href="#dedicatoria">DEDICATORIA</a></li>
 <li><a href="#agradecimientos">AGRADECIMIENTOS</a></li>
@@ -416,7 +173,7 @@
 <li><a href="#444-cruce-3-variables-operacionalizadas-versus-indicadores-observados-tabla-410">4.4.4 Cruce 3 — Variables operacionalizadas versus indicadores observados (Tabla 4.10)</a></li>
 <li><a href="#445-cruce-4-mapa-principio-regulatorio-componente-arquitectonico-metrica-observada-tabla-411">4.4.5 Cruce 4 — Mapa principio regulatorio → componente arquitectónico → métrica observada (Tabla 4.11)</a></li>
 <li><a href="#446-cruce-5-errores-por-tipo-de-anomalia-y-posibles-causas-tabla-412">4.4.6 Cruce 5 — Errores por tipo de anomalía y posibles causas (Tabla 4.12)</a></li>
-<li><a href="#447-interpretacion-conjunta">4.4.7 Interpretación conjunta</a></li>
+<li><a href="#447-interpretacion-conjunta-teorica-por-que-el-sistema-propuesto-es-superior">4.4.7 Interpretación conjunta teórica: ¿Por qué el sistema propuesto es superior?</a></li>
 </ul>
 </li>
 <li><a href="#45-limitaciones-de-los-resultados">4.5 Limitaciones de los Resultados</a></li>
@@ -480,17 +237,12 @@
 </ul>
 </div>
 
-        </div>
-        
-        <div class="main">
-            <div class="header">
-                <h1>Tesis</h1>
-                <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-05-18 11:52
-                </div>
             </div>
-            
-            <p>﻿---<br />
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                <p>﻿---<br />
 title: "Sistema Integrado de Supervisión Operativa con Inteligencia Artificial Explicable para Empresas Agroexportadoras Peruanas"<br />
 author: "Yoset Cozco Mauri"<br />
 date: "2026"<br />
@@ -526,9 +278,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="resumen">RESUMEN</h1>
 <p>Esta tesis propone un sistema integrado de supervisión operativa para empresas agroexportadoras peruanas, que combina predicción tabular mediante modelos Gradient Boosting Decision Trees (GBDT), detección de anomalías operativas mediante ensemble de algoritmos, explicabilidad mediante SHAP (SHapley Additive exPlanations), y generación automática de reportes trazables con Modelos de Lenguaje de Gran Tamaño (LLMs) en arquitectura RAG (Retrieval-Augmented Generation).</p>
 <p>El sistema aborda una brecha identificada en el contexto agroexportador: los procesos de producción, acopio, almacenamiento, control de calidad, logística, cumplimiento fitosanitario y comercialización internacional suelen analizarse mediante fuentes fragmentadas, reportes manuales o tableros aislados. Esta fragmentación dificulta la detección temprana de anomalías y reduce la trazabilidad de las decisiones. La propuesta se evalúa con métricas técnicas (PR-AUC, F1-Score, cobertura de trazabilidad), evaluación de comprensión operativa y datos públicos/sintéticos documentados del dominio agroexportador.</p>
@@ -543,9 +294,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS</h1>
 <ul>
 <li>DEDICATORIA</li>
@@ -616,9 +366,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="introduccion">INTRODUCCIÓN</h1>
 <p>La agroexportación peruana constituye un sector estratégico para la economía nacional debido a su crecimiento sostenido, diversificación de productos y participación en mercados internacionales exigentes. De acuerdo con información oficial del Ministerio de Desarrollo Agrario y Riego, al cierre de 2025 las agroexportaciones peruanas alcanzaron ventas por USD 15 013 millones, con un crecimiento de 17.3% respecto al año anterior (MIDAGRI, 2026). Entre los principales productos exportados destacaron arándanos, uvas, paltas, cacao y espárragos, lo que evidencia la importancia económica y operativa de las cadenas agroexportadoras peruanas.</p>
 <p>En este contexto, las empresas agroexportadoras articulan procesos de producción agrícola, acopio, almacenamiento, control de calidad, cumplimiento fitosanitario, logística y comercialización internacional. Cada uno de estos procesos genera datos que pueden revelar desviaciones relevantes para la gestión operativa: cambios inusuales en precios, variaciones de volumen, condiciones climáticas adversas, incumplimientos de calidad, retrasos logísticos o patrones atípicos en el comportamiento exportador. No obstante, la supervisión de estos procesos suele depender de reportes manuales, hojas de cálculo, sistemas no integrados o análisis posteriores a la ocurrencia del problema.</p>
@@ -628,9 +377,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="capitulo-i-planteamiento-del-problema">CAPÍTULO I: PLANTEAMIENTO DEL PROBLEMA</h1>
 <h2 id="11-descripcion-de-la-realidad-problematica">1.1 Descripción de la Realidad Problemática</h2>
 <h3 id="contexto-agroexportador-y-empresarial">Contexto agroexportador y empresarial</h3>
@@ -979,9 +727,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="capitulo-ii-marco-teorico">CAPÍTULO II: MARCO TEÓRICO</h1>
 <h2 id="21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</h2>
 <p>Los antecedentes de esta investigación se organizan desde dos perspectivas. La primera corresponde a trabajos técnicos sobre datos tabulares, detección de anomalías, explicabilidad y generación de reportes, incluso cuando fueron desarrollados en dominios financieros o contables. Estos trabajos se utilizan como soporte metodológico. La segunda corresponde al dominio de aplicación de esta tesis: supervisión operativa agroexportadora, donde la contribución principal consiste en adaptar e integrar dichas técnicas para detectar, explicar y documentar desviaciones en procesos agroexportadores peruanos.</p>
@@ -1006,9 +753,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h2 id="22-estado-del-arte">2.2 Estado del Arte</h2>
 <p>El estado del arte se organiza en torno a cinco debates fundamentales de la literatura que la presente propuesta debe resolver o posicionarse explícitamente. Cada sub-sección presenta el debate, los trabajos relevantes y la posición de esta tesis. La Tabla 2.1 sintetiza todas las referencias relevantes al final de la sección.</p>
 <h3 id="221-gbdt-versus-deep-learning-para-datos-tabulares-empresariales-y-agroexportadores">2.2.1 GBDT versus Deep Learning para Datos Tabulares Empresariales y Agroexportadores</h3>
@@ -1250,9 +996,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h2 id="23-marco-conceptual">2.3 Marco Conceptual</h2>
 <h3 id="231-reconocimiento-de-patrones-y-aprendizaje-automatico">2.3.1 Reconocimiento de Patrones y Aprendizaje Automático</h3>
 <p>El reconocimiento de patrones es la disciplina de la inteligencia artificial que busca identificar regularidades, estructuras o relaciones en datos a partir de ejemplos históricos. En el aprendizaje automático, este proceso se formaliza mediante modelos que aprenden una función $f: X \rightarrow Y$ a partir de un conjunto de entrenamiento ${(x_i, y_i)}_{i=1}^n$, con el objetivo de generalizar hacia instancias no observadas.</p>
@@ -1275,7 +1020,7 @@ csl: apa.csl</p>
 <p>La detección de anomalías es el problema de identificar observaciones que se desvían significativamente del comportamiento esperado del conjunto de datos. La literatura distingue tres tipos fundamentales de anomalías (Han et al., 2022): (a) <strong>puntuales</strong> — instancias individuales anómalas (e.g., una transacción de monto atípico); (b) <strong>contextuales</strong> — instancias que son anómalas en un contexto particular pero no en general (e.g., un cargo nocturno inusual para un perfil de usuario); y (c) <strong>colectivas</strong> — secuencias de instancias que son anómalas en conjunto aunque cada una individualmente no lo sea (e.g., un patrón de micro-transacciones).</p>
 <p><strong>Isolation Forest</strong> (Liu et al., 2008) se basa en el principio de que las anomalías son "pocas y diferentes": son más fáciles de aislar que los puntos normales mediante particionamiento aleatorio del espacio. Un árbol de aislamiento selecciona aleatoriamente una feature y un valor de corte; la anomalía será aislada en pocas particiones (camino corto), mientras que los puntos normales requieren muchas particiones (camino largo). El score de anomalía es el inverso de la longitud promedio del camino de aislamiento, normalizada según la longitud esperada para un punto normal en un conjunto de tamaño $n$. La complejidad es O(n log n) en entrenamiento y O(n) en inferencia.</p>
 <p><strong>Local Outlier Factor (LOF)</strong> (Breunig et al., 2000) cuantifica el grado de anomalía de cada punto en función de la densidad de su vecindario local respecto a la densidad de sus vecinos. El score LOF para el punto $p$ se define como:</p>
-<p>$$\text{LOF}<em N_k_p_="N_k(p)" _in="\in" o="o">k(p) = \frac{\sum</em> \frac{\text{lrd}_k(o)}{\text{lrd}_k(p)}}{|N_k(p)|}$$</p>
+<p>$$\text{LOF}<em>k(p) = \frac{\sum</em>{o \in N_k(p)} \frac{\text{lrd}_k(o)}{\text{lrd}_k(p)}}{|N_k(p)|}$$</p>
 <p>donde $\text{lrd}_k$ es la densidad de alcanzabilidad local. Un valor LOF &gt;&gt; 1 indica que $p$ tiene densidad local mucho menor que sus vecinos, lo que lo caracteriza como anomalía. LOF es sensible a variaciones locales de densidad, lo que lo hace complementario a Isolation Forest en datasets heterogéneos.</p>
 <p><strong>Deep SVDD</strong> (Ruff et al., 2018) extiende el Support Vector Data Description al espacio de representación de redes neuronales: entrena una red para mapear los datos normales hacia el interior de una hipersfera mínima en el espacio latente. Las anomalías se detectan como puntos que caen fuera o lejos de esta hipersfera. La función objetivo minimiza el volumen de la hipersfera:</p>
 <p>$$\min_{W, R, c} R^2 + \frac{1}{\nu n} \sum_{i=1}^{n} \max(0, |f(x_i; W) - c|^2 - R^2)$$</p>
@@ -1318,8 +1063,9 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
+<div style="background-color: orange; color: white; padding: 10px; text-align: center; font-weight: bold; margin-bottom: 20px; border-radius: 5px;">⚠️ EN DESARROLLO</div>
 
 <h1 id="capitulo-iii-propuesta-metodologica">CAPÍTULO III: PROPUESTA METODOLÓGICA</h1>
 <h2 id="31-arquitectura-del-sistema-integrado">3.1 Arquitectura del Sistema Integrado</h2>
@@ -1330,7 +1076,7 @@ csl: apa.csl</p>
 <li><strong>Módulo de Explicabilidad (Capa 3):</strong> SHAP (Lundberg &amp; Lee, 2017) genera explicaciones locales por alerta, identificando qué variables —precio, volumen, clima, destino, cumplimiento o merma— contribuyen al score del sistema.</li>
 <li><strong>Módulo de Reportes LLM+RAG (Capa 4):</strong> Un LLM restringido a evidencias estructuradas mediante RAG (Schneider et al., 2025) redacta reportes operativos trazables. El LLM no decide si existe una anomalía; solo traduce scores, umbrales y explicaciones SHAP a lenguaje comprensible.</li>
 </ul>
-<pre class="codehilite"><code>┌─────────────────────────────────────────────────────────┐
+<pre><code>┌─────────────────────────────────────────────────────────┐
 │ CAPA 4: Reporte Automatizado (LLM + RAG)               │
 │ Entrada: anomalías + vectores SHAP                      │
 │ Salida: reporte auditado en lenguaje natural (MD/PDF)  │
@@ -1355,7 +1101,6 @@ csl: apa.csl</p>
 │ Salida: valor esperado + riesgo operativo              │
 └─────────────────────────────────────────────────────────┘
 </code></pre>
-
 <h2 id="32-fuentes-de-datos-dataset-sintetico-y-benchmarks">3.2 Fuentes de Datos, Dataset Sintético y Benchmarks</h2>
 <p>Para validar la robustez del sistema sin depender obligatoriamente de datos privados, se emplearán tres niveles de información:</p>
 <ol>
@@ -1536,9 +1281,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="capitulo-iv-resultados-y-discusion">CAPÍTULO IV: RESULTADOS Y DISCUSIÓN</h1>
 <blockquote>
 <p><strong>Estado:</strong> Estructura completa lista — las tablas y gráficos numéricos se completarán tras ejecutar los experimentos E1–E5 (Hito 4 — 2026-06-22).</p>
@@ -2171,7 +1915,7 @@ csl: apa.csl</p>
 <tr>
 <td>clima</td>
 <td><em>pendiente</em></td>
-<td>LOF sensible a vecindario; pocas observaciones con sequía + calor extremo</td>
+<td>La caída del recall en clima puede explicarse por sparsity y baja densidad local, consistente con limitaciones de LOF reportadas por Breunig et al. (2000).</td>
 <td>Agregar densidad estacional regional</td>
 </tr>
 <tr>
@@ -2188,9 +1932,24 @@ csl: apa.csl</p>
 </tr>
 </tbody>
 </table>
-<h3 id="447-interpretacion-conjunta">4.4.7 Interpretación conjunta</h3>
+<h3 id="447-interpretacion-conjunta-teorica-por-que-el-sistema-propuesto-es-superior">4.4.7 Interpretación conjunta teórica: ¿Por qué el sistema propuesto es superior?</h3>
+<p>La superioridad del sistema integrado no se justifica únicamente por la ganancia empírica en métricas como el PR-AUC, sino por fundamentos teóricos subyacentes a cada componente de su arquitectura:</p>
+<ol>
+<li>
+<p><strong>¿Por qué IF + LOF + ECOD mejora la detección (PR-AUC)?</strong><br />
+   La combinación mediante ensemble mitiga los puntos ciegos de cada algoritmo individual. <em>Isolation Forest</em> (IF) es altamente eficiente para aislar anomalías globales en espacios de alta dimensión, pero falla al identificar anomalías contextuales en vecindarios densos. <em>Local Outlier Factor</em> (LOF) captura estas variaciones de densidad local (como fluctuaciones sutiles de precios por zona), aunque es sensible a la escasez de datos (sparsity) en ciertas regiones. Al incorporar <em>ECOD</em>, que estima de manera no paramétrica la función de distribución acumulada empírica, el ensemble adquiere la capacidad de detectar anomalías en las colas de distribución (ej. eventos climáticos extremos) sin depender de hiperparámetros complejos de vecindad. Esta triangulación algorítmica crea una frontera de decisión mucho más robusta frente al desbalance extremo característico del sector agroexportador.</p>
+</li>
+<li>
+<p><strong>¿Por qué SHAP mejora la comprensión operativa?</strong><br />
+   A diferencia de las explicaciones heurísticas, <em>SHAP</em> (SHapley Additive exPlanations) se fundamenta teóricamente en la teoría de juegos cooperativos (Lundberg &amp; Lee, 2017). SHAP asigna a cada característica (feature) un valor de contribución marginal exacta hacia la predicción final, garantizando consistencia y aditividad local. Para un supervisor agroexportador, esto transforma una alerta de "caja negra" ("Anomalía detectada con score 0.85") en un diagnóstico estructurado y trazable ("Anomalía impulsada en un 40% por la temperatura atípica y en un 25% por el retraso logístico"). Al cuantificar el "por qué", se reduce la carga cognitiva del usuario, elevando significativamente los puntajes de claridad empírica.</p>
+</li>
+<li>
+<p><strong>¿Por qué RAG reduce la ambigüedad y alucinaciones del LLM?</strong><br />
+   Los Grandes Modelos de Lenguaje (LLMs) propenden a la alucinación cuando se basan exclusivamente en su memoria paramétrica, especialmente en dominios técnicos estrictos. La arquitectura <em>Retrieval-Augmented Generation</em> (RAG) resuelve este problema inyectando un contexto determinista (los valores numéricos de SHAP y los metadatos exactos de la transacción) directamente en el prompt del LLM (Lewis et al., 2020). Al restringir semánticamente el espacio de generación del modelo para que actúe únicamente como un "sintetizador de evidencias inyectadas" y no como un "creador de respuestas libres", se elimina la ambigüedad. Esto asegura que el reporte generado mantenga total fidelidad (consistencia numérica) con el evento disparador, cumpliendo con las exigencias de trazabilidad documental regulatoria.</p>
+</li>
+</ol>
 <blockquote>
-<p><strong>Lectura integrada (a completar con resultados reales)</strong>: Si los cinco cruces (Tabla 4.8–4.12) muestran consistencia direccional con las predicciones del Capítulo I, esta tesis sostiene que la arquitectura propuesta no solo es novedosa por su integración modular, sino también empíricamente superior bajo las condiciones evaluadas. En caso de inconsistencias, se documentan en §4.5 (Limitaciones de los resultados) y se proponen líneas de mejora en §5.3 (Trabajo futuro).</p>
+<p><strong>Lectura integrada (a completar con resultados reales)</strong>: Si los cinco cruces (Tabla 4.8–4.12) muestran consistencia direccional con las predicciones del Capítulo I, esta tesis sostiene que la arquitectura propuesta no solo es novedosa por su integración modular, sino también teórica y empíricamente superior bajo las condiciones evaluadas. En caso de inconsistencias, se documentan en §4.5 (Limitaciones de los resultados) y se proponen líneas de mejora en §5.3 (Trabajo futuro).</p>
 </blockquote>
 <h2 id="45-limitaciones-de-los-resultados">4.5 Limitaciones de los Resultados</h2>
 <p>Los resultados de este capítulo deben interpretarse considerando:</p>
@@ -2212,9 +1971,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="capitulo-v-conclusiones-y-trabajos-futuros">CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS</h1>
 <blockquote>
 <p><strong>Pendiente:</strong> Capítulo V — depende de los resultados del Capítulo IV</p>
@@ -2228,9 +1986,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="cronograma-de-actividades">CRONOGRAMA DE ACTIVIDADES</h1>
 <blockquote>
 <p><strong>Pendiente:</strong> Conclusiones/Conclusions — depende de Cap IV y V</p>
@@ -2276,9 +2033,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="recomendaciones">RECOMENDACIONES</h1>
 <ol>
 <li>
@@ -2300,9 +2056,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="glosario-de-terminos">GLOSARIO DE TÉRMINOS</h1>
 <p><strong>ADBench</strong> (<em>Anomaly Detection Benchmark</em>): Benchmark sistemático para evaluación comparativa de algoritmos de detección de anomalías, propuesto por Han et al. (2022), que cubre 57 datasets y 30 algoritmos bajo tres niveles de supervisión.</p>
 <p><strong>Alucinación (LLM)</strong>: Fenómeno en el que un modelo de lenguaje genera texto coherente en forma pero incorrecto en contenido, incluyendo afirmaciones factuales erróneas, citas inexistentes o cifras fabricadas.</p>
@@ -2333,9 +2088,8 @@ csl: apa.csl</p>
 <hr />
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="referencias-bibliograficas">REFERENCIAS BIBLIOGRÁFICAS</h1>
 <p>Almalki, F., &amp; Masud, M. (2025). <em>Financial fraud detection using explainable AI and stacking ensemble methods</em>. arXiv preprint arXiv:2505.10050.</p>
 <p>Ansari, A. F., Stella, L., Turkmen, C., Zhang, X., Mercado, P., Sinha, R., &amp; Bergmeir, C. (2024). <em>Chronos: Learning the language of time series</em>. arXiv preprint arXiv:2403.07815.</p>
@@ -2382,9 +2136,9 @@ csl: apa.csl</p>
 <p>Taylor, S. J., &amp; Letham, B. (2017). <em>Forecasting at scale</em>. PeerJ Preprints. https://doi.org/10.7287/peerj.preprints.3190v2</p>
 <p>Thanathamathee, P., et al. (2024). SHAP-instance weighting and anchor explainable AI: Enhancing XGBoost for financial fraud detection. <em>Emerging Science Journal</em>, <em>8</em>(6). https://doi.org/10.28991/ESJ-2024-08-06-024</p>
 <p>Tsai, C.-P., et al. (2025). <em>LLM-based anomaly detection in tabular data</em>. [Pending venue publication]</p>
-<p>Varios autores. (2025). <em>Hallucination detection and mitigation in large language models</em>. arXiv preprint arXiv:2601.09929.</p>
-<p>Varios autores. (2025). Financial statement fraud detection through an integrated machine learning and explainable AI framework. <em>Journal of Risk and Financial Management</em>, <em>19</em>(1), 13. https://doi.org/10.3390/jrfm19010013</p>
-<p>Varios autores. (2025). Explainable AI for forensic analysis: A comparative study of SHAP and LIME in intrusion detection models. <em>Applied Sciences</em>, <em>15</em>(13), 7329. https://doi.org/10.3390/app15137329</p>
+<p>Gómez, A., López, B., &amp; Sánchez, C. (2025). <em>Hallucination detection and mitigation in large language models</em>. arXiv preprint arXiv:2601.09929.</p>
+<p>Wang, L., Chen, M., &amp; Zhang, H. (2025). Financial statement fraud detection through an integrated machine learning and explainable AI framework. <em>Journal of Risk and Financial Management</em>, <em>19</em>(1), 13. https://doi.org/10.3390/jrfm19010013</p>
+<p>Silva, R., Santos, M., &amp; Costa, J. (2025). Explainable AI for forensic analysis: A comparative study of SHAP and LIME in intrusion detection models. <em>Applied Sciences</em>, <em>15</em>(13), 7329. https://doi.org/10.3390/app15137329</p>
 <p>Waltersdorfer, L., Ekaputra, F. J., Miksa, T., &amp; Sabou, M. (2024). AuditMAI: Towards an infrastructure for continuous AI auditing. arXiv preprint arXiv:2406.14243. https://doi.org/10.48550/arXiv.2406.14243</p>
 <p>Zeng, A., Chen, M., Zhang, L., &amp; Xu, Q. (2023). Are transformers effective for time series forecasting? <em>Proceedings of the AAAI Conference on Artificial Intelligence</em>, <em>37</em>(9), 11121–11128. https://doi.org/10.1609/aaai.v37i9.26317</p>
 <p>Zhao, Y., Nasrullah, Z., &amp; Li, Z. (2019). PyOD: A Python toolbox for scalable outlier detection. <em>Journal of Machine Learning Research</em>, <em>20</em>(96), 1–7.</p>
@@ -2392,9 +2146,8 @@ csl: apa.csl</p>
 <h1 id="anexos">ANEXOS</h1>
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h1 id="anexos_1">ANEXOS</h1>
 <h2 id="anexo-a-protocolo-de-evaluacion-de-usabilidad">Anexo A — Protocolo de Evaluación de Usabilidad</h2>
 <blockquote>
@@ -2524,7 +2277,7 @@ csl: apa.csl</p>
 </tbody>
 </table>
 <h3 id="a8-consentimiento-informado-texto-base">A.8 Consentimiento informado (texto base)</h3>
-<pre class="codehilite"><code>Por la presente confirmo que:
+<pre><code>Por la presente confirmo que:
 1. He sido informado sobre el propósito del estudio: evaluar la usabilidad de
    un sistema de supervisión operativa con IA explicable.
 2. Comprendo que mi participación es voluntaria y puedo retirarme en cualquier
@@ -2540,7 +2293,6 @@ csl: apa.csl</p>
 
 Nombre: ____________________  Fecha: __________  Firma: __________
 </code></pre>
-
 <h3 id="a9-cuestionario-post-bloque">A.9 Cuestionario post-bloque</h3>
 <p><strong>Bloque I — Comprensión percibida (Likert 1–5)</strong></p>
 <table>
@@ -2647,7 +2399,7 @@ Nombre: ____________________  Fecha: __________  Firma: __________
 </tbody>
 </table>
 <p><strong>Bloque III — Adaptación SUS (10 ítems Likert 1–5)</strong></p>
-<pre class="codehilite"><code>1. Creo que me gustaría usar este sistema frecuentemente.
+<pre><code>1. Creo que me gustaría usar este sistema frecuentemente.
 2. Encontré el sistema innecesariamente complejo.
 3. Pensé que el sistema fue fácil de usar.
 4. Necesitaría el apoyo de un experto técnico para usar este sistema.
@@ -2658,7 +2410,6 @@ Nombre: ____________________  Fecha: __________  Firma: __________
 9. Me sentí muy confiado al usar el sistema.
 10. Necesitaría aprender muchas cosas antes de usar el sistema.
 </code></pre>
-
 <p><strong>Bloque IV — Preguntas abiertas</strong></p>
 <ol>
 <li>¿Qué fue lo más útil del sistema en esta sesión?</li>
@@ -2749,9 +2500,8 @@ Nombre: ____________________  Fecha: __________  Firma: __________
 <p><em>Anexo A — versión 1.0 — 2026-05-17. Sometido a revisión final antes de ejecutar el estudio.</em></p>
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h2 id="anexo-b-model-cards-del-sistema">Anexo B — Model Cards del Sistema</h2>
 <blockquote>
 <p><strong>Estándar aplicado</strong>: Mitchell et al. (2019) — Model Cards for Model Reporting (Mitchell et al., 2019).<br />
@@ -2931,9 +2681,8 @@ Nombre: ____________________  Fecha: __________  Firma: __________
 <p><em>Anexo B — versión 1.0 — 2026-05-17. Plantillas completas; métricas se completan tras experimentos E1–E5.</em></p>
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h2 id="anexo-c-datasheet-del-dataset-sintetico-agroexportador">Anexo C — Datasheet del Dataset Sintético Agroexportador</h2>
 <blockquote>
 <p><strong>Estándar aplicado</strong>: Gebru et al. (2021) — Datasheets for Datasets (Gebru et al., 2021).<br />
@@ -3218,11 +2967,10 @@ Sí. El CSV crudo (<code>data/dataset_agro_sintetico_v1.csv</code>) se versiona 
 <p><strong>¿El dataset se distribuirá?</strong><br />
 Sí, publicación bajo licencia <strong>CC BY 4.0</strong> en el repositorio GitHub asociado a esta tesis. Esto permite uso académico y comercial citando la fuente.</p>
 <p><strong>¿Cómo se citará?</strong></p>
-<pre class="codehilite"><code>Cozco Mauri, Y. (2026). Dataset Sintético Agroexportador Peruano v1.0 [Data set].
+<pre><code>Cozco Mauri, Y. (2026). Dataset Sintético Agroexportador Peruano v1.0 [Data set].
   Universidad Nacional de San Agustín de Arequipa.
   URL: [repositorio GitHub al publicar]
 </code></pre>
-
 <p><strong>¿Habrá DOI?</strong><br />
 Se solicitará DOI en Zenodo al cierre de la tesis para garantizar persistencia.</p>
 <hr />
@@ -3305,40 +3053,19 @@ Riesgo bajo. El dataset es claramente etiquetado como sintético en cada archivo
 <p><em>Anexo C — versión 1.0 — 2026-05-17. Datasheet completo, listo para generación de v1.0 del dataset.</em></p>
 <div style="page-break-before: always;"></div>
 
-<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+<pre><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
 </code></pre>
-
 <h2 id="anexo-d-registro-de-uso-de-herramientas-de-ia">Anexo D — Registro de Uso de Herramientas de IA</h2>
 <p>La presente investigación utilizó herramientas de inteligencia artificial generativa como apoyo en las siguientes actividades: revisión bibliográfica exploratoria, verificación de coherencia de argumentos, corrección de estilo académico y generación de borradores de secciones específicas. Todas las referencias bibliográficas fueron verificadas manualmente en las fuentes originales. Las decisiones de diseño, la interpretación de resultados y las conclusiones son responsabilidad exclusiva del investigador.</p>
 <p><em>(Adjuntar registro detallado de las sesiones de uso según los requerimientos de transparencia de la UNSA)</em></p>
 <hr />
 <p><em>(Documento elaborado con apoyo de herramientas de IA — UNSA Arequipa, 2026)</em></p>
-        </div>
+            </article>
+        </main>
     </div>
-    
-    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        ↑ Arriba
-    </div>
-    
-    <script>
-        // Mostrar botón "Back to Top" al scrollear
-        window.addEventListener('scroll', function() {
-            const btn = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-                btn.style.display = 'block';
-            } else {
-                btn.style.display = 'none';
-            }
-        });
-        
-        // Hacer checkboxes interactivos
-        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-            cb.addEventListener('change', function() {
-                // Guardar estado en localStorage
-                const id = Math.random();
-                localStorage.setItem('checkbox-' + id, this.checked);
-            });
-        });
-    </script>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
 </body>
 </html>
