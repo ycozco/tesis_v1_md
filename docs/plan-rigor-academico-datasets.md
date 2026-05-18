@@ -25,7 +25,7 @@ Establecer un **marco académico riguroso** para la tesis mediante:
 
 ✅ **Operacionalización clara** de todas las variables (5 variables principales)  
 ✅ **Búsqueda y validación** de datasets agroexportadores (mínimo 3 datasets)  
-✅ **Documentación de metodología** según Datasheets for Datasets (Gebru et al., 2018)  
+✅ **Documentación de metodología** según Datasheets for Datasets (Gebru et al., 2021)  
 ✅ **Matriz de conformidad regulatoria** (SBS N° 053-2023, DS-115-2025-PCM, EU AI Act)  
 ✅ **Validación de fairness y sesgo** por subgrupos (región, tamaño empresa)  
 

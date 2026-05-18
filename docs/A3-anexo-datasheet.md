@@ -1,6 +1,6 @@
 ## Anexo C — Datasheet del Dataset Sintético Agroexportador
 
-> **Estándar aplicado**: Gebru et al. (2021) — Datasheets for Datasets [@gebru2021datasheets].
+> **Estándar aplicado**: Gebru et al. (2021) — Datasheets for Datasets (Gebru et al., 2021).
 > **Versión del dataset**: v1.0
 > **Fecha de creación prevista**: 2026-06-01 (Hito 2 del plan general)
 > **Estado actual**: 📐 Especificación completa lista para generación.
@@ -204,7 +204,7 @@ El dataset se calibra con rangos plausibles tomados de las siguientes fuentes p�
 
 ### C.11 Benchmark complementario
 
-El **BAF Benchmark** [@jesus2022baf] se utiliza únicamente como referencia metodológica para validación cruzada de la arquitectura en datos tabulares desbalanceados con drift temporal, NO como evidencia del dominio agroexportador. Se documenta su uso en §3.2 con esa restricción.
+El **BAF Benchmark** (Jesus et al., 2022) se utiliza únicamente como referencia metodológica para validación cruzada de la arquitectura en datos tabulares desbalanceados con drift temporal, NO como evidencia del dominio agroexportador. Se documenta su uso en §3.2 con esa restricción.
 
 ---
 

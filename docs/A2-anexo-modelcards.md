@@ -1,6 +1,6 @@
 ## Anexo B — Model Cards del Sistema
 
-> **Estándar aplicado**: Mitchell et al. (2019) — Model Cards for Model Reporting [@mitchell2019modelcards].
+> **Estándar aplicado**: Mitchell et al. (2019) — Model Cards for Model Reporting (Mitchell et al., 2019).
 > **Estado**: 📐 Plantillas listas, métricas pendientes de completar tras experimentos E1–E5.
 
 > Cada Model Card sigue las 9 secciones de Mitchell et al.: detalles del modelo, uso previsto, factores, métricas, datos de evaluación, datos de entrenamiento, análisis cuantitativos, consideraciones éticas, advertencias y recomendaciones.
@@ -76,7 +76,7 @@ Análisis por subgrupos (fairness):
 - Nombre: `module2_anomaly`
 - Tipo: Ensemble no supervisado (Isolation Forest + LOF + ECOD)
 - Versión: 1.0
-- Infraestructura: PyOD [@zhao2019pyod]
+- Infraestructura: PyOD (Zhao et al., 2019)
 - Estrategia de combinación: promedio normalizado de scores (alternativa: voto por mayoría con umbral por detector).
 
 **2. Uso previsto**
@@ -129,7 +129,7 @@ Por tipo de anomalía inyectada:
 - Nombre: `module3_shap`
 - Tipo: TreeSHAP (cálculo exacto de valores de Shapley en árboles)
 - Versión: 1.0 (librería `shap`)
-- Fundamento: Lundberg & Lee (2017) [@lundberg2017shap]; TreeSHAP — Lundberg et al. (2020) [@lundberg2020treeshap]
+- Fundamento: Lundberg & Lee (2017); TreeSHAP — Lundberg et al. (2020)
 
 **2. Uso previsto**
 - Generar vectores de contribución por variable para cada alerta.

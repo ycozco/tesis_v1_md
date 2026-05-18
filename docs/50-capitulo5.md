@@ -9,11 +9,11 @@
 
 ## 5.2 Limitaciones de la Investigación
 
-*(Abordar: limitaciones del dataset sintético agroexportador; granularidad y disponibilidad de fuentes públicas; dependencia de la calidad de datos documentada en Datasheets for Datasets [@gebru2021datasheets]; deuda técnica de mantenimiento del pipeline MLOps [@sculley2015hidden]; limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs actuales en precisión de cálculo aritmético [@survey2026hallucination]).*
+*(Abordar: limitaciones del dataset sintético agroexportador; granularidad y disponibilidad de fuentes públicas; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs actuales en precisión de cálculo aritmético (Maynez et al., 2026)).*
 
 ## 5.3 Trabajos Futuros
 
-*(Propuestas: integración de GraphRAG para recuperación semántica más rica sobre conocimiento agroexportador; extensión del ensemble con ECOD [@li2022ecod] y modelos de concept drift para supervisión en stream; exploración de Chronos [@chronos2024] para forecasting de horizonte largo; prueba piloto en una empresa agroexportadora peruana; evaluación de sesgos y limitaciones según Datasheets for Datasets [@gebru2021datasheets]).*
+*(Propuestas: integración de GraphRAG para recuperación semántica más rica sobre conocimiento agroexportador; extensión del ensemble con ECOD (Li et al., 2022) y modelos de concept drift para supervisión en stream; exploración de Chronos (Ansari et al., 2024) para forecasting de horizonte largo; prueba piloto en una empresa agroexportadora peruana; evaluación de sesgos y limitaciones según Datasheets for Datasets (Gebru et al., 2021)).*
 
 ---
 

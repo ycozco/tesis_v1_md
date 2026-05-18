@@ -4,7 +4,7 @@
 
 > **Propósito**: Documentar la búsqueda bibliográfica sistemática que respalda la afirmación de brecha (gap claim) del Capítulo II §2.2 Batalla 4 y Capítulo I §1.7.1. Este documento es un requisito de revisión por pares para cualquier afirmación de "primer trabajo" o "no existe en la literatura".
 >
-> **Método**: Inspirado en PRISMA 2020 [@page2021prisma], adaptado a una tesis individual de pregrado.
+> **Método**: Inspirado en PRISMA 2020 (Page et al., 2021), adaptado a una tesis individual de pregrado.
 
 ---
 
@@ -77,15 +77,15 @@
 
 | # | Trabajo | Módulos cubiertos | Dominio | Gap respecto a esta tesis |
 |---|---|---|---|---|
-| T1 | AuditCopilot [@auditcopilot2025] | Anomalías + LLM narrativo | Asientos contables (doble entrada) | Sin GBDT, sin SHAP estructurado, sin RAG anclado, sin contexto peruano |
-| T2 | Park (2024) [@park2024llm] | LLM multi-agente sobre anomalías | Mercados financieros (S&P 500) | Sin GBDT propio, sin SHAP, dominio no comparable |
-| T3 | AuditMAI [@auditmai2024] | Infraestructura de auditoría de IA | Sistemas IA en general | No usa IA para auditar; audita IA. Conceptual. |
-| T4 | Mongolia 2025 [@mongolia2025fraud] | GBDT + SHAP | Fraude estados financieros | Sin LLM, sin RAG, sin forecasting |
-| T5 | Thanathamathee 2024 [@thanathamathee2024shap] | XGBoost + SHAP + Anchor | Fraude financiero | Sin LLM, sin ensemble de anomalías |
-| T6 | Patel 2024 [@patel2024auditing] | Auditoría continua con IA | Auditoría financiera | Marco conceptual, sin pipeline implementado |
-| T7 | TabLLM [@tabllm2023] | LLM para datos tabulares | Tabular genérico | Solo clasificación, no integrado con anomalías ni SHAP |
-| T8 | Tsai 2025 [@tsai2025llmanomaly] | LLM + embeddings para anomalía tabular | Tabular genérico | Sin SHAP, sin RAG anclado, sin reporte estructurado |
-| T9 | Almalki & Masud 2025 [@almalki2025fraud] | Stacking GBDT + XAI | Fraude financiero | Sin LLM, sin RAG, sin contexto agroexportador |
+| T1 | AuditCopilot (Kadir et al., 2025) | Anomalías + LLM narrativo | Asientos contables (doble entrada) | Sin GBDT, sin SHAP estructurado, sin RAG anclado, sin contexto peruano |
+| T2 | Park (2024) | LLM multi-agente sobre anomalías | Mercados financieros (S&P 500) | Sin GBDT propio, sin SHAP, dominio no comparable |
+| T3 | AuditMAI (Waltersdorfer et al., 2024) | Infraestructura de auditoría de IA | Sistemas IA en general | No usa IA para auditar; audita IA. Conceptual. |
+| T4 | Mongolia 2025 (JRFM, 2025) | GBDT + SHAP | Fraude estados financieros | Sin LLM, sin RAG, sin forecasting |
+| T5 | Thanathamathee 2024 (Thanathamathee et al., 2024) | XGBoost + SHAP + Anchor | Fraude financiero | Sin LLM, sin ensemble de anomalías |
+| T6 | Patel 2024 (Patel et al., 2024) | Auditoría continua con IA | Auditoría financiera | Marco conceptual, sin pipeline implementado |
+| T7 | TabLLM (Hegselmann et al., 2023) | LLM para datos tabulares | Tabular genérico | Solo clasificación, no integrado con anomalías ni SHAP |
+| T8 | Tsai 2025 (Tsai et al., 2025) | LLM + embeddings para anomalía tabular | Tabular genérico | Sin SHAP, sin RAG anclado, sin reporte estructurado |
+| T9 | Almalki & Masud 2025 (Almalki & Masud, 2025) | Stacking GBDT + XAI | Fraude financiero | Sin LLM, sin RAG, sin contexto agroexportador |
 
 ---
 

@@ -409,7 +409,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 ### C5.2 — Algoritmos de Cap II ↔ algoritmos de Cap III
 - **Estado**: ✅
 - **Verificación**: IF+LOF+ECOD (Cap II §2.3.4) = IF+LOF+ECOD (Cap III §3.1 Capa 2). Consistente. Nota: Deep SVDD aparece en §2.1 Antecedente 2 y §2.2 Batalla 2 pero no en §3.1. Esto es correcto porque §3.1 usa ECOD en lugar de Deep SVDD (decisión de diseño). Verificar que esta sustitución esté justificada en el texto.
-- **Acción**: En §3.1, agregar una nota: "Se selecciona ECOD [@li2022ecod] sobre Deep SVDD [@ruff2018deepsvdd] por su ausencia de hiperparámetros y complejidad computacional menor, apropiados para el dataset sintético de tamaño medio."
+- **Acción**: En §3.1, agregar una nota: "Se selecciona ECOD (Li et al., 2022) sobre Deep SVDD (Ruff et al., 2018) por su ausencia de hiperparámetros y complejidad computacional menor, apropiados para el dataset sintético de tamaño medio."
 
 ### C5.3 — Gap del Estado del Arte ↔ contribución de la tesis
 - **Estado**: ✅
@@ -544,7 +544,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 ### C7.5 — Ética de publicación con datos sintéticos
 - **Criterio**: Declarar explícitamente que el dataset es sintético (no datos reales de empresas). Esto es un requisito ético y de reproducibilidad.
 - **Estado**: ✅ (§3.2 declara el dataset como sintético documentado)
-- **Acción para publicación**: Incluir párrafo en §3.2 del paper: "The dataset was synthetically generated to enable open evaluation without confidentiality concerns. The generation process, variable distributions, and anomaly injection protocol are documented following the Datasheets for Datasets framework [@gebru2021datasheets] and are publicly available at [URL del repositorio]."
+- **Acción para publicación**: Incluir párrafo en §3.2 del paper: "The dataset was synthetically generated to enable open evaluation without confidentiality concerns. The generation process, variable distributions, and anomaly injection protocol are documented following the Datasheets for Datasets framework (Gebru et al., 2021) and are publicly available at [URL del repositorio]."
 
 ### C7.6 — Repositorio público del código (open science)
 - **Criterio**: Los journals de IA de alto impacto requieren o recomiendan código reproducible. GitHub con README + requirements.txt + instrucciones de ejecución.
