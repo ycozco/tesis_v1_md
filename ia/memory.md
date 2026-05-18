@@ -202,13 +202,15 @@ tesis_yoset/
 ├── scripts/
 │   ├── purga_referencias.py
 │   ├── limpia_duplicados.py
-│   └── auditar_referencias.py
+│   ├── auditar_referencias.py
+│   ├── rebuild_tesis_monolith.py     sincroniza tesis.md monolítica a partir de capítulos
+│   └── compile_thesis.py             compilador integrado PDF y DOCX (Docker + Chrome)
 ├── src/
 │   ├── app.py                    visor Flask con hot-reload
 │   ├── convert_md_to_html.py
 │   ├── serve_thesis.py
 │   └── generate_synthetic_dataset.py
-├── output/
+├── output/                       PDF, DOCX y HTML compilados
 ├── requirements.txt              entorno ML completo
 ├── docker-compose.yml            visor en localhost:8000
 └── Dockerfile
@@ -216,7 +218,44 @@ tesis_yoset/
 
 ---
 
-## 12. Bloqueadores remanentes para la defensa (4 críticos)
+## 12. Sistema de Compilación y Exportación (PDF y DOCX)
+
+Para garantizar la entrega y presentación académica formal de la tesis, se cuenta con un sistema de compilación integrado que automatiza la exportación de la tesis completa a partir de los documentos actualizados de `docs/`.
+
+### Arquitectura de Compilación
+```
+              [Capítulos individuales en docs/]
+                              │
+               (rebuild_tesis_monolith.py)
+                              │
+                              ▼
+                        [tesis.md]
+                  ┌───────────┴───────────┐
+                  ▼                       ▼
+           (PANDOC en Docker)     (Chrome Headless)
+           Con plantilla oficial  Vista de servidor Flask
+                  │                       │
+                  ▼                       ▼
+            [tesis.docx]             [tesis.pdf]
+```
+
+### Script de Compilación: `scripts/compile_thesis.py`
+El script ejecuta un pipeline híbrido robusto:
+1. **Compilación a DOCX (Docker + Pandoc):** Invoca a Pandoc dentro del contenedor `tesis-web-viewer` para compilar `docs/tesis.md` en formato Word. Aplica la plantilla oficial `formato/Plantilla - Tesis de Investigación 2026.docx`, el motor de citas `--citeproc` mapeado a `config/refs.bib` y el estilo de citación APA 7 (`config/apa.csl`).
+2. **Compilación a PDF (Chrome Headless en Host):** Para evitar fallos por codificación de caracteres o problemas en el motor LaTeX tradicional, el script utiliza Google Chrome o Microsoft Edge en modo *headless* para imprimir la vista web interactiva del servidor (`http://localhost:8000/docs/tesis`) directamente a PDF. Esto mantiene las fuentes tipográficas prémium, las fórmulas matemáticas procesadas por MathJax, y el diseño de tablas e interfaces del visor interactivo.
+
+### Ejecución
+Para compilar la tesis en ambos formatos (generando las copias base y versiones fechadas para control de cambios):
+```powershell
+$env:PYTHONIOENCODING="utf-8"; py scripts/compile_thesis.py
+```
+**Archivos Generados (en `output/`):**
+* `tesis.docx` y `tesis_[AAAA_MM_DD].docx` (Entregable formal en Word con estilo institucional).
+* `tesis.pdf` y `tesis_[AAAA_MM_DD].pdf` (Lectura prémium con tipografía moderna, ecuaciones renderizadas y gráficos vectoriales).
+
+---
+
+## 13. Bloqueadores remanentes para la defensa (4 críticos)
 
 1. **C8.1 — Verificación SBS N° 053-2023**: bajar texto oficial de sbs.gob.pe y citar artículos exactos.
 2. **C8.2 — Verificación D.S. 115-2025-PCM**: bajar texto oficial de elperuano.pe.
@@ -225,7 +264,7 @@ tesis_yoset/
 
 ---
 
-## 13. Eventos y decisiones recientes (log corto)
+## 14. Eventos y decisiones recientes (log corto)
 
 - **2026-05-12**: creación de `plan_detallado.md`, 46 referencias organizadas por bloques.
 - **2026-05-15**: actualización del enfoque de tesis (financiero → agroexportador), Cap II expandido con 7 antecedentes y 5 batallas argumentativas, Cap III migrado.
@@ -233,25 +272,26 @@ tesis_yoset/
 - **2026-05-17 (sesión 2)**: creación de `plan-revision-academica-exhaustiva.md` (87 criterios en 10 dimensiones).
 - **2026-05-17 (sesión 3)**: ejecución del plan de revisión — Cap I §1.12+§1.13, refinamiento §1.7.1+§1.9, Cap II §2.3.7 hedging RAG, Cap III diseño experimental E1–E5, anexos A1/A2/A3 completos, requirements.txt, generador del dataset sintético.
 - **2026-05-17 (sesión 4)**: purga bibliográfica (refs.bib v2.0, 47 entradas en 11 categorías), reemplazo masivo de citas APA (179 reemplazos), nueva §4.4 Discusión Detallada con 5 cruces comparativos, plan-siguientes-pasos.md, guia-uso.md, commit `7d27efe`.
+- **2026-05-17 (sesión 5)**: sincronización total de `docs/tesis.md` monolítica con los cambios de rigor de los Hitos 1-4. Diseño e implementación de `scripts/rebuild_tesis_monolith.py` y `scripts/compile_thesis.py` para generación automática de versiones DOCX (vía Pandoc en Docker) y PDF (vía Chrome Headless en Host). Compilación fechada exitosa.
 
 ---
 
-## 14. Cosas que NO hacer (anti-patrones)
+## 15. Cosas que NO hacer (anti-patrones)
 
-- ❌ Usar `[@clave]` en documentos activos de `docs/`. Sí en `tesis.md` o `tesis_v2.md` (históricos, no se procesan).
+- ❌ Usar `[@clave]` en documentos activos de `docs/`. Sí en `tesis.md` o `tesis_v2.md` (reconstruido automáticamente por script).
 - ❌ Afirmar "el sistema cumple con el EU AI Act / SBS / etc.". Decir "se diseña siguiendo los principios de...".
 - ❌ Decir que RAG "elimina" alucinaciones. RAG "reduce significativamente pero no elimina".
 - ❌ Usar Deep SVDD en lugar de ECOD en el ensemble (decisión arquitectónica documentada).
 - ❌ Cambiar la semilla aleatoria base (42).
 - ❌ Citar el nombre de archivo en el cuerpo de la tesis (`según docs/30-capitulo3.md`). Usar `según §3.3`.
-- ❌ Modificar `tesis.md` o `tesis_v2.md` (son históricos y NO entran en la defensa).
+- ❌ Modificar `tesis.md` de forma manual sin propagarlo a los capítulos individuales (los capítulos son la fuente única de verdad, `tesis.md` se regenera vía script).
 - ❌ Editar `SECTION_ORDER` para incluir planes auxiliares (no son parte del flujo defensa).
 - ❌ Commit con mensajes vagos. Usar prefijos: `tesis:`, `refs:`, `script:`, `plan:`, `anexo:`, `fix:`, `doc:`.
 - ❌ Reportar resultados experimentales que aún no están medidos (todo Cap IV debe seguir en futuro hasta E1–E5).
 
 ---
 
-## 15. Referencias clave para entender el proyecto
+## 16. Referencias clave para entender el proyecto
 
 Para comprender la arquitectura: Grinsztajn et al. (2022), Han et al. (2022) ADBench, Lundberg & Lee (2017) SHAP, Lundberg et al. (2020) TreeSHAP, Lewis et al. (2020) RAG.
 
@@ -264,3 +304,4 @@ Para comprender el dominio: MIDAGRI (2026), SENAMHI, SENASA, SUNAT (todas como r
 ---
 
 *Documento generado 2026-05-17. Mantener actualizado al cierre de cada hito.*
+
