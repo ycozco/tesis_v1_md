@@ -60,7 +60,11 @@ El trabajo se organiza en cinco capítulos: el Capítulo I establece el planteam
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # RESUMEN
 
@@ -86,7 +90,11 @@ The main contributions are: (1) a modular four-layer architecture separating pre
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # ÍNDICE DE CONTENIDOS
 
@@ -162,7 +170,11 @@ The main contributions are: (1) a modular four-layer architecture separating pre
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # INTRODUCCIÓN
 
@@ -178,7 +190,11 @@ El documento se estructura de la siguiente manera: el Capítulo I plantea el pro
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # CAPÍTULO I: PLANTEAMIENTO DEL PROBLEMA
 
@@ -456,7 +472,11 @@ El uso de herramientas de IA durante la elaboración de la tesis (búsqueda bibl
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # CAPÍTULO II: MARCO TEÓRICO
 
@@ -508,7 +528,11 @@ Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unifica
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ## 2.2 Estado del Arte
 
@@ -601,7 +625,11 @@ La revisión sistemática de los bloques temáticos permite identificar la brech
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ## 2.3 Marco Conceptual
 
@@ -729,7 +757,11 @@ La integración de IA en supervisión operativa plantea el problema de la confia
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # CAPÍTULO III: PROPUESTA METODOLÓGICA
 
@@ -860,7 +892,11 @@ Los baselines se ejecutan sobre el mismo dataset, misma división y mismas semil
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # CAPÍTULO IV: RESULTADOS Y DISCUSIÓN
 
@@ -1051,7 +1087,11 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS
 
@@ -1072,7 +1112,11 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # CRONOGRAMA DE ACTIVIDADES
 
@@ -1113,7 +1157,11 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # RECOMENDACIONES
 
@@ -1129,7 +1177,11 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # GLOSARIO DE TÉRMINOS
 
@@ -1187,7 +1239,11 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 ---
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # REFERENCIAS BIBLIOGRÁFICAS
 
@@ -1297,7 +1353,11 @@ Zhao, Y., Nasrullah, Z., & Li, Z. (2019). PyOD: A Python toolbox for scalable ou
 
 # ANEXOS
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # ANEXOS
 
@@ -1472,7 +1532,11 @@ El protocolo se somete a revisión del asesor de tesis (Dr. Víctor Manuel Corne
 
 *Anexo A — versión 1.0 — 2026-05-17. Sometido a revisión final antes de ejecutar el estudio.*
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ## Anexo B — Model Cards del Sistema
 
@@ -1700,7 +1764,11 @@ Por tipo de anomalía inyectada:
 
 *Anexo B — versión 1.0 — 2026-05-17. Plantillas completas; métricas se completan tras experimentos E1–E5.*
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ## Anexo C — Datasheet del Dataset Sintético Agroexportador
 
@@ -1914,7 +1982,11 @@ El **BAF Benchmark** (Jesus et al., 2022) se utiliza únicamente como referencia
 
 *Anexo C — versión 1.0 — 2026-05-17. Datasheet completo, listo para generación de v1.0 del dataset.*
 
----
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ## Anexo D — Registro de Uso de Herramientas de IA
 

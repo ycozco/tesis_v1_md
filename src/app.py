@@ -618,6 +618,123 @@ def generate_html_page(title, html_body, toc_html, author="Sistema de Tesis"):
             transform: translateY(-5px);
             background: var(--primary-dark);
         }}
+
+        /* ==================================================
+           ESTILOS ACADÉMICOS PARA IMPRESIÓN Y EXPORTACIÓN PDF
+           ================================================== */
+        @media print {{
+            * {{
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }}
+            
+            body {{
+                background: white !important;
+                color: #000000 !important;
+                font-family: 'Times New Roman', Times, serif !important;
+                font-size: 12pt !important;
+                line-height: 1.6 !important;
+            }}
+            
+            .sidebar, .back-to-top, .doc-header, .search-box {{
+                display: none !important;
+            }}
+            
+            .app-container {{
+                display: block !important;
+                width: 100% !important;
+            }}
+            
+            .main-content {{
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-shadow: none !important;
+            }}
+            
+            h1, h2, h3, h4, h5, h6 {{
+                color: #000000 !important;
+                font-family: 'Times New Roman', Times, serif !important;
+                page-break-after: avoid;
+            }}
+            
+            h1 {{
+                page-break-before: always;
+                font-size: 16pt !important;
+                text-align: center;
+                margin-top: 0 !important;
+                margin-bottom: 24pt !important;
+                font-weight: bold;
+            }}
+            
+            h2 {{
+                page-break-before: always;
+                font-size: 14pt !important;
+                margin-top: 24pt !important;
+                margin-bottom: 12pt !important;
+                font-weight: bold;
+            }}
+            
+            h3 {{
+                font-size: 12pt !important;
+                margin-top: 18pt !important;
+                margin-bottom: 6pt !important;
+                font-weight: bold;
+            }}
+            
+            p {{
+                margin-bottom: 12pt !important;
+                text-align: justify;
+                text-indent: 1.25cm; /* Sangría de primera línea estilo APA 7 */
+            }}
+            
+            /* Excepciones a la sangría en dedicatorias, agradecimientos, resumen y títulos */
+            .doc-header h1, h1 + p, h2 + p, h3 + p, blockquote p, .center-text p {{
+                text-indent: 0 !important;
+            }}
+            
+            table {{
+                page-break-inside: avoid;
+                font-size: 10pt !important;
+                width: 100% !important;
+                border: 1px solid #000000 !important;
+                border-collapse: collapse !important;
+                margin: 20px 0 !important;
+            }}
+            
+            th, td {{
+                border: 1px solid #000000 !important;
+                padding: 8px 12px !important;
+                color: #000000 !important;
+                background: none !important;
+            }}
+            
+            th {{
+                background-color: #f2f2f2 !important;
+                font-weight: bold !important;
+                border-bottom: 2px solid #000000 !important;
+            }}
+            
+            tr {{
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }}
+            
+            blockquote {{
+                border-left: 3px solid #000 !important;
+                background: none !important;
+                margin: 1.5cm !important;
+                padding: 0 0 0 0.5cm !important;
+                font-size: 11pt !important;
+                font-style: italic;
+            }}
+            
+            /* Render de fórmulas matemáticas */
+            .MathJax {{
+                font-size: 10pt !important;
+            }}
+        }}
     </style>
 </head>
 <body>

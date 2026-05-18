@@ -47,8 +47,15 @@ def main():
                 
         combined_content.append(content.strip())
         
-    # Join sections with standard markdown separator and newlines
-    final_md = "\n\n---\n\n".join(combined_content) + "\n"
+    # Join sections with standard academic page breaks (OpenXML for Word and HTML for PDF)
+    page_break = (
+        "\n\n"
+        "<div style=\"page-break-before: always;\"></div>\n\n"
+        "```{=openxml}\n"
+        "<w:p><w:r><w:br w:type=\"page\"/></w:r></w:p>\n"
+        "```\n\n"
+    )
+    final_md = page_break.join(combined_content) + "\n"
     
     # Save output file
     output_file.write_text(final_md, encoding="utf-8")
