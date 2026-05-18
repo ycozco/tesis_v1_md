@@ -54,7 +54,20 @@ donde $f(x_i; W)$ es la representación de la red neuronal, $c$ es el centro de 
 
 **ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica)** (Li et al., 2022) calcula el score de anomalía como la probabilidad acumulada de observar un punto tan extremo como $x$ bajo la distribución empírica del dataset, estimada mediante funciones de distribución acumulada (ECDF) multivariadas. Su ventaja principal es que no tiene hiperparámetros que calibrar, eliminando el riesgo de sobreajuste y simplificando el despliegue en producción.
 
-La estrategia de **ensemble** consolida las puntuaciones de múltiples detectores mediante aggregation functions (promedio de scores, votación por mayoría o meta-clasificación). El fundamento teórico lo proporciona ADBench (Han et al., 2022): no existe un algoritmo universal, y el ensemble reduce la varianza del estimador de anomalía agregando perspectivas complementarias. PyOD (Zhao et al., 2019) implementa esta estrategia con la clase `LSCP` (Locally Selective Combination in Parallel Outlier Ensembles) y otras técnicas de combinación estándar.
+La estrategia de **ensemble** consolida las puntuaciones de múltiples detectores para reducir la varianza del estimador agregando perspectivas de densidad local (LOF), aislamiento espacial (IF) y probabilidad empírica acumulada (ECOD). Sin embargo, un desafío matemático fundamental radica en que los algoritmos marginales producen puntuaciones en escalas y naturalezas numéricas completamente incompatibles:
+1. **Isolation Forest** genera puntuaciones acotadas $S_{IF}(x) \in [0, 1]$.
+2. **Local Outlier Factor** genera puntuaciones $S_{LOF}(x) \in [1, \infty)$, donde valores cercanos a 1 indican normalidad y valores superiores representan el grado local de desviación.
+3. **ECOD** genera puntuaciones acumuladas inversas $S_{ECOD}(x) \in [0, \infty)$ en escalas de log-probabilidad.
+
+Sumar o promediar estos valores en bruto anularía la influencia de IF y ECOD debido a que LOF dominaría la agregación por magnitud. Para resolver esta incompatibilidad, esta tesis implementa la unificación probabilística de puntuaciones basada en el escalamiento Min-Max lineal calibrado sobre el conjunto de entrenamiento (Kriegel et al., 2011). Las puntuaciones brutas de cada detector se transforman en puntuaciones probabilísticas de anomalía acotadas $P_m(a|x) \in [0, 1]$ mediante la función de mapeo:
+
+$$P_m(a|x) = \max\left(0, \min\left(1, \frac{S_m(x) - \min_{x' \in D_{train}}(S_m(x'))}{\max_{x' \in D_{train}}(S_m(x')) - \min_{x' \in D_{train}}(S_m(x'))}\right)\right)$$
+
+donde $\min_{D_{train}}$ y $\max_{D_{train}}$ son los valores extremos de score observados en el conjunto de calibración histórica del detector $m$. La puntuación consolidada de anomalía del ensemble $S_{Ensemble}(x) \in [0, 1]$ se calcula entonces como el promedio simple de estas probabilidades unificadas:
+
+$$S_{Ensemble}(x) = \frac{P_{IF}(a|x) + P_{LOF}(a|x) + P_{ECOD}(a|x)}{3}$$
+
+Una instancia operativa $x$ se clasifica finalmente como alerta anómala si y solo si $S_{Ensemble}(x) \ge \tau$, donde $\tau \in [0, 1]$ es el umbral de decisión operativo global calibrado empíricamente en la fase de validación cruzada. El fundamento teórico de este enfoque de agregación lo proporciona ADBench (Han et al., 2022) y su implementación robusta se realiza mediante la API modular de PyOD (Zhao et al., 2019).
 
 ### 2.3.5 Forecasting de Series Temporales con Transformers
 

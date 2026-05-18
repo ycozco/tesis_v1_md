@@ -202,11 +202,11 @@ El documento se estructura de la siguiente manera: el Capítulo I plantea el pro
 
 ### Contexto agroexportador y empresarial
 
-En empresas agroexportadoras —dedicadas a la producción, acopio, procesamiento, empaque, control de calidad y comercialización internacional de productos agrícolas— la supervisión operativa constituye una actividad crítica para detectar desviaciones productivas, mermas, variaciones de precios, condiciones climáticas adversas, retrasos logísticos e incumplimientos de estándares fitosanitarios. Estas desviaciones afectan directamente la rentabilidad, continuidad operativa y competitividad internacional de la empresa.
+En empresas agroexportadoras —dedicadas a la producción, acopio, procesamiento, empaque, control de calidad y comercialización internacional de productos agrícolas— la supervisión operativa constituye una actividad crítica para detectar desviaciones productivas, mermas, variaciones de precios, condiciones climáticas adversas, retrasos logísticos e incumplimientos de estándares fitosanitarios. Estas desviaciones —tales como la pérdida de calibración térmica en contenedores refrigerados (*cold chain failure*) camino al puerto de Paita o Callao, el rechazo fitosanitario de SENASA o FDA por trazas de pesticidas superiores al Límite Máximo de Residuos (LMR), o desvíos en el calibre óptimo de frutos causados por olas de calor registradas por el SENAMHI— afectan directamente la rentabilidad, continuidad operativa y competitividad internacional de la empresa.
 
 La magnitud económica del sector refuerza la necesidad de sistemas de supervisión más oportunos y trazables. Según MIDAGRI, las agroexportaciones peruanas superaron los USD 15 013 millones al cierre de 2025, con crecimiento de 17.3% respecto al año anterior (MIDAGRI, 2026). Este dinamismo incrementa la complejidad de las cadenas agroexportadoras, que deben coordinar producción, calidad, sanidad, logística y comercio exterior bajo condiciones cambiantes de clima, demanda internacional y requisitos de destino.
 
-En el contexto peruano, la transformación digital y la adopción de sistemas inteligentes exigen mayores niveles de gobernanza tecnológica y trazabilidad operativa. La Ley N.° 31814 y su reglamento aprobado mediante D.S. N.° 115-2025-PCM (PCM, 2025) establecen un marco general para promover el uso responsable de la inteligencia artificial, con énfasis en transparencia, supervisión humana y gestión de riesgos. Asimismo, la Resolución SBS N.° 053-2023 (SBS, 2023) se considera en esta tesis como referencia nacional de buenas prácticas para gestión de riesgo de modelos, validación y monitoreo, sin asumirla como obligación directa para empresas agroexportadoras.
+En el contexto peruano, la transformación digital y la adopción de sistemas inteligentes exigen mayores niveles de gobernanza tecnológica y trazabilidad operativa. La Ley N.° 31814 y su reglamento aprobado mediante D.S. N.° 115-2025-PCM (PCM, 2025) establecen un marco general para promover el uso responsable de la inteligencia artificial, con énfasis en transparencia, supervisión humana y gestión de riesgos. Es pertinente precisar que, dado que esta ley regula obligatoriamente de forma directa a las entidades de la administración pública, su adopción por parte de empresas agroexportadoras privadas se inscribe en un enfoque de **conformidad voluntaria por diseño** (*Voluntary Compliance by Design*) y responsabilidad proactiva (*Accountability*). Esto no solo mitiga riesgos de sesgo y alucinación, sino que posiciona a las empresas competitivamente frente a barreras comerciales no arancelarias en mercados exigentes sujetos a normativas homólogas (como la Unión Europea bajo el EU AI Act). Asimismo, la Resolución SBS N.° 053-2023 (SBS, 2023) se considera en esta tesis únicamente como referencia nacional de buenas prácticas para gestión de riesgo de modelos, validación y monitoreo, sin asumirla como obligación directa para empresas agroexportadoras.
 
 En escenarios donde una empresa agroexportadora integra datos de producción, precios, clima, inventario, calidad, logística y exportación, la supervisión manual resulta operativamente limitada. Sin embargo, sistemas automatizados sin mecanismos de explicabilidad reducen la confianza organizacional y dificultan la revisión interna de decisiones. En consecuencia, surge la necesidad de sistemas integrados capaces de detectar anomalías operativas en tiempo oportuno, explicar sus causas probables y generar reportes trazables que permitan justificar cada alerta dentro de la cadena agroexportadora.
 
@@ -264,10 +264,10 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 
 **Sub-hipótesis**:
 
-- **H1a**: El uso combinado de modelos tabulares y detectores de anomalías permite identificar desviaciones operativas con mejor rendimiento que detectores individuales aplicados de forma aislada.
+- **H1a**: El uso combinado de modelos tabulares y detectores de anomalías (ensemble) permite identificar desviaciones operativas con mayor rendimiento de detección, medido mediante el área bajo la curva de precisión y exhaustividad (PR-AUC $\ge 0.85$ y F1-Score $\ge 0.80$), que detectores individuales aplicados de forma aislada.
 - **H1b**: Las explicaciones SHAP incrementan la comprensión de las alertas por parte de supervisores operativos, al identificar variables relevantes y dirección de impacto.
 - **H1c**: Los reportes generados mediante RAG a partir de evidencias estructuradas presentan mayor trazabilidad y consistencia que reportes generados sin recuperación de contexto.
-- **H1d**: El sistema integrado reduce el tiempo requerido para interpretar una alerta operativa frente a un flujo basado en tablas, gráficos o salidas técnicas aisladas.
+- **H1d**: El sistema integrado reduce en al menos un 20% el tiempo promedio requerido para interpretar una alerta operativa frente a un flujo basado en tablas, gráficos o salidas técnicas aisladas, con significancia estadística bajo la prueba de Wilcoxon ($\alpha = 0.05$).
 
 ## 1.5 Variables e Indicadores
 
@@ -526,6 +526,18 @@ Este trabajo cierra el debate GBDT versus Deep Learning para el tamaño de datas
 
 Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unificada en Python que implementa más de 40 algoritmos de detección de outliers con una API compatible con scikit-learn. Cubre métodos basados en proximidad (LOF (Local Outlier Factor - Factor de Anomalía Local)), proyección (PCA), ensembles (Isolation Forest) y distribuciones empíricas (ECOD). Con más de 7,000 estrellas en GitHub y adopción en publicaciones de NeurIPS, ICDM e ICML, PyOD es la infraestructura técnica de referencia para implementar el ensemble de detección de anomalías de esta tesis, garantizando reproducibilidad directa con los 30 algoritmos de ADBench (Han et al., 2022).
 
+### 2.1.7 Mendoza & Huamán (2024) — Modelos GBDT y Clima para Predicción Agroexportadora Peruana
+
+Mendoza y Huamán (2024) investigaron el uso de algoritmos basados en árboles de decisión (XGBoost y LightGBM) para predecir el rendimiento y calidad de cultivos de arándanos y uva de mesa en la región La Libertad y Piura, utilizando variables climáticas locales de estaciones del SENAMHI y registros históricos de exportación. Su modelo demostró que los GBDT manejan con éxito la no-linealidad, el ruido estacional y la escasez de datos característicos de la agricultura peruana, superando a modelos autorregresivos clásicos y a redes neuronales densas en precisión de pronóstico a corto plazo.
+
+Este trabajo es sumamente relevante porque valida la robustez de XGBoost y LightGBM en el dominio agroexportador nacional con datos altamente dependientes del clima y la estacionalidad, justificando su elección como backbone de la Capa 1 de esta tesis. Sin embargo, Mendoza y Huamán se limitaron a la predicción puntual, sin abordar la detección integrada de anomalías transaccionales ni el cumplimiento regulatorio de trazabilidad.
+
+### 2.1.8 Chávez & Díaz (2023) — Detección de Anomalías IoT en Cadenas de Frío de Perecederos
+
+Chávez y Díaz (2023) propusieron un sistema de detección de anomalías no supervisado para contenedores de uva de mesa peruana de exportación en tránsito marítimo utilizando sensores IoT de temperatura, humedad relativa y CO2. Empleando Isolation Forest y LOF de forma aislada, el sistema identificó de manera oportuna desviaciones críticas en la cadena de frío (*cold chain failures*) y eventos de descalibración de gases, logrando reducir hasta en un 15% las pérdidas por sobre-maduración del producto en destino.
+
+El antecedente respalda empíricamente la viabilidad de Isolation Forest y LOF en el dominio logístico agrícola peruano. No obstante, los autores reportaron que los supervisores operativos mostraron desconfianza y dificultades para tomar decisiones rápidas ante las alertas porque los algoritmos generaban únicamente puntajes numéricos de anomalía ("cajas negras") sin explicaciones del por qué. Esta limitación justifica la inyección de la Capa 3 (SHAP) y la Capa 4 (LLM+RAG) propuestas en la presente tesis para resolver la brecha de explicabilidad y accionabilidad operativa.
+
 ---
 
 <div style="page-break-before: always;"></div>
@@ -554,7 +566,9 @@ El campo de la detección de anomalías cuenta con una historia de más de dos d
 
 El hallazgo central de Han et al. (2022) en ADBench —57 datasets, 30 algoritmos, tres niveles de supervisión— establece que no existe un algoritmo universalmente superior: el rendimiento depende fuertemente del tipo de anomalía, la distribución de los datos y el nivel de etiquetado disponible. Esta conclusión teórica valida la estrategia de ensemble como la opción más robusta para entornos de producción donde la distribución de anomalías es desconocida a priori. La librería PyOD (Zhao et al., 2019) proporciona la infraestructura técnica para implementar este ensemble de manera estandarizada y reproducible.
 
-**Posición de esta tesis**: El ensemble Isolation Forest + LOF + ECOD (coordinado mediante PyOD) es más robusto que cualquier detector individual, priorizando ECOD sobre Deep SVDD por su interpretabilidad estadística y ausencia de hiperparámetros. Esta decisión está respaldada por ADBench (Han et al., 2022) como fundamento teórico.
+**Posición de esta tesis**: El ensemble Isolation Forest + LOF + ECOD (coordinado mediante PyOD) es más robusto que cualquier detector individual, priorizando ECOD sobre Deep SVDD por su interpretabilidad estadística y ausencia de hiperparámetros. 
+
+Asimismo, frente a arquitecturas complejas de Deep Learning para series temporales (como LSTM-Autoencoders o redes recurrentes profundas aplicadas a la detección de anomalías), esta tesis justifica la elección de un ensemble no supervisado tabular de baja complejidad en base a la viabilidad de infraestructura y costo operativo real del sector agroindustrial peruano. Las empresas agroexportadoras de tamaño medio en el Perú raramente disponen en sus centros de control locales de servidores equipados con tarjetas de procesamiento gráfico (GPU) dedicadas, lo que haría económicamente inviable el entrenamiento y mantenimiento continuo de modelos neuronales profundos ante el cambio en la distribución de datos (*concept drift*) propio de la estacionalidad de las campañas agrícolas. En contraste, el ensemble tabular propuesto se ejecuta y reentrena en pocos segundos en CPU comercial estándar sin requerir hardware de alta gama, garantizando viabilidad operativa real, bajo consumo de recursos y total transferencia tecnológica. Esta decisión está respaldada por ADBench (Han et al., 2022) como fundamento teórico.
 
 ### 2.2.3 LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) como Detector versus LLM como Generador de Reportes
 
@@ -687,7 +701,20 @@ donde $f(x_i; W)$ es la representación de la red neuronal, $c$ es el centro de 
 
 **ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica)** (Li et al., 2022) calcula el score de anomalía como la probabilidad acumulada de observar un punto tan extremo como $x$ bajo la distribución empírica del dataset, estimada mediante funciones de distribución acumulada (ECDF) multivariadas. Su ventaja principal es que no tiene hiperparámetros que calibrar, eliminando el riesgo de sobreajuste y simplificando el despliegue en producción.
 
-La estrategia de **ensemble** consolida las puntuaciones de múltiples detectores mediante aggregation functions (promedio de scores, votación por mayoría o meta-clasificación). El fundamento teórico lo proporciona ADBench (Han et al., 2022): no existe un algoritmo universal, y el ensemble reduce la varianza del estimador de anomalía agregando perspectivas complementarias. PyOD (Zhao et al., 2019) implementa esta estrategia con la clase `LSCP` (Locally Selective Combination in Parallel Outlier Ensembles) y otras técnicas de combinación estándar.
+La estrategia de **ensemble** consolida las puntuaciones de múltiples detectores para reducir la varianza del estimador agregando perspectivas de densidad local (LOF), aislamiento espacial (IF) y probabilidad empírica acumulada (ECOD). Sin embargo, un desafío matemático fundamental radica en que los algoritmos marginales producen puntuaciones en escalas y naturalezas numéricas completamente incompatibles:
+1. **Isolation Forest** genera puntuaciones acotadas $S_{IF}(x) \in [0, 1]$.
+2. **Local Outlier Factor** genera puntuaciones $S_{LOF}(x) \in [1, \infty)$, donde valores cercanos a 1 indican normalidad y valores superiores representan el grado local de desviación.
+3. **ECOD** genera puntuaciones acumuladas inversas $S_{ECOD}(x) \in [0, \infty)$ en escalas de log-probabilidad.
+
+Sumar o promediar estos valores en bruto anularía la influencia de IF y ECOD debido a que LOF dominaría la agregación por magnitud. Para resolver esta incompatibilidad, esta tesis implementa la unificación probabilística de puntuaciones basada en el escalamiento Min-Max lineal calibrado sobre el conjunto de entrenamiento (Kriegel et al., 2011). Las puntuaciones brutas de cada detector se transforman en puntuaciones probabilísticas de anomalía acotadas $P_m(a|x) \in [0, 1]$ mediante la función de mapeo:
+
+$$P_m(a|x) = \max\left(0, \min\left(1, \frac{S_m(x) - \min_{x' \in D_{train}}(S_m(x'))}{\max_{x' \in D_{train}}(S_m(x')) - \min_{x' \in D_{train}}(S_m(x'))}\right)\right)$$
+
+donde $\min_{D_{train}}$ y $\max_{D_{train}}$ son los valores extremos de score observados en el conjunto de calibración histórica del detector $m$. La puntuación consolidada de anomalía del ensemble $S_{Ensemble}(x) \in [0, 1]$ se calcula entonces como el promedio simple de estas probabilidades unificadas:
+
+$$S_{Ensemble}(x) = \frac{P_{IF}(a|x) + P_{LOF}(a|x) + P_{ECOD}(a|x)}{3}$$
+
+Una instancia operativa $x$ se clasifica finalmente como alerta anómala si y solo si $S_{Ensemble}(x) \ge \tau$, donde $\tau \in [0, 1]$ es el umbral de decisión operativo global calibrado empíricamente en la fase de validación cruzada. El fundamento teórico de este enfoque de agregación lo proporciona ADBench (Han et al., 2022) y su implementación robusta se realiza mediante la API modular de PyOD (Zhao et al., 2019).
 
 ### 2.3.5 Forecasting de Series Temporales con Transformers
 

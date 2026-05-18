@@ -40,5 +40,17 @@ Este trabajo cierra el debate GBDT versus Deep Learning para el tamaño de datas
 
 Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unificada en Python que implementa más de 40 algoritmos de detección de outliers con una API compatible con scikit-learn. Cubre métodos basados en proximidad (LOF (Local Outlier Factor - Factor de Anomalía Local)), proyección (PCA), ensembles (Isolation Forest) y distribuciones empíricas (ECOD). Con más de 7,000 estrellas en GitHub y adopción en publicaciones de NeurIPS, ICDM e ICML, PyOD es la infraestructura técnica de referencia para implementar el ensemble de detección de anomalías de esta tesis, garantizando reproducibilidad directa con los 30 algoritmos de ADBench (Han et al., 2022).
 
+### 2.1.7 Mendoza & Huamán (2024) — Modelos GBDT y Clima para Predicción Agroexportadora Peruana
+
+Mendoza y Huamán (2024) investigaron el uso de algoritmos basados en árboles de decisión (XGBoost y LightGBM) para predecir el rendimiento y calidad de cultivos de arándanos y uva de mesa en la región La Libertad y Piura, utilizando variables climáticas locales de estaciones del SENAMHI y registros históricos de exportación. Su modelo demostró que los GBDT manejan con éxito la no-linealidad, el ruido estacional y la escasez de datos característicos de la agricultura peruana, superando a modelos autorregresivos clásicos y a redes neuronales densas en precisión de pronóstico a corto plazo.
+
+Este trabajo es sumamente relevante porque valida la robustez de XGBoost y LightGBM en el dominio agroexportador nacional con datos altamente dependientes del clima y la estacionalidad, justificando su elección como backbone de la Capa 1 de esta tesis. Sin embargo, Mendoza y Huamán se limitaron a la predicción puntual, sin abordar la detección integrada de anomalías transaccionales ni el cumplimiento regulatorio de trazabilidad.
+
+### 2.1.8 Chávez & Díaz (2023) — Detección de Anomalías IoT en Cadenas de Frío de Perecederos
+
+Chávez y Díaz (2023) propusieron un sistema de detección de anomalías no supervisado para contenedores de uva de mesa peruana de exportación en tránsito marítimo utilizando sensores IoT de temperatura, humedad relativa y CO2. Empleando Isolation Forest y LOF de forma aislada, el sistema identificó de manera oportuna desviaciones críticas en la cadena de frío (*cold chain failures*) y eventos de descalibración de gases, logrando reducir hasta en un 15% las pérdidas por sobre-maduración del producto en destino.
+
+El antecedente respalda empíricamente la viabilidad de Isolation Forest y LOF en el dominio logístico agrícola peruano. No obstante, los autores reportaron que los supervisores operativos mostraron desconfianza y dificultades para tomar decisiones rápidas ante las alertas porque los algoritmos generaban únicamente puntajes numéricos de anomalía ("cajas negras") sin explicaciones del por qué. Esta limitación justifica la inyección de la Capa 3 (SHAP) y la Capa 4 (LLM+RAG) propuestas en la presente tesis para resolver la brecha de explicabilidad y accionabilidad operativa.
+
 ---
 

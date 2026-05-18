@@ -116,8 +116,12 @@ def compile_pdf(project_dir, output_path):
         print("✅ Formato PDF compilado exitosamente.")
         if temp_pdf != output_path:
             import shutil
-            shutil.copy2(temp_pdf, output_path)
-            print(f"📁 Copia PDF guardada en: {output_path}")
+            try:
+                shutil.copy2(temp_pdf, output_path)
+                print(f"📁 Copia PDF guardada en: {output_path}")
+            except PermissionError:
+                print(f"⚠️ El archivo de salida '{output_path.name}' está bloqueado por otro proceso (e.g. Acrobat/Chrome).")
+                print(f"   Se conserva el archivo PDF recién compilado en: {temp_pdf}")
         return True
     else:
         print(f"❌ Error al compilar PDF: {output}")
@@ -157,14 +161,24 @@ def main():
     pdf_success = compile_pdf(project_dir, default_pdf)
     if pdf_success:
         import shutil
-        shutil.copy2(default_pdf, dated_pdf)
-        print(f"✨ Archivo fechado creado: {dated_pdf.name}")
+        temp_pdf = project_dir / "output" / "tesis.pdf"
+        try:
+            if default_pdf.exists():
+                shutil.copy2(default_pdf, dated_pdf)
+            else:
+                shutil.copy2(temp_pdf, dated_pdf)
+            print(f"✨ Archivo fechado creado: {dated_pdf.name}")
+        except PermissionError:
+            print(f"⚠️ El archivo fechado '{dated_pdf.name}' está bloqueado y no se pudo sobreescribir.")
         
     print("==================================================")
     if docx_success and pdf_success:
         print("🎉 ¡PROCESO DE COMPILACIÓN COMPLETADO EXITOSAMENTE!")
         print(f"📄 DOCX: {default_docx.name} y {dated_docx.name}")
-        print(f"📄 PDF: {default_pdf.name} y {dated_pdf.name}")
+        if default_pdf.exists():
+            print(f"📄 PDF: {default_pdf.name} y {dated_pdf.name}")
+        else:
+            print(f"📄 PDF: tesis.pdf (original compilado) y {dated_pdf.name}")
     else:
         print("⚠️ Compilación finalizada con advertencias.")
     print("==================================================")
