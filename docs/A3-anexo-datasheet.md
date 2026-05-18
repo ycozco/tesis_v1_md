@@ -117,7 +117,7 @@ Generación prevista: 2026-05-31 a 2026-06-01.
 El dataset v1.0 se publica sin preprocesamiento adicional. El script de pipeline (`src/pipeline.py`) aplica:
 1. Imputación de valores faltantes (mediana para numéricas, moda para categóricas).
 2. Codificación one-hot de variables categóricas.
-3. Escalamiento StandardScaler para variables numéricas (solo para LOF; XGBoost no lo requiere).
+3. Escalamiento StandardScaler para variables numéricas (solo para LOF (Local Outlier Factor - Factor de Anomalía Local); XGBoost no lo requiere).
 4. Construcción de features derivadas: `temperatura_rango = temperatura_max_c - temperatura_min_c`, `precio_unitario_zscore` por producto.
 
 **¿Los datos crudos se conservan?**

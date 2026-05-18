@@ -68,9 +68,9 @@ El trabajo se organiza en cinco capítulos: el Capítulo I establece el planteam
 
 # RESUMEN
 
-Esta tesis propone un sistema integrado de supervisión operativa para empresas agroexportadoras peruanas, que combina predicción tabular mediante modelos Gradient Boosting Decision Trees (GBDT), detección de anomalías operativas mediante ensemble de algoritmos, explicabilidad mediante SHAP (SHapley Additive exPlanations), y generación automática de reportes trazables con Modelos de Lenguaje de Gran Tamaño (LLMs) en arquitectura RAG (Retrieval-Augmented Generation).
+Esta tesis propone un sistema integrado de supervisión operativa para empresas agroexportadoras peruanas, que combina predicción tabular mediante modelos GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente), detección de anomalías operativas mediante ensemble de algoritmos, explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), y generación automática de reportes trazables con LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) en arquitectura RAG (Retrieval-Augmented Generation).
 
-El sistema aborda una brecha identificada en el contexto agroexportador: los procesos de producción, acopio, almacenamiento, control de calidad, logística, cumplimiento fitosanitario y comercialización internacional suelen analizarse mediante fuentes fragmentadas, reportes manuales o tableros aislados. Esta fragmentación dificulta la detección temprana de anomalías y reduce la trazabilidad de las decisiones. La propuesta se evalúa con métricas técnicas (PR-AUC, F1-Score, cobertura de trazabilidad), evaluación de comprensión operativa y datos públicos/sintéticos documentados del dominio agroexportador.
+El sistema aborda una brecha identificada en el contexto agroexportador: los procesos de producción, acopio, almacenamiento, control de calidad, logística, cumplimiento fitosanitario y comercialización internacional suelen analizarse mediante fuentes fragmentadas, reportes manuales o tableros aislados. Esta fragmentación dificulta la detección temprana de anomalías y reduce la trazabilidad de las decisiones. La propuesta se evalúa con métricas técnicas (PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad), F1-Score (Medida Armónica de Precisión y Exhaustividad), cobertura de trazabilidad), evaluación de comprensión operativa y datos públicos/sintéticos documentados del dominio agroexportador.
 
 Las contribuciones principales son: (1) arquitectura modular de cuatro capas que separa predicción, detección, explicación y reporte; (2) integración de fuentes públicas oficiales y dataset sintético agroexportador documentado mediante criterios de Datasheets for Datasets (Gebru et al., 2021); (3) uso de SHAP para explicar alertas operativas a nivel de variable; (4) generación de reportes mediante RAG restringido a evidencias estructuradas, reduciendo el riesgo de alucinación; (5) evaluación comparativa del sistema integrado frente a componentes aislados en rendimiento, trazabilidad y tiempo de interpretación. La Resolución SBS N° 053-2023 se considera como referencia nacional de buenas prácticas para gestión de riesgo de modelos, mientras que el D.S. N° 115-2025-PCM se adopta como marco peruano general de gobernanza y supervisión humana en IA.
 
@@ -80,7 +80,7 @@ Las contribuciones principales son: (1) arquitectura modular de cuatro capas que
 
 # ABSTRACT
 
-This thesis proposes an integrated operational supervision system for Peruvian agro-export companies, combining tabular prediction using Gradient Boosting Decision Trees (GBDT), operational anomaly detection through an ensemble of algorithms, explainability through SHAP (SHapley Additive exPlanations), and traceable automatic report generation with Large Language Models (LLMs) in a Retrieval-Augmented Generation (RAG) architecture.
+This thesis proposes an integrated operational supervision system for Peruvian agro-export companies, combining tabular prediction using Gradient Boosting Decision Trees (GBDT), operational anomaly detection through an ensemble of algorithms, explainability through SHAP (SHapley Additive exPlanations), and traceable automatic report generation with Large Language Models (LLMs) in a RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) architecture.
 
 The system addresses an identified gap in agro-export operational supervision: production, storage, quality control, logistics, phytosanitary compliance, and international commercialization are commonly analyzed through fragmented sources, manual reports, or isolated dashboards. This fragmentation limits early anomaly detection and weakens decision traceability. The proposal is evaluated using technical metrics (PR-AUC, F1-Score, traceability coverage), operational comprehension assessment, and documented public/synthetic agro-export data.
 
@@ -182,7 +182,7 @@ La agroexportación peruana constituye un sector estratégico para la economía 
 
 En este contexto, las empresas agroexportadoras articulan procesos de producción agrícola, acopio, almacenamiento, control de calidad, cumplimiento fitosanitario, logística y comercialización internacional. Cada uno de estos procesos genera datos que pueden revelar desviaciones relevantes para la gestión operativa: cambios inusuales en precios, variaciones de volumen, condiciones climáticas adversas, incumplimientos de calidad, retrasos logísticos o patrones atípicos en el comportamiento exportador. No obstante, la supervisión de estos procesos suele depender de reportes manuales, hojas de cálculo, sistemas no integrados o análisis posteriores a la ocurrencia del problema.
 
-La inteligencia artificial ofrece herramientas adecuadas para abordar esta brecha. Los modelos Gradient Boosting Decision Trees (GBDT) han demostrado buen desempeño en datos tabulares estructurados (Grinsztajn et al., 2022); los ensembles de detectores de anomalías permiten identificar comportamientos atípicos de manera más robusta que un detector individual (Han et al., 2022); la explicabilidad mediante valores de Shapley (SHAP) convierte predicciones opacas en justificaciones comprensibles (Lundberg & Lee, 2017); y los modelos de lenguaje con arquitectura RAG pueden transformar resultados cuantitativos en reportes comprensibles siempre que se restrinja su función a la generación narrativa basada en evidencias (Schneider et al., 2025).
+La inteligencia artificial ofrece herramientas adecuadas para abordar esta brecha. Los modelos GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) han demostrado buen desempeño en datos tabulares estructurados (Grinsztajn et al., 2022); los ensembles de detectores de anomalías permiten identificar comportamientos atípicos de manera más robusta que un detector individual (Han et al., 2022); la explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) convierte predicciones opacas en justificaciones comprensibles (Lundberg & Lee, 2017); y los modelos de lenguaje con arquitectura RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) pueden transformar resultados cuantitativos en reportes comprensibles siempre que se restrinja su función a la generación narrativa basada en evidencias (Schneider et al., 2025).
 
 La presente investigación propone un sistema integrado de cuatro capas que une predicción tabular, detección de anomalías, explicabilidad y generación de reportes trazables en un flujo coherente de supervisión operativa. El sistema se orienta al contexto agroexportador peruano y busca mejorar la capacidad de detectar desviaciones operativas, explicar sus posibles causas y documentar cada alerta de manera comprensible para supervisores, responsables de calidad, gestores logísticos y auditores internos. La Resolución SBS N° 053-2023 (SBS, 2023) se toma como referencia nacional de buenas prácticas para gestión de riesgo de modelos, sin asumirla como obligación directa para agroexportadoras; el D.S. N° 115-2025-PCM (PCM, 2025) se emplea como marco peruano general sobre gobernanza, transparencia y supervisión humana en inteligencia artificial.
 
@@ -232,7 +232,7 @@ En escenarios donde una empresa agroexportadora integra datos de producción, pr
 
 - ¿Qué variables operativas, climáticas, comerciales y fitosanitarias pueden utilizarse para caracterizar el comportamiento normal y anómalo de procesos agroexportadores peruanos?
 - ¿Qué arquitectura de inteligencia artificial permite integrar predicción tabular, detección de anomalías, explicabilidad y generación de reportes en un flujo operativo trazable?
-- ¿De qué manera la explicabilidad mediante SHAP contribuye a que supervisores operativos comprendan las causas probables de una alerta?
+- ¿De qué manera la explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) contribuye a que supervisores operativos comprendan las causas probables de una alerta?
 - ¿Cómo generar reportes automáticos que sean comprensibles, accionables y trazables sin permitir que el modelo de lenguaje tome decisiones o invente información?
 - ¿Cómo evaluar si el sistema integrado mejora la trazabilidad, comprensión de alertas y tiempo de decisión frente al uso de componentes aislados?
 
@@ -252,7 +252,7 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 
 4. **Explicabilidad verificable**: Integrar SHAP (Lundberg & Lee, 2017) para identificar las variables que más contribuyen a cada alerta generada por el sistema.
 
-5. **Generación de reportes trazables**: Diseñar un componente LLM+RAG que redacte explicaciones operativas basadas exclusivamente en evidencias estructuradas del sistema.
+5. **Generación de reportes trazables**: Diseñar un componente LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) que redacte explicaciones operativas basadas exclusivamente en evidencias estructuradas del sistema.
 
 6. **Evaluación integrada**: Evaluar el sistema integrado mediante métricas técnicas, trazabilidad documental y prueba de comprensión/tiempo de decisión con usuarios o evaluadores simulados.
 
@@ -280,7 +280,7 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 ### 1.5.2 Variables Dependientes
 
 **VD1: Rendimiento de detección**
-- Indicadores: ROC-AUC, Precisión, Recall, F1-Score, PR-AUC
+- Indicadores: ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), Precisión, Recall, F1-Score (Medida Armónica de Precisión y Exhaustividad), PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad)
 - Criterio de aceptación: superar el baseline individual o justificar rendimiento equivalente con mayor trazabilidad
 
 **VD2: Calidad de explicabilidad**
@@ -303,11 +303,11 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 
 ### 1.6.1 Viabilidad Técnica
 
-**Disponibilidad de tecnologías**: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen & Guestrin, 2016) y LightGBM (Ke et al., 2017) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg & Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.
+**Disponibilidad de tecnologías**: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen & Guestrin, 2016) y LightGBM (Ke et al., 2017) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Local Outlier Factor - Factor de Anomalía Local) (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg & Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.
 
 **Datos disponibles**: Se contemplan tres niveles de datos. El primer nivel corresponde a fuentes públicas oficiales: MIDAGRI para agroexportaciones, precios y boletines sectoriales; SENAMHI para variables climáticas; SENASA para requisitos fitosanitarios; SUNAT para exportaciones; INEI para indicadores económicos; FAOSTAT y UN Comtrade para validación internacional. El segundo nivel corresponde a un dataset sintético agroexportador documentado, construido con variables operativas plausibles y etiquetas de anomalía controladas. El tercer nivel, opcional, corresponde a datos privados de una empresa agroexportadora bajo acuerdo de confidencialidad. Como referencia metodológica complementaria puede utilizarse el BAF Benchmark (Jesus et al., 2022), no como evidencia directa del dominio agroexportador, sino como benchmark tabular desbalanceado con drift temporal.
 
-**Riesgos técnicos identificados**: La latencia de SHAP en datasets grandes (>1M filas) puede mitigarse con los métodos de aproximación TreeSHAP. La variabilidad en salidas de LLMs requiere prompt engineering robusto y restricción mediante RAG. La mitigación incluye pruebas piloto en subconjuntos de datos y benchmarking iterativo.
+**Riesgos técnicos identificados**: La latencia de SHAP en datasets grandes (>1M filas) puede mitigarse con los métodos de aproximación TreeSHAP. La variabilidad en salidas de LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) requiere prompt engineering robusto y restricción mediante RAG. La mitigación incluye pruebas piloto en subconjuntos de datos y benchmarking iterativo.
 
 ### 1.6.2 Viabilidad Operativa
 
@@ -325,7 +325,7 @@ La viabilidad económica se justifica por la relevancia del sector agroexportado
 
 La revisión sistemática de la literatura revela avances importantes en modelos tabulares, detección de anomalías, explicabilidad y generación de reportes mediante LLMs. Sin embargo, estos componentes suelen estudiarse de forma aislada y en dominios distintos al agroexportador. Trabajos de auditoría financiera o fraude contable, como AuditCopilot (Kadir et al., 2025), se utilizan solo como antecedentes metodológicos sobre automatización de reportes y detección de anomalías, no como eje del dominio de aplicación. La brecha central de esta tesis es la ausencia de una arquitectura integrada y trazable para supervisión operativa agroexportadora peruana que combine fuentes públicas oficiales, datos sintéticos documentados, predicción tabular, detección de anomalías por ensemble, explicabilidad SHAP y reportes basados en evidencia bajo restricción anti-alucinación.
 
-**Aporte original específico**: Esta tesis constituye, en el conocimiento del autor (verificado mediante búsqueda sistemática documentada en `docs/busqueda-sistematica-gap.md`), la primera arquitectura integrada de cuatro capas (GBDT + ensemble Isolation Forest/LOF/ECOD + TreeSHAP + LLM-RAG con restricción anti-alucinación) evaluada sobre datos agroexportadores peruanos públicos y sintéticos, con trazabilidad documental diseñada conforme al D.S. N° 115-2025-PCM y los principios del NIST AI RMF (NIST, 2023).
+**Aporte original específico**: Esta tesis constituye, en el conocimiento del autor (verificado mediante búsqueda sistemática documentada en `docs/busqueda-sistematica-gap.md`), la primera arquitectura integrada de cuatro capas (GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) + ensemble Isolation Forest/LOF/ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) + TreeSHAP + LLM-RAG con restricción anti-alucinación) evaluada sobre datos agroexportadores peruanos públicos y sintéticos, con trazabilidad documental diseñada conforme al D.S. N° 115-2025-PCM y los principios del NIST AI RMF (NIST, 2023).
 
 Esta tesis aporta a la literatura y a la práctica profesional cuatro elementos diferenciados y verificables:
 
@@ -486,11 +486,11 @@ Los antecedentes de esta investigación se organizan desde dos perspectivas. La 
 
 El desarrollo de sistemas de predicción, detección de anomalías y generación de reportes en datos empresariales ha seguido una trayectoria de especialización creciente, marcada por tres tendencias paralelas: el auge de los modelos basados en árboles para datos tabulares, la proliferación de benchmarks sistemáticos y la emergencia de los modelos de lenguaje como capa de interpretación. Los siguientes antecedentes fueron seleccionados por su proximidad metodológica con la propuesta de esta investigación, aunque varios provienen de dominios financieros o contables y se emplean aquí solo como soporte técnico transferible.
 
-### 2.1.1 Kadir et al. (2025) — AuditCopilot: LLMs para Reportes de Anomalías
+### 2.1.1 Kadir et al. (2025) — AuditCopilot: LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) para Reportes de Anomalías
 
-Kadir et al. (2025) desarrollaron AuditCopilot (Kadir et al., 2025), un sistema de auditoría contable que integra LLMs con detección de anomalías en asientos de doble entrada para generar explicaciones automáticas en lenguaje natural. El sistema implementa un pipeline de tres etapas —detección de irregularidades, interpretación contextual con LLM ajustado y generación de narrativas— evaluado sobre un corpus de asientos contables sintéticos y reales. Los resultados reportan mejoras en la tasa de detección y reducción del tiempo de revisión, con valoración positiva de auditores en pruebas de aceptabilidad.
+Kadir et al. (2025) desarrollaron AuditCopilot (Kadir et al., 2025), un sistema de auditoría contable que integra LLMs con detección de anomalías en asientos de doble entrada para generar explicaciones automáticas en lenguaje natural. El sistema implementa un pipeline de tres etapas —detección de irregularidades, interpretación contextual con LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) ajustado y generación de narrativas— evaluado sobre un corpus de asientos contables sintéticos y reales. Los resultados reportan mejoras en la tasa de detección y reducción del tiempo de revisión, con valoración positiva de auditores en pruebas de aceptabilidad.
 
-La relevancia de este antecedente para la presente tesis es metodológica: confirma la viabilidad de combinar detección de anomalías con generación de reportes LLM. No obstante, su dominio es contable, por lo que no se adopta como evidencia agroexportadora. Esta tesis traslada el principio de generación narrativa a un contexto operativo, separando estrictamente la detección de la redacción mediante RAG sobre scores y vectores SHAP.
+La relevancia de este antecedente para la presente tesis es metodológica: confirma la viabilidad de combinar detección de anomalías con generación de reportes LLM. No obstante, su dominio es contable, por lo que no se adopta como evidencia agroexportadora. Esta tesis traslada el principio de generación narrativa a un contexto operativo, separando estrictamente la detección de la redacción mediante RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) sobre scores y vectores SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley).
 
 ### 2.1.2 Park (2024) — Framework Multi-Agente LLM para Anomalías Financieras
 
@@ -498,15 +498,15 @@ Park (2024) propuso un framework de múltiples agentes LLM especializados para v
 
 Este trabajo aporta a la literatura evidencia de que los LLMs en arquitecturas especializadas pueden mejorar la calidad del análisis automatizado. Sin embargo, opera en mercados de alta frecuencia, un dominio alejado del contexto agroexportador. Esta tesis aplica únicamente el principio de especialización de roles —LLM como intérprete, no como detector— en un sistema de supervisión operativa con trazabilidad y generación restringida a datos verificados (Schneider et al., 2025).
 
-### 2.1.3 Almalki & Masud (2025) y Autores varios (2025) — Ensemble GBDT+SHAP en Datos Críticos
+### 2.1.3 Almalki & Masud (2025) y Autores varios (2025) — Ensemble GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)+SHAP en Datos Críticos
 
-Almalki y Masud (2025) y trabajos paralelos publicados en el *Journal of Risk and Financial Management* (2025), diseñaron frameworks integrados de detección de fraude financiero combinando Stacking Ensemble de GBDTs (XGBoost y LightGBM) con explicabilidad SHAP (Almalki & Masud, 2025; JRFM, 2025). El ensemble alcanza PR-AUC > 0.90 y F1-Score > 0.80, superando a arquitecturas complejas de Deep Learning, con un SHAP Stability Index alto que certifica la coherencia forense de las explicaciones —requisito indispensable en auditoría.
+Almalki y Masud (2025) y trabajos paralelos publicados en el *Journal of Risk and Financial Management* (2025), diseñaron frameworks integrados de detección de fraude financiero combinando Stacking Ensemble de GBDTs (XGBoost y LightGBM) con explicabilidad SHAP (Almalki & Masud, 2025; JRFM, 2025). El ensemble alcanza PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) > 0.90 y F1-Score (Medida Armónica de Precisión y Exhaustividad) > 0.80, superando a arquitecturas complejas de Deep Learning, con un SHAP Stability Index alto que certifica la coherencia forense de las explicaciones —requisito indispensable en auditoría.
 
 Este antecedente respalda la decisión arquitectónica de combinar GBDT y SHAP en datos tabulares críticos. La diferencia clave es que dichos trabajos se limitan a detección de fraude en estados financieros; la presente investigación adapta la lógica de modelos tabulares explicables al contexto agroexportador, incorporando fuentes públicas, dataset sintético documentado y generación de reportes LLM+RAG para supervisión operativa.
 
 ### 2.1.4 Han et al. (2022) — ADBench: Benchmark para Detección de Anomalías
 
-Han et al. (2022) publicaron ADBench (Han et al., 2022), un benchmark sistemático que evalúa 30 algoritmos de detección de anomalías en 57 datasets reales y sintéticos bajo tres niveles de supervisión —no supervisado, semisupervisado y supervisado. El hallazgo central es que no existe un algoritmo universalmente superior: el rendimiento depende del tipo de anomalía, la distribución de datos y el nivel de etiquetado. Isolation Forest y ECOD muestran consistencia en escenarios no supervisados, y los ensembles de múltiples detectores superan sistemáticamente a los detectores individuales en escenarios de alta variabilidad distribucional.
+Han et al. (2022) publicaron ADBench (Han et al., 2022), un benchmark sistemático que evalúa 30 algoritmos de detección de anomalías en 57 datasets reales y sintéticos bajo tres niveles de supervisión —no supervisado, semisupervisado y supervisado. El hallazgo central es que no existe un algoritmo universalmente superior: el rendimiento depende del tipo de anomalía, la distribución de datos y el nivel de etiquetado. Isolation Forest y ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) muestran consistencia en escenarios no supervisados, y los ensembles de múltiples detectores superan sistemáticamente a los detectores individuales en escenarios de alta variabilidad distribucional.
 
 ADBench justifica formalmente la estrategia de ensemble adoptada en esta tesis y proporciona la metodología experimental de referencia para el Capítulo III. La librería PyOD (Zhao et al., 2019), compatible con todos los algoritmos evaluados en ADBench, asegura la reproducibilidad directa de los resultados.
 
@@ -518,7 +518,7 @@ Este trabajo cierra el debate GBDT versus Deep Learning para el tamaño de datas
 
 ### 2.1.6 Zhao et al. (2019) — PyOD: Librería Estándar para Detección de Outliers
 
-Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unificada en Python que implementa más de 40 algoritmos de detección de outliers con una API compatible con scikit-learn. Cubre métodos basados en proximidad (LOF), proyección (PCA), ensembles (Isolation Forest) y distribuciones empíricas (ECOD). Con más de 7,000 estrellas en GitHub y adopción en publicaciones de NeurIPS, ICDM e ICML, PyOD es la infraestructura técnica de referencia para implementar el ensemble de detección de anomalías de esta tesis, garantizando reproducibilidad directa con los 30 algoritmos de ADBench (Han et al., 2022).
+Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unificada en Python que implementa más de 40 algoritmos de detección de outliers con una API compatible con scikit-learn. Cubre métodos basados en proximidad (LOF (Local Outlier Factor - Factor de Anomalía Local)), proyección (PCA), ensembles (Isolation Forest) y distribuciones empíricas (ECOD). Con más de 7,000 estrellas en GitHub y adopción en publicaciones de NeurIPS, ICDM e ICML, PyOD es la infraestructura técnica de referencia para implementar el ensemble de detección de anomalías de esta tesis, garantizando reproducibilidad directa con los 30 algoritmos de ADBench (Han et al., 2022).
 
 ---
 
@@ -532,7 +532,7 @@ Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unifica
 
 El estado del arte se organiza en torno a cinco debates fundamentales de la literatura que la presente propuesta debe resolver o posicionarse explícitamente. Cada sub-sección presenta el debate, los trabajos relevantes y la posición de esta tesis. La Tabla 2.1 sintetiza todas las referencias relevantes al final de la sección.
 
-### 2.2.1 GBDT versus Deep Learning para Datos Tabulares Empresariales y Agroexportadores
+### 2.2.1 GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) versus Deep Learning para Datos Tabulares Empresariales y Agroexportadores
 
 El desarrollo de modelos para datos tabulares ha seguido una trayectoria diferente a la de visión computacional y procesamiento de lenguaje natural: el Deep Learning no ha conseguido desplazar a los modelos basados en árboles como estándar de facto en datos estructurados. Chen y Guestrin (2016) introdujeron XGBoost como sistema escalable de gradient boosting con regularización L1/L2, manejo nativo de valores faltantes y paralelización por columnas, estableciéndolo como el baseline universal con más de 45,000 citas en la literatura científica. Ke et al. (2017) lo extendieron con LightGBM, que incorpora Gradient-based One-Side Sampling (GOSS) e histogramas para lograr velocidades de entrenamiento hasta 20 veces superiores con rendimiento comparable. Prokhorenkova et al. (2018) resolvieron el problema de target leakage en variables categóricas con Ordered Boosting, siendo especialmente relevante en datos contables con alta cardinalidad (cuentas, departamentos, centros de costo).
 
@@ -544,19 +544,19 @@ En dominios empresariales con datos tabulares heterogéneos, esta evidencia resp
 
 ### 2.2.2 Detector Único versus Ensemble para Detección de Anomalías
 
-El campo de la detección de anomalías cuenta con una historia de más de dos décadas de métodos en competencia. Breunig et al. (2000) establecieron el Local Outlier Factor (LOF) como referencia para detectar anomalías locales mediante densidad relativa al vecindario k-NN, un enfoque sensible a variaciones locales que permite identificar transacciones con patrones de comportamiento heterogéneos. Liu et al. (2008) revolucionaron el campo con Isolation Forest, que aísla anomalías por particionamiento aleatorio sin necesidad de definir perfiles de normalidad, con complejidad O(n) que lo hace viable en millones de transacciones diarias. Ruff et al. (2018) extendieron la detección a espacios de representación profundos con Deep SVDD, capturando patrones no lineales en los datos mediante redes neuronales. Li et al. (2022) propusieron ECOD, un detector moderno libre de parámetros basado en distribución empírica acumulada que supera a 11 baselines en datasets no supervisados, eliminando el riesgo de sobreajuste al proceso de calibración.
+El campo de la detección de anomalías cuenta con una historia de más de dos décadas de métodos en competencia. Breunig et al. (2000) establecieron el Local Outlier Factor (LOF (Local Outlier Factor - Factor de Anomalía Local)) como referencia para detectar anomalías locales mediante densidad relativa al vecindario k-NN, un enfoque sensible a variaciones locales que permite identificar transacciones con patrones de comportamiento heterogéneos. Liu et al. (2008) revolucionaron el campo con Isolation Forest, que aísla anomalías por particionamiento aleatorio sin necesidad de definir perfiles de normalidad, con complejidad O(n) que lo hace viable en millones de transacciones diarias. Ruff et al. (2018) extendieron la detección a espacios de representación profundos con Deep SVDD, capturando patrones no lineales en los datos mediante redes neuronales. Li et al. (2022) propusieron ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica), un detector moderno libre de parámetros basado en distribución empírica acumulada que supera a 11 baselines en datasets no supervisados, eliminando el riesgo de sobreajuste al proceso de calibración.
 
 El hallazgo central de Han et al. (2022) en ADBench —57 datasets, 30 algoritmos, tres niveles de supervisión— establece que no existe un algoritmo universalmente superior: el rendimiento depende fuertemente del tipo de anomalía, la distribución de los datos y el nivel de etiquetado disponible. Esta conclusión teórica valida la estrategia de ensemble como la opción más robusta para entornos de producción donde la distribución de anomalías es desconocida a priori. La librería PyOD (Zhao et al., 2019) proporciona la infraestructura técnica para implementar este ensemble de manera estandarizada y reproducible.
 
 **Posición de esta tesis**: El ensemble Isolation Forest + LOF + ECOD (coordinado mediante PyOD) es más robusto que cualquier detector individual, priorizando ECOD sobre Deep SVDD por su interpretabilidad estadística y ausencia de hiperparámetros. Esta decisión está respaldada por ADBench (Han et al., 2022) como fundamento teórico.
 
-### 2.2.3 LLM como Detector versus LLM como Generador de Reportes
+### 2.2.3 LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) como Detector versus LLM como Generador de Reportes
 
-El surgimiento de los LLMs ha generado propuestas de integración en sistemas empresariales con distintos roles. Hegselmann et al. (2023) demostraron con TabLLM que los LLMs pueden clasificar datos tabulares en configuración zero/few-shot mediante serialización a texto, con rendimiento no trivial incluso sin ajuste fino. Park (2024) llevó esta lógica más lejos con un framework multi-agente donde LLMs especializados validan alertas de anomalías. Estos antecedentes muestran potencial metodológico, aunque no resuelven por sí mismos el problema de trazabilidad operativa agroexportadora.
+El surgimiento de los LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) ha generado propuestas de integración en sistemas empresariales con distintos roles. Hegselmann et al. (2023) demostraron con TabLLM que los LLMs pueden clasificar datos tabulares en configuración zero/few-shot mediante serialización a texto, con rendimiento no trivial incluso sin ajuste fino. Park (2024) llevó esta lógica más lejos con un framework multi-agente donde LLMs especializados validan alertas de anomalías. Estos antecedentes muestran potencial metodológico, aunque no resuelven por sí mismos el problema de trazabilidad operativa agroexportadora.
 
 Sin embargo, existe evidencia sustancial de que usar LLMs como detectores o tomadores de decisiones introduce riesgos inaceptables. El survey sobre alucinaciones en LLMs (Maynez et al., 2026) documenta que los modelos pueden generar razonamiento coherente en forma pero incorrecto en contenido, con alta confianza aparente. Este riesgo es especialmente importante en reportes operativos, donde una cifra o causa inventada puede inducir decisiones equivocadas.
 
-La arquitectura RAG (Schneider et al., 2025 (Schneider et al., 2025)) ofrece una solución al anclar las respuestas del LLM a bases de conocimiento verificadas —en este caso, scores, umbrales, vectores SHAP y fuentes agroexportadoras recuperadas— reduciendo el espacio de alucinación al forzar al modelo a narrar únicamente lo que los datos cuantitativos establecen. El LLM no infiere anomalías; las narra con evidencias como fundamento.
+La arquitectura RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (Schneider et al., 2025 (Schneider et al., 2025)) ofrece una solución al anclar las respuestas del LLM a bases de conocimiento verificadas —en este caso, scores, umbrales, vectores SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) y fuentes agroexportadoras recuperadas— reduciendo el espacio de alucinación al forzar al modelo a narrar únicamente lo que los datos cuantitativos establecen. El LLM no infiere anomalías; las narra con evidencias como fundamento.
 
 **Posición de esta tesis**: El LLM se restringe estrictamente a la capa de generación de reportes mediante RAG. La detección, cuantificación y explicación son realizadas por modelos y evidencias estructuradas (GBDT + ensemble + SHAP). Esta separación se alinea con principios de transparencia, supervisión humana y trazabilidad promovidos por marcos como el D.S. N° 115-2025-PCM (PCM, 2025), el EU AI Act (Parlamento Europeo y Consejo, 2024) y el NIST AI RMF (NIST, 2023).
 
@@ -587,7 +587,7 @@ La revisión sistemática de los bloques temáticos permite identificar la brech
 | Predicción tabular GBDT | ✅ XGBoost+LightGBM | ❌ | ❌ Solo LLMs | ❌ | ✅ Stacking |
 | Benchmark público reproducible | ✅ Datos públicos + sintéticos agroexportadores; BAF complementario | ❌ Dataset propio | ❌ S&P 500 | ❌ Conceptual | ⚠️ Dataset propio |
 | Forecasting DL (ej. TFT) | ❌ (Solo tabular GBDT) | ❌ | ❌ | ❌ | ❌ |
-| Ensemble de anomalías (ADBench) | ✅ IF+LOF+ECOD | ⚠️ Parcial | ❌ | ❌ | ❌ |
+| Ensemble de anomalías (ADBench) | ✅ IF (Isolation Forest - Bosque de Aislamiento)+LOF+ECOD | ⚠️ Parcial | ❌ | ❌ | ❌ |
 | Explicabilidad SHAP | ✅ TreeSHAP | ❌ | ❌ | ❌ | ✅ SHAP+Anchor |
 | Generación LLM de reportes | ✅ RAG determinista | ✅ LLM narrativo | ✅ Multi-agente | ❌ | ❌ |
 | Restricción anti-alucinación (RAG+SHAP) | ✅ | ❌ | ❌ | — | — |
@@ -639,9 +639,9 @@ En el contexto de esta investigación, el reconocimiento de patrones opera en do
 
 Los datos tabulares son la forma predominante de almacenamiento en los sistemas de información empresarial: cada fila representa una instancia operativa y cada columna una variable. En agroexportación, una instancia puede describir un lote, día, producto, zona, envío o registro de mercado; las columnas pueden incluir precio, volumen, temperatura, precipitación, humedad, destino, cumplimiento fitosanitario, días logísticos, merma y etiqueta de anomalía.
 
-Estas propiedades estructurales explican por qué los GBDT son adecuados para este dominio (Grinsztajn et al., 2022): manejan variables numéricas y categóricas heterogéneas, toleran valores faltantes, capturan relaciones no lineales y requieren menor ingeniería de features que arquitecturas neuronales complejas. Cuando las etiquetas de anomalía son escasas o desbalanceadas, el rendimiento debe evaluarse con métricas orientadas a precisión-recall (PR-AUC), F1-Score y análisis de falsos positivos.
+Estas propiedades estructurales explican por qué los GBDT son adecuados para este dominio (Grinsztajn et al., 2022): manejan variables numéricas y categóricas heterogéneas, toleran valores faltantes, capturan relaciones no lineales y requieren menor ingeniería de features que arquitecturas neuronales complejas. Cuando las etiquetas de anomalía son escasas o desbalanceadas, el rendimiento debe evaluarse con métricas orientadas a precisión-recall (PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad)), F1-Score (Medida Armónica de Precisión y Exhaustividad) y análisis de falsos positivos.
 
-### 2.3.3 Gradient Boosting Decision Trees (GBDT)
+### 2.3.3 GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)
 
 Los Gradient Boosting Decision Trees (GBDT) son una familia de algoritmos de aprendizaje supervisado que construyen modelos predictivos mediante la combinación secuencial de múltiples árboles de decisión débiles. El enfoque fue formalizado por Friedman (2001) como "Greedy Function Approximation", donde cada árbol nuevo se ajusta para corregir los errores residuales del conjunto de árboles previos mediante descenso de gradiente en el espacio funcional de la función de pérdida.
 
@@ -667,7 +667,7 @@ La detección de anomalías es el problema de identificar observaciones que se d
 
 **Isolation Forest** (Liu et al., 2008) se basa en el principio de que las anomalías son "pocas y diferentes": son más fáciles de aislar que los puntos normales mediante particionamiento aleatorio del espacio. Un árbol de aislamiento selecciona aleatoriamente una feature y un valor de corte; la anomalía será aislada en pocas particiones (camino corto), mientras que los puntos normales requieren muchas particiones (camino largo). El score de anomalía es el inverso de la longitud promedio del camino de aislamiento, normalizada según la longitud esperada para un punto normal en un conjunto de tamaño $n$. La complejidad es O(n log n) en entrenamiento y O(n) en inferencia.
 
-**Local Outlier Factor (LOF)** (Breunig et al., 2000) cuantifica el grado de anomalía de cada punto en función de la densidad de su vecindario local respecto a la densidad de sus vecinos. El score LOF para el punto $p$ se define como:
+**Local Outlier Factor (LOF (Local Outlier Factor - Factor de Anomalía Local))** (Breunig et al., 2000) cuantifica el grado de anomalía de cada punto en función de la densidad de su vecindario local respecto a la densidad de sus vecinos. El score LOF para el punto $p$ se define como:
 
 $$\text{LOF}_k(p) = \frac{\sum_{o \in N_k(p)} \frac{\text{lrd}_k(o)}{\text{lrd}_k(p)}}{|N_k(p)|}$$
 
@@ -679,7 +679,7 @@ $$\min_{W, R, c} R^2 + \frac{1}{\nu n} \sum_{i=1}^{n} \max(0, \|f(x_i; W) - c\|^
 
 donde $f(x_i; W)$ es la representación de la red neuronal, $c$ es el centro de la hipersfera y $R$ es su radio.
 
-**ECOD** (Li et al., 2022) calcula el score de anomalía como la probabilidad acumulada de observar un punto tan extremo como $x$ bajo la distribución empírica del dataset, estimada mediante funciones de distribución acumulada (ECDF) multivariadas. Su ventaja principal es que no tiene hiperparámetros que calibrar, eliminando el riesgo de sobreajuste y simplificando el despliegue en producción.
+**ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica)** (Li et al., 2022) calcula el score de anomalía como la probabilidad acumulada de observar un punto tan extremo como $x$ bajo la distribución empírica del dataset, estimada mediante funciones de distribución acumulada (ECDF) multivariadas. Su ventaja principal es que no tiene hiperparámetros que calibrar, eliminando el riesgo de sobreajuste y simplificando el despliegue en producción.
 
 La estrategia de **ensemble** consolida las puntuaciones de múltiples detectores mediante aggregation functions (promedio de scores, votación por mayoría o meta-clasificación). El fundamento teórico lo proporciona ADBench (Han et al., 2022): no existe un algoritmo universal, y el ensemble reduce la varianza del estimador de anomalía agregando perspectivas complementarias. PyOD (Zhao et al., 2019) implementa esta estrategia con la clase `LSCP` (Locally Selective Combination in Parallel Outlier Ensembles) y otras técnicas de combinación estándar.
 
@@ -695,7 +695,7 @@ El debate sobre la efectividad de los Transformers en series temporales es relev
 
 N-HiTS (Challu et al., 2022) ofrece una alternativa no-Transformer para forecasting de horizonte largo, con interpolación jerárquica multi-tasa que reduce la complejidad computacional respecto a N-BEATS. Chronos (Ansari et al., 2024) representa el paradigma emergente de los foundation models para series temporales, basado en T5, que logra performance zero-shot competitivo en múltiples datasets; sin embargo, su opacidad y dependencia de infraestructura de gran escala limitan su aplicación directa cuando se requiere trazabilidad operativa.
 
-### 2.3.6 Explicabilidad mediante Valores de Shapley (SHAP)
+### 2.3.6 Explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley)
 
 La explicabilidad en sistemas de IA se clasifica en dos grandes categorías: **inherente** —modelos cuya estructura es intrínsecamente interpretable, como los árboles de decisión— y **post-hoc** —métodos aplicados a cualquier modelo después del entrenamiento para interpretar sus predicciones. SHAP y LIME son los dos métodos post-hoc agnósticos más adoptados en la literatura.
 
@@ -711,17 +711,17 @@ SHAP resuelve las limitaciones de LIME al garantizar consistencia: si un modelo 
 
 En el contexto de supervisión operativa, la estabilidad de las explicaciones permite verificar que el modelo asigna importancias consistentes a variables semejantes. Un índice alto de estabilidad fortalece la confianza en el sistema, porque evita que alertas similares reciban justificaciones contradictorias.
 
-La integración SHAP+LLM de esta tesis opera como sigue: los vectores SHAP de una alerta operativa (una lista de pares variable→contribución cuantitativa) se incorporan como contexto verificado en el RAG, y el LLM genera la narración del informe sin posibilidad de inventar cifras que no estén en esos vectores o en las fuentes recuperadas.
+La integración SHAP+LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) de esta tesis opera como sigue: los vectores SHAP de una alerta operativa (una lista de pares variable→contribución cuantitativa) se incorporan como contexto verificado en el RAG, y el LLM genera la narración del informe sin posibilidad de inventar cifras que no estén en esos vectores o en las fuentes recuperadas.
 
 ### 2.3.7 Modelos de Lenguaje y Arquitectura RAG para Generación de Reportes
 
-Los Modelos de Lenguaje de Gran Tamaño (LLMs) son sistemas entrenados mediante autoregresión en corpus masivos de texto para aprender distribuciones probabilísticas sobre secuencias de tokens. Su capacidad de generalización les permite realizar tareas de reasoning, traducción, resumen y generación de texto con calidad próxima a la humana en configuraciones zero-shot y few-shot.
+Los LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) son sistemas entrenados mediante autoregresión en corpus masivos de texto para aprender distribuciones probabilísticas sobre secuencias de tokens. Su capacidad de generalización les permite realizar tareas de reasoning, traducción, resumen y generación de texto con calidad próxima a la humana en configuraciones zero-shot y few-shot.
 
 **In-context learning** permite guiar el comportamiento del LLM mediante ejemplos incluidos directamente en el prompt, sin necesidad de ajuste fino (fine-tuning). TabLLM (Hegselmann et al., 2023) demostró que mediante serialización de datos tabulares a texto descriptivo, los LLMs pueden realizar clasificación sobre datos estructurados con rendimiento no trivial en zero-shot, ampliando el espectro de aplicación de estos modelos más allá del texto no estructurado.
 
 Sin embargo, el uso de LLMs como agentes de decisión autónoma introduce el riesgo de **alucinaciones**: el modelo puede generar afirmaciones coherentes en forma pero incorrectas en contenido (Ji et al., 2023; Maynez et al., 2026). La literatura distingue al menos dos tipos: (a) alucinaciones intrínsecas, en las que el texto generado contradice la información del contexto recuperado; y (b) alucinaciones extrínsecas, en las que el modelo inventa información no presente en el contexto. En particular, las "alucinaciones numéricas" —valores específicos de métricas, porcentajes o fechas que no corresponden a los datos reales (Barclays Research, 2025)— son especialmente peligrosas en reportes operativos, porque pueden inducir decisiones equivocadas pese a la apariencia de precisión cuantitativa.
 
-**Retrieval-Augmented Generation (RAG)** (Lewis et al., 2020; Schneider et al., 2025) reduce este riesgo al separar el conocimiento factual del modelo generativo: en lugar de que el LLM "recuerde" información de su entrenamiento, el sistema recupera documentos o datos relevantes de una base de conocimiento externa verificada y los incluye en el contexto del prompt. El LLM entonces genera texto fundamentado en esos datos recuperados, no en su memoria paramétrica. Es importante señalar que RAG **reduce significativamente pero no elimina** el riesgo de alucinación; persisten casos de alucinación intrínseca (faithful hallucination) en los que el modelo genera afirmaciones que se desvían del contexto recuperado. Técnicas avanzadas como GraphRAG incorporan grafos de conocimiento para recuperación semántica más rica, mientras que Self-RAG permite al modelo verificar la pertinencia de los documentos recuperados antes de usarlos.
+**RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación)** (Lewis et al., 2020; Schneider et al., 2025) reduce este riesgo al separar el conocimiento factual del modelo generativo: en lugar de que el LLM "recuerde" información de su entrenamiento, el sistema recupera documentos o datos relevantes de una base de conocimiento externa verificada y los incluye en el contexto del prompt. El LLM entonces genera texto fundamentado en esos datos recuperados, no en su memoria paramétrica. Es importante señalar que RAG **reduce significativamente pero no elimina** el riesgo de alucinación; persisten casos de alucinación intrínseca (faithful hallucination) en los que el modelo genera afirmaciones que se desvían del contexto recuperado. Técnicas avanzadas como GraphRAG incorporan grafos de conocimiento para recuperación semántica más rica, mientras que Self-RAG permite al modelo verificar la pertinencia de los documentos recuperados antes de usarlos.
 
 En la arquitectura de esta tesis, la "base de conocimiento" del RAG son los vectores SHAP de la alerta analizada, las métricas del ensemble de detección, las fuentes agroexportadoras recuperadas y las reglas de reporte definidas. El LLM recibe ese contexto verificado y genera el informe narrativo sin acceso a conocimiento adicional no validado. Adicionalmente se aplican dos controles complementarios: (a) plantillas de prompt estructurado con campos obligatorios (dato, modelo, score, umbral, explicación SHAP, fuente recuperada), y (b) validación posterior del reporte contra los vectores SHAP de entrada para detectar discrepancias numéricas. Este diseño permite que cada afirmación del reporte pueda trazarse hasta una fuente, score, umbral o variable explicativa.
 
@@ -765,10 +765,10 @@ La integración de IA en supervisión operativa plantea el problema de la confia
 
 La arquitectura propuesta se divide en cuatro módulos secuenciales, diseñados para maximizar trazabilidad, interpretabilidad y utilidad operativa en procesos agroexportadores:
 
-- **Módulo de Predicción Tabular (Capa 1):** Utiliza algoritmos GBDT como núcleo predictivo, priorizando XGBoost (Chen & Guestrin, 2016) y LightGBM (Ke et al., 2017) por su robustez ante datos tabulares con variables heterogéneas (Grinsztajn et al., 2022). El módulo puede estimar valores esperados de precio, volumen, merma o riesgo operativo.
-- **Módulo de Detección de Anomalías (Capa 2):** Emplea detectores como Isolation Forest (Liu et al., 2008), LOF (Breunig et al., 2000) y ECOD (Li et al., 2022), orquestados mediante PyOD (Zhao et al., 2019), para identificar comportamientos atípicos en variables agroexportadoras. Se selecciona ECOD sobre Deep SVDD (Ruff et al., 2018) —considerado en la revisión bibliográfica del Capítulo II— por tres razones: (a) ECOD no requiere ajuste de hiperparámetros, lo cual elimina el riesgo de sobreajuste en la calibración; (b) su fundamento basado en funciones de distribución empírica acumulada es interpretable estadísticamente para auditores, mientras que Deep SVDD opera sobre representaciones latentes opacas; y (c) su complejidad computacional es lineal, apropiada para el tamaño medio del dataset experimental (2,000–5,000 registros). Deep SVDD se mantiene como referencia conceptual del Capítulo II por su valor histórico, pero no entra al ensemble final.
-- **Módulo de Explicabilidad (Capa 3):** SHAP (Lundberg & Lee, 2017) genera explicaciones locales por alerta, identificando qué variables —precio, volumen, clima, destino, cumplimiento o merma— contribuyen al score del sistema.
-- **Módulo de Reportes LLM+RAG (Capa 4):** Un LLM restringido a evidencias estructuradas mediante RAG (Schneider et al., 2025) redacta reportes operativos trazables. El LLM no decide si existe una anomalía; solo traduce scores, umbrales y explicaciones SHAP a lenguaje comprensible.
+- **Módulo de Predicción Tabular (Capa 1):** Utiliza algoritmos GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) como núcleo predictivo, priorizando XGBoost (Chen & Guestrin, 2016) y LightGBM (Ke et al., 2017) por su robustez ante datos tabulares con variables heterogéneas (Grinsztajn et al., 2022). El módulo puede estimar valores esperados de precio, volumen, merma o riesgo operativo.
+- **Módulo de Detección de Anomalías (Capa 2):** Emplea detectores como Isolation Forest (Liu et al., 2008), LOF (Local Outlier Factor - Factor de Anomalía Local) (Breunig et al., 2000) y ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) (Li et al., 2022), orquestados mediante PyOD (Zhao et al., 2019), para identificar comportamientos atípicos en variables agroexportadoras. Se selecciona ECOD sobre Deep SVDD (Ruff et al., 2018) —considerado en la revisión bibliográfica del Capítulo II— por tres razones: (a) ECOD no requiere ajuste de hiperparámetros, lo cual elimina el riesgo de sobreajuste en la calibración; (b) su fundamento basado en funciones de distribución empírica acumulada es interpretable estadísticamente para auditores, mientras que Deep SVDD opera sobre representaciones latentes opacas; y (c) su complejidad computacional es lineal, apropiada para el tamaño medio del dataset experimental (2,000–5,000 registros). Deep SVDD se mantiene como referencia conceptual del Capítulo II por su valor histórico, pero no entra al ensemble final.
+- **Módulo de Explicabilidad (Capa 3):** SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) (Lundberg & Lee, 2017) genera explicaciones locales por alerta, identificando qué variables —precio, volumen, clima, destino, cumplimiento o merma— contribuyen al score del sistema.
+- **Módulo de Reportes LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (Capa 4):** Un LLM restringido a evidencias estructuradas mediante RAG (Schneider et al., 2025) redacta reportes operativos trazables. El LLM no decide si existe una anomalía; solo traduce scores, umbrales y explicaciones SHAP a lenguaje comprensible.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -785,7 +785,7 @@ La arquitectura propuesta se divide en cuatro módulos secuenciales, diseñados 
                          ↑
 ┌─────────────────────────────────────────────────────────┐
 │ CAPA 2: Detección de Anomalías (Ensemble)              │
-│ Métodos: IF + LOF + ECOD (PyOD)                        │
+│ Métodos: IF (Isolation Forest - Bosque de Aislamiento) + LOF + ECOD (PyOD)                        │
 │ Salida: score anomalía + método que detectó            │
 └─────────────────────────────────────────────────────────┘
                          ↑
@@ -809,7 +809,7 @@ Para validar la robustez del sistema sin depender obligatoriamente de datos priv
 
 ### 3.3.1 Métricas por variable dependiente
 
-- **Métricas de predicción y detección (VD1)**: PR-AUC (métrica principal para datasets desbalanceados), ROC-AUC, F1-Score, Precision y Recall con umbral óptimo determinado por el punto de máxima F1 sobre el conjunto de validación.
+- **Métricas de predicción y detección (VD1)**: PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) (métrica principal para datasets desbalanceados), ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), F1-Score (Medida Armónica de Precisión y Exhaustividad), Precision y Recall con umbral óptimo determinado por el punto de máxima F1 sobre el conjunto de validación.
 - **Métricas de explicabilidad (VD2)**: cobertura top-k SHAP (porcentaje de alertas en las que las k=5 variables principales explican ≥80% de la magnitud absoluta del score), consistencia cualitativa de variables explicativas y claridad operativa (Likert 1–5 evaluada por revisores con perfil agroexportador).
 - **Métricas de calidad de reportes (VD3)**: rúbrica operativa de cinco dimensiones (completitud, consistencia numérica, accionabilidad, coherencia textual, correspondencia con evidencias) evaluada por dos revisores independientes con cálculo de Kappa de Cohen para confiabilidad inter-evaluador. Adicionalmente ROUGE-1/ROUGE-L cuando exista referencia humana.
 - **Métricas de comprensión y decisión (VD4)**: tiempo-a-decisión (segundos, medido automáticamente desde la apertura de la alerta hasta el envío del veredicto del evaluador), comprensión de alerta (Likert 1–5) y decisión final correcta (sí/no respecto a la etiqueta del dataset).
@@ -904,12 +904,12 @@ Esta sección presenta las métricas obtenidas por el módulo de predicción tab
 
 ### 4.1.1 Tabla 4.1 — Rendimiento de detección (Experimento E1)
 
-| Método | PR-AUC | ROC-AUC | F1 | Precision | Recall | Tiempo inferencia |
+| Método | PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) | ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor) | F1 | Precision | Recall | Tiempo inferencia |
 |---|---|---|---|---|---|---|
 | Isolation Forest individual (baseline B1) | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
-| LOF individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
-| ECOD individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
-| Ensemble IF + LOF (B2) | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
+| LOF (Local Outlier Factor - Factor de Anomalía Local) individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
+| ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
+| Ensemble IF (Isolation Forest - Bosque de Aislamiento) + LOF (B2) | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
 | **Ensemble IF + LOF + ECOD (propuesto)** | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
 | XGBoost supervisado (B3 — upper bound) | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
 
@@ -929,7 +929,7 @@ Esta sección presenta las métricas obtenidas por el módulo de predicción tab
 
 ### 4.2.1 Tabla 4.3 — Calidad de explicabilidad (Experimento E2)
 
-| Métrica | Sistema con SHAP | Sistema sin SHAP | p-value (Mann-Whitney U) |
+| Métrica | Sistema con SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) | Sistema sin SHAP | p-value (Mann-Whitney U) |
 |---|---|---|---|
 | Cobertura top-3 (mediana) | _pendiente_ | N/A | — |
 | Cobertura top-5 (mediana) | _pendiente_ | N/A | — |
@@ -938,7 +938,7 @@ Esta sección presenta las métricas obtenidas por el módulo de predicción tab
 
 ### 4.2.2 Tabla 4.4 — Calidad de reportes generados (Experimento E3)
 
-| Dimensión | LLM + RAG (propuesto) | LLM libre (control) | Kappa Cohen | p-value |
+| Dimensión | LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) + RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (propuesto) | LLM libre (control) | Kappa Cohen | p-value |
 |---|---|---|---|---|
 | Completitud | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
 | Consistencia numérica | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
@@ -997,7 +997,7 @@ La Tabla 4.8 sitúa el rendimiento del sistema propuesto frente a los cinco trab
 
 | Atributo | Esta tesis | AuditCopilot (Kadir et al., 2025) | Park (2024) | AuditMAI (Waltersdorfer et al., 2024) | Almalki & Masud (2025) / JRFM (2025) |
 |---|---|---|---|---|---|
-| Predicción tabular GBDT | XGBoost + LightGBM | No reportada | No (solo LLMs) | No | Stacking GBDT |
+| Predicción tabular GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) | XGBoost + LightGBM | No reportada | No (solo LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño)) | No | Stacking GBDT |
 | Ensemble de detección | IF + LOF + ECOD | Parcial | No | No | No |
 | Explicabilidad SHAP estructurada | TreeSHAP top-k | No | No | No | SHAP |
 | Generación LLM bajo RAG | RAG anclado en SHAP | LLM libre | Multi-agente | No | No |
@@ -1111,11 +1111,11 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 ## 5.2 Limitaciones de la Investigación
 
-*(Abordar: limitaciones del dataset sintético agroexportador; granularidad y disponibilidad de fuentes públicas; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs actuales en precisión de cálculo aritmético (Maynez et al., 2026)).*
+*(Abordar: limitaciones del dataset sintético agroexportador; granularidad y disponibilidad de fuentes públicas; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) actuales en precisión de cálculo aritmético (Maynez et al., 2026)).*
 
 ## 5.3 Trabajos Futuros
 
-*(Propuestas: integración de GraphRAG para recuperación semántica más rica sobre conocimiento agroexportador; extensión del ensemble con ECOD (Li et al., 2022) y modelos de concept drift para supervisión en stream; exploración de Chronos (Ansari et al., 2024) para forecasting de horizonte largo; prueba piloto en una empresa agroexportadora peruana; evaluación de sesgos y limitaciones según Datasheets for Datasets (Gebru et al., 2021)).*
+*(Propuestas: integración de GraphRAG para recuperación semántica más rica sobre conocimiento agroexportador; extensión del ensemble con ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) (Li et al., 2022) y modelos de concept drift para supervisión en stream; exploración de Chronos (Ansari et al., 2024) para forecasting de horizonte largo; prueba piloto en una empresa agroexportadora peruana; evaluación de sesgos y limitaciones según Datasheets for Datasets (Gebru et al., 2021)).*
 
 ---
 
@@ -1138,9 +1138,9 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 *(Por completar con los resultados finales de la investigación. Estructura sugerida:)*
 
-1. *(Conclusión sobre el gap cerrado: el sistema integrado de cuatro capas constituye la primera propuesta académica en el Perú que unifica predicción GBDT, detección de anomalías ensemble, explicabilidad SHAP y generación de reportes LLM+RAG con trazabilidad regulatoria verificable para el contexto agroexportador.)*
+1. *(Conclusión sobre el gap cerrado: el sistema integrado de cuatro capas constituye la primera propuesta académica en el Perú que unifica predicción GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente), detección de anomalías ensemble, explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) y generación de reportes LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) con trazabilidad regulatoria verificable para el contexto agroexportador.)*
 
-2. *(Conclusión sobre métricas alcanzadas: los objetivos específicos OE1–OE5 fueron alcanzados según las métricas definidas — PR-AUC ≥ 0.92, SHAP Coverage ≥ 70%, ROUGE-1 ≥ 0.50, reducción tiempo-a-decisión ≥ 30%...)*
+2. *(Conclusión sobre métricas alcanzadas: los objetivos específicos OE1–OE5 fueron alcanzados según las métricas definidas — PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) ≥ 0.92, SHAP Coverage ≥ 70%, ROUGE-1 ≥ 0.50, reducción tiempo-a-decisión ≥ 30%...)*
 
 3. *(Conclusión sobre validación de hipótesis H1a–H1d.)*
 
@@ -1172,7 +1172,7 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 # RECOMENDACIONES
 
-1. **Para implementadores**: Se recomienda iniciar el despliegue del sistema con el módulo de predicción GBDT y el módulo de explicabilidad SHAP antes de integrar el componente LLM+RAG, siguiendo el principio de implementación incremental que reduce la deuda técnica (Sculley et al., 2015) y permite validar cada capa de forma independiente.
+1. **Para implementadores**: Se recomienda iniciar el despliegue del sistema con el módulo de predicción GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) y el módulo de explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) antes de integrar el componente LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación), siguiendo el principio de implementación incremental que reduce la deuda técnica (Sculley et al., 2015) y permite validar cada capa de forma independiente.
 
 2. **Para empresas agroexportadoras**: Antes de adoptar el sistema en producción, se recomienda elaborar Datasheets for Datasets (Gebru et al., 2021) para todos los datasets de entrenamiento y Model Cards (Mitchell et al., 2019) para los modelos XGBoost, detectores de anomalías y LLM+RAG.
 
@@ -1194,19 +1194,19 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 **ADBench** (*Anomaly Detection Benchmark*): Benchmark sistemático para evaluación comparativa de algoritmos de detección de anomalías, propuesto por Han et al. (2022), que cubre 57 datasets y 30 algoritmos bajo tres niveles de supervisión.
 
-**Alucinación (LLM)**: Fenómeno en el que un modelo de lenguaje genera texto coherente en forma pero incorrecto en contenido, incluyendo afirmaciones factuales erróneas, citas inexistentes o cifras fabricadas.
+**Alucinación (LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño))**: Fenómeno en el que un modelo de lenguaje genera texto coherente en forma pero incorrecto en contenido, incluyendo afirmaciones factuales erróneas, citas inexistentes o cifras fabricadas.
 
 **AUC-PR** (*Area Under the Precision-Recall Curve*): Métrica de evaluación para clasificadores en datasets desbalanceados; a diferencia de AUC-ROC, es sensible a la distribución de clases y penaliza los falsos positivos de forma más relevante en contextos de fraude y anomalías raras.
 
 **BAF Benchmark** (*Bank Account Fraud*): Dataset tabular de referencia para fraude bancario con drift temporal y desbalance de clases, publicado por Jesus et al. (2022). En esta tesis se considera únicamente como benchmark metodológico complementario para evaluar robustez tabular, no como validación directa del dominio agroexportador.
 
-**CatBoost**: Algoritmo GBDT desarrollado por Yandex (Prokhorenkova et al., 2018) que resuelve el problema de target leakage en variables categóricas mediante Ordered Boosting.
+**CatBoost**: Algoritmo GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) desarrollado por Yandex (Prokhorenkova et al., 2018) que resuelve el problema de target leakage en variables categóricas mediante Ordered Boosting.
 
 **Concept Drift**: Cambio en la distribución estadística de los datos a lo largo del tiempo que degrada el rendimiento de modelos entrenados con datos históricos; particularmente relevante en detección de fraude y anomalías operativas.
 
 **Deep SVDD** (*Deep Support Vector Data Description*): Método de detección de anomalías basado en redes neuronales que aprende una hipersfera mínima en el espacio latente que contiene los datos normales (Ruff et al., 2018).
 
-**ECOD** (*Empirical Cumulative distribution functions Outlier Detection*): Detector de anomalías sin parámetros basado en distribuciones empíricas acumuladas (Li et al., 2022), notable por su ausencia de hiperparámetros a calibrar.
+**ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica)** (*Empirical Cumulative distribution functions Outlier Detection*): Detector de anomalías sin parámetros basado en distribuciones empíricas acumuladas (Li et al., 2022), notable por su ausencia de hiperparámetros a calibrar.
 
 **EU AI Act** (*Reglamento (UE) 2024/1689*): Reglamento europeo de inteligencia artificial que clasifica los sistemas de IA por nivel de riesgo y establece obligaciones de transparencia y explicabilidad en el Artículo 13 para sistemas de alto riesgo.
 
@@ -1218,23 +1218,23 @@ Los resultados de este capítulo deben interpretarse considerando:
 
 **LLM** (*Large Language Model*): Modelo de lenguaje de gran tamaño entrenado en corpus masivos de texto para aprender distribuciones probabilísticas sobre secuencias de tokens, capaz de realizar tareas de generación, resumen y razonamiento en lenguaje natural.
 
-**LOF** (*Local Outlier Factor*): Detector de anomalías basado en densidad local relativa (Breunig et al., 2000) que cuantifica el grado de anomalía de un punto comparando su densidad con la de sus vecinos k-NN.
+**LOF (Local Outlier Factor - Factor de Anomalía Local)** (*Local Outlier Factor*): Detector de anomalías basado en densidad local relativa (Breunig et al., 2000) que cuantifica el grado de anomalía de un punto comparando su densidad con la de sus vecinos k-NN.
 
 **MLOps** (*Machine Learning Operations*): Conjunto de prácticas para gestionar el ciclo de vida completo de modelos ML en producción, incluyendo CI/CD, monitoreo de drift, automatización de reentrenamiento y trazabilidad de versiones.
 
 **NIST AI RMF**: Framework de gestión de riesgo para sistemas de IA publicado por el Instituto Nacional de Estándares y Tecnología de EE.UU. (2023), organizado en cuatro funciones: Govern, Map, Measure y Manage.
 
-**PR-AUC**: Ver AUC-PR.
+**PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad)**: Ver AUC-PR.
 
 **PyOD** (*Python Outlier Detection*): Librería de Python que implementa más de 40 algoritmos de detección de outliers con una API estandarizada compatible con scikit-learn (Zhao et al., 2019).
 
-**RAG** (*Retrieval-Augmented Generation*): Arquitectura para modelos de lenguaje que separa el conocimiento factual del modelo generativo, recuperando documentos relevantes de una base de conocimiento externa para anclar las respuestas y mitigar alucinaciones.
+**RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación)** (*Retrieval-Augmented Generation*): Arquitectura para modelos de lenguaje que separa el conocimiento factual del modelo generativo, recuperando documentos relevantes de una base de conocimiento externa para anclar las respuestas y mitigar alucinaciones.
 
 **Resolución SBS N° 053-2023**: Resolución de la Superintendencia de Banca, Seguros y AFP del Perú que establece lineamientos de gestión de riesgos de modelos para entidades supervisadas. En esta tesis se utiliza como referencia nacional de buenas prácticas para trazabilidad, validación y monitoreo, no como obligación directa para empresas agroexportadoras.
 
 **ROUGE** (*Recall-Oriented Understudy for Gisting Evaluation*): Conjunto de métricas para evaluación automática de resúmenes y textos generados mediante comparación de superposición de n-gramas con un texto de referencia humano.
 
-**SHAP** (*SHapley Additive exPlanations*): Marco de explicabilidad post-hoc que asigna a cada feature una contribución marginal promediada sobre todas las coaliciones posibles, garantizando consistencia axiomática (Lundberg & Lee, 2017).
+**SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley)** (*SHapley Additive exPlanations*): Marco de explicabilidad post-hoc que asigna a cada feature una contribución marginal promediada sobre todas las coaliciones posibles, garantizando consistencia axiomática (Lundberg & Lee, 2017).
 
 **SHAP Stability Index**: Métrica de coherencia de explicaciones SHAP entre instancias similares, que certifica que el modelo asigna importancias consistentes a features semejantes, requisito en contextos forenses.
 
@@ -1381,7 +1381,7 @@ El experimento de usabilidad mide el impacto del sistema integrado de supervisi�
 **Tipo**: Cuasi-experimental con diseño within-subjects (apareado) y orden contrabalanceado.
 
 Cada participante ejecuta las mismas tareas en dos condiciones:
-- **Condición A — Sistema integrado**: pipeline de 4 capas con alerta + score + vector SHAP top-5 + reporte LLM+RAG.
+- **Condición A — Sistema integrado**: pipeline de 4 capas con alerta + score + vector SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) top-5 + reporte LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación).
 - **Condición B — Componentes aislados**: alerta + score crudo del detector, sin SHAP, sin reporte narrativo (solo tabla y visualización técnica).
 
 La mitad de los participantes inicia con A y la otra mitad con B, asignación aleatorizada con `np.random.seed(42)`. Entre ambas condiciones se intercala un descanso de 5 minutos y una tarea distractora (sopa de letras) para reducir efectos de arrastre.
@@ -1563,7 +1563,7 @@ El protocolo se somete a revisión del asesor de tesis (Dr. Víctor Manuel Corne
 - Autor: Yoset Cozco Mauri (UNSA)
 - Licencia del modelo entrenado: MIT
 - Citación recomendada: Cozco Mauri (2026), *Tesis UNSA*.
-- Hiperparámetros: definidos mediante Optuna TPE con 50 trials, optimizando PR-AUC.
+- Hiperparámetros: definidos mediante Optuna TPE con 50 trials, optimizando PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad).
 
 **2. Uso previsto**
 - Estimar el riesgo operativo (valor esperado de score) de cada registro agroexportador.
@@ -1576,7 +1576,7 @@ El protocolo se somete a revisión del asesor de tesis (Dr. Víctor Manuel Corne
 - Cumplimiento fitosanitario y días logísticos.
 
 **4. Métricas**
-- PR-AUC, ROC-AUC, F1, Precision, Recall.
+- PR-AUC, ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), F1, Precision, Recall.
 - Reportadas como media ± DE sobre 6 semillas en el test set.
 
 **5. Datos de evaluación**
@@ -1617,7 +1617,7 @@ Análisis por subgrupos (fairness):
 
 ---
 
-### B.2 Model Card — Módulo de Detección de Anomalías (Ensemble IF + LOF + ECOD)
+### B.2 Model Card — Módulo de Detección de Anomalías (Ensemble IF (Isolation Forest - Bosque de Aislamiento) + LOF (Local Outlier Factor - Factor de Anomalía Local) + ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica))
 
 **1. Detalles del modelo**
 - Nombre: `module2_anomaly`
@@ -1666,7 +1666,7 @@ Por tipo de anomalía inyectada:
 
 **9. Advertencias y recomendaciones**
 - Ajustar umbral según costo operativo de falsos positivos en cada empresa.
-- No usar sin la capa de explicabilidad SHAP (las alertas sin contexto generan ruido).
+- No usar sin la capa de explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) (las alertas sin contexto generan ruido).
 
 ---
 
@@ -1680,7 +1680,7 @@ Por tipo de anomalía inyectada:
 
 **2. Uso previsto**
 - Generar vectores de contribución por variable para cada alerta.
-- Alimentar la capa LLM+RAG con evidencia cuantitativa estructurada.
+- Alimentar la capa LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) con evidencia cuantitativa estructurada.
 
 **3. Factores**
 - Las mismas variables del modelo predictor; las contribuciones se reportan en la escala del logit del XGBoost.
@@ -1896,7 +1896,7 @@ Generación prevista: 2026-05-31 a 2026-06-01.
 El dataset v1.0 se publica sin preprocesamiento adicional. El script de pipeline (`src/pipeline.py`) aplica:
 1. Imputación de valores faltantes (mediana para numéricas, moda para categóricas).
 2. Codificación one-hot de variables categóricas.
-3. Escalamiento StandardScaler para variables numéricas (solo para LOF; XGBoost no lo requiere).
+3. Escalamiento StandardScaler para variables numéricas (solo para LOF (Local Outlier Factor - Factor de Anomalía Local); XGBoost no lo requiere).
 4. Construcción de features derivadas: `temperatura_rango = temperatura_max_c - temperatura_min_c`, `precio_unitario_zscore` por producto.
 
 **¿Los datos crudos se conservan?**

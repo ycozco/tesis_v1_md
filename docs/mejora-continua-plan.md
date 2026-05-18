@@ -43,9 +43,9 @@ Este documento establece un framework sistemático de mejora continua (PDCA: Pla
 ### Ciclo PDCA #2: Preparación Técnica (Semana 2-3)
 
 **PLAN**:
-- [ ] Setup ambiente: Python 3.9, libs (XGBoost, SHAP, scikit-learn, torch)
+- [ ] Setup ambiente: Python 3.9, libs (XGBoost, SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), scikit-learn, torch)
 - [ ] Descargar BAF Benchmark, exploración inicial (EDA)
-- [ ] Validar acceso a LLM API o modelo local
+- [ ] Validar acceso a LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) API o modelo local
 - [ ] Prototipo minimal: XGBoost en BAF, precision/recall básico
 
 **DO**:
@@ -80,7 +80,7 @@ Este documento establece un framework sistemático de mejora continua (PDCA: Pla
 ### Ciclo PDCA #3: Ensemble Anomalías (Semana 3-4)
 
 **PLAN**:
-- [ ] Implementar 3 detectores: IF, LOF, Deep SVDD
+- [ ] Implementar 3 detectores: IF (Isolation Forest - Bosque de Aislamiento), LOF (Local Outlier Factor - Factor de Anomalía Local), Deep SVDD
 - [ ] Diseñar voting/stacking ensemble
 - [ ] Validar robustez contra múltiples tipos de anomalías
 
@@ -151,7 +151,7 @@ Este documento establece un framework sistemático de mejora continua (PDCA: Pla
 **ACT**:
 - [ ] Si coherencia <80%: revisar feature engineering
 - [ ] Si latencia >5s: usar approximation methods (TreeSHAP optimizado)
-- [ ] Si OK: proceder LLM+RAG (Ciclo 5)
+- [ ] Si OK: proceder LLM+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (Ciclo 5)
 
 ---
 
@@ -425,7 +425,7 @@ Este documento establece un framework sistemático de mejora continua (PDCA: Pla
 - [ ] Nuevas arquitecturas, datasets, métodos
 
 **OPCIONES**:
-1. **Deep Learning Tabular**: Probar TabNet [ref] vs. GBDT
+1. **Deep Learning Tabular**: Probar TabNet [ref] vs. GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)
 2. **Temporal Modeling**: Incorporar TFT [10] para forecasting comportamiento
 3. **Federated Learning**: Multi-bank collaboration sin compartir datos
 4. **Explainability++**: Contrastive explanations ("por qué NO es fraude")

@@ -102,9 +102,9 @@ El plan de 2026-05-15 se enfocó en redacción. La tesis **ya está escrita** en
 #### Componentes de implementación (nueva categoría — bloqueo principal)
 - [ ] Dataset sintético `data/dataset_agro_sintetico.csv` (800–2000 registros)
 - [ ] `src/module1_prediction.py` — XGBoost + LightGBM
-- [ ] `src/module2_anomaly.py` — IF + LOF + ECOD vía PyOD
+- [ ] `src/module2_anomaly.py` — IF (Isolation Forest - Bosque de Aislamiento) + LOF (Local Outlier Factor - Factor de Anomalía Local) + ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) vía PyOD
 - [ ] `src/module3_shap.py` — TreeSHAP + top-k
-- [ ] `src/module4_rag.py` — LLM + RAG + prompt
+- [ ] `src/module4_rag.py` — LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) + RAG + prompt
 - [ ] `src/pipeline.py` — integración de las 4 capas
 - [ ] `src/evaluate.py` — métricas E1–E5
 
@@ -150,7 +150,7 @@ El plan de 2026-05-15 se enfocó en redacción. La tesis **ya está escrita** en
 | 3 | **Metodológica** | Reproducibilidad, métricas, Model Cards | 8 | ✅ 62% |
 | 4 | **Documentación de Datos** | Datasheets, sesgos conocidos, licencias | 7 | ✅ 57% |
 | 5 | **Gobernanza + Regulación** | SBS N° 053, DS-115-PCM, EU AI Act | 6 | ✅ 17% |
-| 6 | **Explicabilidad** | SHAP, incertidumbre, anti-alucinación | 6 | ✅ 0% |
+| 6 | **Explicabilidad** | SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), incertidumbre, anti-alucinación | 6 | ✅ 0% |
 | 7 | **Ética y Sesgo** | 🆕 Fairness, desempeño por subgrupos | 6 | ✅ 0% |
 | 8 | **Web/Usabilidad** | Interfaz, documentación, accesibilidad | 6 | ✅ 33% |
 
@@ -352,7 +352,7 @@ Se proponen **7 antecedentes** distribuidos: 3 internacionales directos, 2 inter
 
 **Referencia APA**: Kadir, M. A., et al. (2025). AuditCopilot: Large language models in accounting audit. [Verificar venue — probablemente arXiv preprint].
 
-**Objetivo**: Desarrollar un sistema de auditoría contable que integre modelos de lenguaje de gran tamaño (LLMs) con detección de anomalías en asientos contables de doble entrada.
+**Objetivo**: Desarrollar un sistema de auditoría contable que integre LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) con detección de anomalías en asientos contables de doble entrada.
 
 **Metodología**: El sistema implementa un pipeline de tres etapas: (1) detección de irregularidades en asientos contables mediante clasificadores supervisados, (2) interpretación contextual mediante un LLM fine-tuned en terminología contable, y (3) generación de explicaciones en lenguaje natural para auditores. Se evalúa en un corpus de asientos contables sintéticos y reales (bajo confidencialidad).
 
@@ -393,7 +393,7 @@ Se proponen **7 antecedentes** distribuidos: 3 internacionales directos, 2 inter
 
 **Metodología**: Se implementa un Stacking Ensemble de tres capas: XGBoost + LightGBM + CatBoost como modelos base, con un meta-clasificador de regresión logística. La explicabilidad se evalúa mediante SHAP Stability Index para medir coherencia de las explicaciones entre instancias similares. El experimento se realiza sobre datos de estados financieros con etiquetas de fraude.
 
-**Resultados**: El ensemble alcanza PR-AUC = 0.93 y F1-Score = 0.83 en la detección de fraude financiero, superando a TabNet (Arik & Pfister, 2021 [A05]) y FT-Transformer (Gorishniy et al., 2021 [A04]). El SHAP Stability Index = 0.87 confirma la coherencia forense de las explicaciones.
+**Resultados**: El ensemble alcanza PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) = 0.93 y F1-Score (Medida Armónica de Precisión y Exhaustividad) = 0.83 en la detección de fraude financiero, superando a TabNet (Arik & Pfister, 2021 [A05]) y FT-Transformer (Gorishniy et al., 2021 [A04]). El SHAP Stability Index = 0.87 confirma la coherencia forense de las explicaciones.
 
 **Relevancia para esta tesis**: Este trabajo valida empíricamente la superioridad del Stacking Ensemble de GBDT con SHAP sobre alternativas de Deep Learning para datos financieros. Sus resultados respaldan directamente la elección arquitectónica de esta tesis.
 
@@ -521,7 +521,7 @@ El Estado del Arte se organiza como una argumentación progresiva que conduce al
 >
 > Sin embargo, existe evidencia sustancial de que usar LLMs como detectores o tomadores de decisiones en contextos financieros introduce riesgos inaceptables. La literatura sobre alucinaciones en LLMs ([G10], 2026) documenta una taxonomía de errores en los que el modelo genera razonamiento financiero coherente en forma pero matemáticamente incorrecto en contenido. Barclays Research (2025 [G05]) identifica específicamente que LLMs en finanzas pueden producir "alucinaciones numéricas" —valores específicos de métricas, porcentajes o fechas que no corresponden a los datos reales— con alta confianza aparente. El BIS Financial Stability Institute (Prenio & Yong, 2024 [G04]) señala que los reguladores de referencia (FINMA, OCC, MAS) exigen que los sistemas de IA financiera sean explicables en cada decisión individual, condición que los LLMs de caja negra no cumplen.
 >
-> La respuesta arquitectónica de esta tesis es la separación estricta de responsabilidades: los modelos deterministas (GBDT, Isolation Forest, SHAP) realizan la detección y cuantificación, mientras el LLM actúa exclusivamente como capa de traducción narrativa mediante Retrieval-Augmented Generation (RAG). Como Schneider et al. (2025 [E05]) documentan, el framework RAG permite anclar las respuestas del LLM a bases de conocimiento verificadas, eliminando el espacio de alucinación al forzar al modelo a citar evidencia. El LLM no infiere anomalías; las narra con los valores SHAP deterministas como fundamento. Esto cumple con los requisitos del Art. 13 del EU AI Act (Parlamento Europeo, 2024 [G03]) y la Resolución SBS N° 053-2023 (SBS, 2023 [G01]).
+> La respuesta arquitectónica de esta tesis es la separación estricta de responsabilidades: los modelos deterministas (GBDT, Isolation Forest, SHAP) realizan la detección y cuantificación, mientras el LLM actúa exclusivamente como capa de traducción narrativa mediante RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación). Como Schneider et al. (2025 [E05]) documentan, el framework RAG permite anclar las respuestas del LLM a bases de conocimiento verificadas, eliminando el espacio de alucinación al forzar al modelo a citar evidencia. El LLM no infiere anomalías; las narra con los valores SHAP deterministas como fundamento. Esto cumple con los requisitos del Art. 13 del EU AI Act (Parlamento Europeo, 2024 [G03]) y la Resolución SBS N° 053-2023 (SBS, 2023 [G01]).
 
 **Citas clave**: E01, E02, E04, E05, G03, G04, G05, G10, G01
 **Diferenciadores**: Esta arquitectura de separación es única en la literatura — ninguno de los competidores (AuditCopilot, Park 2024) la implementa con esta justificación regulatoria.
@@ -576,7 +576,7 @@ La sección de Bases Teóricas desarrolla los fundamentos conceptuales de cada m
 
 ---
 
-### §2.3.1 Gradient Boosting Decision Trees (GBDT)
+### §2.3.1 GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)
 
 **Conceptos a desarrollar** (con citas):
 - Definición de boosting y diferencia con bagging (citar: cualquier texto ML estándar + A01)
@@ -621,7 +621,7 @@ La sección de Bases Teóricas desarrolla los fundamentos conceptuales de cada m
 
 ---
 
-### §2.3.4 Explicabilidad (XAI) y Valores de Shapley
+### §2.3.4 Explicabilidad (XAI (Explainable Artificial Intelligence - Inteligencia Artificial Explicable)) y Valores de Shapley
 
 **Conceptos a desarrollar**:
 - Taxonomía XAI: modelo-agnóstico vs. específico, local vs. global, post-hoc vs. inherente

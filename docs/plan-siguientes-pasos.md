@@ -18,7 +18,7 @@
 | S1 | 2026-05-17 a 2026-05-23 | Verificación regulatoria + ejecución dataset | (a) Textos SBS/PCM verificados, (b) `data/dataset_agro_sintetico_v1.csv` generado | ⏳ En curso |
 | S2 | 2026-05-24 a 2026-05-30 | Búsqueda sistemática gap claim + módulo 1 | (a) `busqueda-sistematica-gap.md` cerrado, (b) `src/module1_prediction.py` funcional | ⏳ |
 | S3 | 2026-05-31 a 2026-06-06 | Módulo 2 + Optuna tuning | (a) `src/module2_anomaly.py`, (b) hiperparámetros documentados | ⏳ |
-| S4 | 2026-06-07 a 2026-06-13 | Módulo 3 (SHAP) + Módulo 4 (LLM+RAG) | (a) `src/module3_shap.py`, (b) `src/module4_rag.py` | ⏳ |
+| S4 | 2026-06-07 a 2026-06-13 | Módulo 3 (SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley)) + Módulo 4 (LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación)) | (a) `src/module3_shap.py`, (b) `src/module4_rag.py` | ⏳ |
 | S5 | 2026-06-14 a 2026-06-20 | Pipeline integrado + experimentos E1–E5 | (a) `src/pipeline.py` + `src/evaluate.py`, (b) resultados E1–E3 | ⏳ |
 | S6 | 2026-06-21 a 2026-06-27 | Estudio de usabilidad + Cap IV completo | (a) ≥15 sesiones ejecutadas, (b) Cap IV con tablas 4.1–4.12 reales | ⏳ |
 | S7 | 2026-06-28 a 2026-07-04 | Cap V + Conclusiones + Anexos B/C cerrados | (a) `50-capitulo5.md` completo, (b) Model Cards llenadas | ⏳ |
@@ -48,7 +48,7 @@
 | # | Módulo | Archivo | Bibliotecas clave | Test mínimo |
 |---|---|---|---|---|
 | 3.1 | Predicción | `src/module1_prediction.py` | xgboost, lightgbm, optuna | Acepta CSV → produce score 0–1 por fila |
-| 3.2 | Detección anomalías | `src/module2_anomaly.py` | pyod (IF, LOF, ECOD) | Devuelve score ensemble y flag binario |
+| 3.2 | Detección anomalías | `src/module2_anomaly.py` | pyod (IF (Isolation Forest - Bosque de Aislamiento), LOF (Local Outlier Factor - Factor de Anomalía Local), ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica)) | Devuelve score ensemble y flag binario |
 | 3.3 | Explicabilidad | `src/module3_shap.py` | shap (TreeExplainer) | Devuelve vector SHAP top-5 por alerta |
 | 3.4 | Reportes LLM+RAG | `src/module4_rag.py` | anthropic, rank-bm25, sentence-transformers | Devuelve reporte markdown anclado en SHAP |
 | 3.5 | Pipeline integrado | `src/pipeline.py` | orquesta 3.1–3.4 con paso de evidencias | end-to-end sobre dataset v1.0 |
@@ -58,7 +58,7 @@
 
 | # | Experimento | Variable contrastada | Salida esperada | Sub-hipótesis |
 |---|---|---|---|---|
-| E1 | Rendimiento de detección | PR-AUC, F1 ensemble vs. baselines | Tabla 4.1 + Wilcoxon | H1a |
+| E1 | Rendimiento de detección | PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad), F1 ensemble vs. baselines | Tabla 4.1 + Wilcoxon | H1a |
 | E2 | Aporte de SHAP | Cobertura top-k + Likert | Tabla 4.3 | H1b |
 | E3 | Aporte de RAG | Rúbrica 5D + ROUGE-L | Tabla 4.4 | H1c |
 | E4 | Sistema integrado vs. aislado | Tiempo + Likert + trazabilidad | Tablas 4.5 y 4.6 | H1d + H1 |

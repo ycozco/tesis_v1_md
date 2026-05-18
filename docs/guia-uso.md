@@ -148,7 +148,7 @@ Salida:
 |---|---|---|
 | Cita parentética simple | `(Apellido, Año)` | `(Chen & Guestrin, 2016)` |
 | Cita parentética múltiple | `(A, Año; B, Año)` | `(Ji et al., 2023; Maynez et al., 2026)` |
-| Cita narrativa | `Apellido (Año) ...` | `Lundberg y Lee (2017) introducen SHAP...` |
+| Cita narrativa | `Apellido (Año) ...` | `Lundberg y Lee (2017) introducen SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley)...` |
 | Tres o más autores | `Apellido et al.` | `(Lim et al., 2021)` |
 | Norma o resolución | `(Institución, Año)` | `(SBS, 2023)`, `(PCM, 2025)` |
 | Referencia a sección interna | `§N.N` | `según §3.3.2` |

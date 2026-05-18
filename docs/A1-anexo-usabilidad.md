@@ -13,7 +13,7 @@ El experimento de usabilidad mide el impacto del sistema integrado de supervisi�
 **Tipo**: Cuasi-experimental con diseño within-subjects (apareado) y orden contrabalanceado.
 
 Cada participante ejecuta las mismas tareas en dos condiciones:
-- **Condición A — Sistema integrado**: pipeline de 4 capas con alerta + score + vector SHAP top-5 + reporte LLM+RAG.
+- **Condición A — Sistema integrado**: pipeline de 4 capas con alerta + score + vector SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) top-5 + reporte LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación).
 - **Condición B — Componentes aislados**: alerta + score crudo del detector, sin SHAP, sin reporte narrativo (solo tabla y visualización técnica).
 
 La mitad de los participantes inicia con A y la otra mitad con B, asignación aleatorizada con `np.random.seed(42)`. Entre ambas condiciones se intercala un descanso de 5 minutos y una tarea distractora (sopa de letras) para reducir efectos de arrastre.

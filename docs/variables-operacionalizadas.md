@@ -14,7 +14,7 @@
 
 | Atributo | Especificación |
 |---|---|
-| **Definición conceptual** | Configuración arquitectónica del sistema que combina o aísla los cuatro módulos (predicción tabular, detección de anomalías, explicabilidad SHAP, reporte LLM+RAG). |
+| **Definición conceptual** | Configuración arquitectónica del sistema que combina o aísla los cuatro módulos (predicción tabular, detección de anomalías, explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), reporte LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación)). |
 | **Definición operacional** | Variable categórica binaria que distingue dos condiciones experimentales: sistema integrado (todas las capas activas y comunicadas) vs. sistema con componentes aislados (cada módulo opera de manera independiente, sin paso de evidencia entre capas). |
 | **Operacionalización (valores)** | VI1 = "integrado" (pipeline de 4 capas con paso de evidencias); VI2 = "aislado" (módulos independientes con salidas técnicas separadas). |
 | **Instrumento de manipulación** | Configuración del archivo `src/pipeline.py` mediante el parámetro `mode ∈ {"integrated", "isolated"}`. |
@@ -31,7 +31,7 @@
 |---|---|
 | **Definición conceptual** | Capacidad del sistema de identificar correctamente registros anómalos minimizando falsos positivos y falsos negativos. |
 | **Definición operacional** | Conjunto de métricas estándar de clasificación binaria aplicadas sobre el conjunto de test cronológicamente posterior al training. |
-| **Indicadores y fórmulas** | (a) PR-AUC = área bajo la curva precisión-recall; (b) ROC-AUC = área bajo la curva ROC; (c) F1 = 2·(P·R)/(P+R) en el umbral óptimo; (d) Precision = TP/(TP+FP); (e) Recall = TP/(TP+FN). |
+| **Indicadores y fórmulas** | (a) PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) = área bajo la curva precisión-recall; (b) ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor) = área bajo la curva ROC; (c) F1 = 2·(P·R)/(P+R) en el umbral óptimo; (d) Precision = TP/(TP+FP); (e) Recall = TP/(TP+FN). |
 | **Métrica principal** | **PR-AUC**, por ser robusta ante desbalance de clases (~12% de anomalías). |
 | **Instrumento** | `sklearn.metrics.precision_recall_curve`, `average_precision_score`, `roc_auc_score`, `f1_score`. |
 | **Rango** | [0.0, 1.0] para todas las métricas. |

@@ -4,10 +4,10 @@
 
 Este proyecto contiene la estructura completa de una tesis de investigación sobre un **sistema integrado de auditoría continua** que combina:
 
-- 🤖 **Predicción** con GBDT (XGBoost, LightGBM)
-- 🎯 **Detección de anomalías** con ensemble (IF, LOF, Deep SVDD)
-- 📊 **Explicabilidad** con SHAP
-- 📝 **Generación de reportes** con LLM+RAG
+- 🤖 **Predicción** con GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) (XGBoost, LightGBM)
+- 🎯 **Detección de anomalías** con ensemble (IF (Isolation Forest - Bosque de Aislamiento), LOF (Local Outlier Factor - Factor de Anomalía Local), Deep SVDD)
+- 📊 **Explicabilidad** con SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley)
+- 📝 **Generación de reportes** con LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación)
 
 ---
 
@@ -184,7 +184,7 @@ python3 convert_md_to_html.py
 - 📈 Series temporales: Hyndman 2008, Taylor 2017, Oreshkin 2020 (AutoARIMA, Prophet, N-BEATS)
 - 🎯 Anomalías: Liu 2008, Breunig 2000, Ruff 2018, Han 2022 (IF, LOF, Deep SVDD, ADBench)
 - 💳 Fraude: Jesus 2022, Machado 2024, Leocádio 2024 (BAF Benchmark, revisión, auditoría IA)
-- 🤖 LLMs: Tsai 2025, Kadir 2025 (LLMs tabulares, AuditCopilot)
+- 🤖 LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño): Tsai 2025, Kadir 2025 (LLMs tabulares, AuditCopilot)
 - 🛡️ Gobernanza: NIST 2023, Gebru 2021, Mitchell 2019 (NIST RMF, Datasheets, Model Cards)
 
 **Validación**:
@@ -208,7 +208,7 @@ python3 convert_md_to_html.py
 5. OE5: Validar usabilidad: Δ tiempo ≥30%, Δ confianza ≥+1
 
 **Variables Dependientes**:
-- VD1: Rendimiento detección (ROC-AUC, F1)
+- VD1: Rendimiento detección (ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), F1)
 - VD2: Explicabilidad (coverage, coherencia)
 - VD3: Calidad reportes (ROUGE, hallucinations)
 - VD4: Usabilidad (tiempo, confianza, precisión)

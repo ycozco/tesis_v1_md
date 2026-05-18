@@ -12,10 +12,10 @@
 
 ¿Existe en la literatura académica algún trabajo previo que integre, en un mismo pipeline operativo y con evaluación empírica reproducible, los cuatro módulos siguientes aplicados a supervisión operativa agroexportadora o a un dominio análogo de monitoreo de cadenas productivas?
 
-1. Predicción tabular con GBDT validada en benchmark.
+1. Predicción tabular con GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) validada en benchmark.
 2. Detección de anomalías mediante ensemble de detectores.
-3. Explicabilidad mediante SHAP (TreeSHAP).
-4. Generación de reportes con LLM bajo restricción anti-alucinación (RAG o equivalente).
+3. Explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) (TreeSHAP).
+4. Generación de reportes con LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) bajo restricción anti-alucinación (RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) o equivalente).
 
 ---
 
@@ -68,7 +68,7 @@
 
 - Sistemas que se centran exclusivamente en mercados financieros de alta frecuencia (no comparable con el dominio agroexportador empresarial).
 - Trabajos sin evaluación empírica (puramente conceptuales o tutoriales).
-- Sistemas que usan LLMs como detectores principales (no como narradores), por no ser comparables arquitectónicamente.
+- Sistemas que usan LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) como detectores principales (no como narradores), por no ser comparables arquitectónicamente.
 - Trabajos cuyo dominio sea exclusivamente médico, vehicular o de ciberseguridad sin transferibilidad mostrada.
 
 ---
@@ -85,7 +85,7 @@
 | T6 | Patel 2024 (Patel et al., 2024) | Auditoría continua con IA | Auditoría financiera | Marco conceptual, sin pipeline implementado |
 | T7 | TabLLM (Hegselmann et al., 2023) | LLM para datos tabulares | Tabular genérico | Solo clasificación, no integrado con anomalías ni SHAP |
 | T8 | Tsai 2025 (Tsai et al., 2025) | LLM + embeddings para anomalía tabular | Tabular genérico | Sin SHAP, sin RAG anclado, sin reporte estructurado |
-| T9 | Almalki & Masud 2025 (Almalki & Masud, 2025) | Stacking GBDT + XAI | Fraude financiero | Sin LLM, sin RAG, sin contexto agroexportador |
+| T9 | Almalki & Masud 2025 (Almalki & Masud, 2025) | Stacking GBDT + XAI (Explainable Artificial Intelligence - Inteligencia Artificial Explicable) | Fraude financiero | Sin LLM, sin RAG, sin contexto agroexportador |
 
 ---
 

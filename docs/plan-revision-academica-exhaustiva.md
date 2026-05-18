@@ -29,8 +29,8 @@
 ### Avance acumulado al 2026-05-17 (ejecución del plan)
 
 - ✅ Cap I: §1.7.1 (aporte original específico), §1.9 (marco epistemológico + diseño), §1.12 (Limitaciones), §1.13 (Declaración de intereses)
-- ✅ Cap II §2.3.7: claims sobre RAG/EU AI Act matizados; agregada distinción intrínseca/extrínseca de alucinaciones
-- ✅ Cap III §3.1: nota justificando ECOD sobre Deep SVDD
+- ✅ Cap II §2.3.7: claims sobre RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación)/EU AI Act matizados; agregada distinción intrínseca/extrínseca de alucinaciones
+- ✅ Cap III §3.1: nota justificando ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) sobre Deep SVDD
 - ✅ Cap III §3.3: división temporal, semilla, diseño experimental E1–E5, pruebas estadísticas, criterios de inclusión, baselines
 - ✅ `docs/variables-operacionalizadas.md` (Hito 1) — tabla formal 7 cols × 5 VD
 - ✅ `docs/busqueda-sistematica-gap.md` — protocolo PRISMA-light + 9 trabajos identificados
@@ -75,8 +75,8 @@
 | OE1: Fuentes de datos | §3.2 | ✅ |
 | OE2: Arquitectura modular | §3.1 | ✅ |
 | OE3: Predicción y detección | §4.1 (pendiente) | 🔴 |
-| OE4: SHAP | §4.2 (pendiente) | 🔴 |
-| OE5: Reportes LLM+RAG | §4.3 (pendiente) | 🔴 |
+| OE4: SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) | §4.2 (pendiente) | 🔴 |
+| OE5: Reportes LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG | §4.3 (pendiente) | 🔴 |
 | OE6: Evaluación integrada | §4.4 (pendiente) | 🔴 |
 
 - **Acción 🔴**: Los 4 OE de implementación requieren Cap IV. Bloqueados por Hito 2 (dataset).
@@ -91,7 +91,7 @@
 ### C1.5 — Variables dependientes ↔ métricas de §3.3
 - **Criterio**: Cada VD debe aparecer con exactamente las mismas métricas en §1.5 y en §3.3.
 - **Estado**: ✅
-- **Verificación**: VD1→PR-AUC/F1, VD2→top-k SHAP/Likert, VD3→completitud/ROUGE, VD4→tiempo/Likert, VD5→% trazabilidad. Coincidentes.
+- **Verificación**: VD1→PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad)/F1, VD2→top-k SHAP/Likert, VD3→completitud/ROUGE, VD4→tiempo/Likert, VD5→% trazabilidad. Coincidentes.
 
 ### C1.6 — Alcance declarado ↔ metodología efectiva
 - **Criterio**: Lo que §1.8 (Alcance) excluye no debe aparecer como objetivo en Cap III.
@@ -190,7 +190,7 @@
 ### C2.9 — Aporte original declarado con precisión
 - **Criterio**: El aporte original debe enunciarse en una sola oración que ningún trabajo previo pueda reclamar como propio.
 - **Estado**: ✅
-- **Verificación**: El aporte se puede formular como: "Primera arquitectura integrada de 4 capas (GBDT + ensemble anomalías + SHAP + LLM-RAG con restricción anti-alucinación) evaluada sobre datos agroexportadores peruanos públicos/sintéticos con trazabilidad conforme a D.S. N°115-2025-PCM."
+- **Verificación**: El aporte se puede formular como: "Primera arquitectura integrada de 4 capas (GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) + ensemble anomalías + SHAP + LLM-RAG con restricción anti-alucinación) evaluada sobre datos agroexportadores peruanos públicos/sintéticos con trazabilidad conforme a D.S. N°115-2025-PCM."
 - **Acción**: Incluir esta formulación exacta en §1.7.1 y en el Abstract.
 
 ### C2.10 — Coherencia entre el nivel de investigación y las conclusiones esperadas
@@ -313,7 +313,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 - **Estado**: 🔴 BLOQUEADOR
 - **Acción**: Definir en §3.3:
   - **Condición experimental**: Pipeline completo (Capa 1 → Capa 2 → Capa 3 → Capa 4).
-  - **Condición de control A**: Solo detector de anomalías (IF individual) + output técnico sin SHAP ni reporte.
+  - **Condición de control A**: Solo detector de anomalías (IF (Isolation Forest - Bosque de Aislamiento) individual) + output técnico sin SHAP ni reporte.
   - **Condición de control B**: Detector + SHAP, sin reporte LLM.
   - **Condición de control C**: Detector + reporte LLM sin RAG (LLM "libre").
   - Este diseño ablativo permite aislar la contribución de cada capa.
@@ -328,7 +328,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
   - Justificación: evitar data leakage en series con estacionalidad.
 
 ### C4.4 — Métricas correctas para datos desbalanceados
-- **Criterio**: En datasets con ~10–15% de anomalías, el Accuracy no es una métrica válida. PR-AUC es preferible a ROC-AUC cuando la clase positiva es rara.
+- **Criterio**: En datasets con ~10–15% de anomalías, el Accuracy no es una métrica válida. PR-AUC es preferible a ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor) cuando la clase positiva es rara.
 - **Estado**: ✅
 - **Verificación**: §3.3 usa PR-AUC como métrica principal. Correcto.
 - **Acción**: Asegurarse de que no aparezca "Accuracy" como métrica principal en ninguna tabla de resultados de Cap IV.
@@ -392,7 +392,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 - **Brecha**: No existe benchmark agroexportador estándar. El BAF Benchmark es de fraude financiero, no agroexportador.
 - **Acción**: Diseñar la comparación de baselines de la siguiente forma:
   - **Baseline 1**: Isolation Forest individual (referencia más simple)
-  - **Baseline 2**: Isolation Forest + LOF (ensemble sin ECOD)
+  - **Baseline 2**: Isolation Forest + LOF (Local Outlier Factor - Factor de Anomalía Local) (ensemble sin ECOD)
   - **Baseline 3**: XGBoost supervisado (si hay etiquetas) — upper bound
   - Reportar en una tabla: Método | PR-AUC | AUC-ROC | F1 | Explicabilidad | Trazabilidad
 
@@ -472,7 +472,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 ### C6.4 — Definición de siglas en primera aparición
 - **Criterio**: Toda sigla debe definirse en su primera aparición en el texto principal (no en el glosario, sino en el texto).
 - **Estado**: ⚠️
-- **Verificar**: GBDT, SHAP, RAG, LLM, TFT, ROC-AUC, PR-AUC, LOF, IF, ECOD, PyOD, MLOps, XAI.
+- **Verificar**: GBDT, SHAP, RAG, LLM, TFT, ROC-AUC, PR-AUC, LOF, IF, ECOD, PyOD, MLOps, XAI (Explainable Artificial Intelligence - Inteligencia Artificial Explicable).
 - **Acción**: En `10-capitulo1.md`, verificar que cada sigla tenga su expansión la primera vez que aparece.
 
 ### C6.5 — Captions de figuras y tablas
@@ -648,7 +648,7 @@ La tabla principal del paper debe comparar:
 - **Estado**: ✅
 - **Verificación**: ADBench efectivamente concluye esto para escenarios sin etiquetas (fully unsupervised).
 
-### C9.3 — Claim sobre alucinaciones en LLMs
+### C9.3 — Claim sobre alucinaciones en LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño)
 - **Claim**: "Los LLMs pueden producir 'alucinaciones numéricas' con alta confianza aparente"
 - **Fuente**: Barclays Research (G05, arXiv 2025) + Survey (G10, arXiv 2026)
 - **Estado**: ⚠️

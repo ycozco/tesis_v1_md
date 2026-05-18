@@ -8,11 +8,11 @@ csl: apa.csl
 
 # RESUMEN
 
-Esta tesis propone un sistema integrado para auditoría continua y detección de fraude en entornos empresariales financieros, que combina predicción tabular mediante modelos GBDT (Gradient Boosting Decision Trees), detección de anomalías mediante ensemble de algoritmos, explicabilidad mediante SHAP, y generación automática de reportes con LLMs (Large Language Models) en arquitectura RAG (Retrieval-Augmented Generation).
+Esta tesis propone un sistema integrado para auditoría continua y detección de fraude en entornos empresariales financieros, que combina predicción tabular mediante modelos GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) (Gradient Boosting Decision Trees), detección de anomalías mediante ensemble de algoritmos, explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), y generación automática de reportes con LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) (Large Language Models) en arquitectura RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación).
 
 El sistema aborda una brecha identificada en la literatura: no existe una solución integrada que unifique predicción + detección + explicabilidad + generación de reportes con trazabilidad regulatoria en un único pipeline empresarial. La propuesta es evaluada usando el benchmark BAF (Bank Account Fraud) para fraude bancario realista, con métrica de calidad en reportes generados usando ROUGE y evaluación de usabilidad.
 
-Contribuciones principales: (1) arquitectura modular que separa responsabilidades por trazabilidad regulatoria (NIST AI RMF); (2) ensemble de detectores de anomalías (Isolation Forest + LOF + Deep SVDD) evaluado con ADBench; (3) integración LLM+SHAP para reportes generados automáticamente; (4) evaluación comparativa con sistemas aislados.
+Contribuciones principales: (1) arquitectura modular que separa responsabilidades por trazabilidad regulatoria (NIST AI RMF); (2) ensemble de detectores de anomalías (Isolation Forest + LOF (Local Outlier Factor - Factor de Anomalía Local) + Deep SVDD) evaluado con ADBench; (3) integración LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+SHAP para reportes generados automáticamente; (4) evaluación comparativa con sistemas aislados.
 
 Palabras clave: auditoría continua, detección de fraude, explicabilidad IA, LLMs, gobernanza, GBDT, anomalías, reportes automáticos.
 
@@ -253,7 +253,7 @@ Si existe acceso a data anonimizada de institución financiera, se usaría como 
 **Objetivo**: Evaluar que GBDT + ensemble es superior a componentes aislados.
 
 **Métrica**:
-- ROC-AUC (curva características operacionales)
+- ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor) (curva características operacionales)
 - Precisión, Recall, F1-score
 - Confusion matrix por threshold
 

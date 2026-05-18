@@ -43,9 +43,9 @@ Establecer un **marco académico riguroso** para la tesis mediante:
 
 | # | Variable | Definición Conceptual | Definición Operacional | Tipo | Estado |
 |---|----------|----------------------|------------------------|------|--------|
-| 1 | **Precisión de Predicción Tabular** | Capacidad del modelo GBDT de predecir correctamente rendimiento operativo | F1-Score = 2 × (Precisión × Recall) / (Precisión + Recall) | Métrica | ⏳ Pendiente |
-| 2 | **Tasa de Detección de Anomalías** | Proporción de anomalías reales correctamente identificadas por ensemble | PR-AUC (Precision-Recall Area Under Curve) | Métrica | ⏳ Pendiente |
-| 3 | **Explicabilidad de Decisiones** | Comprensión por supervisor sin IA de por qué modelo flagea riesgo | % de supervisores que entienden explicación SHAP (meta: 80%+) | Cualitativa | ⏳ Pendiente |
+| 1 | **Precisión de Predicción Tabular** | Capacidad del modelo GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) de predecir correctamente rendimiento operativo | F1-Score (Medida Armónica de Precisión y Exhaustividad) = 2 × (Precisión × Recall) / (Precisión + Recall) | Métrica | ⏳ Pendiente |
+| 2 | **Tasa de Detección de Anomalías** | Proporción de anomalías reales correctamente identificadas por ensemble | PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) (Precision-Recall Area Under Curve) | Métrica | ⏳ Pendiente |
+| 3 | **Explicabilidad de Decisiones** | Comprensión por supervisor sin IA de por qué modelo flagea riesgo | % de supervisores que entienden explicación SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) (meta: 80%+) | Cualitativa | ⏳ Pendiente |
 | 4 | **Equidad del Modelo (Fairness)** | Desempeño similar del modelo en PYME vs grandes exportadores | Diferencia máxima de F1-Score entre subgrupos ≤ 5% | Métrica | ⏳ Pendiente |
 | 5 | **Conformidad Regulatoria** | Trazabilidad y documentación según SBS N° 053 y DS-115 | Matriz de cumplimiento: % de requisitos satisfechos | Documental | ⏳ Pendiente |
 

@@ -365,9 +365,9 @@ Crear archivos con estructura mínima para que el servidor no devuelva 404:
 
 ## 4.1 Resultados Cuantitativos (Predicción y Detección)
 
-*(Se completará con: tabla E1 — GBDT vs. baseline, tabla E2 — detector único vs. ensemble)*
+*(Se completará con: tabla E1 — GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) vs. baseline, tabla E2 — detector único vs. ensemble)*
 
-## 4.2 Resultados Cualitativos (Generación de Reportes LLM-RAG)
+## 4.2 Resultados Cualitativos (Generación de Reportes LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)-RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación))
 
 *(Se completará con: 2-3 reportes generados + evaluación ROUGE-1)*
 

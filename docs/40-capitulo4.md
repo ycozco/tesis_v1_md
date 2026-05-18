@@ -8,12 +8,12 @@ Esta sección presenta las métricas obtenidas por el módulo de predicción tab
 
 ### 4.1.1 Tabla 4.1 — Rendimiento de detección (Experimento E1)
 
-| Método | PR-AUC | ROC-AUC | F1 | Precision | Recall | Tiempo inferencia |
+| Método | PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) | ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor) | F1 | Precision | Recall | Tiempo inferencia |
 |---|---|---|---|---|---|---|
 | Isolation Forest individual (baseline B1) | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
-| LOF individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
-| ECOD individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
-| Ensemble IF + LOF (B2) | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
+| LOF (Local Outlier Factor - Factor de Anomalía Local) individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
+| ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
+| Ensemble IF (Isolation Forest - Bosque de Aislamiento) + LOF (B2) | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
 | **Ensemble IF + LOF + ECOD (propuesto)** | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
 | XGBoost supervisado (B3 — upper bound) | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
 
@@ -33,7 +33,7 @@ Esta sección presenta las métricas obtenidas por el módulo de predicción tab
 
 ### 4.2.1 Tabla 4.3 — Calidad de explicabilidad (Experimento E2)
 
-| Métrica | Sistema con SHAP | Sistema sin SHAP | p-value (Mann-Whitney U) |
+| Métrica | Sistema con SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) | Sistema sin SHAP | p-value (Mann-Whitney U) |
 |---|---|---|---|
 | Cobertura top-3 (mediana) | _pendiente_ | N/A | — |
 | Cobertura top-5 (mediana) | _pendiente_ | N/A | — |
@@ -42,7 +42,7 @@ Esta sección presenta las métricas obtenidas por el módulo de predicción tab
 
 ### 4.2.2 Tabla 4.4 — Calidad de reportes generados (Experimento E3)
 
-| Dimensión | LLM + RAG (propuesto) | LLM libre (control) | Kappa Cohen | p-value |
+| Dimensión | LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) + RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (propuesto) | LLM libre (control) | Kappa Cohen | p-value |
 |---|---|---|---|---|
 | Completitud | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
 | Consistencia numérica | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ |
@@ -101,7 +101,7 @@ La Tabla 4.8 sitúa el rendimiento del sistema propuesto frente a los cinco trab
 
 | Atributo | Esta tesis | AuditCopilot (Kadir et al., 2025) | Park (2024) | AuditMAI (Waltersdorfer et al., 2024) | Almalki & Masud (2025) / JRFM (2025) |
 |---|---|---|---|---|---|
-| Predicción tabular GBDT | XGBoost + LightGBM | No reportada | No (solo LLMs) | No | Stacking GBDT |
+| Predicción tabular GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) | XGBoost + LightGBM | No reportada | No (solo LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño)) | No | Stacking GBDT |
 | Ensemble de detección | IF + LOF + ECOD | Parcial | No | No | No |
 | Explicabilidad SHAP estructurada | TreeSHAP top-k | No | No | No | SHAP |
 | Generación LLM bajo RAG | RAG anclado en SHAP | LLM libre | Multi-agente | No | No |

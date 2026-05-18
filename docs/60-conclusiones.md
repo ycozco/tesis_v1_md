@@ -11,9 +11,9 @@
 
 *(Por completar con los resultados finales de la investigación. Estructura sugerida:)*
 
-1. *(Conclusión sobre el gap cerrado: el sistema integrado de cuatro capas constituye la primera propuesta académica en el Perú que unifica predicción GBDT, detección de anomalías ensemble, explicabilidad SHAP y generación de reportes LLM+RAG con trazabilidad regulatoria verificable para el contexto agroexportador.)*
+1. *(Conclusión sobre el gap cerrado: el sistema integrado de cuatro capas constituye la primera propuesta académica en el Perú que unifica predicción GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente), detección de anomalías ensemble, explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) y generación de reportes LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) con trazabilidad regulatoria verificable para el contexto agroexportador.)*
 
-2. *(Conclusión sobre métricas alcanzadas: los objetivos específicos OE1–OE5 fueron alcanzados según las métricas definidas — PR-AUC ≥ 0.92, SHAP Coverage ≥ 70%, ROUGE-1 ≥ 0.50, reducción tiempo-a-decisión ≥ 30%...)*
+2. *(Conclusión sobre métricas alcanzadas: los objetivos específicos OE1–OE5 fueron alcanzados según las métricas definidas — PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) ≥ 0.92, SHAP Coverage ≥ 70%, ROUGE-1 ≥ 0.50, reducción tiempo-a-decisión ≥ 30%...)*
 
 3. *(Conclusión sobre validación de hipótesis H1a–H1d.)*
 

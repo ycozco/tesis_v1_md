@@ -34,7 +34,7 @@ En escenarios donde una empresa agroexportadora integra datos de producción, pr
 
 - ¿Qué variables operativas, climáticas, comerciales y fitosanitarias pueden utilizarse para caracterizar el comportamiento normal y anómalo de procesos agroexportadores peruanos?
 - ¿Qué arquitectura de inteligencia artificial permite integrar predicción tabular, detección de anomalías, explicabilidad y generación de reportes en un flujo operativo trazable?
-- ¿De qué manera la explicabilidad mediante SHAP contribuye a que supervisores operativos comprendan las causas probables de una alerta?
+- ¿De qué manera la explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) contribuye a que supervisores operativos comprendan las causas probables de una alerta?
 - ¿Cómo generar reportes automáticos que sean comprensibles, accionables y trazables sin permitir que el modelo de lenguaje tome decisiones o invente información?
 - ¿Cómo evaluar si el sistema integrado mejora la trazabilidad, comprensión de alertas y tiempo de decisión frente al uso de componentes aislados?
 
@@ -54,7 +54,7 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 
 4. **Explicabilidad verificable**: Integrar SHAP (Lundberg & Lee, 2017) para identificar las variables que más contribuyen a cada alerta generada por el sistema.
 
-5. **Generación de reportes trazables**: Diseñar un componente LLM+RAG que redacte explicaciones operativas basadas exclusivamente en evidencias estructuradas del sistema.
+5. **Generación de reportes trazables**: Diseñar un componente LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) que redacte explicaciones operativas basadas exclusivamente en evidencias estructuradas del sistema.
 
 6. **Evaluación integrada**: Evaluar el sistema integrado mediante métricas técnicas, trazabilidad documental y prueba de comprensión/tiempo de decisión con usuarios o evaluadores simulados.
 
@@ -82,7 +82,7 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 ### 1.5.2 Variables Dependientes
 
 **VD1: Rendimiento de detección**
-- Indicadores: ROC-AUC, Precisión, Recall, F1-Score, PR-AUC
+- Indicadores: ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), Precisión, Recall, F1-Score (Medida Armónica de Precisión y Exhaustividad), PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad)
 - Criterio de aceptación: superar el baseline individual o justificar rendimiento equivalente con mayor trazabilidad
 
 **VD2: Calidad de explicabilidad**
@@ -105,11 +105,11 @@ Diseñar, implementar y evaluar un sistema integrado de supervisión operativa b
 
 ### 1.6.1 Viabilidad Técnica
 
-**Disponibilidad de tecnologías**: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen & Guestrin, 2016) y LightGBM (Ke et al., 2017) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg & Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.
+**Disponibilidad de tecnologías**: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen & Guestrin, 2016) y LightGBM (Ke et al., 2017) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Local Outlier Factor - Factor de Anomalía Local) (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg & Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.
 
 **Datos disponibles**: Se contemplan tres niveles de datos. El primer nivel corresponde a fuentes públicas oficiales: MIDAGRI para agroexportaciones, precios y boletines sectoriales; SENAMHI para variables climáticas; SENASA para requisitos fitosanitarios; SUNAT para exportaciones; INEI para indicadores económicos; FAOSTAT y UN Comtrade para validación internacional. El segundo nivel corresponde a un dataset sintético agroexportador documentado, construido con variables operativas plausibles y etiquetas de anomalía controladas. El tercer nivel, opcional, corresponde a datos privados de una empresa agroexportadora bajo acuerdo de confidencialidad. Como referencia metodológica complementaria puede utilizarse el BAF Benchmark (Jesus et al., 2022), no como evidencia directa del dominio agroexportador, sino como benchmark tabular desbalanceado con drift temporal.
 
-**Riesgos técnicos identificados**: La latencia de SHAP en datasets grandes (>1M filas) puede mitigarse con los métodos de aproximación TreeSHAP. La variabilidad en salidas de LLMs requiere prompt engineering robusto y restricción mediante RAG. La mitigación incluye pruebas piloto en subconjuntos de datos y benchmarking iterativo.
+**Riesgos técnicos identificados**: La latencia de SHAP en datasets grandes (>1M filas) puede mitigarse con los métodos de aproximación TreeSHAP. La variabilidad en salidas de LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) requiere prompt engineering robusto y restricción mediante RAG. La mitigación incluye pruebas piloto en subconjuntos de datos y benchmarking iterativo.
 
 ### 1.6.2 Viabilidad Operativa
 
@@ -127,7 +127,7 @@ La viabilidad económica se justifica por la relevancia del sector agroexportado
 
 La revisión sistemática de la literatura revela avances importantes en modelos tabulares, detección de anomalías, explicabilidad y generación de reportes mediante LLMs. Sin embargo, estos componentes suelen estudiarse de forma aislada y en dominios distintos al agroexportador. Trabajos de auditoría financiera o fraude contable, como AuditCopilot (Kadir et al., 2025), se utilizan solo como antecedentes metodológicos sobre automatización de reportes y detección de anomalías, no como eje del dominio de aplicación. La brecha central de esta tesis es la ausencia de una arquitectura integrada y trazable para supervisión operativa agroexportadora peruana que combine fuentes públicas oficiales, datos sintéticos documentados, predicción tabular, detección de anomalías por ensemble, explicabilidad SHAP y reportes basados en evidencia bajo restricción anti-alucinación.
 
-**Aporte original específico**: Esta tesis constituye, en el conocimiento del autor (verificado mediante búsqueda sistemática documentada en `docs/busqueda-sistematica-gap.md`), la primera arquitectura integrada de cuatro capas (GBDT + ensemble Isolation Forest/LOF/ECOD + TreeSHAP + LLM-RAG con restricción anti-alucinación) evaluada sobre datos agroexportadores peruanos públicos y sintéticos, con trazabilidad documental diseñada conforme al D.S. N° 115-2025-PCM y los principios del NIST AI RMF (NIST, 2023).
+**Aporte original específico**: Esta tesis constituye, en el conocimiento del autor (verificado mediante búsqueda sistemática documentada en `docs/busqueda-sistematica-gap.md`), la primera arquitectura integrada de cuatro capas (GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) + ensemble Isolation Forest/LOF/ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) + TreeSHAP + LLM-RAG con restricción anti-alucinación) evaluada sobre datos agroexportadores peruanos públicos y sintéticos, con trazabilidad documental diseñada conforme al D.S. N° 115-2025-PCM y los principios del NIST AI RMF (NIST, 2023).
 
 Esta tesis aporta a la literatura y a la práctica profesional cuatro elementos diferenciados y verificables:
 

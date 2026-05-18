@@ -16,7 +16,7 @@
 - Autor: Yoset Cozco Mauri (UNSA)
 - Licencia del modelo entrenado: MIT
 - Citación recomendada: Cozco Mauri (2026), *Tesis UNSA*.
-- Hiperparámetros: definidos mediante Optuna TPE con 50 trials, optimizando PR-AUC.
+- Hiperparámetros: definidos mediante Optuna TPE con 50 trials, optimizando PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad).
 
 **2. Uso previsto**
 - Estimar el riesgo operativo (valor esperado de score) de cada registro agroexportador.
@@ -29,7 +29,7 @@
 - Cumplimiento fitosanitario y días logísticos.
 
 **4. Métricas**
-- PR-AUC, ROC-AUC, F1, Precision, Recall.
+- PR-AUC, ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), F1, Precision, Recall.
 - Reportadas como media ± DE sobre 6 semillas en el test set.
 
 **5. Datos de evaluación**
@@ -70,7 +70,7 @@ Análisis por subgrupos (fairness):
 
 ---
 
-### B.2 Model Card — Módulo de Detección de Anomalías (Ensemble IF + LOF + ECOD)
+### B.2 Model Card — Módulo de Detección de Anomalías (Ensemble IF (Isolation Forest - Bosque de Aislamiento) + LOF (Local Outlier Factor - Factor de Anomalía Local) + ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica))
 
 **1. Detalles del modelo**
 - Nombre: `module2_anomaly`
@@ -119,7 +119,7 @@ Por tipo de anomalía inyectada:
 
 **9. Advertencias y recomendaciones**
 - Ajustar umbral según costo operativo de falsos positivos en cada empresa.
-- No usar sin la capa de explicabilidad SHAP (las alertas sin contexto generan ruido).
+- No usar sin la capa de explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) (las alertas sin contexto generan ruido).
 
 ---
 
@@ -133,7 +133,7 @@ Por tipo de anomalía inyectada:
 
 **2. Uso previsto**
 - Generar vectores de contribución por variable para cada alerta.
-- Alimentar la capa LLM+RAG con evidencia cuantitativa estructurada.
+- Alimentar la capa LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) con evidencia cuantitativa estructurada.
 
 **3. Factores**
 - Las mismas variables del modelo predictor; las contribuciones se reportan en la escala del logit del XGBoost.

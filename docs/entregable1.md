@@ -39,23 +39,23 @@ La magnitud del problema es significativa: en contextos con millones de transacc
 - ¿Qué arquitectura modular minimiza acoplamiento entre componentes pero garantiza coherencia de decisiones?
 - ¿Cuál es el trade-off entre precisión de detección y explicabilidad?
 - ¿Cómo evaluar que reportes generados automáticamente son de calidad aceptable para auditores?
-- ¿Es viable integrar LLMs en sistemas de auditoría financiera manteniendo trazabilidad?
+- ¿Es viable integrar LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) en sistemas de auditoría financiera manteniendo trazabilidad?
 
 ## 1.3 Objetivos
 
 ### 1.3.1 Objetivo Principal
 
-Diseñar, implementar y evaluar un sistema integrado de auditoría continua que combine predicción tabular, detección de anomalías mediante ensemble, explicabilidad mediante SHAP, y generación automática de reportes con LLMs en arquitectura RAG, demostrando que la integración produce mejor trazabilidad, usabilidad y confianza que sistemas aislados.
+Diseñar, implementar y evaluar un sistema integrado de auditoría continua que combine predicción tabular, detección de anomalías mediante ensemble, explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), y generación automática de reportes con LLMs en arquitectura RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación), demostrando que la integración produce mejor trazabilidad, usabilidad y confianza que sistemas aislados.
 
 ### 1.3.2 Objetivos Específicos
 
 1. **Arquitectura y modularidad**: Definir una arquitectura en capas (predicción → detección → explicación → reporte) que separe responsabilidades según principios de gobernanza NIST AI RMF, permitiendo reemplazo de componentes sin breaking changes.
 
-2. **Predicción y detección robusto**: Implementar pipeline de predicción (XGBoost/LightGBM) + ensemble de detectores (Isolation Forest, LOF, Deep SVDD) y demostrar superioridad respecto a métodos aislados usando BAF Benchmark (AUC ≥ 0.92).
+2. **Predicción y detección robusto**: Implementar pipeline de predicción (XGBoost/LightGBM) + ensemble de detectores (Isolation Forest, LOF (Local Outlier Factor - Factor de Anomalía Local), Deep SVDD) y demostrar superioridad respecto a métodos aislados usando BAF Benchmark (AUC ≥ 0.92).
 
 3. **Explicabilidad verificable**: Integrar SHAP para generar explicaciones de decisiones del modelo; validar que top-3 features explican ≥70% de varianza por muestra.
 
-4. **Generación de reportes de calidad**: Implementar componente LLM+RAG que traduzca anomalías + explicaciones SHAP a reportes en lenguaje natural; alcanzar ROUGE-1 ≥ 0.50 vs. referencia humana.
+4. **Generación de reportes de calidad**: Implementar componente LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG que traduzca anomalías + explicaciones SHAP a reportes en lenguaje natural; alcanzar ROUGE-1 ≥ 0.50 vs. referencia humana.
 
 5. **Evaluación integrada y usabilidad**: Diseñar experimento comparativo (sistema integrado vs. componentes aislados) con métricas de tiempo-a-decisión (reducción ≥30%), confianza auditor (+1 punto escala 5), y precisión de decisiones.
 
@@ -66,7 +66,7 @@ Diseñar, implementar y evaluar un sistema integrado de auditoría continua que 
 **Hipótesis Nula (H0)**: No existe diferencia estadísticamente significativa entre sistema integrado y componentes aislados en trazabilidad, usabilidad o confianza.
 
 **Sub-hipótesis**:
-- H1a: El ensemble de anomalías (IF+LOF+SVDD) supera métodos aislados en robustez ante diversas distribuciones de datos.
+- H1a: El ensemble de anomalías (IF (Isolation Forest - Bosque de Aislamiento)+LOF+SVDD) supera métodos aislados en robustez ante diversas distribuciones de datos.
 - H1b: Explicaciones SHAP son suficientemente interpretables para auditores (coherencia ≥80% en evaluación cualitativa).
 - H1c: Reportes LLM+RAG alcanzan calidad comparable a referencia humana (ROUGE-1 ≥0.50).
 - H1d: Sistema integrado reduce tiempo-a-decisión ≥30% sin sacrificar precisión.
@@ -84,7 +84,7 @@ Diseñar, implementar y evaluar un sistema integrado de auditoría continua que 
 ### 1.5.2 Variables Dependientes
 
 **VD1: Rendimiento de detección**
-- Indicador: ROC-AUC, Precision, Recall, F1-score
+- Indicador: ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), Precision, Recall, F1-score
 - Métrica: Score numérico [0, 1]
 - Rango aceptable: AUC ≥ 0.90
 
@@ -255,7 +255,7 @@ El desarrollo de sistemas de predicción, detección de anomalías y generación
 
 ### Avances en modelos para datos tabulares
 
-En el ámbito de los datos tabulares, diversos estudios han demostrado que los métodos basados en Gradient Boosting Decision Trees (GBDT) continúan siendo altamente competitivos. El modelo XGBoost [1] introdujo mejoras significativas en escalabilidad y rendimiento para grandes volúmenes de datos estructurados, mientras que LightGBM [2] optimizó el proceso de entrenamiento mediante técnicas como histogram-based learning y reducción de dimensionalidad. Por su parte, CatBoost [3] resolvió de manera eficiente el tratamiento de variables categóricas mediante codificación ordenada, evitando problemas de target leakage. Investigaciones más recientes han evaluado modelos profundos para datos tabulares, concluyendo que arquitecturas como FT-Transformer [4] pueden ser competitivas, aunque no superan consistentemente a los métodos basados en árboles en todos los escenarios [11].
+En el ámbito de los datos tabulares, diversos estudios han demostrado que los métodos basados en GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) continúan siendo altamente competitivos. El modelo XGBoost [1] introdujo mejoras significativas en escalabilidad y rendimiento para grandes volúmenes de datos estructurados, mientras que LightGBM [2] optimizó el proceso de entrenamiento mediante técnicas como histogram-based learning y reducción de dimensionalidad. Por su parte, CatBoost [3] resolvió de manera eficiente el tratamiento de variables categóricas mediante codificación ordenada, evitando problemas de target leakage. Investigaciones más recientes han evaluado modelos profundos para datos tabulares, concluyendo que arquitecturas como FT-Transformer [4] pueden ser competitivas, aunque no superan consistentemente a los métodos basados en árboles en todos los escenarios [11].
 
 ### Series temporales y forecasting
 
