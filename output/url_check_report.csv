@@ -1,0 +1,37 @@
+"URL","Status","IsAccessible","Message"
+"https://doi.org/10.1145/2939672.2939785","Error","False","The remote server returned an error: (403) Forbidden."
+"https://arxiv.org/abs/2106.11959","200","True",
+"https://arxiv.org/abs/2207.08815","200","True",
+"https://arxiv.org/abs/1908.07442","200","True",
+"https://doi.org/10.1016/j.ijforecast.2021.03.012","200","True",
+"https://doi.org/10.1609/aaai.v37i9.26317","200","True",
+"https://arxiv.org/abs/2310.06625","200","True",
+"https://arxiv.org/abs/2403.07815","200","True",
+"https://arxiv.org/abs/2211.14730","200","True",
+"https://arxiv.org/abs/2201.12886","200","True",
+"https://doi.org/10.1109/ICDM.2008.17","200","True",
+"https://doi.org/10.1145/342009.335388","Error","False","The remote server returned an error: (403) Forbidden."
+"https://arxiv.org/abs/1802.04365","200","True",
+"https://arxiv.org/abs/2206.09426","200","True",
+"https://doi.org/10.1109/TKDE.2022.3159580","200","True",
+"https://jmlr.org/papers/v20/19-011.html","200","True",
+"https://arxiv.org/abs/2211.13358","200","True",
+"https://arxiv.org/abs/2210.10723","200","True",
+"https://arxiv.org/abs/2403.19735","200","True",
+"https://doi.org/10.1007/s12599-025-00945-3","200","True",
+"https://arxiv.org/abs/2406.14243","200","True",
+"https://arxiv.org/abs/1705.07874","200","True",
+"https://doi.org/10.1145/2939672.2939778","Error","False","The remote server returned an error: (403) Forbidden."
+"https://doi.org/10.1109/ACCESS.2023.3262138","200","True",
+"https://arxiv.org/abs/2205.02302","200","True",
+"https://doi.org/10.6028/NIST.AI.100-1","200","True",
+"https://doi.org/10.1145/3458723","Error","False","The remote server returned an error: (403) Forbidden."
+"https://doi.org/10.1145/3287560.3287596","Error","False","The remote server returned an error: (403) Forbidden."
+"https://arxiv.org/abs/2505.24650","200","True",
+"https://arxiv.org/abs/2601.09929","200","True",
+"https://arxiv.org/abs/2505.10050","200","True",
+"https://www.mdpi.com/1911-8074/19/1/13","Error","False","The remote server returned an error: (403) Forbidden."
+"https://www.mdpi.com/2076-3417/15/13/7329","Error","False","The remote server returned an error: (403) Forbidden."
+"https://www.bis.org/fsi/fsipapers24.pdf","200","True",
+"https://thecaq.org/wp-content/uploads/2024/04/caq_auditing-in-the-age-of-generative-ai__2024-04.pdf","Error","False","The remote server returned an error: (308) Permanent Redirect."
+"https://eur-lex.europa.eu/eli/reg/2024/1689","202","True",

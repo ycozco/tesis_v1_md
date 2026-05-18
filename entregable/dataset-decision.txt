@@ -1,0 +1,19 @@
+Dataset strategy for the agroexport thesis
+
+1. Primary source:
+   - Anonymous operational data from the collaborating agroexport company.
+   - Use for prediction, anomaly detection, SHAP explanations and report generation.
+
+2. Public support data:
+   - FAOSTAT: crop production and seasonality baseline.
+   - UN Comtrade: export/trade context when needed.
+
+3. Methodological benchmark:
+   - ADBench: anomaly detection validation and robustness comparison.
+
+4. Complementary strategy:
+   - Synthetic anomalies injected into the operational dataset to test detector robustness.
+
+Decision note:
+   - The thesis should stay aligned to agroexport operations, not banking/fraud.
+   - Public datasets are support and benchmarking assets; the operational dataset remains the main source.

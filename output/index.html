@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Tesis - Índice</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .documents {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .doc-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .doc-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+        }
+        
+        .doc-card p {
+            margin: 0;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+        
+        .status {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Visor de Tesis Interactivo</h1>
+        <p class="subtitle">Sistema de Auditoría Continua con IA para Fraude Financiero</p>
+        
+        <div class="status">
+            ✓ Conversión completada: 2026-05-17 19:56:47
+        </div>
+        
+        <div class="documents">
+            <a href="entregable1.html" class="doc-card">
+                <h3>📄 Entregable 1</h3>
+                <p>Capítulo I (Planteamiento) y Capítulo II (Marco Teórico)</p>
+            </a>
+            
+            <a href="mejora-continua.html" class="doc-card">
+                <h3>🔄 Plan de Mejora Continua</h3>
+                <p>Ciclos PDCA, validación iterativa, métricas calidad</p>
+            </a>
+            
+            <a href="agent-review.html" class="doc-card">
+                <h3>✓ Agente de Revisión</h3>
+                <p>Checklist completo para validación del plan</p>
+            </a>
+            
+            <a href="tesis.html" class="doc-card">
+                <h3>📜 Tesis Completa</h3>
+                <p>Estructura de 5 capítulos con discusión avanzada</p>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>Generado automáticamente por script de conversión Markdown → HTML</p>
+            <p>Compatible con todos los navegadores modernos | Optimizado para lectura</p>
+        </div>
+    </div>
+</body>
+</html>

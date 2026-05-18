@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>APA (Simplified for Pandoc)</title>
+    <id>http://www.zotero.org/styles/apa</id>
+    <link href="http://www.zotero.org/styles/apa" rel="self"/>
+    <author>
+      <name>Simon Kornblith</name>
+      <email>simon@corblimey.net</email>
+    </author>
+    <updated>2016-01-01T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  
+  <locale>
+    <terms>
+      <term name="page" form="short">p.</term>
+      <term name="page" form="long">p.</term>
+      <term name="pages" form="short">pp.</term>
+      <term name="pages" form="long">pp.</term>
+      <term name="et-al">et al.</term>
+      <term name="and">and</term>
+      <term name="in">In</term>
+      <term name="editor">editor</term>
+      <term name="editors">editors</term>
+      <term name="presented at">presented at the</term>
+    </terms>
+  </locale>
+
+  <macro name="author">
+    <names variable="author" delimiter=", " and="text">
+      <name name-as-sort-order="first" sort-separator=", " delimiter=", " and="text" delimiter-precedes-last="always"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="editor">
+    <names variable="editor" delimiter=", ">
+      <name name-as-sort-order="first" sort-separator=", " delimiter=", " and="text" delimiter-precedes-last="always"/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" and="text" delimiter=", " delimiter-precedes-last="always"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title" form="short"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+
+  <macro name="container-title">
+    <text variable="container-title"/>
+  </macro>
+
+  <macro name="volume-info">
+    <choose>
+      <if variable="volume">
+        <text variable="volume"/>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="pages">
+    <choose>
+      <if variable="page">
+        <label variable="page" form="short" suffix=" "/>
+        <text variable="page"/>
+      </if>
+    </choose>
+  </macro>
+
+  <!-- Citation format -->
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-adds-year-suffix="true">
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text macro="author-short"/>
+      <text macro="year-date" prefix=" "/>
+    </layout>
+  </citation>
+
+  <!-- Bibliography format -->
+  <bibliography et-al-min="7" et-al-use-first="6" hanging-indent="true" entry-spacing="0" line-spacing="2">
+    <layout suffix=".">
+      <text macro="author" suffix=". "/>
+      <text macro="year-date" prefix="(" suffix="). "/>
+      <text macro="title" suffix=". "/>
+      <text macro="container-title" font-style="italic" suffix=". "/>
+      <text macro="volume-info" suffix=" "/>
+      <text macro="pages" prefix="(" suffix=")."/>
+    </layout>
+  </bibliography>
+</style>

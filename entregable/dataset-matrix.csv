@@ -1,0 +1,6 @@
+candidate,purpose,availability,relevance,risks,decision
+"Datos operativos anonimizados de empresa agroexportadora colaboradora","Primary dataset for prediction, anomaly detection and reporting","Private/confidential","High","Access depends on agreement and anonymization","Preferred primary"
+"FAOSTAT crop production statistics","Temporal baseline for production and seasonality analysis","Public","Medium","Aggregated granularity may hide local anomalies","Secondary"
+"UN Comtrade agricultural export series","Trade and export volume context","Public","Medium","Aggregation can reduce operational detail","Secondary"
+"ADBench benchmark datasets","Methodological benchmark for anomaly detection","Public","High","Domain mismatch with agroexport operations","Methodological benchmark"
+"Synthetic anomalies injected on operational data","Controlled robustness testing","Generated internally","High","Requires careful design to avoid unrealistic patterns","Complementary"

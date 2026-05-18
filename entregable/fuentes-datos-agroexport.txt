@@ -1,0 +1,39 @@
+Mapa detallado de fuentes de datos para la tesis
+
+1. Datos internos primarios
+- Produccion por lote/campana.
+- Inventario, mermas y rechazos.
+- Logistica: tiempos de despacho, recepcion, transporte, cadena de frio.
+- Calidad: inspecciones, no conformidades, clasificacion de producto.
+- Mantenimiento o paradas operativas.
+
+2. Fuentes publicas peruanas
+- MIDAGRI: precios mayoristas, volumen de ingreso a mercados, boletines de comercializacion.
+- SENASA: plagas, alertas fitosanitarias, requisitos sanitarios, BPA y certificaciones.
+- SENAMHI: temperatura, lluvia, humedad, avisos meteorologicos y series climaticas.
+- INEI: indices sectoriales, precios mayoristas, actividad economica y series oficiales.
+- SUNAT: estadisticas de exportacion/importacion y contexto aduanero.
+- datosabiertos.gob.pe: catalogo transversal de datasets del Estado.
+
+3. Fuentes internacionales
+- FAOSTAT: produccion agricola, area cosechada, rendimiento, comparativos por pais.
+- UN Comtrade: exportaciones e importaciones por producto, pais y periodo.
+- World Bank: contexto macroeconomico y comercial.
+
+4. Fuentes complementarias
+- Tipo de cambio y precios internacionales.
+- Imagenes satelitales y vegetacion.
+- Datos climaticos reanalizados.
+
+5. Uso por capa del sistema
+- Prediccion: variables operativas y productivas.
+- Anomalias: mermas, desbalances, tiempos fuera de rango, cambios bruscos.
+- SHAP: variables que explican riesgo o desvio.
+- Reportes: contexto, causalidad operacional, recomendacion accionable.
+
+6. Lectura del avance actual
+- `docs/tesis.md`: es la base activa y ya apunta a agroexportacion.
+- `docs/tesis_v2.md`: conserva la version financiera anterior; no debe seguir como fuente principal.
+- `docs/tesis.md` Cap. I: bastante avanzado y coherente.
+- `docs/tesis.md` Cap. II: avanzado, pero necesita limpieza de referencias y analogias financieras.
+- `docs/tesis.md` Cap. III: es el principal punto a reescribir para sustituir BAF por datos agroexportadores.

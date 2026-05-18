@@ -1,0 +1,50 @@
+Categoría,Subcategoría,Aspecto,Indicador de Logro,Estado,Responsable,Prioridad,Fecha Inicio,Fecha Completitud Esperada
+Estructural,Flujo,Flujo lógico cap. a cap.,Cada sección inicia con pregunta y cierra con respuesta,⏳ En revisión,Yoset,Alta,2025-01-15,2025-02-01
+Estructural,Introducción,Introducción coherente,Introduce problema contexto brecha identificada,⏳ En revisión,Yoset,Alta,2025-01-15,2025-02-01
+Estructural,Transiciones,Transiciones entre secciones,Conectores y resúmenes que cierren cap. N y abran cap. N+1,⏳ En revisión,Yoset,Alta,2025-01-15,2025-02-01
+Estructural,Índices,Índices completos,Tabla de contenidos figuras tablas fórmulas actualizados,⏳ En revisión,Yoset,Media,2025-02-01,2025-02-15
+Estructural,Formato,Formato visual,Márgenes tipografía espaciado UNSA,⏳ Pendiente,Yoset,Baja,2025-02-15,2025-03-01
+Rigor Científico,Variables,Alineación título ↔ hipótesis,Título específico hipótesis cuantificable y derivada del título,✅ Completo,Yoset,Alta,2024-12-01,2025-01-10
+Rigor Científico,Objetivos,Objetivos SMART,General + 3-4 específicos medibles,✅ Completo,Yoset,Alta,2024-12-01,2025-01-10
+Rigor Científico,Operacionalización,Variables operacionalizadas,Cada variable con definición conceptual y operacional,⏳ Parcial,Yoset,Alta,2025-01-15,2025-02-01
+Rigor Científico,Hipótesis,Hipótesis nula vs alternativa,Formulación explícita para pruebas estadísticas,⏳ Pendiente,Yoset,Alta,2025-02-01,2025-02-15
+Rigor Científico,Causalidad,Lógica causal documentada,Diagrama de relaciones X → Y mediadores/moderadores,⏳ Pendiente,Yoset,Media,2025-02-01,2025-02-20
+Metodológica,Datos,Protocolo de datos,Fuente período frecuencia número de registros documentados,⏳ En revisión,Yoset,Alta,2025-01-20,2025-02-10
+Metodológica,Datos,Data quality,Valores faltantes outliers transformaciones descritas,⏳ En revisión,Yoset,Alta,2025-01-20,2025-02-10
+Metodológica,Datos,Splits train/val/test,Método temporal estratificado aleatorio tamaños justificados,⏳ Pendiente,Yoset,Alta,2025-02-10,2025-02-25
+Metodológica,Reproducibilidad,Reproducibilidad,Seeds fijas versiones de librerías código disponible,⏳ En revisión,Yoset,Media,2025-01-20,2025-02-15
+Metodológica,Métricas,Métricas apropiadas,PR-AUC para imbalance F1 para equilibrio ROUGE para NLG,✅ Completo,Yoset,Alta,2024-12-01,2025-01-10
+Metodológica,Benchmarks,Benchmarks,Comparación con baseline y estado del arte si aplica,⏳ En revisión,Yoset,Alta,2025-01-20,2025-02-10
+Metodológica,Model Card,Model Card completo,Desempeño por subgrupos uso recomendado limitaciones,⏳ NUEVA,Yoset,Alta,2025-02-10,2025-03-01
+Metodológica,Validación,Ablation studies,¿Aporta cada componente GBDT ensemble SHAP?,⏳ Pendiente,Yoset,Media,2025-02-25,2025-03-15
+Datos y Referencias,Documentación,Datasheets for Datasets,Para CADA dataset motivación composición proceso recolección,⏳ NUEVA,Yoset,Alta,2025-01-20,2025-02-15
+Datos y Referencias,Calidad,Sesgos conocidos,Identificados en dataset ej. sesgo de cobertura temporal,⏳ NUEVA,Yoset,Alta,2025-01-20,2025-02-15
+Datos y Referencias,Permisos,Licencias y permisos,CC-BY proprietary anónimo explícitamente documentado,⏳ Pendiente,Yoset,Media,2025-02-15,2025-02-25
+Datos y Referencias,Citas,Citas APA completas,Autor año título editorial DOI o URL,✅ Completo,Yoset,Alta,2024-12-01,2025-01-10
+Datos y Referencias,Actualidad,Actualidad,>70% referencias últimos 5 años IA 7 años agricultura,✅ Completo,Yoset,Alta,2024-12-01,2025-01-10
+Datos y Referencias,Cobertura,Cobertura temática,Antecedentes estado del arte bases teóricas normativa,✅ Completo,Yoset,Media,2024-12-01,2025-01-10
+Datos y Referencias,Acceso,Fuentes primarias,Acceso a papers originales no solo abstracts,✅ Completo,Yoset,Media,2024-12-01,2025-01-10
+Gobernanza,Regulación,Matriz SBS N° 053-2023,Trazabilidad modelo documentado con versión validación aprobación,⏳ NUEVA,Yoset,Crítica,2025-02-01,2025-03-01
+Gobernanza,Regulación,Matriz DS-115-2025-PCM,Ley IA Perú clasificación riesgo análisis ex-ante monitoreo,⏳ NUEVA,Yoset,Crítica,2025-02-01,2025-03-01
+Gobernanza,Regulación,Conformidad EU AI Act,Si aplica Annex III risk Art. 13 transparencia,⏳ NUEVA,Yoset,Media,2025-02-20,2025-03-15
+Gobernanza,Responsabilidad,Roles explícitos,Quién desarrolla quién valida quién autoriza despliegue,⏳ Pendiente,Yoset,Media,2025-02-15,2025-03-01
+Gobernanza,Documentación,Decisiones documentadas,Por qué se eligió GBDT vs XGBoost Isolation Forest vs LOF,⏳ En revisión,Yoset,Media,2025-01-20,2025-02-15
+Gobernanza,Monitoreo,Plan de monitoreo,Métricas de desempeño post-despliegue alertas de degradación,⏳ Pendiente,Yoset,Media,2025-03-01,2025-04-01
+Explicabilidad,SHAP,Explicaciones SHAP,Gráficos SHAP para top features interpretables por supervisor sin IA,⏳ NUEVA,Yoset,Alta,2025-02-20,2025-03-15
+Explicabilidad,Incertidumbre,Incertidumbre explícita,Diferencia epistémica modelo desconoce vs aleatoria ruido,⏳ NUEVA,Yoset,Alta,2025-02-20,2025-03-15
+Explicabilidad,LLM,Anti-alucinación en reportes,Límites de LLM documentados NO fabrica datos cita fuentes,⏳ NUEVA,Yoset,Alta,2025-02-20,2025-03-15
+Explicabilidad,Validación,Validación SHAP+LLM,¿Las explicaciones de SHAP y LLM son consistentes?,⏳ NUEVA,Yoset,Alta,2025-02-20,2025-03-15
+Explicabilidad,Transparencia,Transparencia limitaciones,Reportes indican Este modelo no se ha validado en X escenario,⏳ Pendiente,Yoset,Media,2025-03-01,2025-03-15
+Explicabilidad,Usabilidad,Usabilidad para supervisores,80%+ supervisores entienden por qué modelo flagea anomalía,⏳ Pendiente,Yoset,Alta,2025-03-15,2025-04-01
+Ética y Sesgo,Datos,Análisis de composición,Dataset incluye PYME medianas grandes exportadores equitativamente,⏳ NUEVA,Yoset,Alta,2025-02-01,2025-02-20
+Ética y Sesgo,Desempeño,Desempeño por subgrupos,Métrica principal PR-AUC calculada por región tamaño empresa,⏳ NUEVA,Yoset,Alta,2025-02-01,2025-02-20
+Ética y Sesgo,Sesgo,Identificación de sesgos,¿El modelo predice mejor para ciertos grupos? ¿Aceptable?,⏳ NUEVA,Yoset,Alta,2025-02-20,2025-03-10
+Ética y Sesgo,Trade-offs,Trade-offs documentados,Si mejorar equidad degrada precisión global ¿cuál prioriza?,⏳ NUEVA,Yoset,Media,2025-02-20,2025-03-10
+Ética y Sesgo,Impacto,Impacto potencial,¿Qué pasa si modelo falla? ¿Perjudicados? ¿Mitigación?,⏳ NUEVA,Yoset,Media,2025-03-01,2025-03-15
+Ética y Sesgo,Acceso,Acceso equitativo,Sistema accesible para PYME sin costos prohibitivos,⏳ Pendiente,Yoset,Baja,2025-03-15,2025-04-01
+Web y Usabilidad,Interfaz,Interfaz clara,Dashboard muestra anomalías predicciones explicaciones sin sobrecarga,⏳ En revisión,Yoset,Alta,2025-01-15,2025-02-10
+Web y Usabilidad,Documentación,Documentación on-site,Glosario FAQ tutorialés para supervisores integrados,⏳ Pendiente,Yoset,Media,2025-02-15,2025-03-01
+Web y Usabilidad,Accesibilidad,Accesibilidad WCAG 2.1 AA,Colores contraste navegación teclado alt-text en imágenes,⏳ Pendiente,Yoset,Media,2025-02-15,2025-03-01
+Web y Usabilidad,Limitaciones,Limitaciones visibles,Página explica Este sistema NO debe usarse en X situación,⏳ Pendiente,Yoset,Alta,2025-02-20,2025-03-10
+Web y Usabilidad,Feedback,Formulario de feedback,Usuario puede reportar predicciones incorrectas,⏳ Pendiente,Yoset,Media,2025-03-01,2025-03-15
+Web y Usabilidad,Rendimiento,Rendimiento,Carga <3 seg responsive en móvil si aplica,⏳ Pendiente,Yoset,Media,2025-03-01,2025-03-15
