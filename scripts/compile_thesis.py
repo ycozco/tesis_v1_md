@@ -163,10 +163,7 @@ def main():
         import shutil
         temp_pdf = project_dir / "output" / "tesis.pdf"
         try:
-            if default_pdf.exists():
-                shutil.copy2(default_pdf, dated_pdf)
-            else:
-                shutil.copy2(temp_pdf, dated_pdf)
+            shutil.copy2(temp_pdf, dated_pdf)
             print(f"✨ Archivo fechado creado: {dated_pdf.name}")
         except PermissionError:
             print(f"⚠️ El archivo fechado '{dated_pdf.name}' está bloqueado y no se pudo sobreescribir.")
@@ -175,10 +172,7 @@ def main():
     if docx_success and pdf_success:
         print("🎉 ¡PROCESO DE COMPILACIÓN COMPLETADO EXITOSAMENTE!")
         print(f"📄 DOCX: {default_docx.name} y {dated_docx.name}")
-        if default_pdf.exists():
-            print(f"📄 PDF: {default_pdf.name} y {dated_pdf.name}")
-        else:
-            print(f"📄 PDF: tesis.pdf (original compilado) y {dated_pdf.name}")
+        print(f"📄 PDF: tesis.pdf (compilado fresco) y {dated_pdf.name}")
     else:
         print("⚠️ Compilación finalizada con advertencias.")
     print("==================================================")
