@@ -113,12 +113,12 @@ py scripts/purga_referencias.py
 
 El script:
 - Procesa todos los `.md` activos (excluye `tesis.md` y `tesis_v2.md`).
-- Maneja citas individuales `[@clave]` y múltiples `[@k1; @k2]`.
+- Maneja citas individuales `[@clave]` y múltiples `(@k1; @k2)`.
 - Reporta claves no mapeadas.
 
 ### 5.2 Limpieza de duplicaciones tras cita narrativa
 
-Si el texto dice `Lundberg & Lee (2017) [@lundberg2017shap]`, el reemplazo produce `Lundberg & Lee (2017) (Lundberg & Lee, 2017)` (duplicado). Para corregir:
+Si el texto dice `Lundberg & Lee (2017)`, el reemplazo produce `Lundberg & Lee (2017)` (duplicado). Para corregir:
 
 ```powershell
 py scripts/limpia_duplicados.py
