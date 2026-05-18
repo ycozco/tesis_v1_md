@@ -32,7 +32,7 @@ $$F_m(x) = F_{m-1}(x) + \nu \cdot h_m(x)$$
 
 **CatBoost** (Prokhorenkova et al., 2018) resuelve el problema del target leakage en variables categóricas mediante Ordered Boosting: calcula las estadísticas de objetivo para cada categoría usando únicamente las observaciones previas en un orden aleatorio permutado, evitando que la información del objetivo filtre hacia las features de entrada durante el entrenamiento. Esta propiedad es especialmente relevante en datos contables, donde variables como "código de cuenta" o "centro de costo" tienen alta cardinalidad.
 
-La justificación empírica para elegir GBDT sobre Deep Learning en datos tabulares empresariales está sólidamente documentada por (Grinsztajn et al., 2022): en 45 datasets con hasta 50,000 muestras, los GBDT superan a FT-Transformer, TabNet y MLP en el 95% de los casos, atribuible a tres propiedades estructurales de los datos tabulares que los árboles aprovechan mejor que las redes neuronales.
+La justificación empírica para elegir GBDT sobre Deep Learning en datos tabulares empresariales está sólidamente documentada por (Grinsztajn et al., 2022): en 45 datasets con hasta 50,000 muestras, los GBDT superan a arquitecturas neuronales complejas (como FT-Transformer o TabNet) en la inmensa mayoría de los casos. Dado que el dataset operativo de esta tesis comprende un volumen controlado de hasta 10,000 registros transaccionales sintéticos (Anexo C), se sitúa exactamente en el rango donde los modelos basados en árboles maximizan su ventaja comparativa. Esta superioridad es atribuible a tres propiedades estructurales de los datos tabulares que los árboles aprovechan mejor que las redes neuronales.
 
 ### 2.3.4 Detección de Anomalías y Estrategia de Ensemble
 
