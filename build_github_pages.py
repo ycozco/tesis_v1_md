@@ -51,6 +51,7 @@ def build_site():
             <div class="logo">🎓 Tesis IA Agroexportadora</div>
             <ul class="nav-links">
                 <li><a href="{relative_root}/index.html">Tesis Completa</a></li>
+                <li><a href="{relative_root}/propuesta.html">Propuesta y Prototipo</a></li>
                 <li><a href="{relative_root}/referencias/index.html">Referencias (Directorio)</a></li>
             </ul>
             <div class="theme-switch-wrapper">
@@ -89,6 +90,32 @@ def build_site():
 
     # Write References Index
     (ref_dir / "index.html").write_text(get_template("Directorio de Referencias", ref_html, "", ".."), encoding="utf-8")
+
+    # Write Proposal & Prototype
+    print("✨ Generando página estática de la propuesta en GitHub Pages...")
+    app_code = Path("src/app.py").read_text(encoding="utf-8")
+    template_match = re.search(r'PROPUESTA_TEMPLATE\s*=\s*"""(.*?)"""', app_code, re.DOTALL)
+    if template_match:
+        propuesta_html = template_match.group(1)
+        # Reemplazar la barra de navegación dinámica por la estática
+        static_navbar = """        <nav class="main-navbar">
+            <div class="nav-logo">
+                <span class="logo-dot"></span>
+                <span class="logo-text">Tesis Hub</span>
+            </div>
+            <div class="nav-menu">
+                <a href="./index.html" class="nav-item">📖 Tesis Completa</a>
+                <a href="./propuesta.html" class="nav-item active">📊 Propuesta y Prototipo</a>
+                <a href="./referencias/index.html" class="nav-item">📚 Referencias</a>
+            </div>
+        </nav>"""
+        propuesta_html = re.sub(r'<nav class="main-navbar">.*?</nav>', static_navbar, propuesta_html, flags=re.DOTALL)
+        # Adaptar enlaces a secciones de la tesis
+        propuesta_html = propuesta_html.replace('/seccion/', './index.html#')
+        (out_dir / "propuesta.html").write_text(propuesta_html, encoding="utf-8")
+        print("✅ propuesta.html generada exitosamente.")
+    else:
+        print("❌ Error: No se pudo extraer PROPUESTA_TEMPLATE de src/app.py")
 
     # 4. Generate CSS
     css_content = """
