@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Capitulo3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#capitulo-iii-propuesta-metodologica">CAPÍTULO III: PROPUESTA METODOLÓGICA</a><ul>
+<li><a href="#31-arquitectura-del-sistema-integrado">3.1 Arquitectura del Sistema Integrado</a></li>
+<li><a href="#32-fuentes-de-datos-dataset-sintetico-y-benchmarks">3.2 Fuentes de Datos, Dataset Sintético y Benchmarks</a></li>
+<li><a href="#33-configuracion-experimental-y-metricas">3.3 Configuración Experimental y Métricas</a><ul>
+<li><a href="#331-metricas-por-variable-dependiente">3.3.1 Métricas por variable dependiente</a></li>
+<li><a href="#332-division-del-dataset-y-semilla">3.3.2 División del dataset y semilla</a></li>
+<li><a href="#333-diseno-experimental-condiciones-y-experimentos-e1e5">3.3.3 Diseño experimental: condiciones y experimentos E1–E5</a></li>
+<li><a href="#334-pruebas-estadisticas-y-mapa-hipotesis-experimento">3.3.4 Pruebas estadísticas y mapa hipótesis → experimento</a></li>
+<li><a href="#335-estudio-de-usabilidad-tamano-y-seleccion-de-muestra">3.3.5 Estudio de usabilidad: tamaño y selección de muestra</a></li>
+<li><a href="#336-tuning-de-hiperparametros-y-reproducibilidad">3.3.6 Tuning de hiperparámetros y reproducibilidad</a></li>
+<li><a href="#337-comparacion-con-baselines">3.3.7 Comparación con baselines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>30 Capitulo3</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-05-25 02:16
+                </div>
+            </div>
+            
+            <div style="background-color: orange; color: white; padding: 10px; text-align: center; font-weight: bold; margin-bottom: 20px; border-radius: 5px;">⚠️ EN DESARROLLO</div>
+
+<h1 id="capitulo-iii-propuesta-metodologica">CAPÍTULO III: PROPUESTA METODOLÓGICA</h1>
+<h2 id="31-arquitectura-del-sistema-integrado">3.1 Arquitectura del Sistema Integrado</h2>
+<p>La arquitectura propuesta se divide en cuatro módulos secuenciales, diseñados para maximizar trazabilidad, interpretabilidad y utilidad operativa en procesos agroexportadores:</p>
+<ul>
+<li><strong>Módulo de Predicción Tabular (Capa 1):</strong> Utiliza algoritmos GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) como núcleo predictivo, priorizando XGBoost (Chen &amp; Guestrin, 2016) y LightGBM (Ke et al., 2017) por su robustez ante datos tabulares con variables heterogéneas (Grinsztajn et al., 2022). El módulo puede estimar valores esperados de precio, volumen, merma o riesgo operativo.</li>
+<li><strong>Módulo de Detección de Anomalías (Capa 2):</strong> Emplea detectores como Isolation Forest (Liu et al., 2008), LOF (Local Outlier Factor - Factor de Anomalía Local) (Breunig et al., 2000) y ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) (Li et al., 2022), orquestados mediante PyOD (Zhao et al., 2019), para identificar comportamientos atípicos en variables agroexportadoras. Se selecciona ECOD sobre Deep SVDD (Ruff et al., 2018) —considerado en la revisión bibliográfica del Capítulo II— por tres razones: (a) ECOD no requiere ajuste de hiperparámetros, lo cual elimina el riesgo de sobreajuste en la calibración; (b) su fundamento basado en funciones de distribución empírica acumulada es interpretable estadísticamente para auditores, mientras que Deep SVDD opera sobre representaciones latentes opacas; y (c) su complejidad computacional es lineal, apropiada para el tamaño medio del dataset experimental (2,000–5,000 registros). Deep SVDD se mantiene como referencia conceptual del Capítulo II por su valor histórico, pero no entra al ensemble final.</li>
+<li><strong>Módulo de Explicabilidad (Capa 3):</strong> SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) (Lundberg &amp; Lee, 2017) genera explicaciones locales por alerta, identificando qué variables —precio, volumen, clima, destino, cumplimiento o merma— contribuyen al score del sistema.</li>
+<li><strong>Módulo de Reportes LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (Capa 4):</strong> Un LLM restringido a evidencias estructuradas mediante RAG (Schneider et al., 2025) redacta reportes operativos trazables. El LLM no decide si existe una anomalía; solo traduce scores, umbrales y explicaciones SHAP a lenguaje comprensible.</li>
+</ul>
+<pre class="codehilite"><code>┌─────────────────────────────────────────────────────────┐
+│ CAPA 4: Reporte Automatizado (LLM + RAG)               │
+│ Entrada: anomalías + vectores SHAP                      │
+│ Salida: reporte auditado en lenguaje natural (MD/PDF)  │
+└─────────────────────────────────────────────────────────┘
+                         ↑
+┌─────────────────────────────────────────────────────────┐
+│ CAPA 3: Explicabilidad (SHAP / TreeSHAP)               │
+│ Entrada: predicciones + datos originales               │
+│ Salida: vectores Shapley + SHAP Stability Index        │
+└─────────────────────────────────────────────────────────┘
+                         ↑
+┌─────────────────────────────────────────────────────────┐
+│ CAPA 2: Detección de Anomalías (Ensemble)              │
+│ Métodos: IF (Isolation Forest - Bosque de Aislamiento) + LOF + ECOD (PyOD)                        │
+│ Salida: score anomalía + método que detectó            │
+└─────────────────────────────────────────────────────────┘
+                         ↑
+┌─────────────────────────────────────────────────────────┐
+│ CAPA 1: Predicción tabular agroexportadora             │
+│ Modelo: XGBoost / LightGBM                             │
+│ Entrada: precio, volumen, clima, calidad, logística    │
+│ Salida: valor esperado + riesgo operativo              │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+
+<h2 id="32-fuentes-de-datos-dataset-sintetico-y-benchmarks">3.2 Fuentes de Datos, Dataset Sintético y Benchmarks</h2>
+<p>Para validar la robustez del sistema sin depender obligatoriamente de datos privados, se emplearán tres niveles de información:</p>
+<ol>
+<li><strong>Fuentes públicas oficiales del dominio agroexportador</strong>: MIDAGRI para agroexportaciones, precios y productos; SENAMHI para variables climáticas; SENASA para requisitos fitosanitarios; SUNAT para exportaciones; INEI para indicadores económicos; FAOSTAT y UN Comtrade para validación internacional.</li>
+<li><strong>Dataset sintético agroexportador documentado</strong>: conjunto de registros simulados con variables como fecha, producto, zona, volumen, precio, temperatura, precipitación, humedad, destino, cumplimiento fitosanitario, días logísticos, merma, etiqueta de anomalía y tipo de anomalía. Este dataset se documentará con criterios de Datasheets for Datasets (Gebru et al., 2021).</li>
+<li><strong>Benchmark metodológico complementario</strong>: BAF Benchmark (Jesus et al., 2022) podrá utilizarse solo para contrastar comportamiento de modelos en datos tabulares desbalanceados con drift temporal, sin presentarlo como validación directa del dominio agroexportador.</li>
+</ol>
+<h2 id="33-configuracion-experimental-y-metricas">3.3 Configuración Experimental y Métricas</h2>
+<h3 id="331-metricas-por-variable-dependiente">3.3.1 Métricas por variable dependiente</h3>
+<ul>
+<li><strong>Métricas de predicción y detección (VD1)</strong>: PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) (métrica principal para datasets desbalanceados), ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), F1-Score (Medida Armónica de Precisión y Exhaustividad), Precision y Recall con umbral óptimo determinado por el punto de máxima F1 sobre el conjunto de validación.</li>
+<li><strong>Métricas de explicabilidad (VD2)</strong>: cobertura top-k SHAP (porcentaje de alertas en las que las k=5 variables principales explican ≥80% de la magnitud absoluta del score), consistencia cualitativa de variables explicativas y claridad operativa (Likert 1–5 evaluada por revisores con perfil agroexportador).</li>
+<li><strong>Métricas de calidad de reportes (VD3)</strong>: rúbrica operativa de cinco dimensiones (completitud, consistencia numérica, accionabilidad, coherencia textual, correspondencia con evidencias) evaluada por dos revisores independientes con cálculo de Kappa de Cohen para confiabilidad inter-evaluador. Adicionalmente ROUGE-1/ROUGE-L cuando exista referencia humana.</li>
+<li><strong>Métricas de comprensión y decisión (VD4)</strong>: tiempo-a-decisión (segundos, medido automáticamente desde la apertura de la alerta hasta el envío del veredicto del evaluador), comprensión de alerta (Likert 1–5) y decisión final correcta (sí/no respecto a la etiqueta del dataset).</li>
+<li><strong>Métricas de trazabilidad (VD5)</strong>: porcentaje de alertas con todos los campos completos (dato de origen, versión de dataset, modelo, score, umbral, explicación SHAP, fuente recuperada por RAG y reporte generado).</li>
+</ul>
+<h3 id="332-division-del-dataset-y-semilla">3.3.2 División del dataset y semilla</h3>
+<p>Para evitar fuga de información temporal en variables agroexportadoras con estacionalidad, se aplica una <strong>división cronológica</strong> y no aleatoria:<br />
+- <strong>Train</strong>: primeros 70% de registros ordenados por fecha.<br />
+- <strong>Validation</strong>: 10% siguiente, para selección de hiperparámetros.<br />
+- <strong>Test</strong>: 20% final, evaluado solo al cierre del entrenamiento.</p>
+<p>Todas las ejecuciones experimentales fijan <code>np.random.seed(42)</code> y <code>random.seed(42)</code>. Cada experimento se repite con cinco semillas adicionales (43, 44, 45, 46, 47) para reportar media ± desviación estándar de cada métrica.</p>
+<h3 id="333-diseno-experimental-condiciones-y-experimentos-e1e5">3.3.3 Diseño experimental: condiciones y experimentos E1–E5</h3>
+<p>La evaluación se organiza en cinco experimentos cuya condición experimental aísla un componente arquitectónico distinto:</p>
+<table>
+<thead>
+<tr>
+<th>Exp.</th>
+<th>Nombre</th>
+<th>Condición experimental</th>
+<th>Condición de control</th>
+<th>Variable observada</th>
+<th>Hipótesis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Rendimiento de detección</td>
+<td>Ensemble IF + LOF + ECOD</td>
+<td>Isolation Forest individual</td>
+<td>VD1: PR-AUC, F1</td>
+<td>H1a</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Aporte de SHAP</td>
+<td>Sistema con vectores SHAP</td>
+<td>Sistema sin SHAP (solo scores)</td>
+<td>VD2: cobertura top-k, Likert</td>
+<td>H1b</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Aporte de RAG</td>
+<td>LLM + RAG (anclado en SHAP)</td>
+<td>LLM libre (sin RAG)</td>
+<td>VD3: rúbrica 5D, ROUGE-L</td>
+<td>H1c</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>Sistema integrado vs. aislado</td>
+<td>Pipeline completo de 4 capas</td>
+<td>Salidas técnicas aisladas por módulo</td>
+<td>VD4: tiempo, Likert; VD5: trazabilidad</td>
+<td>H1, H1d</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Ablation study</td>
+<td>Configuraciones parciales (E5a, E5b, E5c, E5d)</td>
+<td>—</td>
+<td>VD1 + VD5 por configuración</td>
+<td>Contribución por capa</td>
+</tr>
+</tbody>
+</table>
+<p>Variantes del ablation study (E5):<br />
+- <strong>E5a</strong>: Solo Capa 2 (sin predicción, sin SHAP, sin RAG) — baseline mínimo.<br />
+- <strong>E5b</strong>: Capas 1 + 2 + 4 (sin SHAP) — evalúa el aporte de SHAP al pipeline.<br />
+- <strong>E5c</strong>: Capas 1 + 2 + 3 + LLM libre (sin RAG) — evalúa el aporte del anclaje RAG.<br />
+- <strong>E5d</strong>: Pipeline completo de 4 capas — referencia experimental.</p>
+<h3 id="334-pruebas-estadisticas-y-mapa-hipotesis-experimento">3.3.4 Pruebas estadísticas y mapa hipótesis → experimento</h3>
+<p>Cada sub-hipótesis se contrasta con una prueba estadística específica, seleccionada según el tipo de variable y el diseño:</p>
+<table>
+<thead>
+<tr>
+<th>Sub-hipótesis</th>
+<th>Comparación</th>
+<th>Variable</th>
+<th>Prueba estadística</th>
+<th>α</th>
+<th>Tamaño de efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1a</td>
+<td>Ensemble vs. detector único</td>
+<td>PR-AUC sobre 6 semillas</td>
+<td>Wilcoxon signed-rank (no paramétrica, apareada)</td>
+<td>0.05</td>
+<td>Hedges' g</td>
+</tr>
+<tr>
+<td>H1b</td>
+<td>SHAP vs. sin SHAP</td>
+<td>Likert comprensión (1–5)</td>
+<td>Mann-Whitney U (escala ordinal, muestras independientes)</td>
+<td>0.05</td>
+<td>r de rangos</td>
+</tr>
+<tr>
+<td>H1c</td>
+<td>RAG vs. sin RAG</td>
+<td>Rúbrica de reportes (1–5)</td>
+<td>t de Student apareado o Wilcoxon según Shapiro-Wilk</td>
+<td>0.05</td>
+<td>Cohen's d</td>
+</tr>
+<tr>
+<td>H1d</td>
+<td>Sistema integrado vs. aislado</td>
+<td>Tiempo-a-decisión (s)</td>
+<td>t de Student apareado (within-subjects)</td>
+<td>0.05</td>
+<td>Cohen's dz</td>
+</tr>
+</tbody>
+</table>
+<p>Para todas las pruebas se verifica previamente el supuesto de normalidad con Shapiro-Wilk; ante violación, se aplica la prueba no paramétrica equivalente. Se reporta intervalo de confianza al 95% para cada métrica y se calcula el tamaño de efecto como medida complementaria a la significancia estadística.</p>
+<h3 id="335-estudio-de-usabilidad-tamano-y-seleccion-de-muestra">3.3.5 Estudio de usabilidad: tamaño y selección de muestra</h3>
+<p>El estudio de usabilidad para VD4 adopta un <strong>diseño within-subjects con N ≥ 15 participantes</strong>, contrabalanceado en orden de presentación (mitad evalúa primero el sistema integrado, mitad evalúa primero el aislado). Con este tamaño se reportan resultados como exploratorios, con cálculo de tamaño de efecto Cohen's dz y intervalo de confianza al 95%, sin afirmar significancia estadística con potencia plena. Para detectar un efecto medio (dz = 0.5) con potencia 0.80 y α = 0.05 se requieren N = 27 participantes; este tamaño se considera meta deseable y, en caso de no alcanzarse, se reporta el limitante en §5.2 (Limitaciones).</p>
+<p><strong>Criterios de inclusión de participantes</strong>:<br />
+- Estudiantes avanzados de Ingeniería de Sistemas, Industrial o Agronomía (≥ séptimo semestre), o<br />
+- Profesionales con ≥ 1 año de experiencia en supervisión operativa, control de calidad o auditoría interna.</p>
+<p><strong>Criterios de exclusión</strong>:<br />
+- Participación previa en el diseño del sistema o de cualquiera de sus capas.<br />
+- Conflicto de interés directo con empresas agroexportadoras evaluadas.</p>
+<p>El protocolo detallado, formulario de consentimiento informado y cuestionario post-tarea figuran en el Anexo A.</p>
+<h3 id="336-tuning-de-hiperparametros-y-reproducibilidad">3.3.6 Tuning de hiperparámetros y reproducibilidad</h3>
+<p>La selección de hiperparámetros se realiza con <strong>Optuna</strong> (TPE sampler, 50 trials por modelo), optimizando PR-AUC sobre el validation set. Los rangos de búsqueda se documentan en el Anexo B (Model Cards). El código fuente, requirements.txt con versiones exactas, semillas y notebooks de reproducción se publican en repositorio GitHub público con licencia MIT al cierre del Hito 3.</p>
+<h3 id="337-comparacion-con-baselines">3.3.7 Comparación con baselines</h3>
+<p>Para cada experimento, los resultados del sistema propuesto se comparan con baselines documentados:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Baseline</th>
+<th>Justificación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>Isolation Forest individual</td>
+<td>Detector más simple y ampliamente adoptado</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Ensemble IF + LOF (sin ECOD)</td>
+<td>Aislar el aporte de ECOD al ensemble</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>XGBoost supervisado con etiqueta de anomalía</td>
+<td>Upper bound supervisado</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>LLM sin RAG y sin SHAP</td>
+<td>Línea base de reporte automático</td>
+</tr>
+</tbody>
+</table>
+<p>Los baselines se ejecutan sobre el mismo dataset, misma división y mismas semillas para garantizar comparación justa.</p>
+<hr />
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

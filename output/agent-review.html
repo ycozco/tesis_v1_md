@@ -327,7 +327,7 @@
             <div class="header">
                 <h1>.Agent</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-05-18 11:52
+                    Autor: Sistema de Tesis | Generado: 2026-05-25 00:27
                 </div>
             </div>
             
@@ -418,7 +418,7 @@
 <li>[ ] Todas las citas en refs.bib (verificar [N] keys)</li>
 <li>[ ] Ordenado por tema o cronológico</li>
 <li>
-<p>[ ] Cobertura: GBDT, anomalías, fraude, LLMs, gobernanza</p>
+<p>[ ] Cobertura: GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente), anomalías, fraude, LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño), gobernanza</p>
 </li>
 <li>
 <p>[ ] <strong>2.3 Marco Conceptual</strong></p>
@@ -440,7 +440,7 @@
   [ ] SÍ / [ ] Requiere revisión
 
 Problema 2: Baja explicabilidad
-├─ OE: Integrar SHAP (OE3)
+├─ OE: Integrar SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) (OE3)
 ├─ VD: Calidad explicabilidad (VD2)
 ├─ Referencias: Lundberg 2017 [10], Mitchell 2019 [23]
 └─ [ ] Validación OK / [ ] Revision needed
@@ -468,7 +468,7 @@ Problema 2: Baja explicabilidad
 <tr>
 <td>OE2: Predicción ensemble</td>
 <td>VD1: Rendimiento detección</td>
-<td>ROC-AUC ≥0.90</td>
+<td>ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor) ≥0.90</td>
 <td>[1],[2],[3]</td>
 </tr>
 <tr>
@@ -478,7 +478,7 @@ Problema 2: Baja explicabilidad
 <td>[10]</td>
 </tr>
 <tr>
-<td>OE4: Reportes LLM</td>
+<td>OE4: Reportes LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)</td>
 <td>VD3: Calidad reportes</td>
 <td>ROUGE-1 ≥0.50</td>
 <td>[19]</td>
@@ -549,7 +549,7 @@ Problema 2: Baja explicabilidad
 Mes 2-3 (Fase Desarrollo): Estimado 100 horas
 ├─ [ ] Ensemble anomalías: 25 horas
 ├─ [ ] Integración SHAP: 30 horas
-├─ [ ] RAG + LLM: 35 horas
+├─ [ ] RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) + LLM: 35 horas
 └─ [ ] Testing: 10 horas
 
 Mes 4 (Fase Eval): Estimado 60 horas
@@ -578,7 +578,7 @@ TOTAL: 300 horas ≈ 7.5 semanas intensas ✓ VIABLE
 <p><strong>Respuesta</strong>: Énfasis en modularidad + explicabilidad, no solo predicción</p>
 </li>
 <li>
-<p><strong>Ensemble anomalías (IF+LOF+SVDD)</strong></p>
+<p><strong>Ensemble anomalías (IF (Isolation Forest - Bosque de Aislamiento)+LOF (Local Outlier Factor - Factor de Anomalía Local)+SVDD)</strong></p>
 </li>
 <li>[ ] ¿Es novedoso el ensemble?</li>
 <li><strong>Defensa</strong>: Grinsztajn 2022 defiende GBDT; ensemble propuesto es validado en BAF</li>

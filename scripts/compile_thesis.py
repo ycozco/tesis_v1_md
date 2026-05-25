@@ -136,12 +136,12 @@ def main():
     today_str = datetime.now().strftime("%Y_%m_%d")
     
     # Nombres de salida por defecto
-    default_docx = output_dir / "tesis_v2.docx"
-    default_pdf = output_dir / "tesis_v2.pdf"
+    default_docx = output_dir / "tesis-v2.docx"
+    default_pdf = output_dir / "tesis-v2.pdf"
     
     # Nombres de salida con fecha
-    dated_docx = output_dir / f"tesis_v2_{today_str}.docx"
-    dated_pdf = output_dir / f"tesis_v2_{today_str}.pdf"
+    dated_docx = output_dir / f"tesis-v2_{today_str}.docx"
+    dated_pdf = output_dir / f"tesis-v2_{today_str}.pdf"
     
     print("==================================================")
     print("🚀 COMPILADOR INTEGRADO DE TESIS (PDF y DOCX)")

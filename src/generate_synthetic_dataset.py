@@ -4,7 +4,7 @@ generate_synthetic_dataset.py
 Generador del dataset sintetico agroexportador peruano v1.0.
 
 Tesis UNSA - Yoset Cozco Mauri (2026).
-Especificacion: docs/A3-anexo-datasheet.md
+Especificacion: docs/a3-anexo-datasheet.md
 
 Uso:
     python src/generate_synthetic_dataset.py \

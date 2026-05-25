@@ -28,7 +28,7 @@
 | Tres o más autores | `Apellido et al.` | `(Lim et al., 2021)` |
 | Institución | `(Institución, Año)` | `(SBS, 2023)`, `(MIDAGRI, 2026)` |
 
-**Prohibido**: usar `[@clave_bib]` en cualquier archivo `.md` de `docs/` excepto `tesis.md` y `tesis_v2.md` (históricos).
+**Prohibido**: usar `[@clave_bib]` en cualquier archivo `.md` de `docs/` excepto `tesis.md` y `tesis-v2.md` (históricos).
 
 ### 2.2 Lenguaje técnico
 
@@ -220,7 +220,7 @@ Insertar `tabla.md` en la sección correspondiente de `docs/40-capitulo4.md`.
 ### 6.5 Actualizar el plan después de cerrar un hito
 
 1. Editar `docs/plan-siguientes-pasos.md`: marcar tareas como `✅`.
-2. Editar `docs/plan_detallado.md`: actualizar tabla de hitos.
+2. Editar `docs/plan-detallado.md`: actualizar tabla de hitos.
 3. Editar `docs/plan-revision-academica-exhaustiva.md`: incrementar criterios verificados.
 4. Crear `docs/hito-N-completado.md` con evidencia (capturas, tablas).
 5. Actualizar `ia/memory.md` sección 13 (log de eventos).
@@ -243,7 +243,7 @@ Insertar `tabla.md` en la sección correspondiente de `docs/40-capitulo4.md`.
 - ❌ Hardcodear API keys o credenciales.
 - ❌ Cambiar la semilla 42 sin justificación documentada.
 - ❌ Usar versiones flotantes (`>=`) en `requirements.txt` (todo debe ir con `==`).
-- ❌ Procesar `tesis.md` o `tesis_v2.md` (son históricos).
+- ❌ Procesar `tesis.md` o `tesis-v2.md` (son históricos).
 - ❌ Modificar el dataset sintético en disco; siempre regenerar con la semilla.
 
 ### 7.3 De Git

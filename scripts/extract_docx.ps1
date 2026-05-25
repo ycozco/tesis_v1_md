@@ -31,9 +31,9 @@ function Extract-DocxContent {
 }
 
 Write-Output "=== EXTRAYENDO AVANCE ===" 
-Extract-DocxContent $avancePath > "d:\tesis_yoset\avance_extracted.txt"
+Extract-DocxContent $avancePath > "d:\tesis_yoset\avance-extracted.txt"
 
 Write-Output "=== EXTRAYENDO FORMATO ===" 
-Extract-DocxContent $formatoPath > "d:\tesis_yoset\formato_extracted.txt"
+Extract-DocxContent $formatoPath > "d:\tesis_yoset\formato-extracted.txt"
 
 Write-Output "Extracción completada. Ver archivos .txt generados."

@@ -11,6 +11,7 @@ services:
       - ./config/apa.csl:/app/config/apa.csl
       - ./output:/app/output
       - ./formato:/app/formato
+      - ./src:/app/src
     environment:
       - FLASK_ENV=development
       - FLASK_DEBUG=1

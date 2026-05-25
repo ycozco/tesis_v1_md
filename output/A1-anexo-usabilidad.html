@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1 Anexo Usabilidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#anexos">ANEXOS</a><ul>
+<li><a href="#anexo-a-protocolo-de-evaluacion-de-usabilidad">Anexo A — Protocolo de Evaluación de Usabilidad</a><ul>
+<li><a href="#a1-objetivo-del-experimento">A.1 Objetivo del experimento</a></li>
+<li><a href="#a2-diseno-experimental">A.2 Diseño experimental</a></li>
+<li><a href="#a3-tareas-evaluadas">A.3 Tareas evaluadas</a></li>
+<li><a href="#a4-metricas-registradas-automaticamente">A.4 Métricas registradas automáticamente</a></li>
+<li><a href="#a5-criterios-de-inclusion-y-exclusion-de-participantes">A.5 Criterios de inclusión y exclusión de participantes</a></li>
+<li><a href="#a6-tamano-de-muestra-y-reclutamiento">A.6 Tamaño de muestra y reclutamiento</a></li>
+<li><a href="#a7-procedimiento-detallado-sesion-por-participante-45-minutos">A.7 Procedimiento detallado (sesión por participante, ~45 minutos)</a></li>
+<li><a href="#a8-consentimiento-informado-texto-base">A.8 Consentimiento informado (texto base)</a></li>
+<li><a href="#a9-cuestionario-post-bloque">A.9 Cuestionario post-bloque</a></li>
+<li><a href="#a10-variables-registradas-para-analisis">A.10 Variables registradas para análisis</a></li>
+<li><a href="#a11-plan-de-analisis-estadistico">A.11 Plan de análisis estadístico</a></li>
+<li><a href="#a12-almacenamiento-y-privacidad-de-datos">A.12 Almacenamiento y privacidad de datos</a></li>
+<li><a href="#a13-aprobacion-etica">A.13 Aprobación ética</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>A1 Anexo Usabilidad</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-05-25 02:16
+                </div>
+            </div>
+            
+            <h1 id="anexos">ANEXOS</h1>
+<h2 id="anexo-a-protocolo-de-evaluacion-de-usabilidad">Anexo A — Protocolo de Evaluación de Usabilidad</h2>
+<blockquote>
+<p><strong>Versión 1.0 — 2026-05-17.</strong> Aprobar antes de iniciar reclutamiento de participantes.</p>
+</blockquote>
+<h3 id="a1-objetivo-del-experimento">A.1 Objetivo del experimento</h3>
+<p>El experimento de usabilidad mide el impacto del sistema integrado de supervisión operativa en la <strong>eficiencia (VD4 — tiempo-a-decisión)</strong>, <strong>comprensión (VD4 — Likert)</strong> y <strong>trazabilidad documental (VD5)</strong> frente al uso de componentes aislados. Constituye la fuente principal de evidencia para contrastar las sub-hipótesis H1b y H1d (Capítulo I §1.4).</p>
+<h3 id="a2-diseno-experimental">A.2 Diseño experimental</h3>
+<p><strong>Tipo</strong>: Cuasi-experimental con diseño within-subjects (apareado) y orden contrabalanceado.</p>
+<p>Cada participante ejecuta las mismas tareas en dos condiciones:<br />
+- <strong>Condición A — Sistema integrado</strong>: pipeline de 4 capas con alerta + score + vector SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) top-5 + reporte LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación).<br />
+- <strong>Condición B — Componentes aislados</strong>: alerta + score crudo del detector, sin SHAP, sin reporte narrativo (solo tabla y visualización técnica).</p>
+<p>La mitad de los participantes inicia con A y la otra mitad con B, asignación aleatorizada con <code>np.random.seed(42)</code>. Entre ambas condiciones se intercala un descanso de 5 minutos y una tarea distractora (sopa de letras) para reducir efectos de arrastre.</p>
+<h3 id="a3-tareas-evaluadas">A.3 Tareas evaluadas</h3>
+<p>Cada condición presenta el mismo bloque de 10 alertas (5 positivas reales, 3 negativas reales, 2 ambiguas) extraídas del conjunto de test del dataset sintético. Para cada alerta, el participante:</p>
+<ol>
+<li><strong>Tarea T1 — Clasificación</strong>: decide si la alerta corresponde a una anomalía operativa real (sí/no/dudoso).</li>
+<li><strong>Tarea T2 — Justificación</strong>: en una oración (máx. 200 caracteres) indica la variable que justifica la decisión.</li>
+<li><strong>Tarea T3 — Comprensión</strong>: responde Likert 1–5 sobre cuán comprensible resultó la alerta.</li>
+</ol>
+<p>Al finalizar el bloque de 10 alertas, completa un cuestionario post-bloque (SUS adaptado + preguntas abiertas).</p>
+<h3 id="a4-metricas-registradas-automaticamente">A.4 Métricas registradas automáticamente</h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Fuente</th>
+<th>Resolución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiempo apertura alerta → decisión</td>
+<td>Log JavaScript de la plataforma</td>
+<td>milisegundos</td>
+</tr>
+<tr>
+<td>Tiempo total bloque</td>
+<td>Log JavaScript</td>
+<td>segundos</td>
+</tr>
+<tr>
+<td>Clasificación del participante</td>
+<td>Formulario</td>
+<td>sí / no / dudoso</td>
+</tr>
+<tr>
+<td>Justificación textual</td>
+<td>Formulario</td>
+<td>texto libre</td>
+</tr>
+<tr>
+<td>Likert comprensión</td>
+<td>Formulario</td>
+<td>1–5</td>
+</tr>
+<tr>
+<td>Versión del sistema</td>
+<td>Variable de configuración</td>
+<td>string</td>
+</tr>
+<tr>
+<td>Identificador de alerta</td>
+<td>Variable</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a5-criterios-de-inclusion-y-exclusion-de-participantes">A.5 Criterios de inclusión y exclusión de participantes</h3>
+<p><strong>Inclusión</strong>:<br />
+- (a) Estudiantes de pregrado ≥ 7° semestre en Ingeniería de Sistemas, Industrial, Agronomía o Administración; o<br />
+- (b) Profesionales con ≥ 1 año de experiencia en supervisión operativa, control de calidad, auditoría interna o cargos análogos.<br />
+- Mayores de 18 años.<br />
+- Aceptación de consentimiento informado.</p>
+<p><strong>Exclusión</strong>:<br />
+- Participación previa en el diseño, desarrollo o entrenamiento de cualquier capa del sistema evaluado.<br />
+- Conflicto de interés directo declarado.<br />
+- Discapacidad visual no corregible que impida la lectura del dashboard.</p>
+<h3 id="a6-tamano-de-muestra-y-reclutamiento">A.6 Tamaño de muestra y reclutamiento</h3>
+<p><strong>Tamaño meta</strong>: N ≥ 15 participantes (reportar resultados como exploratorios). Tamaño deseable: N = 27 para potencia 0.80 con Cohen's dz = 0.5 (efecto medio). N ≤ 14 obliga a marcar resultados como preliminares y sin pretensión de significancia estadística.</p>
+<p><strong>Reclutamiento</strong>: difusión a través de UNSA (Escuela de Ingeniería de Sistemas, Industrial y Agronomía); contactos directos con empresas agroexportadoras de Arequipa, Ica y La Libertad mediante invitación remitida por el asesor.</p>
+<h3 id="a7-procedimiento-detallado-sesion-por-participante-45-minutos">A.7 Procedimiento detallado (sesión por participante, ~45 minutos)</h3>
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Duración</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>5 min</td>
+<td>Bienvenida + consentimiento informado firmado</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5 min</td>
+<td>Tutorial guiado de la plataforma (alerta de ejemplo)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>12 min</td>
+<td>Bloque 1 — Condición A o B (según contrabalanceo)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5 min</td>
+<td>Descanso + tarea distractora</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 min</td>
+<td>Bloque 2 — Condición contraria</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5 min</td>
+<td>Cuestionario final SUS + preguntas abiertas</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1 min</td>
+<td>Cierre + agradecimiento</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a8-consentimiento-informado-texto-base">A.8 Consentimiento informado (texto base)</h3>
+<pre class="codehilite"><code>Por la presente confirmo que:
+1. He sido informado sobre el propósito del estudio: evaluar la usabilidad de
+   un sistema de supervisión operativa con IA explicable.
+2. Comprendo que mi participación es voluntaria y puedo retirarme en cualquier
+   momento sin justificación ni consecuencia.
+3. Comprendo que mis respuestas son anónimas. Solo el investigador principal
+   accederá a los datos, que se almacenarán cifrados y se eliminarán al
+   finalizar la tesis (julio 2027).
+4. Acepto que se registre el tiempo de mis respuestas y las opciones
+   seleccionadas para análisis estadístico agregado.
+5. Comprendo que no recibiré evaluación individual ni se compartirán mis
+   resultados con terceros.
+6. Acepto participar en una sesión de aproximadamente 45 minutos.
+
+Nombre: ____________________  Fecha: __________  Firma: __________
+</code></pre>
+
+<h3 id="a9-cuestionario-post-bloque">A.9 Cuestionario post-bloque</h3>
+<p><strong>Bloque I — Comprensión percibida (Likert 1–5)</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ítem</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Entendí claramente por qué el sistema marcó cada alerta</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>La información presentada me ayudó a tomar una decisión</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Las variables explicativas fueron suficientes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>El reporte generado fue útil para justificar mi decisión</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Confío en la decisión del sistema</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bloque II — Tiempo y carga cognitiva (Likert 1–5)</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ítem</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>Me tomó mucho tiempo entender cada alerta (1) — Fui rápido (5)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tuve que esforzarme mucho mentalmente</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Me sentí seguro al decidir</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bloque III — Adaptación SUS (10 ítems Likert 1–5)</strong></p>
+<pre class="codehilite"><code>1. Creo que me gustaría usar este sistema frecuentemente.
+2. Encontré el sistema innecesariamente complejo.
+3. Pensé que el sistema fue fácil de usar.
+4. Necesitaría el apoyo de un experto técnico para usar este sistema.
+5. Las funciones del sistema están bien integradas.
+6. Hay demasiada inconsistencia en este sistema.
+7. La mayoría aprendería a usar este sistema rápidamente.
+8. Encontré el sistema muy engorroso.
+9. Me sentí muy confiado al usar el sistema.
+10. Necesitaría aprender muchas cosas antes de usar el sistema.
+</code></pre>
+
+<p><strong>Bloque IV — Preguntas abiertas</strong></p>
+<ol>
+<li>¿Qué fue lo más útil del sistema en esta sesión?</li>
+<li>¿Qué información agregaría o quitaría?</li>
+<li>¿En qué situación operativa real este sistema sería más valioso?</li>
+</ol>
+<h3 id="a10-variables-registradas-para-analisis">A.10 Variables registradas para análisis</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Tipo</th>
+<th>Origen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>participant_id</code></td>
+<td>string anónimo</td>
+<td>Generado</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>{AB, BA}</td>
+<td>Aleatorización</td>
+</tr>
+<tr>
+<td><code>condition</code></td>
+<td>{integrated, isolated}</td>
+<td>Variable independiente</td>
+</tr>
+<tr>
+<td><code>alert_id</code></td>
+<td>string</td>
+<td>Dataset</td>
+</tr>
+<tr>
+<td><code>gt_label</code></td>
+<td>{0, 1}</td>
+<td>Dataset (oculto al participante)</td>
+</tr>
+<tr>
+<td><code>user_decision</code></td>
+<td>{yes, no, dunno}</td>
+<td>Formulario</td>
+</tr>
+<tr>
+<td><code>time_to_decision_ms</code></td>
+<td>int</td>
+<td>Log JavaScript</td>
+</tr>
+<tr>
+<td><code>likert_comprehension</code></td>
+<td>1–5</td>
+<td>Cuestionario</td>
+</tr>
+<tr>
+<td><code>justification_text</code></td>
+<td>string</td>
+<td>Formulario</td>
+</tr>
+<tr>
+<td><code>sus_score</code></td>
+<td>0–100</td>
+<td>Cálculo SUS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a11-plan-de-analisis-estadistico">A.11 Plan de análisis estadístico</h3>
+<ol>
+<li><strong>Tiempo-a-decisión (VD4-a)</strong>: t de Student apareado integrado vs. aislado; Wilcoxon si Shapiro-Wilk rechaza normalidad. Reportar media ± DE, IC95%, Cohen's dz.</li>
+<li><strong>Comprensión Likert (VD4-b)</strong>: Wilcoxon signed-rank apareado.</li>
+<li><strong>Decisión correcta (VD4-c)</strong>: McNemar sobre pares concordantes/discordantes.</li>
+<li><strong>SUS</strong>: comparación de medias con Mann-Whitney U.</li>
+<li><strong>Análisis cualitativo de respuestas abiertas</strong>: análisis temático con doble codificación independiente.</li>
+</ol>
+<h3 id="a12-almacenamiento-y-privacidad-de-datos">A.12 Almacenamiento y privacidad de datos</h3>
+<ul>
+<li>Datos almacenados en archivo CSV cifrado con clave conocida solo por el investigador.</li>
+<li>Identificadores anónimos, sin nombre, correo ni datos demográficos sensibles.</li>
+<li>Backup en disco duro institucional UNSA.</li>
+<li>Eliminación de datos crudos al cierre del proyecto (julio 2027).</li>
+<li>Resultados agregados publicados en la tesis y en el repositorio GitHub.</li>
+</ul>
+<h3 id="a13-aprobacion-etica">A.13 Aprobación ética</h3>
+<p>El protocolo se somete a revisión del asesor de tesis (Dr. Víctor Manuel Cornejo Aparicio) y, si la Escuela de Ingeniería de Sistemas dispone de comité de ética, a su aprobación formal antes del reclutamiento.</p>
+<hr />
+<p><em>Anexo A — versión 1.0 — 2026-05-17. Sometido a revisión final antes de ejecutar el estudio.</em></p>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

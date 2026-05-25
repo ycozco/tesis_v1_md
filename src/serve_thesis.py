@@ -287,7 +287,7 @@ class MarkdownConverter:
             <h2>📚 Tesis - Sistema Integrado de Auditoría</h2>
             <div class="navbar-links">
                 <a href="index.html">Inicio</a>
-                <a href="entregable1.html">Entregable 1</a>
+                <a href="entregable-1.html">Entregable 1</a>
                 <a href="mejora-continua.html">Mejora Continua</a>
                 <a href="agent.html">Agente</a>
             </div>
@@ -447,13 +447,13 @@ def create_index_page(output_dir="html"):
         </div>
         
         <div class="documents">
-            <a href="entregable1.html" class="doc-card">
+            <a href="entregable-1.html" class="doc-card">
                 <div style="font-size: 32px;">📄</div>
                 <h3>Entregable 1</h3>
                 <p>Capítulo I & II</p>
             </a>
 
-            <a href="plan_detallado.html" class="doc-card">
+            <a href="plan-detallado.html" class="doc-card">
                 <div style="font-size: 32px;">🗂</div>
                 <h3>Plan Detallado</h3>
                 <p>Estructura completa y checklist</p>
@@ -494,8 +494,8 @@ def main():
     
     # Convertir archivos
     files = [
-        ('entregable1.md', 'entregable1.html'),
-        ('plan_detallado.md', 'plan_detallado.html'),
+        ('entregable-1.md', 'entregable-1.html'),
+        ('plan-detallado.md', 'plan-detallado.html'),
         ('mejora-continua-plan.md', 'mejora-continua.html'),
         ('.agent.md', 'agent.html'),
     ]

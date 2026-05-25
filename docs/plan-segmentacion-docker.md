@@ -37,10 +37,10 @@ docs/
 ├── 70-recomendaciones.md      ← Recomendaciones
 ├── 80-glosario.md             ← Glosario de términos
 ├── 90-referencias.md          ← Referencias bibliográficas (lista APA)
-├── A1-anexo-usabilidad.md     ← Anexo A — Protocolo de usabilidad  🔴 PENDIENTE
-├── A2-anexo-modelcards.md     ← Anexo B — Model Cards              🔴 PENDIENTE
-├── A3-anexo-datasheet.md      ← Anexo C — Datasheet del dataset    🔴 PENDIENTE
-└── A4-anexo-ia.md             ← Anexo D — Registro uso IA
+├── a1-anexo-usabilidad.md     ← Anexo A — Protocolo de usabilidad  🔴 PENDIENTE
+├── a2-anexo-modelcards.md     ← Anexo B — Model Cards              🔴 PENDIENTE
+├── a3-anexo-datasheet.md      ← Anexo C — Datasheet del dataset    🔴 PENDIENTE
+└── a4-anexo-ia.md             ← Anexo D — Registro uso IA
 ```
 
 **Convención de nombres:**
@@ -69,10 +69,10 @@ docs/
 | `70-recomendaciones.md` | Recomendaciones 1–5 | 794–805 | ✅ Listo para extraer |
 | `80-glosario.md` | Glosario completo | 808–861 | ✅ Listo para extraer |
 | `90-referencias.md` | Lista bibliográfica APA | 864–967 | ✅ Listo para extraer |
-| `A1-anexo-usabilidad.md` | Protocolo usabilidad | 972–990 | 🔴 Skeleton — completar |
-| `A2-anexo-modelcards.md` | Model Cards | 993–999 | 🔴 Skeleton — completar |
-| `A3-anexo-datasheet.md` | Datasheet dataset | 1003–1006 | 🔴 Skeleton — completar |
-| `A4-anexo-ia.md` | Registro uso IA | 1009–1014 | ✅ Listo para extraer |
+| `a1-anexo-usabilidad.md` | Protocolo usabilidad | 972–990 | 🔴 Skeleton — completar |
+| `a2-anexo-modelcards.md` | Model Cards | 993–999 | 🔴 Skeleton — completar |
+| `a3-anexo-datasheet.md` | Datasheet dataset | 1003–1006 | 🔴 Skeleton — completar |
+| `a4-anexo-ia.md` | Registro uso IA | 1009–1014 | ✅ Listo para extraer |
 
 ---
 
@@ -100,10 +100,10 @@ SECTION_ORDER = [
     "70-recomendaciones",
     "80-glosario",
     "90-referencias",
-    "A1-anexo-usabilidad",
-    "A2-anexo-modelcards",
-    "A3-anexo-datasheet",
-    "A4-anexo-ia",
+    "a1-anexo-usabilidad",
+    "a2-anexo-modelcards",
+    "a3-anexo-datasheet",
+    "a4-anexo-ia",
 ]
 
 SECTION_META = {
@@ -122,10 +122,10 @@ SECTION_META = {
     "70-recomendaciones":          {"label": "Recomendaciones",      "cap": None,  "status": "done"},
     "80-glosario":                 {"label": "Glosario",             "cap": None,  "status": "done"},
     "90-referencias":              {"label": "Referencias",          "cap": None,  "status": "done"},
-    "A1-anexo-usabilidad":        {"label": "Anexo A",              "cap": "A",   "status": "pending"},
-    "A2-anexo-modelcards":        {"label": "Anexo B",              "cap": "B",   "status": "pending"},
-    "A3-anexo-datasheet":         {"label": "Anexo C",              "cap": "C",   "status": "pending"},
-    "A4-anexo-ia":                {"label": "Anexo D",              "cap": "D",   "status": "done"},
+    "a1-anexo-usabilidad":        {"label": "Anexo A",              "cap": "A",   "status": "pending"},
+    "a2-anexo-modelcards":        {"label": "Anexo B",              "cap": "B",   "status": "pending"},
+    "a3-anexo-datasheet":         {"label": "Anexo C",              "cap": "C",   "status": "pending"},
+    "a4-anexo-ia":                {"label": "Anexo D",              "cap": "D",   "status": "done"},
 }
 ```
 
@@ -322,7 +322,7 @@ La ruta `/secciones` mostrará una tabla tipo kanban con:
 | Portada | 00-portada.md | ✅ Completo | 3.2 KB | Ver |
 | Resumen | 01-resumen.md | ✅ Completo | 1.8 KB | Ver |
 | Cap IV | 40-capitulo4.md | 🔴 Pendiente | 0.8 KB | Ver / Editar |
-| Anexo A | A1-anexo-usabilidad.md | 🔴 Pendiente | 0.6 KB | Ver / Editar |
+| Anexo A | a1-anexo-usabilidad.md | 🔴 Pendiente | 0.6 KB | Ver / Editar |
 
 Progreso global: `11/19 secciones completas (58%)`
 
@@ -348,7 +348,7 @@ Estas secciones solo necesitan ser copiadas del monolito al archivo correspondie
 | 9.1.10 | Crear `docs/70-recomendaciones.md` con líneas 794–805 | 5 recomendaciones numeradas |
 | 9.1.11 | Crear `docs/80-glosario.md` con líneas 808–861 | Términos en negrita + definición |
 | 9.1.12 | Crear `docs/90-referencias.md` con líneas 864–967 | Lista bibliográfica APA completa |
-| 9.1.13 | Crear `docs/A4-anexo-ia.md` con líneas 1009–1014 | Texto de uso de IA presente |
+| 9.1.13 | Crear `docs/a4-anexo-ia.md` con líneas 1009–1014 | Texto de uso de IA presente |
 
 > **Nota sobre fórmulas LaTeX:** El servidor actual usa Python `markdown` que no renderiza LaTeX. Para mostrar fórmulas matemáticas (`$...$`), agregar `markdown-katex` o usar MathJax vía CDN en el template HTML de `app.py`. Ver Tarea 9.3.
 
@@ -378,7 +378,7 @@ Crear archivos con estructura mínima para que el servidor no devuelva 404:
 
 **`docs/50-capitulo5.md`**, **`docs/60-conclusiones.md`** — mismo patrón de placeholder.
 
-**`docs/A1-anexo-usabilidad.md`**, **`docs/A2-anexo-modelcards.md`**, **`docs/A3-anexo-datasheet.md`** — completar con contenido definitivo en Fase 4 del plan de implementación.
+**`docs/a1-anexo-usabilidad.md`**, **`docs/a2-anexo-modelcards.md`**, **`docs/a3-anexo-datasheet.md`** — completar con contenido definitivo en Fase 4 del plan de implementación.
 
 ### Tarea 9.3 — Habilitar renderizado de fórmulas matemáticas
 
@@ -431,16 +431,16 @@ Una vez que los 19 archivos de sección existan y sean verificados vía Docker, 
 - [ ] B10: Crear `docs/70-recomendaciones.md`
 - [ ] B11: Crear `docs/80-glosario.md`
 - [ ] B12: Crear `docs/90-referencias.md`
-- [ ] B13: Crear `docs/A4-anexo-ia.md`
+- [ ] B13: Crear `docs/a4-anexo-ia.md`
 
 ### Fase C — Placeholders para secciones pendientes
 
 - [ ] C1: Crear `docs/40-capitulo4.md` con placeholder claro
 - [ ] C2: Crear `docs/50-capitulo5.md` con placeholder claro
 - [ ] C3: Crear `docs/60-conclusiones.md` con plantilla
-- [ ] C4: Crear `docs/A1-anexo-usabilidad.md` con skeleton
-- [ ] C5: Crear `docs/A2-anexo-modelcards.md` con skeleton
-- [ ] C6: Crear `docs/A3-anexo-datasheet.md` con skeleton
+- [ ] C4: Crear `docs/a1-anexo-usabilidad.md` con skeleton
+- [ ] C5: Crear `docs/a2-anexo-modelcards.md` con skeleton
+- [ ] C6: Crear `docs/a3-anexo-datasheet.md` con skeleton
 
 ### Fase D — Verificación final
 

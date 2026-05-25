@@ -15,8 +15,8 @@ Este proyecto contiene la estructura completa de una tesis de investigación sob
 
 ```
 d:/tesis_yoset/
-├── entregable1.md              # Cap. I & II (Plan + Marco Teórico)
-├── plan_detallado.md           # Plan maestro Cap. I-V + estructura completa
+├── entregable-1.md              # Cap. I & II (Plan + Marco Teórico)
+├── plan-detallado.md           # Plan maestro Cap. I-V + estructura completa
 ├── mejora-continua-plan.md     # Plan PDCA de mejora continua
 ├── .agent.md                   # Agente de revisión y validación
 ├── entregable/                 # Artefactos de revisión y datasets
@@ -70,7 +70,7 @@ docker-compose up --build
 
 ```bash
 # 1. Abrir directamente los archivos .md
-# - entregable1.md (Capítulos I & II)
+# - entregable-1.md (Capítulos I & II)
 # - mejora-continua-plan.md (Plan PDCA)
 # - .agent.md (Checklist revisión)
 
@@ -78,14 +78,14 @@ docker-compose up --build
 
 # 2. O convertir a HTML manualmente
 python3 convert_md_to_html.py
-# Genera: /html/entregable1.html, mejora-continua.html, etc.
+# Genera: /html/entregable-1.html, mejora-continua.html, etc.
 ```
 
 ---
 
 ## 📄 Contenido de Archivos Principales
 
-### 1. **entregable1.md** (Principal)
+### 1. **entregable-1.md** (Principal)
 
 **Propósito**: Plan completo de investigación (Capítulos I & II)
 
@@ -107,7 +107,7 @@ python3 convert_md_to_html.py
    └─ 2.3 Marco Conceptual (9 subsecciones)
 ```
 
-### 1.1 **plan_detallado.md** (Evolución maestra)
+### 1.1 **plan-detallado.md** (Evolución maestra)
 
 **Propósito**: Mapa completo de estructura, avance, brechas y plan de datos.
 
@@ -258,12 +258,12 @@ Usar para validar plan completo:
 ```bash
 # Modo manual (recomendado)
 1. Abrir .agent.md
-2. Por cada sección, verificar checklist contra entregable1.md
+2. Por cada sección, verificar checklist contra entregable-1.md
 3. Registrar observaciones
 4. Ejecutar mejoras iterativamente
 
 # Modo automático (futuro)
-# python3 scripts/validate_thesis.py entregable1.md
+# python3 scripts/validate_thesis.py entregable-1.md
 ```
 
 ### Ciclos PDCA (mejora-continua-plan.md)
@@ -296,7 +296,7 @@ Ejecutar iterativamente durante desarrollo:
 
 - `http://localhost:8000/` → Página inicio
 - `http://localhost:8000/admin` → Panel admin centralizado
-- `http://localhost:8000/docs/entregable1` → Cap. I & II
+- `http://localhost:8000/docs/entregable-1` → Cap. I & II
 - `http://localhost:8000/docs/mejora-continua-plan` → PDCA
 - `http://localhost:8000/docs/.agent` → Agente revisión
 - `http://localhost:8000/api/docs` → JSON lista documentos
@@ -313,8 +313,8 @@ Ejecutar iterativamente durante desarrollo:
 docker exec -it tesis-pandoc-service bash
 
 # Convertir Markdown a DOCX
-pandoc entregable1.md \
-  -o entregable1.docx \
+pandoc entregable-1.md \
+  -o entregable-1.docx \
   --reference-doc=plantilla.docx \
   --citeproc \
   --bibliography=refs.bib \
@@ -327,8 +327,8 @@ pandoc entregable1.md \
 
 ```bash
 # Windows PowerShell
-pandoc .\entregable1.md `
-  -o .\entregable1.docx `
+pandoc .\entregable-1.md `
+  -o .\entregable-1.docx `
   --reference-doc=.\plantilla.docx `
   --citeproc `
   --bibliography=.\refs.bib `
@@ -388,7 +388,7 @@ python3 app.py
 1. **Asesor**: Abrir `.agent.md`
 2. **Asesor**: Marcar [ ] → [X] al validar
 3. **Asesor**: Enviar observaciones
-4. **Estudiante**: Incorporar feedback en entregable1.md
+4. **Estudiante**: Incorporar feedback en entregable-1.md
 5. **Repite** iterativamente
 
 ### Mejora Continua

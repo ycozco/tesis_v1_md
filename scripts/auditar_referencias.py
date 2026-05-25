@@ -15,7 +15,7 @@ DOCS_DIR = Path("docs")
 BIB_FILE = Path("config/refs.bib")
 ACTIVE_DOCS = sorted(
     p for p in DOCS_DIR.glob("*.md")
-    if p.name not in {"tesis.md", "tesis_v2.md"}
+    if p.name not in {"tesis.md", "tesis-v2.md"}
 )
 
 # Mapeo inverso: cita APA principal -> clave_bib

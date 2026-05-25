@@ -18,8 +18,8 @@ tesis_yoset/
 ├── data/                         dataset(s) sintético(s) generado(s)
 ├── docs/                         19 secciones de la tesis + planes + anexos
 │   ├── 00-portada.md … 90-referencias.md
-│   ├── A1-anexo-usabilidad.md … A4-anexo-ia.md
-│   ├── plan_detallado.md
+│   ├── a1-anexo-usabilidad.md … a4-anexo-ia.md
+│   ├── plan-detallado.md
 │   ├── plan-revision-academica-exhaustiva.md
 │   ├── plan-siguientes-pasos.md
 │   ├── variables-operacionalizadas.md
@@ -112,7 +112,7 @@ py scripts/purga_referencias.py
 ```
 
 El script:
-- Procesa todos los `.md` activos (excluye `tesis.md` y `tesis_v2.md`).
+- Procesa todos los `.md` activos (excluye `tesis.md` y `tesis-v2.md`).
 - Maneja citas individuales `[@clave]` y múltiples `(@k1; @k2)`.
 - Reporta claves no mapeadas.
 

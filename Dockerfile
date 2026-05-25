@@ -20,11 +20,11 @@ COPY config/apa.csl /app/config/
 
 # Copiar código fuente
 COPY src/ /app/src/
-COPY config/entrypoint.sh /app/src/
-RUN chmod +x /app/src/entrypoint.sh
+COPY config/entrypoint.sh /app/
+RUN chmod +x /app/entrypoint.sh
 
 # Puerto
 EXPOSE 8000
 
 # Servir aplicación
-CMD ["/app/src/entrypoint.sh"]
+CMD ["/app/entrypoint.sh"]

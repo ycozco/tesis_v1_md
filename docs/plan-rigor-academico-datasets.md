@@ -15,7 +15,7 @@
 3. [Búsqueda y evaluación de datasets](#búsqueda-y-evaluación-de-datasets)
 4. [Cronograma y hitos](#cronograma-y-hitos)
 5. [Checkups y validación](#checkups-y-validación)
-6. [Integración con plan_detallado.md](#integración-con-plan_detalladomd)
+6. [Integración con plan-detallado.md](#integración-con-plan-detalladomd)
 
 ---
 
@@ -447,25 +447,25 @@ CATEGORÍA 4: FUENTES COMPLEMENTARIAS
 
 **Periodicidad**: Cada 2 semanas  
 **Qué revisar**:
-1. ¿Se alineó el avance con el plan_detallado.md?
+1. ¿Se alineó el avance con el plan-detallado.md?
 2. ¿Los indicadores de las 8 categorías de revisión están siendo completados?
 3. ¿Hay bloqueadores o riesgos?
 
 **Responsable**: Yoset + Dr. Cornejo  
-**Documento**: Actualizar sección "Checkup del avance" en plan_detallado.md
+**Documento**: Actualizar sección "Checkup del avance" en plan-detallado.md
 
 ---
 
-## INTEGRACIÓN CON PLAN_DETALLADO.MD
+## INTEGRACIÓN CON PLAN-DETALLADO.MD
 
 ### Cómo se integra este plan
 
-Este documento **NO reemplaza** `plan_detallado.md`, pero se **anexa** como nueva sección.
+Este documento **NO reemplaza** `plan-detallado.md`, pero se **anexa** como nueva sección.
 
-**Ubicación propuesta en plan_detallado.md**:
+**Ubicación propuesta en plan-detallado.md**:
 
 ```
-[Índice actual del plan_detallado.md]
+[Índice actual del plan-detallado.md]
 ├─ ESTRUCTURA COMPLETA Y AVANCE ACTUAL
 ├─ PLAN DE REVISIONES AMPLIADO (8 CATEGORÍAS)
 ├─ ÍNDICE DEL PLAN
@@ -479,7 +479,7 @@ Este documento **NO reemplaza** `plan_detallado.md`, pero se **anexa** como nuev
 
 ### Actualización de "Checkup del avance"
 
-**Agregar a la sección "Checkup del avance" del plan_detallado.md**:
+**Agregar a la sección "Checkup del avance" del plan-detallado.md**:
 
 ```markdown
 ### Checkup del avance (ACTUALIZADO)

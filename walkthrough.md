@@ -1,34 +1,41 @@
-# Walkthrough - Implementación de Observaciones del Jurado (Caps I y II)
+# Walkthrough de la Solución: Unificación de Navbar y Panel de Experimentos
 
-Se han implementado con éxito todas las observaciones técnicas a nivel de jurado dictaminador para el Capítulo I (Planteamiento, Hipótesis) y el Capítulo II (Antecedentes, Estado del Arte, Marco Conceptual), asegurando el máximo rigor epistemológico y metodológico antes de la sustentación.
+Se ha implementado una barra de navegación premium unificada para todo el Tesis Hub y se ha incorporado el panel interactivo del Plan de Pruebas, Tratamiento de Datos y Experimentos dentro del prototipo en `/propuesta`.
 
----
+## 1. Unificación de Barra de Navegación (`main-navbar`)
+- **Estilos Premium**: Se diseñó una barra de navegación con efectos de glassmorphism (`background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px)`), tipografía Outfit, transiciones suaves y un indicador interactivo de estado de conexión (`.logo-dot` con animación de pulsación).
+- **Consistencia en Vistas**: Se integró el navbar superior de forma idéntica en:
+  - **Inicio (Dashboard principal `/`)**: Permitiendo acceder directamente a todas las áreas y removiendo los antiguos botones redundantes.
+  - **Secciones de la Tesis (`/secciones`)**: Reemplazando el botón "Volver al Dashboard" por una navegación natural.
+  - **Visualización de Secciones (`/seccion/<slug>`)**: Insertada en la parte superior del contenedor principal para mantener la consistencia estética al navegar por los capítulos.
+  - **Propuesta y Prototipo (`/propuesta`)**: Reemplazando los enlaces de cabecera anteriores.
+  - **Panel de Administración (`/admin`)**: Añadiendo el navbar en la parte superior para permitir el regreso al dashboard y el salto directo a otras áreas, lo cual cierra el ciclo de navegación.
 
-## 🛠️ Cambios Realizados
+## 2. Corrección del Navbar de Pestañas (Tabs en `/propuesta`)
+- **Interactividad Robusta**: Se modificó la función JavaScript `switchTab(tabId, btn)` para que reciba directamente la referencia del botón (`this`) como segundo parámetro. Esto elimina la dependencia exclusiva de los selectores de atributos dinámicos (`button[onclick*="..."]`), que fallaban en algunos navegadores al normalizarse las comillas, y garantiza que la clase `.active` se aplique y remueva limpiamente en todas las pestañas y vistas de contenido.
 
-### 1. CAPÍTULO I: Planteamiento y Metodología
-*   **Realidad Problemática (§1.1)**: Se modificó [10-capitulo1.md](file:///d:/tesis_yoset/docs/10-capitulo1.md#L6-L13) para agregar tres casos reales de anomalías del sector agroexportador peruano:
-    1.  *Cold chain failures* (pérdida de frío en contenedores refrigerados).
-    2.  *Alertas fitosanitarias de SENASA/FDA* (Límites Máximos de Residuos de pesticidas y plagas cuarentenarias).
-    3.  *Desviaciones de calibre y madurez de frutos* por anomalías de temperatura.
-*   **Gobernanza y Ley N° 31814 (§1.1 / §1.7.3)**: Se clarificó la aplicabilidad del D.S. N° 115-2025-PCM en empresas privadas. Se explicitó que se adopta bajo un esquema de **conformidad voluntaria por diseño** (*Voluntary Compliance by Design*), transformándolo en una ventaja competitiva de exportación.
-*   **Sub-Hipótesis Operacionales (§1.4)**: Se operacionalizaron las sub-hipótesis H1a y H1d en [10-capitulo1.md#L67-L74] para vincularlas directamente con métricas duras:
-    *   `H1a` ahora exige explícitamente un incremento en el `PR-AUC >= 0.85` y `F1-Score >= 0.80`.
-    *   `H1d` detalla una reducción de al menos un 20% en el tiempo promedio bajo el **Test de Wilcoxon** con un nivel de confianza $\alpha = 0.05$.
-
-### 2. CAPÍTULO II: Antecedentes, Estado del Arte y Marco Conceptual
-*   **Antecedentes del Dominio Agrícola/IA (§2.1)**: Se añadieron dos antecedentes específicos peruanos en [20-capitulo2-antecedentes.md#L40-L45]:
-    *   *Mendoza & Huamán (2024)*: Aplicación de modelos XGBoost y LightGBM con variables de clima del SENAMHI para rendimiento de arándanos y uva.
-    *   *Chávez & Díaz (2023)*: Detección de anomalías no supervisadas (IF/LOF) para cadena de frío IoT en contenedores.
-*   **Defensa contra Deep Learning Temporal (§2.2.2)**: Se insertó un argumento sólido en [21-capitulo2-estadoarte.md#L20-L22] que defiende el ensemble tabular ligero frente a modelos profundos basados en el costo económico del hardware y la inviabilidad de mantenimiento de servidores GPU en las agroexportadoras locales.
-*   **Rigor Matemático de la Capa 2 (§2.3.4)**: Se formalizó matemáticamente la **unificación probabilística de puntuaciones marginales** en [22-capitulo2-marcoteorico.md#L57] aplicando la normalización Min-Max de Kriegel et al. (2011) para evitar que LOF domine el ensemble y definir la ecuación de agregación global:
-    $$S_{Ensemble}(x) = \frac{P_{IF}(a|x) + P_{LOF}(a|x) + P_{ECOD}(a|x)}{3}$$
+## 3. Pestaña Interactiva "Plan de Pruebas y Experimentos" (`tab-experiments`)
+Se agregó una tercera pestaña en `/propuesta` que expone los detalles del Capítulo III (§3.3) sobre la validación científica de la tesis:
+- **Tratamiento y División de Datos**: Explica la partición cronológica (Train 70% / Validation 10% / Test 20%) para evitar fugas de información temporal, el tuning con Optuna (50 trials) y el protocolo de semillas de reproducibilidad (semilla 42 + 5 adicionales).
+- **Diseño de Experimentos E1–E5**: Detalla en una tabla las condiciones experimentales, de control, variables dependientes y sub-hipótesis para cada experimento (desde el ensemble PyOD hasta el estudio de usabilidad y ablation study).
+- **Validación Estadística**: Muestra las pruebas estadísticas aplicadas (Wilcoxon Signed-Rank, Mann-Whitney U, t-Student) con sus respectivos niveles $\alpha = 0.05$ e índices de tamaño de efecto (Cohen's d, Hedges' g).
+- **Comparación con Baselines**: Detalla la justificación teórica de cada baseline ($B_1$-$B_4$, incluyendo Isolation Forest individual, ensemble sin ECOD, XGBoost supervisado y LLM sin RAG/SHAP).
 
 ---
 
-## 🧪 Compilación y Automatizaciones
-1.  **Reconstrucción Monolítica**: Se ejecutó `rebuild_tesis_monolith.py` para sincronizar los cambios en `docs/tesis.md`.
-2.  **Robustez del Compilador**: Se editó [compile_thesis.py](file:///d:/tesis_yoset/scripts/compile_thesis.py) para capturar y controlar de forma elegante excepciones `PermissionError` (WinError 32) causadas por archivos PDF bloqueados en Windows, imprimiendo advertencias informativas en vez de abortar el pipeline.
-3.  **Compilación Exitosa**: Se generó con éxito el Word en `output/tesis_v2.docx` y el PDF fechado correspondiente (`output/tesis_v2_2026_05_18.pdf`).
-4.  **GitHub Pages**: Se recompilaron los assets web de `./github_pages` con `build_github_pages.py`.
-5.  **Git Sync**: Todos los archivos se añadieron, registraron en un commit e hicieron push a `main` exitosamente.
+## 4. Verificación Realizada
+
+1. **Compilación de Código sin Errores**:
+   - `py -m py_compile src/app.py` ejecutado en el host finaliza con éxito (exit code: 0).
+
+2. **Respuestas HTTP del Servidor**:
+   - El servidor Flask en Docker recargó en caliente tras detectar la edición.
+   - Una batería de pruebas con scripts de Python en el host confirma código `200 OK` en:
+     - `/` (Inicio)
+     - `/secciones` (Lista de capítulos)
+     - `/propuesta` (Arquitectura, Experimentos y Simulador A/B)
+     - `/admin` (Panel administrativo)
+
+3. **Verificación de Compilación de la Tesis**:
+   - `py -X utf8 scripts/compile_thesis.py` se ejecutó con éxito en el host, generando los entregables finales:
+     - `output/tesis-v2.pdf` y `output/tesis-v2.docx`

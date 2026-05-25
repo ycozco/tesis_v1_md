@@ -134,17 +134,17 @@ Roadmap detallado: `docs/plan-siguientes-pasos.md`.
 - `20-capitulo2-antecedentes.md`, `21-capitulo2-estadoarte.md`, `22-capitulo2-marcoteorico.md`
 - `30-capitulo3.md` (Cap III: §3.1–§3.3 con diseño experimental E1–E5)
 - `70-recomendaciones.md`, `80-glosario.md`, `90-referencias.md`
-- `A4-anexo-ia.md` (Anexo D — uso de IA en redacción)
+- `a4-anexo-ia.md` (Anexo D — uso de IA en redacción)
 
 ### Secciones con estructura lista, pendientes de datos (3/19)
 - `40-capitulo4.md` — Cap IV con tablas 4.1–4.12 listas (incluye §4.4 Discusión Detallada con 5 cruces comparativos)
-- `A2-anexo-modelcards.md` — 4 Model Cards (Mitchell et al., 2019) con plantillas
-- `A3-anexo-datasheet.md` — Datasheet completo (Gebru et al., 2021)
+- `a2-anexo-modelcards.md` — 4 Model Cards (Mitchell et al., 2019) con plantillas
+- `a3-anexo-datasheet.md` — Datasheet completo (Gebru et al., 2021)
 
 ### Secciones placeholder (3/19)
 - `50-capitulo5.md` — Cap V (depende de Cap IV)
 - `60-conclusiones.md` — Conclusiones ES + EN (depende de Cap IV)
-- `A1-anexo-usabilidad.md` — completo en protocolo pero pendiente N real
+- `a1-anexo-usabilidad.md` — completo en protocolo pero pendiente N real
 
 ---
 
@@ -154,7 +154,7 @@ Ubicados en `docs/` pero NO incluidos en `SECTION_ORDER`:
 
 | Archivo | Propósito |
 |---|---|
-| `plan_detallado.md` | Plan general consolidado con checkup de hitos |
+| `plan-detallado.md` | Plan general consolidado con checkup de hitos |
 | `plan-segmentacion-docker.md` | Diseño de la segmentación en 19 archivos + hot-reload Flask |
 | `plan-revision-academica-exhaustiva.md` | 87 criterios de revisión en 10 dimensiones (69/87 verificados) |
 | `plan-rigor-academico-datasets.md` | 5 pilares de rigor, búsqueda de datasets |
@@ -266,7 +266,7 @@ $env:PYTHONIOENCODING="utf-8"; py scripts/compile_thesis.py
 
 ## 14. Eventos y decisiones recientes (log corto)
 
-- **2026-05-12**: creación de `plan_detallado.md`, 46 referencias organizadas por bloques.
+- **2026-05-12**: creación de `plan-detallado.md`, 46 referencias organizadas por bloques.
 - **2026-05-15**: actualización del enfoque de tesis (financiero → agroexportador), Cap II expandido con 7 antecedentes y 5 batallas argumentativas, Cap III migrado.
 - **2026-05-17 (sesión 1)**: segmentación del monolito `tesis.md` en 19 archivos numerados, visor Flask con hot-reload, MathJax integrado.
 - **2026-05-17 (sesión 2)**: creación de `plan-revision-academica-exhaustiva.md` (87 criterios en 10 dimensiones).
@@ -278,7 +278,7 @@ $env:PYTHONIOENCODING="utf-8"; py scripts/compile_thesis.py
 
 ## 15. Cosas que NO hacer (anti-patrones)
 
-- ❌ Usar `[@clave]` en documentos activos de `docs/`. Sí en `tesis.md` o `tesis_v2.md` (reconstruido automáticamente por script).
+- ❌ Usar `[@clave]` en documentos activos de `docs/`. Sí en `tesis.md` o `tesis-v2.md` (reconstruido automáticamente por script).
 - ❌ Afirmar "el sistema cumple con el EU AI Act / SBS / etc.". Decir "se diseña siguiendo los principios de...".
 - ❌ Decir que RAG "elimina" alucinaciones. RAG "reduce significativamente pero no elimina".
 - ❌ Usar Deep SVDD en lugar de ECOD en el ensemble (decisión arquitectónica documentada).

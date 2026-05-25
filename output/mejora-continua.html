@@ -327,7 +327,7 @@
             <div class="header">
                 <h1>Plan de Mejora Continua - Tesis de Investigación</h1>
                 <div class="meta">
-                    Autor: Sistema de Control de Calidad | Generado: 2026-05-18 11:52
+                    Autor: Sistema de Control de Calidad | Generado: 2026-05-25 02:16
                 </div>
             </div>
             
@@ -338,14 +338,14 @@
 <h2 id="fase-1-diseno-implementacion-semanas-1-5">FASE 1: Diseño → Implementación (Semanas 1-5)</h2>
 <h3 id="ciclo-pdca-1-validacion-del-plan-semana-1">Ciclo PDCA #1: Validación del Plan (Semana 1)</h3>
 <p><strong>PLAN</strong>:<br />
-- [ ] Ejecutar agente de revisión (.agent.md) sobre entregable1.md<br />
+- [ ] Ejecutar agente de revisión (.agent.md) sobre entregable-1.md<br />
 - [ ] Identificar gaps estructurales, coherencia, viabilidad<br />
 - [ ] Crear lista de ~10-15 ajustes prioritarios</p>
 <p><strong>DO</strong>:<br />
 - [ ] Iteración 1.1: Fortalecer justificación económica (ROI)<br />
 - [ ] Iteración 1.2: Clarificar aporte diferencial vs. AuditCopilot [19]<br />
 - [ ] Iteración 1.3: Validar disponibilidad de datos + recursos<br />
-- [ ] Entregable: <code>entregable1_v1.1.md</code> (revisado)</p>
+- [ ] Entregable: <code>entregable-1_v1.1.md</code> (revisado)</p>
 <p><strong>CHECK</strong>:<br />
 - [ ] Matriz trazabilidad problema→solución: 100% cubierta<br />
 - [ ] Todas citas [N] en refs.bib verificadas<br />
@@ -358,9 +358,9 @@
 <hr />
 <h3 id="ciclo-pdca-2-preparacion-tecnica-semana-2-3">Ciclo PDCA #2: Preparación Técnica (Semana 2-3)</h3>
 <p><strong>PLAN</strong>:<br />
-- [ ] Setup ambiente: Python 3.9, libs (XGBoost, SHAP, scikit-learn, torch)<br />
+- [ ] Setup ambiente: Python 3.9, libs (XGBoost, SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), scikit-learn, torch)<br />
 - [ ] Descargar BAF Benchmark, exploración inicial (EDA)<br />
-- [ ] Validar acceso a LLM API o modelo local<br />
+- [ ] Validar acceso a LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) API o modelo local<br />
 - [ ] Prototipo minimal: XGBoost en BAF, precision/recall básico</p>
 <p><strong>DO</strong>:<br />
 - [ ] Iteración 2.1: Environment setup + dependency validation<br />
@@ -393,7 +393,7 @@
 <hr />
 <h3 id="ciclo-pdca-3-ensemble-anomalias-semana-3-4">Ciclo PDCA #3: Ensemble Anomalías (Semana 3-4)</h3>
 <p><strong>PLAN</strong>:<br />
-- [ ] Implementar 3 detectores: IF, LOF, Deep SVDD<br />
+- [ ] Implementar 3 detectores: IF (Isolation Forest - Bosque de Aislamiento), LOF (Local Outlier Factor - Factor de Anomalía Local), Deep SVDD<br />
 - [ ] Diseñar voting/stacking ensemble<br />
 - [ ] Validar robustez contra múltiples tipos de anomalías</p>
 <p><strong>DO</strong>:<br />
@@ -466,7 +466,7 @@
 <p><strong>ACT</strong>:<br />
 - [ ] Si coherencia &lt;80%: revisar feature engineering<br />
 - [ ] Si latencia &gt;5s: usar approximation methods (TreeSHAP optimizado)<br />
-- [ ] Si OK: proceder LLM+RAG (Ciclo 5)</p>
+- [ ] Si OK: proceder LLM+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (Ciclo 5)</p>
 <hr />
 <h3 id="ciclo-pdca-5-llm-rag-reportes-semana-4-5">Ciclo PDCA #5: LLM + RAG Reportes (Semana 4-5)</h3>
 <p><strong>PLAN</strong>:<br />
@@ -666,7 +666,7 @@
   - [ ] Formato: márgenes, font, espaciado según plantilla SBS</p>
 <ul>
 <li>[ ] Iteración 10.2: Conversión DOCX</li>
-<li>[ ] Comando: <code>pandoc entregable1.md -o entregable1.docx --reference-doc=plantilla.docx --citeproc --bibliography=refs.bib --csl=apa.csl</code></li>
+<li>[ ] Comando: <code>pandoc entregable-1.md -o entregable-1.docx --reference-doc=plantilla.docx --citeproc --bibliography=refs.bib --csl=apa.csl</code></li>
 <li>[ ] Validar: tabla de contenidos, páginas de referencia, numeración</li>
 <li>
 <p>[ ] Correcciones manuales en Word si necesario</p>
@@ -720,7 +720,7 @@
 - [ ] Investigar mejoras basadas en feedback<br />
 - [ ] Nuevas arquitecturas, datasets, métodos</p>
 <p><strong>OPCIONES</strong>:<br />
-1. <strong>Deep Learning Tabular</strong>: Probar TabNet [ref] vs. GBDT<br />
+1. <strong>Deep Learning Tabular</strong>: Probar TabNet [ref] vs. GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)<br />
 2. <strong>Temporal Modeling</strong>: Incorporar TFT [10] para forecasting comportamiento<br />
 3. <strong>Federated Learning</strong>: Multi-bank collaboration sin compartir datos<br />
 4. <strong>Explainability++</strong>: Contrastive explanations ("por qué NO es fraude")<br />

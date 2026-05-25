@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3 Anexo Datasheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#anexo-c-datasheet-del-dataset-sintetico-agroexportador">Anexo C — Datasheet del Dataset Sintético Agroexportador</a><ul>
+<li><a href="#c1-motivacion">C.1 Motivación</a></li>
+<li><a href="#c2-composicion">C.2 Composición</a></li>
+<li><a href="#c3-proceso-de-recoleccion">C.3 Proceso de recolección</a></li>
+<li><a href="#c4-inyeccion-de-anomalias">C.4 Inyección de anomalías</a></li>
+<li><a href="#c5-preprocesamiento-limpieza-y-etiquetado">C.5 Preprocesamiento, limpieza y etiquetado</a></li>
+<li><a href="#c6-usos-previstos-y-no-previstos">C.6 Usos previstos y no previstos</a></li>
+<li><a href="#c7-distribucion-y-licencia">C.7 Distribución y licencia</a></li>
+<li><a href="#c8-mantenimiento">C.8 Mantenimiento</a></li>
+<li><a href="#c9-consideraciones-eticas">C.9 Consideraciones éticas</a></li>
+<li><a href="#c10-documentacion-complementaria-fuentes-publicas-utilizadas">C.10 Documentación complementaria — Fuentes públicas utilizadas</a></li>
+<li><a href="#c11-benchmark-complementario">C.11 Benchmark complementario</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>A3 Anexo Datasheet</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-05-25 02:16
+                </div>
+            </div>
+            
+            <h2 id="anexo-c-datasheet-del-dataset-sintetico-agroexportador">Anexo C — Datasheet del Dataset Sintético Agroexportador</h2>
+<blockquote>
+<p><strong>Estándar aplicado</strong>: Gebru et al. (2021) — Datasheets for Datasets (Gebru et al., 2021).<br />
+<strong>Versión del dataset</strong>: v1.0<br />
+<strong>Fecha de creación prevista</strong>: 2026-06-01 (Hito 2 del plan general)<br />
+<strong>Estado actual</strong>: 📐 Especificación completa lista para generación.</p>
+</blockquote>
+<hr />
+<h3 id="c1-motivacion">C.1 Motivación</h3>
+<p><strong>¿Para qué se creó el dataset?</strong><br />
+Para entrenar y evaluar de forma reproducible el sistema integrado de supervisión operativa con IA explicable propuesto en esta tesis, sin depender de datos privados de empresas agroexportadoras. La opción sintética permite (a) controlar la distribución de anomalías, (b) garantizar reproducibilidad mediante semilla fija, y (c) publicar el dataset junto al paper.</p>
+<p><strong>¿Quién lo creó?</strong><br />
+Yoset Cozco Mauri, Escuela Profesional de Ingeniería de Sistemas, Universidad Nacional de San Agustín de Arequipa (UNSA). Bajo asesoría del Dr. Víctor Manuel Cornejo Aparicio.</p>
+<p><strong>¿Quién financió la creación?</strong><br />
+Sin financiamiento externo. Desarrollo en el marco de una tesis de pregrado.</p>
+<hr />
+<h3 id="c2-composicion">C.2 Composición</h3>
+<p><strong>¿Qué instancias representa?</strong><br />
+Cada fila representa un evento operativo agroexportador diario por combinación de producto, zona y destino. Una instancia agrupa indicadores de producción, comercialización, clima, sanidad, logística y calidad para un día específico.</p>
+<p><strong>¿Cuántas instancias?</strong><br />
+Mínimo 2,000 — Recomendado 5,000 — Tope 10,000. La versión inicial v1.0 generará 2,000 instancias.</p>
+<p><strong>¿Es muestra o universo?</strong><br />
+Es una muestra sintética generada para cubrir las distribuciones plausibles del sector durante el período 2022-01-01 a 2025-12-31.</p>
+<p><strong>¿Qué datos contiene cada instancia?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Rango plausible</th>
+<th>Fuente para rangos</th>
+<th>Distribución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>int</td>
+<td>Identificador único</td>
+<td>1..N</td>
+<td>—</td>
+<td>Secuencial</td>
+</tr>
+<tr>
+<td><code>fecha</code></td>
+<td>datetime</td>
+<td>Día del evento</td>
+<td>2022-01-01 a 2025-12-31</td>
+<td>—</td>
+<td>Uniforme</td>
+</tr>
+<tr>
+<td><code>producto</code></td>
+<td>category</td>
+<td>Producto agroexportador</td>
+<td>{arándano, uva, palta, cacao, espárrago}</td>
+<td>MIDAGRI</td>
+<td>Ponderada por participación</td>
+</tr>
+<tr>
+<td><code>zona</code></td>
+<td>category</td>
+<td>Departamento productor</td>
+<td>{Ica, La Libertad, Piura, Arequipa, Lima}</td>
+<td>MIDAGRI</td>
+<td>Ponderada por área cultivada</td>
+</tr>
+<tr>
+<td><code>volumen_kg</code></td>
+<td>float</td>
+<td>Volumen del día (kg)</td>
+<td>500–50,000</td>
+<td>MIDAGRI</td>
+<td>LogNormal(μ=8, σ=1.2)</td>
+</tr>
+<tr>
+<td><code>precio_kg_usd</code></td>
+<td>float</td>
+<td>Precio FOB por kg</td>
+<td>0.5–12.0</td>
+<td>MIDAGRI / SUNAT</td>
+<td>Normal por producto</td>
+</tr>
+<tr>
+<td><code>temperatura_max_c</code></td>
+<td>float</td>
+<td>Temperatura máxima del día (°C)</td>
+<td>15–38</td>
+<td>SENAMHI</td>
+<td>Normal por zona/mes</td>
+</tr>
+<tr>
+<td><code>temperatura_min_c</code></td>
+<td>float</td>
+<td>Temperatura mínima del día (°C)</td>
+<td>5–22</td>
+<td>SENAMHI</td>
+<td>Normal por zona/mes</td>
+</tr>
+<tr>
+<td><code>precipitacion_mm</code></td>
+<td>float</td>
+<td>Precipitación diaria (mm)</td>
+<td>0–200</td>
+<td>SENAMHI</td>
+<td>Gamma(α=0.5, β=10)</td>
+</tr>
+<tr>
+<td><code>humedad_pct</code></td>
+<td>float</td>
+<td>Humedad relativa (%)</td>
+<td>40–95</td>
+<td>SENAMHI</td>
+<td>Beta(α=8, β=3)</td>
+</tr>
+<tr>
+<td><code>destino_mercado</code></td>
+<td>category</td>
+<td>Mercado destino</td>
+<td>{EEUU, UE, Asia, Otro}</td>
+<td>SUNAT</td>
+<td>Ponderada por exportaciones</td>
+</tr>
+<tr>
+<td><code>cumplimiento_fitosanitario</code></td>
+<td>binary</td>
+<td>Lote cumple SENASA</td>
+<td>{0, 1}</td>
+<td>SENASA</td>
+<td>Bernoulli(p=0.92)</td>
+</tr>
+<tr>
+<td><code>dias_logisticos</code></td>
+<td>int</td>
+<td>Días desde cosecha a embarque</td>
+<td>3–45</td>
+<td>Estimado</td>
+<td>LogNormal(μ=2.3, σ=0.5)</td>
+</tr>
+<tr>
+<td><code>merma_pct</code></td>
+<td>float</td>
+<td>Pérdida del lote (%)</td>
+<td>0–30</td>
+<td>Estimado</td>
+<td>Beta(α=2, β=10)</td>
+</tr>
+<tr>
+<td><code>costo_logistico_usd_kg</code></td>
+<td>float</td>
+<td>Costo logístico unitario</td>
+<td>0.05–1.2</td>
+<td>Estimado</td>
+<td>LogNormal</td>
+</tr>
+<tr>
+<td><code>tipo_cambio_pen_usd</code></td>
+<td>float</td>
+<td>Tipo de cambio del día</td>
+<td>3.5–4.2</td>
+<td>BCRP</td>
+<td>Random walk con tendencia</td>
+</tr>
+<tr>
+<td><code>etiqueta_anomalia</code></td>
+<td>binary</td>
+<td>Es anomalía operativa</td>
+<td>{0, 1}</td>
+<td>Inyección controlada</td>
+<td>Bernoulli(p=0.12)</td>
+</tr>
+<tr>
+<td><code>tipo_anomalia</code></td>
+<td>category</td>
+<td>Tipo de anomalía</td>
+<td>{precio, volumen, clima, logistica, calidad, none}</td>
+<td>Inyección controlada</td>
+<td>Definida por reglas</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total</strong>: 17 columnas; 2,000 filas en v1.0.</p>
+<p><strong>¿Las etiquetas son confiables?</strong><br />
+Sí, porque el dataset es sintético y las etiquetas se asignan según las reglas de inyección documentadas (§C.4). No hay ambigüedad por error humano de etiquetado.</p>
+<p><strong>¿Falta algún dato?</strong><br />
+Sí, se inyectan valores faltantes en el 3% de las filas para simular registros parciales (campos: humedad_pct, dias_logisticos, costo_logistico_usd_kg). Esto evalúa robustez del modelo ante datos incompletos típicos de fuentes operativas.</p>
+<p><strong>¿Las relaciones entre instancias son explícitas?</strong><br />
+Las instancias están temporalmente ordenadas. No hay relación de identidad (no es panel longitudinal con seguimiento individual). Una misma combinación (producto, zona, fecha) puede aparecer solo una vez.</p>
+<p><strong>¿División train/test recomendada?</strong><br />
+División cronológica:<br />
+- Train: 2022-01-01 a 2024-12-31 (70%)<br />
+- Validation: 2025-01-01 a 2025-04-30 (10%)<br />
+- Test: 2025-05-01 a 2025-12-31 (20%)</p>
+<p>Esta división evita data leakage temporal y simula el caso realista de aplicar el modelo a períodos futuros.</p>
+<p><strong>¿Hay datos sensibles?</strong><br />
+No. No hay datos personales, no se identifican empresas reales, no se referencian transacciones específicas. Es completamente sintético.</p>
+<hr />
+<h3 id="c3-proceso-de-recoleccion">C.3 Proceso de recolección</h3>
+<p><strong>¿Cómo se generaron los datos?</strong><br />
+Mediante un script Python (<code>src/generate_synthetic_dataset.py</code>) que muestrea cada columna según las distribuciones de la tabla §C.2 condicionadas a (producto, zona, mes). La generación se realiza en cuatro pasos:<br />
+1. Muestreo de variables base (fecha, producto, zona).<br />
+2. Muestreo condicional de variables dependientes (clima por zona+mes; precio por producto+mes).<br />
+3. Inyección de correlaciones plausibles (volumen ↑ → merma ↓ por economías de escala; precipitacion ↑ → merma ↑ por daño post-cosecha).<br />
+4. Inyección controlada de anomalías según reglas §C.4.</p>
+<p><strong>¿Quién recopiló los datos?</strong><br />
+N/A — Datos sintéticos generados por el autor con <code>numpy.random.default_rng(seed=42)</code>.</p>
+<p><strong>¿En qué período se generaron?</strong><br />
+Generación prevista: 2026-05-31 a 2026-06-01.</p>
+<hr />
+<h3 id="c4-inyeccion-de-anomalias">C.4 Inyección de anomalías</h3>
+<p><strong>Distribución de tipos de anomalía</strong> (sobre 12% de filas marcadas como anómalas):</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Proporción</th>
+<th>Mecanismo de inyección</th>
+<th>Variables afectadas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>precio</code></td>
+<td>30%</td>
+<td><code>precio_kg_usd</code> &gt; percentil 99 o &lt; percentil 1 del producto</td>
+<td>precio_kg_usd</td>
+</tr>
+<tr>
+<td><code>volumen</code></td>
+<td>25%</td>
+<td><code>volumen_kg</code> &gt; media + 3·DE para producto/zona</td>
+<td>volumen_kg</td>
+</tr>
+<tr>
+<td><code>clima</code></td>
+<td>20%</td>
+<td><code>temperatura_max_c</code> &gt; 38°C ∧ <code>precipitacion_mm</code> &lt; 1 mm (sequía con calor extremo)</td>
+<td>temperatura_max_c, precipitacion_mm</td>
+</tr>
+<tr>
+<td><code>logistica</code></td>
+<td>15%</td>
+<td><code>dias_logisticos</code> &gt; percentil 95 ∧ <code>cumplimiento_fitosanitario</code> = 1 (demora a pesar de cumplir)</td>
+<td>dias_logisticos</td>
+</tr>
+<tr>
+<td><code>calidad</code></td>
+<td>10%</td>
+<td><code>merma_pct</code> &gt; 25% ∧ <code>precio_kg_usd</code> &gt; mediana (pérdida con precio alto)</td>
+<td>merma_pct</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verificabilidad</strong>: Para cada anomalía inyectada se registra <code>tipo_anomalia</code> y el campo <code>regla_inyeccion</code> que documenta los valores exactos que activaron la regla. Esto permite auditoría posterior del proceso de generación.</p>
+<hr />
+<h3 id="c5-preprocesamiento-limpieza-y-etiquetado">C.5 Preprocesamiento, limpieza y etiquetado</h3>
+<p><strong>¿Se aplicó preprocesamiento?</strong><br />
+El dataset v1.0 se publica sin preprocesamiento adicional. El script de pipeline (<code>src/pipeline.py</code>) aplica:<br />
+1. Imputación de valores faltantes (mediana para numéricas, moda para categóricas).<br />
+2. Codificación one-hot de variables categóricas.<br />
+3. Escalamiento StandardScaler para variables numéricas (solo para LOF (Local Outlier Factor - Factor de Anomalía Local); XGBoost no lo requiere).<br />
+4. Construcción de features derivadas: <code>temperatura_rango = temperatura_max_c - temperatura_min_c</code>, <code>precio_unitario_zscore</code> por producto.</p>
+<p><strong>¿Los datos crudos se conservan?</strong><br />
+Sí. El CSV crudo (<code>data/dataset_agro_sintetico_v1.csv</code>) se versiona en Git LFS y queda como referencia de entrada al pipeline.</p>
+<hr />
+<h3 id="c6-usos-previstos-y-no-previstos">C.6 Usos previstos y no previstos</h3>
+<p><strong>¿Para qué se usará el dataset?</strong><br />
+- Entrenar y evaluar el sistema integrado de supervisión operativa de esta tesis.<br />
+- Comparar baselines (Isolation Forest individual, ensembles parciales).<br />
+- Publicar como benchmark abierto en el repositorio GitHub asociado al paper.</p>
+<p><strong>¿Para qué NO debe usarse?</strong><br />
+- No representa datos reales de empresas específicas; no debe usarse para toma de decisiones operativas en ninguna empresa real.<br />
+- No se diseñó para análisis económico del sector agroexportador peruano (los rangos son plausibles pero no son estadísticas oficiales).<br />
+- No es un benchmark estandarizado de la comunidad de detección de anomalías.</p>
+<p><strong>¿Existen tareas para las que el dataset sería inadecuado?</strong><br />
+- Análisis causal: no hay manipulación experimental real, solo inyección de correlaciones plausibles.<br />
+- Modelos de pronóstico de mercado: el componente de precio no refleja la volatilidad real de los mercados internacionales.<br />
+- Sesgo geográfico/demográfico: solo se modelan 5 productos y 5 departamentos peruanos.</p>
+<hr />
+<h3 id="c7-distribucion-y-licencia">C.7 Distribución y licencia</h3>
+<p><strong>¿El dataset se distribuirá?</strong><br />
+Sí, publicación bajo licencia <strong>CC BY 4.0</strong> en el repositorio GitHub asociado a esta tesis. Esto permite uso académico y comercial citando la fuente.</p>
+<p><strong>¿Cómo se citará?</strong></p>
+<pre class="codehilite"><code>Cozco Mauri, Y. (2026). Dataset Sintético Agroexportador Peruano v1.0 [Data set].
+  Universidad Nacional de San Agustín de Arequipa.
+  URL: [repositorio GitHub al publicar]
+</code></pre>
+
+<p><strong>¿Habrá DOI?</strong><br />
+Se solicitará DOI en Zenodo al cierre de la tesis para garantizar persistencia.</p>
+<hr />
+<h3 id="c8-mantenimiento">C.8 Mantenimiento</h3>
+<p><strong>¿Quién mantendrá el dataset?</strong><br />
+Yoset Cozco Mauri hasta diciembre 2027. Después, el repositorio queda como archivo histórico.</p>
+<p><strong>¿Habrá actualizaciones?</strong><br />
+- v1.0 — 2,000 filas — versión base de la tesis.<br />
+- v1.1 — posible si se requieren ajustes durante experimentos.<br />
+- v2.0 — versión extendida (5,000 filas) para publicación en paper.</p>
+<p><strong>¿Cómo se notificarán los cambios?</strong><br />
+Mediante CHANGELOG.md en el repositorio y release notes versionadas por Git.</p>
+<hr />
+<h3 id="c9-consideraciones-eticas">C.9 Consideraciones éticas</h3>
+<p><strong>¿Hay riesgo de daño a personas o grupos?</strong><br />
+No, dado que el dataset es sintético y no contiene información de individuos ni empresas reales. La elección de 5 productos y 5 departamentos cubre los principales del sector peruano pero no excluye intencionalmente a otros actores.</p>
+<p><strong>¿Hay riesgo de uso indebido?</strong><br />
+Riesgo bajo. El dataset es claramente etiquetado como sintético en cada archivo (header, README, paper). Cualquier uso operativo real sería contrario a la documentación.</p>
+<hr />
+<h3 id="c10-documentacion-complementaria-fuentes-publicas-utilizadas">C.10 Documentación complementaria — Fuentes públicas utilizadas</h3>
+<p>El dataset se calibra con rangos plausibles tomados de las siguientes fuentes públicas. Para reproducir o ampliar el dataset, consultar:</p>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>URL</th>
+<th>Variable calibrada</th>
+<th>Acceso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MIDAGRI</td>
+<td>https://www.gob.pe/midagri</td>
+<td>volumen, precio, producto, zona</td>
+<td>Público</td>
+</tr>
+<tr>
+<td>SENAMHI</td>
+<td>https://www.senamhi.gob.pe</td>
+<td>temperatura, precipitación, humedad</td>
+<td>Público</td>
+</tr>
+<tr>
+<td>SENASA</td>
+<td>https://www.gob.pe/senasa</td>
+<td>cumplimiento_fitosanitario</td>
+<td>Público</td>
+</tr>
+<tr>
+<td>SUNAT</td>
+<td>https://www.sunat.gob.pe</td>
+<td>destino_mercado, valor exportado</td>
+<td>Público</td>
+</tr>
+<tr>
+<td>INEI</td>
+<td>https://www.inei.gob.pe</td>
+<td>tipo_cambio, indicadores económicos</td>
+<td>Público</td>
+</tr>
+<tr>
+<td>FAOSTAT</td>
+<td>https://www.fao.org/faostat</td>
+<td>producción nacional comparativa</td>
+<td>Público</td>
+</tr>
+<tr>
+<td>UN Comtrade</td>
+<td>https://comtradeplus.un.org</td>
+<td>exportaciones por país destino</td>
+<td>Público</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="c11-benchmark-complementario">C.11 Benchmark complementario</h3>
+<p>El <strong>BAF Benchmark</strong> (Jesus et al., 2022) se utiliza únicamente como referencia metodológica para validación cruzada de la arquitectura en datos tabulares desbalanceados con drift temporal, NO como evidencia del dominio agroexportador. Se documenta su uso en §3.2 con esa restricción.</p>
+<hr />
+<p><em>Anexo C — versión 1.0 — 2026-05-17. Datasheet completo, listo para generación de v1.0 del dataset.</em></p>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

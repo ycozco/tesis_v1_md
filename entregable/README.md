@@ -29,7 +29,7 @@ Total: **8 categorías**, **49 indicadores de logro**.
 ## 📁 ARCHIVOS PRINCIPALES (LEE EN ESTE ORDEN)
 
 ### 1️⃣ **EMPIEZA AQUÍ** — Lee primero (5 minutos)
-- **QUICK-START-30min.md** ← TÚ (Yoset) COMIENZA AQUÍ
+- **quick-start-30min.md** ← TÚ (Yoset) COMIENZA AQUÍ
   - Qué hacer hoy en 30 minutos
   - 3 tareas concretas
   - Checklist de progreso
@@ -37,7 +37,7 @@ Total: **8 categorías**, **49 indicadores de logro**.
 ---
 
 ### 2️⃣ **ENTENDER CONTEXTO** — Lee segundo (10 minutos)
-- **RESUMEN-EJECUTIVO-revisiones.md**
+- **resumen-ejecutivo-revisiones.md**
   - Problema inicial ¿Están bien encaminadas las categorías?
   - Hallazgos de la búsqueda
   - Por qué se agregaron 2 categorías nuevas
@@ -46,7 +46,7 @@ Total: **8 categorías**, **49 indicadores de logro**.
 ---
 
 ### 3️⃣ **VER PANORAMA COMPLETO** — Lee tercero (15 minutos)
-- **PANORAMA-COMPLETO.md**
+- **panorama-completo.md**
   - Marcos académicos consultados (tabla)
   - Evolución de 6 → 8 categorías (visual)
   - Estado actual: 49 indicadores, 38% completado
@@ -77,12 +77,12 @@ Total: **8 categorías**, **49 indicadores de logro**.
 ---
 
 ### 6️⃣ **NAVEGAR** — Usa como GPS
-- **00-INDICE-CENTRALIZADO.md**
+- **00-indice-centralizado.md**
   - Descripción de cada archivo
   - Flujo recomendado por perfil (Jurado, Asesor, Yoset)
   - Cómo usar cada documento
 
-- **INFORME-FINAL.md**
+- **informe-final.md**
   - Resumen ejecutivo de todo lo hecho
   - Conclusiones
   - Próximos pasos
@@ -93,7 +93,7 @@ Total: **8 categorías**, **49 indicadores de logro**.
 
 ```
 ┌─────────────────────────────────────────┐
-│ PASO 1: Leer QUICK-START-30min.md      │ (5 min)
+│ PASO 1: Leer quick-start-30min.md      │ (5 min)
 ├─────────────────────────────────────────┤
 │ PASO 2: Operacionalizar 5 variables     │ (10 min)
 ├─────────────────────────────────────────┤
@@ -144,14 +144,14 @@ R: Tu asesor Dr. Víctor Cornejo. Usa los documentos como referencias.
 
 ```
 entregable/
-├── 00-INDICE-CENTRALIZADO.md ⭐ MAPA DE NAVEGACIÓN
-├── QUICK-START-30min.md ⭐ COMIENZA AQUÍ (Yoset)
-├── INFORME-FINAL.md ⭐ RESUMEN COMPLETO
-├── RESUMEN-EJECUTIVO-revisiones.md (para jurado)
+├── 00-indice-centralizado.md ⭐ MAPA DE NAVEGACIÓN
+├── quick-start-30min.md ⭐ COMIENZA AQUÍ (Yoset)
+├── informe-final.md ⭐ RESUMEN COMPLETO
+├── resumen-ejecutivo-revisiones.md (para jurado)
 ├── sustentacion-revisiones-ampliada.md (fundamentación académica)
 ├── matriz-revisiones-8categorias.md (checklist de 49 indicadores)
 ├── matriz-seguimiento-49indicadores.csv ⭐ ACTUALIZAR SEMANALMENTE
-├── PANORAMA-COMPLETO.md (vista integral)
+├── panorama-completo.md (vista integral)
 └── (anteriores: dataset-decision.txt, fuentes-datos-agroexport.txt)
 ```
 
@@ -160,18 +160,18 @@ entregable/
 ## 🎓 PARA DIFERENTES PÚBLICOS
 
 ### Si eres YOSET (tesista):
-1. Abre `QUICK-START-30min.md` AHORA
+1. Abre `quick-start-30min.md` AHORA
 2. Haz las 4 tareas de hoy
 3. Usa `matriz-seguimiento-49indicadores.csv` como tu checklist semanal
-4. Abre `00-INDICE-CENTRALIZADO.md` para navegar cuando necesites
+4. Abre `00-indice-centralizado.md` para navegar cuando necesites
 
 ### Si eres el ASESOR:
-1. Lee `RESUMEN-EJECUTIVO-revisiones.md` (10 min)
+1. Lee `resumen-ejecutivo-revisiones.md` (10 min)
 2. Usa `matriz-revisiones-8categorias.md` para revisar avance de Yoset
 3. Importa `matriz-seguimiento-49indicadores.csv` a tu sistema de tracking
 
 ### Si eres el JURADO:
-1. Lee `RESUMEN-EJECUTIVO-revisiones.md` (10 min)
+1. Lee `resumen-ejecutivo-revisiones.md` (10 min)
 2. Consulta `sustentacion-revisiones-ampliada.md` si tienes dudas sobre justificación académica
 3. Evalúa contra los 49 indicadores en la matriz
 
@@ -182,7 +182,7 @@ entregable/
 Marca si completaste esto:
 
 - [ ] Abrí este archivo (README.md)
-- [ ] Leí `QUICK-START-30min.md`
+- [ ] Leí `quick-start-30min.md`
 - [ ] Operacionalizé 5 variables de mi tesis
 - [ ] Creé 1 Datasheet de ejemplo
 - [ ] Actualicé `matriz-seguimiento-49indicadores.csv`
@@ -200,25 +200,25 @@ Marca si completaste esto:
 → Ver `sustentacion-revisiones-ampliada.md` + sección "Datasheets for Datasets"
 
 **¿Cuáles son las 8 categorías nuevas?**  
-→ Ver `PANORAMA-COMPLETO.md` + tabla "Evolución: De 6 a 8 categorías"
+→ Ver `panorama-completo.md` + tabla "Evolución: De 6 a 8 categorías"
 
 **¿Cuál es el plan de trabajo?**  
 → Ver `matriz-revisiones-8categorias.md` + sección "RECOMENDACIÓN DE ORDEN DE TRABAJO"
 
 **¿Cómo actualizo el seguimiento?**  
-→ Ver `00-INDICE-CENTRALIZADO.md` + sección "PARA YOSET"
+→ Ver `00-indice-centralizado.md` + sección "PARA YOSET"
 
 ---
 
 ## 🚀 AHORA SÍ: ¡COMIENZA!
 
 ### DERECHA AHORA:
-1. Abre `QUICK-START-30min.md`
+1. Abre `quick-start-30min.md`
 2. Sigue los 4 pasos
 3. Comparte tu avance con tu asesor
 
 ### MAÑANA:
-Lee `RESUMEN-EJECUTIVO-revisiones.md` (10 min)
+Lee `resumen-ejecutivo-revisiones.md` (10 min)
 
 ### ESTA SEMANA:
 Completa Fase 1:
@@ -243,7 +243,7 @@ Tu tesis ya es buena. Con estos 49 indicadores, será **defensible ante cualquie
 ║                                                                            ║
 ║  Documentos: 8 ✅ | Indicadores: 49 | Marcos académicos: 9 | Avance: 38% ║
 ║                                                                            ║
-║  TU ACCIÓN HOY: Abre QUICK-START-30min.md y comienza Fase 1              ║
+║  TU ACCIÓN HOY: Abre quick-start-30min.md y comienza Fase 1              ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

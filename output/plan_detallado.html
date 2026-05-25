@@ -3,23 +3,1734 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Detallado | Tesis Hub</title>
+    <title>Plan_Detallado</title>
     <style>
-        body { font-family: Arial, sans-serif; background:#0f172a; color:#f8fafc; padding:40px; }
-        .card { max-width:900px; margin:0 auto; background:#1e293b; border-radius:18px; padding:28px; }
-        a { color:#a5b4fc; }
-        ul { margin-left:20px; line-height:1.8; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Plan detallado</h1>
-        <p>La versión editable y centralizada del avance está en <a href="/admin">/admin</a> y en <a href="/docs/plan_detallado">/docs/plan_detallado</a>.</p>
-        <ul>
-            <li>Estructura completa de la tesis: Cap. I-V + anexos.</li>
-            <li>Checklist de avance y pendientes por tipo de revisión.</li>
-            <li>Matriz de datos y fuentes para el enfoque agroexportador.</li>
-        </ul>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#plan-detallado-tesis-completa-cap-i-v-anexos">PLAN DETALLADO — TESIS COMPLETA (CAP. I-V + ANEXOS)</a><ul>
+<li><a href="#sistema-integrado-de-supervision-operativa-con-ia-explicable-para-empresas-agroexportadoras-peruanas">Sistema Integrado de Supervisión Operativa con IA Explicable para Empresas Agroexportadoras Peruanas</a></li>
+<li><a href="#universidad-nacional-de-san-agustin-de-arequipa-ingenieria-de-sistemas">Universidad Nacional de San Agustín de Arequipa — Ingeniería de Sistemas</a></li>
+<li><a href="#estado-actualizado-2026-05-17-hito-1-cerrado-ejecutado-plan-revision-academica-exhaustivamd">Estado: Actualizado 2026-05-17 (Hito 1 cerrado, ejecutado plan-revision-academica-exhaustiva.md)</a></li>
+<li><a href="#actualizacion-2026-05-17-estado-real">ACTUALIZACIÓN 2026-05-17 — ESTADO REAL</a><ul>
+<li><a href="#lo-que-cambio-respecto-al-plan-del-2026-05-15">Lo que cambió respecto al plan del 2026-05-15</a></li>
+<li><a href="#el-cuello-de-botella-real-no-es-redaccion-es-implementacion">El cuello de botella real (no es redacción, es implementación)</a></li>
+<li><a href="#diagnostico-de-los-5-hitos-del-plan-anterior">Diagnóstico de los 5 hitos del plan anterior</a></li>
+</ul>
+</li>
+<li><a href="#estructura-completa-y-archivos-activos-2026-05-17">ESTRUCTURA COMPLETA Y ARCHIVOS ACTIVOS (2026-05-17)</a><ul>
+<li><a href="#archivos-de-seccion-esquema-segmentado">Archivos de sección (esquema segmentado)</a></li>
+<li><a href="#checkup-del-avance">Checkup del avance</a><ul>
+<li><a href="#componentes-de-redaccion">Componentes de redacción</a></li>
+<li><a href="#componentes-de-implementacion-nueva-categoria-bloqueo-principal">Componentes de implementación (nueva categoría — bloqueo principal)</a></li>
+<li><a href="#infraestructura-docker-completado-hoy-2026-05-17">Infraestructura Docker (completado hoy 2026-05-17)</a></li>
+<li><a href="#plan-de-revision-academica-exhaustiva-ejecutado-2026-05-17">Plan de Revisión Académica Exhaustiva (ejecutado 2026-05-17)</a></li>
+</ul>
+</li>
+<li><a href="#nueva-seccion-plan-de-revisiones-ampliado-8-categorias">✅ NUEVA SECCIÓN: PLAN DE REVISIONES AMPLIADO (8 CATEGORÍAS)</a><ul>
+<li><a href="#categorias-de-revision-antes-6-ahora-8">Categorías de revisión (Antes: 6 → Ahora: 8)</a></li>
+<li><a href="#justificacion-academica">Justificación académica</a></li>
+<li><a href="#archivos-de-referencia-en-entregable">Archivos de referencia en /entregable/</a></li>
+<li><a href="#orden-de-trabajo-recomendado">Orden de trabajo recomendado</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#nueva-seccion-plan-detallado-de-rigor-academico-y-busqueda-de-datasets">✅ NUEVA SECCIÓN: PLAN DETALLADO DE RIGOR ACADÉMICO Y BÚSQUEDA DE DATASETS</a><ul>
+<li><a href="#5-pilares-de-rigor-academico">5 Pilares de Rigor Académico</a></li>
+<li><a href="#5-hitos-principales">5 Hitos principales</a></li>
+<li><a href="#tareas-inmediatas-esta-semana">Tareas inmediatas (Esta semana)</a></li>
+<li><a href="#fuentes-de-datos-identificadas">Fuentes de datos identificadas</a></li>
+<li><a href="#tracking-integrado">Tracking integrado</a></li>
+<li><a href="#validacion-y-checkups">Validación y checkups</a></li>
+</ul>
+</li>
+<li><a href="#indice-del-plan">ÍNDICE DEL PLAN</a></li>
+<li><a href="#1-diagnostico-del-estado-actual">1. DIAGNÓSTICO DEL ESTADO ACTUAL</a><ul>
+<li><a href="#lo-que-ya-esta-desarrollado-no-reescribir">Lo que ya está desarrollado (no reescribir)</a></li>
+<li><a href="#lo-que-falta-y-es-el-objeto-de-este-plan">Lo que FALTA y es el objeto de este plan</a></li>
+</ul>
+</li>
+<li><a href="#2-capitulo-i-refinamiento-y-completitud">2. CAPÍTULO I — REFINAMIENTO Y COMPLETITUD</a><ul>
+<li><a href="#21-refinamientos-necesarios-no-reescrituras">2.1 Refinamientos necesarios (no reescrituras)</a><ul>
+<li><a href="#11-agregar-magnitud-del-problema-con-cifras-verificables">§1.1 — Agregar magnitud del problema con cifras verificables</a></li>
+<li><a href="#171-justificacion-teorica-agregar-la-brecha-exacta">§1.7.1 — Justificación Teórica: agregar la brecha exacta</a></li>
+<li><a href="#173-justificacion-social-agregar-marco-legal-peruano-e-internacional">§1.7.3 — Justificación Social: agregar marco legal peruano e internacional</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-capitulo-ii-21-antecedentes-estructura-completa">3. CAPÍTULO II §2.1 — ANTECEDENTES (ESTRUCTURA COMPLETA)</a><ul>
+<li><a href="#formato-unsa-para-cada-antecedente">Formato UNSA para cada antecedente</a></li>
+<li><a href="#antecedente-1-auditcopilot-competidor-directo">ANTECEDENTE 1 — AuditCopilot (Competidor directo)</a></li>
+<li><a href="#antecedente-2-framework-multi-agente-llm-para-deteccion-de-anomalias-financieras">ANTECEDENTE 2 — Framework Multi-Agente LLM para Detección de Anomalías Financieras</a></li>
+<li><a href="#antecedente-3-deteccion-de-fraude-con-ml-interpretable-y-ensemble-gbdt">ANTECEDENTE 3 — Detección de Fraude con ML Interpretable y Ensemble GBDT</a></li>
+<li><a href="#antecedente-4-adbench-evaluacion-sistematica-de-detectores-de-anomalias">ANTECEDENTE 4 — ADBench: Evaluación Sistemática de Detectores de Anomalías</a></li>
+<li><a href="#antecedente-5-por-que-los-modelos-basados-en-arboles-superan-al-deep-learning-en-datos-tabulares">ANTECEDENTE 5 — Por qué los Modelos Basados en Árboles Superan al Deep Learning en Datos Tabulares</a></li>
+<li><a href="#antecedente-6-temporal-fusion-transformers-para-forecasting-multi-horizonte-interpretable">ANTECEDENTE 6 — Temporal Fusion Transformers para Forecasting Multi-Horizonte Interpretable</a></li>
+<li><a href="#antecedente-7-pyod-libreria-estandar-para-deteccion-de-outliers">ANTECEDENTE 7 — PyOD: Librería Estándar para Detección de Outliers</a></li>
+</ul>
+</li>
+<li><a href="#4-capitulo-ii-22-estado-del-arte">4. CAPÍTULO II §2.2 — ESTADO DEL ARTE</a><ul>
+<li><a href="#estructura-propuesta-5-batallas-argumentativas">Estructura propuesta: 5 Batallas Argumentativas</a></li>
+<li><a href="#batalla-1-gbdt-vs-deep-learning-para-datos-tabulares">BATALLA 1 — GBDT vs. Deep Learning para Datos Tabulares</a></li>
+<li><a href="#batalla-2-detector-unico-vs-ensemble-para-anomalias">BATALLA 2 — Detector Único vs. Ensemble para Anomalías</a></li>
+<li><a href="#batalla-3-llm-como-detector-vs-llm-como-generador-de-reportes">BATALLA 3 — LLM como Detector vs. LLM como Generador de Reportes</a></li>
+<li><a href="#batalla-4-sistemas-aislados-vs-sistema-integrado-la-brecha-principal">BATALLA 4 — Sistemas Aislados vs. Sistema Integrado (La Brecha Principal)</a></li>
+<li><a href="#batalla-5-contexto-internacional-vs-contexto-peruano-originalidad-local">BATALLA 5 — Contexto Internacional vs. Contexto Peruano (Originalidad local)</a></li>
+</ul>
+</li>
+<li><a href="#5-capitulo-ii-23-bases-teoricas">5. CAPÍTULO II §2.3 — BASES TEÓRICAS</a><ul>
+<li><a href="#estructura-propuesta">Estructura propuesta</a></li>
+<li><a href="#231-gbdt-gradient-boosting-decision-trees-arboles-de-decision-de-aumento-de-gradiente">§2.3.1 GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)</a></li>
+<li><a href="#232-deteccion-de-anomalias-fundamentos-y-ensemble">§2.3.2 Detección de Anomalías: Fundamentos y Ensemble</a></li>
+<li><a href="#233-forecasting-con-transformers-tft-y-debate-contemporaneo">§2.3.3 Forecasting con Transformers: TFT y debate contemporáneo</a></li>
+<li><a href="#234-explicabilidad-xai-explainable-artificial-intelligence-inteligencia-artificial-explicable-y-valores-de-shapley">§2.3.4 Explicabilidad (XAI (Explainable Artificial Intelligence - Inteligencia Artificial Explicable)) y Valores de Shapley</a></li>
+<li><a href="#235-modelos-de-lenguaje-y-rag-para-auditoria">§2.3.5 Modelos de Lenguaje y RAG para Auditoría</a></li>
+<li><a href="#236-gobernanza-de-ia-y-mlops">§2.3.6 Gobernanza de IA y MLOps</a></li>
+</ul>
+</li>
+<li><a href="#6-analisis-comparativo-con-competidores-directos">6. ANÁLISIS COMPARATIVO CON COMPETIDORES DIRECTOS</a><ul>
+<li><a href="#tabla-2x-comparativa-de-sistemas-de-auditoria-con-ia-para-insertar-en-22-batalla-4">Tabla 2.X — Comparativa de sistemas de auditoría con IA (para insertar en §2.2 Batalla 4)</a></li>
+<li><a href="#nota-de-diferenciacion-detallada-con-auditcopilot-para-incluir-en-21-o-22">Nota de diferenciación detallada con AuditCopilot (para incluir en §2.1 o §2.2)</a></li>
+</ul>
+</li>
+<li><a href="#7-matriz-de-brechas-gap-analysis">7. MATRIZ DE BRECHAS (GAP ANALYSIS)</a><ul>
+<li><a href="#tabla-de-brechas-identificadas-en-la-literatura">Tabla de brechas identificadas en la literatura</a></li>
+</ul>
+</li>
+<li><a href="#8-checklist-de-datos-faltantes">8. CHECKLIST DE DATOS FALTANTES</a><ul>
+<li><a href="#urgente-necesarios-antes-de-comenzar-experimentos">🔴 URGENTE — Necesarios antes de comenzar experimentos</a></li>
+<li><a href="#importante-necesarios-antes-de-escribir-capitulo-ii-definitivo">🟡 IMPORTANTE — Necesarios antes de escribir Capítulo II definitivo</a></li>
+<li><a href="#recomendable-fortalecen-pero-no-bloquean">🟢 RECOMENDABLE — Fortalecen pero no bloquean</a></li>
+</ul>
+</li>
+<li><a href="#10-planificacion-integrada-de-datos">10. PLANIFICACIÓN INTEGRADA DE DATOS</a><ul>
+<li><a href="#fuentes-y-tipo-de-datos">Fuentes y tipo de datos</a></li>
+<li><a href="#como-se-integran">Cómo se integran</a></li>
+<li><a href="#que-aumento-en-la-planificacion">Qué aumentó en la planificación</a></li>
+</ul>
+</li>
+<li><a href="#apendice-a-orden-de-redaccion-recomendado">APÉNDICE A — ORDEN DE REDACCIÓN RECOMENDADO</a></li>
+<li><a href="#apendice-b-citas-bibtex-pendientes-de-agregar-a-refsbib">APÉNDICE B — CITAS BiBTeX PENDIENTES DE AGREGAR A refs.bib</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>Plan_Detallado</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-05-25 01:12
+                </div>
+            </div>
+            
+            <h1 id="plan-detallado-tesis-completa-cap-i-v-anexos">PLAN DETALLADO — TESIS COMPLETA (CAP. I-V + ANEXOS)</h1>
+<h2 id="sistema-integrado-de-supervision-operativa-con-ia-explicable-para-empresas-agroexportadoras-peruanas">Sistema Integrado de Supervisión Operativa con IA Explicable para Empresas Agroexportadoras Peruanas</h2>
+<h2 id="universidad-nacional-de-san-agustin-de-arequipa-ingenieria-de-sistemas">Universidad Nacional de San Agustín de Arequipa — Ingeniería de Sistemas</h2>
+<h2 id="estado-actualizado-2026-05-17-hito-1-cerrado-ejecutado-plan-revision-academica-exhaustivamd">Estado: Actualizado 2026-05-17 (Hito 1 cerrado, ejecutado plan-revision-academica-exhaustiva.md)</h2>
+<hr />
+<blockquote>
+<p><strong>CÓMO USAR ESTE PLAN</strong><br />
+Cada sección indica: (a) texto borrador listo para insertar o adaptar, (b) dónde van las citas, (c) qué datos faltan marcados con <code>⚠️ DATO FALTANTE</code>, (d) qué diferencia a esta tesis de los competidores marcados con <code>🎯 DIFERENCIADOR</code>.</p>
+<p><strong>NOVEDAD 2026-05-17:</strong> La tesis fue segmentada en 19 archivos numerados en <code>docs/</code>. El servidor Flask sirve cada sección en <code>/seccion/&lt;slug&gt;</code> con hot-reload. Ver <code>docs/plan-segmentacion-docker.md</code>.</p>
+</blockquote>
+<hr />
+<h2 id="actualizacion-2026-05-17-estado-real">ACTUALIZACIÓN 2026-05-17 — ESTADO REAL</h2>
+<h3 id="lo-que-cambio-respecto-al-plan-del-2026-05-15">Lo que cambió respecto al plan del 2026-05-15</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Estado en 2026-05-15</th>
+<th>Estado real 2026-05-17</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Título y enfoque</td>
+<td>Mixto (financiero + agro)</td>
+<td>✅ 100% agroexportador</td>
+</tr>
+<tr>
+<td>Capítulo I</td>
+<td>Avanzado</td>
+<td>✅ Completo — <code>docs/10-capitulo1.md</code></td>
+</tr>
+<tr>
+<td>Capítulo II §2.1</td>
+<td>Superficial</td>
+<td>✅ 7 antecedentes completos — <code>docs/20-*.md</code></td>
+</tr>
+<tr>
+<td>Capítulo II §2.2</td>
+<td>Parcial</td>
+<td>✅ 5 batallas + 2 tablas — <code>docs/21-*.md</code></td>
+</tr>
+<tr>
+<td>Capítulo II §2.3</td>
+<td>No iniciado</td>
+<td>✅ §2.3.1–§2.3.9 completos — <code>docs/22-*.md</code></td>
+</tr>
+<tr>
+<td>Capítulo III</td>
+<td>Pendiente de migrar</td>
+<td>✅ Completo y agroexportador — <code>docs/30-capitulo3.md</code></td>
+</tr>
+<tr>
+<td>Capítulo IV</td>
+<td>Placeholder</td>
+<td>🔴 Placeholder — requiere experimentos</td>
+</tr>
+<tr>
+<td>Capítulo V</td>
+<td>Placeholder</td>
+<td>🔴 Placeholder — depende de Cap IV</td>
+</tr>
+<tr>
+<td>Monolito <code>tesis.md</code></td>
+<td>Activo (1018 líneas)</td>
+<td>✅ Segmentado en 19 archivos numerados</td>
+</tr>
+<tr>
+<td>Servidor Docker</td>
+<td>Compilación estática</td>
+<td>✅ Hot-reload por sección activado</td>
+</tr>
+<tr>
+<td><code>refs.bib</code></td>
+<td>65 entradas, 37 usadas</td>
+<td>✅ Verificado — sin citas huérfanas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="el-cuello-de-botella-real-no-es-redaccion-es-implementacion">El cuello de botella real (no es redacción, es implementación)</h3>
+<p>El plan de 2026-05-15 se enfocó en redacción. La tesis <strong>ya está escrita</strong> en todos los capítulos donde se puede escribir sin datos experimentales. El bloqueo ahora es:</p>
+<ol>
+<li><strong>No existe el dataset sintético agroexportador</strong> → bloquea Cap IV §4.1 y §4.2</li>
+<li><strong>No existe el código de los 4 módulos</strong> (<code>src/module1_prediction.py</code>, etc.) → bloquea todos los experimentos</li>
+<li><strong>Sin resultados experimentales, Cap IV, V, Conclusiones y Anexos B/C</strong> no se pueden completar</li>
+</ol>
+<h3 id="diagnostico-de-los-5-hitos-del-plan-anterior">Diagnóstico de los 5 hitos del plan anterior</h3>
+<table>
+<thead>
+<tr>
+<th>Hito</th>
+<th>Fecha</th>
+<th>Estado</th>
+<th>Diagnóstico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hito 1: Variables operacionalizadas</td>
+<td>2026-05-27</td>
+<td>✅ Cerrado 2026-05-17</td>
+<td><code>docs/variables-operacionalizadas.md</code> con tabla formal 7×5 + pruebas estadísticas asignadas.</td>
+</tr>
+<tr>
+<td>Hito 2: Datasets identificados</td>
+<td>2026-06-01</td>
+<td>🟢 Adelantado</td>
+<td>Especificación cerrada (<code>docs/A3-anexo-datasheet.md</code>) + script generador (<code>src/generate_synthetic_dataset.py</code>). Falta ejecutar <code>pip install -r requirements.txt &amp;&amp; py src/generate_synthetic_dataset.py</code>.</td>
+</tr>
+<tr>
+<td>Hito 3: Datos descargados y Datasheets</td>
+<td>2026-06-10</td>
+<td>⏳ Pendiente</td>
+<td>Datasheet ya está. Falta ejecutar el generador y validar muestra.</td>
+</tr>
+<tr>
+<td>Hito 4: Fairness completado</td>
+<td>2026-06-22</td>
+<td>⏳ Pendiente</td>
+<td>Plantillas de análisis por subgrupo agregadas a Model Cards (Anexo B).</td>
+</tr>
+<tr>
+<td>Hito 5: Cap III actualizado</td>
+<td>2026-07-01</td>
+<td>✅ Completado</td>
+<td>Cap III ya está agroexportador, con diseño experimental E1–E5 detallado.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="estructura-completa-y-archivos-activos-2026-05-17">ESTRUCTURA COMPLETA Y ARCHIVOS ACTIVOS (2026-05-17)</h2>
+<h3 id="archivos-de-seccion-esquema-segmentado">Archivos de sección (esquema segmentado)</h3>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Sección</th>
+<th>Estado</th>
+<th>Tamaño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docs/00-portada.md</code></td>
+<td>Portada, dedicatoria, agradecimientos, presentación</td>
+<td>✅</td>
+<td>2 KB</td>
+</tr>
+<tr>
+<td><code>docs/01-resumen.md</code></td>
+<td>Resumen + Abstract</td>
+<td>✅</td>
+<td>4 KB</td>
+</tr>
+<tr>
+<td><code>docs/02-indices.md</code></td>
+<td>Índices de contenidos, figuras, tablas, fórmulas</td>
+<td>✅</td>
+<td>2 KB</td>
+</tr>
+<tr>
+<td><code>docs/03-introduccion.md</code></td>
+<td>Introducción</td>
+<td>✅</td>
+<td>4 KB</td>
+</tr>
+<tr>
+<td><code>docs/10-capitulo1.md</code></td>
+<td>Cap I §1.1–§1.11</td>
+<td>✅</td>
+<td>23 KB</td>
+</tr>
+<tr>
+<td><code>docs/20-capitulo2-antecedentes.md</code></td>
+<td>§2.1 — 7 antecedentes</td>
+<td>✅</td>
+<td>8 KB</td>
+</tr>
+<tr>
+<td><code>docs/21-capitulo2-estadoarte.md</code></td>
+<td>§2.2 — 5 batallas + tablas</td>
+<td>✅</td>
+<td>15 KB</td>
+</tr>
+<tr>
+<td><code>docs/22-capitulo2-marcoteorico.md</code></td>
+<td>§2.3 — §2.3.1–§2.3.9</td>
+<td>✅</td>
+<td>23 KB</td>
+</tr>
+<tr>
+<td><code>docs/30-capitulo3.md</code></td>
+<td>Cap III §3.1–§3.3</td>
+<td>✅</td>
+<td>6 KB</td>
+</tr>
+<tr>
+<td><code>docs/40-capitulo4.md</code></td>
+<td>Cap IV §4.1–§4.3</td>
+<td>🔴 Placeholder</td>
+<td>2 KB</td>
+</tr>
+<tr>
+<td><code>docs/50-capitulo5.md</code></td>
+<td>Cap V §5.1–§5.3</td>
+<td>🔴 Placeholder</td>
+<td>1 KB</td>
+</tr>
+<tr>
+<td><code>docs/60-conclusiones.md</code></td>
+<td>Conclusiones ES + EN</td>
+<td>🔴 Placeholder</td>
+<td>2 KB</td>
+</tr>
+<tr>
+<td><code>docs/70-recomendaciones.md</code></td>
+<td>Recomendaciones</td>
+<td>✅</td>
+<td>2 KB</td>
+</tr>
+<tr>
+<td><code>docs/80-glosario.md</code></td>
+<td>Glosario</td>
+<td>✅</td>
+<td>6 KB</td>
+</tr>
+<tr>
+<td><code>docs/90-referencias.md</code></td>
+<td>Referencias bibliográficas APA</td>
+<td>✅</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td><code>docs/A1-anexo-usabilidad.md</code></td>
+<td>Anexo A — Protocolo usabilidad</td>
+<td>🔴 Skeleton</td>
+<td>1 KB</td>
+</tr>
+<tr>
+<td><code>docs/A2-anexo-modelcards.md</code></td>
+<td>Anexo B — Model Cards</td>
+<td>🔴 Skeleton</td>
+<td>&lt;1 KB</td>
+</tr>
+<tr>
+<td><code>docs/A3-anexo-datasheet.md</code></td>
+<td>Anexo C — Datasheet dataset</td>
+<td>🔴 Skeleton</td>
+<td>&lt;1 KB</td>
+</tr>
+<tr>
+<td><code>docs/A4-anexo-ia.md</code></td>
+<td>Anexo D — Registro uso IA</td>
+<td>✅</td>
+<td>&lt;1 KB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Resumen</strong>: 13/19 secciones completas · 6/19 requieren datos experimentales</p>
+<h3 id="checkup-del-avance">Checkup del avance</h3>
+<p><strong>PROGRESO REDACCIÓN</strong>: 13/19 secciones escritas (68%)<br />
+<strong>PROGRESO IMPLEMENTACIÓN</strong>: 0/5 hitos de datos/código completados (0%)</p>
+<h4 id="componentes-de-redaccion">Componentes de redacción</h4>
+<ul>
+<li>[x] Portada, presentación, resumen y abstract — <code>00-portada.md</code>, <code>01-resumen.md</code></li>
+<li>[x] Índice general y estructura de navegación — <code>02-indices.md</code></li>
+<li>[x] Introducción completa — <code>03-introduccion.md</code></li>
+<li>[x] Capítulo I §1.1–§1.11 completo y alineado al enfoque agroexportador</li>
+<li>[x] Capítulo II §2.1 — 7 antecedentes con formato UNSA</li>
+<li>[x] Capítulo II §2.2 — 5 batallas argumentativas + Tablas 2.1 y 2.2</li>
+<li>[x] Capítulo II §2.3 — 9 sub-secciones del marco conceptual</li>
+<li>[x] Capítulo III §3.1–§3.3 — arquitectura, datasets, métricas</li>
+<li>[x] Recomendaciones, Glosario, Referencias</li>
+<li>[ ] <strong>Hito 1: Tabla formal de variables operacionalizadas (2026-05-27)</strong></li>
+<li>[ ] <strong>Hito 2: Dataset sintético agroexportador construido (2026-06-01)</strong></li>
+<li>[ ] <strong>Hito 3: Código 4 módulos + experimentos E1–E5 (2026-06-15)</strong></li>
+<li>[ ] <strong>Hito 4: Cap IV escrito con resultados reales (2026-06-22)</strong></li>
+<li>[ ] <strong>Hito 5: Cap V + Conclusiones + Anexos B/C cerrados (2026-07-07)</strong></li>
+</ul>
+<h4 id="componentes-de-implementacion-nueva-categoria-bloqueo-principal">Componentes de implementación (nueva categoría — bloqueo principal)</h4>
+<ul>
+<li>[ ] Dataset sintético <code>data/dataset_agro_sintetico.csv</code> (800–2000 registros)</li>
+<li>[ ] <code>src/module1_prediction.py</code> — XGBoost + LightGBM</li>
+<li>[ ] <code>src/module2_anomaly.py</code> — IF (Isolation Forest - Bosque de Aislamiento) + LOF (Local Outlier Factor - Factor de Anomalía Local) + ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) vía PyOD</li>
+<li>[ ] <code>src/module3_shap.py</code> — TreeSHAP + top-k</li>
+<li>[ ] <code>src/module4_rag.py</code> — LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) + RAG + prompt</li>
+<li>[ ] <code>src/pipeline.py</code> — integración de las 4 capas</li>
+<li>[ ] <code>src/evaluate.py</code> — métricas E1–E5</li>
+</ul>
+<h4 id="infraestructura-docker-completado-hoy-2026-05-17">Infraestructura Docker (completado hoy 2026-05-17)</h4>
+<ul>
+<li>[x] <code>docs/</code> segmentada en 19 archivos numerados</li>
+<li>[x] <code>src/app.py</code> — rutas <code>/secciones</code> y <code>/seccion/&lt;slug&gt;</code> con navegación prev/next</li>
+<li>[x] Hot-reload: editar cualquier <code>docs/XX-*.md</code> → Flask recarga automáticamente</li>
+<li>[x] MathJax integrado para fórmulas LaTeX en el visor web</li>
+<li>[x] <code>convert_md_to_html.py</code> actualizado con <code>SECTION_ORDER</code> dinámico</li>
+<li>[x] <code>docker-compose.yml</code> en modo <code>development</code> con <code>FLASK_DEBUG=1</code></li>
+</ul>
+<h4 id="plan-de-revision-academica-exhaustiva-ejecutado-2026-05-17">Plan de Revisión Académica Exhaustiva (ejecutado 2026-05-17)</h4>
+<ul>
+<li>[x] Documento maestro <code>docs/plan-revision-academica-exhaustiva.md</code> con 87 criterios en 10 dimensiones</li>
+<li>[x] Cap I §1.7.1 reescrito con 4 aportes diferenciados y aporte original específico</li>
+<li>[x] Cap I §1.9 ampliado a 5 sub-secciones (línea, marco epistemológico, tipo, nivel, diseño)</li>
+<li>[x] Cap I §1.12 (Limitaciones) con 4 categorías de validez declaradas</li>
+<li>[x] Cap I §1.13 (Declaración de intereses y aspectos éticos) agregada</li>
+<li>[x] Cap II §2.3.7 (RAG) con hedging apropiado, distinción tipos de alucinación y referencias a Lewis 2020 + Ji 2023</li>
+<li>[x] Cap II §2.3.8 con matización sobre cumplimiento regulatorio (no afirmar, sino "conformidad de diseño")</li>
+<li>[x] Cap III §3.1 con justificación de ECOD sobre Deep SVDD</li>
+<li>[x] Cap III §3.3 con división temporal, pruebas estadísticas H1a–H1d, criterios participantes, baselines, ablation E5a–E5d</li>
+<li>[x] <code>docs/variables-operacionalizadas.md</code> — Hito 1 cerrado</li>
+<li>[x] <code>docs/busqueda-sistematica-gap.md</code> — protocolo PRISMA-light</li>
+<li>[x] <code>docs/A1-anexo-usabilidad.md</code> completo (protocolo + SUS + consentimiento)</li>
+<li>[x] <code>docs/A2-anexo-modelcards.md</code> con 4 Model Cards (Mitchell 2019)</li>
+<li>[x] <code>docs/A3-anexo-datasheet.md</code> completo (Gebru 2021)</li>
+<li>[x] <code>config/refs.bib</code> + 8 referencias (Friedman, TreeSHAP, Ji 2023, PRISMA, Creswell, MIDAGRI, Cohen, Optuna)</li>
+<li>[x] <code>requirements.txt</code> con versiones fijadas</li>
+<li>[x] <code>src/generate_synthetic_dataset.py</code> listo (pendiente de ejecución con dependencias)</li>
+</ul>
+<h3 id="nueva-seccion-plan-de-revisiones-ampliado-8-categorias">✅ NUEVA SECCIÓN: PLAN DE REVISIONES AMPLIADO (8 CATEGORÍAS)</h3>
+<p><strong>Estado</strong>: Completado — 2025<br />
+<strong>Responsable</strong>: Yoset Cozco Mauri + Copilot<br />
+<strong>Documentación</strong>: Ver carpeta <code>entregable/</code></p>
+<h4 id="categorias-de-revision-antes-6-ahora-8">Categorías de revisión (Antes: 6 → Ahora: 8)</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Categoría</th>
+<th>Descripción</th>
+<th>Indicadores</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Estructural</strong></td>
+<td>Flujo lógico, coherencia, índices</td>
+<td>5</td>
+<td>✅ 80%</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Rigor Científico</strong></td>
+<td>Variables operacionalizadas, hipótesis, causalidad</td>
+<td>5</td>
+<td>✅ 60%</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Metodológica</strong></td>
+<td>Reproducibilidad, métricas, Model Cards</td>
+<td>8</td>
+<td>✅ 62%</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Documentación de Datos</strong></td>
+<td>Datasheets, sesgos conocidos, licencias</td>
+<td>7</td>
+<td>✅ 57%</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Gobernanza + Regulación</strong></td>
+<td>SBS N° 053, DS-115-PCM, EU AI Act</td>
+<td>6</td>
+<td>✅ 17%</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Explicabilidad</strong></td>
+<td>SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), incertidumbre, anti-alucinación</td>
+<td>6</td>
+<td>✅ 0%</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Ética y Sesgo</strong></td>
+<td>🆕 Fairness, desempeño por subgrupos</td>
+<td>6</td>
+<td>✅ 0%</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Web/Usabilidad</strong></td>
+<td>Interfaz, documentación, accesibilidad</td>
+<td>6</td>
+<td>✅ 33%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total</strong>: 49 indicadores de logro | <strong>Avance global</strong>: 38% completado</p>
+<h4 id="justificacion-academica">Justificación académica</h4>
+<p>Las nuevas categorías (Explicabilidad y Ética/Sesgo) están fundamentadas en:<br />
+- <strong>Mitchell et al. (2018)</strong> — Model Cards for Model Reporting<br />
+- <strong>Gebru et al. (2018)</strong> — Datasheets for Datasets<br />
+- <strong>Lipton (2016)</strong> — The Mythos of Model Interpretability<br />
+- <strong>NIST AI RMF (2023)</strong> — Framework de gobernanza<br />
+- <strong>ACM Code of Ethics</strong> — Fairness, transparency, accountability<br />
+- <strong>EU AI Act 2024</strong> — Regulación de IA de alto riesgo<br />
+- <strong>Perú DS-115-2025-PCM</strong> — Ley de IA nacional</p>
+<h4 id="archivos-de-referencia-en-entregable">Archivos de referencia en <code>/entregable/</code></h4>
+<ol>
+<li><code>sustentacion-revisiones-ampliada.md</code> — Detalle académico de cada categoría</li>
+<li><code>matriz-revisiones-8categorias.md</code> — Matriz de 49 indicadores con checklist</li>
+<li><code>matriz-seguimiento-49indicadores.csv</code> — Tracking automático (importar a Excel/Sheets)</li>
+<li><code>RESUMEN-EJECUTIVO-revisiones.md</code> — Documento ejecutivo de síntesis</li>
+</ol>
+<h4 id="orden-de-trabajo-recomendado">Orden de trabajo recomendado</h4>
+<p><strong>Fase 1 (Inmediata)</strong>: Operacionalizar variables + crear Datasheets + decisiones metodológicas<br />
+<strong>Fase 2 (Semana 2-3)</strong>: Matriz SBS + análisis fairness + validación SHAP<br />
+<strong>Fase 3 (Semana 4+)</strong>: Dashboard + usabilidad + cierre regulatorio</p>
+<hr />
+<h2 id="nueva-seccion-plan-detallado-de-rigor-academico-y-busqueda-de-datasets">✅ NUEVA SECCIÓN: PLAN DETALLADO DE RIGOR ACADÉMICO Y BÚSQUEDA DE DATASETS</h2>
+<p><strong>Estado</strong>: Creado — 2026-05-15<br />
+<strong>Responsable</strong>: Yoset Cozco Mauri + Dr. Víctor Manuel Cornejo Aparicio<br />
+<strong>Documentación</strong>: Ver <code>docs/plan-rigor-academico-datasets.md</code></p>
+<p><strong>Objetivo</strong>: Establecer un marco académico riguroso en 5 pilares con 5 hitos y 30+ tareas específicas</p>
+<h3 id="5-pilares-de-rigor-academico">5 Pilares de Rigor Académico</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pilar</th>
+<th>Objetivo</th>
+<th>Hitos</th>
+<th>Documentos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Operacionalización de Variables</strong></td>
+<td>Cada variable → fórmula medible</td>
+<td>Hito 1 (2026-05-27)</td>
+<td><code>variables-operacionalizadas.md</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Búsqueda de Datasets</strong></td>
+<td>Localizar 3 datasets agroexportadores</td>
+<td>Hito 2 (2026-06-01)</td>
+<td><code>sources-log.md</code>, <code>feasibility-datasets.md</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Datasheets for Datasets</strong></td>
+<td>Documentar cada dataset (Gebru 2018)</td>
+<td>Hito 3 (2026-06-10)</td>
+<td>3 datasheets en <code>datasheets/</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Validación de Calidad</strong></td>
+<td>Garantizar reproducibilidad y confiabilidad</td>
+<td>Hito 3 (2026-06-10)</td>
+<td><code>data-quality-decisions.md</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Análisis de Fairness</strong></td>
+<td>Evaluar equidad en subgrupos</td>
+<td>Hito 4 (2026-06-22)</td>
+<td><code>fairness-report.md</code> + gráficos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-hitos-principales">5 Hitos principales</h3>
+<table>
+<thead>
+<tr>
+<th>Hito</th>
+<th>Fecha Límite</th>
+<th>Responsable</th>
+<th>Criterio de éxito</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hito 1</strong></td>
+<td>2026-05-27</td>
+<td>Yoset</td>
+<td>5 variables operacionalizadas + signadas</td>
+<td>⏳ Pendiente</td>
+</tr>
+<tr>
+<td><strong>Hito 2</strong></td>
+<td>2026-06-01</td>
+<td>Yoset + Dr. Cornejo</td>
+<td>3 datasets identificados, 2 con acceso confirmado</td>
+<td>⏳ Pendiente</td>
+</tr>
+<tr>
+<td><strong>Hito 3</strong></td>
+<td>2026-06-10</td>
+<td>Yoset</td>
+<td>Datos descargados, 95%+ completos, Datasheets completados</td>
+<td>⏳ Pendiente</td>
+</tr>
+<tr>
+<td><strong>Hito 4</strong></td>
+<td>2026-06-22</td>
+<td>Yoset</td>
+<td>Fairness calculado, diferencia ≤5% entre subgrupos o documentada</td>
+<td>⏳ Pendiente</td>
+</tr>
+<tr>
+<td><strong>Hito 5</strong></td>
+<td>2026-07-01</td>
+<td>Yoset + Dr. Cornejo</td>
+<td>Cap. III actualizado, scripts reproducibles, anexos listos</td>
+<td>⏳ Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tareas-inmediatas-esta-semana">Tareas inmediatas (Esta semana)</h3>
+<ol>
+<li><strong>Tarea 1.1</strong>: Revisar Capítulo I → Listar todas las variables mencionadas  </li>
+<li>
+<p><strong>Responsable</strong>: Yoset | <strong>Fecha</strong>: 2026-05-20 | <strong>Entregable</strong>: <code>variables-listado.md</code></p>
+</li>
+<li>
+<p><strong>Tarea 1.2</strong>: Operacionalizar 5 variables (definición operacional + fórmula)  </p>
+</li>
+<li>
+<p><strong>Responsable</strong>: Yoset | <strong>Fecha</strong>: 2026-05-27 | <strong>Entregable</strong>: Tabla completada</p>
+</li>
+<li>
+<p><strong>Tarea 2.1.1</strong>: Contactar MIDAGRI, SENASA solicitando acceso a datos  </p>
+</li>
+<li>
+<p><strong>Responsable</strong>: Yoset + Dr. Cornejo | <strong>Fecha</strong>: 2026-05-22 | <strong>Entregable</strong>: Emails enviados + log</p>
+</li>
+<li>
+<p><strong>Tarea 3.1</strong>: Crear plantilla Datasheet en Google Docs  </p>
+</li>
+<li><strong>Responsable</strong>: Yoset | <strong>Fecha</strong>: 2026-05-30 | <strong>Entregable</strong>: Documento compartido</li>
+</ol>
+<h3 id="fuentes-de-datos-identificadas">Fuentes de datos identificadas</h3>
+<p><strong>Estado</strong>: Búsqueda iterativa completada — 2026-05-15<br />
+<strong>Documentación</strong>: Ver <code>entregable/BUSQUEDA-DATASETS-ITERATIVA.md</code> y <code>entregable/REFERENCIAS-DATASETS-VALIDADAS.csv</code></p>
+<pre class="codehilite"><code>DATASETS PRIMARIOS (Datos operativos agroexportadores):
+├─ Boletines MIDAGRI: Precios mayoristas mensuales ✅ Verificado
+├─ Reportes MIDAGRI: Ingreso diario a mercados ✅ Verificado
+├─ Abastecimiento GMML: Volumen y precios mercado mayorista ✅ Verificado
+└─ Fuente: MIDAGRI (https://www.gob.pe/minagri)
+
+DATASETS SECUNDARIOS (Contexto climático y regulatorio):
+├─ Pronósticos meteorológicos SENAMHI ✅ Verificado
+├─ Lluvia acumulada nacional ✅ Verificado
+├─ Requisitos fitosanitarios SENASA ✅ Verificado
+├─ Establecimientos habilitados SENASA ✅ Verificado
+└─ Fuentes: SENAMHI (https://www.senamhi.gob.pe/), SENASA (https://www.gob.pe/senasa)
+
+DATASETS TERCIARIOS (Contexto macroeconómico):
+├─ Índice de Precios Mayor (INEI) ✅ Verificado
+├─ PBI por sectores (INEI) ✅ Verificado
+├─ Estadísticas aduaneras (SUNAT) ✅ Verificado
+├─ FAOSTAT Production Module ✅ Verificado
+├─ UN Comtrade Plus ✅ Verificado
+├─ World Bank Data ✅ Verificado
+└─ Fuentes: INEI, SUNAT, FAO, ONU, World Bank
+</code></pre>
+
+<p><strong>Total de datasets validados</strong>: 25 fuentes + 17 accesos verificados (✅) + 2 accesos restringidos (🔴)</p>
+<h3 id="tracking-integrado">Tracking integrado</h3>
+<p><strong>Usar <code>matriz-seguimiento-49indicadores.csv</code> + agregar nuevas filas para hitos</strong></p>
+<p>Ejemplo:</p>
+<pre class="codehilite"><code>Rigor Científico, Operacionalización, &quot;Variables operacionalizadas&quot;, &quot;Cada variable con fórmula medible&quot;, ⏳ Pendiente, Yoset, Crítica, 2026-05-20, 2026-05-27
+Datos y Referencias, Búsqueda, &quot;Datasets agroexportadores identificados&quot;, &quot;Mínimo 3 datasets de fuentes públicas&quot;, ⏳ Pendiente, Yoset, Crítica, 2026-05-22, 2026-06-01
+</code></pre>
+
+<h3 id="validacion-y-checkups">Validación y checkups</h3>
+<p><strong>Checkup Semanal</strong>: Cada lunes, Yoset actualiza progreso en <code>checkups-semanal.md</code></p>
+<p><strong>Checkup de Hito</strong>: Al cumplir cada hito, generar <code>hito-N-completado.md</code> con evidencia</p>
+<p><strong>Checkup Integración</strong>: Cada 2 semanas, revisar alineación con plan general y 8 categorías de revisión</p>
+<hr />
+<hr />
+<h2 id="indice-del-plan">ÍNDICE DEL PLAN</h2>
+<ol>
+<li><a href="#1-diagnóstico">Diagnóstico del estado actual</a></li>
+<li><a href="#2-capítulo-i">Capítulo I — Refinamiento y completitud</a></li>
+<li><a href="#3-antecedentes">Capítulo II §2.1 — Antecedentes (estructura completa)</a></li>
+<li><a href="#4-estado-del-arte">Capítulo II §2.2 — Estado del Arte (5 batallas argumentativas)</a></li>
+<li><a href="#5-bases-teóricas">Capítulo II §2.3 — Bases Teóricas</a></li>
+<li><a href="#6-análisis-competidores">Análisis comparativo con competidores directos</a></li>
+<li><a href="#7-gap-analysis">Matriz de brechas (gap analysis)</a></li>
+<li><a href="#8-datos-faltantes">Checklist de datos faltantes</a></li>
+</ol>
+<hr />
+<h2 id="1-diagnostico-del-estado-actual">1. DIAGNÓSTICO DEL ESTADO ACTUAL</h2>
+<h3 id="lo-que-ya-esta-desarrollado-no-reescribir">Lo que ya está desarrollado (no reescribir)</h3>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Contenido presente</th>
+<th>Calidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tesis.md</code></td>
+<td>Estructura completa Cap. I-V + anexos</td>
+<td>✅ Base activa y más avanzada</td>
+</tr>
+<tr>
+<td><code>entregable1.md</code></td>
+<td>Cap. I y II base previa</td>
+<td>✅ Útil como antecedente de redacción</td>
+</tr>
+<tr>
+<td><code>tesis_v2.md</code></td>
+<td>Versión anterior financiera/fraude</td>
+<td>⚠️ Desfasada; conservar solo como referencia histórica</td>
+</tr>
+<tr>
+<td><code>mejora-continua-plan.md</code></td>
+<td>Plan PDCA por ciclos</td>
+<td>✅ Útil para iteración</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lo-que-falta-y-es-el-objeto-de-este-plan">Lo que FALTA y es el objeto de este plan</h3>
+<ol>
+<li>Ajustar el lenguaje financiero residual en <code>tesis_v2.md</code> y partes heredadas.</li>
+<li>Consolidar Capítulo III con datos agroexportadores y benchmarks públicos de soporte.</li>
+<li>Completar Capítulo IV con resultados, gráficas y discusión.</li>
+<li>Cerrar Capítulo V con conclusiones, limitaciones y trabajos futuros.</li>
+<li>Normalizar bibliografía y citas para que el enfoque quede homogéneo.</li>
+<li>Mantener coherencia entre título, resumen, hipótesis, variables y fuentes de datos.</li>
+</ol>
+<hr />
+<h2 id="2-capitulo-i-refinamiento-y-completitud">2. CAPÍTULO I — REFINAMIENTO Y COMPLETITUD</h2>
+<h3 id="21-refinamientos-necesarios-no-reescrituras">2.1 Refinamientos necesarios (no reescrituras)</h3>
+<p>El Capítulo I de <code>entregable1.md</code> es sólido. Los únicos refinamientos son:</p>
+<h4 id="11-agregar-magnitud-del-problema-con-cifras-verificables">§1.1 — Agregar magnitud del problema con cifras verificables</h4>
+<p>En el párrafo de "Magnitud del problema", insertar después de la frase actual:</p>
+<blockquote>
+<p>Según Almalki y Masud (2025), las pérdidas globales por fraude financiero ascendieron de USD 28,400 millones en 2020 a USD 33,500 millones en 2022, lo que evidencia la necesidad urgente de sistemas automatizados de detección (Almalki &amp; Masud, 2025 [G09]). En el contexto peruano, la Superintendencia de Banca, Seguros y AFP emitió la Resolución N° 053-2023, que exige a entidades financieras implementar sistemas de gestión de riesgos de modelo con trazabilidad verificable a partir de enero de 2026 (SBS, 2023 [G01]). Esta normativa eleva la urgencia de soluciones como la propuesta en esta investigación.</p>
+</blockquote>
+<p><strong>⚠️ DATO FALTANTE</strong>: Cifra de pérdidas por fraude en Perú específicamente. Consultar: ASBANC, SBS Memoria Anual 2024, o Unidad de Inteligencia Financiera UIF-Perú. Alternativa: usar estadística de FELABAN (Federación Latinoamericana de Bancos).</p>
+<h4 id="171-justificacion-teorica-agregar-la-brecha-exacta">§1.7.1 — Justificación Teórica: agregar la brecha exacta</h4>
+<p>Reemplazar el párrafo actual de "brecha identificada" por:</p>
+<blockquote>
+<p>La revisión sistemática de la literatura revela que trabajos como AuditCopilot (Kadir et al., 2025 [E03]) integran LLMs con detección de anomalías en asientos contables, y el framework multi-agente de Park (2024 [E04]) extiende este enfoque a mercados financieros. Sin embargo, ninguno de estos sistemas contempla simultáneamente: (a) predicción tabular con GBDT validada frente a benchmarks estándar, (b) forecasting multi-horizonte integrado al pipeline de auditoría, (c) ensemble de detectores de anomalías evaluados con ADBench (Han et al., 2022 [C04]), y (d) generación de reportes con trazabilidad regulatoria según la Resolución SBS N° 053-2023. Esta brecha cuádruple justifica la propuesta de arquitectura modular de esta tesis.</p>
+</blockquote>
+<h4 id="173-justificacion-social-agregar-marco-legal-peruano-e-internacional">§1.7.3 — Justificación Social: agregar marco legal peruano e internacional</h4>
+<blockquote>
+<p>El Decreto Supremo N° 115-2025-PCM, reglamento de la Ley N° 31814 de inteligencia artificial del Perú, clasifica los sistemas de IA aplicados a decisiones financieras como de "alto riesgo", exigiendo explicabilidad, auditabilidad y supervisión humana (PCM, 2025 [G02]). A nivel internacional, el Reglamento (UE) 2024/1689 (EU AI Act) establece en su Artículo 13 obligaciones formales de transparencia para sistemas de IA de alto riesgo, con sanciones de hasta 35 millones de euros por incumplimiento (Parlamento Europeo, 2024 [G03]). El sistema propuesto en esta tesis es diseñado desde sus fundamentos para cumplir con ambos marcos regulatorios, lo que le otorga relevancia social y regulatoria directa.</p>
+</blockquote>
+<hr />
+<h2 id="3-capitulo-ii-21-antecedentes-estructura-completa">3. CAPÍTULO II §2.1 — ANTECEDENTES (ESTRUCTURA COMPLETA)</h2>
+<h3 id="formato-unsa-para-cada-antecedente">Formato UNSA para cada antecedente</h3>
+<p>Cada antecedente debe contener:<br />
+1. <strong>Título y referencia</strong> (APA completo)<br />
+2. <strong>Objetivo del estudio</strong><br />
+3. <strong>Metodología</strong> (qué hicieron)<br />
+4. <strong>Resultados</strong> (qué encontraron, con métricas)<br />
+5. <strong>Relevancia para esta tesis</strong> (por qué es antecedente)</p>
+<p>Se proponen <strong>7 antecedentes</strong> distribuidos: 3 internacionales directos, 2 internacionales metodológicos, 2 nacionales/regionales.</p>
+<hr />
+<h3 id="antecedente-1-auditcopilot-competidor-directo">ANTECEDENTE 1 — AuditCopilot (Competidor directo)</h3>
+<p><strong>Fuente</strong>: E03</p>
+<p><strong>Referencia APA</strong>: Kadir, M. A., et al. (2025). AuditCopilot: Large language models in accounting audit. [Verificar venue — probablemente arXiv preprint].</p>
+<p><strong>Objetivo</strong>: Desarrollar un sistema de auditoría contable que integre LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) con detección de anomalías en asientos contables de doble entrada.</p>
+<p><strong>Metodología</strong>: El sistema implementa un pipeline de tres etapas: (1) detección de irregularidades en asientos contables mediante clasificadores supervisados, (2) interpretación contextual mediante un LLM fine-tuned en terminología contable, y (3) generación de explicaciones en lenguaje natural para auditores. Se evalúa en un corpus de asientos contables sintéticos y reales (bajo confidencialidad).</p>
+<p><strong>Resultados</strong>: El sistema reporta mejoras en la tasa de detección de irregularidades respecto a enfoques manuales, con reducción del tiempo de revisión. Las explicaciones generadas son valoradas por auditores en pruebas de usabilidad.</p>
+<p><strong>Relevancia para esta tesis</strong>: AuditCopilot es el antecedente más cercano en objetivo, pues combina detección de anomalías con generación de reportes en lenguaje natural. Sin embargo, <strong>presenta tres limitaciones fundamentales que esta investigación supera</strong>:<br />
+- No incluye módulo de predicción tabular GBDT evaluado contra benchmarks reproducibles.<br />
+- No incorpora forecasting de series temporales integrado al pipeline de auditoría.<br />
+- No evalúa conformidad con marcos regulatorios explícitos (SBS N° 053-2023, EU AI Act).</p>
+<p>🎯 <strong>DIFERENCIADOR</strong>: Esta tesis añade la capa de predicción GBDT (validada en BAF Benchmark) y el módulo de forecasting TFT, configurando un pipeline de auditoría más completo con trazabilidad regulatoria documentada según NIST AI RMF (NIST, 2023 [F05]).</p>
+<hr />
+<h3 id="antecedente-2-framework-multi-agente-llm-para-deteccion-de-anomalias-financieras">ANTECEDENTE 2 — Framework Multi-Agente LLM para Detección de Anomalías Financieras</h3>
+<p><strong>Fuente</strong>: E04</p>
+<p><strong>Referencia APA</strong>: Park, T. (2024). Enhancing anomaly detection in financial markets with an LLM-based multi-agent framework. <em>arXiv preprint arXiv:2403.19735</em>.</p>
+<p><strong>Objetivo</strong>: Proponer un framework de múltiples agentes LLM especializados para validar alertas de anomalías en el índice S&amp;P 500, combinando análisis de datos financieros con razonamiento en lenguaje natural.</p>
+<p><strong>Metodología</strong>: Arquitectura multi-agente compuesta por cuatro agentes especializados: (1) agente de conversión de datos, (2) agente de análisis estadístico, (3) agente de verificación cruzada, y (4) agente de consolidación de reportes. Los agentes se comunican mediante prompts estructurados y validan anomalías detectadas por algoritmos clásicos.</p>
+<p><strong>Resultados</strong>: El framework mejora la tasa de verdaderos positivos en la validación de anomalías en S&amp;P 500, con reducción de falsos positivos mediante el consenso multi-agente. La arquitectura demuestra que múltiples LLMs especializados superan a un único LLM generalista.</p>
+<p><strong>Relevancia para esta tesis</strong>: El trabajo de Park (2024) aporta evidencia de que la arquitectura multi-agente mejora la calidad del análisis financiero. Valida el enfoque de usar LLMs como capa de interpretación sobre resultados de modelos cuantitativos.</p>
+<p>🎯 <strong>DIFERENCIADOR</strong>: Park trabaja exclusivamente en <strong>mercados financieros</strong> (datos de precios, índices bursátiles) con variables continuas y alta frecuencia. Esta tesis se aplica a <strong>auditoría empresarial</strong> con datos tabulares de transacciones contables, donde la trazabilidad regulatoria interna (SBS, NIST) prima sobre la velocidad de respuesta. Además, esta investigación evita el riesgo de alucinaciones LLM documentado en este tipo de sistemas (survey de alucinaciones, 2026 [G10]) al restringir el LLM a interpretar vectores SHAP deterministas mediante RAG.</p>
+<hr />
+<h3 id="antecedente-3-deteccion-de-fraude-con-ml-interpretable-y-ensemble-gbdt">ANTECEDENTE 3 — Detección de Fraude con ML Interpretable y Ensemble GBDT</h3>
+<p><strong>Fuente</strong>: G06</p>
+<p><strong>Referencia APA</strong>: [Verificar autores]. (2025). Financial statement fraud detection through an integrated machine learning and explainable AI framework. <em>Journal of Risk and Financial Management</em>, <em>19</em>(1), 13. https://doi.org/10.3390/jrfm19010013</p>
+<p><strong>Objetivo</strong>: Diseñar un framework integrado de detección de fraude en estados financieros que combine modelos de ensamble (Stacking Ensemble de GBDT) con técnicas de explicabilidad (SHAP).</p>
+<p><strong>Metodología</strong>: Se implementa un Stacking Ensemble de tres capas: XGBoost + LightGBM + CatBoost como modelos base, con un meta-clasificador de regresión logística. La explicabilidad se evalúa mediante SHAP Stability Index para medir coherencia de las explicaciones entre instancias similares. El experimento se realiza sobre datos de estados financieros con etiquetas de fraude.</p>
+<p><strong>Resultados</strong>: El ensemble alcanza PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) = 0.93 y F1-Score (Medida Armónica de Precisión y Exhaustividad) = 0.83 en la detección de fraude financiero, superando a TabNet (Arik &amp; Pfister, 2021 [A05]) y FT-Transformer (Gorishniy et al., 2021 [A04]). El SHAP Stability Index = 0.87 confirma la coherencia forense de las explicaciones.</p>
+<p><strong>Relevancia para esta tesis</strong>: Este trabajo valida empíricamente la superioridad del Stacking Ensemble de GBDT con SHAP sobre alternativas de Deep Learning para datos financieros. Sus resultados respaldan directamente la elección arquitectónica de esta tesis.</p>
+<p>🎯 <strong>DIFERENCIADOR</strong>: El trabajo citado se limita a la detección de fraude. Esta tesis añade el módulo de forecasting (TFT), el ensemble de detectores de anomalías no supervisado, y la generación automática de reportes con LLM+RAG, configurando un pipeline completo de auditoría continua, no solo detección.</p>
+<hr />
+<h3 id="antecedente-4-adbench-evaluacion-sistematica-de-detectores-de-anomalias">ANTECEDENTE 4 — ADBench: Evaluación Sistemática de Detectores de Anomalías</h3>
+<p><strong>Fuente</strong>: C04</p>
+<p><strong>Referencia APA</strong>: Han, S., Hu, X., Huang, F., Jiang, M., &amp; Zhao, Y. (2022). ADBench: Anomaly detection benchmark. <em>Advances in Neural Information Processing Systems</em>, <em>35</em>.</p>
+<p><strong>Objetivo</strong>: Proporcionar un benchmark estandarizado y reproducible para evaluar algoritmos de detección de anomalías bajo múltiples condiciones de supervisión y distribuciones de datos.</p>
+<p><strong>Metodología</strong>: Evaluación de 30 algoritmos en 57 datasets bajo tres escenarios: (1) completamente no supervisado, (2) semisupervisado con pocas etiquetas, y (3) supervisado completo. Los datasets incluyen dominios financieros, médicos, industriales y de ciberseguridad.</p>
+<p><strong>Resultados</strong>: No existe un algoritmo universalmente superior en todos los escenarios. Isolation Forest (Liu et al., 2008 [C01]) y ECOD (Li et al., 2022 [C05]) muestran consistencia en contextos no supervisados. El ensemble de múltiples detectores supera sistemáticamente a cualquier detector individual en escenarios con alta variabilidad de distribución.</p>
+<p><strong>Relevancia para esta tesis</strong>: ADBench justifica formalmente la decisión de implementar un ensemble de detectores (Isolation Forest + LOF + Deep SVDD) en lugar de un único algoritmo. La metodología de evaluación de ADBench sirve como referencia directa para el diseño experimental del Capítulo III.</p>
+<p>🎯 <strong>DIFERENCIADOR</strong>: Esta tesis aplica las conclusiones de ADBench en un contexto empresarial específico (auditoría financiera), evaluando el ensemble no solo en métricas de rendimiento sino también en <strong>interpretabilidad para auditores</strong> y <strong>conformidad regulatoria</strong>, dimensiones no abordadas por ADBench.</p>
+<hr />
+<h3 id="antecedente-5-por-que-los-modelos-basados-en-arboles-superan-al-deep-learning-en-datos-tabulares">ANTECEDENTE 5 — Por qué los Modelos Basados en Árboles Superan al Deep Learning en Datos Tabulares</h3>
+<p><strong>Fuente</strong>: A06</p>
+<p><strong>Referencia APA</strong>: Grinsztajn, L., Oyallon, E., &amp; Varoquaux, G. (2022). Why do tree-based models still outperform deep learning on tabular data? <em>Advances in Neural Information Processing Systems</em>, <em>35</em>.</p>
+<p><strong>Objetivo</strong>: Investigar empíricamente las causas por las cuales los modelos basados en árboles de decisión superan a las arquitecturas de Deep Learning en conjuntos de datos tabulares de tamaño mediano.</p>
+<p><strong>Metodología</strong>: Benchmark sistemático en 45 datasets tabulares de dominio público, comparando XGBoost, Random Forest y Gradient Boosting contra FT-Transformer, MLP, TabNet y otros modelos de Deep Learning. El análisis identifica tres propiedades de los datos tabulares que favorecen a los árboles: (1) robustez ante features no informativas, (2) orientación de datos no invariante a rotación, (3) irregularidades en la función objetivo.</p>
+<p><strong>Resultados</strong>: En datasets con menos de 100,000 muestras (típico en entornos empresariales medianos), los GBDT superan a todo modelo de Deep Learning en el 95% de los datasets evaluados. La brecha se reduce solo con datasets masivos (&gt;500K muestras).</p>
+<p><strong>Relevancia para esta tesis</strong>: Este trabajo cierra el debate GBDT vs. Deep Learning para el contexto empresarial típico donde se aplica esta investigación. Justifica de manera irrefutable la elección de XGBoost/LightGBM como backbone del módulo de predicción.</p>
+<p><strong>⚠️ DATO FALTANTE</strong>: Caracterizar el tamaño típico del dataset con el que se trabaja en esta tesis (número de transacciones). Si el dataset supera 100K muestras, el argumento de Grinsztajn et al. (2022) se debilita parcialmente y debe complementarse con Almalki &amp; Masud (2025 [G09]).</p>
+<hr />
+<h3 id="antecedente-6-temporal-fusion-transformers-para-forecasting-multi-horizonte-interpretable">ANTECEDENTE 6 — Temporal Fusion Transformers para Forecasting Multi-Horizonte Interpretable</h3>
+<p><strong>Fuente</strong>: B01</p>
+<p><strong>Referencia APA</strong>: Lim, B., Arık, S. Ö., Loeff, N., &amp; Pfister, T. (2021). Temporal fusion transformers for interpretable multi-horizon time series forecasting. <em>International Journal of Forecasting</em>, <em>37</em>(4), 1748–1764. https://doi.org/10.1016/j.ijforecast.2021.03.012</p>
+<p><strong>Objetivo</strong>: Proponer una arquitectura de Transformer adaptada para forecasting interpretable en horizontes temporales múltiples, con capacidad de incorporar variables covariables estáticas y dinámicas.</p>
+<p><strong>Metodología</strong>: La arquitectura TFT combina: (1) LSTM para codificación secuencial, (2) mecanismo de selección de variables mediante gating, (3) atención multi-cabezal interpretable, y (4) cuantificación de incertidumbre mediante predicción de cuantiles. Se evalúa en 6 datasets de dominio real incluyendo series financieras y de retail.</p>
+<p><strong>Resultados</strong>: TFT supera a LSTMs, N-BEATS y Transformers vanilla en rendimiento de forecasting para horizontes medios y largos. El mecanismo de gating identifica automáticamente las covariables más relevantes, proporcionando interpretabilidad inherente sin costo computacional adicional.</p>
+<p><strong>Relevancia para esta tesis</strong>: TFT es seleccionado como arquitectura del módulo de forecasting por su doble ventaja: rendimiento predictivo superior y explicabilidad incorporada, alineada con los requisitos regulatorios de trazabilidad. La incorporación de covariables exógenas (indicadores macroeconómicos, fechas de cierre contable) potencia su aplicación en auditoría financiera.</p>
+<p><strong>Nota sobre debate Zeng (2023)</strong>: La crítica de Zeng et al. (2023 [B02]) sobre la efectividad de Transformers en series temporales es superada por PatchTST (Nie et al., 2023 [B05]) e iTransformer (Liu et al., 2024 [B03]), que demuestran que el diseño correcto (tokenización por patches o inversión de dimensiones) preserva las ventajas del mecanismo de atención. TFT evita las críticas de Zeng al incorporar mecanismos de gating que filtran información irrelevante antes de la atención.</p>
+<hr />
+<h3 id="antecedente-7-pyod-libreria-estandar-para-deteccion-de-outliers">ANTECEDENTE 7 — PyOD: Librería Estándar para Detección de Outliers</h3>
+<p><strong>Fuente</strong>: C06</p>
+<p><strong>Referencia APA</strong>: Zhao, Y., Nasrullah, Z., &amp; Li, Z. (2019). PyOD: A Python toolbox for scalable outlier detection. <em>Journal of Machine Learning Research</em>, <em>20</em>(96), 1–7.</p>
+<p><strong>Objetivo</strong>: Desarrollar y publicar una librería unificada en Python que implemente más de 40 algoritmos de detección de outliers con una API estandarizada compatible con scikit-learn.</p>
+<p><strong>Metodología</strong>: Implementación de algoritmos de detección de anomalías en tres categorías: métodos basados en proximidad (LOF, kNN), métodos basados en proyección (PCA, OCSVM) y métodos basados en ensembles (Isolation Forest, LODA). La API sigue el patrón <code>fit()/predict()</code> de scikit-learn, facilitando la integración en pipelines existentes.</p>
+<p><strong>Resultados</strong>: PyOD se consolida como la librería más utilizada en la comunidad académica y de industria para detección de anomalías, con más de 7,000 estrellas en GitHub y adopción en competencias Kaggle y papers académicos. Incluye los 30 algoritmos evaluados por ADBench (Han et al., 2022 [C04]) como referencia.</p>
+<p><strong>Relevancia para esta tesis</strong>: PyOD es la herramienta de implementación del módulo de detección de anomalías. Su uso estandariza el pipeline experimental y garantiza reproducibilidad, un requisito del marco NIST AI RMF (NIST, 2023 [F05]) y de la práctica de Datasheets for Datasets (Gebru et al., 2021 [F06]).</p>
+<hr />
+<h2 id="4-capitulo-ii-22-estado-del-arte">4. CAPÍTULO II §2.2 — ESTADO DEL ARTE</h2>
+<h3 id="estructura-propuesta-5-batallas-argumentativas">Estructura propuesta: 5 Batallas Argumentativas</h3>
+<p>El Estado del Arte se organiza como una argumentación progresiva que conduce al <strong>gap</strong> que justifica esta tesis. Cada "batalla" es una posición teórica que la tesis debe defender ante el jurado.</p>
+<hr />
+<h3 id="batalla-1-gbdt-vs-deep-learning-para-datos-tabulares">BATALLA 1 — GBDT vs. Deep Learning para Datos Tabulares</h3>
+<p><strong>Posición de la tesis</strong>: XGBoost, LightGBM y CatBoost son la elección óptima para el módulo de predicción en datos financieros de tamaño empresarial.</p>
+<p><strong>Argumento cronológico a desarrollar en prosa</strong>:</p>
+<blockquote>
+<p>El desarrollo de modelos para datos tabulares ha experimentado una trayectoria que, contrariamente a lo observado en visión computacional y procesamiento de lenguaje natural, no ha sido dominada por el Deep Learning. Chen y Guestrin (2016 [A01]) introdujeron XGBoost como un sistema escalable de gradient boosting con regularización L1/L2 y manejo nativo de valores faltantes, estableciéndolo como el estándar industrial con más de 45,000 citas y presencia dominante en competencias Kaggle. Ke et al. (2017 [A02]) lo extendieron con LightGBM, incorporando Gradient-based One-Side Sampling (GOSS) que logra aceleraciones de hasta 20× respecto a XGBoost sin pérdida significativa de rendimiento, mientras Prokhorenkova et al. (2018 [A03]) resolvieron el problema del target leakage en variables categóricas con Ordered Boosting en CatBoost.</p>
+<p>El auge del Deep Learning motivó múltiples intentos de trasladar estos paradigmas a datos tabulares. Gorishniy et al. (2021 [A04]) propusieron FT-Transformer, el primer Transformer robusto para tablas mediante embeddings de features, estableciendo un baseline de DL serio que en algunos benchmarks iguala pero raramente supera a los GBDT. Arik y Pfister (2021 [A05]) desarrollaron TabNet, que combina selección secuencial de features con atención interpretable. Sin embargo, la investigación de Grinsztajn et al. (2022 [A06]) zanjó empíricamente este debate: en un benchmark de 45 datasets con menos de 50,000 muestras, los GBDT superan a todo modelo de Deep Learning en el 95% de los casos, identificando tres propiedades estructurales de los datos tabulares que favorecen a los árboles: robustez ante features no informativas, invarianza a rotaciones de los datos, e irregularidades en la función objetivo.</p>
+<p>En el contexto específico de fraude financiero, [G06] confirma esta superioridad con un Stacking Ensemble XGBoost+LightGBM+CatBoost que alcanza PR-AUC = 0.93, superando a TabNet. La estabilidad forense del ensemble (SHAP Stability Index = 0.87) es un requisito adicional en auditoría contable que los modelos de DL difícilmente alcanzan (Thanathamathee et al., 2024 [G08]; [G07]).</p>
+</blockquote>
+<p><strong>Citas clave para esta batalla</strong>: A01, A02, A03, A04, A05, A06, G06, G07, G08<br />
+<strong>⚠️ DATO FALTANTE</strong>: Tamaño del dataset de esta tesis (número de transacciones). Necesario para anclar el argumento de Grinsztajn en el contexto específico.</p>
+<hr />
+<h3 id="batalla-2-detector-unico-vs-ensemble-para-anomalias">BATALLA 2 — Detector Único vs. Ensemble para Anomalías</h3>
+<p><strong>Posición de la tesis</strong>: Un ensemble de Isolation Forest + LOF + Deep SVDD, coordinado mediante PyOD, es más robusto que cualquier detector individual.</p>
+<p><strong>Prosa para §2.2</strong>:</p>
+<blockquote>
+<p>La detección de anomalías en datos financieros ha recorrido tres décadas de evolución desde enfoques estadísticos clásicos hasta métodos de aprendizaje profundo. Breunig et al. (2000 [C02]) establecieron el Local Outlier Factor (LOF) como referencia para detectar anomalías locales mediante densidad relativa al vecindario k-NN, un enfoque sensible a variaciones locales apropiado para transacciones con patrones de comportamiento heterogéneos. Liu et al. (2008 [C01]) introdujeron Isolation Forest, que revolucionó el campo al aislar anomalías por particionamiento aleatorio sin necesidad de definir perfiles de normalidad, con complejidad O(n) que lo hace viable en millones de transacciones. Ruff et al. (2018 [C03]) extendieron la detección a espacios de representación profundos con Deep SVDD, capturando patrones no lineales en los datos.</p>
+<p>El hallazgo crítico de Han et al. (2022 [C04]) en ADBench —57 datasets, 30 algoritmos, tres escenarios de supervisión— establece que no existe un algoritmo universalmente superior: el rendimiento depende fuertemente del tipo de anomalía, la distribución de los datos y el nivel de etiquetado disponible. Este resultado teórico valida la estrategia de ensemble como la opción más robusta para entornos de producción donde la distribución de anomalías es desconocida a priori. La librería PyOD (Zhao et al., 2019 [C06]) proporciona la infraestructura técnica para implementar este ensemble de manera reproducible y estandarizada.</p>
+<p>Un complemento moderno al ensemble es ECOD (Li et al., 2022 [C05]), un detector libre de parámetros basado en distribución empírica acumulada que supera a 11 baselines en 30 datasets. Su ausencia de hiperparámetros elimina el riesgo de sobreajuste al proceso de calibración, particularmente valioso en entornos financieros donde el acceso a datos etiquetados es limitado.</p>
+</blockquote>
+<p><strong>Citas clave</strong>: C01, C02, C03, C04, C05, C06<br />
+<strong>⚠️ DATO FALTANTE</strong>: Resultado experimental comparando detector único vs. ensemble en el dataset de esta tesis (va en Cap. IV pero debe mencionarse como hipótesis aquí).</p>
+<hr />
+<h3 id="batalla-3-llm-como-detector-vs-llm-como-generador-de-reportes">BATALLA 3 — LLM como Detector vs. LLM como Generador de Reportes</h3>
+<p><strong>Posición de la tesis</strong>: El LLM se restringe a la capa de generación de reportes (RAG), NO actúa como detector de anomalías, para garantizar trazabilidad y evitar alucinaciones.</p>
+<p><strong>Esta es la batalla más crítica para el jurado.</strong></p>
+<p><strong>Prosa para §2.2</strong>:</p>
+<blockquote>
+<p>El surgimiento de los modelos de lenguaje de gran tamaño (LLMs) ha generado propuestas de integración en sistemas financieros que van desde la clasificación de datos tabulares hasta la detección de anomalías. Hegselmann et al. (2023 [E01]) demostraron con TabLLM que los LLMs pueden clasificar datos tabulares en configuración zero/few-shot mediante serialización a texto, con rendimiento no trivial incluso sin ajuste fino. Park (2024 [E04]) llevó esta lógica más lejos con un framework multi-agente donde LLMs especializados validan alertas de anomalías en mercados financieros. Tsai et al. (2025 [E02]) exploraron embeddings SBERT para detección de anomalías semánticas en registros contables.</p>
+<p>Sin embargo, existe evidencia sustancial de que usar LLMs como detectores o tomadores de decisiones en contextos financieros introduce riesgos inaceptables. La literatura sobre alucinaciones en LLMs ([G10], 2026) documenta una taxonomía de errores en los que el modelo genera razonamiento financiero coherente en forma pero matemáticamente incorrecto en contenido. Barclays Research (2025 [G05]) identifica específicamente que LLMs en finanzas pueden producir "alucinaciones numéricas" —valores específicos de métricas, porcentajes o fechas que no corresponden a los datos reales— con alta confianza aparente. El BIS Financial Stability Institute (Prenio &amp; Yong, 2024 [G04]) señala que los reguladores de referencia (FINMA, OCC, MAS) exigen que los sistemas de IA financiera sean explicables en cada decisión individual, condición que los LLMs de caja negra no cumplen.</p>
+<p>La respuesta arquitectónica de esta tesis es la separación estricta de responsabilidades: los modelos deterministas (GBDT, Isolation Forest, SHAP) realizan la detección y cuantificación, mientras el LLM actúa exclusivamente como capa de traducción narrativa mediante RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación). Como Schneider et al. (2025 [E05]) documentan, el framework RAG permite anclar las respuestas del LLM a bases de conocimiento verificadas, eliminando el espacio de alucinación al forzar al modelo a citar evidencia. El LLM no infiere anomalías; las narra con los valores SHAP deterministas como fundamento. Esto cumple con los requisitos del Art. 13 del EU AI Act (Parlamento Europeo, 2024 [G03]) y la Resolución SBS N° 053-2023 (SBS, 2023 [G01]).</p>
+</blockquote>
+<p><strong>Citas clave</strong>: E01, E02, E04, E05, G03, G04, G05, G10, G01<br />
+<strong>Diferenciadores</strong>: Esta arquitectura de separación es única en la literatura — ninguno de los competidores (AuditCopilot, Park 2024) la implementa con esta justificación regulatoria.</p>
+<hr />
+<h3 id="batalla-4-sistemas-aislados-vs-sistema-integrado-la-brecha-principal">BATALLA 4 — Sistemas Aislados vs. Sistema Integrado (La Brecha Principal)</h3>
+<p><strong>Posición de la tesis</strong>: Ningún trabajo en la literatura combina los 4 módulos (predicción GBDT + forecasting + ensemble anomalías + LLM-RAG reportes) en un pipeline de auditoría continua con trazabilidad regulatoria.</p>
+<p><strong>Esta batalla ES el gap de investigación.</strong></p>
+<p><strong>Prosa para §2.2</strong>:</p>
+<blockquote>
+<p>La revisión de la literatura evidencia una fragmentación sistemática en los sistemas de auditoría asistida por inteligencia artificial. Los trabajos pueden agruparse en cuatro categorías según el módulo que abordan: (1) sistemas de predicción tabular (Chen et al., 2016 [A01]; Ke et al., 2017 [A02]; Prokhorenkova et al., 2018 [A03]); (2) sistemas de forecasting financiero (Lim et al., 2021 [B01]; Challu et al., 2023 [B06]); (3) sistemas de detección de anomalías (Liu et al., 2008 [C01]; Han et al., 2022 [C04]); y (4) sistemas de generación de reportes con LLMs (Kadir et al., 2025 [E03]; Park, 2024 [E04]).</p>
+<p>Trabajos como AuditCopilot (Kadir et al., 2025 [E03]) logran una integración parcial al combinar detección de anomalías con generación de reportes LLM, pero excluyen módulos de predicción tabular validados y forecasting. El framework de Park (2024 [E04]) integra múltiples LLMs pero opera en el dominio de mercados financieros de alta frecuencia, sin abordaje de trazabilidad regulatoria interna. AuditMAI (Knoblauch &amp; Großmann, 2024 [E06]) propone una infraestructura conceptual para auditoría continua de sistemas IA, pero audita la IA en sí, no usa IA para auditar transacciones.</p>
+<p>La Tabla 2.X resume comparativamente los sistemas más cercanos a la propuesta de esta tesis:</p>
+</blockquote>
+<p><strong>[INSERTAR TABLA COMPARATIVA — ver Sección 6 de este plan]</strong></p>
+<blockquote>
+<p>Esta revisión sistemática permite identificar la brecha de investigación central: <strong>no existe en la literatura un sistema que integre de manera modular, con evaluación empírica y trazabilidad regulatoria, los cuatro componentes</strong> (predicción tabular GBDT evaluada en benchmark estándar + forecasting multi-horizonte + ensemble de detectores de anomalías calibrado con ADBench + generación de reportes LLM-RAG con SHAP como fundamento determinista). Esta tesis propone y evalúa dicha integración, alineada con la Resolución SBS N° 053-2023 y el marco NIST AI RMF.</p>
+</blockquote>
+<p><strong>Citas clave</strong>: A01, A02, A03, B01, B06, C01, C04, E03, E04, E06, F05, G01<br />
+<strong>⚠️ DATO FALTANTE</strong>: Confirmar que AuditCopilot (E03) no tiene módulo de forecasting ni predicción GBDT evaluada — verificar el paper completo antes de hacer esta afirmación.</p>
+<hr />
+<h3 id="batalla-5-contexto-internacional-vs-contexto-peruano-originalidad-local">BATALLA 5 — Contexto Internacional vs. Contexto Peruano (Originalidad local)</h3>
+<p><strong>Posición de la tesis</strong>: La mayoría de los sistemas de la literatura operan en contextos regulatorios de EE.UU., Europa o Asia. Esta tesis es la primera en aplicar un sistema integrado de estas características en el contexto regulatorio peruano (SBS N° 053-2023, Ley N° 31814).</p>
+<p><strong>Prosa para §2.2</strong>:</p>
+<blockquote>
+<p>El contexto regulatorio en el que opera un sistema de auditoría con IA define directamente sus requisitos de diseño. La literatura internacional se ha desarrollado principalmente bajo marcos europeos (EU AI Act, 2024 [G03]; GDPR) y norteamericanos (NIST AI RMF, 2023 [F05]; OCC guidance). El BIS (Prenio &amp; Yong, 2024 [G04]) documenta cómo jurisdicciones como FINMA (Suiza), OCC (EE.UU.) y MAS (Singapur) exigen explicabilidad diferenciada según el impacto de la decisión.</p>
+<p>En el contexto peruano, el marco regulatorio ha madurado significativamente. La Resolución SBS N° 053-2023 establece por primera vez en el Perú lineamientos obligatorios de gobernanza, trazabilidad y explicabilidad para modelos de riesgo en entidades financieras, con implementación gradual hasta enero de 2026. El Decreto Supremo N° 115-2025-PCM (Presidencia del Consejo de Ministros, 2025 [G02]), reglamento de la Ley N° 31814, clasifica los sistemas de IA financiera como de "alto riesgo" y exige supervisión humana en las decisiones automáticas.</p>
+<p>Esta tesis es, en el conocimiento de los autores, la primera propuesta académica en el Perú que diseña explícitamente un sistema de auditoría con IA desde sus fundamentos para cumplir con ambas normativas. La Resolución SBS N° 053-2023 y el D.S. N° 115-2025-PCM no son contexto; son restricciones de diseño verificables que diferencian a esta investigación de sus antecedentes internacionales.</p>
+</blockquote>
+<p><strong>Citas clave</strong>: G01, G02, G03, G04, F05<br />
+<strong>⚠️ DATO FALTANTE</strong>: Verificar texto exacto de la Resolución SBS N° 053-2023 en sbs.gob.pe — confirmar que habla de "gestión de riesgos de modelo" y el cronograma de enero 2026. Igualmente verificar D.S. 115-2025-PCM en elperuano.pe.</p>
+<hr />
+<h2 id="5-capitulo-ii-23-bases-teoricas">5. CAPÍTULO II §2.3 — BASES TEÓRICAS</h2>
+<h3 id="estructura-propuesta">Estructura propuesta</h3>
+<p>La sección de Bases Teóricas desarrolla los fundamentos conceptuales de cada módulo del sistema. Se proponen 6 sub-secciones.</p>
+<hr />
+<h3 id="231-gbdt-gradient-boosting-decision-trees-arboles-de-decision-de-aumento-de-gradiente">§2.3.1 GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)</h3>
+<p><strong>Conceptos a desarrollar</strong> (con citas):<br />
+- Definición de boosting y diferencia con bagging (citar: cualquier texto ML estándar + A01)<br />
+- Gradient Boosting: minimización de función de pérdida mediante descenso de gradiente en espacio funcional<br />
+- XGBoost: regularización L1/L2 + manejo de valores faltantes (Chen &amp; Guestrin, 2016 [A01])<br />
+- LightGBM: GOSS + histogram-based learning + leaf-wise growth (Ke et al., 2017 [A02])<br />
+- CatBoost: Ordered Target Statistics para categóricas (Prokhorenkova et al., 2018 [A03])<br />
+- Justificación de superioridad en tabular: Grinsztajn et al. (2022 [A06])</p>
+<p><strong>⚠️ DATO FALTANTE</strong>: Añadir referencia de texto base de gradient boosting (Friedman, 2001 — "Greedy Function Approximation"). Verificar si está en el repositorio de referencias de la tesis.</p>
+<hr />
+<h3 id="232-deteccion-de-anomalias-fundamentos-y-ensemble">§2.3.2 Detección de Anomalías: Fundamentos y Ensemble</h3>
+<p><strong>Conceptos a desarrollar</strong>:<br />
+- Taxonomía de anomalías: puntuales, contextuales, colectivas<br />
+- Métricas de evaluación: AUC-ROC, PR-AUC (precisión-recall), F1 con umbral óptimo<br />
+- Isolation Forest: fundamento matemático (longitud esperada de camino de aislamiento) (Liu et al., 2008 [C01])<br />
+- LOF: ratio de densidad local respecto a k-vecinos (Breunig et al., 2000 [C02])<br />
+- Deep SVDD: hipersfera mínima en espacio latente (Ruff et al., 2018 [C03])<br />
+- ECOD: función de distribución empírica acumulada multivariada (Li et al., 2022 [C05])<br />
+- Estrategia de ensemble: votación por mayoría vs. promedio de scores vs. meta-clasificador<br />
+- ADBench como referencia de evaluación (Han et al., 2022 [C04])<br />
+- Infraestructura: PyOD (Zhao et al., 2019 [C06])</p>
+<hr />
+<h3 id="233-forecasting-con-transformers-tft-y-debate-contemporaneo">§2.3.3 Forecasting con Transformers: TFT y debate contemporáneo</h3>
+<p><strong>Conceptos a desarrollar</strong>:<br />
+- Mecanismo de atención: self-attention y multi-head attention<br />
+- TFT: arquitectura completa (gating, atención, cuantil loss) (Lim et al., 2021 [B01])<br />
+- Debate Transformers en TS: crítica de Zeng et al. (2023 [B02]) — DLinear supera a Transformers en benchmarks clásicos<br />
+- Respuesta: PatchTST (Nie et al., 2023 [B05]) — tokenización por patches resuelve permutation-invariance<br />
+- iTransformer (Liu et al., 2024 [B03]) — tokenización por variable en lugar de por tiempo<br />
+- Chronos (Ansari et al., 2024 [B04]) — foundation model para TS, paradigma emergente<br />
+- N-HiTS (Challu et al., 2023 [B06]) — alternativa sin Transformer para horizontes largos<br />
+- <strong>Posición de la tesis</strong>: TFT se elige por su interpretabilidad incorporada (relevante para auditoría), no solo por rendimiento</p>
+<p><strong>⚠️ DATO FALTANTE</strong>: Justificar por qué se incluye forecasting en el pipeline de auditoría. Ejemplos de uso: predecir volúmenes de transacciones futuras para calibrar umbrales de detección, forecasting de riesgo de cartera, predicción de patrones estacionales en fraude. Este argumento debe estar desarrollado en §3.1 (arquitectura) pero referenciado aquí.</p>
+<hr />
+<h3 id="234-explicabilidad-xai-explainable-artificial-intelligence-inteligencia-artificial-explicable-y-valores-de-shapley">§2.3.4 Explicabilidad (XAI (Explainable Artificial Intelligence - Inteligencia Artificial Explicable)) y Valores de Shapley</h3>
+<p><strong>Conceptos a desarrollar</strong>:<br />
+- Taxonomía XAI: modelo-agnóstico vs. específico, local vs. global, post-hoc vs. inherente<br />
+- LIME: aproximación local con modelo sustituto (Ribeiro et al., 2016 [F02])<br />
+- SHAP: valores de Shapley — fundamento en teoría de juegos cooperativos (Lundberg &amp; Lee, 2017 [F01])<br />
+  - Propiedades: eficiencia, simetría, dummy, aditividad<br />
+  - SHAP vs. LIME: SHAP garantiza consistencia global; LIME puede ser inestable<br />
+- TreeSHAP: cálculo exacto en O(TLD²) para árboles (citar: Lundberg et al., 2020 — extensión de F01)<br />
+- SHAP Stability Index: coherencia forense (citar: [G06])<br />
+- Aplicación regulatoria: SHAP como evidencia auditable (EU AI Act Art. 13 [G03], BIS [G04])</p>
+<p><strong>⚠️ DATO FALTANTE</strong>: Incluir referencia a la extensión TreeSHAP (Lundberg et al., 2020, Nature Machine Intelligence). Verificar si está en el repositorio.</p>
+<hr />
+<h3 id="235-modelos-de-lenguaje-y-rag-para-auditoria">§2.3.5 Modelos de Lenguaje y RAG para Auditoría</h3>
+<p><strong>Conceptos a desarrollar</strong>:<br />
+- LLMs: arquitectura Transformer, atención, tokenización, preentrenamiento<br />
+- In-context learning: zero-shot, few-shot, chain-of-thought<br />
+- Hallucination en LLMs: tipos y causas ([G10], 2026)<br />
+- RAG: Retrieval-Augmented Generation — recuperación de contexto relevante antes de generación (Schneider et al., 2025 [E05])<br />
+  - RAG básico: dense retrieval + generación<br />
+  - RAG avanzado: GraphRAG, Self-RAG, RAPTOR (mencionar como trabajo futuro)<br />
+- TabLLM: serialización tabular para LLMs (Hegselmann et al., 2023 [E01])<br />
+- Integración SHAP + LLM: el LLM como "narrador" de valores deterministas<br />
+- Evaluación de texto generado: ROUGE (Lin, 2004), BLEU (Papineni et al., 2002) — referencias de tesis_v2</p>
+<hr />
+<h3 id="236-gobernanza-de-ia-y-mlops">§2.3.6 Gobernanza de IA y MLOps</h3>
+<p><strong>Conceptos a desarrollar</strong>:<br />
+- Deuda técnica en ML: Sculley et al. (2015 [F04]) — pipelines entangled, configuration debt, undeclared consumers<br />
+- MLOps: definición, ciclo de vida, componentes (Kreuzberger et al., 2023 [F03])<br />
+  - CI/CD para modelos, monitoreo de drift, reentrenamiento automatizado<br />
+- NIST AI RMF: 4 funciones (Govern, Map, Measure, Manage) (NIST, 2023 [F05])<br />
+- Datasheets for Datasets: documentación del dataset BAF Benchmark (Gebru et al., 2021 [F06])<br />
+- Model Cards: documentación de modelos XGBoost, TFT (Mitchell et al., 2019 [F07])<br />
+- Continuous Auditing Framework: Patel et al. (2024 [D03]) — caso: reducción de 45 a 5 días en ciclo de auditoría<br />
+- Marco CAQ: Auditing in the Age of Generative AI (CAQ, 2024 [D04]) — posición oficial de Big 4</p>
+<hr />
+<h2 id="6-analisis-comparativo-con-competidores-directos">6. ANÁLISIS COMPARATIVO CON COMPETIDORES DIRECTOS</h2>
+<h3 id="tabla-2x-comparativa-de-sistemas-de-auditoria-con-ia-para-insertar-en-22-batalla-4">Tabla 2.X — Comparativa de sistemas de auditoría con IA (para insertar en §2.2 Batalla 4)</h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th><strong>Esta tesis</strong></th>
+<th>AuditCopilot [E03]</th>
+<th>Park 2024 [E04]</th>
+<th>AuditMAI [E06]</th>
+<th>G06 (Fraude ML+XAI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Predicción tabular GBDT</strong></td>
+<td>✅ XGB+LGBM+CatBoost</td>
+<td>❌ No especificado</td>
+<td>❌ No (solo LLMs)</td>
+<td>❌ No</td>
+<td>✅ Stacking Ensemble</td>
+</tr>
+<tr>
+<td><strong>Benchmark estándar de evaluación</strong></td>
+<td>✅ BAF [D01]</td>
+<td>❌ Dataset propio</td>
+<td>❌ S&amp;P 500 (mercado)</td>
+<td>❌ Conceptual</td>
+<td>⚠️ Dataset propio</td>
+</tr>
+<tr>
+<td><strong>Forecasting de series temporales</strong></td>
+<td>✅ TFT [B01]</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Ensemble de detección de anomalías</strong></td>
+<td>✅ IF+LOF+SVDD (ADBench)</td>
+<td>⚠️ Parcial</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Explicabilidad SHAP</strong></td>
+<td>✅ TreeSHAP</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅ SHAP+Anchor</td>
+</tr>
+<tr>
+<td><strong>Generación LLM de reportes</strong></td>
+<td>✅ RAG determinista</td>
+<td>✅ LLM narrativo</td>
+<td>✅ Multi-agente LLM</td>
+<td>❌ Conceptual</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Restricción anti-alucinación</strong></td>
+<td>✅ RAG+SHAP como fundamento</td>
+<td>❌</td>
+<td>❌</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Marco regulatorio explícito</strong></td>
+<td>✅ SBS+DS115+EU AI Act</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Contexto peruano</strong></td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Evaluación de usabilidad</strong></td>
+<td>✅ Con auditores</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Dominio de aplicación</strong></td>
+<td>Auditoría empresarial</td>
+<td>Asientos contables</td>
+<td>Mercados financieros</td>
+<td>Auditoría de IA</td>
+<td>Fraude en estados financieros</td>
+</tr>
+<tr>
+<td><strong>Venue</strong></td>
+<td>UNSA 2026</td>
+<td>arXiv 2025</td>
+<td>arXiv 2024</td>
+<td>arXiv 2024</td>
+<td>JRFM 2025</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusión de la tabla</strong>: Esta tesis es la única propuesta que integra los 4 módulos del pipeline con evaluación empírica reproducible, trazabilidad regulatoria explícita y contexto peruano. El valor añadido respecto al trabajo más cercano (AuditCopilot) son los módulos de forecasting, el ensemble calibrado con ADBench, la restricción anti-alucinación del LLM, y el marco regulatorio peruano.</p>
+<hr />
+<h3 id="nota-de-diferenciacion-detallada-con-auditcopilot-para-incluir-en-21-o-22">Nota de diferenciación detallada con AuditCopilot (para incluir en §2.1 o §2.2)</h3>
+<blockquote>
+<p>AuditCopilot (Kadir et al., 2025 [E03]) constituye el trabajo más cercano a esta propuesta en términos de objetivo. Sin embargo, tres diferencias fundamentales distinguen ambos sistemas: <strong>primera</strong>, AuditCopilot opera sobre asientos contables de doble entrada con un LLM que detecta Y explica, mientras esta tesis separa estrictamente la detección (GBDT+ensemble determinista) de la explicación (SHAP) y la narración (LLM-RAG), alineándose con los requisitos de trazabilidad del BIS (Prenio &amp; Yong, 2024 [G04]); <strong>segunda</strong>, AuditCopilot no integra forecasting de series temporales ni módulo de predicción tabular validado en benchmarks reproducibles, limitando su capacidad a la revisión retrospectiva; <strong>tercera</strong>, AuditCopilot no aborda el marco regulatorio explícito ni la evaluación de usabilidad con auditores reales, componentes centrales de esta investigación. Esta tesis no compite con AuditCopilot; lo complementa con una arquitectura más completa y regulatoriamente fundada.</p>
+</blockquote>
+<hr />
+<h2 id="7-matriz-de-brechas-gap-analysis">7. MATRIZ DE BRECHAS (GAP ANALYSIS)</h2>
+<h3 id="tabla-de-brechas-identificadas-en-la-literatura">Tabla de brechas identificadas en la literatura</h3>
+<table>
+<thead>
+<tr>
+<th>Brecha</th>
+<th>Descripción</th>
+<th>Papers que la confirman</th>
+<th>Cómo esta tesis la cierra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B1: Fragmentación de módulos</strong></td>
+<td>Los sistemas abordan predicción, detección, o reportes, pero no los cuatro integrados</td>
+<td>E03, E04, G06, C04</td>
+<td>Arquitectura de 4 capas modulares evaluada como sistema integrado</td>
+</tr>
+<tr>
+<td><strong>B2: Ausencia de evaluación en benchmark estándar</strong></td>
+<td>Muchos sistemas usan datasets propios no reproducibles</td>
+<td>D01, C04</td>
+<td>Uso de BAF Benchmark [D01] + metodología ADBench [C04]</td>
+</tr>
+<tr>
+<td><strong>B3: LLM sin restricción anti-alucinación</strong></td>
+<td>Sistemas con LLMs como agentes de decisión no controlan alucinaciones numéricas</td>
+<td>G05, G10, G03</td>
+<td>LLM restringido a RAG sobre vectores SHAP deterministas</td>
+</tr>
+<tr>
+<td><strong>B4: Falta de trazabilidad regulatoria</strong></td>
+<td>Sistemas técnicamente sólidos sin alineación a marcos legales</td>
+<td>G01, G02, G03, F05</td>
+<td>Diseño desde NIST AI RMF + SBS N°053-2023 + DS115</td>
+</tr>
+<tr>
+<td><strong>B5: Ausencia de contexto peruano</strong></td>
+<td>Literatura dominada por contextos EE.UU./Europa/Asia</td>
+<td>G01, G02</td>
+<td>Primera propuesta alineada con regulación peruana específica</td>
+</tr>
+<tr>
+<td><strong>B6: Falta de evaluación de usabilidad</strong></td>
+<td>Sistemas evaluados solo en métricas técnicas (AUC, F1)</td>
+<td>D03, D04</td>
+<td>Experimento con auditores reales (tiempo-a-decisión, confianza)</td>
+</tr>
+<tr>
+<td><strong>B7: Forecasting no integrado en auditoría</strong></td>
+<td>El forecasting financiero se estudia separado de la detección de anomalías</td>
+<td>B01, B02, B05</td>
+<td>Módulo TFT integrado al pipeline de auditoría continua</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-checklist-de-datos-faltantes">8. CHECKLIST DE DATOS FALTANTES</h2>
+<p>Los siguientes datos son necesarios antes de defender la tesis. Organizados por urgencia:</p>
+<h3 id="urgente-necesarios-antes-de-comenzar-experimentos">🔴 URGENTE — Necesarios antes de comenzar experimentos</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Dato faltante</th>
+<th>Dónde obtenerlo</th>
+<th>Para qué sección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Tamaño del dataset principal agroexportador</strong></td>
+<td>Empresa colaboradora / piloto anonimizado</td>
+<td>§3.2, §2.2, §4</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Texto exacto de Resolución SBS N° 053-2023</strong></td>
+<td>sbs.gob.pe (buscar: resoluciones 2023)</td>
+<td>§1.7.3, §2.2 Batalla 5, §2.3.6</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Texto del D.S. N° 115-2025-PCM</strong></td>
+<td>busquedas.elperuano.pe</td>
+<td>§1.7.3, §2.2 Batalla 5</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Definición precisa del contexto agroexportador</strong></td>
+<td>Documentación de la empresa colaboradora</td>
+<td>§1.1, §3.1</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Validación de accesibilidad de fuentes públicas</strong></td>
+<td>MIDAGRI, SENASA, SENAMHI, INEI, SUNAT, FAOSTAT, UN Comtrade</td>
+<td>§3.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="importante-necesarios-antes-de-escribir-capitulo-ii-definitivo">🟡 IMPORTANTE — Necesarios antes de escribir Capítulo II definitivo</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Dato faltante</th>
+<th>Dónde obtenerlo</th>
+<th>Para qué sección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td><strong>Estadística agroexportadora peruana</strong></td>
+<td>MIDAGRI, INEI, SUNAT, datosabiertos.gob.pe</td>
+<td>§1.1</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Autores completos de G05, G06, G07, G10</strong></td>
+<td>Verificar URLs proporcionadas: mdpi.com, arxiv.org</td>
+<td>§2.2, bibliografía APA</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Referencia TreeSHAP</strong> (Lundberg et al., 2020)</td>
+<td>Google Scholar: <code>"from local explanations to global understanding" TreeSHAP 2020</code></td>
+<td>§2.3.4</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Referencia Friedman 2001 (Gradient Boosting)</strong></td>
+<td>Google Scholar: <code>"Greedy function approximation gradient boosting machine" Friedman 2001</code></td>
+<td>§2.3.1</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Validación de fuentes sectoriales</strong></td>
+<td>SENASA, SENAMHI y MIDAGRI</td>
+<td>§3.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recomendable-fortalecen-pero-no-bloquean">🟢 RECOMENDABLE — Fortalecen pero no bloquean</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Dato faltante</th>
+<th>Para qué sección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Cifra: impacto económico de pérdidas por mermas/logística</td>
+<td>§1.7.2 Justificación Económica</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Datos de adopción de IA en agroindustria peruana</td>
+<td>§1.1 Realidad problemática</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Publicación del benchmark/dataset agrícola que usemos como comparativo</td>
+<td>§2.1, §3.2</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Referencias de clima, exportaciones y productividad agrícola</td>
+<td>§2.3, §3.2</td>
+</tr>
+<tr>
+<td>15</td>
+<td>N-BEATS o alternativas de forecasting si se conservan comparaciones</td>
+<td>§2.3.3, §2.1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-planificacion-integrada-de-datos">10. PLANIFICACIÓN INTEGRADA DE DATOS</h2>
+<h3 id="fuentes-y-tipo-de-datos">Fuentes y tipo de datos</h3>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Tipo de datos</th>
+<th>Uso en la tesis</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MIDAGRI</td>
+<td>precios mayoristas, volúmenes, boletines</td>
+<td>contexto sectorial, estacionalidad, variables macro</td>
+<td>identificado</td>
+</tr>
+<tr>
+<td>SENASA</td>
+<td>plagas, alertas fitosanitarias, certificaciones</td>
+<td>variables de riesgo, calidad y cumplimiento</td>
+<td>identificado</td>
+</tr>
+<tr>
+<td>SENAMHI</td>
+<td>temperatura, lluvia, humedad, avisos</td>
+<td>forecasting, variación operativa, anomalías climáticas</td>
+<td>identificado</td>
+</tr>
+<tr>
+<td>INEI</td>
+<td>actividad económica, índices de precios</td>
+<td>contexto macro y validación externa</td>
+<td>identificado</td>
+</tr>
+<tr>
+<td>SUNAT</td>
+<td>exportaciones, aduanas, tributación</td>
+<td>contexto comercial y trazabilidad sectorial</td>
+<td>identificado</td>
+</tr>
+<tr>
+<td>FAOSTAT</td>
+<td>producción, rendimiento, área cosechada</td>
+<td>comparativo internacional y benchmark de producción</td>
+<td>identificado</td>
+</tr>
+<tr>
+<td>UN Comtrade</td>
+<td>comercio exterior por producto/país</td>
+<td>contexto de exportación y validación complementaria</td>
+<td>identificado</td>
+</tr>
+<tr>
+<td>datosabiertos.gob.pe</td>
+<td>datasets públicos del Estado</td>
+<td>repositorio de apoyo y alternativa de búsqueda</td>
+<td>identificado</td>
+</tr>
+<tr>
+<td>Datos internos empresa</td>
+<td>producción, inventario, calidad, logística</td>
+<td>dataset principal para modelado y detección</td>
+<td>por confirmar</td>
+</tr>
+<tr>
+<td>Datos externos complementarios</td>
+<td>tipo de cambio, clima, precios internacionales</td>
+<td>covariables para explicación y forecasting</td>
+<td>por integrar</td>
+</tr>
+</tbody>
+</table>
+<h3 id="como-se-integran">Cómo se integran</h3>
+<ul>
+<li><strong>Predicción</strong>: producción, volumen, rendimiento, inventario, demanda, precios.</li>
+<li><strong>Detección de anomalías</strong>: mermas, retrasos, desviaciones de calidad, eventos climáticos atípicos.</li>
+<li><strong>Explicabilidad</strong>: variables que más influyen en desviaciones o riesgo operativo.</li>
+<li><strong>Reportes</strong>: contexto, causa probable, impacto y recomendación accionable.</li>
+</ul>
+<h3 id="que-aumento-en-la-planificacion">Qué aumentó en la planificación</h3>
+<ul>
+<li>[x] Estructura completa de la tesis documentada</li>
+<li>[x] Capítulo I consolidado como base estable</li>
+<li>[x] Capítulo II consolidado y alineado al nuevo enfoque</li>
+<li>[x] Mapa de fuentes de datos agroexportadores definido</li>
+<li>[x] Plan de iteración futura con datos internos + fuentes públicas</li>
+<li>[ ] Capítulo III migrado completamente al dominio agroexportador</li>
+<li>[ ] Capítulo IV con resultados reales</li>
+<li>[ ] Capítulo V con conclusiones finales</li>
+</ul>
+<hr />
+<h2 id="apendice-a-orden-de-redaccion-recomendado">APÉNDICE A — ORDEN DE REDACCIÓN RECOMENDADO</h2>
+<p>Para máxima eficiencia, redactar en este orden:</p>
+<ol>
+<li><strong>Primero</strong>: Verificar datos urgentes (items 1-5 del checklist)</li>
+<li><strong>Segundo</strong>: Redactar §2.3 Bases Teóricas (no requiere datos empíricos, solo literatura)</li>
+<li><strong>Tercero</strong>: Completar §2.1 Antecedentes con los 7 antecedentes del plan</li>
+<li><strong>Cuarto</strong>: Redactar §2.2 Estado del Arte con las 5 batallas y la tabla comparativa</li>
+<li><strong>Quinto</strong>: Ajustar §1.1 y §1.7 del Capítulo I con citas SBS y estadísticas peruanas</li>
+<li><strong>Sexto</strong>: Revisar coherencia de toda la cadena argumental: brecha → hipótesis → metodología</li>
+</ol>
+<hr />
+<h2 id="apendice-b-citas-bibtex-pendientes-de-agregar-a-refsbib">APÉNDICE B — CITAS BiBTeX PENDIENTES DE AGREGAR A refs.bib</h2>
+<p>Los siguientes papers NO están actualmente en <code>refs.bib</code> (según la revisión de los archivos existentes) y deben agregarse:</p>
+<pre class="codehilite"><code>A05: @inproceedings{arik2021tabnet, ...}               # TabNet AAAI 2021
+A06: @inproceedings{grinsztajn2022trees, ...}          # Grinsztajn NeurIPS 2022
+B02: @inproceedings{zeng2023dlinear, ...}              # Zeng AAAI 2023
+B03: @inproceedings{liu2024itransformer, ...}          # iTransformer ICLR 2024
+B04: @article{ansari2024chronos, ...}                  # Chronos TMLR 2024
+B05: @inproceedings{nie2023patchtst, ...}              # PatchTST ICLR 2023
+C05: @article{li2022ecod, ...}                         # ECOD TKDE 2022
+C06: @article{zhao2019pyod, ...}                       # PyOD JMLR 2019
+D03: @article{patel2024auditing, ...}                  # Patel IRJMETS 2024
+D04: @techreport{caq2024genai, ...}                    # CAQ 2024
+E01: @inproceedings{hegselmann2023tabllm, ...}         # TabLLM AISTATS 2023
+E04: @misc{park2024llm, ...}                           # Park arXiv 2024
+E05: @article{schneider2025rag, ...}                   # RAG BISE 2025
+E06: @misc{auditmai2024, ...}                          # AuditMAI arXiv 2024
+F01: @inproceedings{lundberg2017shap, ...}             # SHAP NeurIPS 2017
+F02: @inproceedings{ribeiro2016lime, ...}              # LIME KDD 2016
+F03: @article{kreuzberger2023mlops, ...}               # MLOps IEEE Access 2023
+F04: @inproceedings{sculley2015hidden, ...}            # Hidden Debt NeurIPS 2015
+F05: @techreport{nist2023aimf, ...}                    # NIST AI RMF 2023
+F06: @article{gebru2021datasheets, ...}                # Datasheets CACM 2021
+F07: @inproceedings{mitchell2019modelcards, ...}       # Model Cards FAccT 2019
+G01: @techreport{sbs2023resolucion, ...}               # SBS N°053-2023
+G02: @techreport{pcm2025ds115, ...}                    # DS 115-2025-PCM
+G03: @legislation{eu2024aiact, ...}                    # EU AI Act 2024
+G04: @techreport{prenio2024managing, ...}              # BIS FSI 2024
+G05: @misc{barclays2025beyond, ...}                    # Barclays arXiv 2025
+G06: @article{mongolia2025fraud, ...}                  # JRFM 2025
+G07: @article{forensic2025intrusion, ...}              # Applied Sciences 2025
+G08: @article{thanathamathee2024shap, ...}             # ESJ 2024
+G09: @misc{almalki2025fraud, ...}                      # Almalki arXiv 2025
+G10: @misc{survey2026hallucination, ...}               # arXiv 2026
+</code></pre>
+
+<p><strong>⚠️ IMPORTANTE</strong>: Antes de agregar a refs.bib, verificar DOIs y venues exactos según las notas del documento de referencias. Los marcados con "Solo arXiv" deben citarse como preprints con <code>howpublished = {arXiv preprint arXiv:XXXX.XXXXX}</code>.</p>
+<hr />
+<p><em>Plan generado el 2026-05-15. Actualizar este documento cuando se completen los datos faltantes marcados con ⚠️.</em></p>
+        </div>
     </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
 </body>
 </html>

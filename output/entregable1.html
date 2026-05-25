@@ -346,7 +346,7 @@
             <div class="header">
                 <h1>Sistema Integrado de Auditoría Continua con IA: Predicción, Detección de Anomalías y Generación de Reportes Automáticos</h1>
                 <div class="meta">
-                    Autor: Tu Nombre | Generado: 2026-05-18 11:52
+                    Autor: Tu Nombre | Generado: 2026-05-25 01:12
                 </div>
             </div>
             
@@ -383,24 +383,24 @@
 <li>¿Qué arquitectura modular minimiza acoplamiento entre componentes pero garantiza coherencia de decisiones?</li>
 <li>¿Cuál es el trade-off entre precisión de detección y explicabilidad?</li>
 <li>¿Cómo evaluar que reportes generados automáticamente son de calidad aceptable para auditores?</li>
-<li>¿Es viable integrar LLMs en sistemas de auditoría financiera manteniendo trazabilidad?</li>
+<li>¿Es viable integrar LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) en sistemas de auditoría financiera manteniendo trazabilidad?</li>
 </ul>
 <h2 id="13-objetivos">1.3 Objetivos</h2>
 <h3 id="131-objetivo-principal">1.3.1 Objetivo Principal</h3>
-<p>Diseñar, implementar y evaluar un sistema integrado de auditoría continua que combine predicción tabular, detección de anomalías mediante ensemble, explicabilidad mediante SHAP, y generación automática de reportes con LLMs en arquitectura RAG, demostrando que la integración produce mejor trazabilidad, usabilidad y confianza que sistemas aislados.</p>
+<p>Diseñar, implementar y evaluar un sistema integrado de auditoría continua que combine predicción tabular, detección de anomalías mediante ensemble, explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), y generación automática de reportes con LLMs en arquitectura RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación), demostrando que la integración produce mejor trazabilidad, usabilidad y confianza que sistemas aislados.</p>
 <h3 id="132-objetivos-especificos">1.3.2 Objetivos Específicos</h3>
 <ol>
 <li>
 <p><strong>Arquitectura y modularidad</strong>: Definir una arquitectura en capas (predicción → detección → explicación → reporte) que separe responsabilidades según principios de gobernanza NIST AI RMF, permitiendo reemplazo de componentes sin breaking changes.</p>
 </li>
 <li>
-<p><strong>Predicción y detección robusto</strong>: Implementar pipeline de predicción (XGBoost/LightGBM) + ensemble de detectores (Isolation Forest, LOF, Deep SVDD) y demostrar superioridad respecto a métodos aislados usando BAF Benchmark (AUC ≥ 0.92).</p>
+<p><strong>Predicción y detección robusto</strong>: Implementar pipeline de predicción (XGBoost/LightGBM) + ensemble de detectores (Isolation Forest, LOF (Local Outlier Factor - Factor de Anomalía Local), Deep SVDD) y demostrar superioridad respecto a métodos aislados usando BAF Benchmark (AUC ≥ 0.92).</p>
 </li>
 <li>
 <p><strong>Explicabilidad verificable</strong>: Integrar SHAP para generar explicaciones de decisiones del modelo; validar que top-3 features explican ≥70% de varianza por muestra.</p>
 </li>
 <li>
-<p><strong>Generación de reportes de calidad</strong>: Implementar componente LLM+RAG que traduzca anomalías + explicaciones SHAP a reportes en lenguaje natural; alcanzar ROUGE-1 ≥ 0.50 vs. referencia humana.</p>
+<p><strong>Generación de reportes de calidad</strong>: Implementar componente LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG que traduzca anomalías + explicaciones SHAP a reportes en lenguaje natural; alcanzar ROUGE-1 ≥ 0.50 vs. referencia humana.</p>
 </li>
 <li>
 <p><strong>Evaluación integrada y usabilidad</strong>: Diseñar experimento comparativo (sistema integrado vs. componentes aislados) con métricas de tiempo-a-decisión (reducción ≥30%), confianza auditor (+1 punto escala 5), y precisión de decisiones.</p>
@@ -410,7 +410,7 @@
 <p><strong>Hipótesis General (H1)</strong>: Un sistema integrado que combina predicción GBDT, detección de anomalías mediante ensemble, explicabilidad SHAP y generación de reportes con LLM+RAG produce mayor trazabilidad regulatoria, usabilidad y confianza en auditores que sistemas con componentes aislados.</p>
 <p><strong>Hipótesis Nula (H0)</strong>: No existe diferencia estadísticamente significativa entre sistema integrado y componentes aislados en trazabilidad, usabilidad o confianza.</p>
 <p><strong>Sub-hipótesis</strong>:<br />
-- H1a: El ensemble de anomalías (IF+LOF+SVDD) supera métodos aislados en robustez ante diversas distribuciones de datos.<br />
+- H1a: El ensemble de anomalías (IF (Isolation Forest - Bosque de Aislamiento)+LOF+SVDD) supera métodos aislados en robustez ante diversas distribuciones de datos.<br />
 - H1b: Explicaciones SHAP son suficientemente interpretables para auditores (coherencia ≥80% en evaluación cualitativa).<br />
 - H1c: Reportes LLM+RAG alcanzan calidad comparable a referencia humana (ROUGE-1 ≥0.50).<br />
 - H1d: Sistema integrado reduce tiempo-a-decisión ≥30% sin sacrificar precisión.</p>
@@ -422,7 +422,7 @@
 <p><strong>Indicador</strong>: Tipo de sistema utilizado (categórico: integrado vs. aislado)</p>
 <h3 id="152-variables-dependientes">1.5.2 Variables Dependientes</h3>
 <p><strong>VD1: Rendimiento de detección</strong><br />
-- Indicador: ROC-AUC, Precision, Recall, F1-score<br />
+- Indicador: ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), Precision, Recall, F1-score<br />
 - Métrica: Score numérico [0, 1]<br />
 - Rango aceptable: AUC ≥ 0.90</p>
 <p><strong>VD2: Calidad de explicabilidad</strong><br />
@@ -549,7 +549,7 @@
 <h2 id="21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</h2>
 <p>El desarrollo de sistemas de predicción, detección de anomalías y generación de reportes en entornos empresariales ha evolucionado significativamente en los últimos años, impulsado por avances en aprendizaje automático, modelado de series temporales y el uso emergente de modelos de lenguaje.</p>
 <h3 id="avances-en-modelos-para-datos-tabulares">Avances en modelos para datos tabulares</h3>
-<p>En el ámbito de los datos tabulares, diversos estudios han demostrado que los métodos basados en Gradient Boosting Decision Trees (GBDT) continúan siendo altamente competitivos. El modelo XGBoost [1] introdujo mejoras significativas en escalabilidad y rendimiento para grandes volúmenes de datos estructurados, mientras que LightGBM [2] optimizó el proceso de entrenamiento mediante técnicas como histogram-based learning y reducción de dimensionalidad. Por su parte, CatBoost [3] resolvió de manera eficiente el tratamiento de variables categóricas mediante codificación ordenada, evitando problemas de target leakage. Investigaciones más recientes han evaluado modelos profundos para datos tabulares, concluyendo que arquitecturas como FT-Transformer [4] pueden ser competitivas, aunque no superan consistentemente a los métodos basados en árboles en todos los escenarios [11].</p>
+<p>En el ámbito de los datos tabulares, diversos estudios han demostrado que los métodos basados en GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) continúan siendo altamente competitivos. El modelo XGBoost [1] introdujo mejoras significativas en escalabilidad y rendimiento para grandes volúmenes de datos estructurados, mientras que LightGBM [2] optimizó el proceso de entrenamiento mediante técnicas como histogram-based learning y reducción de dimensionalidad. Por su parte, CatBoost [3] resolvió de manera eficiente el tratamiento de variables categóricas mediante codificación ordenada, evitando problemas de target leakage. Investigaciones más recientes han evaluado modelos profundos para datos tabulares, concluyendo que arquitecturas como FT-Transformer [4] pueden ser competitivas, aunque no superan consistentemente a los métodos basados en árboles en todos los escenarios [11].</p>
 <h3 id="series-temporales-y-forecasting">Series temporales y forecasting</h3>
 <p>En el campo del modelado de series temporales, los enfoques tradicionales continúan siendo relevantes. El método AutoARIMA [6] permite la selección automática de modelos estadísticos adecuados para forecasting, mientras que Prophet [7] facilita la modelación de estacionalidades y tendencias en entornos empresariales. Sin embargo, modelos más recientes como N-BEATS [8], N-HiTS [9] y Temporal Fusion Transformers [10] han demostrado mejoras en la predicción multi-horizonte y la incorporación de variables exógenas, lo cual resulta relevante para sistemas que requieren proyecciones complejas.</p>
 <h3 id="deteccion-de-anomalias">Detección de anomalías</h3>

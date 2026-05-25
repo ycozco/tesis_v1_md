@@ -425,7 +425,7 @@ SECTION_ORDER = [
     "20-capitulo2-antecedentes", "21-capitulo2-estadoarte", "22-capitulo2-marcoteorico",
     "30-capitulo3", "40-capitulo4", "50-capitulo5", "60-conclusiones",
     "70-recomendaciones", "80-glosario", "90-referencias",
-    "A1-anexo-usabilidad", "A2-anexo-modelcards", "A3-anexo-datasheet", "A4-anexo-ia",
+    "a1-anexo-usabilidad", "a2-anexo-modelcards", "a3-anexo-datasheet", "a4-anexo-ia",
 ]
 
 
@@ -460,8 +460,8 @@ def main():
 
     # Compatibilidad: agregar archivos legacy si existen
     legacy_files = [
-        ('/app/docs/entregable1.md', 'entregable1.html'),
-        ('/app/docs/plan_detallado.md', 'plan_detallado.html'),
+        ('/app/docs/entregable-1.md', 'entregable-1.html'),
+        ('/app/docs/plan-detallado.md', 'plan-detallado.html'),
         ('/app/docs/mejora-continua-plan.md', 'mejora-continua.html'),
         ('/app/docs/tesis.md', 'tesis.html'),
     ]
@@ -578,12 +578,12 @@ def main():
         </div>
         
         <div class="documents">
-            <a href="entregable1.html" class="doc-card">
+            <a href="entregable-1.html" class="doc-card">
                 <h3>📄 Entregable 1</h3>
                 <p>Capítulo I (Planteamiento) y Capítulo II (Marco Teórico)</p>
             </a>
 
-            <a href="plan_detallado.html" class="doc-card">
+            <a href="plan-detallado.html" class="doc-card">
                 <h3>🗂 Plan Detallado</h3>
                 <p>Estructura completa, avance y checklist actualizado</p>
             </a>

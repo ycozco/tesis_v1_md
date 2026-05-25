@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Sistema Integrado de Supervisión Operativa con Inteligencia Artificial Explicable para Empresas Agroexportadoras Peruanas"
 author: "Yoset Cozco Mauri"
 date: "2026"
@@ -892,9 +892,11 @@ Para todas las pruebas se verifica previamente el supuesto de normalidad con Sha
 
 El estudio de usabilidad para VD4 adopta un **diseño within-subjects con N ≥ 15 participantes**, contrabalanceado en orden de presentación (mitad evalúa primero el sistema integrado, mitad evalúa primero el aislado). Con este tamaño se reportan resultados como exploratorios, con cálculo de tamaño de efecto Cohen's dz y intervalo de confianza al 95%, sin afirmar significancia estadística con potencia plena. Para detectar un efecto medio (dz = 0.5) con potencia 0.80 y α = 0.05 se requieren N = 27 participantes; este tamaño se considera meta deseable y, en caso de no alcanzarse, se reporta el limitante en §5.2 (Limitaciones).
 
+La selección de los evaluadores se realiza mediante un muestreo no probabilístico intencional dirigido a **grupos cerrados de testers con conocimiento especializado en el área** (no abierto al público en general), lo que asegura que los participantes posean la base técnica y de dominio requerida para comprender y evaluar el contexto de las alertas de la cadena agroexportadora.
+
 **Criterios de inclusión de participantes**:
-- Estudiantes avanzados de Ingeniería de Sistemas, Industrial o Agronomía (≥ séptimo semestre), o
-- Profesionales con ≥ 1 año de experiencia en supervisión operativa, control de calidad o auditoría interna.
+- Estudiantes de últimos ciclos (≥ noveno semestre) o egresados de Ingeniería de Sistemas, Ingeniería Industrial o Agronomía con formación demostrada en gestión de calidad, logística o auditoría de sistemas; o
+- Profesionales y técnicos con experiencia en supervisión operativa, control de calidad, auditoría interna o gestión logística en el sector agroexportador.
 
 **Criterios de exclusión**:
 - Participación previa en el diseño del sistema o de cualquiera de sus capas.

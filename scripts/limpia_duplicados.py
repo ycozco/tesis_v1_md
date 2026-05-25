@@ -16,7 +16,7 @@ from pathlib import Path
 DOCS_DIR = Path("docs")
 ACTIVE_DOCS = sorted(
     p for p in DOCS_DIR.glob("*.md")
-    if p.name not in {"tesis.md", "tesis_v2.md"}
+    if p.name not in {"tesis.md", "tesis-v2.md"}
 )
 
 # Patron 1: "Autor (YYYY) (Autor, YYYY)" -> "Autor (YYYY)"

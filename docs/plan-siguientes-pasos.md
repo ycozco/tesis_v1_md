@@ -70,8 +70,8 @@
 |---|---|---|
 | 5.1 | Cap V con conclusiones derivadas de resultados reales | `docs/50-capitulo5.md` |
 | 5.2 | Conclusiones ES/EN actualizadas | `docs/60-conclusiones.md` |
-| 5.3 | Anexo B Model Cards con métricas reales | `docs/A2-anexo-modelcards.md` |
-| 5.4 | Anexo C Datasheet con conteos reales | `docs/A3-anexo-datasheet.md` |
+| 5.3 | Anexo B Model Cards con métricas reales | `docs/a2-anexo-modelcards.md` |
+| 5.4 | Anexo C Datasheet con conteos reales | `docs/a3-anexo-datasheet.md` |
 | 5.5 | Resumen y abstract con números reales | `docs/01-resumen.md` |
 | 5.6 | Verificación final integridad refs.bib | `config/refs.bib` + auditoría |
 | 5.7 | Búsqueda sistemática cerrada | `docs/busqueda-sistematica-gap.md` |
@@ -103,7 +103,7 @@
 
 ### Al cierre de cada hito
 1. Crear `docs/hito-N-completado.md` con evidencia (tablas, capturas, fechas).
-2. Actualizar `plan_detallado.md` con el estado real.
+2. Actualizar `plan-detallado.md` con el estado real.
 
 ---
 

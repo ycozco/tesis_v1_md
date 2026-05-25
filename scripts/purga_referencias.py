@@ -90,11 +90,11 @@ MAPEO_APA = {
     "jesus2022baf": "(Jesus et al., 2022)",
 }
 
-# Archivos a procesar (solo activos; NO procesar tesis.md ni tesis_v2.md)
+# Archivos a procesar (solo activos; NO procesar tesis.md ni tesis-v2.md)
 DOCS_DIR = Path("docs")
 ACTIVE_DOCS = sorted(
     p for p in DOCS_DIR.glob("*.md")
-    if p.name not in {"tesis.md", "tesis_v2.md"}
+    if p.name not in {"tesis.md", "tesis-v2.md"}
 )
 
 CITE_SINGLE = re.compile(r"\[@([a-zA-Z0-9_-]+)\]")

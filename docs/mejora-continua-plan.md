@@ -17,7 +17,7 @@ Este documento establece un framework sistemático de mejora continua (PDCA: Pla
 ### Ciclo PDCA #1: Validación del Plan (Semana 1)
 
 **PLAN**:
-- [ ] Ejecutar agente de revisión (.agent.md) sobre entregable1.md
+- [ ] Ejecutar agente de revisión (.agent.md) sobre entregable-1.md
 - [ ] Identificar gaps estructurales, coherencia, viabilidad
 - [ ] Crear lista de ~10-15 ajustes prioritarios
 
@@ -25,7 +25,7 @@ Este documento establece un framework sistemático de mejora continua (PDCA: Pla
 - [ ] Iteración 1.1: Fortalecer justificación económica (ROI)
 - [ ] Iteración 1.2: Clarificar aporte diferencial vs. AuditCopilot [19]
 - [ ] Iteración 1.3: Validar disponibilidad de datos + recursos
-- [ ] Entregable: `entregable1_v1.1.md` (revisado)
+- [ ] Entregable: `entregable-1_v1.1.md` (revisado)
 
 **CHECK**:
 - [ ] Matriz trazabilidad problema→solución: 100% cubierta
@@ -368,7 +368,7 @@ Este documento establece un framework sistemático de mejora continua (PDCA: Pla
   - [ ] Formato: márgenes, font, espaciado según plantilla SBS
 
 - [ ] Iteración 10.2: Conversión DOCX
-  - [ ] Comando: `pandoc entregable1.md -o entregable1.docx --reference-doc=plantilla.docx --citeproc --bibliography=refs.bib --csl=apa.csl`
+  - [ ] Comando: `pandoc entregable-1.md -o entregable-1.docx --reference-doc=plantilla.docx --citeproc --bibliography=refs.bib --csl=apa.csl`
   - [ ] Validar: tabla de contenidos, páginas de referencia, numeración
   - [ ] Correcciones manuales en Word si necesario
 

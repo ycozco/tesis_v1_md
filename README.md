@@ -57,7 +57,7 @@ El sistema responde a una brecha clave en los procesos de auditoría y control d
     *   `scripts/rebuild_tesis_monolith.py`: Reconstruye `docs/tesis.md` a partir de los 19 capítulos individuales, inyectando saltos de página nativos en OpenXML y HTML.
     *   `scripts/compile_thesis.py`: Compilador integrado que exporta la tesis a formatos DOCX y PDF de calidad editorial.
 *   `ia/`: Contexto persistente de desarrollo del agente de Inteligencia Artificial (`memory.md` y `agents.md`).
-*   `output/`: Directorio donde se guardan los archivos compilados resultantes (`tesis_v2.docx`, `tesis_v2.pdf` y sus versiones fechadas de control de cambios).
+*   `output/`: Directorio donde se guardan los archivos compilados resultantes (`tesis-v2.docx`, `tesis-v2.pdf` y sus versiones fechadas de control de cambios).
 
 ---
 
@@ -136,8 +136,8 @@ Para iniciar la compilación (la cual genera tanto las versiones base como copia
 
 ### 4. Resultados Generados (Carpeta `output/`)
 Una vez finalizado el proceso de manera exitosa, encontrarás en la carpeta `output/`:
-*   `tesis_v2.docx` y `tesis_v2_[AAAA_MM_DD].docx` (Entregable formal en Word para revisiones).
-*   `tesis_v2.pdf` y `tesis_v2_[AAAA_MM_DD].pdf` (Lectura de alta calidad tipográfica en Times New Roman para la defensa).
+*   `tesis-v2.docx` y `tesis-v2_[AAAA_MM_DD].docx` (Entregable formal en Word para revisiones).
+*   `tesis-v2.pdf` y `tesis-v2_[AAAA_MM_DD].pdf` (Lectura de alta calidad tipográfica en Times New Roman para la defensa).
 
 ---
 
@@ -146,4 +146,4 @@ Una vez finalizado el proceso de manera exitosa, encontrarás en la carpeta `out
 *   **Enfoque Epistemológico:** La presente investigación se enmarca en una postura **post-positivista**, asumiendo que la realidad de los eventos operativos y anomalías puede ser aproximada de forma cuantitativa, pero requiriendo de explicaciones contextuales (SHAP) y supervisión humana (gobernanza) para su correcta validación.
 *   **Gobernanza de IA (D.S. N° 115-2025-PCM):** El diseño e implementación del sistema sigue rigurosamente los principios de transparencia algorítmica, equidad y gestión de riesgos establecidos en el Reglamento de la Ley de IA en el Perú.
 *   **Gestión de Riesgo de Modelos (Resolución SBS N° 053-2023):** Se adopta esta resolución nacional como marco referencial metodológico de buenas prácticas para garantizar la estabilidad y evitar la degradación del rendimiento de los modelos en producción.
-*   **Declaración de uso de IA (Anexo D):** De acuerdo con el manual de ética de la UNSA, el Anexo D (`docs/A4-anexo-ia.md`) detalla formalmente los prompts y el alcance de las herramientas de IA generativa utilizadas únicamente como copiloto en la corrección de estilo, refinamiento bibliográfico y asistencia de formato.
+*   **Declaración de uso de IA (Anexo D):** De acuerdo con el manual de ética de la UNSA, el Anexo D (`docs/a4-anexo-ia.md`) detalla formalmente los prompts y el alcance de las herramientas de IA generativa utilizadas únicamente como copiloto en la corrección de estilo, refinamiento bibliográfico y asistencia de formato.

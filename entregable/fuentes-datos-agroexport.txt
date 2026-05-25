@@ -33,7 +33,7 @@ Mapa detallado de fuentes de datos para la tesis
 
 6. Lectura del avance actual
 - `docs/tesis.md`: es la base activa y ya apunta a agroexportacion.
-- `docs/tesis_v2.md`: conserva la version financiera anterior; no debe seguir como fuente principal.
+- `docs/tesis-v2.md`: conserva la version financiera anterior; no debe seguir como fuente principal.
 - `docs/tesis.md` Cap. I: bastante avanzado y coherente.
 - `docs/tesis.md` Cap. II: avanzado, pero necesita limpieza de referencias y analogias financieras.
 - `docs/tesis.md` Cap. III: es el principal punto a reescribir para sustituir BAF por datos agroexportadores.

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60 Conclusiones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#cronograma-de-actividades">CRONOGRAMA DE ACTIVIDADES</a></li>
+<li><a href="#conclusiones">CONCLUSIONES</a></li>
+<li><a href="#conclusions">CONCLUSIONS</a></li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>60 Conclusiones</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-05-25 02:16
+                </div>
+            </div>
+            
+            <h1 id="cronograma-de-actividades">CRONOGRAMA DE ACTIVIDADES</h1>
+<blockquote>
+<p><strong>Pendiente:</strong> Conclusiones/Conclusions — depende de Cap IV y V</p>
+</blockquote>
+<p><em>(Ver Tabla 1.2 en el Capítulo I, §1.11)</em></p>
+<hr />
+<h1 id="conclusiones">CONCLUSIONES</h1>
+<p><em>(Por completar con los resultados finales de la investigación. Estructura sugerida:)</em></p>
+<ol>
+<li>
+<p><em>(Conclusión sobre el gap cerrado: el sistema integrado de cuatro capas constituye la primera propuesta académica en el Perú que unifica predicción GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente), detección de anomalías ensemble, explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) y generación de reportes LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) con trazabilidad regulatoria verificable para el contexto agroexportador.)</em></p>
+</li>
+<li>
+<p><em>(Conclusión sobre métricas alcanzadas: los objetivos específicos OE1–OE5 fueron alcanzados según las métricas definidas — PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) ≥ 0.92, SHAP Coverage ≥ 70%, ROUGE-1 ≥ 0.50, reducción tiempo-a-decisión ≥ 30%...)</em></p>
+</li>
+<li>
+<p><em>(Conclusión sobre validación de hipótesis H1a–H1d.)</em></p>
+</li>
+<li>
+<p><em>(Conclusión sobre gobernanza: el diseño incorpora principios de trazabilidad, documentación y supervisión humana alineados con el D.S. N° 115-2025-PCM, NIST AI RMF y buenas prácticas de gestión de riesgo de modelos.)</em></p>
+</li>
+<li>
+<p><em>(Conclusión sobre aporte al campo: el sistema integrado proporciona mayor trazabilidad y usabilidad que los sistemas con componentes aislados, validado mediante experimentos comparativos controlados.)</em></p>
+</li>
+</ol>
+<hr />
+<h1 id="conclusions">CONCLUSIONS</h1>
+<p><em>(Por completar — versión en inglés de las conclusiones principales)</em></p>
+<ol>
+<li>
+<p><em>(The integrated four-layer system constitutes the first academic proposal in Peru that unifies GBDT prediction, ensemble anomaly detection, SHAP explainability, and LLM+RAG report generation with verifiable regulatory traceability.)</em></p>
+</li>
+<li>
+<p><em>(Technical objectives OE1–OE5 were achieved according to defined metrics — PR-AUC ≥ 0.92, SHAP Coverage ≥ 70%, ROUGE-1 ≥ 0.50, decision-time reduction ≥ 30%.)</em></p>
+</li>
+<li>
+<p><em>(The integrated system produces superior traceability and usability compared to isolated-component systems, as validated through controlled comparative experiments.)</em></p>
+</li>
+<li>
+<p><em>(The design incorporates traceability, documentation, and human oversight principles aligned with D.S. N° 115-2025-PCM, NIST AI RMF, and model risk management good practices.)</em></p>
+</li>
+</ol>
+<hr />
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

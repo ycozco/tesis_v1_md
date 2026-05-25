@@ -1,5 +1,5 @@
 @echo off
-REM Script para instalar Pandoc y convertir tesis_v2.md a DOCX
+REM Script para instalar Pandoc y convertir tesis-v2.md a DOCX
 
 echo === Verificando Pandoc ===
 pandoc --version >nul 2>&1
@@ -24,7 +24,7 @@ if errorlevel 1 (
 
 echo === Pandoc encontrado ===
 echo.
-echo === Convirtiendo tesis_v2.md a DOCX ===
+echo === Convirtiendo tesis-v2.md a DOCX ===
 cd /d D:\tesis_yoset
 
 if not exist "refs.bib" (
@@ -33,14 +33,14 @@ if not exist "refs.bib" (
     exit /b 1
 )
 
-if not exist "tesis_v2.md" (
-    echo Error: tesis_v2.md no encontrado en D:\tesis_yoset
+if not exist "tesis-v2.md" (
+    echo Error: tesis-v2.md no encontrado en D:\tesis_yoset
     pause
     exit /b 1
 )
 
 REM Comando de conversión con template y citeproc
-pandoc tesis_v2.md -o tesis_integrada.docx ^
+pandoc tesis-v2.md -o tesis_integrada.docx ^
     --reference-doc="formato/Plantilla - Tesis de Investigación 2026.docx" ^
     --citeproc ^
     --bibliography=refs.bib ^

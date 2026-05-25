@@ -34,9 +34,9 @@
 - ✅ Cap III §3.3: división temporal, semilla, diseño experimental E1–E5, pruebas estadísticas, criterios de inclusión, baselines
 - ✅ `docs/variables-operacionalizadas.md` (Hito 1) — tabla formal 7 cols × 5 VD
 - ✅ `docs/busqueda-sistematica-gap.md` — protocolo PRISMA-light + 9 trabajos identificados
-- ✅ `docs/A1-anexo-usabilidad.md` — protocolo completo, consentimiento, cuestionario SUS
-- ✅ `docs/A2-anexo-modelcards.md` — 4 Model Cards (Mitchell et al. 2019)
-- ✅ `docs/A3-anexo-datasheet.md` — Datasheet completo (Gebru et al. 2021)
+- ✅ `docs/a1-anexo-usabilidad.md` — protocolo completo, consentimiento, cuestionario SUS
+- ✅ `docs/a2-anexo-modelcards.md` — 4 Model Cards (Mitchell et al. 2019)
+- ✅ `docs/a3-anexo-datasheet.md` — Datasheet completo (Gebru et al. 2021)
 - ✅ `config/refs.bib`: +8 refs (Friedman 2001, TreeSHAP 2020, Ji 2023, Creswell 2018, PRISMA 2020, MIDAGRI 2026, Cohen Kappa, Optuna)
 - ✅ `requirements.txt` con versiones fijadas para reproducibilidad
 - ✅ `src/generate_synthetic_dataset.py` — generador del dataset sintético v1.0
@@ -120,7 +120,7 @@
 ### C1.10 — Referencias ↔ citas en texto
 - **Criterio**: Toda entrada en `refs.bib` debe estar citada en texto; toda cita en texto debe tener entrada en `refs.bib`.
 - **Estado**: ✅ (verificado en sesión anterior: sin citas huérfanas)
-- **Acción pendiente**: Al agregar las nuevas referencias del Apéndice B de `plan_detallado.md`, re-ejecutar verificación.
+- **Acción pendiente**: Al agregar las nuevas referencias del Apéndice B de `plan-detallado.md`, re-ejecutar verificación.
 
 ---
 
@@ -233,7 +233,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 
 ### C3.2 — Referencias pendientes de agregar a refs.bib
 - **Estado**: ⚠️
-- **Acción**: Agregar las 30 entradas del Apéndice B de `plan_detallado.md` a `config/refs.bib`. Prioridad URGENTE para A05, A06, C05, C06, F01, F02, F05, F06, F07, G01, G02, G03.
+- **Acción**: Agregar las 30 entradas del Apéndice B de `plan-detallado.md` a `config/refs.bib`. Prioridad URGENTE para A05, A06, C05, C06, F01, F02, F05, F06, F07, G01, G02, G03.
 - **Protocolo**: Para cada referencia, buscar DOI en doi.org o crossref.org. Para preprints arXiv, usar `@misc` con `howpublished={arXiv preprint arXiv:XXXX.XXXXX}`.
 
 ### C3.3 — Verificación de métricas citadas como afirmaciones propias
@@ -306,7 +306,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 - **Acción**:
   1. En todos los scripts de `src/`: `np.random.seed(42)`, `random.seed(42)`, pasar `random_state=42` a todos los modelos.
   2. Crear `requirements.txt` o `environment.yml` con versiones exactas (scikit-learn==X.Y.Z, xgboost==X.Y.Z, shap==X.Y.Z, pyod==X.Y.Z).
-  3. Documentar en `docs/A3-anexo-datasheet.md` la semilla de generación del dataset sintético.
+  3. Documentar en `docs/a3-anexo-datasheet.md` la semilla de generación del dataset sintético.
 
 ### C4.2 — Diseño del experimento comparativo (sistema integrado vs. aislado)
 - **Criterio**: La comparación debe ser "fair": mismos datos, misma división train/test, mismo preprocesamiento, misma semilla. La única diferencia debe ser la condición experimental (integrado vs. aislado).
@@ -345,7 +345,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 ### C4.6 — Protocolo del estudio de usabilidad
 - **Criterio**: El protocolo debe estar en Anexo A y cubrir: consentimiento informado, tareas específicas, método de medición de tiempo, cuestionario post-tarea, criterios de invalidación de una sesión.
 - **Estado**: ⚠️ (Anexo A es skeleton)
-- **Acción**: Completar `docs/A1-anexo-usabilidad.md` con protocolo completo ANTES del estudio. Requiere aprobación del comité de ética de UNSA si los participantes son externos.
+- **Acción**: Completar `docs/a1-anexo-usabilidad.md` con protocolo completo ANTES del estudio. Requiere aprobación del comité de ética de UNSA si los participantes son externos.
 
 ### C4.7 — Hiperparámetros y proceso de tuning
 - **Criterio**: El proceso de selección de hiperparámetros debe ser documentado: ¿se usó grid search, random search, Optuna, o valores por defecto? ¿Con cuántos trials? ¿Con qué métrica de validación?
@@ -384,7 +384,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 ### C4.11 — Documentación del dataset sintético (Datasheets for Datasets)
 - **Criterio**: Gebru et al. (2021) define 57 preguntas en 7 categorías para documentar cualquier dataset. Las secciones críticas son: Motivación, Composición, Proceso de recolección, Preprocesamiento, Usos, Distribución, Mantenimiento.
 - **Estado**: 🔴 BLOQUEADOR
-- **Acción**: Completar `docs/A3-anexo-datasheet.md` siguiendo la plantilla de Datasheets for Datasets. Es un requisito de Hito 2 (2026-06-01).
+- **Acción**: Completar `docs/a3-anexo-datasheet.md` siguiendo la plantilla de Datasheets for Datasets. Es un requisito de Hito 2 (2026-06-01).
 
 ### C4.12 — Comparación con baselines del estado del arte
 - **Criterio**: Para publicación, los resultados propios deben compararse con baselines reportados en papers previos usando el mismo benchmark o benchmarks comparables.
@@ -417,7 +417,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 
 ### C5.4 — Marco regulatorio citado en Cap I ↔ marco regulatorio en Cap II
 - **Estado**: ⚠️
-- **Brecha**: En Cap I (§1.1) se presenta la SBS N°053-2023 como "referencia de buenas prácticas", no como obligación. En el `plan_detallado.md` se habla de "gestión de riesgos de modelo con trazabilidad verificable a partir de enero de 2026". Estas son dos posiciones diferentes.
+- **Brecha**: En Cap I (§1.1) se presenta la SBS N°053-2023 como "referencia de buenas prácticas", no como obligación. En el `plan-detallado.md` se habla de "gestión de riesgos de modelo con trazabilidad verificable a partir de enero de 2026". Estas son dos posiciones diferentes.
 - **Acción**: Unificar la posición en todos los capítulos: la SBS N°053-2023 no es directamente aplicable a agroexportadoras (son reguladas por MIDAGRI/SENASA, no por SBS). Usarla como referencia de buenas prácticas de gobernanza de modelos, no como requisito obligatorio. Esta posición está en §1.1 del Cap I actual y debe propagarse a Cap II.
 
 ### C5.5 — Métricas de §1.5 ↔ métricas de §3.3
@@ -427,7 +427,7 @@ Estas referencias son las más citadas en la tesis. Cada una debe verificarse en
 - **Estado**: ✅
 - **Verificación**: §1.8 excluye DL puro y tiempo real. Cap III no los incluye.
 
-### C5.7 — Cronograma de §1.11 ↔ hitos del plan_detallado.md
+### C5.7 — Cronograma de §1.11 ↔ hitos del plan-detallado.md
 - **Estado**: ⚠️
 - **Brecha**: El cronograma de §1.11 muestra 5 meses con actividades mensuales. Los hitos del plan tienen fechas específicas (2026-05-27 a 2026-07-07). Verificar coherencia.
 - **Acción**: Actualizar §1.11 para que refleje el cronograma real (Hito 1: mes 1, Hito 2: mes 2, etc.).
@@ -775,8 +775,8 @@ La tabla principal del paper debe comparar:
 ### FASE 2 — Hito 2 (hasta 2026-06-01)
 | Tarea | Archivo | Hito |
 |---|---|---|
-| Especificación completa del dataset sintético (C10.1) | `docs/A3-anexo-datasheet.md` | Hito 2 |
-| Protocolo de inyección de anomalías (C10.2) | `docs/A3-anexo-datasheet.md` | Hito 2 |
+| Especificación completa del dataset sintético (C10.1) | `docs/a3-anexo-datasheet.md` | Hito 2 |
+| Protocolo de inyección de anomalías (C10.2) | `docs/a3-anexo-datasheet.md` | Hito 2 |
 | Generación del dataset con seed=42 | `data/dataset_agro_sintetico.csv` | Hito 2 |
 | Agregar refs pendientes a config/refs.bib (Apéndice B) | `config/refs.bib` | Hito 2 |
 | Definir requirement.txt con versiones exactas | `requirements.txt` | Hito 2 |
@@ -785,7 +785,7 @@ La tabla principal del paper debe comparar:
 | Tarea | Archivo | Hito |
 |---|---|---|
 | Implementar E1–E5 (código) | `src/` | Hito 3 |
-| Protocolo de usabilidad completo | `docs/A1-anexo-usabilidad.md` | Hito 3 |
+| Protocolo de usabilidad completo | `docs/a1-anexo-usabilidad.md` | Hito 3 |
 | Repositorio GitHub con README | GitHub | Hito 3 |
 | Ablation study diseñado y ejecutado | Cap IV | Hito 3 |
 
@@ -794,7 +794,7 @@ La tabla principal del paper debe comparar:
 |---|---|---|
 | Cap IV con resultados reales y tablas | `docs/40-capitulo4.md` | Hito 4 |
 | Discusión de resultados (por qué el ensemble supera al individual) | `docs/40-capitulo4.md` | Hito 4 |
-| Model Cards para XGBoost y LightGBM | `docs/A2-anexo-modelcards.md` | Hito 4 |
+| Model Cards para XGBoost y LightGBM | `docs/a2-anexo-modelcards.md` | Hito 4 |
 
 ### FASE 5 — Hito 5 (hasta 2026-07-07)
 | Tarea | Archivo | Hito |
@@ -817,13 +817,13 @@ Una tesis lista para defensa debe cumplir **todos** estos criterios:
 | 3 | El claim sobre SBS N°053-2023 está verificado en el texto original | Artículo exacto citado con número | 🔴 |
 | 4 | El claim sobre D.S. 115-2025-PCM está verificado en el texto original | Artículo exacto citado con número | 🔴 |
 | 5 | El claim de brecha (gap) está respaldado por búsqueda sistemática documentada | `busqueda-sistematica-gap.md` existe | 🔴 |
-| 6 | El dataset sintético tiene Datasheet completo (Gebru 2021) | `A3-anexo-datasheet.md` completo | 🔴 |
+| 6 | El dataset sintético tiene Datasheet completo (Gebru 2021) | `a3-anexo-datasheet.md` completo | 🔴 |
 | 7 | Los experimentos E1–E5 están ejecutados y reportados en Cap IV | `40-capitulo4.md` completo | 🔴 |
 | 8 | Cap V tiene conclusiones derivadas de resultados reales, no de expectativas | `50-capitulo5.md` completo | 🔴 |
 | 9 | Todas las citas en texto tienen entrada en refs.bib | grep de citas ↔ refs.bib | ⚠️ |
 | 10 | El código es reproducible (seed fija + requirements.txt) | `requirements.txt` + seeds en código | 🔴 |
 | 11 | §1.12 Limitaciones está escrito | `10-capitulo1.md` tiene §1.12 | 🔴 |
-| 12 | El protocolo de usabilidad está en Anexo A | `A1-anexo-usabilidad.md` completo | 🔴 |
+| 12 | El protocolo de usabilidad está en Anexo A | `a1-anexo-usabilidad.md` completo | 🔴 |
 | 13 | No hay afirmaciones de resultados experimentales propios en Cap I y II | Revisión de tiempos verbales | ⚠️ |
 | 14 | La tabla comparativa de sistemas (Tabla 2.X) está en Cap II | `21-capitulo2-estadoarte.md` | ⚠️ |
 | 15 | Las métricas de VD4 tienen N de participantes definido | §3.3 o Anexo A | 🔴 |
