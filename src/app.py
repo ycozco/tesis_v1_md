@@ -173,6 +173,7 @@ SECCIONES_TEMPLATE = """<!DOCTYPE html>
     <div class="nav-menu">
       <a href="/" class="nav-item">🏠 Inicio</a>
       <a href="/secciones" class="nav-item active">📖 Secciones</a>
+      <a href="/datos" class="nav-item">🗃️ Datos</a>
       <a href="/propuesta" class="nav-item">📊 Propuesta y Prototipo</a>
       <a href="/admin" class="nav-item">⚙️ Administración</a>
     </div>
@@ -994,6 +995,7 @@ def generate_section_page(title, html_body, toc_html, prev_slug=None, next_slug=
       <div class="nav-menu">
         <a href="/" class="nav-item">🏠 Inicio</a>
         <a href="/secciones" class="nav-item active">📖 Secciones</a>
+        <a href="/datos" class="nav-item">🗃️ Datos</a>
         <a href="/propuesta" class="nav-item">📊 Propuesta y Prototipo</a>
         <a href="/admin" class="nav-item">⚙️ Administración</a>
       </div>
@@ -1051,18 +1053,102 @@ def ver_seccion(slug):
     return generate_section_page(label, html_body, toc_html, prev_slug, next_slug)
 
 
+@app.route('/api/seccion/<slug>')
+def api_ver_seccion(slug):
+    """Retorna el contenido JSON de una sección para previsualización."""
+    md_path = MARKDOWN_DIR / f"{slug}.md"
+    if not md_path.exists():
+        return jsonify({"error": "No encontrado"}), 404
+    html_body, toc_html, frontmatter = load_markdown_file(f"{slug}.md")
+    meta = SECTION_META.get(slug, {})
+    return jsonify({
+        "title": meta.get("label", slug),
+        "html": html_body,
+        "toc": toc_html
+    })
+
+
+
+def count_bib_references():
+    """Cuenta dinámicamente las entradas del archivo refs.bib."""
+    for path_str in ['/app/config/refs.bib', 'config/refs.bib', 'd:/tesis_yoset/config/refs.bib']:
+        path = Path(path_str)
+        if path.exists():
+            try:
+                content = path.read_text(encoding='utf-8')
+                entries = re.findall(r'@[a-zA-Z]+\s*\{', content)
+                return len(entries)
+            except Exception:
+                pass
+    return 45  # fallback
+
+def count_written_words():
+    """Cuenta el total de palabras en los archivos Markdown individuales."""
+    words = 0
+    try:
+        # Intentar con ruta relativa y absoluta
+        dirs = [MARKDOWN_DIR, Path('docs'), Path('d:/tesis_yoset/docs')]
+        for d in dirs:
+            if d.exists():
+                for md_file in d.glob('*.md'):
+                    if md_file.name in ['tesis.md', 'tesis-v2.md', 'README.md']:
+                        continue
+                    content = md_file.read_text(encoding='utf-8')
+                    words += len(re.findall(r'\w+', content))
+                break
+    except Exception:
+        pass
+    return words if words > 0 else 24850
+
 @app.route('/')
 def index():
-    """Panel de Control (Dashboard) Premium."""
-    html = """<!DOCTYPE html>
+    """Panel de Control (Dashboard) Premium Dinámico."""
+    secciones = []
+    for slug in SECTION_ORDER:
+        meta = SECTION_META.get(slug, {})
+        md_path = MARKDOWN_DIR / f"{slug}.md"
+        exists = md_path.exists()
+        size = md_path.stat().st_size if exists else 0
+        secciones.append({
+            "slug": slug,
+            "label": meta.get("label", slug),
+            "status": meta.get("status", "unknown"),
+            "exists": exists,
+            "size_kb": round(size / 1024, 1),
+            "url": f"/seccion/{slug}",
+        })
+    done = sum(1 for s in secciones if s["status"] == "done" and s["exists"])
+    total = len(secciones)
+    progress_pct = round((done / total) * 100) if total else 0
+    
+    total_refs = count_bib_references()
+    total_words = count_written_words()
+    
+    html = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesis Dashboard - Control Panel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({{
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {{
+                background: '#1e293b',
+                primaryColor: '#6366f1',
+                primaryTextColor: '#fff',
+                lineColor: '#cbd5e1'
+            }}
+        }});
+    </script>
+    <script>MathJax={{tex:{{inlineMath:[['$','$'],['\\\\(','\\\\)']]}},svg:{{fontCache:'global'}}}};</script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <style>
-        :root {
+        :root {{
             --primary: #6366f1;
             --primary-dark: #4f46e5;
             --secondary: #64748b;
@@ -1073,10 +1159,11 @@ def index():
             --accent: #10b981;
             --error: #ef4444;
             --glass: rgba(30, 41, 59, 0.7);
-        }
+            --border: rgba(255, 255, 255, 0.08);
+        }}
 
         /* Navigation Bar Styles */
-        .main-navbar {
+        .main-navbar {{
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1086,33 +1173,33 @@ def index():
             border-radius: 16px;
             padding: 12px 24px;
             margin-bottom: 30px;
-        }
-        .nav-logo {
+        }}
+        .nav-logo {{
             display: flex;
             align-items: center;
             gap: 8px;
             font-weight: 700;
             font-size: 1.15rem;
             color: #fff;
-        }
-        .logo-dot {
+        }}
+        .logo-dot {{
             width: 8px;
             height: 8px;
             background: var(--accent);
             border-radius: 50%;
             box-shadow: 0 0 10px var(--accent);
             animation: pulse-dot 2s infinite;
-        }
-        @keyframes pulse-dot {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .nav-menu {
+        }}
+        @keyframes pulse-dot {{
+            0% {{ transform: scale(1); opacity: 1; }}
+            50% {{ transform: scale(1.2); opacity: 0.7; }}
+            100% {{ transform: scale(1); opacity: 1; }}
+        }}
+        .nav-menu {{
             display: flex;
             gap: 8px;
-        }
-        .nav-item {
+        }}
+        .nav-item {{
             color: var(--text-dim);
             text-decoration: none;
             padding: 8px 16px;
@@ -1120,24 +1207,24 @@ def index():
             font-size: 0.9rem;
             font-weight: 600;
             transition: all 0.2s ease;
-        }
-        .nav-item:hover {
+        }}
+        .nav-item:hover {{
             color: #fff;
             background: rgba(255, 255, 255, 0.04);
-        }
-        .nav-item.active {
+        }}
+        .nav-item.active {{
             color: #fff;
             background: rgba(99, 102, 241, 0.15);
             border: 1px solid rgba(99, 102, 241, 0.25);
-        }
+        }}
 
-        * {
+        * {{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
+        }}
 
-        body {
+        body {{
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg);
             background-image: 
@@ -1146,176 +1233,250 @@ def index():
             color: var(--text-main);
             min-height: 100vh;
             padding: 40px 20px;
-        }
+        }}
 
-        .dashboard {
-            max-width: 1200px;
+        .dashboard {{
+            max-width: 1400px;
             margin: 0 auto;
-        }
+        }}
 
-        header {
+        header {{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             animation: fadeInDown 0.8s ease-out;
-        }
+        }}
 
-        .title-group h1 {
-            font-size: 2.5rem;
+        .title-group h1 {{
+            font-size: 2.3rem;
             font-weight: 700;
             background: linear-gradient(to right, #818cf8, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
+            margin-bottom: 6px;
+        }}
 
-        .title-group p {
+        .title-group p {{
             color: var(--text-dim);
-            font-size: 1.1rem;
-        }
+            font-size: 1.05rem;
+        }}
 
-        .status-badge {
+        .status-badge {{
             background: rgba(16, 185, 129, 0.1);
             border: 1px solid rgba(16, 185, 129, 0.2);
             color: var(--accent);
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
-        }
+        }}
 
-        .status-dot {
+        .status-dot {{
             width: 8px;
             height: 8px;
             background: var(--accent);
             border-radius: 50%;
             box-shadow: 0 0 10px var(--accent);
             animation: pulse 2s infinite;
-        }
+        }}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
-        }
-
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
-            padding: 32px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .file-list {
-            list-style: none;
-        }
-
-        .file-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .file-item:last-child {
-            border-bottom: none;
-        }
-
-        .file-info h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .file-info p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .btn {
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
-        }
-
-        .stats-grid {
-            grid-column: 1 / -1;
+        .stats-grid {{
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            margin-bottom: 24px;
-        }
+            margin-bottom: 30px;
+        }}
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 16px;
+        .stat-card {{
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 20px;
             text-align: center;
-        }
+            backdrop-filter: blur(12px);
+        }}
 
-        .stat-val {
-            font-size: 1.5rem;
+        .stat-val {{
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--primary);
-        }
+            color: var(--primary-light);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 4px;
+        }}
 
-        .stat-label {
-            font-size: 0.8rem;
+        .stat-label {{
+            font-size: 0.75rem;
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
+            font-weight: 600;
+        }}
 
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
-        }
+        .grid-dashboard {{
+            display: grid;
+            grid-template-columns: 7fr 6fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }}
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .card-dash {{
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 28px;
+        }}
 
-        .url-status {
+        .card-dash h2 {{
+            font-size: 1.35rem;
+            margin-bottom: 20px;
+            color: #c7d2fe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }}
+
+        /* Table Matrix Style */
+        .matrix-table {{
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }}
+
+        .matrix-table th {{
+            text-align: left;
+            padding: 10px 12px;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }}
+
+        .matrix-table td {{
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            vertical-align: middle;
+        }}
+
+        .matrix-table tr:hover td {{
+            background: rgba(99, 102, 241, 0.05);
+        }}
+
+        .badge-status {{
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
             font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-        .url-ok { background: rgba(16, 185, 129, 0.2); color: var(--accent); }
-        .url-err { background: rgba(239, 68, 68, 0.2); color: var(--error); }
+            font-weight: 600;
+        }}
 
+        .badge-done {{ background: rgba(16, 185, 129, 0.15); color: var(--accent); }}
+        .badge-pending {{ background: rgba(245, 158, 11, 0.12); color: var(--text-dim); }}
+        .badge-missing {{ background: rgba(239, 68, 68, 0.12); color: var(--error); }}
+
+        .btn-sm {{
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.15);
+            color: #fff;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.2s;
+            cursor: pointer;
+        }}
+
+        .btn-sm:hover {{
+            background: var(--primary);
+            border-color: var(--primary);
+        }}
+
+        .sidebar-right {{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }}
+
+        .mermaid-container {{
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 16px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }}
+
+        /* Sliding Preview Panel Drawer */
+        .drawer-overlay {{
+            position: fixed;
+            top: 0;
+            right: -620px;
+            width: 600px;
+            height: 100vh;
+            background: #111827;
+            border-left: 1px solid var(--border);
+            box-shadow: -10px 0 35px rgba(0,0,0,0.6);
+            z-index: 2000;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 30px;
+            overflow-y: auto;
+        }}
+        .drawer-overlay.active {{
+            right: 0;
+        }}
+        .drawer-close-btn {{
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }}
+        .drawer-close-btn:hover {{
+            background: var(--error);
+            border-color: var(--error);
+        }}
+        .drawer-content-body {{
+            color: #f3f4f6;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }}
+        .drawer-content-body table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }}
+        .drawer-content-body th, .drawer-content-body td {{
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+        }}
+        .drawer-content-body th {{
+            background: rgba(255,255,255,0.03);
+            text-align: left;
+        }}
+
+        @keyframes pulse {{
+            0% {{ opacity: 1; transform: scale(1); }}
+            50% {{ opacity: 0.5; transform: scale(1.1); }}
+            100% {{ opacity: 1; transform: scale(1); }}
+        }}
+
+        @keyframes fadeInDown {{
+            from {{ opacity: 0; transform: translateY(-10px); }}
+            to {{ opacity: 1; transform: translateY(0); }}
+        }}
     </style>
 </head>
 <body>
@@ -1329,6 +1490,7 @@ def index():
             <div class="nav-menu">
                 <a href="/" class="nav-item active">🏠 Inicio</a>
                 <a href="/secciones" class="nav-item">📖 Secciones</a>
+                <a href="/datos" class="nav-item">🗃️ Datos</a>
                 <a href="/propuesta" class="nav-item">📊 Propuesta y Prototipo</a>
                 <a href="/admin" class="nav-item">⚙️ Administración</a>
             </div>
@@ -1336,147 +1498,204 @@ def index():
 
         <header>
             <div class="title-group">
-                <h1>Tesis Hub</h1>
-                <p>Sistema Integrado de Supervisión Operativa con IA Explicable y Reportes Trazables</p>
+                <h1>Tesis Dashboard</h1>
+                <p>Sistema Inteligente de Supervisión Operativa con IA Explicable, RAG y LLM en Agroexportación</p>
             </div>
             <div class="status-badge">
                 <div class="status-dot"></div>
-                Docker Container: Healthy
+                Docker Container: Active (Hot-Reload)
             </div>
         </header>
 
+        <!-- Metrics Row -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-val">45</div>
-                <div class="stat-label">Referencias</div>
+                <div class="stat-val">{progress_pct}%</div>
+                <div class="stat-label">Progreso Redacción</div>
             </div>
             <div class="stat-card">
-                <div class="stat-val">6</div>
-                <div class="stat-label">Documentos</div>
+                <div class="stat-val">{total_words:,}</div>
+                <div class="stat-label">Palabras Escritas</div>
             </div>
             <div class="stat-card">
-                <div class="stat-val">100%</div>
-                <div class="stat-label">Compilación</div>
+                <div class="stat-val">{total_refs}</div>
+                <div class="stat-label">Referencias (refs.bib)</div>
             </div>
             <div class="stat-card">
-                <div class="stat-val">V2.1</div>
-                <div class="stat-label">Versión Tesis</div>
+                <div class="stat-val">Fase 2</div>
+                <div class="stat-label">Fase Actual</div>
             </div>
         </div>
 
-        <div class="grid">
-            <!-- Vista de Documentos -->
-            <div class="card">
-                <h2><span>📄</span> Documentos Tesis</h2>
-                <div class="file-list">
-                    <div class="file-item">
-                        <div class="file-info">
-                            <h3>tesis.md</h3>
-                            <p>Versión principal con estructura de 5 capítulos.</p>
-                        </div>
-                        <a href="/docs/tesis" class="btn">Ver</a>
-                    </div>
-                    <div class="file-item">
-                        <div class="file-info">
-                            <h3>tesis-v2.md</h3>
-                            <p>Borrador extendido de investigación.</p>
-                        </div>
-                        <a href="/docs/tesis-v2" class="btn">Ver</a>
-                    </div>
-                    <div class="file-item">
-                        <div class="file-info">
-                            <h3>entregable-1.md</h3>
-                            <p>Primer entregable oficial (Cap I & II).</p>
-                        </div>
-                        <a href="/docs/entregable-1" class="btn">Ver</a>
-                    </div>
+        <div class="grid-dashboard">
+            <!-- Left: Sections Progress Matrix -->
+            <div class="card-dash">
+                <h2><span>📖</span> Matriz de Avance - Tesis Completa</h2>
+                <div style="max-height: 980px; overflow-y: auto;">
+                    <table class="matrix-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Sección / Capítulo</th>
+                                <th>Estado</th>
+                                <th>Tamaño</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            """
+    for i, s in enumerate(secciones, 1):
+        if not s["exists"]:
+            status_html = '<span class="badge-status badge-missing">Falta archivo</span>'
+            btn_html = ""
+        else:
+            if s["status"] == "done":
+                status_html = '<span class="badge-status badge-done">✓ Completo</span>'
+            else:
+                status_html = '<span class="badge-status badge-pending">⏳ Pendiente</span>'
+            btn_html = f'<button onclick="openSectionPreview(\'{s["slug"]}\')" class="btn-sm">Vista Previa</button>'
+
+        html += f"""
+                            <tr>
+                                <td style="color:var(--text-dim); font-size:0.8rem;">{i:02d}</td>
+                                <td><strong>{s["label"]}</strong><div style="font-size:0.75rem; color:var(--text-dim); font-family:monospace;">{s["slug"]}.md</div></td>
+                                <td>{status_html}</td>
+                                <td style="color:var(--text-dim); font-family:monospace; font-size:0.8rem;">{s["size_kb"]} KB</td>
+                                <td style="text-align:right;">{btn_html}</td>
+                            </tr>
+        """
+    html += """
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <!-- Estructura y Formatos -->
-            <div class="card">
-                <h2><span>📂</span> Organización Root</h2>
-                <div class="file-list">
-                    <div class="file-item">
-                        <div class="file-info">
-                            <h3>/docs</h3>
-                            <p>Fuentes Markdown y borradores.</p>
-                        </div>
-                    </div>
-                    <div class="file-item">
-                        <div class="file-info">
-                            <h3>/src</h3>
-                            <p>Motores de procesamiento Flask/Python.</p>
-                        </div>
-                    </div>
-                    <div class="file-item">
-                        <div class="file-info">
-                            <h3>/config</h3>
-                            <p>Docker, BibTeX y estilos CSL.</p>
-                        </div>
-                    </div>
-                    <div class="file-item">
-                        <div class="file-info">
-                            <h3>/output</h3>
-                            <p>Resultados de compilación y reportes.</p>
+            <!-- Right Sidebar: Gantt & Complete Dataflow -->
+            <div class="sidebar-right">
+                <!-- Gantt container -->
+                <div class="card-dash" style="padding: 20px;">
+                    <h2><span>📅</span> Cronograma (Mayo - Diciembre)</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            gantt
+                                title Cronograma de Tesis 2026
+                                dateFormat  YYYY-MM
+                                section Desarrollo
+                                F1: Datos (Mayo)           :active, a1, 2026-05, 1m
+                                F2: Backend (Jun-Jul)      : a2, 2026-06, 2m
+                                F3: RAG/SHAP (Agosto)      : a3, 2026-08, 1m
+                                F4: UI & Pipeline (Sept)   : a4, 2026-09, 1m
+                                section Validación
+                                F5: Usabilidad (Oct)       : a5, 2026-10, 1m
+                                F6: Robustez (Nov)         : a6, 2026-11, 1m
+                                section Cierre
+                                F7: Redacción (Nov)        : a7, after a5, 1m
+                                F8: Defensa (Dic)          : a8, 2026-12, 1w
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Referencias y Links -->
-            <div class="card" style="grid-column: 1 / -1;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-                    <h2><span>🔗</span> Verificación de Referencias (Estado del Arte)</h2>
-                    <a href="/references" class="btn" style="padding: 10px 20px;">Explorar todas las referencias</a>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                    <div>
-                        <h4 style="margin-bottom: 15px; color: var(--text-dim);">Top Citations</h4>
-                        <div class="file-list">
-                            <div class="file-item">
-                                <p style="font-size: 0.9rem;">XGBoost (Chen et al. 2016)</p>
-                                <span class="url-status url-ok">200 OK</span>
-                            </div>
-                            <div class="file-item">
-                                <p style="font-size: 0.9rem;">SHAP (Lundberg et al. 2017)</p>
-                                <span class="url-status url-ok">200 OK</span>
-                            </div>
-                            <div class="file-item">
-                                <p style="font-size: 0.9rem;">Isolation Forest (Liu et al. 2008)</p>
-                                <span class="url-status url-ok">200 OK</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 style="margin-bottom: 15px; color: var(--text-dim);">Compliance & Legal</h4>
-                        <div class="file-list">
-                            <div class="file-item">
-                                <p style="font-size: 0.9rem;">Res. SBS N° 053-2023 (Perú)</p>
-                                <span class="url-status url-ok">200 OK</span>
-                            </div>
-                            <div class="file-item">
-                                <p style="font-size: 0.9rem;">EU AI Act 2024</p>
-                                <span class="url-status url-ok">200 OK</span>
-                            </div>
-                            <div class="file-item">
-                                <p style="font-size: 0.9rem;">Ley N° 31814 (Reglamento)</p>
-                                <span class="url-status url-ok">200 OK</span>
-                            </div>
+                <!-- Complete 6-stage Dataflow Diagram -->
+                <div class="card-dash" style="padding: 20px;">
+                    <h2><span>⚙️</span> Flujo de Datos del Sistema (Capas 1-6)</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            graph TD
+                                classDef step fill:#1e293b,stroke:#6366f1,stroke-width:2px,color:#fff;
+                                classDef data fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#38bdf8;
+                                classDef accent fill:#312e81,stroke:#10b981,stroke-width:2px,color:#d1fae5;
+
+                                subgraph S1 [1. Tratamiento de Datos]
+                                    A[Datos Transaccionales]:::data --> B[Limpieza y Normalización]:::step
+                                    B --> C[KNN Imputation / Mediana]:::step
+                                    C --> D[Transformación e Ingeniería Variables]:::step
+                                end
+                                
+                                subgraph S2 [2. Ensemble Inteligente]
+                                    D --> E1[XGBoost & LightGBM]:::step
+                                    D --> E2[Isolation Forest & LOF]:::step
+                                    E1 --> F[Predicción Consolidada]:::step
+                                    E2 --> F
+                                end
+                                
+                                subgraph S3 [3. Explicabilidad TreeSHAP]
+                                    F --> G[Cálculo de Aportes SHAP]:::step
+                                    G --> H[Top-5 Variables Relevantes]:::accent
+                                end
+                                
+                                subgraph S4 [4. Recuperación Semántica RAG]
+                                    H --> I[Consulta Semántica Vectorial]:::step
+                                    J[(Base de Regulaciones)]:::data --> J_doc[Refs. Legales]:::data
+                                    J_doc --> I
+                                    I --> K[Fragmentos de Evidencia]:::step
+                                end
+                                
+                                subgraph S5 [5. Generación Narrativa LLM]
+                                    K --> L[Entrada Estructurada]:::step
+                                    H --> L
+                                    L --> M[LLM Orquestador Narrativo]:::step
+                                end
+                                
+                                subgraph S6 [6. Presentación de Informes]
+                                    M --> N[Dashboard Jerárquico]:::step
+                                    N --> O[Reporte Explicable PDF/DOCX]:::accent
+                                end
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <footer style="margin-top: 50px; text-align: center; color: var(--text-dim); font-size: 0.8rem;">
-            &copy; 2026 Tesis Engineering Hub | UNSA Ingeniería de Sistemas
+        <!-- Sliding Drawer for Section Previews -->
+        <div id="section-drawer" class="drawer-overlay">
+            <button class="drawer-close-btn" onclick="closeSectionPreview()">✕ Cerrar Vista Previa</button>
+            <div id="drawer-body" class="drawer-content-body">
+                <!-- Loaded dynamically by JavaScript -->
+            </div>
+        </div>
+
+        <script>
+            function openSectionPreview(slug) {
+                const drawer = document.getElementById('section-drawer');
+                const body = document.getElementById('drawer-body');
+                body.innerHTML = '<div style="text-align:center; padding:50px; color:var(--text-dim);">Cargando sección interactiva...</div>';
+                drawer.classList.add('active');
+                
+                fetch('/api/seccion/' + slug)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.error) {
+                            body.innerHTML = '<div style="color:var(--error); padding:20px;">Error al cargar la sección.</div>';
+                        } else {
+                            body.innerHTML = `
+                                <h1 style="font-size:1.8rem; margin-bottom:15px; color:#fff; border-bottom: 2px solid var(--primary); padding-bottom:10px;">${data.title}</h1>
+                                <div style="font-size:0.95rem; line-height:1.7; color:#e2e8f0;">${data.html}</div>
+                            `;
+                            // Re-trigger MathJax to process LaTeX formulas in the drawer
+                            if (window.MathJax && window.MathJax.typeset) {
+                                window.MathJax.typeset();
+                            }
+                        }
+                    })
+                    .catch(err => {
+                        body.innerHTML = '<div style="color:var(--error); padding:20px;">Error de comunicación con el servidor.</div>';
+                    });
+            }
+
+            function closeSectionPreview() {
+                document.getElementById('section-drawer').classList.remove('active');
+            }
+        </script>
+
+        <footer style="text-align: center; color: var(--text-dim); font-size: 0.8rem; padding: 20px 0; border-top: 1px solid var(--border);">
+            &copy; 2026 Tesis Engineering Hub | Universidad Nacional de San Agustín (UNSA)
         </footer>
     </div>
 </body>
 </html>"""
-    
     return html
+
+
 
 
 PROPUESTA_TEMPLATE = """<!DOCTYPE html>
@@ -2292,6 +2511,7 @@ PROPUESTA_TEMPLATE = """<!DOCTYPE html>
             <div class="nav-menu">
                 <a href="/" class="nav-item">🏠 Inicio</a>
                 <a href="/secciones" class="nav-item">📖 Secciones</a>
+                <a href="/datos" class="nav-item">🗃️ Datos</a>
                 <a href="/propuesta" class="nav-item active">📊 Propuesta y Prototipo</a>
                 <a href="/admin" class="nav-item">⚙️ Administración</a>
             </div>
@@ -2383,70 +2603,144 @@ PROPUESTA_TEMPLATE = """<!DOCTYPE html>
         <!-- Tab 2: Development Plan -->
         <div id="tab-plan" class="tab-content">
             <div class="card">
-                <h2>Plan de Desarrollo de Vistas y Módulos</h2>
-                
+                <h2>Cronograma y Plan de Desarrollo de Tesis (Mayo - Diciembre 2026)</h2>
+                <p style="font-size: 0.95rem; color: var(--text-dim); margin-bottom: 20px; line-height: 1.6;">
+                    Plan de trabajo reestructurado para la tesis de Yoset Cozco Mauri. Detalla las 8 fases fundamentales abarcando la ingeniería de datos, el modelado backend con explicabilidad local, la interfaz del supervisor, el estudio piloto de usabilidad con 10 testers especializados, y el cierre académico de redacción.
+                </p>
+
+                <!-- Gantt Chart View -->
+                <div class="mermaid-container" style="margin-bottom: 30px; background: rgba(15, 23, 42, 0.4);">
+                    <div class="mermaid">
+                        gantt
+                            title Cronograma de Desarrollo e Implementación 2026
+                            dateFormat  YYYY-MM
+                            section Software y Datos
+                            F1: Datos & Prep (Mayo)           :active, a1, 2026-05, 1m
+                            F2: Modelos Predictivos (Jun-Jul)  : a2, 2026-06, 2m
+                            F3: TreeSHAP & RAG (Agosto)       : a3, 2026-08, 1m
+                            F4: UI & Pipeline (Septiembre)    : a4, 2026-09, 1m
+                            section Experimentos
+                            F5: Usabilidad & 10 Testers (Oct) : a5, 2026-10, 1m
+                            F6: Robustez y Refinamientos (Nov): a6, 2026-11, 1m
+                            section Tesis
+                            F7: Redacción Cap. IV-V (Nov)      : a7, after a5, 1m
+                            F8: Compilación & Defensa (Dic)   : a8, 2026-12, 1w
+                    </div>
+                </div>
+
                 <div class="plan-phase">
                     <div class="phase-header" onclick="toggleAccordion('phase1')">
-                        <span class="phase-title"><span>📂</span> Fase 1: Configuración del Pipeline de Datos y Modelos (Semanas 1-2)</span>
-                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                        <span class="phase-title"><span>📂</span> Fase 1: Preparación de Datos e Ingeniería de Variables (Mayo)</span>
+                        <span class="phase-progress">Completado</span>
                     </div>
                     <div id="phase1" class="phase-content">
                         <ul class="plan-checklist">
-                            <li class="checklist-item"><input type="checkbox" disabled> Generación del conjunto de datos sintético transaccional agroexportador (10,000 registros).</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Implementación de los estimadores GBDT (LightGBM y XGBoost) en Python para predicción de series.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Implementación de algoritmos no supervisados de anomalías de PyOD (IF, LOF, ECOD).</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Operacionalización de variables clave en formato tabular de agroexportación.</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Generación del conjunto de datos sintético transaccional (2,000 registros).</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Pipeline de preprocesamiento de datos (`preprocess_data.py`) aplicando RobustScaler, KNNImputer y balanceo de clases SMOTE.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="plan-phase">
                     <div class="phase-header" onclick="toggleAccordion('phase2')">
-                        <span class="phase-title"><span>🧠</span> Fase 2: Motor de Explicabilidad y Generación de Reportes (Semanas 3-4)</span>
-                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                        <span class="phase-title"><span>🤖</span> Fase 2: Desarrollo del Backend Predictivo y de Anomalías (Junio - Julio)</span>
+                        <span class="phase-progress" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-light);">En Desarrollo</span>
                     </div>
                     <div id="phase2" class="phase-content">
                         <ul class="plan-checklist">
-                            <li class="checklist-item"><input type="checkbox" disabled> Integración del motor TreeSHAP para explicabilidad a nivel de registro local.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Implementación del índice de estabilidad de SHAP y jerarquía de variables relevantes.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Creación de base de conocimiento vectorial RAG para regulaciones SBS, SENASA y normas de exportación.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Integración del orquestador LLM (Llama 3/Claude) para redacción estructurada.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Creación de estimadores predictivos de GBDT (LightGBM y XGBoost) para el comportamiento base de las variables.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Calibración automática de hiperparámetros con Optuna (50 trials) para el Módulo 1.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Implementación del Módulo 2 de Detección de Anomalías no supervisadas utilizando un Ensemble de PyOD (Isolation Forest + LOF + ECOD).</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="plan-phase">
                     <div class="phase-header" onclick="toggleAccordion('phase3')">
-                        <span class="phase-title"><span>💻</span> Fase 3: Frontend y Dashboard Jerárquico del Supervisor (Semanas 5-6)</span>
+                        <span class="phase-title"><span>🧠</span> Fase 3: Motor de Explicabilidad Local y Reportes RAG (Agosto)</span>
                         <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
                     </div>
                     <div id="phase3" class="phase-content">
                         <ul class="plan-checklist">
-                            <li class="checklist-item"><input type="checkbox" disabled> Diseño del Dashboard Principal con KPIs centrales de control operativo.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Estructuración de la cola de priorización de alertas por criticidad.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Desarrollo de la vista de detalle interactiva de alertas (con gráficos SHAP en HTML5).</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Implementación de la vista comparativa de usabilidad (Condición A vs Condición B).</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Construcción del panel de exportación a reportes formales en DOCX/PDF.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Integración de TreeSHAP para la extracción local del top-5 de variables que explican las alertas.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Construcción de la base de conocimiento vectorial RAG para regulaciones de exportación (SENASA, SBS y FDA).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Orquestación de prompts con el LLM para generar reportes narrativos anclados estrictamente en SHAP.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="plan-phase">
                     <div class="phase-header" onclick="toggleAccordion('phase4')">
-                        <span class="phase-title"><span>🧪</span> Fase 4: Protocolo de Usabilidad y Cierre Experimental (Semanas 7-8)</span>
+                        <span class="phase-title"><span>💻</span> Fase 4: Frontend y Dashboard de Supervisión Operativa (Septiembre)</span>
                         <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
                     </div>
                     <div id="phase4" class="phase-content">
                         <ul class="plan-checklist">
-                            <li class="checklist-item"><input type="checkbox" disabled> Despliegue de la versión experimental en contenedor Docker institucional.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Reclutamiento y selección de un grupo cerrado de testers (N=15 o N=27) con conocimiento especializado en el área (supervisores de operaciones, auditores y analistas de sistemas).</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Registro de logs de telemetría de interacción (segundos-a-decisión) in-situ en base de datos.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Ejecución de pruebas estadísticas (Wilcoxon Signed-Rank, t-test y análisis SUS).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> UI interactiva en Flask con visualización de la cola de alertas y priorización.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Desarrollo de gráficos interactivos SHAP en la vista de detalle de la alerta.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Panel de exportación formal de reportes trazables en DOCX/PDF.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase5')">
+                        <span class="phase-title"><span>🧪</span> Fase 5: Protocolo de Usabilidad con Testers Especializados (Octubre)</span>
+                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                    </div>
+                    <div id="phase5" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Reclutamiento de un grupo especializado de 10 testers (supervisores y analistas técnicos).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Ejecución de las sesiones de usabilidad within-subjects (Condición A vs. Condición B) en la plataforma.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Registro de telemetría de interacción (tiempo-a-decisión, veredicto, etc.) en caliente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase6')">
+                        <span class="phase-title"><span>⚙️</span> Fase 6: Robustez, Calidad y Cierre del Software (Noviembre)</span>
+                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                    </div>
+                    <div id="phase6" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Pruebas estadísticas (t-test / Wilcoxon) sobre la telemetría recolectada para contrastar hipótesis.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Refinamiento de hiperparámetros y optimización de latencia en la generación RAG.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase7')">
+                        <span class="phase-title"><span>✍️</span> Fase 7: Redacción y Cierre de Capítulos IV y V (Noviembre)</span>
+                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                    </div>
+                    <div id="phase7" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Redacción del Capítulo IV (Análisis de Resultados de Detección, Explicabilidad y Usabilidad).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Redacción del Capítulo V (Discusión, Conclusiones y Recomendaciones de Gobernanza de IA).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Completitud de Model Cards (Anexo B) y Datasheet de Datos (Anexo C).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase8')">
+                        <span class="phase-title"><span>🎓</span> Fase 8: Revisiones Finales, Compilación y Defensa (Diciembre)</span>
+                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                    </div>
+                    <div id="phase8" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Purga bibliográfica y auditoría final de citas del repositorio.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Compilación automatizada en Word (.docx) y PDF (normas APA 7, Times New Roman).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Sustentación y defensa de tesis ante la Escuela de Ingeniería de Sistemas de la UNSA (Semana 1).</li>
                         </ul>
                     </div>
                 </div>
                 
                 <p class="plan-notes">
-                    Nota: La jerarquía de vistas del frontend está diseñada de forma descendente: Resumen General → Cola de Alertas de Criticidad → Detalle de Explicabilidad Local (Condición A/B) → Panel de Decisiones Operativas y Registro de Trazabilidad.
+                    Nota: Las fases 1 y 2 están actualmente activas en el repositorio. Los siguientes pasos inmediatos se centrarán en la implementación del Módulo 1 (XGBoost/LightGBM + Optuna) y Módulo 2 (Ensemble de Anomalías con PyOD).
                 </p>
             </div>
         </div>
@@ -3422,6 +3716,106 @@ def propuesta_solucion():
 
 
 
+
+@app.route('/datos')
+def view_data_explorer():
+    """Sirve la vista del Explorador de Datasets interactivo."""
+    return render_template_string(DATOS_TEMPLATE)
+
+
+@app.route('/api/data/<key>')
+def api_data_explorer(key):
+    """Servicio API para leer y estructurar archivos CSV del proyecto."""
+    DATA_FILES = {
+        "bcrp_exchange": Path('/app/data/bcrp/bcrp-tipo-cambio-mensual.csv'),
+        "faostat_prod": Path('/app/data/faostat/faostat-produccion-peru-2024.csv'),
+        "sunat_export": Path('/app/data/sunat/sunat-exportacion-sectorial-2026.csv'),
+        "synthetic_agro": Path('/app/data/dataset_agro_sintetico_v1.csv'),
+        "validated_refs": Path('/app/entregable/referencias-datasets-validadas.csv'),
+        "train_raw": Path('/app/data/dataset_processed_train_raw.csv'),
+        "train_balanced": Path('/app/data/dataset_processed_train_balanced.csv'),
+        "test_processed": Path('/app/data/dataset_processed_test.csv')
+    }
+    
+    if key not in DATA_FILES:
+        return jsonify({"error": "Dataset no registrado"}), 404
+        
+    filepath = DATA_FILES[key]
+    if not filepath.exists():
+        return jsonify({"error": f"Archivo físico {filepath.name} no encontrado en el servidor. Asegúrese de haberlo generado."}), 404
+        
+    content = ""
+    encodings = ['utf-8', 'latin-1', 'cp1252', 'utf-16']
+    for enc in encodings:
+        try:
+            with open(filepath, 'r', encoding=enc) as f:
+                content = f.read()
+            break
+        except Exception:
+            continue
+            
+    if not content:
+        return jsonify({"error": "No se pudo leer el archivo con ninguna codificación"}), 500
+        
+    lines = content.split('\n')
+    lines = [l for l in lines if l.strip()]
+    
+    start_index = 0
+    if "sunat-exportacion-sectorial" in filepath.name:
+        for idx, line in enumerate(lines):
+            if "Sector" in line:
+                start_index = idx
+                break
+                
+    csv_data = "\n".join(lines[start_index:])
+    
+    import csv
+    import io
+    reader = csv.reader(io.StringIO(csv_data))
+    rows = []
+    columns = []
+    
+    try:
+        header = next(reader)
+        columns = [h.strip() if h.strip() else f"Col_{i}" for i, h in enumerate(header)]
+        for r in reader:
+            if len(r) == 0:
+                continue
+            if len(r) < len(columns):
+                r = r + [""] * (len(columns) - len(r))
+            else:
+                r = r[:len(columns)]
+            rows.append(dict(zip(columns, r)))
+    except Exception as e:
+        return jsonify({"error": f"Error parseando CSV: {str(e)}"}), 500
+        
+    num_rows = len(rows)
+    num_cols = len(columns)
+    
+    null_counts = {}
+    for col in columns:
+        null_counts[col] = 0
+        
+    for r in rows:
+        for col in columns:
+            val = str(r[col]).strip().lower()
+            if val in ["", "n.d.", "n/d", "null", "none", "n.a.", "n/a"]:
+                null_counts[col] += 1
+                
+    stats = {
+        "num_rows": num_rows,
+        "num_cols": num_cols,
+        "null_counts": null_counts,
+        "filename": filepath.name
+    }
+    
+    return jsonify({
+        "columns": columns,
+        "rows": rows,
+        "stats": stats
+    })
+
+
 @app.route('/admin')
 def admin_dashboard():
     """Panel admin centralizado con avance, datos y revisiones."""
@@ -3508,6 +3902,7 @@ def admin_dashboard():
                 <div class="nav-menu">
                     <a href="/" class="nav-item">🏠 Inicio</a>
                     <a href="/secciones" class="nav-item">📖 Secciones</a>
+                    <a href="/datos" class="nav-item">🗃️ Datos</a>
                     <a href="/propuesta" class="nav-item">📊 Propuesta y Prototipo</a>
                     <a href="/admin" class="nav-item active">⚙️ Administración</a>
                 </div>
@@ -3810,6 +4205,666 @@ def view_references():
 </body>
 </html>"""
     return html
+
+
+# =============================================================================
+# EXPLORADOR DE DATOS INTERACTIVO
+# =============================================================================
+
+DATOS_TEMPLATE = """<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Datasets | Tesis Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --primary: #6366f1;
+            --accent: #10b981;
+            --warn: #f59e0b;
+            --error: #ef4444;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(30, 41, 59, 0.7);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        /* Navigation Bar Styles */
+        .main-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin-bottom: 30px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #fff;
+        }
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .nav-menu {
+            display: flex;
+            gap: 8px;
+        }
+        .nav-item {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .nav-item.active {
+            color: #fff;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+        }
+
+        header { margin-bottom: 30px; }
+        h1 { font-size: 2.2rem; margin-bottom: 6px; background: linear-gradient(to right, #818cf8, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .sub { color: var(--muted); font-size: 1rem; }
+
+        .explorer-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+        }
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .card h2 { font-size: 1.25rem; color: #c7d2fe; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+
+        /* Dataset list styling */
+        .dataset-list { display: flex; flex-direction: column; gap: 8px; }
+        .dataset-btn {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .dataset-btn:hover { color: #fff; border-color: var(--primary); background: rgba(99, 102, 241, 0.05); }
+        .dataset-btn.active { color: #fff; border-color: var(--primary); background: var(--primary); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); }
+
+        /* Table & Controls */
+        .controls-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 16px; }
+        .search-input {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+            padding: 10px 16px;
+            border-radius: 10px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.9rem;
+            width: 250px;
+            outline: none;
+        }
+        .search-input:focus { border-color: var(--primary); }
+        .limit-select {
+            background: #1e293b;
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .table-wrap { overflow-x: auto; max-height: 500px; border: 1px solid var(--border); border-radius: 12px; background: rgba(0,0,0,0.15); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
+        th { background: #1e293b; padding: 12px 14px; font-weight: 600; border-bottom: 2px solid var(--border); color: #cbd5e1; cursor: pointer; user-select: none; }
+        th:hover { color: #fff; background: rgba(99, 102, 241, 0.2); }
+        td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: #e2e8f0; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+
+        .pagination { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+        .page-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .page-btn:hover { background: rgba(99, 102, 241, 0.15); }
+        .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .metadata-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .meta-card { background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid var(--border); }
+        .meta-val { font-size: 1.3rem; font-weight: 700; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+        .meta-lbl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; }
+
+        .chart-container { width: 100%; height: 260px; display: flex; justify-content: center; align-items: center; position: relative; }
+        
+        .loading-overlay { text-align: center; padding: 60px; color: var(--muted); }
+        .spinner { width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Main Navbar -->
+    <nav class="main-navbar">
+        <div class="nav-logo">
+            <span class="logo-dot"></span>
+            <span class="logo-text">Tesis Hub</span>
+        </div>
+        <div class="nav-menu">
+            <a href="/" class="nav-item">🏠 Inicio</a>
+            <a href="/secciones" class="nav-item">📖 Secciones</a>
+            <a href="/datos" class="nav-item active">🗃️ Datos</a>
+            <a href="/propuesta" class="nav-item">📊 Propuesta y Prototipo</a>
+            <a href="/admin" class="nav-item">⚙️ Administración</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Explorador de Datasets de Tesis</h1>
+        <p class="sub">Visualice, ordene, filtre y analice las estadísticas de las fuentes reales e hipotéticas del sistema.</p>
+    </header>
+
+    <div class="explorer-layout">
+        <!-- Sidebar -->
+        <aside>
+            <div class="card">
+                <h2>Fuentes de Datos</h2>
+                <div class="dataset-list">
+                    <button class="dataset-btn active" onclick="loadDataset('synthetic_agro', this)">🤖 Dataset Sintético v1.0</button>
+                    <button class="dataset-btn" onclick="loadDataset('train_raw', this)">📊 Train Preprocesado (Sin Bal.)</button>
+                    <button class="dataset-btn" onclick="loadDataset('train_balanced', this)">⚖️ Train Balanceado (SMOTE)</button>
+                    <button class="dataset-btn" onclick="loadDataset('test_processed', this)">🧪 Test Preprocesado (2025)</button>
+                    <button class="dataset-btn" onclick="loadDataset('bcrp_exchange', this)">💵 Tipo de Cambio (BCRP)</button>
+                    <button class="dataset-btn" onclick="loadDataset('faostat_prod', this)">🌾 Producción Agro (FAOSTAT)</button>
+                    <button class="dataset-btn" onclick="loadDataset('sunat_export', this)">🚢 Exportaciones (SUNAT)</button>
+                    <button class="dataset-btn" onclick="loadDataset('validated_refs', this)">📋 Datasets Validados (CSV)</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Resumen Técnico</h2>
+                <div id="metadata-container">
+                    <!-- Loaded dynamically -->
+                    <p style="color:var(--muted); font-size:0.9rem; text-align:center;">Cargando metadatos...</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Panel -->
+        <main>
+            <div class="card" id="chart-card">
+                <h2>Análisis Gráfico</h2>
+                <div class="chart-container">
+                    <canvas id="dataset-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Registros de Datos</h2>
+                <div class="controls-row">
+                    <div>
+                        <span style="font-size:0.85rem; color:var(--muted)">Mostrar</span>
+                        <select class="limit-select" id="page-size-select" onchange="changePageSize(this.value)">
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    </div>
+                    <input type="text" class="search-input" id="search-box" placeholder="Buscar registros..." onkeyup="filterRows(this.value)">
+                </div>
+
+                <div id="table-loading-container" class="loading-overlay">
+                    <div class="spinner"></div>
+                    <p>Cargando datos del archivo CSV...</p>
+                </div>
+
+                <div id="table-display-container" style="display:none;">
+                    <div class="table-wrap">
+                        <table id="data-table">
+                            <thead id="table-head"></thead>
+                            <tbody id="table-body"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <span style="font-size:0.85rem; color:var(--muted)" id="page-indicator">Mostrando 1-10 de 100</span>
+                        <div>
+                            <button class="page-btn" id="prev-btn" onclick="prevPage()">Anterior</button>
+                            <button class="page-btn" id="next-btn" onclick="nextPage()" style="margin-left:8px;">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    let currentData = { columns: [], rows: [] };
+    let filteredRows = [];
+    let currentPage = 1;
+    let pageSize = 10;
+    let activeDataset = 'synthetic_agro';
+    let chartInstance = null;
+
+    async function loadDataset(key, btn) {
+        if (btn) {
+            document.querySelectorAll('.dataset-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+        activeDataset = key;
+        
+        // Reset view
+        document.getElementById('table-loading-container').style.display = 'block';
+        document.getElementById('table-display-container').style.display = 'none';
+        document.getElementById('search-box').value = '';
+        
+        try {
+            const res = await fetch(`/api/data/${key}`);
+            const payload = await res.json();
+            if (payload.error) {
+                alert(payload.error);
+                return;
+            }
+            currentData = payload;
+            filteredRows = [...currentData.rows];
+            currentPage = 1;
+            
+            renderMetadata(payload.stats);
+            renderChart(key, payload);
+            renderTable();
+        } catch (e) {
+            alert("Error cargando el dataset: " + e.message);
+        }
+    }
+
+    function renderMetadata(stats) {
+        const container = document.getElementById('metadata-container');
+        container.innerHTML = `
+            <div class="metadata-grid">
+                <div class="meta-card">
+                    <div class="meta-val">${stats.num_rows.toLocaleString()}</div>
+                    <div class="meta-lbl">Registros</div>
+                </div>
+                <div class="meta-card">
+                    <div class="meta-val">${stats.num_cols}</div>
+                    <div class="meta-lbl">Columnas</div>
+                </div>
+            </div>
+            <p style="font-size:0.85rem; margin-bottom:4px; color:var(--muted);">Archivo: <span style="color:#fff; font-family:monospace;">${stats.filename}</span></p>
+        `;
+    }
+
+    function renderChart(key, data) {
+        const ctx = document.getElementById('dataset-chart').getContext('2d');
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+        
+        const chartCard = document.getElementById('chart-card');
+        chartCard.style.display = 'block';
+
+        let chartConfig = {};
+
+        if (key === 'synthetic_agro') {
+            // Pie chart of anomaly types
+            const anomalies = data.rows.filter(r => r.etiqueta_anomalia === '1' || r.etiqueta_anomalia === 1);
+            const counts = {};
+            anomalies.forEach(r => {
+                const t = r.tipo_anomalia || 'Desconocido';
+                counts[t] = (counts[t] || 0) + 1;
+            });
+            chartConfig = {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(counts),
+                    datasets: [{
+                        data: Object.values(counts),
+                        backgroundColor: ['#ef4444', '#f59e0b', '#3b82f6', '#10b981', '#8b5cf6'],
+                        borderWidth: 1,
+                        borderColor: '#1e293b'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: '#f8fafc', font: { family: 'Outfit' } } }
+                    }
+                }
+            };
+        }
+        else if (key === 'train_raw' || key === 'train_balanced' || key === 'test_processed') {
+            // Pie chart of label distribution (Normal vs Anomaly)
+            const counts = { 'Normal (0)': 0, 'Anomalía (1)': 0 };
+            data.rows.forEach(r => {
+                const label = parseInt(r.etiqueta_anomalia) === 1 ? 'Anomalía (1)' : 'Normal (0)';
+                counts[label]++;
+            });
+            chartConfig = {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(counts),
+                    datasets: [{
+                        data: Object.values(counts),
+                        backgroundColor: ['#10b981', '#ef4444'],
+                        borderWidth: 1,
+                        borderColor: '#1e293b'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: '#f8fafc', font: { family: 'Outfit' } } }
+                    }
+                }
+            };
+        } 
+        else if (key === 'bcrp_exchange') {
+            // Line chart of exchange rate over time
+            // Columns: "", "PN01205PM", "PN01206PM", "PN01207PM", etc.
+            // Row has: Col_0 (mes like "May24"), "PN01207PM" (Promedio rate)
+            const labels = [];
+            const values = [];
+            
+            // BCRP columns: Col_0 is month, Col_3 (PN01207PM) is interbank average
+            data.rows.forEach(r => {
+                const month = r.Col_0 || r[''] || 'N/A';
+                const rate = parseFloat(r['PN01207PM'] || r['Col_3']);
+                if (month !== 'N/A' && !isNaN(rate)) {
+                    labels.push(month);
+                    values.push(rate);
+                }
+            });
+            
+            chartConfig = {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Tipo de cambio promedio interbancario (S/ por USD)',
+                        data: values,
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#f8fafc' } }
+                    }
+                }
+            };
+        } 
+        else if (key === 'faostat_prod') {
+            // Bar chart of area harvested for top 8 crops
+            const crops = {};
+            data.rows.forEach(r => {
+                const cropName = r.Item || 'N/A';
+                const area = parseFloat(r.Value);
+                if (cropName !== 'N/A' && r.Element === 'Area harvested' && !isNaN(area)) {
+                    crops[cropName] = area;
+                }
+            });
+            const sortedCrops = Object.entries(crops).sort((a, b) => b[1] - a[1]).slice(0, 8);
+            chartConfig = {
+                type: 'bar',
+                data: {
+                    labels: sortedCrops.map(c => c[0]),
+                    datasets: [{
+                        label: 'Área cosechada (Hectáreas) - 2024',
+                        data: sortedCrops.map(c => c[1]),
+                        backgroundColor: '#10b981',
+                        borderWidth: 0,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 9 } } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } }
+                    },
+                    plugins: { legend: { labels: { color: '#f8fafc' } } }
+                }
+            };
+        } 
+        else if (key === 'sunat_export') {
+            // Bar chart comparing sectors
+            // Look for non-traditional sectors
+            const labels = ['Agropecuario', 'Textil', 'Quimico', 'Pesquero no trad.'];
+            const values = [];
+            
+            data.rows.forEach(r => {
+                const sector = (r.Col_0 || r[''] || '').toLowerCase();
+                const totalVal = parseFloat((r.Total || '').replace(/,/g, ''));
+                if (sector.includes('agropecuario') && !isNaN(totalVal)) values[0] = totalVal / 1000; // in millions
+                if (sector.includes('textil') && !isNaN(totalVal)) values[1] = totalVal / 1000;
+                if (sector.includes('quimico') && !isNaN(totalVal)) values[2] = totalVal / 1000;
+                if (sector.includes('pesquero no tradicional') && !isNaN(totalVal)) values[3] = totalVal / 1000;
+            });
+            
+            chartConfig = {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Exportaciones FOB Trimestre 2026 (Millones USD)',
+                        data: values,
+                        backgroundColor: '#fbbf24',
+                        borderWidth: 0,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: '#94a3b8' } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } }
+                    },
+                    plugins: { legend: { labels: { color: '#f8fafc' } } }
+                }
+            };
+        }
+        else {
+            // Default / hide chart for validated refs
+            chartCard.style.display = 'none';
+            return;
+        }
+
+        chartInstance = new Chart(ctx, chartConfig);
+    }
+
+    function renderTable() {
+        document.getElementById('table-loading-container').style.display = 'none';
+        document.getElementById('table-display-container').style.display = 'block';
+
+        const head = document.getElementById('table-head');
+        const body = document.getElementById('table-body');
+        
+        // 1. Render Header
+        let headHtml = '<tr>';
+        currentData.columns.forEach(col => {
+            headHtml += `<th onclick="sortTable('${col}')">${col} ↕</th>`;
+        });
+        headHtml += '</tr>';
+        head.innerHTML = headHtml;
+
+        // 2. Paginate Rows
+        const startIndex = (currentPage - 1) * pageSize;
+        const endIndex = Math.min(startIndex + pageSize, filteredRows.length);
+        const paginatedRows = filteredRows.slice(startIndex, endIndex);
+
+        // 3. Render Body
+        let bodyHtml = '';
+        if (paginatedRows.length === 0) {
+            bodyHtml = `<tr><td colspan="${currentData.columns.length}" style="text-align:center; color:var(--muted); font-style:italic; padding:30px;">No se encontraron registros que coincidan con la búsqueda.</td></tr>`;
+        } else {
+            paginatedRows.forEach(row => {
+                bodyHtml += '<tr>';
+                currentData.columns.forEach(col => {
+                    const val = row[col] !== undefined && row[col] !== null ? row[col] : '';
+                    bodyHtml += `<td>${val}</td>`;
+                });
+                bodyHtml += '</tr>';
+            });
+        }
+        body.innerHTML = bodyHtml;
+
+        // 4. Update Pagination Controls
+        const total = filteredRows.length;
+        document.getElementById('page-indicator').innerText = total > 0 ? 
+            `Mostrando ${startIndex + 1}-${endIndex} de ${total}` : 
+            'Mostrando 0-0 de 0';
+
+        document.getElementById('prev-btn').disabled = currentPage === 1;
+        document.getElementById('next-btn').disabled = endIndex >= total;
+    }
+
+    function filterRows(term) {
+        term = term.toLowerCase().trim();
+        if (term === '') {
+            filteredRows = [...currentData.rows];
+        } else {
+            filteredRows = currentData.rows.filter(row => {
+                return currentData.columns.some(col => {
+                    const val = String(row[col]).toLowerCase();
+                    return val.includes(term);
+                });
+            });
+        }
+        currentPage = 1;
+        renderTable();
+    }
+
+    let sortAsc = true;
+    let lastSortedCol = '';
+    function sortTable(col) {
+        if (lastSortedCol === col) {
+            sortAsc = !sortAsc;
+        } else {
+            sortAsc = true;
+            lastSortedCol = col;
+        }
+        
+        filteredRows.sort((a, b) => {
+            let valA = a[col];
+            let valB = b[col];
+            
+            // Check if they are numeric
+            const numA = parseFloat(valA);
+            const numB = parseFloat(valB);
+            
+            if (!isNaN(numA) && !isNaN(numB)) {
+                return sortAsc ? numA - numB : numB - numA;
+            }
+            
+            valA = String(valA).toLowerCase();
+            valB = String(valB).toLowerCase();
+            if (valA < valB) return sortAsc ? -1 : 1;
+            if (valA > valB) return sortAsc ? 1 : -1;
+            return 0;
+        });
+        
+        currentPage = 1;
+        renderTable();
+    }
+
+    function changePageSize(val) {
+        pageSize = parseInt(val);
+        currentPage = 1;
+        renderTable();
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+        }
+    }
+
+    function nextPage() {
+        const total = filteredRows.length;
+        if (currentPage * pageSize < total) {
+            currentPage++;
+            renderTable();
+        }
+    }
+
+    // Load initial dataset on load
+    window.onload = () => {
+        loadDataset('synthetic_agro');
+    };
+</script>
+</body>
+</html>
+"""
 
 if __name__ == '__main__':
     import glob

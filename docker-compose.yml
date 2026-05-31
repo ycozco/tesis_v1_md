@@ -12,6 +12,7 @@ services:
       - ./output:/app/output
       - ./formato:/app/formato
       - ./src:/app/src
+      - ./data:/app/data
     environment:
       - FLASK_ENV=development
       - FLASK_DEBUG=1

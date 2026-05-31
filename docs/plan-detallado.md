@@ -8,49 +8,46 @@
 > **CÓMO USAR ESTE PLAN**
 > Cada sección indica: (a) texto borrador listo para insertar o adaptar, (b) dónde van las citas, (c) qué datos faltan marcados con `⚠️ DATO FALTANTE`, (d) qué diferencia a esta tesis de los competidores marcados con `🎯 DIFERENCIADOR`.
 >
-> **NOVEDAD 2026-05-17:** La tesis fue segmentada en 19 archivos numerados en `docs/`. El servidor Flask sirve cada sección en `/seccion/<slug>` con hot-reload. Ver `docs/plan-segmentacion-docker.md`.
+> **NOVEDAD 2026-05-17:** La tesis fue segmentada en 19 archivos numerados en `docs/`. El servidor Flask sirve cada sección en `/seccion/<slug>` con hot-reload. Ver `docs/plan-segmentacion-doc## ACTUALIZACIÓN 2026-05-31 — ESTADO REAL Y CRONOGRAMA EXTENDIDO
+
+### Lo que cambió y reprogramación temporal
+Para asegurar la excelencia académica y un desarrollo de software robusto con sus respectivas pruebas estadísticas y de usabilidad, el cronograma de la tesis se ha reestructurado para durar desde **Mayo de 2026 hasta la primera semana de Diciembre de 2026** (fecha estimada de sustentación).
+
+### Cronograma Visual del Proyecto (Diagrama de Gantt)
+
+```mermaid
+gantt
+    title Planificación de Tesis e Implementación (Mayo - Diciembre 2026)
+    dateFormat  YYYY-MM
+    section Software y Datos
+    Fase 1: Preparación y Tratamiento de Datos (Mayo)           :active, f1, 2026-05, 1m
+    Fase 2: Desarrollo Backend y Modelado (Junio - Julio)        : f2, 2026-06, 2m
+    Fase 3: Explicabilidad y Reportes RAG (Agosto)               : f3, 2026-08, 1m
+    Fase 4: Integración del Pipeline y UI Dashboard (Septiembre) : f4, 2026-09, 1m
+    section Experimentos y Usabilidad
+    Fase 5: Protocolo de Usabilidad con Testers (Octubre)        : f5, 2026-10, 1m
+    Fase 6: Pruebas de Calidad e Implementación de Cambios (Nov) : f6, 2026-11, 1m
+    section Cierre Académico
+    Fase 7: Redacción Final de Capítulos y Anexos (Noviembre)    : f7, after f5, 1m
+    Fase 8: Revisiones Finales y Sustentación (Diciembre)        : f8, 2026-12, 1w
+```
+
+### Diagnóstico de los 8 Hitos del Cronograma Actualizado
+
+| Hito | Fase | Fecha Límite | Estado | Diagnóstico / Entregable |
+|------|------|--------------|--------|--------------------------|
+| **Hito 1** | Fase 1 | 2026-05-27 | ✅ Cerrado | Variables operacionalizadas en `docs/variables-operacionalizadas.md` |
+| **Hito 2** | Fase 1 | 2026-05-31 | ✅ Cerrado | Dataset sintético y script generador construidos. Preprocesamiento finalizado. |
+| **Hito 3** | Fase 2 | 2026-07-15 | ⏳ Pendiente | Módulo 1 (GBDT + Tuning Optuna) y Módulo 2 (Ensemble PyOD IF+LOF+ECOD) listos. |
+| **Hito 4** | Fase 3 | 2026-08-31 | ⏳ Pendiente | Módulo 3 (TreeSHAP) y Módulo 4 (Reportes RAG + LLM) integrados. |
+| **Hito 5** | Fase 4 | 2026-09-30 | ⏳ Pendiente | Pipeline unificado orquestado y UI Dashboard (Flask/HTML5) funcional. |
+| **Hito 6** | Fase 5 | 2026-10-31 | ⏳ Pendiente | Protocolo de usabilidad ejecutado con 10 testers documentados y telemetría registrada. |
+| **Hito 7** | Fase 6-7 | 2026-11-30 | ⏳ Pendiente | Pruebas estadísticas (Wilcoxon/t-Student) completadas, Capítulos IV-V redactados y referencias purgadas. |
+| **Hito 8** | Fase 8 | 2026-12-07 | ⏳ Pendiente | Compilación final DOCX/PDF de la tesis y sustentación aprobada ante jurado. |
 
 ---
 
-## ACTUALIZACIÓN 2026-05-17 — ESTADO REAL
-
-### Lo que cambió respecto al plan del 2026-05-15
-
-| Componente | Estado en 2026-05-15 | Estado real 2026-05-17 |
-|------------|----------------------|------------------------|
-| Título y enfoque | Mixto (financiero + agro) | ✅ 100% agroexportador |
-| Capítulo I | Avanzado | ✅ Completo — `docs/10-capitulo1.md` |
-| Capítulo II §2.1 | Superficial | ✅ 7 antecedentes completos — `docs/20-*.md` |
-| Capítulo II §2.2 | Parcial | ✅ 5 batallas + 2 tablas — `docs/21-*.md` |
-| Capítulo II §2.3 | No iniciado | ✅ §2.3.1–§2.3.9 completos — `docs/22-*.md` |
-| Capítulo III | Pendiente de migrar | ✅ Completo y agroexportador — `docs/30-capitulo3.md` |
-| Capítulo IV | Placeholder | 🔴 Placeholder — requiere experimentos |
-| Capítulo V | Placeholder | 🔴 Placeholder — depende de Cap IV |
-| Monolito `tesis.md` | Activo (1018 líneas) | ✅ Segmentado en 19 archivos numerados |
-| Servidor Docker | Compilación estática | ✅ Hot-reload por sección activado |
-| `refs.bib` | 65 entradas, 37 usadas | ✅ Verificado — sin citas huérfanas |
-
-### El cuello de botella real (no es redacción, es implementación)
-
-El plan de 2026-05-15 se enfocó en redacción. La tesis **ya está escrita** en todos los capítulos donde se puede escribir sin datos experimentales. El bloqueo ahora es:
-
-1. **No existe el dataset sintético agroexportador** → bloquea Cap IV §4.1 y §4.2
-2. **No existe el código de los 4 módulos** (`src/module1_prediction.py`, etc.) → bloquea todos los experimentos
-3. **Sin resultados experimentales, Cap IV, V, Conclusiones y Anexos B/C** no se pueden completar
-
-### Diagnóstico de los 5 hitos del plan anterior
-
-| Hito | Fecha | Estado | Diagnóstico |
-|------|-------|--------|-------------|
-| Hito 1: Variables operacionalizadas | 2026-05-27 | ✅ Cerrado 2026-05-17 | `docs/variables-operacionalizadas.md` con tabla formal 7×5 + pruebas estadísticas asignadas. |
-| Hito 2: Datasets identificados | 2026-06-01 | 🟢 Adelantado | Especificación cerrada (`docs/a3-anexo-datasheet.md`) + script generador (`src/generate_synthetic_dataset.py`). Falta ejecutar `pip install -r requirements.txt && py src/generate_synthetic_dataset.py`. |
-| Hito 3: Datos descargados y Datasheets | 2026-06-10 | ⏳ Pendiente | Datasheet ya está. Falta ejecutar el generador y validar muestra. |
-| Hito 4: Fairness completado | 2026-06-22 | ⏳ Pendiente | Plantillas de análisis por subgrupo agregadas a Model Cards (Anexo B). |
-| Hito 5: Cap III actualizado | 2026-07-01 | ✅ Completado | Cap III ya está agroexportador, con diseño experimental E1–E5 detallado. |
-
----
-
-## ESTRUCTURA COMPLETA Y ARCHIVOS ACTIVOS (2026-05-17)
+## ESTRUCTURA COMPLETA Y ARCHIVOS ACTIVOS (2026-05-31)
 
 ### Archivos de sección (esquema segmentado)
 
@@ -65,25 +62,25 @@ El plan de 2026-05-15 se enfocó en redacción. La tesis **ya está escrita** en
 | `docs/21-capitulo2-estadoarte.md` | §2.2 — 5 batallas + tablas | ✅ | 15 KB |
 | `docs/22-capitulo2-marcoteorico.md` | §2.3 — §2.3.1–§2.3.9 | ✅ | 23 KB |
 | `docs/30-capitulo3.md` | Cap III §3.1–§3.3 | ✅ | 6 KB |
-| `docs/40-capitulo4.md` | Cap IV §4.1–§4.3 | 🔴 Placeholder | 2 KB |
-| `docs/50-capitulo5.md` | Cap V §5.1–§5.3 | 🔴 Placeholder | 1 KB |
+| `docs/40-capitulo4.md` | Cap IV §4.1–§4.3 (Resultados) | 🔴 Placeholder | 2 KB |
+| `docs/50-capitulo5.md` | Cap V §5.1–§5.3 (Discusión) | 🔴 Placeholder | 1 KB |
 | `docs/60-conclusiones.md` | Conclusiones ES + EN | 🔴 Placeholder | 2 KB |
 | `docs/70-recomendaciones.md` | Recomendaciones | ✅ | 2 KB |
 | `docs/80-glosario.md` | Glosario | ✅ | 6 KB |
 | `docs/90-referencias.md` | Referencias bibliográficas APA | ✅ | 11 KB |
-| `docs/a1-anexo-usabilidad.md` | Anexo A — Protocolo usabilidad | 🔴 Skeleton | 1 KB |
-| `docs/a2-anexo-modelcards.md` | Anexo B — Model Cards | 🔴 Skeleton | <1 KB |
-| `docs/a3-anexo-datasheet.md` | Anexo C — Datasheet dataset | 🔴 Skeleton | <1 KB |
-| `docs/a4-anexo-ia.md` | Anexo D — Registro uso IA | ✅ | <1 KB |
+| `docs/a1-anexo-usabilidad.md` | Anexo A — Protocolo usabilidad | 🔴 Skeleton | 9 KB |
+| `docs/a2-anexo-modelcards.md` | Anexo B — Model Cards | 🔴 Skeleton | 10 KB |
+| `docs/a3-anexo-datasheet.md` | Anexo C — Datasheet dataset | 🔴 Skeleton | 11 KB |
+| `docs/a4-anexo-ia.md` | Anexo D — Registro uso IA | ✅ | 1 KB |
 
-**Resumen**: 13/19 secciones completas · 6/19 requieren datos experimentales
+**Resumen**: 13/19 secciones completas · 6/19 requieren datos experimentales y telemetría de software.
 
 ### Checkup del avance
 
 **PROGRESO REDACCIÓN**: 13/19 secciones escritas (68%)
-**PROGRESO IMPLEMENTACIÓN**: 0/5 hitos de datos/código completados (0%)
+**PROGRESO IMPLEMENTACIÓN**: 2/8 hitos completados (25%)
 
-#### Componentes de redacción
+#### Componentes de redacción y metodología
 - [x] Portada, presentación, resumen y abstract — `00-portada.md`, `01-resumen.md`
 - [x] Índice general y estructura de navegación — `02-indices.md`
 - [x] Introducción completa — `03-introduccion.md`
@@ -93,20 +90,24 @@ El plan de 2026-05-15 se enfocó en redacción. La tesis **ya está escrita** en
 - [x] Capítulo II §2.3 — 9 sub-secciones del marco conceptual
 - [x] Capítulo III §3.1–§3.3 — arquitectura, datasets, métricas
 - [x] Recomendaciones, Glosario, Referencias
-- [ ] **Hito 1: Tabla formal de variables operacionalizadas (2026-05-27)**
-- [ ] **Hito 2: Dataset sintético agroexportador construido (2026-06-01)**
-- [ ] **Hito 3: Código 4 módulos + experimentos E1–E5 (2026-06-15)**
-- [ ] **Hito 4: Cap IV escrito con resultados reales (2026-06-22)**
-- [ ] **Hito 5: Cap V + Conclusiones + Anexos B/C cerrados (2026-07-07)**
+- [x] **Hito 1: Tabla de variables operacionalizadas cerrada (2026-05-17)**
+- [x] **Hito 2: Dataset sintético y preprocesamiento construidos (2026-05-31)**
+- [ ] **Hito 3: Desarrollo Módulos 1-2 e hiperparámetros listos (2026-07-15)**
+- [ ] **Hito 4: Módulos 3-4 (TreeSHAP y RAG LLM) completados (2026-08-31)**
+- [ ] **Hito 5: Pipeline e Interfaz de Dashboard (2026-09-30)**
+- [ ] **Hito 6: Protocolo de usabilidad con 10 testers especializado finalizado (2026-10-31)**
+- [ ] **Hito 7: Análisis estadístico e integración Cap IV-V (2026-11-30)**
+- [ ] **Hito 8: Sustentación de la Tesis (2026-12-07)**
 
-#### Componentes de implementación (nueva categoría — bloqueo principal)
-- [ ] Dataset sintético `data/dataset_agro_sintetico.csv` (800–2000 registros)
-- [ ] `src/module1_prediction.py` — XGBoost + LightGBM
-- [ ] `src/module2_anomaly.py` — IF (Isolation Forest - Bosque de Aislamiento) + LOF (Local Outlier Factor - Factor de Anomalía Local) + ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) vía PyOD
-- [ ] `src/module3_shap.py` — TreeSHAP + top-k
-- [ ] `src/module4_rag.py` — LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) + RAG + prompt
-- [ ] `src/pipeline.py` — integración de las 4 capas
-- [ ] `src/evaluate.py` — métricas E1–E5
+#### Componentes de implementación de software (Estructura de librerías y scripts)
+- [x] Dataset sintético `data/dataset_agro_sintetico_v1.csv` (2000 registros operativos)
+- [x] Script de preprocesamiento de datos `src/preprocess_data.py` con RobustScaler, KNNImputer y SMOTE
+- [ ] `src/module1_prediction.py` — GBDT con XGBoost, LightGBM y optimización Optuna (50 trials)
+- [ ] `src/module2_anomaly.py` — Ensemble PyOD (Isolation Forest + LOF + ECOD)
+- [ ] `src/module3_shap.py` — TreeSHAP para explicabilidad local
+- [ ] `src/module4_rag.py` — LLM de soporte + RAG indexado a normas y resoluciones
+- [ ] `src/pipeline.py` — Pipeline end-to-end de orquestación de datos
+- [ ] `src/evaluate.py` — Scripts de evaluación experimental (E1–E5) y exportación de métricas
 
 #### Infraestructura Docker (completado hoy 2026-05-17)
 - [x] `docs/` segmentada en 19 archivos numerados

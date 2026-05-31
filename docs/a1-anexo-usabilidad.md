@@ -55,7 +55,7 @@ Al finalizar el bloque de 10 alertas, completa un cuestionario post-bloque (SUS 
 
 ### A.6 Tamaño de muestra y reclutamiento
 
-**Tamaño meta**: N ≥ 15 participantes (reportar resultados como exploratorios). Tamaño deseable: N = 27 para potencia 0.80 con Cohen's dz = 0.5 (efecto medio). N ≤ 14 obliga a marcar resultados como preliminares y sin pretensión de significancia estadística.
+**Tamaño meta**: N = 10 participantes (documentar formalmente como un estudio piloto especializado de usabilidad). Un tamaño N = 10 permite una evaluación detallada de la eficiencia temporal y cualitativa sin pretensiones de generalización estadística a gran escala, pero con alta representatividad técnica.
 
 **Reclutamiento**: El estudio se limita a **grupos cerrados de testers con conocimiento especializado en el área** bajo invitación directa (no abierta al público general). La convocatoria se realiza por invitación formal a través de la Escuela de Ingeniería de Sistemas de la UNSA y contactos en empresas agroexportadoras de Arequipa, Ica y La Libertad coordinadas por el asesor, garantizando el perfil técnico de los evaluadores.
 

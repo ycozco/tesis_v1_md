@@ -13,18 +13,16 @@
 
 ## CALENDARIO MAESTRO HASTA DEFENSA
 
-| Semana | Fechas | Hito principal | Entregable verificable | Estado |
+| Fase | Meses (2026) | Hito Principal | Entregable Verificable | Estado |
 |---|---|---|---|---|
-| S1 | 2026-05-17 a 2026-05-23 | Verificación regulatoria + ejecución dataset | (a) Textos SBS/PCM verificados, (b) `data/dataset_agro_sintetico_v1.csv` generado | ⏳ En curso |
-| S2 | 2026-05-24 a 2026-05-30 | Búsqueda sistemática gap claim + módulo 1 | (a) `busqueda-sistematica-gap.md` cerrado, (b) `src/module1_prediction.py` funcional | ⏳ |
-| S3 | 2026-05-31 a 2026-06-06 | Módulo 2 + Optuna tuning | (a) `src/module2_anomaly.py`, (b) hiperparámetros documentados | ⏳ |
-| S4 | 2026-06-07 a 2026-06-13 | Módulo 3 (SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley)) + Módulo 4 (LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación)) | (a) `src/module3_shap.py`, (b) `src/module4_rag.py` | ⏳ |
-| S5 | 2026-06-14 a 2026-06-20 | Pipeline integrado + experimentos E1–E5 | (a) `src/pipeline.py` + `src/evaluate.py`, (b) resultados E1–E3 | ⏳ |
-| S6 | 2026-06-21 a 2026-06-27 | Estudio de usabilidad + Cap IV completo | (a) ≥15 sesiones ejecutadas, (b) Cap IV con tablas 4.1–4.12 reales | ⏳ |
-| S7 | 2026-06-28 a 2026-07-04 | Cap V + Conclusiones + Anexos B/C cerrados | (a) `50-capitulo5.md` completo, (b) Model Cards llenadas | ⏳ |
-| S8 | 2026-07-05 a 2026-07-11 | Revisión asesor + correcciones | (a) Revisión integral, (b) errata corregida | ⏳ |
-| S9 | 2026-07-12 a 2026-07-18 | Defensa | Sustentación pública | ⏳ |
-| S10+ | Post-defensa | Paper de conferencia | Sometimiento a CLEI 2026 o IEEE LATAM | ⏳ |
+| F1 | Mayo | Tratamiento de datos y variables | (a) Variables operacionalizadas, (b) Dataset v1.0 generado y preprocesado | ✅ Completado |
+| F2 | Junio - Julio | Desarrollo Backend y Modelado (Módulos 1-2) | (a) `src/module1_prediction.py` + Optuna, (b) `src/module2_anomaly.py` (PyOD) | ⏳ En curso |
+| F3 | Agosto | Explicabilidad y Reportes RAG (Módulos 3-4) | (a) `src/module3_shap.py` (TreeSHAP), (b) `src/module4_rag.py` (Indexado RAG) | ⏳ |
+| F4 | Septiembre | Integración del Pipeline y UI Dashboard | (a) `src/pipeline.py` orquestado, (b) Frontend Flask + gráficos SHAP | ⏳ |
+| F5 | Octubre | Protocolo de usabilidad y Telemetría | (a) Evaluación con 10 testers calificados, (b) Registro de logs de decisión | ⏳ |
+| F6 | Noviembre | Cierre del Software y Pruebas Estadísticas | (a) Pruebas de Wilcoxon / t-Student, (b) Ajustes de robustez del código | ⏳ |
+| F7 | Noviembre | Redacción y Cierre Documental | (a) Redacción de Capítulos IV (Resultados) y V (Discusión) | ⏳ |
+| F8 | Diciembre | Revisiones finales y Defensa de Tesis | (a) Compilación final en Word/PDF (APA 7), (b) Defensa ante jurado (Semana 1) | ⏳ |
 
 ---
 
