@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Tesis Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+    <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --bg: #f8fafc;
+            --sidebar-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #10b981;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* Layout */
+        .app-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 40px 30px;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            margin-bottom: 40px;
+        }
+
+        .sidebar-header a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #f1f5f9;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .toc-container h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* TOC Styling */
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 4px;
+        }
+
+        .toc a {
+            display: block;
+            padding: 8px 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            background: #f1f5f9;
+            padding-left: 18px;
+        }
+
+        .toc ul ul {
+            margin-left: 15px;
+            border-left: 1px solid var(--border);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 60px 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .doc-header {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .doc-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .doc-meta {
+            display: flex;
+            gap: 24px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Typography */
+        .content-body h2 {
+            font-size: 1.8rem;
+            margin: 60px 0 24px;
+            color: #0f172a;
+        }
+
+        .content-body h3 {
+            font-size: 1.4rem;
+            margin: 40px 0 16px;
+            color: #1e293b;
+        }
+
+        .content-body p {
+            margin-bottom: 24px;
+            color: #334155;
+        }
+
+        .content-body ul, .content-body ol {
+            margin: 0 0 24px 30px;
+        }
+
+        .content-body li {
+            margin-bottom: 12px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: #f8fafc;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f1f5f9;
+        }
+
+        /* Code */
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        pre {
+            margin: 32px 0;
+            border-radius: 16px;
+            padding: 24px;
+            overflow-x: auto;
+            background: #0f172a !important;
+        }
+
+        /* Alerts/Blockquotes */
+        blockquote {
+            margin: 32px 0;
+            padding: 24px 32px;
+            background: #f1f5f9;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 16px 16px 0;
+            font-style: italic;
+            color: #475569;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                padding: 40px 20px;
+            }
+        }
+
+        /* Floating Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--primary-dark);
+        }
+
+        /* ==================================================
+           ESTILOS ACADÉMICOS PARA IMPRESIÓN Y EXPORTACIÓN PDF
+           ================================================== */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                background: white !important;
+                color: #000000 !important;
+                font-family: 'Times New Roman', Times, serif !important;
+                font-size: 12pt !important;
+                line-height: 1.6 !important;
+            }
+            
+            .sidebar, .back-to-top, .doc-header, .search-box {
+                display: none !important;
+            }
+            
+            .app-container {
+                display: block !important;
+                width: 100% !important;
+            }
+            
+            .main-content {
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-shadow: none !important;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                color: #000000 !important;
+                font-family: 'Times New Roman', Times, serif !important;
+                page-break-after: avoid;
+            }
+            
+            h1 {
+                page-break-before: always;
+                font-size: 16pt !important;
+                text-align: center;
+                margin-top: 0 !important;
+                margin-bottom: 24pt !important;
+                font-weight: bold;
+            }
+            
+            h2 {
+                page-break-before: always;
+                font-size: 14pt !important;
+                margin-top: 24pt !important;
+                margin-bottom: 12pt !important;
+                font-weight: bold;
+            }
+            
+            h3 {
+                font-size: 12pt !important;
+                margin-top: 18pt !important;
+                margin-bottom: 6pt !important;
+                font-weight: bold;
+            }
+            
+            p {
+                margin-bottom: 12pt !important;
+                text-align: justify;
+                text-indent: 1.25cm; /* Sangría de primera línea estilo APA 7 */
+            }
+            
+            /* Excepciones a la sangría en dedicatorias, agradecimientos, resumen y títulos */
+            .doc-header h1, h1 + p, h2 + p, h3 + p, blockquote p, .center-text p {
+                text-indent: 0 !important;
+            }
+            
+            table {
+                page-break-inside: avoid;
+                font-size: 10pt !important;
+                width: 100% !important;
+                border: 1px solid #000000 !important;
+                border-collapse: collapse !important;
+                margin: 20px 0 !important;
+            }
+            
+            th, td {
+                border: 1px solid #000000 !important;
+                padding: 8px 12px !important;
+                color: #000000 !important;
+                background: none !important;
+            }
+            
+            th {
+                background-color: #f2f2f2 !important;
+                font-weight: bold !important;
+                border-bottom: 2px solid #000000 !important;
+            }
+            
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+            
+            blockquote {
+                border-left: 3px solid #000 !important;
+                background: none !important;
+                margin: 1.5cm !important;
+                padding: 0 0 0 0.5cm !important;
+                font-size: 11pt !important;
+                font-style: italic;
+            }
+            
+            /* Render de fórmulas matemáticas */
+            .MathJax {
+                font-size: 10pt !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="/">
+                    <span style="font-size: 1.5rem;">📘</span>
+                    <span>Tesis Hub</span>
+                </a>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Buscar en el índice...">
+            </div>
+
+            <div class="toc-container">
+                <h3>Contenido</h3>
+                <div class="toc">
+                    {{ toc_html|safe }}
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="doc-header">
+                <h1>{{ title }}</h1>
+                <div class="doc-meta">
+                    <span>✍️ {{ author }}</span>
+                    <span>📅 {{ date }}</span>
+                    <span style="color: var(--accent);">● Borrador V2.1</span>
+                </div>
+            </header>
+
+            <article class="content-body">
+                {{ html_body|safe }}
+            </article>
+        </main>
+    </div>
+
+    <div class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+        // Scroll handle
+        const btt = document.getElementById('backToTop');
+        window.onscroll = () => {
+            if (window.scrollY > 400) btt.classList.add('visible');
+            else btt.classList.remove('visible');
+        };
+        btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Search logic
+        const searchInput = document.getElementById('search');
+        searchInput.onkeyup = (e) => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.toc a').forEach(link => {
+                const text = link.innerText.toLowerCase();
+                link.parentElement.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        };
+    </script>
+</body>
+</html>

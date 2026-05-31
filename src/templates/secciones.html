@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Secciones | Tesis Hub{% endblock %}
+
+{% block styles %}
+    h1{font-size:2rem;margin-bottom:8px}
+    .sub{color:var(--text-dim);margin-bottom:32px}
+    .progress-bar{height:12px;background:#0b1220;border-radius:999px;overflow:hidden;margin-bottom:32px}
+    .progress-fill{height:100%;background:linear-gradient(90deg,#6366f1,#10b981);transition:width .4s}
+    table{width:100%;border-collapse:collapse;font-size:.95rem}
+    th{text-align:left;padding:10px 14px;color:var(--text-dim);border-bottom:1px solid rgba(255,255,255,.08)}
+    td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle}
+    tr:hover td{background:rgba(99,102,241,.06)}
+    .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.8rem;font-weight:600}
+    .done{background:rgba(16,185,129,.15);color:var(--accent)}
+    .pending{background:rgba(245,158,11,.12);color:var(--text-dim)}
+    .missing{background:rgba(239,68,68,.12);color:#f87171}
+    a.view{color:#a5b4fc;text-decoration:none;padding:4px 10px;border:1px solid rgba(99,102,241,.3);border-radius:6px;font-size:.85rem}
+    a.view:hover{background:rgba(99,102,241,.15)}
+{% endblock %}
+
+{% block body %}
+  <h1>Secciones de la Tesis</h1>
+  <p class="sub">{{ done }}/{{ total }} secciones completas</p>
+  <div class="progress-bar">
+    <div class="progress-fill" style="width:{{ (done/total*100)|round|int }}%"></div>
+  </div>
+  <table>
+    <thead><tr><th>#</th><th>Sección</th><th>Archivo</th><th>Estado</th><th>Tamaño</th><th></th></tr></thead>
+    <tbody>
+    {% for s in secciones %}
+    <tr>
+      <td style="color:var(--text-dim);font-size:.85rem">{{ loop.index }}</td>
+      <td><strong>{{ s.label }}</strong></td>
+      <td style="font-family:monospace;font-size:.85rem;color:var(--text-dim)">{{ s.slug }}.md</td>
+      <td>
+        {% if not s.exists %}
+          <span class="badge missing">Falta archivo</span>
+        {% elif s.status == 'done' %}
+          <span class="badge done">✓ Completo</span>
+        {% else %}
+          <span class="badge pending">⏳ Pendiente</span>
+        {% endif %}
+      </td>
+      <td style="color:var(--text-dim);font-size:.85rem">{{ s.size_kb }} KB</td>
+      <td>{% if s.exists %}<a class="view" href="{{ s.url }}">Ver</a>{% endif %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

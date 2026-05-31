@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tesis Hub{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    {% block head %}{% endblock %}
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #64748b;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #10b981;
+            --error: #ef4444;
+            --glass: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container-global {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Navigation Bar Styles */
+        .main-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin-bottom: 30px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #fff;
+        }
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .nav-menu {
+            display: flex;
+            gap: 8px;
+        }
+        .nav-item {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .nav-item.active {
+            color: #fff;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .title-group h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #818cf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .title-group p {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+        }
+
+        .status-badge {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        {% block styles %}{% endblock %}
+    </style>
+</head>
+<body>
+    <div class="container-global">
+        <!-- Main Navbar -->
+        <nav class="main-navbar">
+            <div class="nav-logo">
+                <span class="logo-dot"></span>
+                <span class="logo-text">Tesis Hub</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-item {% if active_page == 'inicio' %}active{% endif %}">🏠 Inicio</a>
+                <a href="/secciones" class="nav-item {% if active_page == 'secciones' %}active{% endif %}">📖 Secciones</a>
+                <a href="/datos" class="nav-item {% if active_page == 'datos' %}active{% endif %}">🗃️ Datos</a>
+                <a href="/propuesta" class="nav-item {% if active_page == 'propuesta' %}active{% endif %}">📊 Propuesta y Prototipo</a>
+                <a href="/admin" class="nav-item {% if active_page == 'admin' %}active{% endif %}">⚙️ Administración</a>
+            </div>
+        </nav>
+
+        {% block body %}{% endblock %}
+
+        <footer>
+            &copy; 2026 Tesis Engineering Hub | Universidad Nacional de San Agustín (UNSA)
+        </footer>
+    </div>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

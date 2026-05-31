@@ -1,0 +1,536 @@
+{% extends "base.html" %}
+
+{% block title %}Tesis Dashboard - Control Panel{% endblock %}
+
+{% block head %}
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            securityLevel: 'loose',
+            themeVariables: {
+                background: 'rgba(30, 41, 59, 0.4)',
+                primaryColor: '#6366f1',
+                primaryTextColor: '#fff',
+                lineColor: '#818cf8',
+                fontFamily: 'Outfit',
+                nodeBorder: '#4f46e5',
+                mainBkg: '#1e293b',
+                ganttSectionBkgColor: 'rgba(255,255,255,0.03)',
+                ganttSectionBkgColor2: 'rgba(255,255,255,0.01)',
+                ganttSectionBorderColor: 'rgba(255,255,255,0.1)',
+                ganttGridLineColor: 'rgba(255,255,255,0.08)',
+                ganttTaskBorderColor: '#6366f1',
+                ganttTaskBkgColor: '#6366f1',
+                ganttTaskTextColor: '#fff',
+                ganttTaskActiveBorderColor: '#10b981',
+                ganttTaskActiveBkgColor: '#10b981',
+                ganttTaskActiveTextColor: '#fff',
+                ganttTaskDoneBorderColor: '#cbd5e1',
+                ganttTaskDoneBkgColor: '#475569',
+                ganttTaskDoneTextColor: '#cbd5e1',
+                ganttTodayLineColor: '#ef4444'
+            }
+        });
+    </script>
+    <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+{% endblock %}
+
+{% block styles %}
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+        }
+
+        .stat-val {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .grid-dashboard {
+            display: grid;
+            grid-template-columns: 7fr 6fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .card-dash {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 28px;
+        }
+
+        .card-dash h2 {
+            font-size: 1.35rem;
+            margin-bottom: 20px;
+            color: #c7d2fe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        /* Table Matrix Style */
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .matrix-table th {
+            text-align: left;
+            padding: 10px 12px;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .matrix-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            vertical-align: middle;
+        }
+
+        .matrix-table tr:hover td {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .badge-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-done { background: rgba(16, 185, 129, 0.15); color: var(--accent); }
+        .badge-pending { background: rgba(245, 158, 11, 0.12); color: var(--text-dim); }
+        .badge-missing { background: rgba(239, 68, 68, 0.12); color: var(--error); }
+
+        .btn-sm {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.15);
+            color: #fff;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.2s;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-sm:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .sidebar-right {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mermaid-container {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 16px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        /* Sliding Preview Panel Drawer */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            right: -620px;
+            width: 600px;
+            height: 100vh;
+            background: #111827;
+            border-left: 1px solid var(--border);
+            box-shadow: -10px 0 35px rgba(0,0,0,0.6);
+            z-index: 2000;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 30px;
+            overflow-y: auto;
+        }
+        .drawer-overlay.active {
+            right: 0;
+        }
+        .drawer-close-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .drawer-close-btn:hover {
+            background: var(--error);
+            border-color: var(--error);
+        }
+        .drawer-content-body {
+            color: #f3f4f6;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .drawer-content-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+        .drawer-content-body th, .drawer-content-body td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+        }
+        .drawer-content-body th {
+            background: rgba(255,255,255,0.03);
+            text-align: left;
+        }
+
+        /* Custom Mermaid styling overrides for premium look */
+        .mermaid-container {
+            position: relative;
+            background: rgba(30, 41, 59, 0.4);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            overflow-x: auto;
+            transition: all 0.3s ease;
+        }
+
+        .mermaid-container.fullscreen {
+            position: fixed !important;
+            top: 20px !important;
+            left: 20px !important;
+            width: calc(100vw - 40px) !important;
+            height: calc(100vh - 40px) !important;
+            z-index: 9999 !important;
+            background: #0f172a !important;
+            border: 2px solid #6366f1 !important;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(99, 102, 241, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mermaid-container.fullscreen .mermaid {
+            width: 90% !important;
+            height: 90% !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-container.fullscreen .mermaid svg {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+        }
+
+        .fullscreen-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .fullscreen-btn:hover {
+            background: #6366f1;
+            border-color: #6366f1;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Flowchart Node Glow & Premium Styles */
+        .node rect, .node circle, .node polygon {
+            stroke-width: 2px !important;
+            transition: all 0.3s;
+        }
+        .node:hover rect, .node:hover circle, .node:hover polygon {
+            filter: drop-shadow(0 0 8px #6366f1) !important;
+        }
+{% endblock %}
+
+{% block body %}
+        <header>
+            <div class="title-group">
+                <h1>Tesis Dashboard</h1>
+                <p>Sistema Inteligente de Supervisión Operativa con IA Explicable, RAG y LLM en Agroexportación</p>
+            </div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Docker Container: Active (Hot-Reload)
+            </div>
+        </header>
+
+        <!-- Metrics Row -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val">{{ progress_pct }}%</div>
+                <div class="stat-label">Progreso Redacción</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val">{{ "{:,}".format(total_words) }}</div>
+                <div class="stat-label">Palabras Escritas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val">{{ total_refs }}</div>
+                <div class="stat-label">Referencias (refs.bib)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val">Fase 2</div>
+                <div class="stat-label">Fase Actual</div>
+            </div>
+        </div>
+
+        <div class="grid-dashboard">
+            <!-- Left: Sections Progress Matrix -->
+            <div class="card-dash">
+                <h2><span>📖</span> Matriz de Avance - Tesis Completa</h2>
+                <div style="max-height: 980px; overflow-y: auto;">
+                    <table class="matrix-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Sección / Capítulo</th>
+                                <th>Estado</th>
+                                <th>Tamaño</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in secciones %}
+                            <tr>
+                                <td style="color:var(--text-dim); font-size:0.8rem;">{{ "%02d"|format(loop.index) }}</td>
+                                <td>
+                                    <strong>{{ s.label }}</strong>
+                                    <div style="font-size:0.75rem; color:var(--text-dim); font-family:monospace;">{{ s.slug }}.md</div>
+                                </td>
+                                <td>
+                                    {% if not s.exists %}
+                                        <span class="badge-status badge-missing">Falta archivo</span>
+                                    {% elif s.status == 'done' %}
+                                        <span class="badge-status badge-done">✓ Completo</span>
+                                    {% else %}
+                                        <span class="badge-status badge-pending">⏳ Pendiente</span>
+                                    {% endif %}
+                                </td>
+                                <td style="color:var(--text-dim); font-family:monospace; font-size:0.8rem;">{{ s.size_kb }} KB</td>
+                                <td style="text-align:right;">
+                                    {% if s.exists %}
+                                        <button onclick="openSectionPreview('{{ s.slug }}')" class="btn-sm">Vista Previa</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Right Sidebar: Gantt & Complete Dataflow -->
+            <div class="sidebar-right">
+                <!-- Gantt container -->
+                <div class="card-dash" style="padding: 20px;">
+                    <h2><span>📅</span> Cronograma (Mayo - Diciembre)</h2>
+                    <div class="mermaid-container" id="cronograma-container">
+                        <button class="fullscreen-btn" onclick="toggleFullscreen('cronograma-container')">🔍 Pantalla Completa</button>
+                        <div class="mermaid">
+                            gantt
+                                title Cronograma de Tesis 2026
+                                dateFormat  YYYY-MM
+                                section Desarrollo
+                                F1 : "Datos (Mayo)"           :active, a1, 2026-05, 30d
+                                F2 : "Backend (Jun-Jul)"      : a2, 2026-06, 60d
+                                F3 : "RAG y SHAP (Agosto)"    : a3, 2026-08, 30d
+                                F4 : "UI y Pipeline (Sept)"   : a4, 2026-09, 30d
+                                section Validación
+                                F5 : "Usabilidad (Oct)"       : a5, 2026-10, 30d
+                                F6 : "Robustez (Nov)"         : a6, 2026-11, 30d
+                                section Cierre
+                                F7 : "Redacción (Nov)"        : a7, after a5, 30d
+                                F8 : "Defensa (Dic)"          : a8, 2026-12, 7d
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Complete 6-stage Dataflow Diagram -->
+                <div class="card-dash" style="padding: 20px;">
+                    <h2><span>⚙️</span> Flujo de Datos del Sistema (Capas 1-6)</h2>
+                    <div class="mermaid-container" id="dataflow-container">
+                        <button class="fullscreen-btn" onclick="toggleFullscreen('dataflow-container')">🔍 Pantalla Completa</button>
+                        <div class="mermaid">
+                            graph TD
+                                classDef step fill:rgba(99,102,241,0.15),stroke:#6366f1,stroke-width:2px,color:#fff;
+                                classDef data fill:rgba(56,189,248,0.1),stroke:#38bdf8,stroke-width:1.5px,color:#38bdf8;
+                                classDef accent fill:rgba(16,185,129,0.15),stroke:#10b981,stroke-width:2px,color:#d1fae5;
+
+                                subgraph S1 [1. Tratamiento de Datos]
+                                    A[Datos Transaccionales]:::data --> B[Limpieza y Normalización]:::step
+                                    B --> C[KNN Imputation / Mediana]:::step
+                                    C --> D[Transformación e Ingeniería Variables]:::step
+                                  end
+                                
+                                subgraph S2 [2. Ensemble Inteligente]
+                                    D --> E1[XGBoost y LightGBM]:::step
+                                    D --> E2[Isolation Forest y LOF]:::step
+                                    E1 --> F[Predicción Consolidada]:::step
+                                    E2 --> F
+                                  end
+                                
+                                subgraph S3 [3. Explicabilidad TreeSHAP]
+                                    F --> G[Cálculo de Aportes SHAP]:::step
+                                    G --> H[Top-5 Variables Relevantes]:::accent
+                                  end
+                                
+                                subgraph S4 [4. Recuperación Semántica RAG]
+                                    H --> I[Consulta Semántica Vectorial]:::step
+                                    J[(Base de Regulaciones)]:::data --> J_doc[Refs. Legales]:::data
+                                    J_doc --> I
+                                    I --> K[Fragmentos de Evidencia]:::step
+                                  end
+                                
+                                subgraph S5 [5. Generación Narrativa LLM]
+                                    K --> L[Entrada Estructurada]:::step
+                                    H --> L
+                                    L --> M[LLM Orquestador Narrativo]:::step
+                                  end
+                                
+                                subgraph S6 [6. Presentación de Informes]
+                                    M --> N[Dashboard Jerárquico]:::step
+                                    N --> O[Reporte Explicable PDF/DOCX]:::accent
+                                  end
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sliding Drawer for Section Previews -->
+        <div id="section-drawer" class="drawer-overlay">
+            <button class="drawer-close-btn" onclick="closeSectionPreview()">✕ Cerrar Vista Previa</button>
+            <div id="drawer-body" class="drawer-content-body">
+                <!-- Loaded dynamically by JavaScript -->
+            </div>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+        <script>
+            function openSectionPreview(slug) {
+                const drawer = document.getElementById('section-drawer');
+                const body = document.getElementById('drawer-body');
+                body.innerHTML = '<div style="text-align:center; padding:50px; color:var(--text-dim);">Cargando sección interactiva...</div>';
+                drawer.classList.add('active');
+                
+                fetch('/api/seccion/' + slug)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.error) {
+                            body.innerHTML = '<div style="color:var(--error); padding:20px;">Error al cargar la sección.</div>';
+                        } else {
+                            body.innerHTML = `
+                                <h1 style="font-size:1.8rem; margin-bottom:15px; color:#fff; border-bottom: 2px solid var(--primary); padding-bottom:10px;">${data.title}</h1>
+                                <div style="font-size:0.95rem; line-height:1.7; color:#e2e8f0;">${data.html}</div>
+                            `;
+                            // Re-trigger MathJax to process LaTeX formulas in the drawer
+                            if (window.MathJax && window.MathJax.typeset) {
+                                window.MathJax.typeset();
+                            }
+                        }
+                    })
+                    .catch(err => {
+                        body.innerHTML = '<div style="color:var(--error); padding:20px;">Error de comunicación con el servidor.</div>';
+                    });
+            }
+
+            function closeSectionPreview() {
+                document.getElementById('section-drawer').classList.remove('active');
+            }
+
+            // Fullscreen toggle function for Mermaid diagrams
+            function toggleFullscreen(containerId) {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.classList.toggle('fullscreen');
+                    const btn = container.querySelector('.fullscreen-btn');
+                    if (btn) {
+                        if (container.classList.contains('fullscreen')) {
+                            btn.innerHTML = '✕ Salir Pantalla Completa';
+                            btn.style.background = 'rgba(239, 68, 68, 0.2)';
+                            btn.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+                        } else {
+                            btn.innerHTML = '🔍 Pantalla Completa';
+                            btn.style.background = 'rgba(99, 102, 241, 0.2)';
+                            btn.style.borderColor = 'rgba(99, 102, 241, 0.4)';
+                        }
+                    }
+                }
+            }
+
+            // Close on ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.mermaid-container.fullscreen').forEach(container => {
+                        container.classList.remove('fullscreen');
+                        const btn = container.querySelector('.fullscreen-btn');
+                        if (btn) {
+                            btn.innerHTML = '🔍 Pantalla Completa';
+                            btn.style.background = 'rgba(99, 102, 241, 0.2)';
+                            btn.style.borderColor = 'rgba(99, 102, 241, 0.4)';
+                        }
+                    });
+                }
+            });
+        </script>
+{% endblock %}
