@@ -956,16 +956,16 @@
 
                 <div style="display:flex; flex-direction:column; gap:24px;">
                     <div class="mermaid-container" id="arch-container">
-                        <button class="fullscreen-btn" onclick="toggleFullscreen('arch-container')">🔍 Pantalla Completa</button>
+                        <a href="/diagrama/arquitectura" target="_blank" class="fullscreen-btn" style="text-decoration:none;">🔍 Pantalla Completa</a>
                         <div class="mermaid">
                             graph TD
-                                classDef layer1 fill:rgba(99,102,241,0.15),stroke:#6366f1,stroke-width:2.5px,color:#e0e7ff;
-                                classDef layer2 fill:rgba(16,185,129,0.15),stroke:#10b981,stroke-width:2.5px,color:#d1fae5;
-                                classDef layer3 fill:rgba(245,158,11,0.15),stroke:#f59e0b,stroke-width:2.5px,color:#fef3c7;
-                                classDef layer4 fill:rgba(239,68,68,0.15),stroke:#ef4444,stroke-width:2.5px,color:#fee2e2;
-                                classDef db fill:rgba(30,41,59,0.5),stroke:#475569,stroke-width:2px,color:#cbd5e1;
+                                classDef layer1 fill:#1d2433,stroke:#6366f1,stroke-width:2px,color:#e0e7ff;
+                                classDef layer2 fill:#112e2b,stroke:#10b981,stroke-width:2.5px,color:#d1fae5;
+                                classDef layer3 fill:#31231a,stroke:#fbbf24,stroke-width:2.5px,color:#fef3c7;
+                                classDef layer4 fill:#2e1515,stroke:#ef4444,stroke-width:2.5px,color:#fee2e2;
+                                classDef db fill:#0f172a,stroke:#38bdf8,stroke-width:1.5px,color:#cbd5e1;
                                 
-                                D1[(Dataset Sintético v1.0)] --> L1[Capa 1: XGBoost & LightGBM]:::layer1
+                                D1[(Dataset Sintético v1.0)] --> L1[Capa 1: XGBoost y LightGBM]:::layer1
                                 D2[(SENASA / MIDAGRI / SUNAT)] --> L1
                                 L1 --> L1_out[Predicciones Normalidad]:::layer1
                                 L1_out --> L2[Capa 2: Ensemble IF+LOF+ECOD]:::layer2
@@ -1004,22 +1004,22 @@
 
                 <!-- Gantt Chart View -->
                 <div class="mermaid-container" id="cronograma-container" style="margin-bottom: 30px;">
-                    <button class="fullscreen-btn" onclick="toggleFullscreen('cronograma-container')">🔍 Pantalla Completa</button>
+                    <a href="/diagrama/cronograma" target="_blank" class="fullscreen-btn" style="text-decoration:none;">🔍 Pantalla Completa</a>
                     <div class="mermaid">
                         gantt
                             title Cronograma de Desarrollo e Implementación 2026
-                            dateFormat  YYYY-MM
+                            dateFormat  YYYY-MM-DD
                             section Software y Datos
-                            F1 : "Datos y Prep (Mayo)"           :active, a1, 2026-05, 30d
-                            F2 : "Modelos Predictivos (Jun-Jul)"  : a2, 2026-06, 60d
-                            F3 : "TreeSHAP y RAG (Agosto)"       : a3, 2026-08, 30d
-                            F4 : "UI y Pipeline (Septiembre)"    : a4, 2026-09, 30d
+                            "Datos y Prep (Mayo)"           :active, a1, 2026-05-01, 30d
+                            "Modelos Predictivos (Jun-Jul)"  : a2, 2026-06-01, 60d
+                            "TreeSHAP y RAG (Agosto)"       : a3, 2026-08-01, 30d
+                            "UI y Pipeline (Septiembre)"    : a4, 2026-09-01, 30d
                             section Experimentos
-                            F5 : "Usabilidad - 10 Testers (Oct)" : a5, 2026-10, 30d
-                            F6 : "Robustez y Refinamientos (Nov)": a6, 2026-11, 30d
+                            "Usabilidad - 10 Testers (Oct)" : a5, 2026-10-01, 30d
+                            "Robustez y Refinamientos (Nov)": a6, 2026-11-01, 30d
                             section Tesis
-                            F7 : "Redacción Cap. IV-V (Nov)"      : a7, after a5, 30d
-                            F8 : "Compilación y Defensa (Dic)"   : a8, 2026-12, 7d
+                            "Redacción Cap. IV-V (Nov)"      : a7, after a5, 30d
+                            "Compilación y Defensa (Dic)"   : a8, 2026-12-01, 7d
                     </div>
                 </div>
 

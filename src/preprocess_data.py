@@ -96,7 +96,7 @@ def split_and_encode(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, list
     
     # Identificar columnas codificadas para el entrenamiento
     all_cols = list(df_encoded.columns)
-    exclude_cols = ["id", "fecha", "tipo_anomalia", "regla_inyeccion", "etiqueta_anomalia"]
+    exclude_cols = ["id", "fecha", "tipo_anomalia", "regla_inyeccion", "etiqueta_anomalia", "empresa_exportadora", "partida_arancelaria"]
     feature_cols = [c for c in all_cols if c not in exclude_cols]
     
     # Particionado temporal estricto (Train: 2022-2024, Test: 2025)

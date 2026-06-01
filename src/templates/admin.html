@@ -1,200 +1,327 @@
+{% extends "base.html" %}
 
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Tesis Hub</title>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-        <style>
-            :root { --bg:#0f172a; --card:#1e293b; --muted:#94a3b8; --text:#f8fafc; --primary:#6366f1; --ok:#10b981; }
-            * { box-sizing:border-box; margin:0; padding:0; }
-            body { font-family:'Outfit',sans-serif; background:linear-gradient(135deg,#0f172a 0%,#111827 100%); color:var(--text); padding:32px 20px; }
-            .wrap { max-width:1400px; margin:0 auto; }
+{% block title %}Panel de Administración | Tesis Hub{% endblock %}
 
-            /* Navigation Bar Styles */
-            .main-navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background: rgba(30, 41, 59, 0.7);
-                backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 16px;
-                padding: 12px 24px;
-                margin-bottom: 30px;
-            }
-            .nav-logo {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                font-weight: 700;
-                font-size: 1.15rem;
-                color: #fff;
-            }
-            .logo-dot {
-                width: 8px;
-                height: 8px;
-                background: var(--ok);
-                border-radius: 50%;
-                box-shadow: 0 0 10px var(--ok);
-                animation: pulse-dot 2s infinite;
-            }
-            @keyframes pulse-dot {
-                0% { transform: scale(1); opacity: 1; }
-                50% { transform: scale(1.2); opacity: 0.7; }
-                100% { transform: scale(1); opacity: 1; }
-            }
-            .nav-menu {
-                display: flex;
-                gap: 8px;
-            }
-            .nav-item {
-                color: var(--muted);
-                text-decoration: none;
-                padding: 8px 16px;
-                border-radius: 10px;
-                font-size: 0.9rem;
-                font-weight: 600;
-                transition: all 0.2s ease;
-            }
-            .nav-item:hover {
-                color: #fff;
-                background: rgba(255, 255, 255, 0.04);
-            }
-            .nav-item.active {
-                color: #fff;
-                background: rgba(99, 102, 241, 0.15);
-                border: 1px solid rgba(99, 102, 241, 0.25);
-            }
-        </style>
-    </head>
-    <body>
-        <div class="wrap">
-            <!-- Main Navbar -->
-            <nav class="main-navbar">
-                <div class="nav-logo">
-                    <span class="logo-dot"></span>
-                    <span class="logo-text">Tesis Hub</span>
-                </div>
-                <div class="nav-menu">
-                    <a href="/" class="nav-item">🏠 Inicio</a>
-                    <a href="/secciones" class="nav-item">📖 Secciones</a>
-                    <a href="/datos" class="nav-item">🗃️ Datos</a>
-                    <a href="/propuesta" class="nav-item">📊 Propuesta y Prototipo</a>
-                    <a href="/admin" class="nav-item active">⚙️ Administración</a>
-                </div>
-            </nav>
+{% block styles %}
+    .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .hero h1 {
+        font-size: 2rem;
+        color: #c7d2fe;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+    .hero p {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+    }
+    .badge {
+        background: rgba(99, 102, 241, 0.15);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    .grid {
+        display: grid;
+        gap: 20px;
+    }
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+        margin-bottom: 30px;
+    }
+    .panels {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: start;
+    }
+    .card {
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px;
+    }
+    .card h2 {
+        font-size: 1.25rem;
+        color: #c7d2fe;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 8px;
+    }
+    .metric {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+    .metric strong {
+        font-size: 1.8rem;
+        color: var(--primary-light);
+        font-family: 'JetBrains Mono', monospace;
+    }
+    .muted {
+        color: var(--text-dim);
+        font-size: 0.85rem;
+    }
+    .progress {
+        background: rgba(255, 255, 255, 0.05);
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 10px;
+        border: 1px solid var(--border);
+    }
+    .bar {
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        height: 100%;
+        border-radius: 10px;
+    }
+    .section {
+        margin-top: 24px;
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+    }
+    .list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-size: 0.9rem;
+    }
+    .item a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+    .item a:hover {
+        color: var(--primary-light);
+    }
+    .pill {
+        background: rgba(99, 102, 241, 0.15);
+        color: var(--primary-light);
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    .review {
+        padding: 12px 16px;
+    }
+    .review h3 {
+        font-size: 0.95rem;
+        color: #fff;
+        margin-bottom: 2px;
+    }
+    .count {
+        background: rgba(239, 68, 68, 0.15);
+        color: var(--error);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.85rem;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+    th {
+        text-align: left;
+        padding: 8px 10px;
+        color: var(--text-dim);
+        border-bottom: 2px solid var(--border);
+        font-weight: 600;
+    }
+    td {
+        padding: 8px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    summary {
+        cursor: pointer;
+        color: var(--primary-light);
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        user-select: none;
+    }
+    pre {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: #cbd5e1;
+        overflow-x: auto;
+    }
+    .footer-admin {
+        text-align: center;
+        color: var(--text-dim);
+        font-size: 0.8rem;
+        margin-top: 40px;
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+    }
 
-            <div class="hero">
+    @media (max-width: 1024px) {
+        .stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .panels {
+            grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: 640px) {
+        .stats {
+            grid-template-columns: 1fr;
+        }
+        .hero {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+    }
+{% endblock %}
+
+{% block body %}
+    <div class="hero">
+        <div>
+            <h1>Admin Tesis Hub</h1>
+            <p>Panel centralizado de avances, estructura, fuentes de datos y revisiones pendientes para la tesis agroexportadora.</p>
+        </div>
+        <div class="badge">Actualizado {{ generated_at }}</div>
+    </div>
+
+    <div class="grid stats">
+        {% for card in plan_cards %}
+        <div class="card">
+            <div class="metric">
                 <div>
-                    <h1>Admin Tesis Hub</h1>
-                    <p>Panel centralizado de avances, estructura, fuentes de datos y revisiones pendientes para la tesis agroexportadora.</p>
-                </div>
-                <div class="badge">Actualizado {{ generated_at }}</div>
-            </div>
-
-            <div class="grid stats">
-                {% for card in plan_cards %}
-                <div class="card">
-                    <div class="metric">
-                        <div>
-                            <div class="muted">{{ card.title }}</div>
-                            <strong>{{ card.value }}</strong>
-                        </div>
-                    </div>
-                    <div class="muted">{{ card.note }}</div>
-                </div>
-                {% endfor %}
-            </div>
-
-            <div class="grid panels">
-                <div class="card">
-                    <h2>Avance del plan detallado</h2>
-                    <div class="metric">
-                        <span class="muted">Progreso general</span>
-                        <strong>{{ plan_progress }}%</strong>
-                    </div>
-                    <div class="progress"><div class="bar" style="width: {{ plan_progress }}%"></div></div>
-                    <div class="muted">{{ plan_done }} completados de {{ plan_total }} checks</div>
-                    <div class="section">
-                        <h3 style="font-size:1rem; margin-bottom:10px;">Pendientes detectados</h3>
-                        <ul class="list">
-                            {% for item in plan_pending_preview %}
-                            <li class="item">{{ item }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>Revisiones pendientes por tipo</h2>
-                    <ul class="list">
-                        {% for review in review_types %}
-                        <li class="item review">
-                            <div>
-                                <h3>{{ review.label }}</h3>
-                                <div class="muted">{{ review.description }}</div>
-                            </div>
-                            <div class="count">{{ review.count }}</div>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>Estructura y archivos activos</h2>
-                    <div class="section">
-                        <h3 style="font-size:1rem; margin-bottom:10px;">Markdown en /docs</h3>
-                        <ul class="list">
-                            {% for doc in docs %}
-                            <li class="item">
-                                <a href="{{ doc.path }}">{{ doc.name }}</a>
-                                <span class="pill">{{ doc.kind }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="section">
-                        <h3 style="font-size:1rem; margin-bottom:10px;">Artefactos en /entregable</h3>
-                        <ul class="list">
-                            {% for file in deliverables %}
-                            <li class="item">
-                                <span>{{ file.name }}</span>
-                                <span class="pill">{{ file.kind }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>Fuentes y datasets</h2>
-                    <table>
-                        <thead>
-                            <tr><th>Dataset / fuente</th><th>Uso</th><th>Estado</th></tr>
-                        </thead>
-                        <tbody>
-                            {% for row in dataset_rows %}
-                            <tr>
-                                <td>{{ row.candidate }}</td>
-                                <td>{{ row.purpose }}</td>
-                                <td>{{ row.decision }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <details>
-                        <summary>Ver mapa completo de fuentes</summary>
-                        <pre>{{ sources_text }}</pre>
-                    </details>
+                    <div class="muted" style="margin-bottom: 4px;">{{ card.title }}</div>
+                    <strong>{{ card.value }}</strong>
                 </div>
             </div>
+            <div class="muted">{{ card.note }}</div>
+        </div>
+        {% endfor %}
+    </div>
 
-            <div class="footer">
-                docs: {{ doc_count }} · entregable: {{ deliverable_count }} · reviews: {{ review_types|length }}
+    <div class="grid panels">
+        <div class="card">
+            <h2>Avance del plan detallado</h2>
+            <div class="metric">
+                <span class="muted">Progreso general</span>
+                <strong>{{ plan_progress }}%</strong>
+            </div>
+            <div class="progress"><div class="bar" style="width: {{ plan_progress }}%"></div></div>
+            <div class="muted">{{ plan_done }} completados de {{ plan_total }} checks</div>
+            <div class="section">
+                <h3 style="font-size:1.05rem; margin-bottom:12px; color: #c7d2fe;">Pendientes detectados</h3>
+                <ul class="list">
+                    {% for item in plan_pending_preview %}
+                    <li class="item" style="color: #e2e8f0;">{{ item }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-    </body>
-    </html>
-    
+
+        <div class="card">
+            <h2>Revisiones pendientes por tipo</h2>
+            <ul class="list">
+                {% for review in review_types %}
+                <li class="item review">
+                    <div>
+                        <h3>{{ review.label }}</h3>
+                        <div class="muted">{{ review.description }}</div>
+                    </div>
+                    <div class="count">{{ review.count }}</div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Estructura y archivos activos</h2>
+            <div class="section" style="margin-top: 0; padding-top: 0; border-top: none;">
+                <h3 style="font-size:1.05rem; margin-bottom:12px; color: #c7d2fe;">Markdown en /docs</h3>
+                <ul class="list">
+                    {% for doc in docs %}
+                    <li class="item">
+                        <a href="{{ doc.path }}">{{ doc.name }}</a>
+                        <span class="pill">{{ doc.kind }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="section">
+                <h3 style="font-size:1.05rem; margin-bottom:12px; color: #c7d2fe;">Artefactos en /entregable</h3>
+                <ul class="list">
+                    {% for file in deliverables %}
+                    <li class="item">
+                        <span style="color: #e2e8f0; font-weight: 600;">{{ file.name }}</span>
+                        <span class="pill" style="background: rgba(16, 185, 129, 0.15); color: var(--accent);">{{ file.kind }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Fuentes y datasets</h2>
+            <table>
+                <thead>
+                    <tr><th>Dataset / fuente</th><th>Uso</th><th>Estado</th></tr>
+                </thead>
+                <tbody>
+                    {% for row in dataset_rows %}
+                    <tr>
+                        <td style="color: #e2e8f0; font-weight: 600;">{{ row.candidate }}</td>
+                        <td style="color: var(--text-dim);">{{ row.purpose }}</td>
+                        <td>
+                            <span class="pill" style="
+                                {% if 'Aceptado' in row.decision or 'Aprobado' in row.decision %}
+                                    background: rgba(16, 185, 129, 0.15); color: var(--accent);
+                                {% elif 'Descartado' in row.decision %}
+                                    background: rgba(239, 68, 68, 0.15); color: var(--error);
+                                {% else %}
+                                    background: rgba(245, 158, 11, 0.15); color: #f59e0b;
+                                {% endif %}
+                            ">{{ row.decision }}</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <details style="margin-top: 15px;">
+                <summary>Ver mapa completo de fuentes</summary>
+                <pre>{{ sources_text }}</pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="footer-admin">
+        docs: {{ doc_count }} · entregable: {{ deliverable_count }} · reviews: {{ review_types|length }}
+    </div>
+{% endblock %}

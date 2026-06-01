@@ -10,27 +10,29 @@
             theme: 'base',
             securityLevel: 'loose',
             themeVariables: {
-                background: 'rgba(30, 41, 59, 0.4)',
+                background: '#0f172a',
                 primaryColor: '#6366f1',
                 primaryTextColor: '#fff',
-                lineColor: '#818cf8',
+                lineColor: '#cbd5e1',
                 fontFamily: 'Outfit',
                 nodeBorder: '#4f46e5',
-                mainBkg: '#1e293b',
-                ganttSectionBkgColor: 'rgba(255,255,255,0.03)',
-                ganttSectionBkgColor2: 'rgba(255,255,255,0.01)',
-                ganttSectionBorderColor: 'rgba(255,255,255,0.1)',
-                ganttGridLineColor: 'rgba(255,255,255,0.08)',
+                mainBkg: '#0f172a',
+                ganttSectionBkgColor: '#1e293b',
+                ganttSectionBkgColor2: '#0f172a',
+                ganttSectionBorderColor: '#475569',
+                ganttGridLineColor: 'rgba(255, 255, 255, 0.05)',
                 ganttTaskBorderColor: '#6366f1',
-                ganttTaskBkgColor: '#6366f1',
+                ganttTaskBkgColor: '#4f46e5',
                 ganttTaskTextColor: '#fff',
                 ganttTaskActiveBorderColor: '#10b981',
-                ganttTaskActiveBkgColor: '#10b981',
+                ganttTaskActiveBkgColor: '#059669',
                 ganttTaskActiveTextColor: '#fff',
-                ganttTaskDoneBorderColor: '#cbd5e1',
-                ganttTaskDoneBkgColor: '#475569',
+                ganttTaskDoneBorderColor: '#94a3b8',
+                ganttTaskDoneBkgColor: '#334155',
                 ganttTaskDoneTextColor: '#cbd5e1',
-                ganttTodayLineColor: '#ef4444'
+                ganttTodayLineColor: '#ef4444',
+                ganttSectionTextColor: '#f8fafc',
+                ganttSectionTextColor2: '#f8fafc'
             }
         });
     </script>
@@ -299,6 +301,107 @@
         .node:hover rect, .node:hover circle, .node:hover polygon {
             filter: drop-shadow(0 0 8px #6366f1) !important;
         }
+
+        /* Direct CSS Overrides for Mermaid Gantt Chart */
+        .mermaid svg {
+            background: transparent !important;
+        }
+        .mermaid svg text {
+            font-family: 'Outfit', sans-serif !important;
+            fill: #f8fafc !important;
+        }
+        .mermaid svg text.sectionTitle,
+        .mermaid svg text.sectionText,
+        .mermaid svg .sectionText {
+            fill: #e2e8f0 !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+        }
+        .mermaid svg .grid .tick line,
+        .mermaid svg .grid line {
+            stroke: rgba(255, 255, 255, 0.1) !important;
+            stroke-width: 1px !important;
+        }
+        .mermaid svg .grid path {
+            stroke: rgba(255, 255, 255, 0.15) !important;
+        }
+        /* Alternating section backgrounds - Unique color per phase for clear differentiation */
+        .mermaid svg rect.section0 {
+            fill: #1a1e36 !important; /* F1: Datos - Deep Navy/Indigo */
+            fill-opacity: 0.9 !important;
+        }
+        .mermaid svg rect.section1 {
+            fill: #0d2b3a !important; /* F2: Modelado - Ocean Blue */
+            fill-opacity: 0.9 !important;
+        }
+        .mermaid svg rect.section2 {
+            fill: #221235 !important; /* F3: RAG e IA - Royal Purple */
+            fill-opacity: 0.9 !important;
+        }
+        .mermaid svg rect.section3 {
+            fill: #2f1323 !important; /* F4: Software - Dark Magenta/Burgundy */
+            fill-opacity: 0.9 !important;
+        }
+        .mermaid svg rect.section4 {
+            fill: #0c2720 !important; /* F5: Usabilidad - Forest Green */
+            fill-opacity: 0.9 !important;
+        }
+        .mermaid svg rect.section5 {
+            fill: #1c2635 !important; /* F6: Redacción - Slate Gray */
+            fill-opacity: 0.9 !important;
+        }
+        .mermaid svg rect.section6 {
+            fill: #2c1a12 !important; /* F7: Cierre - Espresso Brown */
+            fill-opacity: 0.9 !important;
+        }
+        .mermaid svg rect.section,
+        .mermaid svg rect.section0,
+        .mermaid svg rect.section1,
+        .mermaid svg rect.section2,
+        .mermaid svg rect.section3,
+        .mermaid svg rect.section4,
+        .mermaid svg rect.section5,
+        .mermaid svg rect.section6 {
+            stroke: rgba(255, 255, 255, 0.15) !important;
+            stroke-width: 1.5px !important;
+        }
+        .mermaid svg rect.task {
+            fill: #4f46e5 !important;
+            stroke: #6366f1 !important;
+            stroke-width: 1.5px !important;
+            rx: 6px !important;
+            ry: 6px !important;
+        }
+        .mermaid svg rect.active {
+            fill: #059669 !important;
+            stroke: #10b981 !important;
+            stroke-width: 1.5px !important;
+            rx: 6px !important;
+            ry: 6px !important;
+        }
+        .mermaid svg rect.done {
+            fill: #334155 !important;
+            stroke: #475569 !important;
+            stroke-width: 1.5px !important;
+            rx: 6px !important;
+            ry: 6px !important;
+        }
+        .mermaid svg text.taskText,
+        .mermaid svg .taskText {
+            fill: #ffffff !important;
+            font-weight: 600 !important;
+            font-size: 12px !important;
+        }
+        .mermaid svg text.taskTextOutside,
+        .mermaid svg .taskTextOutside {
+            fill: #cbd5e1 !important;
+            font-weight: 600 !important;
+            font-size: 12px !important;
+        }
+        .mermaid svg .titleText {
+            fill: #c7d2fe !important;
+            font-weight: 700 !important;
+        }
 {% endblock %}
 
 {% block body %}
@@ -384,22 +487,46 @@
                 <div class="card-dash" style="padding: 20px;">
                     <h2><span>📅</span> Cronograma (Mayo - Diciembre)</h2>
                     <div class="mermaid-container" id="cronograma-container">
-                        <button class="fullscreen-btn" onclick="toggleFullscreen('cronograma-container')">🔍 Pantalla Completa</button>
+                        <a href="/diagrama/cronograma" target="_blank" class="fullscreen-btn" style="text-decoration:none;">🔍 Pantalla Completa</a>
                         <div class="mermaid">
                             gantt
-                                title Cronograma de Tesis 2026
-                                dateFormat  YYYY-MM
-                                section Desarrollo
-                                F1 : "Datos (Mayo)"           :active, a1, 2026-05, 30d
-                                F2 : "Backend (Jun-Jul)"      : a2, 2026-06, 60d
-                                F3 : "RAG y SHAP (Agosto)"    : a3, 2026-08, 30d
-                                F4 : "UI y Pipeline (Sept)"   : a4, 2026-09, 30d
-                                section Validación
-                                F5 : "Usabilidad (Oct)"       : a5, 2026-10, 30d
-                                F6 : "Robustez (Nov)"         : a6, 2026-11, 30d
-                                section Cierre
-                                F7 : "Redacción (Nov)"        : a7, after a5, 30d
-                                F8 : "Defensa (Dic)"          : a8, 2026-12, 7d
+                                title Cronograma de Desarrollo, Redacción e Implementación 2026
+                                dateFormat  YYYY-MM-DD
+                                axisFormat  %m-%d
+                                
+                                section F1: Datos (Preprocesamiento - RobustScaler, KNNImputer, SMOTE)
+                                "Marco Teórico y Estado del Arte (APA 7)" :active, f1_1, 2026-05-01, 15d
+                                "Adquisición y Limpieza de Datasets (2000 Reg.)" : f1_2, 2026-05-10, 15d
+                                "Ingeniería de Variables (RobustScaler y SMOTE)" : f1_3, 2026-05-20, 11d
+                                
+                                section F2: Modelado IA (XGBoost, LightGBM, Ensemble PyOD, TreeSHAP)
+                                "Algoritmos XGBoost y LightGBM (Optuna)" : f2_1, 2026-06-01, 25d
+                                "Detección de Anomalías (IForest + LOF + ECOD)" : f2_2, 2026-06-20, 25d
+                                "Explicabilidad Local (TreeSHAP)" : f2_3, 2026-07-10, 21d
+                                
+                                section F3: RAG e IA (ChromaDB, LangChain, LLM Trazable)
+                                "Indexación de Base Regulatoria (SBS/SENASA/FDA)" : f3_1, 2026-08-01, 15d
+                                "Orquestación RAG y Prompt Engineering" : f3_2, 2026-08-10, 15d
+                                "Validación de Trazabilidad y Fidelidad LLM" : f3_3, 2026-08-20, 11d
+                                
+                                section F4: Software (Backend Flask, Frontend Dashboard, Docker)
+                                "Backend Flask (APIs REST)" : f4_1, 2026-09-01, 15d
+                                "UI Dashboard Supervisor (Métricas y Alertas)" : f4_2, 2026-09-10, 15d
+                                "Pruebas e Integración Docker-Compose" : f4_3, 2026-09-20, 10d
+                                
+                                section F5: Usabilidad (Piloto SUS/UMUX, N = 10 Testers)
+                                "Diseño del Piloto Experimental (SUS)" : f5_1, 2026-10-01, 10d
+                                "Pruebas de Usabilidad (10 Testers Especializados)" : f5_2, 2026-10-08, 17d
+                                "Análisis Estadístico de Resultados (SUS > 80)" : f5_3, 2026-10-20, 11d
+                                
+                                section F6: Redacción (Discusión, Latencia, Ablación E1-E5)
+                                "Evaluación de Latencia y Rendimiento Computacional" : f6_1, 2026-11-01, 14d
+                                "Redacción Cap. IV-V (Discusión de Resultados)" : f6_2, 2026-11-15, 15d
+                                "Compilación Referencias y Anexos (Model Cards)" : f6_3, 2026-11-20, 10d
+                                
+                                section F7: Cierre (Revisión de Asesores y Sustentación Final)
+                                "Revisión y Aprobación de Borrador por el Jurado" : f7_1, 2026-12-01, 7d
+                                "Sustentación y Defensa de Tesis" : f7_2, 2026-12-08, 7d
                         </div>
                     </div>
                 </div>
@@ -408,12 +535,12 @@
                 <div class="card-dash" style="padding: 20px;">
                     <h2><span>⚙️</span> Flujo de Datos del Sistema (Capas 1-6)</h2>
                     <div class="mermaid-container" id="dataflow-container">
-                        <button class="fullscreen-btn" onclick="toggleFullscreen('dataflow-container')">🔍 Pantalla Completa</button>
+                        <a href="/diagrama/dataflow" target="_blank" class="fullscreen-btn" style="text-decoration:none;">🔍 Pantalla Completa</a>
                         <div class="mermaid">
                             graph TD
-                                classDef step fill:rgba(99,102,241,0.15),stroke:#6366f1,stroke-width:2px,color:#fff;
-                                classDef data fill:rgba(56,189,248,0.1),stroke:#38bdf8,stroke-width:1.5px,color:#38bdf8;
-                                classDef accent fill:rgba(16,185,129,0.15),stroke:#10b981,stroke-width:2px,color:#d1fae5;
+                                classDef step fill:#1d2433,stroke:#6366f1,stroke-width:2px,color:#fff;
+                                classDef data fill:#0f172a,stroke:#38bdf8,stroke-width:1.5px,color:#38bdf8;
+                                classDef accent fill:#112e2b,stroke:#10b981,stroke-width:2px,color:#d1fae5;
 
                                 subgraph S1 [1. Tratamiento de Datos]
                                     A[Datos Transaccionales]:::data --> B[Limpieza y Normalización]:::step
