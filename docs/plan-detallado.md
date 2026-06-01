@@ -101,7 +101,7 @@ gantt
 
 #### Componentes de implementación de software (Estructura de librerías y scripts)
 - [x] Dataset sintético `data/dataset_agro_sintetico_v1.csv` (2000 registros operativos)
-- [x] Script de preprocesamiento de datos `src/preprocess_data.py` con RobustScaler, KNNImputer y SMOTE
+- [x] Script de preprocesamiento de datos `limpieza_de_datos_y_normalizacion/preprocess_data.py` con RobustScaler, KNNImputer y SMOTE
 - [ ] `src/module1_prediction.py` — GBDT con XGBoost, LightGBM y optimización Optuna (50 trials)
 - [ ] `src/module2_anomaly.py` — Ensemble PyOD (Isolation Forest + LOF + ECOD)
 - [ ] `src/module3_shap.py` — TreeSHAP para explicabilidad local
