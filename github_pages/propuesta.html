@@ -3,19 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta y Prototipo</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="./planeamiento.html">Planificación</a></li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                
+            </div>
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma de Validación de Usabilidad e IA Explicable | Tesis Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script>
         mermaid.initialize({
             startOnLoad: true,
-            theme: 'dark',
+            theme: 'base',
             securityLevel: 'loose',
             themeVariables: {
-                background: '#1e293b',
+                background: 'rgba(30, 41, 59, 0.4)',
                 primaryColor: '#6366f1',
                 primaryTextColor: '#fff',
-                lineColor: '#cbd5e1'
+                lineColor: '#818cf8',
+                fontFamily: 'Outfit',
+                nodeBorder: '#4f46e5',
+                mainBkg: '#1e293b',
+                ganttSectionBkgColor: 'rgba(255,255,255,0.03)',
+                ganttSectionBkgColor2: 'rgba(255,255,255,0.01)',
+                ganttSectionBorderColor: 'rgba(255,255,255,0.1)',
+                ganttGridLineColor: 'rgba(255,255,255,0.08)',
+                ganttTaskBorderColor: '#6366f1',
+                ganttTaskBkgColor: '#6366f1',
+                ganttTaskTextColor: '#fff',
+                ganttTaskActiveBorderColor: '#10b981',
+                ganttTaskActiveBkgColor: '#10b981',
+                ganttTaskActiveTextColor: '#fff',
+                ganttTaskDoneBorderColor: '#cbd5e1',
+                ganttTaskDoneBkgColor: '#475569',
+                ganttTaskDoneTextColor: '#cbd5e1',
+                ganttTodayLineColor: '#ef4444'
             }
         });
     </script>
@@ -798,20 +853,99 @@
             50% { opacity: 0.3; }
             100% { opacity: 1; }
         }
+
+        /* Custom Mermaid styling overrides for premium look */
+        .mermaid-container {
+            position: relative;
+            background: rgba(30, 41, 59, 0.4);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            overflow-x: auto;
+            transition: all 0.3s ease;
+        }
+
+        .mermaid-container.fullscreen {
+            position: fixed !important;
+            top: 20px !important;
+            left: 20px !important;
+            width: calc(100vw - 40px) !important;
+            height: calc(100vh - 40px) !important;
+            z-index: 9999 !important;
+            background: #0f172a !important;
+            border: 2px solid #6366f1 !important;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(99, 102, 241, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mermaid-container.fullscreen .mermaid {
+            width: 90% !important;
+            height: 90% !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-container.fullscreen .mermaid svg {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+        }
+
+        .fullscreen-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .fullscreen-btn:hover {
+            background: #6366f1;
+            border-color: #6366f1;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Flowchart Node Glow & Premium Styles */
+        .node rect, .node circle, .node polygon {
+            stroke-width: 2px !important;
+            transition: all 0.3s;
+        }
+        .node:hover rect, .node:hover circle, .node:hover polygon {
+            filter: drop-shadow(0 0 8px #6366f1) !important;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Main Navbar -->
-                <nav class="main-navbar">
+        <nav class="main-navbar">
             <div class="nav-logo">
                 <span class="logo-dot"></span>
                 <span class="logo-text">Tesis Hub</span>
             </div>
             <div class="nav-menu">
-                <a href="./index.html" class="nav-item">📖 Tesis Completa</a>
-                <a href="./propuesta.html" class="nav-item active">📊 Propuesta y Prototipo</a>
-                <a href="./referencias/index.html" class="nav-item">📚 Referencias</a>
+                <a href="/" class="nav-item">🏠 Inicio</a>
+                <a href="/secciones" class="nav-item">📖 Secciones</a>
+                <a href="/datos" class="nav-item">🗃️ Datos</a>
+                <a href="/propuesta" class="nav-item active">📊 Propuesta y Prototipo</a>
+                <a href="/admin" class="nav-item">⚙️ Administración</a>
             </div>
         </nav>
 
@@ -860,16 +994,17 @@
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:24px;">
-                    <div class="mermaid-container">
+                    <div class="mermaid-container" id="arch-container">
+                        <a href="/diagrama/arquitectura" target="_blank" class="fullscreen-btn" style="text-decoration:none;">🔍 Pantalla Completa</a>
                         <div class="mermaid">
                             graph TD
-                                classDef layer1 fill:#312e81,stroke:#6366f1,stroke-width:2px,color:#dbeafe;
-                                classDef layer2 fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#d1fae5;
-                                classDef layer3 fill:#78350f,stroke:#fbbf24,stroke-width:2px,color:#fef3c7;
-                                classDef layer4 fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fee2e2;
-                                classDef db fill:#334155,stroke:#475569,stroke-width:2px,color:#f8fafc;
+                                classDef layer1 fill:#1d2433,stroke:#6366f1,stroke-width:2px,color:#e0e7ff;
+                                classDef layer2 fill:#112e2b,stroke:#10b981,stroke-width:2.5px,color:#d1fae5;
+                                classDef layer3 fill:#31231a,stroke:#fbbf24,stroke-width:2.5px,color:#fef3c7;
+                                classDef layer4 fill:#2e1515,stroke:#ef4444,stroke-width:2.5px,color:#fee2e2;
+                                classDef db fill:#0f172a,stroke:#38bdf8,stroke-width:1.5px,color:#cbd5e1;
                                 
-                                D1[(Dataset Sintético v1.0)] --> L1[Capa 1: XGBoost & LightGBM]:::layer1
+                                D1[(Dataset Sintético v1.0)] --> L1[Capa 1: XGBoost y LightGBM]:::layer1
                                 D2[(SENASA / MIDAGRI / SUNAT)] --> L1
                                 L1 --> L1_out[Predicciones Normalidad]:::layer1
                                 L1_out --> L2[Capa 2: Ensemble IF+LOF+ECOD]:::layer2
@@ -901,70 +1036,145 @@
         <!-- Tab 2: Development Plan -->
         <div id="tab-plan" class="tab-content">
             <div class="card">
-                <h2>Plan de Desarrollo de Vistas y Módulos</h2>
-                
+                <h2>Cronograma y Plan de Desarrollo de Tesis (Mayo - Diciembre 2026)</h2>
+                <p style="font-size: 0.95rem; color: var(--text-dim); margin-bottom: 20px; line-height: 1.6;">
+                    Plan de trabajo reestructurado para la tesis de Yoset Cozco Mauri. Detalla las 8 fases fundamentales abarcando la ingeniería de datos, el modelado backend con explicabilidad local, la interfaz del supervisor, el estudio piloto de usabilidad con 10 testers especializados, y el cierre académico de redacción.
+                </p>
+
+                <!-- Gantt Chart View -->
+                <div class="mermaid-container" id="cronograma-container" style="margin-bottom: 30px;">
+                    <a href="/diagrama/cronograma" target="_blank" class="fullscreen-btn" style="text-decoration:none;">🔍 Pantalla Completa</a>
+                    <div class="mermaid">
+                        gantt
+                            title Cronograma de Desarrollo e Implementación 2026
+                            dateFormat  YYYY-MM-DD
+                            section Software y Datos
+                            "Datos y Prep (Mayo)"           :active, a1, 2026-05-01, 30d
+                            "Modelos Predictivos (Jun-Jul)"  : a2, 2026-06-01, 60d
+                            "TreeSHAP y RAG (Agosto)"       : a3, 2026-08-01, 30d
+                            "UI y Pipeline (Septiembre)"    : a4, 2026-09-01, 30d
+                            section Experimentos
+                            "Usabilidad - 10 Testers (Oct)" : a5, 2026-10-01, 30d
+                            "Robustez y Refinamientos (Nov)": a6, 2026-11-01, 30d
+                            section Tesis
+                            "Redacción Cap. IV-V (Nov)"      : a7, after a5, 30d
+                            "Compilación y Defensa (Dic)"   : a8, 2026-12-01, 7d
+                    </div>
+                </div>
+
                 <div class="plan-phase">
                     <div class="phase-header" onclick="toggleAccordion('phase1')">
-                        <span class="phase-title"><span>📂</span> Fase 1: Configuración del Pipeline de Datos y Modelos (Semanas 1-2)</span>
-                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                        <span class="phase-title"><span>📂</span> Fase 1: Preparación de Datos e Ingeniería de Variables (Mayo)</span>
+                        <span class="phase-progress">Completado</span>
                     </div>
                     <div id="phase1" class="phase-content">
                         <ul class="plan-checklist">
-                            <li class="checklist-item"><input type="checkbox" disabled> Generación del conjunto de datos sintético transaccional agroexportador (10,000 registros).</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Implementación de los estimadores GBDT (LightGBM y XGBoost) en Python para predicción de series.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Implementación de algoritmos no supervisados de anomalías de PyOD (IF, LOF, ECOD).</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Operacionalización de variables clave en formato tabular de agroexportación.</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Generación del conjunto de datos sintético transaccional (2,000 registros).</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Pipeline de preprocesamiento de datos (`preprocess_data.py`) aplicando RobustScaler, KNNImputer y balanceo de clases SMOTE.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="plan-phase">
                     <div class="phase-header" onclick="toggleAccordion('phase2')">
-                        <span class="phase-title"><span>🧠</span> Fase 2: Motor de Explicabilidad y Generación de Reportes (Semanas 3-4)</span>
-                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                        <span class="phase-title"><span>🤖</span> Fase 2: Desarrollo del Backend Predictivo y de Anomalías (Junio - Julio)</span>
+                        <span class="phase-progress" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-light);">En Desarrollo</span>
                     </div>
                     <div id="phase2" class="phase-content">
                         <ul class="plan-checklist">
-                            <li class="checklist-item"><input type="checkbox" disabled> Integración del motor TreeSHAP para explicabilidad a nivel de registro local.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Implementación del índice de estabilidad de SHAP y jerarquía de variables relevantes.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Creación de base de conocimiento vectorial RAG para regulaciones SBS, SENASA y normas de exportación.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Integración del orquestador LLM (Llama 3/Claude) para redacción estructurada.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Creación de estimadores predictivos de GBDT (LightGBM y XGBoost) para el comportamiento base de las variables.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Calibración automática de hiperparámetros con Optuna (50 trials) para el Módulo 1.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Implementación del Módulo 2 de Detección de Anomalías no supervisadas utilizando un Ensemble de PyOD (Isolation Forest + LOF + ECOD).</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="plan-phase">
                     <div class="phase-header" onclick="toggleAccordion('phase3')">
-                        <span class="phase-title"><span>💻</span> Fase 3: Frontend y Dashboard Jerárquico del Supervisor (Semanas 5-6)</span>
+                        <span class="phase-title"><span>🧠</span> Fase 3: Motor de Explicabilidad Local y Reportes RAG (Agosto)</span>
                         <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
                     </div>
                     <div id="phase3" class="phase-content">
                         <ul class="plan-checklist">
-                            <li class="checklist-item"><input type="checkbox" disabled> Diseño del Dashboard Principal con KPIs centrales de control operativo.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Estructuración de la cola de priorización de alertas por criticidad.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Desarrollo de la vista de detalle interactiva de alertas (con gráficos SHAP en HTML5).</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Implementación de la vista comparativa de usabilidad (Condición A vs Condición B).</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Construcción del panel de exportación a reportes formales en DOCX/PDF.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Integración de TreeSHAP para la extracción local del top-5 de variables que explican las alertas.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Construcción de la base de conocimiento vectorial RAG para regulaciones de exportación (SENASA, SBS y FDA).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Orquestación de prompts con el LLM para generar reportes narrativos anclados estrictamente en SHAP.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="plan-phase">
                     <div class="phase-header" onclick="toggleAccordion('phase4')">
-                        <span class="phase-title"><span>🧪</span> Fase 4: Protocolo de Usabilidad y Cierre Experimental (Semanas 7-8)</span>
+                        <span class="phase-title"><span>💻</span> Fase 4: Frontend y Dashboard de Supervisión Operativa (Septiembre)</span>
                         <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
                     </div>
                     <div id="phase4" class="phase-content">
                         <ul class="plan-checklist">
-                            <li class="checklist-item"><input type="checkbox" disabled> Despliegue de la versión experimental en contenedor Docker institucional.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Reclutamiento y selección de un grupo cerrado de testers (N=15 o N=27) con conocimiento especializado en el área (supervisores de operaciones, auditores y analistas de sistemas).</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Registro de logs de telemetría de interacción (segundos-a-decisión) in-situ en base de datos.</li>
-                            <li class="checklist-item"><input type="checkbox" disabled> Ejecución de pruebas estadísticas (Wilcoxon Signed-Rank, t-test y análisis SUS).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> UI interactiva en Flask con visualización de la cola de alertas y priorización.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Desarrollo de gráficos interactivos SHAP en la vista de detalle de la alerta.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Panel de exportación formal de reportes trazables en DOCX/PDF.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase5')">
+                        <span class="phase-title"><span>🧪</span> Fase 5: Protocolo de Usabilidad con Testers Especializados (Octubre)</span>
+                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                    </div>
+                    <div id="phase5" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Reclutamiento de un grupo especializado de 10 testers (supervisores y analistas técnicos).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Ejecución de las sesiones de usabilidad within-subjects (Condición A vs. Condición B) en la plataforma.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Registro de telemetría de interacción (tiempo-a-decisión, veredicto, etc.) en caliente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase6')">
+                        <span class="phase-title"><span>⚙️</span> Fase 6: Robustez, Calidad y Cierre del Software (Noviembre)</span>
+                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                    </div>
+                    <div id="phase6" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Pruebas estadísticas (t-test / Wilcoxon) sobre la telemetría recolectada para contrastar hipótesis.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Refinamiento de hiperparámetros y optimización de latencia en la generación RAG.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase7')">
+                        <span class="phase-title"><span>✍️</span> Fase 7: Redacción y Cierre de Capítulos IV y V (Noviembre)</span>
+                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                    </div>
+                    <div id="phase7" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Redacción del Capítulo IV (Análisis de Resultados de Detección, Explicabilidad y Usabilidad).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Redacción del Capítulo V (Discusión, Conclusiones y Recomendaciones de Gobernanza de IA).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Completitud de Model Cards (Anexo B) y Datasheet de Datos (Anexo C).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase8')">
+                        <span class="phase-title"><span>🎓</span> Fase 8: Revisiones Finales, Compilación y Defensa (Diciembre)</span>
+                        <span class="phase-progress" style="background: rgba(255, 255, 255, 0.05); color: var(--text-dim); border: 1px solid var(--border);">Planificado</span>
+                    </div>
+                    <div id="phase8" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Purga bibliográfica y auditoría final de citas del repositorio.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Compilación automatizada en Word (.docx) y PDF (normas APA 7, Times New Roman).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Sustentación y defensa de tesis ante la Escuela de Ingeniería de Sistemas de la UNSA (Semana 1).</li>
                         </ul>
                     </div>
                 </div>
                 
                 <p class="plan-notes">
-                    Nota: La jerarquía de vistas del frontend está diseñada de forma descendente: Resumen General → Cola de Alertas de Criticidad → Detalle de Explicabilidad Local (Condición A/B) → Panel de Decisiones Operativas y Registro de Trazabilidad.
+                    Nota: Las fases 1 y 2 están actualmente activas en el repositorio. Los siguientes pasos inmediatos se centrarán en la implementación del Módulo 1 (XGBoost/LightGBM + Optuna) y Módulo 2 (Ensemble de Anomalías con PyOD).
                 </p>
             </div>
         </div>
@@ -1537,7 +1747,7 @@ Operación alineada 100% con los acuerdos de pre-embarque SENASA-USDA para uva d
                 .replace(/^\*\*([^*]+)\*\*/gim, '<strong>$1</strong>')
                 .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
                 .replace(/^\* (.*$)/gim, '<li style="margin-left: 20px; margin-bottom:4px; font-size:0.9rem;">$1</li>')
-                .replace(/\\n/g, '<br>');
+                .replace(/\n/g, '<br>');
         }
 
         // Render SHAP graph
@@ -1806,7 +2016,7 @@ Operación alineada 100% con los acuerdos de pre-embarque SENASA-USDA para uva d
                 inputs: "Variables transaccionales históricas de agroexportación (Precios MIDAGRI, Volúmenes SUNAT, Clima SENAMHI, Fitosanitario SENASA, Días Logísticos).",
                 outputs: "Valores esperados y umbrales de normalidad estadística para cada registro operativo.",
                 logic: "Algoritmos Gradient Boosting que optimizan la función de pérdida regularizada mediante divisiones sucesivas de árboles de decisión.",
-                formula: "F_m(x) = F_{m-1}(x) + \\\\gamma_m h_m(x)",
+                formula: "F_m(x) = F_{m-1}(x) + \\gamma_m h_m(x)",
                 metrics: "RMSE (Root Mean Squared Error), MAE (Mean Absolute Error), R² (Coeficiente de Determinación).",
                 links: [
                     { name: "Metodología: §3.1", path: "./index.html#30-capitulo3" },
@@ -1820,7 +2030,7 @@ Operación alineada 100% con los acuerdos de pre-embarque SENASA-USDA para uva d
                 inputs: "Desvíos de variables observadas versus valores predichos (de Capa 1) y dataset transaccional.",
                 outputs: "Score consolidado de anomalía (0.0 a 1.0) y bandera de alerta si el score supera el umbral (0.75).",
                 logic: "Ensemble no supervisado orquestado por PyOD que promedia o maximiza las predicciones de Isolation Forest, Local Outlier Factor y ECOD.",
-                formula: "Score_{cons} = \\\\frac{1}{3}(Score_{IF} + Score_{LOF} + Score_{ECOD})",
+                formula: "Score_{cons} = \\frac{1}{3}(Score_{IF} + Score_{LOF} + Score_{ECOD})",
                 metrics: "PR-AUC (Área bajo la curva Precisión-Exhaustividad), ROC-AUC, F1-Score (umbral óptimo).",
                 links: [
                     { name: "Metodología: §3.1 y §3.3", path: "./index.html#30-capitulo3" },
@@ -1834,7 +2044,7 @@ Operación alineada 100% con los acuerdos de pre-embarque SENASA-USDA para uva d
                 inputs: "Registros de alertas clasificadas como anomalías (de Capa 2), la estructura de pesos y caminos de los árboles de decisión.",
                 outputs: "Vectores SHAP de contribución local indicando el peso (+ o -) de cada una de las top-5 variables en la alerta.",
                 logic: "Algoritmo TreeSHAP optimizado para árboles de decisión que calcula las atribuciones locales exactas basadas en la teoría de juegos cooperativos.",
-                formula: "\\\\phi_i = \\\\sum_{S \\\\subseteq F \\\\setminus \\\\{i\\\\}} \\\\frac{|S|!(|F| - |S| - 1)!}{|F|!} [f_x(S \\\\cup \\\\{i\\\\}) - f_x(S)]",
+                formula: "\\phi_i = \\sum_{S \\subseteq F \\setminus \\{i\\}} \\frac{|S|!(|F| - |S| - 1)!}{|F|!} [f_x(S \\cup \\{i\\}) - f_x(S)]",
                 metrics: "Cobertura Top-K (porcentaje de alertas donde el top-5 explica ≥80% del score absoluto), Índice de Estabilidad SHAP.",
                 links: [
                     { name: "Metodología: §3.1", path: "./index.html#30-capitulo3" },
@@ -1848,7 +2058,7 @@ Operación alineada 100% con los acuerdos de pre-embarque SENASA-USDA para uva d
                 inputs: "Vectores SHAP (de Capa 3), metadatos del lote operativo, Base de Conocimientos regulatorios (Resolución SBS N° 053-2023, manual fitosanitario SENASA).",
                 outputs: "Borrador de reporte en lenguaje natural con anclaje técnico y legal en formato Markdown/PDF.",
                 logic: "Recuperación semántica (RAG) de directivas asociadas y generación estructurada por LLM mediante prompts que impiden la alucinación de datos numéricos.",
-                formula: "\\\\text{Reporte} = \\\\text{LLM}(\\\\text{Query}, \\\\text{SHAP}, \\\\text{Contexto}_{\\\\text{RAG}})",
+                formula: "\\text{Reporte} = \\text{LLM}(\\text{Query}, \\text{SHAP}, \\text{Contexto}_{\\text{RAG}})",
                 metrics: "Rúbrica 5D (Completitud, Coherencia, Accionabilidad, Consistencia numérica, Evidencias), ROUGE-L.",
                 links: [
                     { name: "Metodología: §3.1 y §3.3", path: "./index.html#30-capitulo3" },
@@ -1929,6 +2139,50 @@ Operación alineada 100% con los acuerdos de pre-embarque SENASA-USDA para uva d
         if (activeCard) {
             selectArchLayer(1, activeCard);
         }
+
+        // Fullscreen toggle function for Mermaid diagrams
+        function toggleFullscreen(containerId) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.classList.toggle('fullscreen');
+                const btn = container.querySelector('.fullscreen-btn');
+                if (btn) {
+                    if (container.classList.contains('fullscreen')) {
+                        btn.innerHTML = '✕ Salir Pantalla Completa';
+                        btn.style.background = 'rgba(239, 68, 68, 0.2)';
+                        btn.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+                    } else {
+                        btn.innerHTML = '🔍 Pantalla Completa';
+                        btn.style.background = 'rgba(99, 102, 241, 0.2)';
+                        btn.style.borderColor = 'rgba(99, 102, 241, 0.4)';
+                    }
+                }
+            }
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.mermaid-container.fullscreen').forEach(container => {
+                    container.classList.remove('fullscreen');
+                    const btn = container.querySelector('.fullscreen-btn');
+                    if (btn) {
+                        btn.innerHTML = '🔍 Pantalla Completa';
+                        btn.style.background = 'rgba(99, 102, 241, 0.2)';
+                        btn.style.borderColor = 'rgba(99, 102, 241, 0.4)';
+                    }
+                });
+            }
+        });
     </script>
+</body>
+</html>
+            </article>
+        </main>
+    </div>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
 </body>
 </html>

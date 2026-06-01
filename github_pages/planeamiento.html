@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificación e Hipótesis</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="./planeamiento.html">Planificación</a></li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                
+            </div>
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                <div class="plan-container">
+    <header>
+        <div class="title-group">
+            <h1>Planificación y Marco de Hipótesis</h1>
+            <p>Sustento metodológico y temporal del proyecto de investigación</p>
+        </div>
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            Cronograma Activo
+        </div>
+    </header>
+
+    <!-- 1.4 HIPÓTESIS DE LA INVESTIGACIÓN -->
+    <div class="section-card">
+        <h2>1.4 Hipótesis de la Investigación</h2>
+        <p style="margin-bottom: 25px; color: var(--text-dim); line-height: 1.6;">
+            A continuación se presenta el marco de hipótesis cuantitativas de la investigación, formulado para contrastar formalmente la arquitectura propuesta frente a baselines técnicos y flujos aislados mediante pruebas estadísticas robustas.
+        </p>
+
+        <div class="hyp-box">
+            <h3>Hipótesis General (H1)</h3>
+            <p style="margin: 0; line-height: 1.6;">
+                Un sistema integrado de predicción, detección de anomalías, explicabilidad y generación de reportes trazables mejora la trazabilidad de decisiones, la comprensión de alertas y el tiempo de decisión de supervisores operativos frente al uso de componentes aislados.
+            </p>
+        </div>
+
+        <div class="hyp-box nula">
+            <h3>Hipótesis Nula (H0)</h3>
+            <p style="margin: 0; line-height: 1.6;">
+                No existe diferencia significativa entre el sistema integrado y los componentes aislados en trazabilidad de decisiones, comprensión de alertas o tiempo de decisión de supervisores operativos.
+            </p>
+        </div>
+
+        <div class="hyp-grid">
+            <div class="hyp-card">
+                <h4>Sub-hipótesis H1a (Rendimiento)</h4>
+                <p>El uso combinado de modelos tabulares y detectores de anomalías (ensemble) permite identificar desviaciones operativas con mayor rendimiento de detección que detectores aislados.</p>
+                <div class="hyp-badge-group">
+                    <span class="hyp-badge accent">PR-AUC ≥ 0.85</span>
+                    <span class="hyp-badge accent">F1-Score ≥ 0.80</span>
+                    <span class="hyp-badge">Prueba: Wilcoxon</span>
+                </div>
+            </div>
+
+            <div class="hyp-card">
+                <h4>Sub-hipótesis H1b (Explicabilidad)</h4>
+                <p>Las explicaciones de SHAP incrementan la comprensión de las alertas por parte de los supervisores operativos al aislar los factores causales principales de la alerta.</p>
+                <div class="hyp-badge-group">
+                    <span class="hyp-badge accent">Cobertura top-5 ≥ 80%</span>
+                    <span class="hyp-badge">Prueba: Mann-Whitney U</span>
+                </div>
+            </div>
+
+            <div class="hyp-card">
+                <h4>Sub-hipótesis H1c (Reportabilidad)</h4>
+                <p>Los reportes generados mediante RAG a partir de evidencias estructuradas presentan mayor trazabilidad y consistencia numérica que reportes sin recuperación.</p>
+                <div class="hyp-badge-group">
+                    <span class="hyp-badge accent">Rúbrica ≥ 4.0/5.0</span>
+                    <span class="hyp-badge">Prueba: t-Student / Wilcoxon</span>
+                </div>
+            </div>
+
+            <div class="hyp-card">
+                <h4>Sub-hipótesis H1d (Eficiencia Humana)</h4>
+                <p>El sistema integrado reduce el tiempo promedio requerido para interpretar y responder a una alerta operativa frente a interfaces y gráficos aislados.</p>
+                <div class="hyp-badge-group">
+                    <span class="hyp-badge accent">Reducción ≥ 20%</span>
+                    <span class="hyp-badge">Prueba: Wilcoxon (α=0.05)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CRONOGRAMA DETALLADO Y DIAGRAMA DE GANTT -->
+    <div class="section-card">
+        <h2>Planificación Temporal y Diagrama de Gantt</h2>
+        <p style="color: var(--text-dim); line-height: 1.6; margin-bottom: 20px;">
+            El cronograma de ejecución del proyecto comprende desde mayo hasta diciembre de 2026, abarcando las etapas de preparación de datos, desarrollo del modelo, integración y el protocolo empírico de usabilidad.
+        </p>
+
+        <!-- Gantt Chart Container -->
+        <div class="gantt-img-container">
+            <img src="./gantt_chart.png" alt="Cronograma de Gantt de Tesis">
+            <div class="gantt-caption">Figura 1.1: Cronograma Visual y Temporal del Proyecto (Diagrama de Gantt)</div>
+        </div>
+
+        <!-- Phases Description Grid -->
+        <h3 style="margin-top: 30px; margin-bottom: 15px; color: #fff;">Fases del Proyecto</h3>
+        <div class="phases-grid">
+            <div class="phase-card f1">
+                <div class="phase-num">Fase 1</div>
+                <div class="phase-title">Datos y Preprocesamiento</div>
+                <div class="phase-date">Mayo 2026</div>
+                <div class="phase-desc">Mapeo de variables operativas oficiales (MIDAGRI, SUNAT) y estructuración del dataset sintético base.</div>
+            </div>
+
+            <div class="phase-card f2">
+                <div class="phase-num">Fase 2</div>
+                <div class="phase-title">Modelado Backend</div>
+                <div class="phase-date">Junio - Julio 2026</div>
+                <div class="phase-desc">Entrenamiento y calibración hiperparamétrica de modelos GBDT y ensembles PyOD (Isolation Forest, LOF).</div>
+            </div>
+
+            <div class="phase-card f3">
+                <div class="phase-num">Fase 3</div>
+                <div class="phase-title">Explicabilidad y RAG</div>
+                <div class="phase-date">Agosto 2026</div>
+                <div class="phase-desc">Cálculo TreeSHAP a nivel de fila y ajuste de prompts RAG restrictivos para la generación narrativa.</div>
+            </div>
+
+            <div class="phase-card f4">
+                <div class="phase-num">Fase 4</div>
+                <div class="phase-title">Integración y Dashboard</div>
+                <div class="phase-date">Septiembre 2026</div>
+                <div class="phase-desc">Orquestación del flujo de datos en Flask e implementación de la interfaz interactiva.</div>
+            </div>
+
+            <div class="phase-card f5">
+                <div class="phase-num">Fase 5</div>
+                <div class="phase-title">Pruebas de Usabilidad</div>
+                <div class="phase-date">Octubre 2026</div>
+                <div class="phase-desc">Evaluación del tiempo-a-decisión y comprensión de alertas con la muestra de analistas.</div>
+            </div>
+
+            <div class="phase-card f6">
+                <div class="phase-num">Fase 6</div>
+                <div class="phase-title">Calidad y Cambios</div>
+                <div class="phase-date">Noviembre 2026</div>
+                <div class="phase-desc">Implementación de retroalimentación de usabilidad y correcciones finales de código.</div>
+            </div>
+
+            <div class="phase-card f7">
+                <div class="phase-num">Fase 7</div>
+                <div class="phase-title">Redacción de Tesis</div>
+                <div class="phase-date">Noviembre 2026</div>
+                <div class="phase-desc">Escritura de los capítulos IV (Resultados) y V (Discusión) con su respectivo rigor estadístico.</div>
+            </div>
+
+            <div class="phase-card f8">
+                <div class="phase-num">Fase 8</div>
+                <div class="phase-title">Sustentación</div>
+                <div class="phase-date">Diciembre 2026</div>
+                <div class="phase-desc">Levantamiento de observaciones finales y defensa oral ante el jurado académico.</div>
+            </div>
+        </div>
+
+        <!-- Milestones Table -->
+        <h3 style="margin-top: 40px; margin-bottom: 15px; color: #fff;">Hitos del Proyecto</h3>
+        <table class="milestones-table">
+            <thead>
+                <tr>
+                    <th>Hito</th>
+                    <th>Entregable / Objetivo</th>
+                    <th>Fecha Límite</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Hito 1</strong></td>
+                    <td>Definición y Operacionalización de Variables</td>
+                    <td>27 de Mayo, 2026</td>
+                    <td><span class="badge-status success">Completado</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Hito 2</strong></td>
+                    <td>Dataset Sintético y Preprocesamiento</td>
+                    <td>31 de Mayo, 2026</td>
+                    <td><span class="badge-status success">Completado</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Hito 3</strong></td>
+                    <td>Entrenamiento y Ensemble de Modelos Backend</td>
+                    <td>15 de Julio, 2026</td>
+                    <td><span class="badge-status warning">Pendiente</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Hito 4</strong></td>
+                    <td>Integración TreeSHAP y Módulo LLM+RAG</td>
+                    <td>31 de Agosto, 2026</td>
+                    <td><span class="badge-status warning">Pendiente</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Hito 5</strong></td>
+                    <td>Pipeline Unificado y Panel de Control Web</td>
+                    <td>30 de Septiembre, 2026</td>
+                    <td><span class="badge-status warning">Pendiente</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Hito 6</strong></td>
+                    <td>Estudio de Usabilidad y Recolección de Tiempos</td>
+                    <td>31 de Octubre, 2026</td>
+                    <td><span class="badge-status warning">Pendiente</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Hito 7</strong></td>
+                    <td>Cierre Estadístico e Informe Final de Capítulos</td>
+                    <td>30 de Noviembre, 2026</td>
+                    <td><span class="badge-status warning">Pendiente</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Hito 8</strong></td>
+                    <td>Compilación final y Sustentación de la Tesis</td>
+                    <td>07 de Diciembre, 2026</td>
+                    <td><span class="badge-status warning">Pendiente</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+            </article>
+        </main>
+    </div>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>

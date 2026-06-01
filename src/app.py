@@ -281,6 +281,14 @@ def api_ver_seccion(slug):
     })
 
 
+@app.route('/diagrama/<name>')
+def ver_diagrama(name):
+    """Muestra un diagrama específico en pantalla completa con el navbar."""
+    if name not in ['cronograma', 'dataflow', 'arquitectura']:
+        return "Diagrama no encontrado", 404
+    return render_template('diagrama.html', name=name, active_page='inicio')
+
+
 @app.route('/propuesta')
 def propuesta_solucion():
     """Sirve la página interactiva de la propuesta tecnológica y prototipo."""
@@ -493,6 +501,18 @@ def view_references():
         parsed_refs=parsed_refs,
         active_page='inicio'
     )
+
+
+@app.route('/planeamiento')
+def planeamiento_detallado():
+    """Sirve la página que contiene únicamente las hipótesis y la planificación detallada con el diagrama de Gantt."""
+    return render_template('planeamiento.html', active_page='planeamiento')
+
+
+@app.route('/static/gantt_chart.png')
+def serve_gantt_chart():
+    import flask
+    return flask.send_file('d:/tesis_yoset/data/downloads/gantt_chart.png')
 
 
 if __name__ == '__main__':

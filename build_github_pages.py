@@ -1,12 +1,30 @@
 import os
 import re
+import sys
+import shutil
 from pathlib import Path
+
+# Ensure UTF-8 output to avoid Windows console Unicode errors
+if sys.platform.startswith('win'):
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 try:
     import markdown
 except ImportError:
     print("Please install markdown: pip install markdown")
     exit(1)
+
+def extract_body_from_template(template_path):
+    """Extracts the body block from a Jinja template."""
+    if not Path(template_path).exists():
+        return ""
+    text = Path(template_path).read_text(encoding="utf-8")
+    match = re.search(r'{%\s*block\s+body\s*%}(.*?){%\s*endblock\s*%}', text, re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    return text
 
 def build_site():
     docs_dir = Path("docs")
@@ -34,7 +52,7 @@ def build_site():
     md.reset()
     ref_html = md.convert(ref_content)
 
-    # 3. HTML Template
+    # 3. HTML Template with Planificación link
     def get_template(title, body, toc, relative_root="."):
         return f"""<!DOCTYPE html>
 <html lang="es">
@@ -52,6 +70,7 @@ def build_site():
             <ul class="nav-links">
                 <li><a href="{relative_root}/index.html">Tesis Completa</a></li>
                 <li><a href="{relative_root}/propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="{relative_root}/planeamiento.html">Planificación</a></li>
                 <li><a href="{relative_root}/referencias/index.html">Referencias (Directorio)</a></li>
             </ul>
             <div class="theme-switch-wrapper">
@@ -91,31 +110,38 @@ def build_site():
     # Write References Index
     (ref_dir / "index.html").write_text(get_template("Directorio de Referencias", ref_html, "", ".."), encoding="utf-8")
 
-    # Write Proposal & Prototype
-    print("✨ Generando página estática de la propuesta en GitHub Pages...")
-    app_code = Path("src/app.py").read_text(encoding="utf-8")
-    template_match = re.search(r'PROPUESTA_TEMPLATE\s*=\s*"""(.*?)"""', app_code, re.DOTALL)
-    if template_match:
-        propuesta_html = template_match.group(1)
-        # Reemplazar la barra de navegación dinámica por la estática
-        static_navbar = """        <nav class="main-navbar">
-            <div class="nav-logo">
-                <span class="logo-dot"></span>
-                <span class="logo-text">Tesis Hub</span>
-            </div>
-            <div class="nav-menu">
-                <a href="./index.html" class="nav-item">📖 Tesis Completa</a>
-                <a href="./propuesta.html" class="nav-item active">📊 Propuesta y Prototipo</a>
-                <a href="./referencias/index.html" class="nav-item">📚 Referencias</a>
-            </div>
-        </nav>"""
-        propuesta_html = re.sub(r'<nav class="main-navbar">.*?</nav>', static_navbar, propuesta_html, flags=re.DOTALL)
-        # Adaptar enlaces a secciones de la tesis
-        propuesta_html = propuesta_html.replace('/seccion/', './index.html#')
-        (out_dir / "propuesta.html").write_text(propuesta_html, encoding="utf-8")
+    # Write Proposal & Prototype from template file directly
+    print("Generando página estática de la propuesta en GitHub Pages...")
+    propuesta_tmpl_path = Path("src/templates/propuesta.html")
+    if propuesta_tmpl_path.exists():
+        propuesta_body = extract_body_from_template(propuesta_tmpl_path)
+        # Adapt links & static resources
+        propuesta_body = propuesta_body.replace('/seccion/', './index.html#')
+        # Wrap it in standard template
+        (out_dir / "propuesta.html").write_text(get_template("Propuesta y Prototipo", propuesta_body, "", "."), encoding="utf-8")
         print("✅ propuesta.html generada exitosamente.")
     else:
-        print("❌ Error: No se pudo extraer PROPUESTA_TEMPLATE de src/app.py")
+        print("❌ Error: No se encontró src/templates/propuesta.html")
+
+    # Write Planning & Hypotheses Page
+    print("Generando página estática de la planificación en GitHub Pages...")
+    planeamiento_tmpl_path = Path("src/templates/planeamiento.html")
+    if planeamiento_tmpl_path.exists():
+        planeamiento_body = extract_body_from_template(planeamiento_tmpl_path)
+        # Replace image path for static deployment
+        planeamiento_body = planeamiento_body.replace('/static/gantt_chart.png', './gantt_chart.png')
+        (out_dir / "planeamiento.html").write_text(get_template("Planificación e Hipótesis", planeamiento_body, "", "."), encoding="utf-8")
+        
+        # Copy Gantt chart image
+        gantt_src = Path("data/downloads/gantt_chart.png")
+        if gantt_src.exists():
+            shutil.copy2(gantt_src, out_dir / "gantt_chart.png")
+            print("✅ gantt_chart.png copiado exitosamente.")
+        else:
+            print("⚠️ Advertencia: No se encontró data/downloads/gantt_chart.png")
+        print("✅ planeamiento.html generada exitosamente.")
+    else:
+        print("❌ Error: No se encontró src/templates/planeamiento.html")
 
     # 4. Generate CSS
     css_content = """
@@ -309,6 +335,45 @@ input:checked + .slider:before { transform: translateX(26px); }
 .slider.round { border-radius: 24px; }
 .slider.round:before { border-radius: 50%; }
 
+/* Custom styles for Planeamiento Card items */
+.hyp-box {
+    background: rgba(52, 152, 219, 0.08);
+    border-left: 4px solid var(--primary-color);
+    padding: 20px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 20px;
+}
+.hyp-box.nula {
+    border-left-color: #7f8c8d;
+    background: rgba(127, 140, 141, 0.08);
+}
+.hyp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+.hyp-card {
+    background: rgba(52, 152, 219, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+}
+.hyp-card h4 { margin-top: 0; color: var(--primary-color); }
+.hyp-badge-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.hyp-badge { background: rgba(52, 152, 219, 0.1); border-radius: 6px; padding: 4px 10px; font-size: 0.75rem; color: var(--primary-color); }
+.gantt-img-container { text-align: center; margin: 30px 0; border: 1px solid var(--border-color); padding: 15px; border-radius: 12px; }
+.gantt-img-container img { max-width: 100%; height: auto; border-radius: 8px; }
+.phases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px; }
+.phase-card { border-left: 4px solid var(--primary-color); background: rgba(52, 152, 219, 0.01); border-radius: 4px; padding: 15px; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-right: 1px solid var(--border-color); }
+.phase-num { font-size: 0.75rem; text-transform: uppercase; color: #7f8c8d; }
+.phase-title { font-weight: bold; margin-bottom: 5px; }
+.phase-date { font-size: 0.8rem; font-weight: bold; color: var(--primary-color); margin-bottom: 10px; }
+.milestones-table { width: 100%; border-collapse: collapse; margin-top: 25px; }
+.badge-status { display: inline-block; padding: 3px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-status.success { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.badge-status.warning { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+
 @media (max-width: 1024px) {
     .layout { flex-direction: column; }
     .sidebar { width: 100%; height: auto; position: static; }
@@ -379,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
 """
     (out_dir / "app.js").write_text(js_content, encoding="utf-8")
 
-    print(f"✅ Github Pages built successfully in {out_dir.absolute()}!")
+    print("✅ Github Pages built successfully!")
 
 if __name__ == "__main__":
     build_site()
