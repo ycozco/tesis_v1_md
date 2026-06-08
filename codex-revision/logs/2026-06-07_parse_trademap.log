@@ -1,0 +1,53 @@
+2026-06-07 22:56:17,986 INFO Encontrados 14 archivos XLS en D:\tesis_yoset\data-trademap
+2026-06-07 22:56:17,986 INFO Procesando: export_indicadores_2025_hs070920_esparrago.xls -> tipo=indicadores_2025, producto=esparrago
+2026-06-07 22:56:17,987 WARNING   openpyxl fallo: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.. Intentando pd.read_html()
+2026-06-07 22:56:18,128 INFO   Leido con pd.read_html(): export_indicadores_2025_hs070920_esparrago.xls (2 filas)
+2026-06-07 22:56:18,135 INFO   Limpieza: 2 -> 2 filas (0 descartadas)
+2026-06-07 22:56:18,138 INFO   Guardado: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_indicadores_2025_esparrago_2026-06-07.csv (2 filas)
+2026-06-07 22:56:18,138 INFO Procesando: export_indicadores_2025_hs080440_palta.xls -> tipo=indicadores_2025, producto=palta
+2026-06-07 22:56:18,138 WARNING   openpyxl fallo: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.. Intentando pd.read_html()
+2026-06-07 22:56:18,176 INFO   Leido con pd.read_html(): export_indicadores_2025_hs080440_palta.xls (2 filas)
+2026-06-07 22:56:18,178 INFO   Limpieza: 2 -> 2 filas (0 descartadas)
+2026-06-07 22:56:18,179 INFO   Guardado: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_indicadores_2025_palta_2026-06-07.csv (2 filas)
+2026-06-07 22:56:18,180 INFO Procesando: export_indicadores_2025_hs080610_uva.xls -> tipo=indicadores_2025, producto=uva
+2026-06-07 22:56:18,180 WARNING   openpyxl fallo: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.. Intentando pd.read_html()
+2026-06-07 22:56:18,227 INFO   Leido con pd.read_html(): export_indicadores_2025_hs080610_uva.xls (2 filas)
+2026-06-07 22:56:18,230 INFO   Limpieza: 2 -> 2 filas (0 descartadas)
+2026-06-07 22:56:18,231 INFO   Guardado: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_indicadores_2025_uva_2026-06-07.csv (2 filas)
+2026-06-07 22:56:18,231 INFO Procesando: export_indicadores_2025_hs081040_arandano.xls -> tipo=indicadores_2025, producto=arandano
+2026-06-07 22:56:18,231 WARNING   openpyxl fallo: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.. Intentando pd.read_html()
+2026-06-07 22:56:18,270 INFO   Leido con pd.read_html(): export_indicadores_2025_hs081040_arandano.xls (2 filas)
+2026-06-07 22:56:18,272 INFO   Limpieza: 2 -> 2 filas (0 descartadas)
+2026-06-07 22:56:18,273 INFO   Guardado: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_indicadores_2025_arandano_2026-06-07.csv (2 filas)
+2026-06-07 22:56:18,273 INFO Procesando: export_serie_anual_2021_2025_hs070920_esparrago.xls -> tipo=serie_anual_2021_2025, producto=esparrago
+2026-06-07 22:56:18,274 WARNING   openpyxl fallo: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.. Intentando pd.read_html()
+2026-06-07 22:56:18,289 INFO   Leido con pd.read_html(): export_serie_anual_2021_2025_hs070920_esparrago.xls (2 filas)
+2026-06-07 22:56:18,291 INFO   Limpieza: 2 -> 2 filas (0 descartadas)
+2026-06-07 22:56:18,292 INFO   Guardado: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_serie_anual_2021_2025_esparrago_2026-06-07.csv (2 filas)
+2026-06-07 22:56:18,292 INFO Procesando: export_serie_anual_2021_2025_hs080440_palta.xls -> tipo=serie_anual_2021_2025, producto=palta
+2026-06-07 22:56:18,292 WARNING   openpyxl fallo: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.. Intentando pd.read_html()
+2026-06-07 22:56:18,311 INFO   Leido con pd.read_html(): export_serie_anual_2021_2025_hs080440_palta.xls (2 filas)
+2026-06-07 22:56:18,313 INFO   Limpieza: 2 -> 2 filas (0 descartadas)
+2026-06-07 22:56:18,315 INFO   Guardado: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_serie_anual_2021_2025_palta_2026-06-07.csv (2 filas)
+2026-06-07 22:56:18,315 INFO Procesando: export_serie_anual_2021_2025_hs080610_uva.xls -> tipo=serie_anual_2021_2025, producto=uva
+2026-06-07 22:56:18,315 WARNING   openpyxl fallo: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.. Intentando pd.read_html()
+2026-06-07 22:56:18,336 INFO   Leido con pd.read_html(): export_serie_anual_2021_2025_hs080610_uva.xls (2 filas)
+2026-06-07 22:56:18,339 INFO   Limpieza: 2 -> 2 filas (0 descartadas)
+2026-06-07 22:56:18,340 INFO   Guardado: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_serie_anual_2021_2025_uva_2026-06-07.csv (2 filas)
+2026-06-07 22:56:18,340 INFO Procesando: export_serie_anual_2021_2025_hs081040_arandano.xls -> tipo=serie_anual_2021_2025, producto=arandano
+2026-06-07 22:56:18,341 WARNING   openpyxl fallo: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.. Intentando pd.read_html()
+2026-06-07 22:56:18,362 INFO   Leido con pd.read_html(): export_serie_anual_2021_2025_hs081040_arandano.xls (2 filas)
+2026-06-07 22:56:18,364 INFO   Limpieza: 2 -> 2 filas (0 descartadas)
+2026-06-07 22:56:18,365 INFO   Guardado: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_serie_anual_2021_2025_arandano_2026-06-07.csv (2 filas)
+2026-06-07 22:56:18,365 INFO EXCLUIDO (import_colado o desconocido): import_colado_indicadores_2025_hs080440_palta.xls
+2026-06-07 22:56:18,365 INFO EXCLUIDO (import_colado o desconocido): import_colado_indicadores_2025_hs080610_uva.xls
+2026-06-07 22:56:18,365 INFO EXCLUIDO (import_colado o desconocido): import_colado_indicadores_2025_hs081040_arandano.xls
+2026-06-07 22:56:18,365 INFO EXCLUIDO (import_colado o desconocido): import_colado_serie_anual_2021_2025_hs080440_palta.xls
+2026-06-07 22:56:18,365 INFO EXCLUIDO (import_colado o desconocido): import_colado_serie_anual_2021_2025_hs080610_uva.xls
+2026-06-07 22:56:18,365 INFO EXCLUIDO (import_colado o desconocido): import_colado_serie_anual_2021_2025_hs080610_uva_duplicado2.xls
+2026-06-07 22:56:18,368 INFO 
+=== RESUMEN ===
+2026-06-07 22:56:18,368 INFO Archivos procesados: 8
+2026-06-07 22:56:18,368 INFO Filas totales: 16
+2026-06-07 22:56:18,368 INFO Resumen guardado en: D:\tesis_yoset\codex-revision\data_processed\trademap\trademap_resumen_2026-06-07.csv
+2026-06-07 22:56:18,368 INFO Log guardado en: D:\tesis_yoset\codex-revision\logs\2026-06-07_parse_trademap.log

@@ -1,0 +1,23 @@
+[
+  {
+    "url": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/js~X~Q9c9iDXqeGAs97YB7zaB9S55Rj/xwlk+FnVPsvw3I7rqetMAMeqXcyfW13hwp1V6/u58Yd/CRTQa+ExlKeLOqeniqXnXVD/XsfsWWOgT5p2xM+TjUcjEoVLOAnmlyyVTc/P+dpA9rzT+vBGZx3pYSwdkN17sQEcrLJ2Ui+H8PPXo50a2at7X1OTz0TWYkeJHNA6GrXpbcRcc8Xw9DhFAIxemIIQskqrsmv15XOrUWfFFtfDWO7PZZueHcz/cIm3a6Rcmlil3OjoLlR8CeO5Hy/",
+    "file": "data_raw\\sisap_midagri\\assets\\asset_00.js",
+    "status": 200,
+    "content_type": "text/javascript",
+    "bytes": 206028
+  },
+  {
+    "url": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/css~Q9oN7F6NeG7yuEAHEodHphSyScBrIRIxakbTxrkJpr64LonrVNMgexUqBmc9ckJXGAU08hZ/HiVgEexOuozuHVG1KxeIY7F00FXKGM6toPRtF0Yv1qYA+CFE9VgR8kCriQzZUsH0BdZTbQh7txZ4yWX5vWcjnaEjnF/aMDfUtCKQedpknAoZHsSc9f4qZAmrYoEmhOnAyrOx9at2LaMh",
+    "file": "data_raw\\sisap_midagri\\assets\\asset_01.css",
+    "status": 200,
+    "content_type": "text/css",
+    "bytes": 165288
+  },
+  {
+    "url": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/css~hqh2",
+    "file": "data_raw\\sisap_midagri\\assets\\asset_02.css",
+    "status": 200,
+    "content_type": "text/css",
+    "bytes": 0
+  }
+]

@@ -1,0 +1,1347 @@
+{
+  "source_url": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/consultar/",
+  "forms": [
+    {
+      "id": "exportarExcel",
+      "action": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/exportarAExcel/",
+      "method": "post",
+      "target": "_blank"
+    },
+    {
+      "id": "consulta",
+      "method": "post",
+      "action": "#"
+    }
+  ],
+  "selects": [
+    {
+      "attrs": {
+        "name": "anios[]",
+        "id": "anios",
+        "class": "anual mensual semanal",
+        "multiple": "multiple"
+      },
+      "options_count": 30,
+      "options": [
+        {
+          "value": "1997",
+          "label": "1997"
+        },
+        {
+          "value": "1998",
+          "label": "1998"
+        },
+        {
+          "value": "1999",
+          "label": "1999"
+        },
+        {
+          "value": "2000",
+          "label": "2000"
+        },
+        {
+          "value": "2001",
+          "label": "2001"
+        },
+        {
+          "value": "2002",
+          "label": "2002"
+        },
+        {
+          "value": "2003",
+          "label": "2003"
+        },
+        {
+          "value": "2004",
+          "label": "2004"
+        },
+        {
+          "value": "2005",
+          "label": "2005"
+        },
+        {
+          "value": "2006",
+          "label": "2006"
+        },
+        {
+          "value": "2007",
+          "label": "2007"
+        },
+        {
+          "value": "2008",
+          "label": "2008"
+        },
+        {
+          "value": "2009",
+          "label": "2009"
+        },
+        {
+          "value": "2010",
+          "label": "2010"
+        },
+        {
+          "value": "2011",
+          "label": "2011"
+        },
+        {
+          "value": "2012",
+          "label": "2012"
+        },
+        {
+          "value": "2013",
+          "label": "2013"
+        },
+        {
+          "value": "2014",
+          "label": "2014"
+        },
+        {
+          "value": "2015",
+          "label": "2015"
+        },
+        {
+          "value": "2016",
+          "label": "2016"
+        },
+        {
+          "value": "2017",
+          "label": "2017"
+        },
+        {
+          "value": "2018",
+          "label": "2018"
+        },
+        {
+          "value": "2019",
+          "label": "2019"
+        },
+        {
+          "value": "2020",
+          "label": "2020"
+        },
+        {
+          "value": "2021",
+          "label": "2021"
+        },
+        {
+          "value": "2022",
+          "label": "2022"
+        },
+        {
+          "value": "2023",
+          "label": "2023"
+        },
+        {
+          "value": "2024",
+          "label": "2024"
+        },
+        {
+          "value": "2025",
+          "label": "2025"
+        },
+        {
+          "value": "2026",
+          "label": "2026"
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "multiple": "multiple",
+        "class": "semanal",
+        "name": "semanas[]",
+        "id": "semanas"
+      },
+      "options_count": 52,
+      "options": [
+        {
+          "value": "1",
+          "label": "1º semana"
+        },
+        {
+          "value": "2",
+          "label": "2º semana"
+        },
+        {
+          "value": "3",
+          "label": "3º semana"
+        },
+        {
+          "value": "4",
+          "label": "4º semana"
+        },
+        {
+          "value": "5",
+          "label": "5º semana"
+        },
+        {
+          "value": "6",
+          "label": "6º semana"
+        },
+        {
+          "value": "7",
+          "label": "7º semana"
+        },
+        {
+          "value": "8",
+          "label": "8º semana"
+        },
+        {
+          "value": "9",
+          "label": "9º semana"
+        },
+        {
+          "value": "10",
+          "label": "10º semana"
+        },
+        {
+          "value": "11",
+          "label": "11º semana"
+        },
+        {
+          "value": "12",
+          "label": "12º semana"
+        },
+        {
+          "value": "13",
+          "label": "13º semana"
+        },
+        {
+          "value": "14",
+          "label": "14º semana"
+        },
+        {
+          "value": "15",
+          "label": "15º semana"
+        },
+        {
+          "value": "16",
+          "label": "16º semana"
+        },
+        {
+          "value": "17",
+          "label": "17º semana"
+        },
+        {
+          "value": "18",
+          "label": "18º semana"
+        },
+        {
+          "value": "19",
+          "label": "19º semana"
+        },
+        {
+          "value": "20",
+          "label": "20º semana"
+        },
+        {
+          "value": "21",
+          "label": "21º semana"
+        },
+        {
+          "value": "22",
+          "label": "22º semana"
+        },
+        {
+          "value": "23",
+          "label": "23º semana"
+        },
+        {
+          "value": "24",
+          "label": "24º semana"
+        },
+        {
+          "value": "25",
+          "label": "25º semana"
+        },
+        {
+          "value": "26",
+          "label": "26º semana"
+        },
+        {
+          "value": "27",
+          "label": "27º semana"
+        },
+        {
+          "value": "28",
+          "label": "28º semana"
+        },
+        {
+          "value": "29",
+          "label": "29º semana"
+        },
+        {
+          "value": "30",
+          "label": "30º semana"
+        },
+        {
+          "value": "31",
+          "label": "31º semana"
+        },
+        {
+          "value": "32",
+          "label": "32º semana"
+        },
+        {
+          "value": "33",
+          "label": "33º semana"
+        },
+        {
+          "value": "34",
+          "label": "34º semana"
+        },
+        {
+          "value": "35",
+          "label": "35º semana"
+        },
+        {
+          "value": "36",
+          "label": "36º semana"
+        },
+        {
+          "value": "37",
+          "label": "37º semana"
+        },
+        {
+          "value": "38",
+          "label": "38º semana"
+        },
+        {
+          "value": "39",
+          "label": "39º semana"
+        },
+        {
+          "value": "40",
+          "label": "40º semana"
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "multiple": "multiple",
+        "class": "mensual",
+        "name": "meses[]",
+        "id": "meses"
+      },
+      "options_count": 12,
+      "options": [
+        {
+          "value": "01",
+          "label": "enero"
+        },
+        {
+          "value": "02",
+          "label": "febrero"
+        },
+        {
+          "value": "03",
+          "label": "marzo"
+        },
+        {
+          "value": "04",
+          "label": "abril"
+        },
+        {
+          "value": "05",
+          "label": "mayo"
+        },
+        {
+          "value": "06",
+          "label": "junio"
+        },
+        {
+          "value": "07",
+          "label": "julio"
+        },
+        {
+          "value": "08",
+          "label": "agosto"
+        },
+        {
+          "value": "09",
+          "label": "septiembre"
+        },
+        {
+          "value": "10",
+          "label": "octubre"
+        },
+        {
+          "value": "11",
+          "label": "noviembre"
+        },
+        {
+          "value": "12",
+          "label": "diciembre"
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "id": "mercado",
+        "name": "mercado"
+      },
+      "options_count": 8,
+      "options": [
+        {
+          "value": "*",
+          "label": "Seleccionar Mercado..."
+        },
+        {
+          "value": "15011501",
+          "label": "Gran mercado mayorista de lima"
+        },
+        {
+          "value": "15011503",
+          "label": "Mcdo mod. de frutas"
+        },
+        {
+          "value": "15013405",
+          "label": "Mcdo. coop. platanos"
+        },
+        {
+          "value": "15013704",
+          "label": "Mcdo prod. santa anita"
+        },
+        {
+          "value": "15011506",
+          "label": "Mcdo. may. cereales, legum. y oleag."
+        },
+        {
+          "value": "15011502",
+          "label": "Mercado mayorista nro 2-frutas"
+        },
+        {
+          "value": "15010106",
+          "label": "Mercado mayorista de aves vivas"
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "name": "variables[]",
+        "id": "variables",
+        "multiple": "multiple",
+        "size": "5"
+      },
+      "options_count": 4,
+      "options": [
+        {
+          "value": "precio_max",
+          "label": "Precio Máximo"
+        },
+        {
+          "value": "precio_prom",
+          "label": "Precio Promedio"
+        },
+        {
+          "value": "precio_min",
+          "label": "Precio Mínimo"
+        },
+        {
+          "value": "volumen",
+          "label": "Volumen"
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "name": "procedencias[]",
+        "id": "procedencias",
+        "multiple": "multiple",
+        "size": "12"
+      },
+      "options_count": 26,
+      "options": [
+        {
+          "value": "010000",
+          "label": "Amazonas"
+        },
+        {
+          "value": "020000",
+          "label": "Ancash"
+        },
+        {
+          "value": "030000",
+          "label": "Apurimac"
+        },
+        {
+          "value": "040000",
+          "label": "Arequipa"
+        },
+        {
+          "value": "050000",
+          "label": "Ayacucho"
+        },
+        {
+          "value": "060000",
+          "label": "Cajamarca"
+        },
+        {
+          "value": "070000",
+          "label": "Prov. const. del calla"
+        },
+        {
+          "value": "080000",
+          "label": "Cusco"
+        },
+        {
+          "value": "090000",
+          "label": "Huancavelica"
+        },
+        {
+          "value": "100000",
+          "label": "Huanuco"
+        },
+        {
+          "value": "110000",
+          "label": "Ica"
+        },
+        {
+          "value": "120000",
+          "label": "Junin"
+        },
+        {
+          "value": "130000",
+          "label": "La libertad"
+        },
+        {
+          "value": "140000",
+          "label": "Lambayeque"
+        },
+        {
+          "value": "150000",
+          "label": "Lima"
+        },
+        {
+          "value": "160000",
+          "label": "Loreto"
+        },
+        {
+          "value": "170000",
+          "label": "Madre de dios"
+        },
+        {
+          "value": "180000",
+          "label": "Moquegua"
+        },
+        {
+          "value": "190000",
+          "label": "Pasco"
+        },
+        {
+          "value": "200000",
+          "label": "Piura"
+        },
+        {
+          "value": "210000",
+          "label": "Puno"
+        },
+        {
+          "value": "220000",
+          "label": "San martin"
+        },
+        {
+          "value": "230000",
+          "label": "Tacna"
+        },
+        {
+          "value": "240000",
+          "label": "Tumbes"
+        },
+        {
+          "value": "250000",
+          "label": "Ucayali"
+        },
+        {
+          "value": "510000",
+          "label": "Procedencia desconocida"
+        }
+      ]
+    }
+  ],
+  "inputs_relevant": [
+    {
+      "type": "hidden",
+      "id": "datos_a_enviar",
+      "name": "datos_a_enviar"
+    },
+    {
+      "type": "hidden",
+      "name": "postID",
+      "value": "fc91dffdd0717b3036c4ce54efbf330c"
+    },
+    {
+      "type": "text",
+      "id": "fecha",
+      "name": "fecha",
+      "class": "dia calendario",
+      "value": "07/06/2026",
+      "maxlength": "10"
+    },
+    {
+      "type": "text",
+      "id": "desde",
+      "name": "desde",
+      "class": "intervalo calendario",
+      "value": "01/06/2026",
+      "maxlength": "10"
+    },
+    {
+      "type": "text",
+      "id": "hasta",
+      "name": "hasta",
+      "class": "intervalo calendario",
+      "value": "07/06/2026",
+      "maxlength": "10"
+    },
+    {
+      "type": "hidden",
+      "id": "periodicidad",
+      "value": "dia",
+      "name": "periodicidad"
+    },
+    {
+      "type": "checkbox",
+      "id": "productosHidden",
+      "name": "productos[]",
+      "value": "NA"
+    },
+    {
+      "type": "radio",
+      "id": "productoHidden",
+      "name": "producto",
+      "value": "NA"
+    },
+    {
+      "value": "1001",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1001_CHK"
+    },
+    {
+      "value": "1018",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1018_CHK"
+    },
+    {
+      "value": "0202",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0202_CHK"
+    },
+    {
+      "value": "0203",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0203_CHK"
+    },
+    {
+      "value": "0204",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0204_CHK"
+    },
+    {
+      "value": "0206",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0206_CHK"
+    },
+    {
+      "value": "0207",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0207_CHK"
+    },
+    {
+      "value": "0401",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0401_CHK"
+    },
+    {
+      "value": "0301",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0301_CHK"
+    },
+    {
+      "value": "1005",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1005_CHK"
+    },
+    {
+      "value": "0640",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0640_CHK"
+    },
+    {
+      "value": "0209",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0209_CHK"
+    },
+    {
+      "value": "0902",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0902_CHK"
+    },
+    {
+      "value": "0101",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0101_CHK"
+    },
+    {
+      "value": "0212",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0212_CHK"
+    },
+    {
+      "value": "0641",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0641_CHK"
+    },
+    {
+      "value": "0603",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0603_CHK"
+    },
+    {
+      "value": "0403",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0403_CHK"
+    },
+    {
+      "value": "0604",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0604_CHK"
+    },
+    {
+      "value": "0215",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0215_CHK"
+    },
+    {
+      "value": "0216",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0216_CHK"
+    },
+    {
+      "value": "0217",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0217_CHK"
+    },
+    {
+      "value": "1010",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1010_CHK"
+    },
+    {
+      "value": "0607",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0607_CHK"
+    },
+    {
+      "value": "0501",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0501_CHK"
+    },
+    {
+      "value": "0302",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0302_CHK"
+    },
+    {
+      "value": "0502",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0502_CHK"
+    },
+    {
+      "value": "0608",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0608_CHK"
+    },
+    {
+      "value": "0609",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0609_CHK"
+    },
+    {
+      "value": "0303",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0303_CHK"
+    },
+    {
+      "value": "1011",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1011_CHK"
+    },
+    {
+      "value": "0218",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0218_CHK"
+    },
+    {
+      "value": "1105",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1105_CHK"
+    },
+    {
+      "value": "1104",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1104_CHK"
+    },
+    {
+      "value": "0220",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0220_CHK"
+    },
+    {
+      "value": "0504",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0504_CHK"
+    },
+    {
+      "value": "0611",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0611_CHK"
+    },
+    {
+      "value": "0106",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0106_CHK"
+    },
+    {
+      "value": "0404",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0404_CHK"
+    },
+    {
+      "value": "0614",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0614_CHK"
+    },
+    {
+      "value": "0615",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0615_CHK"
+    },
+    {
+      "value": "0617",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0617_CHK"
+    },
+    {
+      "value": "0618",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0618_CHK"
+    },
+    {
+      "value": "0107",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0107_CHK"
+    },
+    {
+      "value": "0620",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0620_CHK"
+    },
+    {
+      "value": "0619",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0619_CHK"
+    },
+    {
+      "value": "0621",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0621_CHK"
+    },
+    {
+      "value": "0622",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0622_CHK"
+    },
+    {
+      "value": "0102",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0102_CHK"
+    },
+    {
+      "value": "0904",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0904_CHK"
+    },
+    {
+      "value": "0408",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0408_CHK"
+    },
+    {
+      "value": "0638",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0638_CHK"
+    },
+    {
+      "value": "0506",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0506_CHK"
+    },
+    {
+      "value": "0305",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0305_CHK"
+    },
+    {
+      "value": "0626",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0626_CHK"
+    },
+    {
+      "value": "0104",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0104_CHK"
+    },
+    {
+      "value": "1014",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1014_CHK"
+    },
+    {
+      "value": "0627",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0627_CHK"
+    },
+    {
+      "value": "0630",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0630_CHK"
+    },
+    {
+      "value": "0224",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0224_CHK"
+    },
+    {
+      "value": "0628",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0628_CHK"
+    },
+    {
+      "value": "0629",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0629_CHK"
+    },
+    {
+      "value": "1301",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_1301_CHK"
+    },
+    {
+      "value": "0405",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0405_CHK"
+    },
+    {
+      "value": "0633",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0633_CHK"
+    },
+    {
+      "value": "0306",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0306_CHK"
+    },
+    {
+      "value": "0228",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0228_CHK"
+    },
+    {
+      "value": "0636",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0636_CHK"
+    },
+    {
+      "value": "0637",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0637_CHK"
+    },
+    {
+      "value": "0229",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0229_CHK"
+    },
+    {
+      "value": "0105",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0105_CHK"
+    },
+    {
+      "value": "0230",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0230_CHK"
+    },
+    {
+      "value": "0231",
+      "type": "checkbox",
+      "name": "productos[]",
+      "id": "CHK_0231_CHK"
+    },
+    {
+      "value": "1001",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_1001_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "1018",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_1018_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0202",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0202_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0203",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0203_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0204",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0204_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0206",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0206_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0207",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0207_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0401",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0401_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0301",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0301_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "1005",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_1005_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0640",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0640_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0209",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0209_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0902",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0902_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0101",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0101_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0212",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0212_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0641",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0641_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0603",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0603_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0403",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0403_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0604",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0604_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0215",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0215_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0216",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0216_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0217",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0217_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "1010",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_1010_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0607",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0607_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0501",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0501_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0302",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0302_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0502",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0502_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0608",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0608_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0609",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0609_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0303",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0303_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "1011",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_1011_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0218",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0218_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "1105",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_1105_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "1104",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_1104_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0220",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0220_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0504",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0504_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0611",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0611_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0106",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0106_RAD",
+      "disabled": "disabled"
+    },
+    {
+      "value": "0404",
+      "type": "radio",
+      "name": "producto",
+      "id": "RAD_0404_RAD",
+      "disabled": "disabled"
+    }
+  ],
+  "products_interest": [
+    {
+      "value": "0216",
+      "label": "Esparrago"
+    },
+    {
+      "value": "0638",
+      "label": "Otros fruticolas"
+    },
+    {
+      "value": "0626",
+      "label": "Palta"
+    },
+    {
+      "value": "0637",
+      "label": "Uva"
+    }
+  ],
+  "products_total": 73,
+  "export_excel_action": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/exportarAExcel/"
+}

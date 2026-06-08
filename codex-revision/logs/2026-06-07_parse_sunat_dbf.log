@@ -1,0 +1,122 @@
+2026-06-07 22:56:27,031 INFO === INICIO parse_sunat_dbf.py ===
+2026-06-07 22:56:27,031 INFO Fuente ZIP: D:\tesis_yoset\data\sunat\raw_downloads
+2026-06-07 22:56:27,031 INFO Fuente DBF suelto: D:\tesis_yoset\data\sunat
+2026-06-07 22:56:27,032 INFO ZIPs de exportacion encontrados: 10
+2026-06-07 22:56:27,032 INFO Procesando ZIP: x04100526.zip
+2026-06-07 22:56:27,121 INFO   Extraido: x04100526.DBF
+2026-06-07 22:56:29,479 INFO   Leido con cp850: 41566 filas, 44 columnas
+2026-06-07 22:56:29,652 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:29,652 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:29,681 INFO Procesando ZIP: x06120426.zip
+2026-06-07 22:56:29,757 INFO   Extraido: x06120426.DBF
+2026-06-07 22:56:32,139 INFO   Leido con cp850: 46843 filas, 44 columnas
+2026-06-07 22:56:32,312 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:32,312 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:32,342 INFO Procesando ZIP: x11170526.zip
+2026-06-07 22:56:32,410 INFO   Extraido: x11170526.DBF
+2026-06-07 22:56:34,686 INFO   Leido con cp850: 40642 filas, 44 columnas
+2026-06-07 22:56:34,868 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:34,868 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:34,921 INFO Procesando ZIP: x13190426.zip
+2026-06-07 22:56:35,006 INFO   Extraido: x13190426.DBF
+2026-06-07 22:56:37,016 INFO   Leido con cp850: 38596 filas, 44 columnas
+2026-06-07 22:56:37,165 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:37,165 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:37,191 INFO Procesando ZIP: x18240526.zip
+2026-06-07 22:56:37,261 INFO   Extraido: x18240526.DBF
+2026-06-07 22:56:39,468 INFO   Leido con cp850: 39381 filas, 44 columnas
+2026-06-07 22:56:39,646 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:39,646 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:39,679 INFO Procesando ZIP: x20260426.zip
+2026-06-07 22:56:39,747 INFO   Extraido: x20260426.DBF
+2026-06-07 22:56:41,865 INFO   Leido con cp850: 38036 filas, 44 columnas
+2026-06-07 22:56:42,018 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:42,019 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:42,043 INFO Procesando ZIP: x23290326.zip
+2026-06-07 22:56:42,109 INFO   Extraido: x23290326.DBF
+2026-06-07 22:56:44,017 INFO   Leido con cp850: 31168 filas, 44 columnas
+2026-06-07 22:56:44,169 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:44,169 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:44,189 INFO Procesando ZIP: x25310526.zip
+2026-06-07 22:56:44,264 INFO   Extraido: x25310526.DBF
+2026-06-07 22:56:46,732 INFO   Leido con cp850: 42581 filas, 44 columnas
+2026-06-07 22:56:46,912 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:46,912 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:46,944 INFO Procesando ZIP: x27030526.zip
+2026-06-07 22:56:47,008 INFO   Extraido: x27030526.DBF
+2026-06-07 22:56:48,946 INFO   Leido con cp850: 34422 filas, 44 columnas
+2026-06-07 22:56:48,993 INFO   Columna partida detectada: NCON
+2026-06-07 22:56:49,022 INFO   Filas antes: 34422 | Filas objetivo: 0
+2026-06-07 22:56:49,043 INFO Procesando ZIP: x30050426.zip
+2026-06-07 22:56:49,094 INFO   Extraido: x30050426.DBF
+2026-06-07 22:56:50,932 INFO   Leido con cp850: 26686 filas, 44 columnas
+2026-06-07 22:56:51,065 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:51,066 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:51,083 INFO DBFs sueltos encontrados: 1
+2026-06-07 22:56:51,083 INFO Procesando DBF suelto: x23290326.DBF
+2026-06-07 22:56:52,729 INFO   Leido con cp850: 31168 filas, 44 columnas
+2026-06-07 22:56:52,861 WARNING   No se encontro columna de partida arancelaria. Reportando columnas.
+2026-06-07 22:56:52,861 WARNING   Columnas disponibles: ['CADU', 'FANO', 'NDCL', 'FNUM', 'FEMB', 'FECH_RECEP', 'NDCLREG', 'FREG', 'FANOREG', 'CAGE', 'TDOC', 'NDOC', 'DNOMBRE', 'CPAIDES', 'CPUEDES', 'CVIATRA', 'CUNITRA', 'CEMPTRA', 'DMAT', 'NCON', 'CENTFIN', 'CALM', 'DNOMPRO', 'DDIRPRO', 'DK', 'DK2', 'NSER', 'PART_NANDI', 'DCOM', 'DMER2', 'DMER3', 'DMER4', 'DMER5', 'CEST', 'VFOBSERDOL', 'VPESNET', 'VPESBRU', 'QUNIFIS', 'TUNIFIS', 'QUNICOM', 'TUNICOM', 'UBIGEO', 'DNOMCON', 'DDIRCON']
+2026-06-07 22:56:52,879 WARNING No se encontraron registros con las partidas HS objetivo.
+2026-06-07 22:56:52,880 INFO === FIN. Ver log: D:\tesis_yoset\codex-revision\logs\2026-06-07_parse_sunat_dbf.log ===
+2026-06-07 22:58:18,572 INFO === INICIO parse_sunat_dbf.py ===
+2026-06-07 22:58:18,572 INFO Fuente ZIP: D:\tesis_yoset\data\sunat\raw_downloads
+2026-06-07 22:58:18,572 INFO Fuente DBF suelto: D:\tesis_yoset\data\sunat
+2026-06-07 22:58:18,572 INFO ZIPs de exportacion encontrados: 10
+2026-06-07 22:58:18,572 INFO Procesando ZIP: x04100526.zip
+2026-06-07 22:58:18,646 INFO   Extraido: x04100526.DBF
+2026-06-07 22:58:20,785 INFO   Leido con cp850: 41566 filas, 44 columnas
+2026-06-07 22:58:20,786 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:20,824 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:20,862 INFO Procesando ZIP: x06120426.zip
+2026-06-07 22:58:20,950 INFO   Extraido: x06120426.DBF
+2026-06-07 22:58:23,508 INFO   Leido con cp850: 46843 filas, 44 columnas
+2026-06-07 22:58:23,508 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:23,560 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:23,615 INFO Procesando ZIP: x11170526.zip
+2026-06-07 22:58:23,688 INFO   Extraido: x11170526.DBF
+2026-06-07 22:58:26,295 INFO   Leido con cp850: 40642 filas, 44 columnas
+2026-06-07 22:58:26,295 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:26,335 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:26,375 INFO Procesando ZIP: x13190426.zip
+2026-06-07 22:58:26,447 INFO   Extraido: x13190426.DBF
+2026-06-07 22:58:28,519 INFO   Leido con cp850: 38596 filas, 44 columnas
+2026-06-07 22:58:28,520 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:28,555 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:28,589 INFO Procesando ZIP: x18240526.zip
+2026-06-07 22:58:28,648 INFO   Extraido: x18240526.DBF
+2026-06-07 22:58:30,685 INFO   Leido con cp850: 39381 filas, 44 columnas
+2026-06-07 22:58:30,685 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:30,720 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:30,755 INFO Procesando ZIP: x20260426.zip
+2026-06-07 22:58:30,815 INFO   Extraido: x20260426.DBF
+2026-06-07 22:58:32,785 INFO   Leido con cp850: 38036 filas, 44 columnas
+2026-06-07 22:58:32,785 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:32,821 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:32,860 INFO Procesando ZIP: x23290326.zip
+2026-06-07 22:58:32,911 INFO   Extraido: x23290326.DBF
+2026-06-07 22:58:34,506 INFO   Leido con cp850: 31168 filas, 44 columnas
+2026-06-07 22:58:34,506 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:34,534 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:34,561 INFO Procesando ZIP: x25310526.zip
+2026-06-07 22:58:34,628 INFO   Extraido: x25310526.DBF
+2026-06-07 22:58:36,853 INFO   Leido con cp850: 42581 filas, 44 columnas
+2026-06-07 22:58:36,853 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:36,892 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:36,929 INFO Procesando ZIP: x27030526.zip
+2026-06-07 22:58:36,983 INFO   Extraido: x27030526.DBF
+2026-06-07 22:58:38,683 INFO   Leido con cp850: 34422 filas, 44 columnas
+2026-06-07 22:58:38,683 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:38,715 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:38,744 INFO Procesando ZIP: x30050426.zip
+2026-06-07 22:58:38,786 INFO   Extraido: x30050426.DBF
+2026-06-07 22:58:40,140 INFO   Leido con cp850: 26686 filas, 44 columnas
+2026-06-07 22:58:40,140 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:40,165 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:40,186 INFO DBFs sueltos encontrados: 1
+2026-06-07 22:58:40,186 INFO Procesando DBF suelto: x23290326.DBF
+2026-06-07 22:58:41,887 INFO   Leido con cp850: 31168 filas, 44 columnas
+2026-06-07 22:58:41,888 INFO   Columna partida detectada: PART_NANDI
+2026-06-07 22:58:41,923 INFO   No hay registros de HS objetivo en este DBF.
+2026-06-07 22:58:41,954 WARNING No se encontraron registros con las partidas HS objetivo.
+2026-06-07 22:58:41,954 INFO === FIN. Ver log: D:\tesis_yoset\codex-revision\logs\2026-06-07_parse_sunat_dbf.log ===

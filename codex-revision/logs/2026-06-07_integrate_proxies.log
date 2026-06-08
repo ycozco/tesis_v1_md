@@ -1,0 +1,22 @@
+2026-06-07 22:58:32,926 INFO === INICIO integrate_proxies.py ===
+2026-06-07 22:58:32,926 INFO --- 1. BCRP tipo de cambio ---
+2026-06-07 22:58:32,936 INFO BCRP canonico leido: 101 filas, columnas: ['periodo_bcrp', 'tipo_cambio_pen_usd']
+2026-06-07 22:58:32,949 INFO BCRP canonico procesado: 101 filas -> D:\tesis_yoset\codex-revision\data_processed\proxies\bcrp_canonico_2026-06-07.csv
+2026-06-07 22:58:32,949 INFO --- 2. SISAP precios internos ---
+2026-06-07 22:58:32,974 INFO SISAP leido: 3826 filas, columnas: ['fuente', 'endpoint', 'fecha_descarga', 'periodicidad', 'anio', 'mes', 'producto', 'producto_id', 'mercado', 'mercado_nombre', 'variable', 'variable_label', 'periodo_sisap', 'variedad', 'valor', 'titulo_reporte', 'raw_file']
+2026-06-07 22:58:32,976 INFO SISAP filtrado a productos ['palta', 'uva', 'esparrago']: 3826 filas
+2026-06-07 22:58:33,006 INFO SISAP procesado: 3826 filas -> D:\tesis_yoset\codex-revision\data_processed\proxies\sisap_processed_2026-06-07.csv
+2026-06-07 22:58:33,007 INFO --- 3. Clima proxy ---
+2026-06-07 22:58:33,007 INFO Archivos NASA POWER encontrados: 5
+2026-06-07 22:58:33,249 INFO Clima proxy procesado: 77000 filas -> D:\tesis_yoset\codex-revision\data_processed\proxies\clima_proxy_2026-06-07.csv
+2026-06-07 22:58:33,251 INFO --- 4. Logistica proxy ---
+2026-06-07 22:58:33,443 INFO Logistica proxy procesado: 7891 filas -> D:\tesis_yoset\codex-revision\data_processed\proxies\logistica_proxy_2026-06-07.csv
+2026-06-07 22:58:33,443 INFO 
+=== RESUMEN FINAL ===
+2026-06-07 22:58:33,443 INFO BCRP: 101 filas
+2026-06-07 22:58:33,444 INFO SISAP: 3826 filas
+2026-06-07 22:58:33,444 INFO Clima: 77000 filas
+2026-06-07 22:58:33,444 INFO Logistica: 7891 filas
+2026-06-07 22:58:33,444 INFO Salidas en: D:\tesis_yoset\codex-revision\data_processed\proxies
+2026-06-07 22:58:33,444 INFO Log: D:\tesis_yoset\codex-revision\logs\2026-06-07_integrate_proxies.log
+2026-06-07 22:58:33,444 INFO === FIN integrate_proxies.py ===

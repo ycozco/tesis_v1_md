@@ -1,0 +1,12 @@
+{
+  "run_date": "2026-06-07",
+  "endpoint": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/filtrar",
+  "queries": 648,
+  "rows": 3826,
+  "ok_queries": 612,
+  "sin_datos_queries": 36,
+  "error_queries": 0,
+  "csv": "data_processed\\sisap_midagri\\sisap_midagri_mensual_2018_2026_2026-06-07.csv",
+  "manifest_csv": "metadata\\sisap_midagri_mensual_manifest_2026-06-07.csv",
+  "manifest_json": "metadata\\sisap_midagri_mensual_manifest_2026-06-07.json"
+}
