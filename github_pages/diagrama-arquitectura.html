@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama: Arquitectura</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="./planeamiento.html">Planificación</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn" id="dropdownBtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="./diccionario-fuentes.html">Diccionario de Fuentes</a>
+                        <a href="./calidad-datos.html">Calidad de Datos</a>
+                        <a href="./entrenamiento-modelos.html">Modelos e IA</a>
+                        <a href="./explicabilidad-shap.html">Explicabilidad SHAP</a>
+                        <a href="./reformulacion-tesis.html">Reformulación de Tesis</a>
+                    </div>
+                </li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                
+            </div>
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                
+        <style>
+        .diagram-card {
+        background: var(--glass);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 30px;
+        margin-top: 15px;
+        min-height: calc(100vh - 140px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    .diagram-card h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #c7d2fe;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    .mermaid-viewport {
+        width: 100%;
+        flex-grow: 1;
+        min-height: calc(100vh - 300px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 18px;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        overflow: auto;
+    }
+    .mermaid-viewport .mermaid {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mermaid-viewport svg {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-width: 1100px;
+    }
+    /* Custom Scrollbar */
+    .mermaid-viewport::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    .mermaid-viewport::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+    }
+    .mermaid-viewport::-webkit-scrollbar-thumb {
+        background: rgba(99, 102, 241, 0.3);
+        border-radius: 10px;
+    }
+    .mermaid-viewport::-webkit-scrollbar-thumb:hover {
+        background: rgba(99, 102, 241, 0.6);
+    }
+    .back-btn {
+        margin-top: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(239, 68, 68, 0.15);
+        color: #fca5a5;
+        text-decoration: none;
+        padding: 10px 24px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        transition: all 0.2s;
+    }
+    .back-btn:hover {
+        background: rgba(239, 68, 68, 0.3);
+        border-color: #ef4444;
+        color: #fff;
+        box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+    }
+    
+    /* Direct CSS Overrides for Mermaid Gantt Chart */
+    .mermaid svg {
+        background: transparent !important;
+    }
+    .mermaid svg text {
+        font-family: 'Outfit', sans-serif !important;
+        fill: #f8fafc !important;
+    }
+    /* Section headers on the left */
+    .mermaid svg text.sectionTitle,
+    .mermaid svg text.sectionText,
+    .mermaid svg .sectionText {
+        fill: #e2e8f0 !important;
+        font-weight: 700 !important;
+        font-size: 13px !important;
+    }
+    /* Grid ticks and lines */
+    .mermaid svg .grid .tick line,
+    .mermaid svg .grid line {
+        stroke: rgba(255, 255, 255, 0.1) !important;
+        stroke-width: 1px !important;
+    }
+    .mermaid svg .grid path {
+        stroke: rgba(255, 255, 255, 0.15) !important;
+    }
+    /* Alternating section backgrounds - Unique color per phase for clear differentiation */
+    .mermaid svg rect.section0 {
+        fill: #1a1e36 !important; /* F1: Datos - Deep Navy/Indigo */
+        fill-opacity: 0.9 !important;
+    }
+    .mermaid svg rect.section1 {
+        fill: #0d2b3a !important; /* F2: Modelado - Ocean Blue */
+        fill-opacity: 0.9 !important;
+    }
+    .mermaid svg rect.section2 {
+        fill: #221235 !important; /* F3: RAG e IA - Royal Purple */
+        fill-opacity: 0.9 !important;
+    }
+    .mermaid svg rect.section3 {
+        fill: #2f1323 !important; /* F4: Software - Dark Magenta/Burgundy */
+        fill-opacity: 0.9 !important;
+    }
+    .mermaid svg rect.section4 {
+        fill: #0c2720 !important; /* F5: Usabilidad - Forest Green */
+        fill-opacity: 0.9 !important;
+    }
+    .mermaid svg rect.section5 {
+        fill: #1c2635 !important; /* F6: Redacción - Slate Gray */
+        fill-opacity: 0.9 !important;
+    }
+    .mermaid svg rect.section6 {
+        fill: #2c1a12 !important; /* F7: Cierre - Espresso Brown */
+        fill-opacity: 0.9 !important;
+    }
+    .mermaid svg rect.section,
+    .mermaid svg rect.section0,
+    .mermaid svg rect.section1,
+    .mermaid svg rect.section2,
+    .mermaid svg rect.section3,
+    .mermaid svg rect.section4,
+    .mermaid svg rect.section5,
+    .mermaid svg rect.section6 {
+        stroke: rgba(255, 255, 255, 0.15) !important;
+        stroke-width: 1.5px !important;
+    }
+    /* Task bar colors */
+    .mermaid svg rect.task {
+        fill: #4f46e5 !important;
+        stroke: #6366f1 !important;
+        stroke-width: 1.5px !important;
+        rx: 6px !important;
+        ry: 6px !important;
+    }
+    .mermaid svg rect.active {
+        fill: #059669 !important;
+        stroke: #10b981 !important;
+        stroke-width: 1.5px !important;
+        rx: 6px !important;
+        ry: 6px !important;
+    }
+    .mermaid svg rect.done {
+        fill: #334155 !important;
+        stroke: #475569 !important;
+        stroke-width: 1.5px !important;
+        rx: 6px !important;
+        ry: 6px !important;
+    }
+    /* Text labels inside/outside task bars */
+    .mermaid svg text.taskText,
+    .mermaid svg .taskText {
+        fill: #ffffff !important;
+        font-weight: 600 !important;
+        font-size: 12px !important;
+    }
+    .mermaid svg text.taskTextOutside,
+    .mermaid svg .taskTextOutside {
+        fill: #cbd5e1 !important;
+        font-weight: 600 !important;
+        font-size: 12px !important;
+    }
+    .mermaid svg .titleText {
+        fill: #c7d2fe !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Legend Styles */
+    .gantt-legend-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 25px;
+        padding: 20px;
+        background: rgba(15, 23, 42, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        width: 100%;
+        max-width: 1100px;
+        justify-content: space-between;
+        backdrop-filter: blur(8px);
+    }
+    .legend-section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .legend-title {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #94a3b8;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+    .legend-items {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: #fff;
+    }
+    .legend-color {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+    }
+    .color-active { background: #10b981; border: 1px solid #047857; box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); }
+    .color-planned { background: #6366f1; border: 1px solid #4338ca; }
+    .color-done { background: #475569; border: 1px solid #334155; }
+    
+    .milestone-item {
+        font-size: 0.8rem;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: #c7d2fe;
+        font-weight: 600;
+    }
+        </style>
+        
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            securityLevel: 'loose',
+            gantt: {
+                useWidth: 1400,
+                barHeight: 40,
+                barGap: 12,
+                topPadding: 75,
+                sidePadding: 150,
+                fontSize: 16,
+                sectionFontSize: 18,
+                titlePadding: 20
+            },
+            themeVariables: {
+                background: '#0f172a',
+                primaryColor: '#6366f1',
+                primaryTextColor: '#fff',
+                lineColor: '#cbd5e1',
+                fontFamily: 'Outfit',
+                nodeBorder: '#4f46e5',
+                mainBkg: '#0f172a',
+                ganttSectionBkgColor: '#1e293b',
+                ganttSectionBkgColor2: '#0f172a',
+                ganttSectionBorderColor: '#475569',
+                ganttGridLineColor: 'rgba(255, 255, 255, 0.05)',
+                ganttTaskBorderColor: '#6366f1',
+                ganttTaskBkgColor: '#4f46e5',
+                ganttTaskTextColor: '#fff',
+                ganttTaskActiveBorderColor: '#10b981',
+                ganttTaskActiveBkgColor: '#059669',
+                ganttTaskActiveTextColor: '#fff',
+                ganttTaskDoneBorderColor: '#94a3b8',
+                ganttTaskDoneBkgColor: '#334155',
+                ganttTaskDoneTextColor: '#cbd5e1',
+                ganttTodayLineColor: '#ef4444',
+                ganttSectionTextColor: '#f8fafc',
+                ganttSectionTextColor2: '#f8fafc'
+            }
+        });
+    </script>
+    
+        <div class="diagram-card">
+            <h1>📊 Arquitectura del Sistema (Capas 1-4)</h1>
+        <div class="mermaid-viewport">
+            <div class="mermaid">
+                graph TD
+                    classDef layer1 fill:#1d2433,stroke:#6366f1,stroke-width:2px,color:#fff;
+                    classDef layer2 fill:#112e2b,stroke:#10b981,stroke-width:2.5px,color:#d1fae5;
+                    classDef layer3 fill:#31231a,stroke:#fbbf24,stroke-width:2.5px,color:#fef3c7;
+                    classDef layer4 fill:#2e1515,stroke:#ef4444,stroke-width:2.5px,color:#fee2e2;
+                    classDef db fill:#0f172a,stroke:#38bdf8,stroke-width:1.5px,color:#38bdf8;
+                    
+                    D1[(Dataset Sintético v1.0)] --> L1[Capa 1: XGBoost y LightGBM]:::layer1
+                    D2[(SENASA / MIDAGRI / SUNAT)] --> L1
+                    L1 --> L1_out[Predicciones Normalidad]:::layer1
+                    L1_out --> L2[Capa 2: Ensemble IF+LOF+ECOD]:::layer2
+                    L2 --> L2_out[Score Anomalía Consolidado]:::layer2
+                    L2_out -->|Score > 0.75| L3[Capa 3: Explicabilidad SHAP]:::layer3
+                    L3 --> L3_out[Top-5 Variables Contribución]:::layer3
+                    L3_out --> L4[Capa 4: Reportes RAG + LLM]:::layer4
+                    L4 --> L4_out[Reporte Técnico Trazable PDF]:::layer4
+                    
+                    class D1,D2 db;
+            </div>
+        </div>
+            <a href="javascript:history.back();" class="back-btn">✕ Volver</a>
+        </div>
+        
+            </article>
+        </main>
+    </div>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>
