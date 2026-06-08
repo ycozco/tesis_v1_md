@@ -9,7 +9,7 @@
 
 ## 5.2 Limitaciones de la Investigación
 
-*(Abordar: limitaciones del dataset sintético agroexportador; granularidad y disponibilidad de fuentes públicas; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) actuales en precisión de cálculo aritmético (Maynez et al., 2026)).*
+*(Abordar: limitaciones del dataset agroexportador integrado; diferencias de granularidad entre datos reales observados, datos agregados, proxies y datos sintéticos controlados; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs actuales en precisión de cálculo aritmético (Maynez et al., 2026)).*
 
 ## 5.3 Trabajos Futuros
 

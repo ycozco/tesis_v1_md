@@ -22,7 +22,7 @@ Este trabajo aporta a la literatura evidencia de que los LLMs en arquitecturas e
 
 Almalki y Masud (2025) y trabajos paralelos publicados en el *Journal of Risk and Financial Management* (2025), diseñaron frameworks integrados de detección de fraude financiero combinando Stacking Ensemble de GBDTs (XGBoost y LightGBM) con explicabilidad SHAP (Almalki & Masud, 2025; JRFM, 2025). El ensemble alcanza PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) > 0.90 y F1-Score (Medida Armónica de Precisión y Exhaustividad) > 0.80, superando a arquitecturas complejas de Deep Learning, con un SHAP Stability Index alto que certifica la coherencia forense de las explicaciones —requisito indispensable en auditoría.
 
-Este antecedente respalda la decisión arquitectónica de combinar GBDT y SHAP en datos tabulares críticos. La diferencia clave es que dichos trabajos se limitan a detección de fraude en estados financieros; la presente investigación adapta la lógica de modelos tabulares explicables al contexto agroexportador, incorporando fuentes públicas, dataset sintético documentado y generación de reportes LLM+RAG para supervisión operativa.
+Este antecedente respalda la decisión arquitectónica de combinar GBDT y SHAP en datos tabulares críticos. La diferencia clave es que dichos trabajos se limitan a detección de fraude en estados financieros; la presente investigación adapta la lógica de modelos tabulares explicables al contexto agroexportador, incorporando un dataset agroexportador integrado con fuentes públicas, proxies documentados, datos sintéticos controlados y generación de reportes LLM+RAG para supervisión operativa.
 
 ### 2.1.4 Han et al. (2022) — ADBench: Benchmark para Detección de Anomalías
 

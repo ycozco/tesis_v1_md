@@ -6,7 +6,7 @@ Este script compila la tesis del proyecto en dos formatos estándar:
 1. DOCX: Usando Pandoc dentro del contenedor Docker para asegurar formato APA 7
    con la plantilla oficial de la tesis.
 2. PDF: Usando Google Chrome / Microsoft Edge headless en el host para imprimir
-   la vista interactiva del servidor local (http://localhost:8000/docs/tesis)
+   la vista interactiva del servidor local (http://localhost:8000/docs/02-95-tesis)
    con tipografía moderna, tablas estilizadas y diseño prémium.
 
 Uso:
@@ -18,6 +18,10 @@ import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 
 def run_command(cmd, shell=False):
     """Ejecuta un comando del sistema y captura la salida."""
@@ -40,7 +44,7 @@ def compile_docx(project_dir, output_path):
     
     cmd = [
         "docker", "exec", "tesis-web-viewer",
-        "pandoc", "/app/docs/tesis.md",
+        "pandoc", "/app/docs/02-95-tesis.md",
         "-o", "/app/output/tesis.docx",
         "--reference-doc=/app/formato/Plantilla - Tesis de Investigación 2026.docx",
         "--citeproc",
@@ -108,7 +112,7 @@ def compile_pdf(project_dir, output_path):
         "--headless",
         "--disable-gpu",
         f"--print-to-pdf={temp_pdf}",
-        "http://localhost:8000/docs/tesis"
+        "http://localhost:8000/docs/02-95-tesis"
     ]
     
     success, output = run_command(cmd)

@@ -1,26 +1,42 @@
 #!/usr/bin/env python3
 """
-Script to rebuild the monolithic docs/tesis.md from the active individual chapter files.
-This ensures that the unified document served at http://localhost:8000/docs/tesis
-is fully synchronized with the academic edits (Hitos 1 to 4).
+Rebuild the active monolithic thesis file from the source Markdown modules.
+
+Output:
+  docs/02-95-tesis.md
+
+The source modules are the canonical thesis files. Historical drafts should live
+under docs/archive/ and must not be added to SECTION_ORDER.
 """
 
 import os
+import sys
 from pathlib import Path
 
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
+
 SECTION_ORDER = [
-    "00-portada", "01-resumen", "02-indices", "03-introduccion",
-    "10-capitulo1",
-    "20-capitulo2-antecedentes", "21-capitulo2-estadoarte", "22-capitulo2-marcoteorico",
-    "30-capitulo3", "40-capitulo4", "50-capitulo5", "60-conclusiones",
-    "70-recomendaciones", "80-glosario", "90-referencias",
-    "a1-anexo-usabilidad", "a2-anexo-modelcards", "a3-anexo-datasheet", "a4-anexo-ia",
-    "a5-resumen-general",
+    "02-00-portada", "02-01-resumen", "02-02-indices", "02-03-introduccion",
+    "02-10-capitulo1",
+    "02-20-capitulo2-antecedentes", "02-21-capitulo2-estadoarte", "02-22-capitulo2-marcoteorico",
+    "02-30-capitulo3",
+    "02-40-capitulo4",
+    "02-41-capitulo4-resultados-cuantitativos",
+    "02-42-capitulo4-explicabilidad-reportes",
+    "02-43-capitulo4-usabilidad-trazabilidad",
+    "02-44-capitulo4-discusion",
+    "02-45-capitulo4-limitaciones-sintesis",
+    "02-50-capitulo5", "02-60-conclusiones",
+    "02-70-recomendaciones", "02-80-glosario", "02-90-referencias",
+    "05-a1-anexo-usabilidad", "05-a2-anexo-modelcards", "05-a3-anexo-datasheet", "05-a4-anexo-ia",
+    "05-a5-resumen-general",
 ]
 
 def main():
     docs_dir = Path("docs")
-    output_file = docs_dir / "tesis.md"
+    output_file = docs_dir / "02-95-tesis.md"
     
     print(f"🔄 Rebuilding monolithic {output_file} from active chapters...")
     

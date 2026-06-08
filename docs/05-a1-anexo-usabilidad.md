@@ -20,7 +20,7 @@ La mitad de los participantes inicia con A y la otra mitad con B, asignación al
 
 ### A.3 Tareas evaluadas
 
-Cada condición presenta el mismo bloque de 10 alertas (5 positivas reales, 3 negativas reales, 2 ambiguas) extraídas del conjunto de test del dataset sintético. Para cada alerta, el participante:
+Cada condicion presenta el mismo bloque de 10 alertas (5 positivas reales o verificadas por regla, 3 negativas reales, 2 ambiguas) extraidas del conjunto de test del dataset agroexportador integrado o de escenarios controlados derivados de este. Para cada alerta, el participante:
 
 1. **Tarea T1 — Clasificación**: decide si la alerta corresponde a una anomalía operativa real (sí/no/dudoso).
 2. **Tarea T2 — Justificación**: en una oración (máx. 200 caracteres) indica la variable que justifica la decisión.
