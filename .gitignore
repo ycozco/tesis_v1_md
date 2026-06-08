@@ -4,10 +4,10 @@ __pycache__/
 *.pyc
 
 # Local Data and raw files
-codex-revision/data_raw/
-codex-revision/data_processed/
-data-trademap/
-data/
+/codex-revision/data_raw/
+/codex-revision/data_processed/
+/data-trademap/
+/data/
 
 # Temporary and local logs or user files
 "Tesis de Investigación 2026 Avance capitulo 1-2docx.docx"
