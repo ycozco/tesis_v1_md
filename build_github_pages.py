@@ -99,8 +99,8 @@ def build_site():
                 <li><a href="{relative_root}/propuesta.html">Propuesta y Prototipo</a></li>
                 <li><a href="{relative_root}/planeamiento.html">Planificación</a></li>
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">Avances de Datos e IA ▾</a>
-                    <div class="dropdown-content">
+                    <a href="javascript:void(0)" class="dropbtn" id="dropdownBtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content" id="dropdownContent">
                         <a href="{relative_root}/diccionario-fuentes.html">Diccionario de Fuentes</a>
                         <a href="{relative_root}/calidad-datos.html">Calidad de Datos</a>
                         <a href="{relative_root}/entrenamiento-modelos.html">Modelos e IA</a>
@@ -456,8 +456,14 @@ input:checked + .slider:before { transform: translateX(26px); }
     color: var(--primary-color);
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+@media (min-width: 769px) {
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+
+.dropdown-content.show {
+    display: block !important;
 }
 
 @media (max-width: 1024px) {
@@ -469,8 +475,7 @@ input:checked + .slider:before { transform: translateX(26px); }
 @media (max-width: 768px) {
     .nav-content { flex-direction: column; align-items: flex-start; gap: 1rem; }
     .nav-links { flex-direction: column; gap: 0.5rem; width: 100%; }
-    .dropdown-content { position: static; box-shadow: none; border: none; padding-left: 1rem; }
-    .dropdown:hover .dropdown-content { display: block; }
+    .dropdown-content { position: static; box-shadow: none; border: none; padding-left: 1rem; display: none; }
 }
 """
     (out_dir / "styles.css").write_text(css_content, encoding="utf-8")
@@ -533,6 +538,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { rootMargin: '-20% 0px -80% 0px' });
 
     document.querySelectorAll('.paper h1, .paper h2, .paper h3').forEach(h => observer.observe(h));
+
+    // Dropdown toggle logic for click (highly compatible with mobile/touch)
+    const dropbtn = document.getElementById('dropdownBtn');
+    const dropdownContent = document.getElementById('dropdownContent');
+    if (dropbtn && dropdownContent) {
+        dropbtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownContent.contains(e.target) && e.target !== dropbtn) {
+                dropdownContent.classList.remove('show');
+            }
+        });
+    }
 });
 """
     (out_dir / "app.js").write_text(js_content, encoding="utf-8")

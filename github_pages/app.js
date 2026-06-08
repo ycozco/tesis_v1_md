@@ -55,4 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { rootMargin: '-20% 0px -80% 0px' });
 
     document.querySelectorAll('.paper h1, .paper h2, .paper h3').forEach(h => observer.observe(h));
+
+    // Dropdown toggle logic for click (highly compatible with mobile/touch)
+    const dropbtn = document.getElementById('dropdownBtn');
+    const dropdownContent = document.getElementById('dropdownContent');
+    if (dropbtn && dropdownContent) {
+        dropbtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownContent.contains(e.target) && e.target !== dropbtn) {
+                dropdownContent.classList.remove('show');
+            }
+        });
+    }
 });
