@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenamiento de Modelos</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="./planeamiento.html">Planificación</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content">
+                        <a href="./diccionario-fuentes.html">Diccionario de Fuentes</a>
+                        <a href="./calidad-datos.html">Calidad de Datos</a>
+                        <a href="./entrenamiento-modelos.html">Modelos e IA</a>
+                        <a href="./explicabilidad-shap.html">Explicabilidad SHAP</a>
+                        <a href="./reformulacion-tesis.html">Reformulación de Tesis</a>
+                    </div>
+                </li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                <div class="toc">
+<ul>
+<li><a href="#reporte-de-entrenamiento-de-modelos">Reporte de Entrenamiento de Modelos</a><ul>
+<li><a href="#metricas-por-producto-y-modelo">Metricas por producto y modelo</a></li>
+<li><a href="#notas">Notas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+            </div>
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                <h1 id="reporte-de-entrenamiento-de-modelos">Reporte de Entrenamiento de Modelos</h1>
+<p>Fecha: 2026-06-07<br />
+Script: <code>src/train_models.py</code></p>
+<h2 id="metricas-por-producto-y-modelo">Metricas por producto y modelo</h2>
+<table>
+<thead>
+<tr>
+<th>producto</th>
+<th>modelo</th>
+<th>rmse</th>
+<th>mae</th>
+<th>mape</th>
+<th>r2</th>
+<th>smape</th>
+<th>n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>palta</td>
+<td>baseline</td>
+<td>0.7407</td>
+<td>0.4909</td>
+<td>159.2574</td>
+<td>-0.01</td>
+<td>25.401</td>
+<td>3142</td>
+</tr>
+<tr>
+<td>palta</td>
+<td>lgbm_seed42</td>
+<td>0.7498</td>
+<td>0.5043</td>
+<td>166.0621</td>
+<td>-0.035</td>
+<td>25.9767</td>
+<td>3142</td>
+</tr>
+<tr>
+<td>palta</td>
+<td>lgbm_seed123</td>
+<td>0.7498</td>
+<td>0.5043</td>
+<td>166.0621</td>
+<td>-0.035</td>
+<td>25.9767</td>
+<td>3142</td>
+</tr>
+<tr>
+<td>palta</td>
+<td>lgbm_seed456</td>
+<td>0.7498</td>
+<td>0.5043</td>
+<td>166.0621</td>
+<td>-0.035</td>
+<td>25.9767</td>
+<td>3142</td>
+</tr>
+<tr>
+<td>palta</td>
+<td>xgb</td>
+<td>0.7532</td>
+<td>0.5055</td>
+<td>166.6433</td>
+<td>-0.0442</td>
+<td>26.0365</td>
+<td>3142</td>
+</tr>
+<tr>
+<td>palta</td>
+<td>baseline_test</td>
+<td>1.6975</td>
+<td>0.5185</td>
+<td>27.3839</td>
+<td>-0.0292</td>
+<td>26.5315</td>
+<td>6614</td>
+</tr>
+<tr>
+<td>uva</td>
+<td>baseline</td>
+<td>0.7789</td>
+<td>0.6262</td>
+<td>23.7453</td>
+<td>-0.0833</td>
+<td>21.269</td>
+<td>273</td>
+</tr>
+<tr>
+<td>uva</td>
+<td>lgbm_seed42</td>
+<td>0.753</td>
+<td>0.5797</td>
+<td>20.5142</td>
+<td>-0.0126</td>
+<td>19.7531</td>
+<td>273</td>
+</tr>
+<tr>
+<td>uva</td>
+<td>lgbm_seed123</td>
+<td>0.753</td>
+<td>0.5797</td>
+<td>20.5142</td>
+<td>-0.0126</td>
+<td>19.7531</td>
+<td>273</td>
+</tr>
+<tr>
+<td>uva</td>
+<td>lgbm_seed456</td>
+<td>0.753</td>
+<td>0.5797</td>
+<td>20.5142</td>
+<td>-0.0126</td>
+<td>19.7531</td>
+<td>273</td>
+</tr>
+<tr>
+<td>uva</td>
+<td>xgb</td>
+<td>0.7408</td>
+<td>0.5757</td>
+<td>20.6736</td>
+<td>0.02</td>
+<td>19.6029</td>
+<td>273</td>
+</tr>
+<tr>
+<td>uva</td>
+<td>baseline_test</td>
+<td>0.8029</td>
+<td>0.6388</td>
+<td>23.2342</td>
+<td>-0.1733</td>
+<td>21.6059</td>
+<td>165</td>
+</tr>
+<tr>
+<td>arandano</td>
+<td>baseline</td>
+<td>2.2092</td>
+<td>1.7141</td>
+<td>514.4005</td>
+<td>-0.0029</td>
+<td>21.9106</td>
+<td>128</td>
+</tr>
+<tr>
+<td>arandano</td>
+<td>lgbm_seed42</td>
+<td>2.3657</td>
+<td>1.9335</td>
+<td>506.1184</td>
+<td>-0.15</td>
+<td>24.7721</td>
+<td>128</td>
+</tr>
+<tr>
+<td>arandano</td>
+<td>lgbm_seed123</td>
+<td>2.3657</td>
+<td>1.9335</td>
+<td>506.1184</td>
+<td>-0.15</td>
+<td>24.7721</td>
+<td>128</td>
+</tr>
+<tr>
+<td>arandano</td>
+<td>lgbm_seed456</td>
+<td>2.3657</td>
+<td>1.9335</td>
+<td>506.1184</td>
+<td>-0.15</td>
+<td>24.7721</td>
+<td>128</td>
+</tr>
+<tr>
+<td>arandano</td>
+<td>xgb</td>
+<td>2.3578</td>
+<td>1.8476</td>
+<td>485.8873</td>
+<td>-0.1423</td>
+<td>23.5059</td>
+<td>128</td>
+</tr>
+<tr>
+<td>arandano</td>
+<td>baseline_test</td>
+<td>2.2059</td>
+<td>1.7143</td>
+<td>24.0087</td>
+<td>-0.0561</td>
+<td>21.8339</td>
+<td>363</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notas">Notas</h2>
+<ul>
+<li>Seeds usadas: [42, 123, 456, 789, 2026]</li>
+<li>Target: <code>precio_kg_usd</code></li>
+<li>Features: 12 numericas + 3 categoricas</li>
+<li>Splits: 70/10/20 temporal sin mezcla aleatoria</li>
+<li>Los modelos <code>.pkl</code> estan en <code>models/</code></li>
+<li>Metricas completas en <code>codex-revision/results_metrics_2026-06-07.json</code></li>
+</ul>
+            </article>
+        </main>
+    </div>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>

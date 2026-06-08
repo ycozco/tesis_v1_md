@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicabilidad SHAP</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="./planeamiento.html">Planificación</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content">
+                        <a href="./diccionario-fuentes.html">Diccionario de Fuentes</a>
+                        <a href="./calidad-datos.html">Calidad de Datos</a>
+                        <a href="./entrenamiento-modelos.html">Modelos e IA</a>
+                        <a href="./explicabilidad-shap.html">Explicabilidad SHAP</a>
+                        <a href="./reformulacion-tesis.html">Reformulación de Tesis</a>
+                    </div>
+                </li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                <div class="toc">
+<ul>
+<li><a href="#reporte-de-explicabilidad-shap">Reporte de Explicabilidad SHAP</a><ul>
+<li><a href="#1-importancia-de-features-shap-o-nativa">1. Importancia de features (SHAP o nativa)</a><ul>
+<li><a href="#palta">Palta</a></li>
+</ul>
+</li>
+<li><a href="#2-interpretaciones-por-producto">2. Interpretaciones por producto</a><ul>
+<li><a href="#palta_1">Palta</a></li>
+<li><a href="#uva">Uva</a></li>
+<li><a href="#arandano">Arandano</a></li>
+</ul>
+</li>
+<li><a href="#3-implicaciones-para-la-tesis">3. Implicaciones para la tesis</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+            </div>
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                <h1 id="reporte-de-explicabilidad-shap">Reporte de Explicabilidad SHAP</h1>
+<p>Fecha: 2026-06-07<br />
+Script: <code>src/shap_explainability.py</code></p>
+<h2 id="1-importancia-de-features-shap-o-nativa">1. Importancia de features (SHAP o nativa)</h2>
+<h3 id="palta">Palta</h3>
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>importancia_media</th>
+<th>modelo</th>
+<th>metodo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zona_productora_enc</td>
+<td>0.0102</td>
+<td>lgbm</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>empresa_exportadora_enc</td>
+<td>0.0101</td>
+<td>lgbm</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>volumen_kg</td>
+<td>0.0097</td>
+<td>lgbm</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>destino_mercado_enc</td>
+<td>0.0068</td>
+<td>lgbm</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>humedad_pct</td>
+<td>0.0053</td>
+<td>lgbm</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>### Uva</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>importancia_media</th>
+<th>modelo</th>
+<th>metodo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volumen_kg</td>
+<td>0.0453</td>
+<td>xgb</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>empresa_exportadora_enc</td>
+<td>0.0330</td>
+<td>xgb</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>volumen_kg</td>
+<td>0.0217</td>
+<td>lgbm</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>mes</td>
+<td>0.0178</td>
+<td>xgb</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>empresa_exportadora_enc</td>
+<td>0.0148</td>
+<td>lgbm</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>### Arandano</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>importancia_media</th>
+<th>modelo</th>
+<th>metodo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mes</td>
+<td>0.4380</td>
+<td>xgb</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>volumen_kg</td>
+<td>0.3170</td>
+<td>xgb</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>temperatura_min_c</td>
+<td>0.2735</td>
+<td>xgb</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>destino_mercado_enc</td>
+<td>0.1916</td>
+<td>xgb</td>
+<td>shap_tree</td>
+</tr>
+<tr>
+<td>humedad_pct</td>
+<td>0.1599</td>
+<td>xgb</td>
+<td>shap_tree</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-interpretaciones-por-producto">2. Interpretaciones por producto</h2>
+<h3 id="palta_1">Palta</h3>
+<p>La feature mas importante para predecir <code>precio_kg_usd</code> en palta es <strong><code>zona_productora_enc</code></strong> segun el metodo shap_tree. Esto sugiere que los modelos estan capturando principalmente variabilidad de mercado.</p>
+<h3 id="uva">Uva</h3>
+<p>La feature mas importante para predecir <code>precio_kg_usd</code> en uva es <strong><code>volumen_kg</code></strong> segun el metodo shap_tree. Esto sugiere que los modelos estan capturando principalmente variabilidad de mercado.</p>
+<h3 id="arandano">Arandano</h3>
+<p>La feature mas importante para predecir <code>precio_kg_usd</code> en arandano es <strong><code>volumen_kg</code></strong> segun el metodo shap_tree. Esto sugiere que los modelos estan capturando principalmente variabilidad de mercado.</p>
+<h2 id="3-implicaciones-para-la-tesis">3. Implicaciones para la tesis</h2>
+<ul>
+<li>Las features con mayor importancia SHAP son los candidatos principales<br />
+  para el analisis de factores determinantes de precio (Capitulo 4 de la tesis).</li>
+<li>El dominio de variables operativas (merma, dias_logisticos) sobre variables<br />
+  externas (clima, tipo de cambio) sugiere que el dataset tiene sesgos de construccion.</li>
+<li>Se recomienda complementar con SISAP (precios internos) y variables de demanda<br />
+  (Trade Map) en versiones posteriores del modelo.</li>
+<li>Los archivos CSV de importancias estan en:<br />
+<code>codex-revision/data_processed/eda/figuras/</code></li>
+</ul>
+            </article>
+        </main>
+    </div>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>

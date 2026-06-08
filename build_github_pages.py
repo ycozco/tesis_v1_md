@@ -38,8 +38,15 @@ def build_site():
     md = markdown.Markdown(extensions=['tables', 'toc', 'fenced_code', 'nl2br'])
 
     # 1. Read files
-    tesis_content = (docs_dir / "tesis.md").read_text(encoding="utf-8")
-    ref_content = (docs_dir / "90-referencias.md").read_text(encoding="utf-8")
+    tesis_content = (docs_dir / "02-95-tesis.md").read_text(encoding="utf-8")
+    ref_content = (docs_dir / "02-90-referencias.md").read_text(encoding="utf-8")
+    
+    # Read new Codex-revision files
+    diccionario_content = (Path("codex-revision") / "diccionario-fuentes-canonicas.md").read_text(encoding="utf-8")
+    calidad_content = (Path("codex-revision") / "reporte-calidad-datos.md").read_text(encoding="utf-8")
+    entrenamiento_content = (Path("codex-revision") / "reporte-entrenamiento-modelos.md").read_text(encoding="utf-8")
+    explicabilidad_content = (Path("codex-revision") / "reporte-explicabilidad-shap.md").read_text(encoding="utf-8")
+    reformulacion_content = (Path("codex-revision") / "reporte-reformulacion-tesis.md").read_text(encoding="utf-8")
 
     # Remove the frontmatter if any (though tesis.md is combined and frontmatter might be at the top)
     if tesis_content.startswith("---"):
@@ -51,6 +58,26 @@ def build_site():
 
     md.reset()
     ref_html = md.convert(ref_content)
+
+    md.reset()
+    diccionario_html = md.convert(diccionario_content)
+    diccionario_toc = md.toc
+
+    md.reset()
+    calidad_html = md.convert(calidad_content)
+    calidad_toc = md.toc
+
+    md.reset()
+    entrenamiento_html = md.convert(entrenamiento_content)
+    entrenamiento_toc = md.toc
+
+    md.reset()
+    explicabilidad_html = md.convert(explicabilidad_content)
+    explicabilidad_toc = md.toc
+
+    md.reset()
+    reformulacion_html = md.convert(reformulacion_content)
+    reformulacion_toc = md.toc
 
     # 3. HTML Template with Planificación link
     def get_template(title, body, toc, relative_root="."):
@@ -71,6 +98,16 @@ def build_site():
                 <li><a href="{relative_root}/index.html">Tesis Completa</a></li>
                 <li><a href="{relative_root}/propuesta.html">Propuesta y Prototipo</a></li>
                 <li><a href="{relative_root}/planeamiento.html">Planificación</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content">
+                        <a href="{relative_root}/diccionario-fuentes.html">Diccionario de Fuentes</a>
+                        <a href="{relative_root}/calidad-datos.html">Calidad de Datos</a>
+                        <a href="{relative_root}/entrenamiento-modelos.html">Modelos e IA</a>
+                        <a href="{relative_root}/explicabilidad-shap.html">Explicabilidad SHAP</a>
+                        <a href="{relative_root}/reformulacion-tesis.html">Reformulación de Tesis</a>
+                    </div>
+                </li>
                 <li><a href="{relative_root}/referencias/index.html">Referencias (Directorio)</a></li>
             </ul>
             <div class="theme-switch-wrapper">
@@ -109,6 +146,13 @@ def build_site():
 
     # Write References Index
     (ref_dir / "index.html").write_text(get_template("Directorio de Referencias", ref_html, "", ".."), encoding="utf-8")
+
+    # Write Codex progress pages
+    (out_dir / "diccionario-fuentes.html").write_text(get_template("Diccionario de Fuentes", diccionario_html, diccionario_toc, "."), encoding="utf-8")
+    (out_dir / "calidad-datos.html").write_text(get_template("Calidad de Datos", calidad_html, calidad_toc, "."), encoding="utf-8")
+    (out_dir / "entrenamiento-modelos.html").write_text(get_template("Entrenamiento de Modelos", entrenamiento_html, entrenamiento_toc, "."), encoding="utf-8")
+    (out_dir / "explicabilidad-shap.html").write_text(get_template("Explicabilidad SHAP", explicabilidad_html, explicabilidad_toc, "."), encoding="utf-8")
+    (out_dir / "reformulacion-tesis.html").write_text(get_template("Reformulación de Tesis", reformulacion_html, reformulacion_toc, "."), encoding="utf-8")
 
     # Write Proposal & Prototype from template file directly
     print("Generando página estática de la propuesta en GitHub Pages...")
@@ -374,10 +418,59 @@ input:checked + .slider:before { transform: translateX(26px); }
 .badge-status.success { background: rgba(16, 185, 129, 0.15); color: #10b981; }
 .badge-status.warning { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
 
+/* Dropdown styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--paper-bg);
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
+    z-index: 1001;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 @media (max-width: 1024px) {
     .layout { flex-direction: column; }
     .sidebar { width: 100%; height: auto; position: static; }
     .paper { padding: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-content { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .nav-links { flex-direction: column; gap: 0.5rem; width: 100%; }
+    .dropdown-content { position: static; box-shadow: none; border: none; padding-left: 1rem; }
+    .dropdown:hover .dropdown-content { display: block; }
 }
 """
     (out_dir / "styles.css").write_text(css_content, encoding="utf-8")

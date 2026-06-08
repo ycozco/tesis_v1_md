@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diccionario de Fuentes</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="./planeamiento.html">Planificación</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content">
+                        <a href="./diccionario-fuentes.html">Diccionario de Fuentes</a>
+                        <a href="./calidad-datos.html">Calidad de Datos</a>
+                        <a href="./entrenamiento-modelos.html">Modelos e IA</a>
+                        <a href="./explicabilidad-shap.html">Explicabilidad SHAP</a>
+                        <a href="./reformulacion-tesis.html">Reformulación de Tesis</a>
+                    </div>
+                </li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                <div class="toc">
+<ul>
+<li><a href="#diccionario-de-fuentes-canonicas">Diccionario de Fuentes Canonicas</a><ul>
+<li><a href="#1-fuente-canonica-por-campo-critico">1. Fuente canonica por campo critico</a></li>
+<li><a href="#2-jerarquia-de-resolucion-de-conflictos">2. Jerarquia de resolucion de conflictos</a><ul>
+<li><a href="#para-volumen-y-valor-fob-de-exportacion">Para volumen y valor FOB de exportacion</a></li>
+<li><a href="#para-precio-unitario-fob-usdkg">Para precio unitario FOB (USD/kg)</a></li>
+<li><a href="#para-tipo-de-cambio">Para tipo de cambio</a></li>
+<li><a href="#para-clima">Para clima</a></li>
+</ul>
+</li>
+<li><a href="#3-segmentacion-de-productos-fija-e-inmutable">3. Segmentacion de productos — fija e inmutable</a></li>
+<li><a href="#4-archivos-de-datos-crudos-solo-lectura">4. Archivos de datos crudos — SOLO LECTURA</a></li>
+<li><a href="#5-directorios-de-salida-autorizados">5. Directorios de salida autorizados</a></li>
+<li><a href="#6-semillas-de-aleatoriedad-fijadas-antes-del-primer-entrenamiento">6. Semillas de aleatoriedad — fijadas antes del primer entrenamiento</a></li>
+<li><a href="#7-presupuesto-de-trials-optuna">7. Presupuesto de trials Optuna</a></li>
+<li><a href="#8-registro-de-decisiones-criticas-tomadas">8. Registro de decisiones criticas tomadas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+            </div>
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                <h1 id="diccionario-de-fuentes-canonicas">Diccionario de Fuentes Canonicas</h1>
+<p>Fecha de creacion: 2026-06-07<br />
+Ultima actualizacion: 2026-06-07<br />
+Mantenido por: agente de codigo (no modificar manualmente campos marcados AUTO)</p>
+<p>Este archivo establece la fuente canonica unica para cada campo del dataset final.<br />
+Si una fuente difiere de la canonica, la canonica prevalece segun las reglas de la seccion 7.4 del plan.</p>
+<hr />
+<h2 id="1-fuente-canonica-por-campo-critico">1. Fuente canonica por campo critico</h2>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Fuente canonica</th>
+<th>Archivo canonico</th>
+<th>Fuentes alternativas (EXCLUIDAS del pipeline)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volumen_kg</code></td>
+<td>SUNAT/ADUANET</td>
+<td><code>codex-revision/data_processed/sunat/sunat_exportaciones_hs_objetivo_YYYY-MM-DD.csv</code></td>
+<td>dataset_real_v1.csv (referencia), Trade Map (benchmark)</td>
+</tr>
+<tr>
+<td><code>valor_fob_usd</code></td>
+<td>SUNAT/ADUANET</td>
+<td>Idem arriba</td>
+<td>Trade Map (benchmark externo)</td>
+</tr>
+<tr>
+<td><code>precio_kg_usd</code></td>
+<td>Derivado FOB/kg de SUNAT</td>
+<td>Calculado en pipeline</td>
+<td>dataset_real_v1.csv precio_kg_usd (validacion)</td>
+</tr>
+<tr>
+<td><code>destino_mercado</code></td>
+<td>SUNAT/ADUANET</td>
+<td>Idem arriba</td>
+<td>Trade Map (benchmark)</td>
+</tr>
+<tr>
+<td><code>empresa_exportadora</code></td>
+<td>SUNAT/ADUANET</td>
+<td>Idem arriba</td>
+<td>dataset_real_v1.csv (referencia)</td>
+</tr>
+<tr>
+<td><code>fecha</code></td>
+<td>SUNAT/ADUANET</td>
+<td>Idem arriba</td>
+<td>dataset_real_v1.csv (referencia)</td>
+</tr>
+<tr>
+<td><code>tipo_cambio_pen_usd</code></td>
+<td>BCRP serie PN01207PM</td>
+<td><code>codex-revision/data_raw/bcrp/PN01207PM_2018-01_2026-06.csv</code></td>
+<td><code>data/bcrp/bcrp-tipo-cambio-mensual.csv</code> (EXCLUIDO), <code>data/downloads/bcrp_tipo_cambio.csv</code> (EXCLUIDO)</td>
+</tr>
+<tr>
+<td><code>sisap_precio_prom</code></td>
+<td>SISAP/MIDAGRI</td>
+<td><code>codex-revision/data_processed/sisap_midagri/sisap_midagri_mensual_2018_2026_2026-06-07.csv</code></td>
+<td>Ninguna</td>
+</tr>
+<tr>
+<td><code>sisap_volumen</code></td>
+<td>SISAP/MIDAGRI</td>
+<td>Idem arriba</td>
+<td>Ninguna</td>
+</tr>
+<tr>
+<td><code>temperatura_max_c</code></td>
+<td>NASA POWER</td>
+<td><code>codex-revision/data_processed/proxies/clima_proxy_YYYY-MM-DD.csv</code></td>
+<td>SENAMHI (si NASA falla)</td>
+</tr>
+<tr>
+<td><code>temperatura_min_c</code></td>
+<td>NASA POWER</td>
+<td>Idem arriba</td>
+<td>SENAMHI (si NASA falla)</td>
+</tr>
+<tr>
+<td><code>precipitacion_mm</code></td>
+<td>NASA POWER</td>
+<td>Idem arriba</td>
+<td>SENAMHI (si NASA falla)</td>
+</tr>
+<tr>
+<td><code>carga_portuaria_mes</code></td>
+<td>APN/OSITRAN</td>
+<td><code>codex-revision/data_raw/apn_2024/</code>, <code>apn_2025/</code></td>
+<td>Ninguna</td>
+</tr>
+<tr>
+<td><code>alertas_sanitarias_mes</code></td>
+<td>SENASA datos abiertos</td>
+<td><code>codex-revision/data_raw/senasa/</code></td>
+<td>FDA/RASFF (contexto adicional)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-jerarquia-de-resolucion-de-conflictos">2. Jerarquia de resolucion de conflictos</h2>
+<h3 id="para-volumen-y-valor-fob-de-exportacion">Para volumen y valor FOB de exportacion</h3>
+<pre><code>SUNAT/ADUANET &gt; dataset_real_v1.csv &gt; Trade Map &gt; FAOSTAT
+</code></pre>
+<h3 id="para-precio-unitario-fob-usdkg">Para precio unitario FOB (USD/kg)</h3>
+<pre><code>Derivado de SUNAT (FOB/kg) &gt; dataset_real_v1.csv &gt; Trade Map valor unitario &gt; SISAP (solo referencia interna)
+</code></pre>
+<h3 id="para-tipo-de-cambio">Para tipo de cambio</h3>
+<pre><code>BCRP serie PN01207PM UNICA VERSION CANONICA
+Archivos excluidos del pipeline:
+  - data/bcrp/bcrp-tipo-cambio-mensual.csv
+  - data/downloads/bcrp_tipo_cambio.csv
+</code></pre>
+<h3 id="para-clima">Para clima</h3>
+<pre><code>NASA POWER (cobertura completa) &gt; SENAMHI estaciones &gt; valor nulo documentado
+</code></pre>
+<hr />
+<h2 id="3-segmentacion-de-productos-fija-e-inmutable">3. Segmentacion de productos — fija e inmutable</h2>
+<table>
+<thead>
+<tr>
+<th>Producto</th>
+<th>HS</th>
+<th>Estado</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Palta</td>
+<td>080440</td>
+<td>NUCLEO</td>
+<td>Incluir siempre</td>
+</tr>
+<tr>
+<td>Uva</td>
+<td>080610</td>
+<td>NUCLEO</td>
+<td>Incluir siempre</td>
+</tr>
+<tr>
+<td>Arandano</td>
+<td>081040</td>
+<td>NUCLEO</td>
+<td>Incluir siempre</td>
+</tr>
+<tr>
+<td>Esparrago</td>
+<td>070920</td>
+<td>CONDICIONAL</td>
+<td>Incluir solo si pasa validacion de cobertura</td>
+</tr>
+<tr>
+<td>Cacao</td>
+<td>Varios</td>
+<td>EXCLUIDO</td>
+<td>No incluir en ningun dataset final ni experimento</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-archivos-de-datos-crudos-solo-lectura">4. Archivos de datos crudos — SOLO LECTURA</h2>
+<p>Los siguientes directorios y archivos son de SOLO LECTURA.<br />
+El agente NO debe modificar, renombrar ni eliminar ninguno de estos archivos.</p>
+<pre><code>data/sunat/raw_downloads/          &lt;- ZIPs SUNAT originales
+data/sunat/x23290326.DBF           &lt;- DBF SUNAT ya extraido
+data-trademap/                     &lt;- XLS Trade Map originales
+codex-revision/data_raw/           &lt;- Todos los datos raw de fuentes externas
+data/dataset_real_v1.csv           &lt;- Dataset real base (referencia)
+data/dataset_agro_sintetico_v1.csv &lt;- Dataset sintetico base
+</code></pre>
+<hr />
+<h2 id="5-directorios-de-salida-autorizados">5. Directorios de salida autorizados</h2>
+<pre><code>codex-revision/data_processed/trademap/        &lt;- Trade Map limpio
+codex-revision/data_processed/sunat/           &lt;- SUNAT filtrado por HS
+codex-revision/data_processed/proxies/         &lt;- BCRP, SISAP, clima, logistica, sanidad
+codex-revision/data_processed/eda/             &lt;- Tablas y figuras EDA
+codex-revision/data_processed/modeling/        &lt;- Splits temporales
+codex-revision/data_processed/rejected/        &lt;- Rechazados por violacion de reglas
+codex-revision/logs/                           &lt;- Logs de ejecucion
+models/                                        &lt;- Modelos serializados
+</code></pre>
+<hr />
+<h2 id="6-semillas-de-aleatoriedad-fijadas-antes-del-primer-entrenamiento">6. Semillas de aleatoriedad — fijadas antes del primer entrenamiento</h2>
+<pre><code class="language-python">RANDOM_SEEDS = [42, 123, 456, 789, 2026]
+</code></pre>
+<p>Estas semillas NO deben modificarse una vez iniciado el entrenamiento.</p>
+<hr />
+<h2 id="7-presupuesto-de-trials-optuna">7. Presupuesto de trials Optuna</h2>
+<pre><code>n_trials = 100  # Por modelo y producto
+timeout = 3600  # 1 hora maximo por sesion
+</code></pre>
+<hr />
+<h2 id="8-registro-de-decisiones-criticas-tomadas">8. Registro de decisiones criticas tomadas</h2>
+<table>
+<thead>
+<tr>
+<th>Fecha</th>
+<th>Decision</th>
+<th>Justificacion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06-07</td>
+<td>Tipo de cambio canonico: PN01207PM_2018-01_2026-06.csv</td>
+<td>Unica serie BCRP con cobertura completa 2018-2026</td>
+</tr>
+<tr>
+<td>2026-06-07</td>
+<td>Cacao excluido del pipeline</td>
+<td>Solo 379 filas, sin fuente canonica</td>
+</tr>
+<tr>
+<td>2026-06-07</td>
+<td>Split temporal 70/10/20</td>
+<td>Series agroexportadoras con estacionalidad</td>
+</tr>
+</tbody>
+</table>
+            </article>
+        </main>
+    </div>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>

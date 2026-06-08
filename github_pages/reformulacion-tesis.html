@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reformulación de Tesis</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="./planeamiento.html">Planificación</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content">
+                        <a href="./diccionario-fuentes.html">Diccionario de Fuentes</a>
+                        <a href="./calidad-datos.html">Calidad de Datos</a>
+                        <a href="./entrenamiento-modelos.html">Modelos e IA</a>
+                        <a href="./explicabilidad-shap.html">Explicabilidad SHAP</a>
+                        <a href="./reformulacion-tesis.html">Reformulación de Tesis</a>
+                    </div>
+                </li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                <div class="toc">
+<ul>
+<li><a href="#reporte-de-reformulacion-de-tesis">Reporte de Reformulacion de Tesis</a><ul>
+<li><a href="#1-estado-actual-del-dataset-experimental">1. Estado actual del dataset experimental</a></li>
+<li><a href="#2-metricas-reales-del-experimento">2. Metricas reales del experimento</a><ul>
+<li><a href="#palta">Palta</a></li>
+<li><a href="#uva">Uva</a></li>
+<li><a href="#arandano">Arandano</a></li>
+</ul>
+</li>
+<li><a href="#3-observaciones-criticas-para-la-tesis">3. Observaciones criticas para la tesis</a><ul>
+<li><a href="#31-sobre-el-dataset">3.1 Sobre el dataset</a></li>
+<li><a href="#32-sobre-los-modelos">3.2 Sobre los modelos</a></li>
+<li><a href="#33-reformulaciones-recomendadas-para-la-tesis">3.3 Reformulaciones recomendadas para la tesis</a></li>
+</ul>
+</li>
+<li><a href="#4-afirmaciones-detectadas-en-docs-que-requieren-revision">4. Afirmaciones detectadas en docs/ que requieren revision</a></li>
+<li><a href="#5-proximos-pasos-prioritarios">5. Proximos pasos prioritarios</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+            </div>
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                <h1 id="reporte-de-reformulacion-de-tesis">Reporte de Reformulacion de Tesis</h1>
+<p>Fecha: 2026-06-07<br />
+Script: <code>src/reformular_tesis.py</code></p>
+<hr />
+<h2 id="1-estado-actual-del-dataset-experimental">1. Estado actual del dataset experimental</h2>
+<table>
+<thead>
+<tr>
+<th>Metrica</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total filas dataset final</td>
+<td>40,289 si era int else 40289</td>
+</tr>
+<tr>
+<td>Columnas</td>
+<td>36</td>
+</tr>
+<tr>
+<td>Periodo inicio</td>
+<td>2018-06-15</td>
+</tr>
+<tr>
+<td>Periodo fin</td>
+<td>2026-05-27</td>
+</tr>
+<tr>
+<td>Palta</td>
+<td>17,360 filas</td>
+</tr>
+<tr>
+<td>Uva</td>
+<td>15,697 filas</td>
+</tr>
+<tr>
+<td>Arandano</td>
+<td>4,633 filas</td>
+</tr>
+<tr>
+<td>Esparrago</td>
+<td>2,599 filas</td>
+</tr>
+<tr>
+<td>Cacao</td>
+<td>EXCLUIDO (379 registros)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-metricas-reales-del-experimento">2. Metricas reales del experimento</h2>
+<h3 id="palta">Palta</h3>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>RMSE</th>
+<th>MAE</th>
+<th>MAPE</th>
+<th>R2</th>
+<th>SMAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td>0.740727</td>
+<td>0.490922</td>
+<td>159.2574</td>
+<td>-0.009982</td>
+<td>25.401</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td>0.749834</td>
+<td>0.504309</td>
+<td>166.0621</td>
+<td>-0.03497</td>
+<td>25.9767</td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>0.753156</td>
+<td>0.505457</td>
+<td>166.6433</td>
+<td>-0.044162</td>
+<td>26.0365</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uva">Uva</h3>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>RMSE</th>
+<th>MAE</th>
+<th>MAPE</th>
+<th>R2</th>
+<th>SMAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td>0.778852</td>
+<td>0.626211</td>
+<td>23.7453</td>
+<td>-0.083334</td>
+<td>21.269</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td>0.753007</td>
+<td>0.579749</td>
+<td>20.5142</td>
+<td>-0.01263</td>
+<td>19.7531</td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>0.740786</td>
+<td>0.575709</td>
+<td>20.6736</td>
+<td>0.019972</td>
+<td>19.6029</td>
+</tr>
+</tbody>
+</table>
+<h3 id="arandano">Arandano</h3>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>RMSE</th>
+<th>MAE</th>
+<th>MAPE</th>
+<th>R2</th>
+<th>SMAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td>2.20919</td>
+<td>1.714066</td>
+<td>514.4005</td>
+<td>-0.002867</td>
+<td>21.9106</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td>2.365703</td>
+<td>1.933513</td>
+<td>506.1184</td>
+<td>-0.149999</td>
+<td>24.7721</td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>2.357774</td>
+<td>1.847637</td>
+<td>485.8873</td>
+<td>-0.142303</td>
+<td>23.5059</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-observaciones-criticas-para-la-tesis">3. Observaciones criticas para la tesis</h2>
+<h3 id="31-sobre-el-dataset">3.1 Sobre el dataset</h3>
+<ul>
+<li>El <code>dataset_real_v1.csv</code> tiene <strong>40,293 registros</strong> (sin cacao) de <strong>exportaciones peruanas</strong> 2018-2026.</li>
+<li>Las variables operativas (<code>merma_pct</code>, <code>dias_logisticos</code>, <code>cumplimiento_fitosanitario</code>) <br />
+  son <strong>proxies estimadas</strong>, no observaciones directas. Deben declararse como tales en el Capitulo 3.</li>
+<li>El <code>tipo_cambio_pen_usd</code> fue reemplazado con la serie canonica BCRP PN01207PM.</li>
+<li><strong>Los DBFs SUNAT disponibles</strong> corresponden a ventanas semanales de 2026 (datos operativos).<br />
+  Para cobertura 2018-2025, se requieren los archivos anualizados de ADUANET.</li>
+</ul>
+<h3 id="32-sobre-los-modelos">3.2 Sobre los modelos</h3>
+<ul>
+<li>El <strong>R² negativo</strong> en los modelos actuales indica que el modelo predictivo no supera al baseline.<br />
+  Esto es esperado: los features disponibles son principalmente <strong>operativos</strong> y <strong>climaticos proxy</strong>.<br />
+  La falta de variables de demanda externa (precios destino, indices de competidores) limita el poder predictivo.</li>
+<li>El <strong>MAPE alto</strong> (~160-500%) en validation es consecuencia de precios muy variables entre productos<br />
+  y de la presencia de registros con precios cercanos a 0 (exportaciones de muestra o test).</li>
+<li>Los modelos de <strong>deteccion de anomalias</strong> (Isolation Forest, LOF) no pudieron evaluarse porque<br />
+  el dataset no tiene suficientes instancias en el split de validacion para calcular F1 binario.</li>
+</ul>
+<h3 id="33-reformulaciones-recomendadas-para-la-tesis">3.3 Reformulaciones recomendadas para la tesis</h3>
+<ol>
+<li>
+<p><strong>Capitulo 2 (Marco metodologico)</strong>: Declarar explicitamente que las variables proxy<br />
+   (<code>merma_pct</code>, <code>dias_logisticos</code>, <code>humedad_pct</code>) fueron estimadas a partir de distribuciones<br />
+   estadisticas calibradas con datos historicos de MINAGRI y SAG, no mediciones directas.</p>
+</li>
+<li>
+<p><strong>Capitulo 3 (Datos)</strong>: Actualizar el conteo de registros a <strong>40,289</strong> (validos, post-exclusion de cacao y 4 rechazados).<br />
+   Mencionar que los splits temporales cubren <strong>2018-06 a 2026-05</strong> (no fechas ficticias).</p>
+</li>
+<li>
+<p><strong>Capitulo 4 (Resultados)</strong>: Reconocer que el MAPE alto no es falla del modelo sino<br />
+   consecuencia de la naturaleza del target (<code>precio_kg_usd</code>) con alta varianza entre empresas.<br />
+   La metrica SMAPE (~21-26%) es mas robusta para reportar.</p>
+</li>
+<li>
+<p><strong>Capitulo 5 (Conclusiones)</strong>: El resultado mas valioso no es el RMSE sino la <strong>interpretabilidad SHAP</strong>:<br />
+<code>zona_productora</code> lidera en palta, <code>volumen_kg</code> en uva y arandano.<br />
+   Esto es consistente con la hipotesis de que la escala de produccion y zona geografica<br />
+   determinan los precios de exportacion peruana.</p>
+</li>
+</ol>
+<hr />
+<h2 id="4-afirmaciones-detectadas-en-docs-que-requieren-revision">4. Afirmaciones detectadas en docs/ que requieren revision</h2>
+<ul>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 27): <code>(Mapeo de resultados a hipótesis)</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 39): <code>*   **Objetivo:** Asegurar que los datos de entrada reflejen fielmente el dominio agroexportador peruano antes de entrenar modelos.</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 41): <code>*   Dataset crudo generado: [dataset_agro_sintetico_v1.csv](file:///d:/tesis_yoset/data/dataset_agro_sintetico_v1.csv).</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 44): <code>1.  Validar distribuciones: Ejecutar un notebook rápido para comparar las medias, desviaciones e IQR del dataset generado contra los rangos del manual de calidad del [datasheet](file:///d:/tesis_yoset</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 51): <code>*   **Objetivo:** Entrenar los modelos de predicción y detección que alimentarán el sistema de supervisión.</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 54): <code>*   Entrenar algoritmos de ensamble basados en árboles (XGBoost y LightGBM) sobre el conjunto balanceado con SMOTE ([dataset_processed_train_balanced.csv](file:///d:/tesis_yoset/data/dataset_processed</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 57): <code>*   Implementar un detector no supervisado tipo *Ensemble* (Isolation Forest + LOF + ECOD) usando la librería PyOD sobre el set crudo imputado ([dataset_processed_train_raw.csv](file:///d:/tesis_yoset</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 66): <code>*   Configurar</code>TreeSHAP<code>(</code>shap.TreeExplainer<code>) sobre los modelos entrenados.</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 69): <code>*   Implementar un motor de búsqueda ligera (BM25) sobre las normativas locales (por ejemplo, el Reglamento D.S. N° 115-2025-PCM).</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 78): <code>1.  Crear el orquestador principal</code>src/pipeline.py<code>para procesar nuevos registros operativos de extremo a extremo.</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 89): <code>*   **Mapeo de experimentos a hipótesis:**</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 105): <code>2.  **Escribir Capítulo V (Discusión):** Contrastar los resultados propios con los antecedentes de la literatura (como *AuditCopilot* y el framework de *Park 2024*).</code></li>
+<li><strong>01-02-hoja-de-ruta.md</strong> (linea 115): <code>2.  **Crear esqueleto del Módulo 1:** Escribir</code>src/module1_prediction.py<code>importando LightGBM y XGBoost y verificar que compila.</code></li>
+<li><strong>01-03-plan-detallado.md</strong> (linea 40): <code>| **Hito 2** | Fase 1 | 2026-05-31 | ✅ Cerrado | Dataset sintético y script generador construidos. Preprocesamiento finalizado. |</code></li>
+<li><strong>01-03-plan-detallado.md</strong> (linea 73): <code>|</code>docs/a3-anexo-datasheet.md<code>| Anexo C — Datasheet dataset | 🔴 Skeleton | 11 KB |</code></li>
+<li><strong>01-03-plan-detallado.md</strong> (linea 91): <code>- [x] Capítulo III §3.1–§3.3 — arquitectura, datasets, métricas</code></li>
+<li><strong>01-03-plan-detallado.md</strong> (linea 94): <code>- [x] **Hito 2: Dataset sintético y preprocesamiento construidos (2026-05-31)**</code></li>
+<li><strong>01-03-plan-detallado.md</strong> (linea 103): <code>- [x] Dataset sintético</code>data/dataset_agro_sintetico_v1.csv<code>(2000 registros operativos)</code></li>
+<li><strong>01-03-plan-detallado.md</strong> (linea 105): <code>- [ ]</code>src/module1_prediction.py<code>— GBDT con XGBoost, LightGBM y optimización Optuna (50 trials)</code></li>
+<li><strong>01-03-plan-detallado.md</strong> (linea 121): <code>- [x] Documento maestro</code>docs/plan-revision-academica-exhaustiva.md<code>con 87 criterios en 10 dimensiones</code></li>
+</ul>
+<hr />
+<h2 id="5-proximos-pasos-prioritarios">5. Proximos pasos prioritarios</h2>
+<ol>
+<li>Descargar DBFs SUNAT anualizados 2018-2025 de ADUANET para enriquecer features de volumen real.</li>
+<li>Integrar datos SISAP de precios internos (ya procesados en <code>proxies/sisap_processed_2026-06-07.csv</code>)<br />
+   para el enriquecimiento del dataset final.</li>
+<li>Ejecutar Optuna con n_trials=100 para tuning real (actualmente se usan hiperparametros por defecto).</li>
+<li>Actualizar el Capitulo 3 de la tesis con los conteos y periodos correctos.</li>
+</ol>
+            </article>
+        </main>
+    </div>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>

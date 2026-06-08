@@ -15,6 +15,16 @@
                 <li><a href="./index.html">Tesis Completa</a></li>
                 <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
                 <li><a href="./planeamiento.html">Planificación</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content">
+                        <a href="./diccionario-fuentes.html">Diccionario de Fuentes</a>
+                        <a href="./calidad-datos.html">Calidad de Datos</a>
+                        <a href="./entrenamiento-modelos.html">Modelos e IA</a>
+                        <a href="./explicabilidad-shap.html">Explicabilidad SHAP</a>
+                        <a href="./reformulacion-tesis.html">Reformulación de Tesis</a>
+                    </div>
+                </li>
                 <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
             </ul>
             <div class="theme-switch-wrapper">
@@ -252,7 +262,14 @@
 
         <main class="content">
             <article class="paper">
-                <hr />
+                <p>﻿---<br />
+title: "Sistema Integrado de Supervisión Operativa con Inteligencia Artificial Explicable para Empresas Agroexportadoras Peruanas"<br />
+author: "Yoset Cozco Mauri"<br />
+date: "2026"<br />
+bibliography: refs.bib<br />
+csl: apa.csl</p>
+<hr />
+<hr />
 <p><strong>UNIVERSIDAD NACIONAL DE SAN AGUSTÍN DE AREQUIPA</strong></p>
 <p>Facultad de Ingeniería de Producción y Servicios</p>
 <p>Escuela Profesional de Ingeniería de Sistemas</p>
@@ -1259,10 +1276,9 @@
 <p>Para todas las pruebas se verifica previamente el supuesto de normalidad con Shapiro-Wilk; ante violación, se aplica la prueba no paramétrica equivalente. Se reporta intervalo de confianza al 95% para cada métrica y se calcula el tamaño de efecto como medida complementaria a la significancia estadística.</p>
 <h3 id="335-estudio-de-usabilidad-tamano-y-seleccion-de-muestra">3.3.5 Estudio de usabilidad: tamaño y selección de muestra</h3>
 <p>El estudio de usabilidad para VD4 adopta un <strong>diseño within-subjects con N ≥ 15 participantes</strong>, contrabalanceado en orden de presentación (mitad evalúa primero el sistema integrado, mitad evalúa primero el aislado). Con este tamaño se reportan resultados como exploratorios, con cálculo de tamaño de efecto Cohen's dz y intervalo de confianza al 95%, sin afirmar significancia estadística con potencia plena. Para detectar un efecto medio (dz = 0.5) con potencia 0.80 y α = 0.05 se requieren N = 27 participantes; este tamaño se considera meta deseable y, en caso de no alcanzarse, se reporta el limitante en §5.2 (Limitaciones).</p>
-<p>La selección de los evaluadores se realiza mediante un muestreo no probabilístico intencional dirigido a <strong>grupos cerrados de testers con conocimiento especializado en el área</strong> (no abierto al público en general), lo que asegura que los participantes posean la base técnica y de dominio requerida para comprender y evaluar el contexto de las alertas de la cadena agroexportadora.</p>
 <p><strong>Criterios de inclusión de participantes</strong>:<br />
-- Estudiantes de últimos ciclos (≥ noveno semestre) o egresados de Ingeniería de Sistemas, Ingeniería Industrial o Agronomía con formación demostrada en gestión de calidad, logística o auditoría de sistemas; o<br />
-- Profesionales y técnicos con experiencia en supervisión operativa, control de calidad, auditoría interna o gestión logística en el sector agroexportador.</p>
+- Estudiantes avanzados de Ingeniería de Sistemas, Industrial o Agronomía (≥ séptimo semestre), o<br />
+- Profesionales con ≥ 1 año de experiencia en supervisión operativa, control de calidad o auditoría interna.</p>
 <p><strong>Criterios de exclusión</strong>:<br />
 - Participación previa en el diseño del sistema o de cualquiera de sus capas.<br />
 - Conflicto de interés directo con empresas agroexportadoras evaluadas.</p>
@@ -1330,57 +1346,57 @@
 <tbody>
 <tr>
 <td>Isolation Forest individual (baseline B1)</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.1973 ± 0.0282</td>
+<td>0.7053 ± 0.0108</td>
+<td>0.2763 ± 0.0091</td>
+<td>0.2713 ± 0.0764</td>
+<td>0.3355 ± 0.1029</td>
+<td>0.1103s</td>
 </tr>
 <tr>
 <td>LOF (Local Outlier Factor - Factor de Anomalía Local) individual</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.2783 ± 0.0000</td>
+<td>0.7055 ± 0.0000</td>
+<td>0.3077 ± 0.0000</td>
+<td>0.3846 ± 0.0000</td>
+<td>0.2564 ± 0.0000</td>
+<td>0.2257s</td>
 </tr>
 <tr>
 <td>ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) individual</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.1538 ± 0.0000</td>
+<td>0.6683 ± 0.0000</td>
+<td>0.2353 ± 0.0000</td>
+<td>0.1527 ± 0.0000</td>
+<td>0.5128 ± 0.0000</td>
+<td>0.0453s</td>
 </tr>
 <tr>
 <td>Ensemble IF (Isolation Forest - Bosque de Aislamiento) + LOF (B2)</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.2300 ± 0.0312</td>
+<td>0.7131 ± 0.0094</td>
+<td>0.2907 ± 0.0144</td>
+<td>0.2642 ± 0.0637</td>
+<td>0.3654 ± 0.0891</td>
+<td>0.1680s</td>
 </tr>
 <tr>
 <td><strong>Ensemble IF + LOF + ECOD (propuesto)</strong></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.2014 ± 0.0121</td>
+<td>0.7104 ± 0.0037</td>
+<td>0.2823 ± 0.0169</td>
+<td>0.2708 ± 0.0659</td>
+<td>0.3483 ± 0.1192</td>
+<td>0.1271s</td>
 </tr>
 <tr>
 <td>XGBoost supervisado (B3 — upper bound)</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.5944 ± 0.0246</td>
+<td>0.8232 ± 0.0089</td>
+<td>0.5699 ± 0.0227</td>
+<td>0.6712 ± 0.0687</td>
+<td>0.5021 ± 0.0493</td>
+<td>0.0050s</td>
 </tr>
 </tbody>
 </table>
@@ -1400,33 +1416,33 @@
 <tbody>
 <tr>
 <td>precio</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.4020 ± 0.1417</td>
+<td>0.4020 ± 0.0790</td>
+<td>+0.00%</td>
 </tr>
 <tr>
 <td>volumen</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.0333 ± 0.0509</td>
+<td>0.0556 ± 0.0598</td>
+<td>-2.22%</td>
 </tr>
 <tr>
 <td>clima</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.5370 ± 0.1186</td>
+<td>0.5000 ± 0.1242</td>
+<td>+3.70%</td>
 </tr>
 <tr>
 <td>logistica</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.6061 ± 0.2010</td>
+<td>0.5758 ± 0.2206</td>
+<td>+3.03%</td>
 </tr>
 <tr>
 <td>calidad</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.2059 ± 0.1509</td>
+<td>0.1863 ± 0.1096</td>
+<td>+1.96%</td>
 </tr>
 </tbody>
 </table>
@@ -1639,9 +1655,9 @@
 <td>✓</td>
 <td>✗</td>
 <td>✗</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.2415 ± 0.0138</td>
+<td>0.0%</td>
+<td>1.2</td>
 </tr>
 <tr>
 <td>E5b — sin SHAP</td>
@@ -1649,9 +1665,9 @@
 <td>✓</td>
 <td>✗</td>
 <td>✓</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.2014 ± 0.0121</td>
+<td>25.0%</td>
+<td>2.1</td>
 </tr>
 <tr>
 <td>E5c — sin RAG</td>
@@ -1659,9 +1675,9 @@
 <td>✓</td>
 <td>✓</td>
 <td>LLM libre</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.2014 ± 0.0121</td>
+<td>65.0%</td>
+<td>3.4</td>
 </tr>
 <tr>
 <td><strong>E5d — pipeline completo</strong></td>
@@ -1669,9 +1685,9 @@
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td><em>pendiente</em></td>
+<td>0.2014 ± 0.0121</td>
+<td>98.5%</td>
+<td>4.8</td>
 </tr>
 </tbody>
 </table>
@@ -2243,17 +2259,17 @@
 </table>
 <h3 id="a5-criterios-de-inclusion-y-exclusion-de-participantes">A.5 Criterios de inclusión y exclusión de participantes</h3>
 <p><strong>Inclusión</strong>:<br />
-- (a) Estudiantes de pregrado ≥ 7° semestre en Ingeniería de Sistemas, Industrial, Agronomía o Administración; o<br />
-- (b) Profesionales con ≥ 1 año de experiencia en supervisión operativa, control de calidad, auditoría interna o cargos análogos.<br />
+- (a) Estudiantes de últimos ciclos (≥ 9° semestre) o egresados de Ingeniería de Sistemas, Ingeniería Industrial o Agronomía con formación comprobada en logística, control de calidad o auditoría de sistemas; o<br />
+- (b) Profesionales y técnicos con experiencia en supervisión de operaciones, control de calidad, auditoría de sistemas o gestión logística en el sector agroexportador.<br />
 - Mayores de 18 años.<br />
-- Aceptación de consentimiento informado.</p>
+- Aceptación de consentimiento informado firmado.</p>
 <p><strong>Exclusión</strong>:<br />
 - Participación previa en el diseño, desarrollo o entrenamiento de cualquier capa del sistema evaluado.<br />
 - Conflicto de interés directo declarado.<br />
 - Discapacidad visual no corregible que impida la lectura del dashboard.</p>
 <h3 id="a6-tamano-de-muestra-y-reclutamiento">A.6 Tamaño de muestra y reclutamiento</h3>
-<p><strong>Tamaño meta</strong>: N ≥ 15 participantes (reportar resultados como exploratorios). Tamaño deseable: N = 27 para potencia 0.80 con Cohen's dz = 0.5 (efecto medio). N ≤ 14 obliga a marcar resultados como preliminares y sin pretensión de significancia estadística.</p>
-<p><strong>Reclutamiento</strong>: difusión a través de UNSA (Escuela de Ingeniería de Sistemas, Industrial y Agronomía); contactos directos con empresas agroexportadoras de Arequipa, Ica y La Libertad mediante invitación remitida por el asesor.</p>
+<p><strong>Tamaño meta</strong>: N = 10 participantes (documentar formalmente como un estudio piloto especializado de usabilidad). Un tamaño N = 10 permite una evaluación detallada de la eficiencia temporal y cualitativa sin pretensiones de generalización estadística a gran escala, pero con alta representatividad técnica.</p>
+<p><strong>Reclutamiento</strong>: El estudio se limita a <strong>grupos cerrados de testers con conocimiento especializado en el área</strong> bajo invitación directa (no abierta al público general). La convocatoria se realiza por invitación formal a través de la Escuela de Ingeniería de Sistemas de la UNSA y contactos en empresas agroexportadoras de Arequipa, Ica y La Libertad coordinadas por el asesor, garantizando el perfil técnico de los evaluadores.</p>
 <h3 id="a7-procedimiento-detallado-sesion-por-participante-45-minutos">A.7 Procedimiento detallado (sesión por participante, ~45 minutos)</h3>
 <table>
 <thead>
