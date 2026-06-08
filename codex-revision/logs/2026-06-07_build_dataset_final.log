@@ -1,0 +1,56 @@
+2026-06-07 23:04:46,885 INFO === INICIO build_dataset_final.py ===
+2026-06-07 23:04:46,941 INFO Base cargada: 40672 filas
+2026-06-07 23:04:46,960 INFO Cacao excluido: 379 filas
+2026-06-07 23:04:47,128 INFO valor_fob_usd derivado de precio_kg_usd * volumen_kg
+2026-06-07 23:04:47,141 INFO --- Integrando BCRP ---
+2026-06-07 23:04:47,159 INFO BCRP integrado: 40293 filas con tipo de cambio
+2026-06-07 23:04:47,160 INFO --- Integrando SISAP ---
+2026-06-07 23:04:47,177 WARNING SISAP no tiene columnas esperadas. Encontradas: ['fuente', 'endpoint', 'periodo_mes', 'periodicidad', 'anio', 'mes', 'producto', 'producto_id', 'mercado', 'mercado_nombre', 'variable', 'variable_label', 'periodo_sisap', 'variedad', 'valor', 'titulo_reporte', 'raw_file', 'origen_dato', 'tipo_variable_fila', 'archivo_origen', 'fecha_generacion']
+2026-06-07 23:04:47,291 INFO Contrato aplicado: 40289 validos, 4 rechazados
+2026-06-07 23:04:47,296 INFO Rechazados guardados: D:\tesis_yoset\codex-revision\data_processed\rejected\rechazados_final_2026-06-07.csv
+2026-06-07 23:04:47,703 INFO Dataset final guardado: D:\tesis_yoset\codex-revision\data_processed\dataset_modelo_v_final_2026-06-07.csv (40,289 filas, 36 columnas)
+2026-06-07 23:04:47,728 INFO Split temporal: train=28202 val=4028 test=8059
+2026-06-07 23:04:47,732 INFO   Train: 2018-06-15 -> 2026-04-10
+2026-06-07 23:04:47,733 INFO   Val:   2026-04-10 -> 2026-04-23
+2026-06-07 23:04:47,734 INFO   Test:  2026-04-23 -> 2026-05-27
+2026-06-07 23:04:48,132 INFO Splits temporales guardados.
+2026-06-07 23:04:48,140 INFO Gate generado: D:\tesis_yoset\codex-revision\gate-pre-entrenamiento.md
+2026-06-07 23:04:48,140 INFO 
+=== RESUMEN FINAL ===
+2026-06-07 23:04:48,140 INFO Dataset final: 40,289 filas
+2026-06-07 23:04:48,144 INFO Por producto:
+producto
+palta        17360
+uva          15697
+arandano      4633
+esparrago     2599
+2026-06-07 23:04:48,144 INFO Columnas: 36
+2026-06-07 23:04:48,144 INFO === FIN build_dataset_final.py ===
+2026-06-07 23:05:17,055 INFO === INICIO build_dataset_final.py ===
+2026-06-07 23:05:17,124 INFO Base cargada: 40672 filas
+2026-06-07 23:05:17,146 INFO Cacao excluido: 379 filas
+2026-06-07 23:05:17,324 INFO valor_fob_usd derivado de precio_kg_usd * volumen_kg
+2026-06-07 23:05:17,336 INFO --- Integrando BCRP ---
+2026-06-07 23:05:17,348 INFO BCRP integrado: 40293 filas con tipo de cambio
+2026-06-07 23:05:17,349 INFO --- Integrando SISAP ---
+2026-06-07 23:05:17,393 INFO SISAP integrado: 0/40293 filas con precio SISAP
+2026-06-07 23:05:17,517 INFO Contrato aplicado: 40289 validos, 4 rechazados
+2026-06-07 23:05:17,522 INFO Rechazados guardados: D:\tesis_yoset\codex-revision\data_processed\rejected\rechazados_final_2026-06-07.csv
+2026-06-07 23:05:17,921 INFO Dataset final guardado: D:\tesis_yoset\codex-revision\data_processed\dataset_modelo_v_final_2026-06-07.csv (40,289 filas, 36 columnas)
+2026-06-07 23:05:17,943 INFO Split temporal: train=28202 val=4028 test=8059
+2026-06-07 23:05:17,948 INFO   Train: 2018-06-15 -> 2026-04-10
+2026-06-07 23:05:17,948 INFO   Val:   2026-04-10 -> 2026-04-23
+2026-06-07 23:05:17,950 INFO   Test:  2026-04-23 -> 2026-05-27
+2026-06-07 23:05:18,339 INFO Splits temporales guardados.
+2026-06-07 23:05:18,347 INFO Gate generado: D:\tesis_yoset\codex-revision\gate-pre-entrenamiento.md
+2026-06-07 23:05:18,348 INFO 
+=== RESUMEN FINAL ===
+2026-06-07 23:05:18,348 INFO Dataset final: 40,289 filas
+2026-06-07 23:05:18,351 INFO Por producto:
+producto
+palta        17360
+uva          15697
+arandano      4633
+esparrago     2599
+2026-06-07 23:05:18,351 INFO Columnas: 36
+2026-06-07 23:05:18,351 INFO === FIN build_dataset_final.py ===

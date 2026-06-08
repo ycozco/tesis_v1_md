@@ -1,0 +1,12 @@
+2026-06-07 23:08:14,994 INFO === INICIO shap_explainability.py ===
+2026-06-07 23:08:15,020 INFO 
+--- SHAP: palta ---
+2026-06-07 23:08:18,618 INFO Top feature palta: zona_productora_enc (imp=0.0102)
+2026-06-07 23:08:18,792 INFO 
+--- SHAP: uva ---
+2026-06-07 23:08:18,803 INFO Top feature uva: volumen_kg (imp=0.0217)
+2026-06-07 23:08:18,819 INFO 
+--- SHAP: arandano ---
+2026-06-07 23:08:18,828 INFO Top feature arandano: volumen_kg (imp=0.0730)
+2026-06-07 23:08:18,874 INFO Reporte SHAP: D:\tesis_yoset\codex-revision\reporte-explicabilidad-shap.md
+2026-06-07 23:08:18,874 INFO === FIN shap_explainability.py ===

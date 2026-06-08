@@ -1,0 +1,70 @@
+2026-06-07 23:06:51,862 INFO === INICIO train_models.py ===
+2026-06-07 23:06:58,124 INFO Dependencias: {'lightgbm': True, 'xgboost': True, 'optuna': True, 'sklearn': True}
+2026-06-07 23:06:58,125 INFO Gate verificado. Items pendientes: 4
+2026-06-07 23:06:58,257 INFO Splits cargados: train=28202 val=4028 test=8059
+2026-06-07 23:06:58,257 INFO 
+============================================================
+2026-06-07 23:06:58,258 INFO PRODUCTO: PALTA
+2026-06-07 23:06:58,258 INFO ============================================================
+2026-06-07 23:06:58,267 INFO Train: 7604 | Val: 3142 | Test: 6614
+2026-06-07 23:06:58,285 INFO --- Baseline (media historica) ---
+2026-06-07 23:06:58,287 INFO   Baseline val: {'rmse': np.float64(0.740727), 'mae': 0.490922, 'mape': np.float64(159.2574), 'r2': -0.009982, 'smape': np.float64(25.401), 'n': 3142}
+2026-06-07 23:06:58,288 INFO --- LightGBM ---
+2026-06-07 23:06:58,368 INFO   LightGBM val: {'rmse': np.float64(0.749834), 'mae': 0.504309, 'mape': np.float64(166.0621), 'r2': -0.03497, 'smape': np.float64(25.9767), 'n': 3142}
+2026-06-07 23:06:58,443 INFO   LightGBM val: {'rmse': np.float64(0.749834), 'mae': 0.504309, 'mape': np.float64(166.0621), 'r2': -0.03497, 'smape': np.float64(25.9767), 'n': 3142}
+2026-06-07 23:06:58,488 INFO   LightGBM val: {'rmse': np.float64(0.749834), 'mae': 0.504309, 'mape': np.float64(166.0621), 'r2': -0.03497, 'smape': np.float64(25.9767), 'n': 3142}
+2026-06-07 23:06:58,490 INFO --- XGBoost ---
+2026-06-07 23:07:16,614 INFO === INICIO train_models.py ===
+2026-06-07 23:07:17,596 INFO Dependencias: {'lightgbm': True, 'xgboost': True, 'optuna': True, 'sklearn': True}
+2026-06-07 23:07:17,596 INFO Gate verificado. Items pendientes: 4
+2026-06-07 23:07:17,718 INFO Splits cargados: train=28202 val=4028 test=8059
+2026-06-07 23:07:17,718 INFO 
+============================================================
+2026-06-07 23:07:17,718 INFO PRODUCTO: PALTA
+2026-06-07 23:07:17,718 INFO ============================================================
+2026-06-07 23:07:17,728 INFO Train: 7604 | Val: 3142 | Test: 6614
+2026-06-07 23:07:17,742 INFO --- Baseline (media historica) ---
+2026-06-07 23:07:17,744 INFO   Baseline val: {'rmse': np.float64(0.740727), 'mae': 0.490922, 'mape': np.float64(159.2574), 'r2': -0.009982, 'smape': np.float64(25.401), 'n': 3142}
+2026-06-07 23:07:17,744 INFO --- LightGBM ---
+2026-06-07 23:07:17,792 INFO   LightGBM val: {'rmse': np.float64(0.749834), 'mae': 0.504309, 'mape': np.float64(166.0621), 'r2': -0.03497, 'smape': np.float64(25.9767), 'n': 3142}
+2026-06-07 23:07:17,832 INFO   LightGBM val: {'rmse': np.float64(0.749834), 'mae': 0.504309, 'mape': np.float64(166.0621), 'r2': -0.03497, 'smape': np.float64(25.9767), 'n': 3142}
+2026-06-07 23:07:17,898 INFO   LightGBM val: {'rmse': np.float64(0.749834), 'mae': 0.504309, 'mape': np.float64(166.0621), 'r2': -0.03497, 'smape': np.float64(25.9767), 'n': 3142}
+2026-06-07 23:07:17,899 INFO --- XGBoost ---
+2026-06-07 23:07:18,182 INFO   XGBoost val: {'rmse': np.float64(0.753156), 'mae': 0.505457, 'mape': np.float64(166.6433), 'r2': -0.044162, 'smape': np.float64(26.0365), 'n': 3142}
+2026-06-07 23:07:18,184 INFO --- Detectores de anomalias ---
+2026-06-07 23:07:18,184 INFO 
+============================================================
+2026-06-07 23:07:18,184 INFO PRODUCTO: UVA
+2026-06-07 23:07:18,184 INFO ============================================================
+2026-06-07 23:07:18,199 INFO Train: 15259 | Val: 273 | Test: 165
+2026-06-07 23:07:18,217 INFO --- Baseline (media historica) ---
+2026-06-07 23:07:18,220 INFO   Baseline val: {'rmse': np.float64(0.778852), 'mae': 0.626211, 'mape': np.float64(23.7453), 'r2': -0.083334, 'smape': np.float64(21.269), 'n': 273}
+2026-06-07 23:07:18,221 INFO --- LightGBM ---
+2026-06-07 23:07:18,295 INFO   LightGBM val: {'rmse': np.float64(0.753007), 'mae': 0.579749, 'mape': np.float64(20.5142), 'r2': -0.01263, 'smape': np.float64(19.7531), 'n': 273}
+2026-06-07 23:07:18,354 INFO   LightGBM val: {'rmse': np.float64(0.753007), 'mae': 0.579749, 'mape': np.float64(20.5142), 'r2': -0.01263, 'smape': np.float64(19.7531), 'n': 273}
+2026-06-07 23:07:18,413 INFO   LightGBM val: {'rmse': np.float64(0.753007), 'mae': 0.579749, 'mape': np.float64(20.5142), 'r2': -0.01263, 'smape': np.float64(19.7531), 'n': 273}
+2026-06-07 23:07:18,414 INFO --- XGBoost ---
+2026-06-07 23:07:18,469 INFO   XGBoost val: {'rmse': np.float64(0.740786), 'mae': 0.575709, 'mape': np.float64(20.6736), 'r2': 0.019972, 'smape': np.float64(19.6029), 'n': 273}
+2026-06-07 23:07:18,471 INFO --- Detectores de anomalias ---
+2026-06-07 23:07:18,471 INFO 
+============================================================
+2026-06-07 23:07:18,471 INFO PRODUCTO: ARANDANO
+2026-06-07 23:07:18,471 INFO ============================================================
+2026-06-07 23:07:18,478 INFO Train: 4142 | Val: 128 | Test: 363
+2026-06-07 23:07:18,488 INFO --- Baseline (media historica) ---
+2026-06-07 23:07:18,489 INFO   Baseline val: {'rmse': np.float64(2.20919), 'mae': 1.714066, 'mape': np.float64(514.4005), 'r2': -0.002867, 'smape': np.float64(21.9106), 'n': 128}
+2026-06-07 23:07:18,490 INFO --- LightGBM ---
+2026-06-07 23:07:18,521 INFO   LightGBM val: {'rmse': np.float64(2.365703), 'mae': 1.933513, 'mape': np.float64(506.1184), 'r2': -0.149999, 'smape': np.float64(24.7721), 'n': 128}
+2026-06-07 23:07:18,552 INFO   LightGBM val: {'rmse': np.float64(2.365703), 'mae': 1.933513, 'mape': np.float64(506.1184), 'r2': -0.149999, 'smape': np.float64(24.7721), 'n': 128}
+2026-06-07 23:07:18,580 INFO   LightGBM val: {'rmse': np.float64(2.365703), 'mae': 1.933513, 'mape': np.float64(506.1184), 'r2': -0.149999, 'smape': np.float64(24.7721), 'n': 128}
+2026-06-07 23:07:18,582 INFO --- XGBoost ---
+2026-06-07 23:07:18,634 INFO   XGBoost val: {'rmse': np.float64(2.357774), 'mae': 1.847637, 'mape': np.float64(485.8873), 'r2': -0.142303, 'smape': np.float64(23.5059), 'n': 128}
+2026-06-07 23:07:18,636 INFO --- Detectores de anomalias ---
+2026-06-07 23:07:18,636 INFO 
+--- Evaluacion en TEST (solo referencia, no tuning) ---
+2026-06-07 23:07:18,650 INFO   palta baseline test: {'rmse': np.float64(1.697483), 'mae': 0.518524, 'mape': np.float64(27.3839), 'r2': -0.029198, 'smape': np.float64(26.5315), 'n': 6614}
+2026-06-07 23:07:18,656 INFO   uva baseline test: {'rmse': np.float64(0.802937), 'mae': 0.63884, 'mape': np.float64(23.2342), 'r2': -0.173318, 'smape': np.float64(21.6059), 'n': 165}
+2026-06-07 23:07:18,675 INFO   arandano baseline test: {'rmse': np.float64(2.205886), 'mae': 1.714343, 'mape': np.float64(24.0087), 'r2': -0.056122, 'smape': np.float64(21.8339), 'n': 363}
+2026-06-07 23:07:18,676 INFO Metricas guardadas: D:\tesis_yoset\codex-revision\results_metrics_2026-06-07.json
+2026-06-07 23:07:18,678 INFO Reporte entrenamiento: D:\tesis_yoset\codex-revision\reporte-entrenamiento-modelos.md
+2026-06-07 23:07:18,678 INFO === FIN train_models.py ===
