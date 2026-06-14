@@ -28,7 +28,7 @@ log = logging.getLogger(__name__)
 
 # Configuración de rutas
 DATA_DIR = Path("data")
-RAW_DATA_PATH = DATA_DIR / "dataset_agro_sintetico_v1.csv"
+RAW_DATA_PATH = DATA_DIR / "dataset_real_v1.csv"
 TRAIN_RAW_OUT = DATA_DIR / "dataset_processed_train_raw.csv"
 TRAIN_BAL_OUT = DATA_DIR / "dataset_processed_train_balanced.csv"
 TEST_OUT = DATA_DIR / "dataset_processed_test.csv"
@@ -100,8 +100,8 @@ def split_and_encode(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, list
     feature_cols = [c for c in all_cols if c not in exclude_cols]
     
     # Particionado temporal estricto (Train: 2022-2024, Test: 2025)
-    train_mask = df_encoded["fecha"] < "2025-01-01"
-    test_mask = df_encoded["fecha"] >= "2025-01-01"
+    train_mask = df_encoded["fecha"] < "2026-01-01"
+    test_mask = df_encoded["fecha"] >= "2026-01-01"
     
     df_train = df_encoded[train_mask].copy()
     df_test = df_encoded[test_mask].copy()
@@ -112,9 +112,10 @@ def split_and_encode(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, list
     return df_train, df_test, feature_cols
 
 
-def run_pipeline():
+def run_pipeline(input_path: Path, output_dir: Path):
     """Ejecuta el pipeline completo de tratamiento de datos."""
-    df = load_data(RAW_DATA_PATH)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    df = load_data(input_path)
     df = add_features(df)
     df_train, df_test, feature_cols = split_and_encode(df)
     
@@ -152,28 +153,55 @@ def run_pipeline():
     
     # Exportar Train Raw (Preprocesado pero sin balancear)
     df_train_raw_out = pd.concat([X_train, y_train], axis=1)
-    df_train_raw_out.to_csv(TRAIN_RAW_OUT, index=False)
-    log.info("Exportado Train Raw en %s (%d registros)", TRAIN_RAW_OUT, len(df_train_raw_out))
+    train_raw_path = output_dir / "dataset_processed_train_raw.csv"
+    df_train_raw_out.to_csv(train_raw_path, index=False)
+    log.info("Exportado Train Raw en %s (%d registros)", train_raw_path, len(df_train_raw_out))
     
     # Exportar Test (Permanece desbalanceado para métricas de evaluación realistas)
     df_test_out = pd.concat([X_test, y_test], axis=1)
-    df_test_out.to_csv(TEST_OUT, index=False)
+    test_path = output_dir / "dataset_processed_test.csv"
+    df_test_out.to_csv(test_path, index=False)
     log.info("Exportado Test en %s (%d registros, %.2f%% anomalías)", 
-             TEST_OUT, len(df_test_out), df_test_out["etiqueta_anomalia"].mean() * 100)
+             test_path, len(df_test_out), df_test_out["etiqueta_anomalia"].mean() * 100)
              
     # 3. Sobremuestreo de anomalías mediante SMOTE
-    log.info("Aplicando sobremuestreo SMOTE en el conjunto de entrenamiento...")
-    smote = SMOTE(random_state=42)
-    X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
+    if y_train.nunique() > 1:
+        log.info("Aplicando sobremuestreo SMOTE en el conjunto de entrenamiento...")
+        smote = SMOTE(random_state=42)
+        X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
+    else:
+        log.warning("Solo se encontró una clase en y_train (datos reales sin etiquetar). Omitiendo SMOTE.")
+        X_train_res, y_train_res = X_train, y_train
     
     # Exportar Train Balanced
     df_train_bal_out = pd.concat([X_train_res, y_train_res], axis=1)
-    df_train_bal_out.to_csv(TRAIN_BAL_OUT, index=False)
+    train_bal_path = output_dir / "dataset_processed_train_balanced.csv"
+    df_train_bal_out.to_csv(train_bal_path, index=False)
     log.info("Exportado Train Balanced (SMOTE) en %s (%d registros, %.2f%% anomalías)", 
-             TRAIN_BAL_OUT, len(df_train_bal_out), df_train_bal_out["etiqueta_anomalia"].mean() * 100)
+             train_bal_path, len(df_train_bal_out), df_train_bal_out["etiqueta_anomalia"].mean() * 100)
              
-    log.info("¡Pipeline de preprocesamiento finalizado con éxito!")
+    log.info("¡Pipeline de preprocesamiento finalizado con éxito para %s!", input_path.name)
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    # 1. Procesar dataset sintético global
+    run_pipeline(
+        input_path=DATA_DIR / "dataset_agro_sintetico_v1.csv",
+        output_dir=DATA_DIR / "synthetic_processed"
+    )
+    # 2. Procesar dataset real global
+    run_pipeline(
+        input_path=DATA_DIR / "dataset_real_v1.csv",
+        output_dir=DATA_DIR / "real_processed"
+    )
+    # 3. Procesar segmentos reales individuales por cada cultivo principal
+    for crop in ["palta", "uva", "arandano"]:
+        crop_raw = DATA_DIR / "real_processed" / crop / f"dataset_{crop}_raw.csv"
+        if crop_raw.exists():
+            log.info("Iniciando preprocesamiento del segmento: %s", crop.upper())
+            run_pipeline(
+                input_path=crop_raw,
+                output_dir=DATA_DIR / "real_processed" / crop
+            )
+
+

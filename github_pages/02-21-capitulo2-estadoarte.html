@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 21 Capitulo2 Estadoarte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#22-estado-del-arte">2.2 Estado del Arte</a><ul>
+<li><a href="#221-gbdt-gradient-boosting-decision-trees-arboles-de-decision-de-aumento-de-gradiente-versus-deep-learning-para-datos-tabulares-empresariales-y-agroexportadores">2.2.1 GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) versus Deep Learning para Datos Tabulares Empresariales y Agroexportadores</a></li>
+<li><a href="#222-detector-unico-versus-ensemble-para-deteccion-de-anomalias">2.2.2 Detector Único versus Ensemble para Detección de Anomalías</a></li>
+<li><a href="#223-llm-large-language-model-modelo-de-lenguaje-de-gran-tamano-como-detector-versus-llm-como-generador-de-reportes">2.2.3 LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) como Detector versus LLM como Generador de Reportes</a></li>
+<li><a href="#224-sistemas-aislados-versus-sistema-integrado-de-supervision-operativa-continua">2.2.4 Sistemas Aislados versus Sistema Integrado de Supervisión Operativa Continua</a></li>
+<li><a href="#225-contexto-regulatorio-internacional-versus-peru">2.2.5 Contexto Regulatorio Internacional versus Perú</a></li>
+<li><a href="#226-sintesis-y-tabla-del-estado-del-arte">2.2.6 Síntesis y Tabla del Estado del Arte</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>02 21 Capitulo2 Estadoarte</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-08 08:26
+                </div>
+            </div>
+            
+            <h2 id="22-estado-del-arte">2.2 Estado del Arte</h2>
+<p>El estado del arte se organiza en torno a cinco debates fundamentales de la literatura que la presente propuesta debe resolver o posicionarse explícitamente. Cada sub-sección presenta el debate, los trabajos relevantes y la posición de esta tesis. La Tabla 2.1 sintetiza todas las referencias relevantes al final de la sección.</p>
+<h3 id="221-gbdt-gradient-boosting-decision-trees-arboles-de-decision-de-aumento-de-gradiente-versus-deep-learning-para-datos-tabulares-empresariales-y-agroexportadores">2.2.1 GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) versus Deep Learning para Datos Tabulares Empresariales y Agroexportadores</h3>
+<p>El desarrollo de modelos para datos tabulares ha seguido una trayectoria diferente a la de visión computacional y procesamiento de lenguaje natural: el Deep Learning no ha conseguido desplazar a los modelos basados en árboles como estándar de facto en datos estructurados. Chen y Guestrin (2016) introdujeron XGBoost como sistema escalable de gradient boosting con regularización L1/L2, manejo nativo de valores faltantes y paralelización por columnas, estableciéndolo como el baseline universal con más de 45,000 citas en la literatura científica. Ke et al. (2017) lo extendieron con LightGBM, que incorpora Gradient-based One-Side Sampling (GOSS) e histogramas para lograr velocidades de entrenamiento hasta 20 veces superiores con rendimiento comparable. Prokhorenkova et al. (2018) resolvieron el problema de target leakage en variables categóricas con Ordered Boosting, siendo especialmente relevante en datos contables con alta cardinalidad (cuentas, departamentos, centros de costo).</p>
+<p>El auge del Deep Learning motivó intentos de adaptar estas arquitecturas a datos tabulares. Gorishniy et al. (2021) propusieron FT-Transformer, el primer Transformer robusto para tablas mediante feature embeddings, que en algunos benchmarks iguala pero raramente supera a los GBDT. Arik y Pfister (2021) desarrollaron TabNet, que combina selección secuencial de features con atención interpretable, argumentando que puede ofrecer tanto rendimiento como interpretabilidad en un solo modelo. Sin embargo, el estudio seminal de Grinsztajn et al. (2022) zanjó empíricamente este debate: en datasets tabulares de hasta 50,000 muestras, los GBDT superan a los modelos de Deep Learning en la inmensa mayoría de los escenarios empíricos. Esta evidencia respalda la decisión arquitectónica de la presente tesis, cuyo dataset agroexportador integrado se sitúa en una escala tabular adecuada para modelos basados en árboles. Los autores identifican tres propiedades estructurales de los datos tabulares que favorecen a los árboles: robustez ante features no informativas, orientación no invariante a rotaciones y presencia de irregularidades en la función objetivo, características presentes en registros comerciales, logísticos y contextuales de agroexportación.</p>
+<p>En dominios empresariales con datos tabulares heterogéneos, esta evidencia respalda el uso de GBDT como primera opción antes de recurrir a arquitecturas neuronales complejas. En el caso agroexportador, los registros combinan variables numéricas, categóricas, temporales y contextuales —producto, zona, volumen, precio, clima, destino, cumplimiento y logística—, por lo que los modelos basados en árboles son una base técnica adecuada para capturar relaciones no lineales y manejar variables de distinta naturaleza.</p>
+<p><strong>Posición de esta tesis</strong>: XGBoost y LightGBM constituyen el backbone del módulo de predicción tabular. TabNet y FT-Transformer se evalúan como baselines comparativos, no como propuesta principal, dado que la evidencia empírica no justifica su adopción en el contexto de tamaño del dataset empresarial analizado.</p>
+<h3 id="222-detector-unico-versus-ensemble-para-deteccion-de-anomalias">2.2.2 Detector Único versus Ensemble para Detección de Anomalías</h3>
+<p>El campo de la detección de anomalías cuenta con una historia de más de dos décadas de métodos en competencia. Breunig et al. (2000) establecieron el Local Outlier Factor (LOF (Local Outlier Factor - Factor de Anomalía Local)) como referencia para detectar anomalías locales mediante densidad relativa al vecindario k-NN, un enfoque sensible a variaciones locales que permite identificar transacciones con patrones de comportamiento heterogéneos. Liu et al. (2008) revolucionaron el campo con Isolation Forest, que aísla anomalías por particionamiento aleatorio sin necesidad de definir perfiles de normalidad, con complejidad O(n) que lo hace viable en millones de transacciones diarias. Ruff et al. (2018) extendieron la detección a espacios de representación profundos con Deep SVDD, capturando patrones no lineales en los datos mediante redes neuronales. Li et al. (2022) propusieron ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica), un detector moderno libre de parámetros basado en distribución empírica acumulada que supera a 11 baselines en datasets no supervisados, eliminando el riesgo de sobreajuste al proceso de calibración.</p>
+<p>El hallazgo central de Han et al. (2022) en ADBench —57 datasets, 30 algoritmos, tres niveles de supervisión— establece que no existe un algoritmo universalmente superior: el rendimiento depende fuertemente del tipo de anomalía, la distribución de los datos y el nivel de etiquetado disponible. Esta conclusión teórica valida la estrategia de ensemble como la opción más robusta para entornos de producción donde la distribución de anomalías es desconocida a priori. La librería PyOD (Zhao et al., 2019) proporciona la infraestructura técnica para implementar este ensemble de manera estandarizada y reproducible.</p>
+<p><strong>Posición de esta tesis</strong>: El ensemble Isolation Forest + LOF + ECOD (coordinado mediante PyOD) es más robusto que cualquier detector individual, priorizando ECOD sobre Deep SVDD por su interpretabilidad estadística y ausencia de hiperparámetros. </p>
+<p>Asimismo, frente a arquitecturas complejas de Deep Learning para series temporales (como LSTM-Autoencoders o redes recurrentes profundas aplicadas a la detección de anomalías), esta tesis justifica la elección de un ensemble no supervisado tabular de baja complejidad en base a la viabilidad de infraestructura y costo operativo real del sector agroindustrial peruano. Las empresas agroexportadoras de tamaño medio en el Perú raramente disponen en sus centros de control locales de servidores equipados con tarjetas de procesamiento gráfico (GPU) dedicadas, lo que haría económicamente inviable el entrenamiento y mantenimiento continuo de modelos neuronales profundos ante el cambio en la distribución de datos (<em>concept drift</em>) propio de la estacionalidad de las campañas agrícolas. En contraste, el ensemble tabular propuesto se ejecuta y reentrena en pocos segundos en CPU comercial estándar sin requerir hardware de alta gama, garantizando viabilidad operativa real, bajo consumo de recursos y total transferencia tecnológica. Esta decisión está respaldada por ADBench (Han et al., 2022) como fundamento teórico.</p>
+<h3 id="223-llm-large-language-model-modelo-de-lenguaje-de-gran-tamano-como-detector-versus-llm-como-generador-de-reportes">2.2.3 LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) como Detector versus LLM como Generador de Reportes</h3>
+<p>El surgimiento de los LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) ha generado propuestas de integración en sistemas empresariales con distintos roles. Hegselmann et al. (2023) demostraron con TabLLM que los LLMs pueden clasificar datos tabulares en configuración zero/few-shot mediante serialización a texto, con rendimiento no trivial incluso sin ajuste fino. Park (2024) llevó esta lógica más lejos con un framework multi-agente donde LLMs especializados validan alertas de anomalías. Estos antecedentes muestran potencial metodológico, aunque no resuelven por sí mismos el problema de trazabilidad operativa agroexportadora.</p>
+<p>Sin embargo, existe evidencia sustancial de que usar LLMs como detectores o tomadores de decisiones introduce riesgos inaceptables. El survey sobre alucinaciones en LLMs (Maynez et al., 2026) documenta que los modelos pueden generar razonamiento coherente en forma pero incorrecto en contenido, con alta confianza aparente. Este riesgo es especialmente importante en reportes operativos, donde una cifra o causa inventada puede inducir decisiones equivocadas.</p>
+<p>La arquitectura RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (Schneider et al., 2025 (Schneider et al., 2025)) ofrece una solución al anclar las respuestas del LLM a bases de conocimiento verificadas —en este caso, scores, umbrales, vectores SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) y fuentes agroexportadoras recuperadas— reduciendo el espacio de alucinación al forzar al modelo a narrar únicamente lo que los datos cuantitativos establecen. El LLM no infiere anomalías; las narra con evidencias como fundamento.</p>
+<p><strong>Posición de esta tesis</strong>: El LLM se restringe estrictamente a la capa de generación de reportes mediante RAG. La detección, cuantificación y explicación son realizadas por modelos y evidencias estructuradas (GBDT + ensemble + SHAP). Esta separación se alinea con principios de transparencia, supervisión humana y trazabilidad promovidos por marcos como el D.S. N° 115-2025-PCM (PCM, 2025), el EU AI Act (Parlamento Europeo y Consejo, 2024) y el NIST AI RMF (NIST, 2023).</p>
+<h3 id="224-sistemas-aislados-versus-sistema-integrado-de-supervision-operativa-continua">2.2.4 Sistemas Aislados versus Sistema Integrado de Supervisión Operativa Continua</h3>
+<p>La revisión de la literatura evidencia una fragmentación sistemática en los sistemas de supervisión asistida por IA. Los trabajos pueden agruparse en cuatro categorías según el módulo que abordan: (1) sistemas de predicción tabular (Chen &amp; Guestrin, 2016; Ke et al., 2017; Prokhorenkova et al., 2018); (2) sistemas de forecasting y series temporales (Lim et al., 2021; Challu et al., 2022); (3) sistemas de detección de anomalías (Liu et al., 2008; Han et al., 2022); y (4) sistemas de generación de reportes con LLMs (Kadir et al., 2025; Park, 2024).</p>
+<p>Trabajos como AuditCopilot (Kadir et al., 2025) logran una integración parcial al combinar detección de anomalías con generación de reportes LLM, pero operan en dominio contable y no abordan supervisión agroexportadora. El framework de Park (2024) integra múltiples LLMs pero opera en mercados financieros de alta frecuencia. AuditMAI (Waltersdorfer et al., 2024) propone una infraestructura conceptual para auditoría continua de sistemas de IA. La Tabla 2.2 resume comparativamente los sistemas más cercanos a la propuesta de esta tesis desde una perspectiva metodológica.</p>
+<p><strong>Posición de esta tesis</strong>: Esta investigación cierra la brecha de integración al proponer y evaluar una arquitectura modular de cuatro capas que combina predicción tabular, detección de anomalías, explicabilidad SHAP y generación de reportes LLM-RAG con restricción anti-alucinación, aplicada a supervisión operativa agroexportadora. BAF (Jesus et al., 2022) se utiliza solo como benchmark metodológico complementario; la validación principal se orienta a un dataset agroexportador integrado con datos reales observados, datos agregados, proxies y datos sintéticos controlados.</p>
+<h3 id="225-contexto-regulatorio-internacional-versus-peru">2.2.5 Contexto Regulatorio Internacional versus Perú</h3>
+<p>La mayoría de marcos de gobernanza de IA de la literatura operan en contextos regulatorios de EE.UU. (NIST AI RMF (NIST, 2023)), Europa (EU AI Act (Parlamento Europeo y Consejo, 2024), GDPR) o Asia. Estos marcos coinciden en principios relevantes para esta tesis: documentación, transparencia, supervisión humana, gestión de riesgos y trazabilidad.</p>
+<p>En el contexto peruano, el marco regulatorio ha madurado significativamente en 2023–2025. La Resolución SBS N° 053-2023 establece lineamientos de gobernanza, trazabilidad y explicabilidad para modelos de riesgo en entidades supervisadas por la SBS (SBS, 2023), por lo que se adopta aquí solo como referencia de buenas prácticas. El Decreto Supremo N° 115-2025-PCM, reglamento de la Ley N° 31814, proporciona un marco nacional general para promover el uso responsable de la inteligencia artificial (PCM, 2025). A nivel internacional, el EU AI Act (Parlamento Europeo y Consejo, 2024) refuerza obligaciones de transparencia y documentación para sistemas de IA.</p>
+<p><strong>Posición de esta tesis</strong>: Esta investigación diseña un sistema de supervisión operativa agroexportadora que incorpora principios de gobernanza, trazabilidad, documentación y supervisión humana. El D.S. N° 115-2025-PCM se adopta como marco peruano general de IA responsable, mientras que la Resolución SBS N° 053-2023 se utiliza solo como referencia nacional de gestión de riesgo de modelos.</p>
+<h3 id="226-sintesis-y-tabla-del-estado-del-arte">2.2.6 Síntesis y Tabla del Estado del Arte</h3>
+<p>La revisión sistemática de los bloques temáticos permite identificar la brecha de investigación central: <strong>no existe en la literatura revisada un sistema orientado al contexto agroexportador peruano que integre de manera modular, con evaluación reproducible y trazabilidad explícita, los cuatro componentes</strong>: predicción tabular, detección de anomalías, explicabilidad SHAP y generación de reportes LLM-RAG basada en evidencias. Esta tesis propone y evalúa dicha integración para supervisión operativa agroexportadora.</p>
+<p><strong>Tabla 2.1 — Comparativa de Sistemas de Supervisión con IA</strong></p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th><strong>Esta tesis</strong></th>
+<th>AuditCopilot (Kadir et al., 2025)</th>
+<th>Park 2024 (Park, 2024)</th>
+<th>AuditMAI (Waltersdorfer et al., 2024)</th>
+<th>Almalki &amp; Masud (2025) / JRFM (2025)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicción tabular GBDT</td>
+<td>✅ XGBoost+LightGBM</td>
+<td>❌</td>
+<td>❌ Solo LLMs</td>
+<td>❌</td>
+<td>✅ Stacking</td>
+</tr>
+<tr>
+<td>Benchmark público reproducible</td>
+<td>✅ Dataset agroexportador integrado; BAF complementario</td>
+<td>❌ Dataset propio</td>
+<td>❌ S&amp;P 500</td>
+<td>❌ Conceptual</td>
+<td>⚠️ Dataset propio</td>
+</tr>
+<tr>
+<td>Forecasting DL (ej. TFT)</td>
+<td>❌ (Solo tabular GBDT)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Ensemble de anomalías (ADBench)</td>
+<td>✅ IF (Isolation Forest - Bosque de Aislamiento)+LOF+ECOD</td>
+<td>⚠️ Parcial</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Explicabilidad SHAP</td>
+<td>✅ TreeSHAP</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅ SHAP+Anchor</td>
+</tr>
+<tr>
+<td>Generación LLM de reportes</td>
+<td>✅ RAG determinista</td>
+<td>✅ LLM narrativo</td>
+<td>✅ Multi-agente</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Restricción anti-alucinación (RAG+SHAP)</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Marco de gobernanza explícito</td>
+<td>✅ DS115+NIST+EU AI Act; SBS como referencia</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Contexto peruano</td>
+<td>✅ Agroexportación peruana</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Evaluación con supervisores/evaluadores</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Dominio</td>
+<td>Supervisión operativa agroexportadora</td>
+<td>Asientos contables</td>
+<td>Mercados bursátiles</td>
+<td>Auditoría de IA</td>
+<td>Fraude en EEFF</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabla 2.2 — Resumen del Estado del Arte</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">N°</th>
+<th>Autor(es)</th>
+<th style="text-align: center;">Año</th>
+<th>Aporte principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Chen &amp; Guestrin (Chen &amp; Guestrin, 2016)</td>
+<td style="text-align: center;">2016</td>
+<td>XGBoost: gradient boosting escalable con regularización L1/L2, benchmark universal para datos tabulares</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Ke et al. (Ke et al., 2017)</td>
+<td style="text-align: center;">2017</td>
+<td>LightGBM: GOSS + histogramas, 20× más rápido que XGBoost con precisión comparable</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Prokhorenkova et al. (Prokhorenkova et al., 2018)</td>
+<td style="text-align: center;">2018</td>
+<td>CatBoost: Ordered Boosting elimina target leakage en variables categóricas de alta cardinalidad</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Gorishniy et al. (Gorishniy et al., 2021)</td>
+<td style="text-align: center;">2021</td>
+<td>FT-Transformer: primer Transformer robusto para datos tabulares mediante feature embeddings</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Arik &amp; Pfister (Arik &amp; Pfister, 2021)</td>
+<td style="text-align: center;">2021</td>
+<td>TabNet: atención secuencial interpretable para tablas, combina rendimiento e interpretabilidad</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>Grinsztajn et al. (Grinsztajn et al., 2022)</td>
+<td style="text-align: center;">2022</td>
+<td>GBDT supera a DL en el 95% de datasets ≤50K muestras; cierra el debate en contexto empresarial</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td>Li et al. (Li et al., 2022)</td>
+<td style="text-align: center;">2022</td>
+<td>ECOD: detección no supervisada basada en distribución empírica acumulada, sin hiperparámetros</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td>Liu et al. (Liu et al., 2008)</td>
+<td style="text-align: center;">2008</td>
+<td>Isolation Forest: aislamiento aleatorio O(n), sin perfil de normalidad, escalable a millones de registros</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td>Breunig et al. (Breunig et al., 2000)</td>
+<td style="text-align: center;">2000</td>
+<td>LOF: densidad local relativa k-NN, detecta anomalías locales heterogéneas</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td>Almalki &amp; Masud (Almalki &amp; Masud, 2025)</td>
+<td style="text-align: center;">2025</td>
+<td>Stacking ensemble de GBDT con explicabilidad SHAP para detección en datos críticos</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td>Han et al. (Han et al., 2022)</td>
+<td style="text-align: center;">2022</td>
+<td>ADBench: benchmark de 30 algoritmos en 57 datasets; ensembles son más robustos que detectores únicos</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td>Lundberg &amp; Lee (Lundberg &amp; Lee, 2017)</td>
+<td style="text-align: center;">2017</td>
+<td>SHAP: valores Shapley con consistencia axiomática; TreeSHAP exacto para GBDT</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td>Kadir et al. (Kadir et al., 2025)</td>
+<td style="text-align: center;">2025</td>
+<td>AuditCopilot: LLM+detección en asientos contables; antecedente metodológico para reportes automáticos</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td>Park (Park, 2024)</td>
+<td style="text-align: center;">2024</td>
+<td>Framework multi-agente LLM para validar anomalías en mercados bursátiles</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td>Schneider et al. (Schneider et al., 2025)</td>
+<td style="text-align: center;">2025</td>
+<td>RAG avanzado para BI organizacional; arquitectura anti-alucinación base de esta tesis</td>
+</tr>
+<tr>
+<td style="text-align: center;">16</td>
+<td>SBS Perú (SBS, 2023)</td>
+<td style="text-align: center;">2023</td>
+<td>Resolución N° 053-2023: referencia nacional de buenas prácticas para gestión de riesgo de modelos</td>
+</tr>
+</tbody>
+</table>
+<hr />
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

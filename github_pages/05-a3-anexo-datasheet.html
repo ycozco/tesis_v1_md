@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 A3 Anexo Datasheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#anexo-c-datasheet-del-dataset-agroexportador-integrado">Anexo C - Datasheet del Dataset Agroexportador Integrado</a><ul>
+<li><a href="#c1-motivacion">C.1 Motivacion</a></li>
+<li><a href="#c2-composicion">C.2 Composicion</a></li>
+<li><a href="#c3-variables-principales">C.3 Variables principales</a></li>
+<li><a href="#c4-datos-sinteticos-controlados">C.4 Datos sinteticos controlados</a></li>
+<li><a href="#c5-preprocesamiento">C.5 Preprocesamiento</a></li>
+<li><a href="#c6-usos-previstos">C.6 Usos previstos</a></li>
+<li><a href="#c7-usos-no-previstos">C.7 Usos no previstos</a></li>
+<li><a href="#c8-consideraciones-eticas">C.8 Consideraciones eticas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>05 A3 Anexo Datasheet</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-08 08:26
+                </div>
+            </div>
+            
+            <h2 id="anexo-c-datasheet-del-dataset-agroexportador-integrado">Anexo C - Datasheet del Dataset Agroexportador Integrado</h2>
+<blockquote>
+<p>Estandar aplicado: Datasheets for Datasets (Gebru et al., 2021).<br />
+Version metodologica: v2.0 integrada.<br />
+Estado: actualizado al panorama de fuentes reales, agregadas, proxies y sinteticas controladas.</p>
+</blockquote>
+<hr />
+<h3 id="c1-motivacion">C.1 Motivacion</h3>
+<p>El dataset se construye para entrenar y evaluar un sistema integrado de supervision operativa con IA explicable aplicado a agroexportaciones peruanas. A diferencia de la version inicial basada en un dataset sintetico, esta version adopta un enfoque integrado y trazable:</p>
+<ol>
+<li>Datos reales observados de exportacion.</li>
+<li>Datos reales agregados de mercado y contexto.</li>
+<li>Proxies publicos para clima, logistica y sanidad.</li>
+<li>Datos sinteticos controlados solo para escenarios auxiliares, balanceo o etiquetas experimentales.</li>
+</ol>
+<p>El proposito es permitir evaluacion tecnica, explicabilidad SHAP y reportes RAG sin ocultar el origen ni la granularidad de cada variable.</p>
+<h3 id="c2-composicion">C.2 Composicion</h3>
+<p>Productos:</p>
+<table>
+<thead>
+<tr>
+<th>Producto</th>
+<th>HS</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Palta</td>
+<td><code>080440</code></td>
+<td>Nucleo.</td>
+</tr>
+<tr>
+<td>Uva</td>
+<td><code>080610</code></td>
+<td>Nucleo.</td>
+</tr>
+<tr>
+<td>Arandano</td>
+<td><code>081040</code></td>
+<td>Nucleo.</td>
+</tr>
+<tr>
+<td>Esparrago</td>
+<td><code>070920</code></td>
+<td>Secundario condicionado.</td>
+</tr>
+<tr>
+<td>Cacao</td>
+<td>No aplica al nucleo</td>
+<td>Excluido por baja representatividad.</td>
+</tr>
+</tbody>
+</table>
+<p>Fuentes:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Fuente</th>
+<th>Ruta local</th>
+<th>Granularidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real observada</td>
+<td>SUNAT/ADUANET</td>
+<td><code>data/sunat/</code>, <code>codex-revision/data_raw/aduanet_bases</code></td>
+<td>Embarque o serie aduanera.</td>
+</tr>
+<tr>
+<td>Real observada/auditada</td>
+<td>Dataset local</td>
+<td><code>data/dataset_real_v1.csv</code></td>
+<td>Registro transaccional.</td>
+</tr>
+<tr>
+<td>Real agregada</td>
+<td>Trade Map</td>
+<td><code>data-trademap/export_*</code></td>
+<td>Producto-destino-anio.</td>
+</tr>
+<tr>
+<td>Real agregada</td>
+<td>SISAP/MIDAGRI</td>
+<td><code>codex-revision/data_processed/sisap_midagri/</code></td>
+<td>Producto-mes-variedad.</td>
+</tr>
+<tr>
+<td>Real agregada</td>
+<td>BCRP</td>
+<td><code>data/bcrp/</code>, <code>codex-revision/data_raw/bcrp/</code></td>
+<td>Mes.</td>
+</tr>
+<tr>
+<td>Proxy</td>
+<td>NASA/SENAMHI/NDVI</td>
+<td><code>codex-revision/data_raw/nasa_power</code>, <code>data/vegetation/</code></td>
+<td>Region-mes.</td>
+</tr>
+<tr>
+<td>Proxy</td>
+<td>APN/OSITRAN</td>
+<td><code>codex-revision/data_raw/apn_*</code>, <code>codex-revision/data_raw/ositran_*</code></td>
+<td>Puerto-mes.</td>
+</tr>
+<tr>
+<td>Proxy/contexto</td>
+<td>SENASA/FDA/RASFF</td>
+<td><code>codex-revision/data_raw/senasa</code>, <code>fda</code>, <code>rasff</code></td>
+<td>Producto/destino/mes si existe.</td>
+</tr>
+<tr>
+<td>Sintetica controlada</td>
+<td>Dataset sintetico</td>
+<td><code>data/dataset_agro_sintetico_v1.csv</code></td>
+<td>Escenario experimental.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c3-variables-principales">C.3 Variables principales</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Tipo</th>
+<th>Fuente preferida</th>
+<th>Etiqueta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>producto</code></td>
+<td>categoria</td>
+<td>SUNAT/dataset real</td>
+<td>real_observada</td>
+</tr>
+<tr>
+<td><code>hs</code></td>
+<td>string</td>
+<td>SUNAT/Trade Map</td>
+<td>real_observada</td>
+</tr>
+<tr>
+<td><code>fecha</code></td>
+<td>fecha</td>
+<td>SUNAT/dataset real</td>
+<td>real_observada</td>
+</tr>
+<tr>
+<td><code>periodo_mes</code></td>
+<td>fecha mensual</td>
+<td>derivada</td>
+<td>derivada</td>
+</tr>
+<tr>
+<td><code>volumen_kg</code></td>
+<td>numerica</td>
+<td>SUNAT/dataset real</td>
+<td>real_observada</td>
+</tr>
+<tr>
+<td><code>valor_fob_usd</code></td>
+<td>numerica</td>
+<td>SUNAT</td>
+<td>real_observada</td>
+</tr>
+<tr>
+<td><code>precio_kg_usd</code></td>
+<td>numerica</td>
+<td>FOB/kg o dataset real</td>
+<td>derivada</td>
+</tr>
+<tr>
+<td><code>destino_mercado</code></td>
+<td>categoria</td>
+<td>SUNAT/Trade Map</td>
+<td>real_observada</td>
+</tr>
+<tr>
+<td><code>sisap_precio_prom</code></td>
+<td>numerica</td>
+<td>SISAP</td>
+<td>real_agregada</td>
+</tr>
+<tr>
+<td><code>sisap_volumen</code></td>
+<td>numerica</td>
+<td>SISAP</td>
+<td>real_agregada</td>
+</tr>
+<tr>
+<td><code>tipo_cambio_pen_usd</code></td>
+<td>numerica</td>
+<td>BCRP</td>
+<td>real_agregada</td>
+</tr>
+<tr>
+<td><code>temperatura_max_c</code></td>
+<td>numerica</td>
+<td>NASA/SENAMHI</td>
+<td>proxy</td>
+</tr>
+<tr>
+<td><code>precipitacion_mm</code></td>
+<td>numerica</td>
+<td>NASA/SENAMHI</td>
+<td>proxy</td>
+</tr>
+<tr>
+<td><code>carga_portuaria_mes</code></td>
+<td>numerica</td>
+<td>APN/OSITRAN</td>
+<td>proxy</td>
+</tr>
+<tr>
+<td><code>alertas_sanitarias_mes</code></td>
+<td>numerica</td>
+<td>SENASA/FDA/RASFF</td>
+<td>proxy</td>
+</tr>
+<tr>
+<td><code>etiqueta_anomalia</code></td>
+<td>binaria</td>
+<td>regla/modelo/dataset</td>
+<td>derivada o sintetica</td>
+</tr>
+<tr>
+<td><code>tipo_anomalia</code></td>
+<td>categoria</td>
+<td>regla/modelo/dataset</td>
+<td>derivada o sintetica</td>
+</tr>
+<tr>
+<td><code>regla_inyeccion</code></td>
+<td>texto</td>
+<td>generacion experimental</td>
+<td>sintetica</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c4-datos-sinteticos-controlados">C.4 Datos sinteticos controlados</h3>
+<p>Los datos sinteticos no sustituyen a las fuentes reales. Se permiten para:</p>
+<ul>
+<li>Balancear clases de anomalias en entrenamiento.</li>
+<li>Simular escenarios de supervision.</li>
+<li>Probar reportes SHAP/RAG.</li>
+<li>Crear etiquetas experimentales cuando no existe etiqueta oficial de anomalia.</li>
+</ul>
+<p>Reglas de inyeccion permitidas:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Variables afectadas</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Precio</td>
+<td><code>precio_kg_usd</code>, residuo de precio</td>
+<td>Outliers comerciales.</td>
+</tr>
+<tr>
+<td>Volumen</td>
+<td><code>volumen_kg</code></td>
+<td>Cambios atipicos de escala.</td>
+</tr>
+<tr>
+<td>Clima</td>
+<td>temperatura, precipitacion</td>
+<td>Escenarios agroclimaticos.</td>
+</tr>
+<tr>
+<td>Logistica</td>
+<td><code>dias_logisticos</code>, carga portuaria</td>
+<td>Demoras o presion portuaria.</td>
+</tr>
+<tr>
+<td>Calidad</td>
+<td><code>merma_pct</code>, cumplimiento</td>
+<td>Escenarios de deterioro o riesgo.</td>
+</tr>
+</tbody>
+</table>
+<p>Toda fila o variable sintetica debe tener <code>origen_dato = sintetica</code> y <code>regla_inyeccion</code> no vacia.</p>
+<h3 id="c5-preprocesamiento">C.5 Preprocesamiento</h3>
+<p>El pipeline debe:</p>
+<ul>
+<li>Homologar productos y HS.</li>
+<li>Excluir cacao del dataset final.</li>
+<li>Mantener esparrago como secundario si pasa validacion.</li>
+<li>Convertir fechas a <code>YYYY-MM-DD</code> y <code>YYYY-MM</code>.</li>
+<li>Preservar <code>fuente</code>, <code>archivo_origen</code>, <code>granularidad</code> y <code>tipo_variable</code>.</li>
+<li>Separar train/validation/test de forma temporal.</li>
+<li>Evitar que datos sinteticos o SMOTE entren al test final real.</li>
+</ul>
+<h3 id="c6-usos-previstos">C.6 Usos previstos</h3>
+<ul>
+<li>Entrenamiento de modelos tabulares.</li>
+<li>Deteccion de anomalias.</li>
+<li>Explicabilidad SHAP.</li>
+<li>Generacion de reportes RAG.</li>
+<li>Analisis de trazabilidad de alertas.</li>
+<li>Soporte documental para metodologia y anexos.</li>
+</ul>
+<h3 id="c7-usos-no-previstos">C.7 Usos no previstos</h3>
+<ul>
+<li>Tomar decisiones operativas reales sin validacion empresarial.</li>
+<li>Afirmar causalidad a partir de SHAP.</li>
+<li>Presentar proxies como observaciones por embarque.</li>
+<li>Presentar datos sinteticos como registros oficiales.</li>
+</ul>
+<h3 id="c8-consideraciones-eticas">C.8 Consideraciones eticas</h3>
+<p>El dataset integrado debe proteger trazabilidad y transparencia. Cuando se usen empresas o RUC reales de fuentes publicas, se evaluara anonimizar o agrupar en reportes publicos. Los reportes RAG deben indicar sus fuentes y no emitir recomendaciones fuera de la evidencia recuperada.</p>
+<hr />
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

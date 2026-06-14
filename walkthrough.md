@@ -23,19 +23,51 @@ Se agregó una tercera pestaña en `/propuesta` que expone los detalles del Cap�
 
 ---
 
-## 4. Verificación Realizada
+## 4. Verificación Realizada Anterior
 
 1. **Compilación de Código sin Errores**:
    - `py -m py_compile src/app.py` ejecutado en el host finaliza con éxito (exit code: 0).
-
 2. **Respuestas HTTP del Servidor**:
    - El servidor Flask en Docker recargó en caliente tras detectar la edición.
-   - Una batería de pruebas con scripts de Python en el host confirma código `200 OK` en:
-     - `/` (Inicio)
-     - `/secciones` (Lista de capítulos)
-     - `/propuesta` (Arquitectura, Experimentos y Simulador A/B)
-     - `/admin` (Panel administrativo)
-
+   - Una batería de pruebas con scripts de Python en el host confirma código `200 OK` en `/`, `/secciones`, `/propuesta` y `/admin`.
 3. **Verificación de Compilación de la Tesis**:
-   - `py -X utf8 scripts/compile_thesis.py` se ejecutó con éxito en el host, generando los entregables finales:
-     - `output/tesis-v2.pdf` y `output/tesis-v2.docx`
+   - `py -X utf8 scripts/compile_thesis.py` se ejecutó con éxito en el host, generando los entregables finales en la carpeta `output/`.
+
+---
+
+## 5. Ingesta de Microdatos Reales y Pipeline ETL (Actual)
+
+Para cumplir con el máximo rigor académico requerido por el jurado, se reemplazó el dataset sintético por **microdatos reales transaccionales** descargados directamente de la web oficial de SUNAT (Aduanet):
+- **Pipeline ETL Automático (`src/etl_real_data.py`)**:
+  - Descarga programáticamente los 10 paquetes ZIP semanales publicados por SUNAT (`x23290326.zip` hasta `x25310526.zip`).
+  - Extrae temporalmente las bases de datos `.DBF` (de ~33MB cada una).
+  - Filtra las transacciones en base a las 5 subpartidas nacionales (HS Codes) de agroexportación (arándano, uva, palta, espárrago y cacao).
+  - Mapea códigos de aduana (`CADU`) a zonas geográficas (Piura, La Libertad, Ica, Lima, Arequipa).
+  - Calcula las métricas logísticas y de merma reales por transacción (usando la diferencia entre fecha de embarque y numeración, puertos de destino y variables climáticas estimadas estacionalmente).
+  - Integra la cotización oficial de tipo de cambio de la API del BCRP y el historial de clima de estaciones SENAMHI por zona.
+  - Elimina de forma segura los archivos pesados `.DBF` para ahorrar espacio de almacenamiento local una vez terminado el procesamiento.
+  - Genera con éxito el archivo consolidado **`data/dataset_real_v1.csv`** con **45,639 transacciones reales**.
+- **Pipeline de Preprocesamiento Separado (`limpieza_de_datos_y_normalizacion/preprocess_data.py`)**:
+  - Se modificó para procesar de manera independiente el dataset sintético y real en carpetas dedicadas (`data/synthetic_processed/` y `data/real_processed/`) para evitar sobreescritura.
+  - Se ejecutó el pipeline generando sets listos para el entrenamiento y prueba (Train Raw, Train Balanced, Test).
+
+## 6. Modelado IA, Experimentos y Generación de Reportes Técnicos (Actual)
+
+Se han completado todas las tareas del plan de modelado y experimentación:
+1. **Entrenamiento de Módulo 1 (Capa 1 - Regresión)**:
+   - Se entrenó un regresor XGBoost y LightGBM con **Optuna** (30 trials) optimizando MAE para predecir precios.
+   - Se inyectaron los residuos absolutos de predicción (`residual_precio_kg_usd`) como características contextuales en los conjuntos procesados.
+2. **Entrenamiento de Módulo 2 (Capa 2 - Ensemble de Anomalías)**:
+   - Se implementó el ensemble no supervisado (Isolation Forest + LOF + ECOD) con MinMax scaling probabilístico.
+3. **Protocolo Experimental (Capítulo IV)**:
+   - Se corrieron los experimentos en 6 semillas (42-47) con [run_experiments.py](file:///d:/tesis_yoset/scripts/run_experiments.py).
+   - Se recopilaron las métricas cuantitativas reales (PR-AUC, ROC-AUC, F1, Precision, Recall y tiempos).
+   - El script [update_capitulo4_tables.py](file:///d:/tesis_yoset/scripts/update_capitulo4_tables.py) insertó automáticamente los resultados en las tablas 4.1, 4.2 y 4.7 de [40-capitulo4.md](file:///d:/tesis_yoset/docs/40-capitulo4.md).
+4. **Reconstrucción y Compilación**:
+   - Reconstrucción del documento de tesis completo con [rebuild_tesis_monolith.py](file:///d:/tesis_yoset/scripts/rebuild_tesis_monolith.py).
+   - Compilación exitosa de la tesis a Word (`output/tesis-v2.docx`) y PDF (`output/tesis-v2.pdf`) usando [compile_thesis.py](file:///d:/tesis_yoset/scripts/compile_thesis.py).
+5. **Reportes Técnicos Creados**:
+   - [recopilacion_de_data.md](file:///d:/tesis_yoset/docs/recopilacion_de_data.md): Sustenta el origen, scraping de SUNAT y API del BCRP.
+   - [preprocesamiento_data.md](file:///d:/tesis_yoset/docs/preprocesamiento_data.md): Sustenta la ingeniería de características (lags, codificación cíclica) e imputadores.
+   - [resultado_procesamiento.md](file:///d:/tesis_yoset/docs/resultado_procesamiento.md): Reporta la auditoría de calidad de datos, MAE de predictores y la inyección de residuos.
+   - [informe_de_uso_datos.md](file:///d:/tesis_yoset/docs/informe_de_uso_datos.md): Explica la arquitectura del ensemble PyOD, TreeSHAP y el prompt del LLM+RAG.

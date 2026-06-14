@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Validación de Usabilidad e IA Explicable | Tesis Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                background: '#1e293b',
+                primaryColor: '#6366f1',
+                primaryTextColor: '#fff',
+                lineColor: '#cbd5e1'
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --accent: #10b981;
+            --accent-dark: #059669;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --error: #ef4444;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(30, 41, 59, 0.7);
+        }
+
+        /* Navigation Bar Styles */
+        .main-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin-bottom: 30px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #fff;
+        }
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .nav-menu {
+            display: flex;
+            gap: 8px;
+        }
+        .nav-item {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .nav-item.active {
+            color: #fff;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .title-group h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #818cf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .title-group p {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border: none;
+        }
+
+        .btn-accent:hover {
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+            filter: brightness(1.1);
+        }
+
+        /* Tabs Layout */
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px;
+            border-radius: 16px;
+            width: fit-content;
+            border: 1px solid var(--border);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: var(--primary);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card styles */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #c7d2fe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        /* Tab 1: Architecture layout */
+        .arch-grid {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 24px;
+        }
+
+        .mermaid-container {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        .layers-desc {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .layer-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .layer-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--primary);
+        }
+
+        .layer-card.active {
+            background: rgba(99, 102, 241, 0.06);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+        }
+
+        .layer-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .badge-l1 { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+        .badge-l2 { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+        .badge-l3 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        .badge-l4 { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+
+        .layer-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .layer-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Tab 2: Development Plan Accordions */
+        .plan-phase {
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .phase-header {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .phase-header:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .phase-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .phase-progress {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .phase-content {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .checklist-item.done {
+            color: var(--text-dim);
+            text-decoration: line-through;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-top: 4px;
+            accent-color: var(--primary);
+            width: 16px;
+            height: 16px;
+        }
+
+        .plan-notes {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            border-left: 3px solid var(--primary);
+            padding-left: 10px;
+            font-style: italic;
+        }
+
+        /* Tab 3: Sandbox / Prototype styles */
+        .sandbox-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 24px;
+            min-height: 600px;
+        }
+
+        /* Sidebar - Alert queue */
+        .alert-queue {
+            border-right: 1px solid var(--border);
+            padding-right: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 650px;
+            overflow-y: auto;
+        }
+
+        .queue-header {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .alert-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .alert-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--primary);
+        }
+
+        .alert-item.active {
+            background: rgba(99, 102, 241, 0.08);
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.1);
+        }
+
+        .alert-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            align-items: center;
+        }
+
+        .alert-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #818cf8;
+        }
+
+        .alert-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-pending { background: rgba(245, 158, 11, 0.12); color: var(--warn); }
+        .badge-approved { background: rgba(16, 185, 129, 0.12); color: var(--accent); }
+        .badge-rejected { background: rgba(239, 68, 68, 0.12); color: var(--error); }
+
+        .alert-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+
+        .alert-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        /* Detail panel */
+        .detail-panel {
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .empty-detail {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: var(--text-dim);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .empty-detail svg {
+            width: 64px;
+            height: 64px;
+            color: rgba(255,255,255,0.05);
+            margin-bottom: 16px;
+        }
+
+        .detail-header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .detail-title h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .detail-title p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        .condition-switch {
+            display: flex;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            padding: 4px;
+            border-radius: 10px;
+        }
+
+        .cond-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .cond-btn.active {
+            color: #fff;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .metadata-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .metadata-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .metadata-table td.label {
+            color: var(--text-dim);
+            font-weight: 600;
+            width: 45%;
+        }
+
+        .metadata-table td.val {
+            font-family: 'JetBrains Mono', monospace;
+            color: #fff;
+        }
+
+        /* Score Gauge */
+        .score-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .score-val {
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 4px;
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .score-bar-outer {
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 99px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .score-bar-inner {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--error) 100%);
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Tab view details */
+        .view-cond-a, .view-cond-b {
+            display: none;
+        }
+
+        .view-cond-a.active, .view-cond-b.active {
+            display: block;
+        }
+
+        /* LLM Report Display */
+        .llm-report {
+            background: #0b1220;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 24px;
+        }
+
+        /* Actions form */
+        .action-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        .action-box h4 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .action-btn-choice {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            color: var(--text-dim);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .action-btn-choice:hover {
+            color: #fff;
+            border-color: var(--text-dim);
+        }
+
+        .action-btn-choice.active[data-action="approve"] {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--error);
+            border-color: var(--error);
+        }
+
+        .action-btn-choice.active[data-action="reject"] {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .justification-area {
+            width: 100%;
+            height: 70px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #fff;
+            padding: 10px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            resize: none;
+            margin-bottom: 12px;
+            outline: none;
+        }
+
+        .justification-area:focus {
+            border-color: var(--primary);
+        }
+
+        /* Top KPIs Row */
+        .kpis-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .kpi-card strong {
+            display: block;
+            font-size: 1.4rem;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 2px;
+        }
+
+        .kpi-card span {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Live Timer display */
+        .timer-badge {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            padding: 4px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .timer-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Navbar -->
+        <nav class="main-navbar">
+            <div class="nav-logo">
+                <span class="logo-dot"></span>
+                <span class="logo-text">Tesis Hub</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-item">🏠 Inicio</a>
+                <a href="/secciones" class="nav-item">📖 Secciones</a>
+                <a href="/propuesta" class="nav-item active">📊 Propuesta y Prototipo</a>
+                <a href="/admin" class="nav-item">⚙️ Administración</a>
+            </div>
+        </nav>
+
+        <header>
+            <div class="title-group">
+                <h1>Sistema Integrado de Supervisión Operativa con IA Explicable (Prototipo Tesis)</h1>
+                <p>Validación de la Eficiencia (Tiempo-a-Decisión, H1d), Comprensión (SHAP, H1b) y Calidad de Reportes (RAG, H1c) en Agroexportación</p>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('tab-architecture', this)">📊 Arquitectura y Capas</button>
+            <button class="tab-btn" onclick="switchTab('tab-plan', this)">📅 Plan de Desarrollo de Vistas</button>
+            <button class="tab-btn" onclick="switchTab('tab-experiments', this)">🧪 Plan de Pruebas y Experimentos</button>
+            <button class="tab-btn" onclick="switchTab('tab-prototype', this)">💻 Sandbox de Usabilidad (Simulador A/B)</button>
+        </div>
+
+        <!-- Tab 1: Architecture -->
+        <div id="tab-architecture" class="tab-content active">
+            <div class="arch-grid">
+                <div class="layers-desc">
+                    <div class="card" style="margin-bottom:0;">
+                        <h2>Arquitectura del Sistema</h2>
+                        <div class="layer-card" id="arch-card-1" onclick="selectArchLayer(1, this)">
+                            <span class="layer-badge badge-l1">Capa 1: Predicción Tabular</span>
+                            <h3>GBDT: XGBoost & LightGBM</h3>
+                            <p>Esta capa estima valores esperados y comportamientos normales de variables clave de la cadena agroexportadora (precios, volúmenes de envío, mermas). Justificado para datos tabulares y transaccionales pequeños, sirviendo de línea base.</p>
+                        </div>
+                        <div class="layer-card" id="arch-card-2" style="margin-top: 12px;" onclick="selectArchLayer(2, this)">
+                            <span class="layer-badge badge-l2">Capa 2: Detección de Anomalías</span>
+                            <h3>Ensemble PyOD: IF + LOF + ECOD</h3>
+                            <p>Combina Isolation Forest, Local Outlier Factor y ECOD en un ensamble robusto para identificar lotes operativos anómalos o sospechosos, reduciendo drásticamente la tasa de falsos positivos en comparación con detectores únicos.</p>
+                        </div>
+                        <div class="layer-card" id="arch-card-3" style="margin-top: 12px;" onclick="selectArchLayer(3, this)">
+                            <span class="layer-badge badge-l3">Capa 3: Explicabilidad</span>
+                            <h3>Explicabilidad Local con TreeSHAP</h3>
+                            <p>Calcula la contribución marginal de cada variable de entrada (clima, logística, destino) sobre el score de anomalía de la alerta, identificando qué factores específicos (top-5 variables) provocaron la desviación.</p>
+                        </div>
+                        <div class="layer-card" id="arch-card-4" style="margin-top: 12px;" onclick="selectArchLayer(4, this)">
+                            <span class="layer-badge badge-l4">Capa 4: Reportes Automáticos</span>
+                            <h3>Narrativa de IA + RAG</h3>
+                            <p>Un LLM con arquitectura de Recuperación Aumentada (RAG) redacta borradores de informes trazables en lenguaje natural. El modelo se ancla estrictamente a los vectores SHAP y a una base de regulaciones (resoluciones de la SBS, SENASA y FDA) para evitar alucinaciones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:24px;">
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            graph TD
+                                classDef layer1 fill:#312e81,stroke:#6366f1,stroke-width:2px,color:#dbeafe;
+                                classDef layer2 fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#d1fae5;
+                                classDef layer3 fill:#78350f,stroke:#fbbf24,stroke-width:2px,color:#fef3c7;
+                                classDef layer4 fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fee2e2;
+                                classDef db fill:#334155,stroke:#475569,stroke-width:2px,color:#f8fafc;
+                                
+                                D1[(Dataset Sintético v1.0)] --> L1[Capa 1: XGBoost & LightGBM]:::layer1
+                                D2[(SENASA / MIDAGRI / SUNAT)] --> L1
+                                L1 --> L1_out[Predicciones Normalidad]:::layer1
+                                L1_out --> L2[Capa 2: Ensemble IF+LOF+ECOD]:::layer2
+                                L2 --> L2_out[Score Anomalía Consolidado]:::layer2
+                                L2_out -->|Score > 0.75| L3[Capa 3: Explicabilidad SHAP]:::layer3
+                                L3 --> L3_out[Top-5 Variables Contribución]:::layer3
+                                L3_out --> L4[Capa 4: Reportes RAG + LLM]:::layer4
+                                L4 --> L4_out[Reporte Técnico Trazable PDF]:::layer4
+                                
+                                class D1,D2 db;
+                        </div>
+                    </div>
+
+                    <div class="card" id="layer-inspector-card" style="margin-bottom:0;">
+                        <h2 style="font-size:1.2rem; border-bottom:1px solid var(--border); padding-bottom:8px; margin-bottom:12px; color:#c7d2fe;">
+                            🔍 Inspector de Flujo y Datos de Capa
+                        </h2>
+                        <div id="inspector-placeholder" style="color:var(--text-dim); text-align:center; padding:30px 10px; font-size:0.9rem;">
+                            Haga clic en una de las capas de la izquierda para navegar por las entradas, salidas, fórmulas matemáticas y documentos de tesis asociados a ese diagrama.
+                        </div>
+                        <div id="inspector-content" style="display:none;">
+                            <!-- Rendered dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Development Plan -->
+        <div id="tab-plan" class="tab-content">
+            <div class="card">
+                <h2>Plan de Desarrollo de Vistas y Módulos</h2>
+                
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase1')">
+                        <span class="phase-title"><span>📂</span> Fase 1: Configuración del Pipeline de Datos y Modelos (Semanas 1-2)</span>
+                        <span class="phase-progress">100% Completado</span>
+                    </div>
+                    <div id="phase1" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Generación del conjunto de datos sintético transaccional agroexportador (10,000 registros).</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Implementación de los estimadores GBDT (LightGBM y XGBoost) en Python para predicción de series.</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Implementación de algoritmos no supervisados de anomalías de PyOD (IF, LOF, ECOD).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase2')">
+                        <span class="phase-title"><span>🧠</span> Fase 2: Motor de Explicabilidad y Generación de Reportes (Semanas 3-4)</span>
+                        <span class="phase-progress">75% Completado</span>
+                    </div>
+                    <div id="phase2" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Integración del motor TreeSHAP para explicabilidad a nivel de registro local.</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Implementación del índice de estabilidad de SHAP y jerarquía de variables relevantes.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Creación de base de conocimiento vectorial RAG para regulaciones SBS, SENASA y normas de exportación.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Integración del orquestador LLM (Llama 3/Claude) para redacción estructurada.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase3')">
+                        <span class="phase-title"><span>💻</span> Fase 3: Frontend y Dashboard Jerárquico del Supervisor (Semanas 5-6)</span>
+                        <span class="phase-progress">50% Completado</span>
+                    </div>
+                    <div id="phase3" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Diseño del Dashboard Principal con KPIs centrales de control operativo.</li>
+                            <li class="checklist-item done"><input type="checkbox" checked disabled> Estructuración de la cola de priorización de alertas por criticidad.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Desarrollo de la vista de detalle interactiva de alertas (con gráficos SHAP en HTML5).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Implementación de la vista comparativa de usabilidad (Condición A vs Condición B).</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Construcción del panel de exportación a reportes formales en DOCX/PDF.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="plan-phase">
+                    <div class="phase-header" onclick="toggleAccordion('phase4')">
+                        <span class="phase-title"><span>🧪</span> Fase 4: Protocolo de Usabilidad y Cierre Experimental (Semanas 7-8)</span>
+                        <span class="phase-progress">10% Completado</span>
+                    </div>
+                    <div id="phase4" class="phase-content">
+                        <ul class="plan-checklist">
+                            <li class="checklist-item"><input type="checkbox" disabled> Despliegue de la versión experimental en contenedor Docker institucional.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Reclutamiento de N=15 o N=27 supervisores/ingenieros de sistemas y agroindustria.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Registro de logs de telemetría de interacción (segundos-a-decisión) en base de datos.</li>
+                            <li class="checklist-item"><input type="checkbox" disabled> Ejecución de pruebas estadísticas (Wilcoxon Signed-Rank, t-test y análisis SUS).</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p class="plan-notes">
+                    Nota: La jerarquía de vistas del frontend está diseñada de forma descendente: Resumen General → Cola de Alertas de Criticidad → Detalle de Explicabilidad Local (Condición A/B) → Panel de Decisiones Operativas y Registro de Trazabilidad.
+                </p>
+            </div>
+        </div>
+
+        <!-- Tab 3: Plan de Pruebas y Experimentos -->
+        <div id="tab-experiments" class="tab-content">
+            <div class="card">
+                <h2>🧪 Plan de Pruebas, Experimentos y Comparaciones</h2>
+                <p style="font-size:0.95rem; color:var(--text-dim); margin-bottom:20px; line-height:1.6;">
+                    Este panel detalla el protocolo experimental de la investigación metodológica para validar la eficiencia temporal, la explicabilidad local y la fidelidad del anclaje documental.
+                </p>
+
+                <!-- Section 1: Data split -->
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+                    <h3 style="color:#818cf8; margin-bottom:10px; font-size:1.1rem; display:flex; align-items:center; gap:8px;">
+                        <span>📊</span> Tratamiento de Datos, División Temporal y Semillas
+                    </h3>
+                    <p style="font-size:0.9rem; color:var(--text-main); line-height:1.5; margin-bottom:12px;">
+                        Para prevenir la fuga de información debido al <em>concept drift</em> y la estacionalidad en variables del sector agroexportador, se ejecuta una <strong>división cronológica</strong> del dataset en lugar de una partición aleatoria:
+                    </p>
+                    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-bottom:16px; text-align:center;">
+                        <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:8px; border:1px solid rgba(99, 102, 241, 0.15);">
+                            <div style="font-size:0.8rem; color:#818cf8; font-weight:700;">Entrenamiento (Train)</div>
+                            <strong style="font-size:1.4rem; color:#fff;">70%</strong>
+                            <div style="font-size:0.75rem; color:var(--text-dim); margin-top:4px;">Primeros registros ordenados cronológicamente</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:8px; border:1px solid rgba(245, 158, 11, 0.15);">
+                            <div style="font-size:0.8rem; color:#fbbf24; font-weight:700;">Validación (Validation)</div>
+                            <strong style="font-size:1.4rem; color:#fff;">10%</strong>
+                            <div style="font-size:0.75rem; color:var(--text-dim); margin-top:4px;">Ajuste de hiperparámetros (Optuna, 50 trials)</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:8px; border:1px solid rgba(16, 185, 129, 0.15);">
+                            <div style="font-size:0.8rem; color:var(--accent); font-weight:700;">Pruebas (Test)</div>
+                            <strong style="font-size:1.4rem; color:#fff;">20%</strong>
+                            <div style="font-size:0.75rem; color:var(--text-dim); margin-top:4px;">Evaluación final libre de contaminación temporal</div>
+                        </div>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-dim); font-style:italic;">
+                        * Reproducibilidad: Las ejecuciones experimentales fijan la semilla principal en 42 y se repiten con 5 semillas adicionales (43, 44, 45, 46, 47) para reportar resultados en formato media ± desviación estándar.
+                    </p>
+                </div>
+
+                <!-- Section 2: Experiments table -->
+                <div style="margin-bottom: 24px;">
+                    <h3 style="color:#c7d2fe; margin-bottom:12px; font-size:1.1rem; display:flex; align-items:center; gap:8px;">
+                        <span>🧪</span> Diseño Experimental: Experimentos E1–E5
+                    </h3>
+                    <div style="overflow-x:auto;">
+                        <table style="width:100%; border-collapse:collapse; font-size:0.85rem; text-align:left; border: 1px solid var(--border);">
+                            <thead>
+                                <tr style="background:rgba(255,255,255,0.03); color:var(--text-dim); border-bottom: 1px solid var(--border);">
+                                    <th style="padding:10px 12px; font-weight:700;">Exp.</th>
+                                    <th style="padding:10px 12px; font-weight:700;">Nombre del Experimento</th>
+                                    <th style="padding:10px 12px; font-weight:700;">Condición Experimental</th>
+                                    <th style="padding:10px 12px; font-weight:700;">Grupo de Control</th>
+                                    <th style="padding:10px 12px; font-weight:700;">Var. Observada (VD)</th>
+                                    <th style="padding:10px 12px; font-weight:700;">Hipótesis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom:1px solid var(--border);">
+                                    <td style="padding:10px 12px; font-weight:bold; color:#818cf8;">E1</td>
+                                    <td style="padding:10px 12px; font-weight:600; color:#fff;">Rendimiento de Detección</td>
+                                    <td style="padding:10px 12px;">Ensemble IF + LOF + ECOD (PyOD)</td>
+                                    <td style="padding:10px 12px;">Isolation Forest Individual</td>
+                                    <td style="padding:10px 12px; font-family:monospace; color:var(--accent);">VD1: PR-AUC, F1-Score</td>
+                                    <td style="padding:10px 12px; font-weight:bold; color:var(--accent);">H1a</td>
+                                </tr>
+                                <tr style="border-bottom:1px solid var(--border);">
+                                    <td style="padding:10px 12px; font-weight:bold; color:#818cf8;">E2</td>
+                                    <td style="padding:10px 12px; font-weight:600; color:#fff;">Aporte de Explicabilidad</td>
+                                    <td style="padding:10px 12px;">Sistema con vectores SHAP</td>
+                                    <td style="padding:10px 12px;">Sistema sin SHAP (solo scores)</td>
+                                    <td style="padding:10px 12px; font-family:monospace; color:var(--accent);">VD2: Cobertura Top-K, Likert</td>
+                                    <td style="padding:10px 12px; font-weight:bold; color:var(--accent);">H1b</td>
+                                </tr>
+                                <tr style="border-bottom:1px solid var(--border);">
+                                    <td style="padding:10px 12px; font-weight:bold; color:#818cf8;">E3</td>
+                                    <td style="padding:10px 12px; font-weight:600; color:#fff;">Aporte de Anclaje RAG</td>
+                                    <td style="padding:10px 12px;">LLM + RAG (anclado en SHAP)</td>
+                                    <td style="padding:10px 12px;">LLM libre (sin RAG)</td>
+                                    <td style="padding:10px 12px; font-family:monospace; color:var(--accent);">VD3: Rúbrica 5D, ROUGE-L</td>
+                                    <td style="padding:10px 12px; font-weight:bold; color:var(--accent);">H1c</td>
+                                </tr>
+                                <tr style="border-bottom:1px solid var(--border);">
+                                    <td style="padding:10px 12px; font-weight:bold; color:#818cf8;">E4</td>
+                                    <td style="padding:10px 12px; font-weight:600; color:#fff;">Evaluación del Sistema Integrado</td>
+                                    <td style="padding:10px 12px;">Pipeline completo de 4 capas</td>
+                                    <td style="padding:10px 12px;">Salidas técnicas aisladas</td>
+                                    <td style="padding:10px 12px; font-family:monospace; color:var(--accent);">VD4: Tiempo de decisión, Likert</td>
+                                    <td style="padding:10px 12px; font-weight:bold; color:var(--accent);">H1d</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 12px; font-weight:bold; color:#818cf8;">E5</td>
+                                    <td style="padding:10px 12px; font-weight:600; color:#fff;">Ablation Study (E5a a E5d)</td>
+                                    <td style="padding:10px 12px;">Configuraciones parciales (ver notas)</td>
+                                    <td style="padding:10px 12px;">—</td>
+                                    <td style="padding:10px 12px; font-family:monospace; color:var(--accent);">VD1 y VD5: Trazabilidad</td>
+                                    <td style="padding:10px 12px; color:var(--text-dim);">Aporte Capa</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-dim); margin-top:8px; font-style:italic;">
+                        Nota de Ablación: E5a (Solo Capa 2), E5b (Capas 1+2+4 sin SHAP), E5c (Capas 1+2+3 sin RAG), E5d (Pipeline completo).
+                    </p>
+                </div>
+
+                <!-- Section 3: Statistical validation & baselines -->
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+                    <div>
+                        <h3 style="color:#fbbf24; margin-bottom:12px; font-size:1.1rem; display:flex; align-items:center; gap:8px;">
+                            <span>📊</span> Contraste de Hipótesis y Pruebas Estadísticas
+                        </h3>
+                        <div style="overflow-x:auto;">
+                            <table style="width:100%; border-collapse:collapse; font-size:0.8rem; text-align:left; border: 1px solid var(--border);">
+                                <thead>
+                                    <tr style="background:rgba(255,255,255,0.03); color:var(--text-dim); border-bottom: 1px solid var(--border);">
+                                        <th style="padding:8px 10px;">Sub-hipótesis</th>
+                                        <th style="padding:8px 10px;">Comparación Clave</th>
+                                        <th style="padding:8px 10px;">Prueba Estadística</th>
+                                        <th style="padding:8px 10px;">α</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom:1px solid var(--border);">
+                                        <td style="padding:8px 10px; font-weight:bold; color:var(--accent);">H1a</td>
+                                        <td style="padding:8px 10px;">Ensemble vs Detector Único</td>
+                                        <td style="padding:8px 10px; font-family:monospace;">Wilcoxon Signed-Rank</td>
+                                        <td style="padding:8px 10px;">0.05</td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border);">
+                                        <td style="padding:8px 10px; font-weight:bold; color:var(--accent);">H1b</td>
+                                        <td style="padding:8px 10px;">Vectores SHAP vs Sin SHAP</td>
+                                        <td style="padding:8px 10px; font-family:monospace;">Mann-Whitney U</td>
+                                        <td style="padding:8px 10px;">0.05</td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border);">
+                                        <td style="padding:8px 10px; font-weight:bold; color:var(--accent);">H1c</td>
+                                        <td style="padding:8px 10px;">Anclaje RAG vs LLM libre</td>
+                                        <td style="padding:8px 10px; font-family:monospace;">t-Student apareada / Wilcoxon</td>
+                                        <td style="padding:8px 10px;">0.05</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:8px 10px; font-weight:bold; color:var(--accent);">H1d</td>
+                                        <td style="padding:8px 10px;">Integrado vs Aislado (Tiempo)</td>
+                                        <td style="padding:8px 10px; font-family:monospace;">t-Student apareada (N=15)</td>
+                                        <td style="padding:8px 10px;">0.05</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="color:#f87171; margin-bottom:12px; font-size:1.1rem; display:flex; align-items:center; gap:8px;">
+                            <span>🎯</span> Comparación de Modelos con Baselines
+                        </h3>
+                        <div style="overflow-x:auto;">
+                            <table style="width:100%; border-collapse:collapse; font-size:0.8rem; text-align:left; border: 1px solid var(--border);">
+                                <thead>
+                                    <tr style="background:rgba(255,255,255,0.03); color:var(--text-dim); border-bottom: 1px solid var(--border);">
+                                        <th style="padding:8px 10px;">Ref.</th>
+                                        <th style="padding:8px 10px;">Baseline Utilizado</th>
+                                        <th style="padding:8px 10px;">Justificación Teórica</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom:1px solid var(--border);">
+                                        <td style="padding:8px 10px; font-weight:bold; color:#f87171;">B1</td>
+                                        <td style="padding:8px 10px; font-weight:600;">Isolation Forest individual</td>
+                                        <td style="padding:8px 10px;">Detector más simple y ampliamente adoptado en la industria.</td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border);">
+                                        <td style="padding:8px 10px; font-weight:bold; color:#f87171;">B2</td>
+                                        <td style="padding:8px 10px; font-weight:600;">Ensemble IF + LOF (sin ECOD)</td>
+                                        <td style="padding:8px 10px;">Aísla y mide la contribución específica de ECOD al ensemble.</td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border);">
+                                        <td style="padding:8px 10px; font-weight:bold; color:#f87171;">B3</td>
+                                        <td style="padding:8px 10px; font-weight:600;">XGBoost Supervisado</td>
+                                        <td style="padding:8px 10px;">Límite superior (upper bound) teórico del rendimiento supervisado.</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:8px 10px; font-weight:bold; color:#f87171;">B4</td>
+                                        <td style="padding:8px 10px; font-weight:600;">LLM sin RAG y sin SHAP</td>
+                                        <td style="padding:8px 10px;">Línea base del reporte automático para evaluar alucinación.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: Interactive Sandbox / Prototype -->
+        <div id="tab-prototype" class="tab-content">
+            <div class="card" style="margin-bottom:20px; background:rgba(99, 102, 241, 0.05); border:1px solid rgba(99,102,241,0.2);">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h3 style="color:#c7d2fe; margin-bottom:4px; font-size:1.15rem;">Simulación del Experimento Within-Subjects (Anexo A)</h3>
+                        <p style="font-size:0.85rem; color:var(--text-dim);">Evalúe el impacto de la explicabilidad sobre el tiempo de decisión. Al alternar de condición, cambian las herramientas de análisis del auditor.</p>
+                    </div>
+                    <div style="text-align:right;">
+                        <span style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; display:block;">Prueba de Hipótesis</span>
+                        <strong style="color:var(--accent); font-size:0.95rem;">H1d (Eficiencia) & H1b (Comprensión)</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kpis-row">
+                <div class="kpi-card">
+                    <strong id="kpi-lotes">2,450</strong>
+                    <span>Lotes Auditados</span>
+                </div>
+                <div class="kpi-card">
+                    <strong id="kpi-anom">148</strong>
+                    <span>Anomalías Detectadas</span>
+                </div>
+                <div class="kpi-card">
+                    <strong id="kpi-fp">1.19%</strong>
+                    <span>Tasa Falsos Positivos</span>
+                </div>
+                <div class="kpi-card">
+                    <strong id="kpi-tiempo">12.4s</strong>
+                    <span>Tiempo Medio de Decisión</span>
+                </div>
+            </div>
+
+            <div class="sandbox-layout">
+                <!-- Alert list column -->
+                <div class="alert-queue">
+                    <div class="queue-header">Cola de Alertas Recientes</div>
+                    <div id="alerts-list-container">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Alert Detail column -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div id="alert-detail-container" class="detail-panel">
+                        <div class="empty-detail">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"></path>
+                            </svg>
+                            <h3>Ninguna alerta seleccionada</h3>
+                            <p>Haga clic en una alerta de la lista izquierda para iniciar el análisis del lote y auditar las decisiones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Session log table for statistical analysis -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size:1.2rem; border-bottom:1px solid var(--border); padding-bottom:8px; margin-bottom:12px; color:#c7d2fe;">
+                    📊 Telemetría y Registro de Sesión (Datos para Pruebas Estadísticas - Wilcoxon / t-Student)
+                </h2>
+                <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:12px;">
+                    Cada decisión que registras en el simulador superior se guarda en esta tabla de telemetría, emulando la recolección automática de variables dependientes descrita en el **Anexo A** para contrastar las hipótesis H1b (comprensión) y H1d (eficiencia temporal).
+                </p>
+                <div style="overflow-x: auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:0.85rem; text-align:left;" id="session-log-table">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--border); color:var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                                <th style="padding:12px;">ID Alerta</th>
+                                <th style="padding:12px;">Lote</th>
+                                <th style="padding:12px;">Condición</th>
+                                <th style="padding:12px;">Veredicto</th>
+                                <th style="padding:12px;">Tiempo (s)</th>
+                                <th style="padding:12px;">Justificación</th>
+                                <th style="padding:12px;">Trazabilidad (VD5)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="session-log-body">
+                            <tr id="empty-session-row">
+                                <td colspan="7" style="padding:20px; text-align:center; color:var(--text-dim); font-style:italic;">
+                                    Aún no se han registrado decisiones en esta sesión. Seleccione una alerta arriba y envíe su veredicto.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast-success" class="toast">Decisión registrada con éxito. Archivo de telemetría de tesis actualizado.</div>
+
+    <script>
+        // JS Data
+        const alertsData = [
+            {
+                id: "AL-1042",
+                lote: "L-2026-084",
+                fecha: "2026-05-18",
+                producto: "Palta Hass",
+                zona: "La Libertad",
+                destino: "Unión Europea",
+                volumen_kg: 24500,
+                precio_usd_kg: 2.65,
+                temperatura_max: 23.5,
+                humedad_pct: 78,
+                dias_logisticos: 41,
+                costo_logistico_usd_kg: 0.95,
+                cumplimiento_fitosanitario: "Sí",
+                merma_pct: 3.8,
+                tipo_cambio_pen_usd: 3.76,
+                score_ECOD: 0.924,
+                score_IF: 0.812,
+                score_LOF: 0.745,
+                ensemble_score: 0.827,
+                status: "pending",
+                tipo_anomalia: "logistica",
+                shap_data: [
+                    { name: "Días Logísticos (41 días)", val: 12.4, is_positive: true },
+                    { name: "Costo Logístico (0.95 USD/kg)", val: 4.8, is_positive: true },
+                    { name: "Temperatura Max (23.5°C)", val: -1.2, is_positive: false },
+                    { name: "Humedad (78%)", val: -0.8, is_positive: false },
+                    { name: "Cumplimiento Fitosanitario", val: -0.5, is_positive: false }
+                ],
+                report: `### Reporte de Alerta: Anomalía en Cadena Logística (Palta Hass a UE)
+**Identificador:** AL-1042 | **Fecha:** 2026-05-18
+
+#### 1. Resumen de la Alerta
+El sistema de supervisión ha detectado un comportamiento anómalo en el tránsito logístico del Lote L-2026-084 (Palta Hass con destino a la Unión Europea). El score de anomalía consolidado por el ensemble es de **0.827**, superando el umbral de alerta configurado de **0.750**.
+
+#### 2. Justificación Técnica (Explicabilidad SHAP)
+Las variables que más contribuyeron a la clasificación de anomalía son:
+* **Días Logísticos (41 días)**: Aporta un +12.4% a la anomalía, situándose significativamente por encima del promedio habitual de tránsito a la UE (22-26 días).
+* **Costo Logístico (0.95 USD/kg)**: Aporta un +4.8% debido al aumento inesperado en fletes y cargos de demora.
+
+#### 3. Contexto Regulatorio y Fitosanitario (Anclaje RAG)
+Según la **Resolución SBS N° 053-2023** sobre gestión del riesgo de modelos y continuidad operativa, y de acuerdo a los requerimientos de la Unión Europea para productos perecederos (Reglamento CE N° 852/2004), los tránsitos superiores a 35 días en palta Hass incrementan exponencialmente el riesgo de sobre-maduración en puerto y rechazo comercial.
+* **Nota Meteorológica:** SENAMHI reporta congestión en puertos de salida debido a oleaje anómalo durante la semana del embarque.`
+            },
+            {
+                id: "AL-1043",
+                lote: "L-2026-089",
+                fecha: "2026-05-20",
+                producto: "Espárrago Fresco",
+                zona: "Ica",
+                destino: "Estados Unidos",
+                volumen_kg: 8200,
+                precio_usd_kg: 3.40,
+                temperatura_max: 37.2,
+                humedad_pct: 42,
+                dias_logisticos: 5,
+                costo_logistico_usd_kg: 0.42,
+                cumplimiento_fitosanitario: "Sí",
+                merma_pct: 2.1,
+                tipo_cambio_pen_usd: 3.75,
+                score_ECOD: 0.895,
+                score_IF: 0.790,
+                score_LOF: 0.710,
+                ensemble_score: 0.798,
+                status: "pending",
+                tipo_anomalia: "clima",
+                shap_data: [
+                    { name: "Temperatura Máx (37.2°C)", val: 14.2, is_positive: true },
+                    { name: "Humedad (42%)", val: 5.1, is_positive: true },
+                    { name: "Días Logísticos (5 días)", val: -2.3, is_positive: false },
+                    { name: "Merma (2.1%)", val: -1.2, is_positive: false },
+                    { name: "Precio (3.40 USD/kg)", val: 0.2, is_positive: true }
+                ],
+                report: `### Reporte de Alerta: Estrés Térmico por Clima Extremo (Espárrago de Ica a EEUU)
+**Identificador:** AL-1043 | **Fecha:** 2026-05-20
+
+#### 1. Resumen de la Alerta
+Se detectó estrés térmico extremo en la zona de acopio de Ica para el Lote L-2026-089 (Espárrago Fresco). El score de anomalía consolidado es de **0.798** (umbral: 0.750).
+
+#### 2. Justificación Técnica (Explicabilidad SHAP)
+Las variables dominantes son:
+* **Temperatura Máxima (37.2°C)**: Aporta un +14.2% al riesgo de anomalía. Representa un desvío de +3.2 sigmas respecto a la media histórica de Ica para este mes.
+* **Humedad Relativa (42%)**: Aporta un +5.1% de contribución por sequedad extrema.
+
+#### 3. Contexto Regulatorio y Fitosanitario (Anclaje RAG)
+El manual fitosanitario de **SENASA** indica que temperaturas mayores a 35°C durante el acopio de espárragos aceleran la apertura de cabezas (florecimiento) y lignificación del tallo, reduciendo la calidad a Categoría II.
+* **Mitigación Recomendada:** Activar el protocolo de pre-enfriado rápido (hydrocooling) de inmediato y reducir el tiempo de almacenamiento temporal a menos de 4 horas.`
+            },
+            {
+                id: "AL-1044",
+                lote: "L-2026-092",
+                fecha: "2026-05-21",
+                producto: "Arándano Orgánico",
+                zona: "Arequipa",
+                destino: "Asia",
+                volumen_kg: 15400,
+                precio_usd_kg: 11.80,
+                temperatura_max: 21.0,
+                humedad_pct: 60,
+                dias_logisticos: 28,
+                costo_logistico_usd_kg: 1.15,
+                cumplimiento_fitosanitario: "Sí",
+                merma_pct: 28.5,
+                tipo_cambio_pen_usd: 3.77,
+                score_ECOD: 0.941,
+                score_IF: 0.885,
+                score_LOF: 0.820,
+                ensemble_score: 0.882,
+                status: "pending",
+                tipo_anomalia: "calidad",
+                shap_data: [
+                    { name: "Merma de Calidad (28.5%)", val: 18.5, is_positive: true },
+                    { name: "Precio Exclusivo (11.80 USD/kg)", val: 6.2, is_positive: true },
+                    { name: "Temperatura (21.0°C)", val: -0.5, is_positive: false },
+                    { name: "Días Logísticos (28 días)", val: 1.1, is_positive: true },
+                    { name: "Zona (Arequipa)", val: -0.3, is_positive: false }
+                ],
+                report: `### Reporte de Alerta: Merma de Calidad Excesiva en Arándano Orgánico (Destino Asia)
+**Identificador:** AL-1044 | **Fecha:** 2026-05-21
+
+#### 1. Resumen de la Alerta
+Detección de pérdida crítica por calidad (merma física del 28.5%) en el Lote L-2026-092 de arándano orgánico de Arequipa con destino a Asia. El score consolidado es de **0.882** (crítico).
+
+#### 2. Justificación Técnica (Explicabilidad SHAP)
+Las variables dominantes son:
+* **Merma (28.5%)**: Aporta +18.5% al score de anomalía. La merma tolerada contractualmente para Asia es de máximo 8.0%.
+* **Precio (11.80 USD/kg)**: Aporta +6.2% de peso. Al ser un producto premium (orgánico), el impacto financiero de la merma se multiplica.
+
+#### 3. Contexto Regulatorio y Fitosanitario (Anclaje RAG)
+De acuerdo a las regulaciones de la FDA y estándares asiáticos de importación de berries, mermas superiores al 15% indican descomposición fúngica activa u hongos fitopatógenos, lo cual gatilla rechazo total del contenedor en destino y alerta sanitaria para la empresa exportadora.`
+            },
+            {
+                id: "AL-1045",
+                lote: "L-2026-095",
+                fecha: "2026-05-22",
+                producto: "Uva de Mesa",
+                zona: "Piura",
+                destino: "Estados Unidos",
+                volumen_kg: 18000,
+                precio_usd_kg: 3.10,
+                temperatura_max: 29.5,
+                humedad_pct: 65,
+                dias_logisticos: 15,
+                costo_logistico_usd_kg: 0.35,
+                cumplimiento_fitosanitario: "Sí",
+                merma_pct: 1.5,
+                tipo_cambio_pen_usd: 3.76,
+                score_ECOD: 0.120,
+                score_IF: 0.145,
+                score_LOF: 0.110,
+                ensemble_score: 0.125,
+                status: "pending",
+                tipo_anomalia: "none",
+                shap_data: [
+                    { name: "Días Logísticos (15 días)", val: -2.8, is_positive: false },
+                    { name: "Merma (1.5%)", val: -2.1, is_positive: false },
+                    { name: "Precio (3.10 USD/kg)", val: -1.5, is_positive: false },
+                    { name: "Temperatura (29.5°C)", val: -0.4, is_positive: false },
+                    { name: "Humedad (65%)", val: -0.2, is_positive: false }
+                ],
+                report: `### Reporte de Alerta: Transacción Operativa Regular (Uva de Piura a EEUU)
+**Identificador:** AL-1045 | **Fecha:** 2026-05-22
+
+#### 1. Resumen de la Alerta
+La operación del Lote L-2026-095 se clasifica como **Normal**. El score consolidado del ensemble es de **0.125**, muy por debajo del umbral de alerta (0.750).
+
+#### 2. Justificación Técnica (Explicabilidad SHAP)
+Todas las variables principales muestran aportes negativos, indicando estabilidad y consistencia estadística:
+* **Días Logísticos (15 días)** y **Merma (1.5%)** corroboran la eficiencia y el excelente control de la cadena de frío de este despacho.
+
+#### 3. Contexto Regulatorio y Fitosanitario (Anclaje RAG)
+Operación alineada 100% con los acuerdos de pre-embarque SENASA-USDA para uva de mesa de Piura. No se requieren acciones correctivas.`
+            }
+        ];
+
+        let selectedAlertId = null;
+        let selectedCondition = 'A'; // 'A' or 'B'
+        let timerInterval = null;
+        let secondsElapsed = 0;
+        let decisionTimes = [];
+
+        // Tab selection (FIXED: reliable tab activation using btn reference)
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (btn) {
+                btn.classList.add('active');
+            } else {
+                // Fallback selector matching tabId in onclick
+                const activeBtn = document.querySelector(`button[onclick*="${tabId}"]`);
+                if (activeBtn) activeBtn.classList.add('active');
+            }
+            
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+
+            if (tabId === 'tab-prototype') {
+                renderAlertsList();
+            }
+        }
+
+        // Accordion toggle
+        function toggleAccordion(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === "none" || !el.style.display) {
+                el.style.display = "block";
+            } else {
+                el.style.display = "none";
+            }
+        }
+
+        // Render sidebar list
+        function renderAlertsList() {
+            const container = document.getElementById('alerts-list-container');
+            let html = '';
+            alertsData.forEach(alert => {
+                const activeClass = alert.id === selectedAlertId ? 'active' : '';
+                const badgeClass = `badge-${alert.status}`;
+                const badgeLabel = alert.status === 'pending' ? 'Pendiente' : (alert.status === 'approved' ? 'Anomalía Ok' : 'Falso Pos.');
+                html += `
+                    <div class="alert-item ${activeClass}" onclick="selectAlert('${alert.id}')">
+                        <div class="alert-item-header">
+                            <span class="alert-id">${alert.id}</span>
+                            <span class="alert-badge ${badgeClass}">${badgeLabel}</span>
+                        </div>
+                        <div class="alert-desc">${alert.producto} · Lote ${alert.lote}</div>
+                        <div class="alert-meta">
+                            <span>Destino: ${alert.destino}</span>
+                            <span style="font-weight:bold; color: ${alert.ensemble_score > 0.75 ? 'var(--error)' : 'var(--accent)'}">Score: ${alert.ensemble_score}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // Select alert to load details
+        function selectAlert(id) {
+            selectedAlertId = id;
+            renderAlertsList();
+            startTimer();
+            renderAlertDetails();
+        }
+
+        // Switch Condition A vs B
+        function setCondition(cond) {
+            selectedCondition = cond;
+            renderAlertDetails();
+        }
+
+        // Timer
+        function startTimer() {
+            clearInterval(timerInterval);
+            secondsElapsed = 0;
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                secondsElapsed++;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const el = document.getElementById('decision-timer-val');
+            if (el) {
+                el.innerText = `${secondsElapsed}s`;
+            }
+        }
+
+        // Parse markdown text simple
+        function parseMarkdown(text) {
+            return text
+                .replace(/^### (.*$)/gim, '<h3 style="color:#c7d2fe; margin-top:16px; margin-bottom:8px;">$1</h3>')
+                .replace(/^#### (.*$)/gim, '<h4 style="color:#818cf8; margin-top:12px; margin-bottom:6px;">$1</h4>')
+                .replace(/^\*\*([^*]+)\*\*/gim, '<strong>$1</strong>')
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                .replace(/^\* (.*$)/gim, '<li style="margin-left: 20px; margin-bottom:4px; font-size:0.9rem;">$1</li>')
+                .replace(/
+/g, '<br>');
+        }
+
+        // Render SHAP graph
+        function renderShap(shapData) {
+            let html = '';
+            shapData.forEach(item => {
+                const valPercent = Math.min(Math.abs(item.val) * 6, 100);
+                const color = item.is_positive ? 'var(--error)' : 'var(--accent)';
+                const sign = item.is_positive ? '+' : '';
+                html += `
+                    <div style="margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 4px;">
+                            <span>${item.name}</span>
+                            <span style="color: ${color}; font-weight: bold;">${sign}${item.val}%</span>
+                        </div>
+                        <div style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 99px; overflow: hidden; position: relative;">
+                            <div style="height: 100%; width: ${valPercent}%; background: ${color}; border-radius: 99px;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            return html;
+        }
+
+        // Render detailed panel
+        function renderAlertDetails() {
+            const container = document.getElementById('alert-detail-container');
+            const alertObj = alertsData.find(a => a.id === selectedAlertId);
+            if (!alertObj) return;
+
+            const isAnomalous = alertObj.ensemble_score > 0.75;
+            const bannerColor = isAnomalous ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)';
+            const bannerBorder = isAnomalous ? '1px solid rgba(239, 68, 68, 0.2)' : '1px solid rgba(16, 185, 129, 0.2)';
+            const bannerText = isAnomalous ? 'Operación Atípica Detectada (Alerta de Anomalía)' : 'Operación dentro del Rango Normal';
+            const bannerBadge = isAnomalous ? 'Critico' : 'Normal';
+            const badgeColor = isAnomalous ? 'var(--error)' : 'var(--accent)';
+
+            const isActionChosen = alertObj.status !== 'pending';
+            const approveActive = alertObj.status === 'approved' ? 'active' : '';
+            const rejectActive = alertObj.status === 'rejected' ? 'active' : '';
+
+            let conditionHtml = '';
+
+            if (selectedCondition === 'A') {
+                // Condición A - Explicable y Reporte RAG
+                conditionHtml = `
+                    <div class="view-cond-a active">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                            <div>
+                                <h4 style="color:#c7d2fe; margin-bottom:12px; font-size:1rem;">Contribución de Variables (TreeSHAP)</h4>
+                                <div style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); padding:16px; border-radius:12px;">
+                                    ${renderShap(alertObj.shap_data)}
+                                </div>
+                            </div>
+                            <div>
+                                <h4 style="color:#c7d2fe; margin-bottom:12px; font-size:1rem;">Reporte Narrativo Generado (LLM + RAG)</h4>
+                                <div class="llm-report">
+                                    ${parseMarkdown(alertObj.report)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Condición B - Aislada (Solo Score)
+                conditionHtml = `
+                    <div class="view-cond-b active">
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius:12px; padding:20px; margin-bottom: 24px;">
+                            <h4 style="color:#818cf8; margin-bottom:14px; font-size:1rem;">Scores de Modelos Técnicos</h4>
+                            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align:center;">
+                                <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:8px;">
+                                    <div style="font-size:0.8rem; color:var(--text-dim);">ECOD (Empirical Cumulative)</div>
+                                    <strong style="font-size:1.2rem; font-family:monospace; color:#fff;">${alertObj.score_ECOD}</strong>
+                                </div>
+                                <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:8px;">
+                                    <div style="font-size:0.8rem; color:var(--text-dim);">Isolation Forest</div>
+                                    <strong style="font-size:1.2rem; font-family:monospace; color:#fff;">${alertObj.score_IF}</strong>
+                                </div>
+                                <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:8px;">
+                                    <div style="font-size:0.8rem; color:var(--text-dim);">LOF (Local Outlier Factor)</div>
+                                    <strong style="font-size:1.2rem; font-family:monospace; color:#fff;">${alertObj.score_LOF}</strong>
+                                </div>
+                            </div>
+                            <div style="margin-top:20px; color:var(--text-dim); font-size:0.85rem; font-style:italic;">
+                                * Nota de usabilidad: En la Condición B, el auditor no dispone de vectores SHAP ni reporte de síntesis contextualizada.
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <!-- Detail Header -->
+                <div class="detail-header">
+                    <div class="detail-title">
+                        <h3>Lote ${alertObj.lote}</h3>
+                        <p>ID Alerta: ${alertObj.id} · Generado el ${alertObj.fecha}</p>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+                        <div class="condition-switch">
+                            <button class="cond-btn ${selectedCondition === 'A' ? 'active' : ''}" onclick="setCondition('A')">Condición A (Explicable)</button>
+                            <button class="cond-btn ${selectedCondition === 'B' ? 'active' : ''}" onclick="setCondition('B')">Condición B (Aislado)</button>
+                        </div>
+                        <div class="timer-badge">
+                            <div class="timer-dot"></div>
+                            <span>Tiempo de análisis: </span>
+                            <strong id="decision-timer-val" style="font-family:monospace;">${secondsElapsed}s</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert status banner -->
+                <div style="background: ${bannerColor}; border: ${bannerBorder}; padding: 12px 18px; border-radius: 10px; margin-bottom: 20px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-weight:600; font-size:0.95rem; color:#fff;">${bannerText}</span>
+                    <span style="background: ${isAnomalous ? 'rgba(239, 68, 68, 0.2)' : 'rgba(16, 185, 129, 0.2)'}; color: ${badgeColor}; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:700; text-transform:uppercase;">${bannerBadge}</span>
+                </div>
+
+                <div class="detail-grid">
+                    <!-- Column 1: Details Table -->
+                    <div>
+                        <table class="metadata-table">
+                            <tbody>
+                                <tr><td class="label">Producto</td><td class="val">${alertObj.producto}</td></tr>
+                                <tr><td class="label">Zona de origen</td><td class="val">${alertObj.zona}</td></tr>
+                                <tr><td class="label">Mercado Destino</td><td class="val">${alertObj.destino}</td></tr>
+                                <tr><td class="label">Volumen Neto</td><td class="val">${alertObj.volumen_kg.toLocaleString()} kg</td></tr>
+                                <tr><td class="label">Precio Unitario</td><td class="val">${alertObj.precio_usd_kg.toFixed(2)} USD/kg</td></tr>
+                                <tr><td class="label">Días en Tránsito</td><td class="val">${alertObj.dias_logisticos} días</td></tr>
+                                <tr><td class="label">Merma Física</td><td class="val">${alertObj.merma_pct}%</td></tr>
+                                <tr><td class="label">Fitosanitario (SENASA)</td><td class="val">${alertObj.cumplimiento_fitosanitario}</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Column 2: Score card -->
+                    <div style="display:flex; flex-direction:column; justify-content:center;">
+                        <div class="score-box">
+                            <span class="score-label">Consolidated Ensemble Score</span>
+                            <div class="score-val" style="color: ${alertObj.ensemble_score > 0.75 ? 'var(--error)' : 'var(--accent)'}">${alertObj.ensemble_score}</div>
+                            <div class="score-bar-outer">
+                                <div class="score-bar-inner" style="width: ${alertObj.ensemble_score * 100}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Condition View -->
+                ${conditionHtml}
+
+                <!-- Action form -->
+                <div class="action-box">
+                    <h4>Vedicto Operativo del Auditor</h4>
+                    <div class="form-row">
+                        <button class="action-btn-choice ${approveActive}" data-action="approve" onclick="selectAction('approved')">Confirmar Anomalía Crítica</button>
+                        <button class="action-btn-choice ${rejectActive}" data-action="reject" onclick="selectAction('rejected')">Marcar Falso Positivo</button>
+                    </div>
+                    <textarea id="justification" class="justification-area" placeholder="Escriba la justificación basada en las variables explicadas (máx. 200 caracteres)..." ${isActionChosen ? 'disabled' : ''}>${alertObj.justification || ''}</textarea>
+                    <button class="btn btn-accent" style="width:100%;" onclick="submitDecision()" ${isActionChosen ? 'disabled' : ''}>Registrar Decisión y Actualizar Trazabilidad</button>
+                </div>
+            `;
+        }
+
+        // Toggle button states in decision form
+        let currentChoice = null;
+        function selectAction(choice) {
+            const alertObj = alertsData.find(a => a.id === selectedAlertId);
+            if (alertObj && alertObj.status !== 'pending') return; // Cannot edit historical decisions
+
+            currentChoice = choice;
+            document.querySelectorAll('.action-btn-choice').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-action') === (choice === 'approved' ? 'approve' : 'reject')) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Submit decision (FIXED: removed global alert shadowing and window.alert fallback)
+        function submitDecision() {
+            if (!selectedAlertId) return;
+            const alertObj = alertsData.find(a => a.id === selectedAlertId);
+            if (alertObj.status !== 'pending') return;
+
+            if (!currentChoice) {
+                window.alert("Por favor, seleccione un veredicto (Confirmar o Descartar) antes de enviar.");
+                return;
+            }
+
+            const justVal = document.getElementById('justification').value.trim();
+            if (justVal.length === 0) {
+                window.alert("Por favor, escriba una justificación textual.");
+                return;
+            }
+
+            // Stop timer
+            clearInterval(timerInterval);
+            decisionTimes.push(secondsElapsed);
+
+            // Update local object
+            alertObj.status = currentChoice;
+            alertObj.justification = justVal;
+
+            // Recalculate KPIs
+            let pendingCount = alertsData.filter(a => a.status === 'pending').length;
+            let approvedCount = alertsData.filter(a => a.status === 'approved').length;
+            let rejectedCount = alertsData.filter(a => a.status === 'rejected').length;
+            
+            // Simulated additions to metrics
+            document.getElementById('kpi-anom').innerText = 148 + approvedCount;
+            // Update false positive rate: rejected decisions / total audits
+            let totalAudited = 148 + approvedCount + rejectedCount;
+            let fpRate = (rejectedCount / totalAudited) * 100;
+            document.getElementById('kpi-fp').innerText = fpRate > 0 ? `${fpRate.toFixed(2)}%` : "1.19%";
+
+            // Average decision time
+            let sumTimes = decisionTimes.reduce((a, b) => a + b, 0);
+            let avgTime = (12.4 * 148 + sumTimes) / (148 + decisionTimes.length);
+            document.getElementById('kpi-tiempo').innerText = `${avgTime.toFixed(1)}s`;
+
+            // Add row to session log (Telemetría de Tesis)
+            const logBody = document.getElementById('session-log-body');
+            const emptyRow = document.getElementById('empty-session-row');
+            if (emptyRow) emptyRow.remove();
+
+            const condLabel = selectedCondition === 'A' ? 
+                '<span style="color:#818cf8; font-weight:bold;">Condición A (Integrado)</span>' : 
+                '<span style="color:var(--text-dim);">Condición B (Aislado)</span>';
+            const veredictoLabel = currentChoice === 'approved' ? 
+                '<span style="color:var(--error); font-weight:bold;">Anomalía Confirmada</span>' : 
+                '<span style="color:var(--accent); font-weight:bold;">Falso Positivo</span>';
+            const trazabilidadLabel = selectedCondition === 'A' ? 
+                '<span style="color:var(--accent); font-weight:bold;">100% (Completa)</span>' : 
+                '<span style="color:var(--error);">30% (Sin SHAP/RAG)</span>';
+
+            const newRow = document.createElement('tr');
+            newRow.style.borderBottom = '1px solid var(--border)';
+            newRow.innerHTML = `
+                <td style="padding:12px; font-family:monospace;">${alertObj.id}</td>
+                <td style="padding:12px;">${alertObj.lote}</td>
+                <td style="padding:12px;">${condLabel}</td>
+                <td style="padding:12px;">${veredictoLabel}</td>
+                <td style="padding:12px; font-family:monospace; font-weight:bold;">${secondsElapsed}s</td>
+                <td style="padding:12px; color:var(--text-dim); font-size:0.8rem; max-width:250px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${justVal}">${justVal}</td>
+                <td style="padding:12px;">${trazabilidadLabel}</td>
+            `;
+            logBody.appendChild(newRow);
+
+            // Show Toast
+            const toast = document.getElementById('toast-success');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+
+            // Refresh view
+            renderAlertsList();
+            renderAlertDetails();
+        }
+
+        // Metadata de las capas de la arquitectura
+        const layersMetadata = {
+            1: {
+                title: "Capa 1: Predicción Tabular de Series",
+                subtitle: "XGBoost & LightGBM",
+                badgeClass: "badge-l1",
+                inputs: "Variables transaccionales históricas de agroexportación (Precios MIDAGRI, Volúmenes SUNAT, Clima SENAMHI, Fitosanitario SENASA, Días Logísticos).",
+                outputs: "Valores esperados y umbrales de normalidad estadística para cada registro operativo.",
+                logic: "Algoritmos Gradient Boosting que optimizan la función de pérdida regularizada mediante divisiones sucesivas de árboles de decisión.",
+                formula: "F_m(x) = F_{m-1}(x) + \gamma_m h_m(x)",
+                metrics: "RMSE (Root Mean Squared Error), MAE (Mean Absolute Error), R² (Coeficiente de Determinación).",
+                links: [
+                    { name: "Metodología: §3.1", path: "/seccion/30-capitulo3" },
+                    { name: "Anexo B: Model Cards", path: "/seccion/a2-anexo-modelcards" }
+                ]
+            },
+            2: {
+                title: "Capa 2: Detección de Anomalías (Ensemble)",
+                subtitle: "Isolation Forest + LOF + ECOD",
+                badgeClass: "badge-l2",
+                inputs: "Desvíos de variables observadas versus valores predichos (de Capa 1) y dataset transaccional.",
+                outputs: "Score consolidado de anomalía (0.0 a 1.0) y bandera de alerta si el score supera el umbral (0.75).",
+                logic: "Ensemble no supervisado orquestado por PyOD que promedia o maximiza las predicciones de Isolation Forest, Local Outlier Factor y ECOD.",
+                formula: "Score_{cons} = \frac{1}{3}(Score_{IF} + Score_{LOF} + Score_{ECOD})",
+                metrics: "PR-AUC (Área bajo la curva Precisión-Exhaustividad), ROC-AUC, F1-Score (umbral óptimo).",
+                links: [
+                    { name: "Metodología: §3.1 y §3.3", path: "/seccion/30-capitulo3" },
+                    { name: "Anexo C: Datasheet de Datasets", path: "/seccion/a3-anexo-datasheet" }
+                ]
+            },
+            3: {
+                title: "Capa 3: Explicabilidad Algorítmica",
+                subtitle: "TreeSHAP (Shapley Values)",
+                badgeClass: "badge-l3",
+                inputs: "Registros de alertas clasificadas como anomalías (de Capa 2), la estructura de pesos y caminos de los árboles de decisión.",
+                outputs: "Vectores SHAP de contribución local indicando el peso (+ o -) de cada una de las top-5 variables en la alerta.",
+                logic: "Algoritmo TreeSHAP optimizado para árboles de decisión que calcula las atribuciones locales exactas basadas en la teoría de juegos cooperativos.",
+                formula: "\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F| - |S| - 1)!}{|F|!} [f_x(S \cup \{i\}) - f_x(S)]",
+                metrics: "Cobertura Top-K (porcentaje de alertas donde el top-5 explica ≥80% del score absoluto), Índice de Estabilidad SHAP.",
+                links: [
+                    { name: "Metodología: §3.1", path: "/seccion/30-capitulo3" },
+                    { name: "Anexo A: Usabilidad y Explicabilidad", path: "/seccion/a1-anexo-usabilidad" }
+                ]
+            },
+            4: {
+                title: "Capa 4: Reportes Narrativos Generativos",
+                subtitle: "LLM + RAG",
+                badgeClass: "badge-l4",
+                inputs: "Vectores SHAP (de Capa 3), metadatos del lote operativo, Base de Conocimientos regulatorios (Resolución SBS N° 053-2023, manual fitosanitario SENASA).",
+                outputs: "Borrador de reporte en lenguaje natural con anclaje técnico y legal en formato Markdown/PDF.",
+                logic: "Recuperación semántica (RAG) de directivas asociadas y generación estructurada por LLM mediante prompts que impiden la alucinación de datos numéricos.",
+                formula: "\text{Reporte} = \text{LLM}(\text{Query}, \text{SHAP}, \text{Contexto}_{\text{RAG}})",
+                metrics: "Rúbrica 5D (Completitud, Coherencia, Accionabilidad, Consistencia numérica, Evidencias), ROUGE-L.",
+                links: [
+                    { name: "Metodología: §3.1 y §3.3", path: "/seccion/30-capitulo3" },
+                    { name: "Anexo D: Declaración de uso de IA", path: "/seccion/a4-anexo-ia" }
+                ]
+            }
+        };
+
+        // Función para seleccionar e inspeccionar una capa de la arquitectura (FIXED: LaTeX markup in MathJax)
+        function selectArchLayer(id, el) {
+            // Quitar clase active de todas las layer-cards
+            document.querySelectorAll('.layer-card').forEach(card => card.classList.remove('active'));
+            
+            // Agregar clase active a la card clickeada
+            if (el) el.classList.add('active');
+            
+            // Ocultar placeholder
+            const placeholder = document.getElementById('inspector-placeholder');
+            if (placeholder) placeholder.style.display = 'none';
+            
+            // Mostrar y rellenar inspector
+            const content = document.getElementById('inspector-content');
+            if (content) {
+                content.style.display = 'block';
+                
+                const meta = layersMetadata[id];
+                
+                content.innerHTML = `
+                    <div style="margin-bottom:14px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <span class="layer-badge ${meta.badgeClass}" style="margin-bottom:0;">${meta.title}</span>
+                            <span style="font-size:0.85rem; color:var(--text-dim); font-family:'JetBrains Mono', monospace; font-weight:700;">${meta.subtitle}</span>
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                        <div style="background:rgba(0,0,0,0.15); padding:12px; border-radius:8px; border:1px solid var(--border);">
+                            <h4 style="font-size:0.85rem; color:#818cf8; margin-bottom:6px; font-weight:700;">📥 Entradas (Inputs)</h4>
+                            <p style="font-size:0.85rem; line-height:1.4; color:var(--text-main);">${meta.inputs}</p>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.15); padding:12px; border-radius:8px; border:1px solid var(--border);">
+                            <h4 style="font-size:0.85rem; color:var(--accent); margin-bottom:6px; font-weight:700;">📤 Salidas (Outputs)</h4>
+                            <p style="font-size:0.85rem; line-height:1.4; color:var(--text-main);">${meta.outputs}</p>
+                        </div>
+                    </div>
+
+                    <div style="background:rgba(0,0,0,0.15); padding:12px; border-radius:8px; border:1px solid var(--border); margin-bottom:16px;">
+                        <h4 style="font-size:0.85rem; color:#fbbf24; margin-bottom:6px; font-weight:700;">⚙️ Lógica y Formulación Matemática</h4>
+                        <p style="font-size:0.85rem; line-height:1.4; margin-bottom:8px; color:var(--text-dim);">${meta.logic}</p>
+                        <div style="display:flex; justify-content:center; background:rgba(0,0,0,0.2); padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:0.95rem; color:#fff; overflow-x:auto;">
+                            $$${meta.formula}$$
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:16px;">
+                        <div style="background:rgba(0,0,0,0.15); padding:12px; border-radius:8px; border:1px solid var(--border);">
+                            <h4 style="font-size:0.85rem; color:#f87171; margin-bottom:6px; font-weight:700;">📈 Métricas de Evaluación</h4>
+                            <p style="font-size:0.85rem; line-height:1.4; color:var(--text-main);">${meta.metrics}</p>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.15); padding:12px; border-radius:8px; border:1px solid var(--border);">
+                            <h4 style="font-size:0.85rem; color:#a5b4fc; margin-bottom:6px; font-weight:700;">📘 Trazabilidad en Documento Tesis</h4>
+                            <div style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
+                                ${meta.links.map(l => `<a href="${l.path}" class="btn" style="padding:4px 8px; font-size:0.75rem; text-align:center; display:block;">${l.name}</a>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Re-renderizar las fórmulas matemáticas LaTeX agregadas dinámicamente con MathJax
+                if (window.MathJax && MathJax.typesetPromise) {
+                    MathJax.typesetPromise([content]);
+                }
+            }
+        }
+
+        // Seleccionar la Capa 1 por defecto al cargar la página (FIXED: reliable trigger)
+        const activeCard = document.getElementById('arch-card-1');
+        if (activeCard) {
+            selectArchLayer(1, activeCard);
+        }
+    </script>
+</body>
+</html>

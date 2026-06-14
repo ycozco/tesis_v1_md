@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 42 Capitulo4 Explicabilidad Reportes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#42-resultados-cualitativos-explicabilidad-y-reportes-vd2-vd3">4.2 Resultados Cualitativos: Explicabilidad y Reportes, VD2-VD3</a><ul>
+<li><a href="#421-tabla-43-calidad-de-explicabilidad-experimento-e2">4.2.1 Tabla 4.3 - Calidad de explicabilidad, Experimento E2</a></li>
+<li><a href="#422-tabla-44-calidad-de-reportes-generados-experimento-e3">4.2.2 Tabla 4.4 - Calidad de reportes generados, Experimento E3</a></li>
+<li><a href="#423-ejemplo-de-reporte-generado">4.2.3 Ejemplo de reporte generado</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>02 42 Capitulo4 Explicabilidad Reportes</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-08 08:26
+                </div>
+            </div>
+            
+            <h2 id="42-resultados-cualitativos-explicabilidad-y-reportes-vd2-vd3">4.2 Resultados Cualitativos: Explicabilidad y Reportes, VD2-VD3</h2>
+<p>Esta seccion evaluara si la capa SHAP mejora la interpretacion de alertas y si los reportes RAG/LLM mantienen fidelidad a la evidencia recuperada.</p>
+<h3 id="421-tabla-43-calidad-de-explicabilidad-experimento-e2">4.2.1 Tabla 4.3 - Calidad de explicabilidad, Experimento E2</h3>
+<table>
+<thead>
+<tr>
+<th>Metrica</th>
+<th style="text-align: right;">Sistema con SHAP</th>
+<th style="text-align: right;">Sistema sin SHAP</th>
+<th style="text-align: right;">p-value</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cobertura top-3</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;">N/A</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Cobertura top-5</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;">N/A</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Estabilidad SHAP</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;">N/A</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Claridad operativa Likert 1-5</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+</tbody>
+</table>
+<p>SHAP se interpretara como atribucion del modelo, no como causalidad. Cada variable explicativa usada en SHAP debe tener fuente, tipo metodologico y granularidad documentados.</p>
+<h3 id="422-tabla-44-calidad-de-reportes-generados-experimento-e3">4.2.2 Tabla 4.4 - Calidad de reportes generados, Experimento E3</h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th style="text-align: right;">RAG/LLM anclado</th>
+<th style="text-align: right;">LLM libre/control</th>
+<th style="text-align: right;">Kappa Cohen</th>
+<th style="text-align: right;">p-value</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completitud</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Consistencia numerica</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Correspondencia con evidencia</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Accionabilidad</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Coherencia textual</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+</tbody>
+</table>
+<p>El reporte RAG debe citar o registrar internamente:</p>
+<ul>
+<li>registro evaluado;</li>
+<li>score y umbral;</li>
+<li>top variables SHAP;</li>
+<li>fuente recuperada;</li>
+<li>version de dataset;</li>
+<li>fecha de generacion;</li>
+<li>advertencia cuando una variable sea proxy o sintetica controlada.</li>
+</ul>
+<h3 id="423-ejemplo-de-reporte-generado">4.2.3 Ejemplo de reporte generado</h3>
+<p>El ejemplo final se insertara solo cuando exista una alerta generada desde el dataset integrado. Debe seguir el patron:</p>
+<p><code>dato -&gt; transformacion -&gt; modelo -&gt; score -&gt; umbral -&gt; SHAP top-k -&gt; evidencia RAG -&gt; reporte</code>.</p>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

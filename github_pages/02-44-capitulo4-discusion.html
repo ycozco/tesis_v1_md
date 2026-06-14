@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 44 Capitulo4 Discusion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#44-discusion-y-cruce-comparativo">4.4 Discusion y Cruce Comparativo</a><ul>
+<li><a href="#441-proposito-de-la-discusion">4.4.1 Proposito de la discusion</a></li>
+<li><a href="#442-cruce-1-resultados-propios-versus-literatura-comparable">4.4.2 Cruce 1 - Resultados propios versus literatura comparable</a></li>
+<li><a href="#443-cruce-2-contraste-de-hipotesis">4.4.3 Cruce 2 - Contraste de hipotesis</a></li>
+<li><a href="#444-cruce-3-variables-operacionalizadas-versus-indicadores-observados">4.4.4 Cruce 3 - Variables operacionalizadas versus indicadores observados</a></li>
+<li><a href="#445-cruce-4-gobernanza-componente-y-metrica">4.4.5 Cruce 4 - Gobernanza, componente y metrica</a></li>
+<li><a href="#446-cruce-5-errores-por-tipo-de-anomalia">4.4.6 Cruce 5 - Errores por tipo de anomalia</a></li>
+<li><a href="#447-interpretacion-conjunta">4.4.7 Interpretacion conjunta</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>02 44 Capitulo4 Discusion</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-08 08:26
+                </div>
+            </div>
+            
+            <h2 id="44-discusion-y-cruce-comparativo">4.4 Discusion y Cruce Comparativo</h2>
+<h3 id="441-proposito-de-la-discusion">4.4.1 Proposito de la discusion</h3>
+<p>La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitulo I, variables operacionalizadas y evidencia generada por el pipeline. Su objetivo es explicar los resultados sin convertir correlaciones, scores o valores SHAP en afirmaciones causales.</p>
+<h3 id="442-cruce-1-resultados-propios-versus-literatura-comparable">4.4.2 Cruce 1 - Resultados propios versus literatura comparable</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Esta tesis</th>
+<th>Literatura comparable</th>
+<th>Lectura esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prediccion tabular</td>
+<td>XGBoost/LightGBM</td>
+<td>GBDT en fraude, auditoria y agroexportacion</td>
+<td>Comparar cobertura y estabilidad, no valores absolutos entre dominios.</td>
+</tr>
+<tr>
+<td>Deteccion de anomalias</td>
+<td>Isolation Forest, LOF, ECOD</td>
+<td>ADBench/PyOD</td>
+<td>Justificar ensemble si mejora o estabiliza resultados.</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>SHAP/TreeSHAP</td>
+<td>XAI tabular</td>
+<td>Evaluar claridad y consistencia, no causalidad.</td>
+</tr>
+<tr>
+<td>Reporte tecnico</td>
+<td>RAG/LLM restringido</td>
+<td>LLMs para auditoria/reportes</td>
+<td>Evaluar fidelidad a evidencia y trazabilidad.</td>
+</tr>
+<tr>
+<td>Dominio</td>
+<td>Agroexportacion peruana</td>
+<td>Finanzas, auditoria, agroclima</td>
+<td>Declarar limites de comparabilidad.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="443-cruce-2-contraste-de-hipotesis">4.4.3 Cruce 2 - Contraste de hipotesis</h3>
+<table>
+<thead>
+<tr>
+<th>Hipotesis</th>
+<th>Evidencia requerida</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1a</td>
+<td>Mejora de VD1 frente a detector individual con split temporal documentado.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1b</td>
+<td>Mejora de VD2 con SHAP frente a condicion sin SHAP.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1c</td>
+<td>Mejora de VD3 con RAG frente a LLM libre/control.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1d</td>
+<td>Reduccion de tiempo-a-decision o mejora de comprension.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1 general</td>
+<td>Mejora conjunta de trazabilidad y supervision operativa.</td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<p>La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar vinculada al reporte de entrenamiento o de usabilidad correspondiente.</p>
+<h3 id="444-cruce-3-variables-operacionalizadas-versus-indicadores-observados">4.4.4 Cruce 3 - Variables operacionalizadas versus indicadores observados</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Indicador</th>
+<th style="text-align: right;">Valor observado</th>
+<th>Cumple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VD1 rendimiento</td>
+<td>PR-AUC, F1, precision, recall</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD2 explicabilidad</td>
+<td>Cobertura top-k, estabilidad, claridad</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD3 reportes</td>
+<td>Rubrica, consistencia numerica, evidencia</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD4 decision</td>
+<td>Tiempo, comprension, decision correcta</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD5 trazabilidad</td>
+<td>Campos completos por alerta</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="445-cruce-4-gobernanza-componente-y-metrica">4.4.5 Cruce 4 - Gobernanza, componente y metrica</h3>
+<table>
+<thead>
+<tr>
+<th>Principio</th>
+<th>Componente</th>
+<th>Metrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transparencia</td>
+<td>Datasheet, Model Cards, logs</td>
+<td>Cobertura de metadatos.</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>SHAP/TreeSHAP</td>
+<td>VD2.</td>
+</tr>
+<tr>
+<td>Supervision humana</td>
+<td>Protocolo de usabilidad y revision</td>
+<td>VD4.</td>
+</tr>
+<tr>
+<td>Gestion de riesgo</td>
+<td>Validacion temporal y umbrales</td>
+<td>VD1.</td>
+</tr>
+<tr>
+<td>Anti-alucinacion</td>
+<td>RAG anclado a evidencia</td>
+<td>VD3.</td>
+</tr>
+<tr>
+<td>Trazabilidad</td>
+<td>Registro de alerta end-to-end</td>
+<td>VD5.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="446-cruce-5-errores-por-tipo-de-anomalia">4.4.6 Cruce 5 - Errores por tipo de anomalia</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de anomalia</th>
+<th>Posible mecanismo de fallo</th>
+<th>Mejora candidata</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>precio</td>
+<td>Estacionalidad o mercado destino no capturado.</td>
+<td>Media movil por producto-destino.</td>
+</tr>
+<tr>
+<td>volumen</td>
+<td>Campanas pico confundidas con outliers.</td>
+<td>Variables de campana y calendario.</td>
+</tr>
+<tr>
+<td>clima</td>
+<td>Proxy regional demasiado agregado.</td>
+<td>Mayor granularidad geografica.</td>
+</tr>
+<tr>
+<td>logistica</td>
+<td>Falta de llave directa puerto-embarque.</td>
+<td>Agregacion puerto-mes documentada.</td>
+</tr>
+<tr>
+<td>sanidad/calidad</td>
+<td>Alertas agregadas sin trazabilidad por embarque.</td>
+<td>Mantener como contexto, no etiqueta directa.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="447-interpretacion-conjunta">4.4.7 Interpretacion conjunta</h3>
+<p>La contribucion esperada no es solo mejorar una metrica aislada, sino demostrar que la integracion de prediccion, deteccion, explicabilidad y reporte aumenta la capacidad de supervision operativa trazable. Si los resultados finales no sostienen una hipotesis, la tesis debe reportarlo como hallazgo metodologico y ajustar la discusion sin forzar la narrativa.</p>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

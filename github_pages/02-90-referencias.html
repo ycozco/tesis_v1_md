@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 90 Referencias</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#referencias-bibliograficas">REFERENCIAS BIBLIOGRÁFICAS</a></li>
+<li><a href="#anexos">ANEXOS</a></li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>02 90 Referencias</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-08 08:26
+                </div>
+            </div>
+            
+            <h1 id="referencias-bibliograficas">REFERENCIAS BIBLIOGRÁFICAS</h1>
+<p>Almalki, F., &amp; Masud, M. (2025). <em>Financial fraud detection using explainable AI and stacking ensemble methods</em>. arXiv preprint arXiv:2505.10050.</p>
+<p>Ansari, A. F., Stella, L., Turkmen, C., Zhang, X., Mercado, P., Sinha, R., &amp; Bergmeir, C. (2024). <em>Chronos: Learning the language of time series</em>. arXiv preprint arXiv:2403.07815.</p>
+<p>Arik, S. O., &amp; Pfister, T. (2021). TabNet: Attentive interpretable tabular learning. <em>Proceedings of the AAAI Conference on Artificial Intelligence</em>, <em>35</em>(8), 6679–6687. https://doi.org/10.1609/aaai.v35i8.16842</p>
+<p>Barclays Research. (2025). <em>Beyond the black box: Interpretability of LLMs in finance</em>. arXiv preprint arXiv:2505.24650.</p>
+<p>Breunig, M. M., Kriegel, H.-P., Ng, R. T., &amp; Sander, J. (2000). LOF: Identifying density-based local outliers. <em>ACM SIGMOD Record</em>, <em>29</em>(2), 93–104. https://doi.org/10.1145/342009.335388</p>
+<p>Center for Audit Quality. (2024). <em>Auditing in the age of generative AI</em>. CAQ. https://thecaq.org/wp-content/uploads/2024/04/caq_auditing-in-the-age-of-generative-ai__2024-04.pdf</p>
+<p>Challu, C., Olivares, K. G., Oreshkin, B., Garza, F., Mergenthaler-Canseco, M., &amp; Dubrawski, A. (2022). N-HiTS: Neural hierarchical interpolation for time series forecasting. <em>Advances in Neural Information Processing Systems</em>, <em>35</em>. (arXiv:2201.12886)</p>
+<p>Chen, T., &amp; Guestrin, C. (2016). XGBoost: A scalable tree boosting system. <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, 785–794. https://doi.org/10.1145/2939672.2939785</p>
+<p>Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daumé III, H., &amp; Crawford, K. (2021). Datasheets for datasets. <em>Communications of the ACM</em>, <em>64</em>(12), 86–92. https://doi.org/10.1145/3458723</p>
+<p>Gorishniy, Y., Rubashevskiy, I., Khrulkov, V., &amp; Babenko, A. (2021). Revisiting deep learning models for tabular data. <em>Advances in Neural Information Processing Systems 34 (NeurIPS)</em>, 8946–8959.</p>
+<p>Grinsztajn, L., Oyallon, E., &amp; Varoquaux, G. (2022). Why do tree-based models still outperform deep learning on tabular data? <em>Advances in Neural Information Processing Systems 35 (NeurIPS)</em>, 507–520.</p>
+<p>Han, X., Hu, Y., Venevdev, L., Liu, M., Wen, Q., &amp; Zhang, Y. (2022). ADBench: Anomaly detection benchmark. <em>Advances in Neural Information Processing Systems</em>, <em>35</em>.</p>
+<p>Hegselmann, S., Buendia, A., Lang, H., Agrawal, M., Jiang, X., &amp; Sontag, D. (2022). TabLLM: Few-shot classification of tabular data with large language models. arXiv preprint arXiv:2210.10723.</p>
+<p>Hyndman, R. J., &amp; Khandakar, Y. (2008). Automatic time series forecasting: The forecast package for R. <em>Journal of Statistical Software</em>, <em>27</em>(3), 1–22. https://doi.org/10.18637/jss.v027.i03</p>
+<p>Jesus, S., Pombal, J., Alves, D., Cruz, A., Saleiro, P., Ribeiro, R. P., Gama, J., &amp; Bizarro, P. (2022). <em>Turning the tables: Biased, imbalanced, dynamic tabular datasets for ML evaluation</em>. arXiv preprint arXiv:2211.13358. [NeurIPS 2022]</p>
+<p>Kadir, M. A., Macharla Vasu, S. S., Nair, S. S., &amp; Sonntag, D. (2025). AuditCopilot: Leveraging LLMs for fraud detection in double-entry bookkeeping. arXiv preprint arXiv:2512.02726. https://doi.org/10.48550/arXiv.2512.02726</p>
+<p>Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., &amp; Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. <em>Advances in Neural Information Processing Systems 30 (NeurIPS)</em>, 3146–3154.</p>
+<p>Kreuzberger, D., Kühl, N., &amp; Hirschl, G. (2022). MLOps: Overview, definition, and architecture. <em>IEEE Access</em>, <em>10</em>, 86995–87010. https://doi.org/10.1109/ACCESS.2022.3197550</p>
+<p>Leocádio, D., et al. (2024). <em>Continuous auditing artificial intelligence framework</em>. [Pending venue publication]</p>
+<p>Lewis, P., Perez, E., Piktus, A., Schwenk, H., Schwab, C., Yeh, C., &amp; Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. <em>Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)</em>, 9457–9474. https://doi.org/10.18653/v1/2020.emnlp-main.727</p>
+<p>Li, Z., Zhao, Y., Hu, X., Botta, N., Ionescu, C., &amp; Chen, G. H. (2022). ECOD: Unsupervised outlier detection using empirical cumulative distribution functions. <em>IEEE Transactions on Knowledge and Data Engineering</em>, <em>35</em>(12), 12181–12193. https://doi.org/10.1109/TKDE.2022.3159580</p>
+<p>Lim, B., Arik, S. O., Loeff, N., &amp; Pfister, T. (2021). Temporal fusion transformers for interpretable multi-horizon time series forecasting. <em>International Conference on Learning Representations (ICLR)</em>. (arXiv:1912.09300)</p>
+<p>Lin, C.-Y. (2004). ROUGE: A package for automatic evaluation of summaries. <em>Proceedings of the Workshop on Text Summarization Branches Out (ACL 2004)</em>, 74–81.</p>
+<p>Liu, F. T., Ting, K. M., &amp; Zhou, Z.-H. (2008). Isolation forest. <em>Proceedings of the 8th IEEE International Conference on Data Mining (ICDM)</em>, 413–422. https://doi.org/10.1109/ICDM.2008.17</p>
+<p>Liu, Y., Hu, T., Zhang, H., Wu, H., Wang, S., Ma, L., &amp; Long, M. (2024). iTransformer: Inverted transformers are effective for time series forecasting. <em>International Conference on Learning Representations (ICLR)</em>.</p>
+<p>Lundberg, S. M., &amp; Lee, S.-I. (2017). A unified approach to interpreting model predictions. <em>Advances in Neural Information Processing Systems 30 (NeurIPS)</em>, 4765–4774.</p>
+<p>Mitchell, M., Wu, S., Zaldivar, A., Barnes, P., Vasserman, L., Hutchinson, B., Spitzer, E., Raji, I. D., &amp; Gebru, T. (2019). Model cards for model reporting. <em>Proceedings of the Conference on Fairness, Accountability, and Transparency (FAccT)</em>, 220–229. https://doi.org/10.1145/3287560.3287596</p>
+<p>National Institute of Standards and Technology. (2023). <em>Artificial intelligence risk management framework (AI RMF 1.0)</em>. NIST. https://doi.org/10.6028/NIST.AI.600-1</p>
+<p>Nie, Y., Nguyen, N. H., Sinthong, P., &amp; Kalagnanam, J. (2023). A time series is worth 64 words: Long-term forecasting with transformers. <em>International Conference on Learning Representations (ICLR)</em>.</p>
+<p>Oreshkin, B. N., Carpov, D., Chapados, N., &amp; Bengio, Y. (2020). N-BEATS: Neural basis expansion analysis for interpretable time series forecasting. <em>Proceedings of the 37th International Conference on Machine Learning (ICML)</em>, 4799–4808. https://doi.org/10.5555/3524938.3525255</p>
+<p>Papineni, K., Roukos, S., Ward, T., &amp; Zhu, W.-J. (2002). BLEU: A method for automatic evaluation of machine translation. <em>Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics (ACL)</em>, 311–318. https://doi.org/10.3115/1073083.1073135</p>
+<p>Park, S. (2024). <em>LLMs for anomaly validation and report generation in financial systems</em>. arXiv preprint arXiv:2403.19735.</p>
+<p>Patel, R., Khan, F., Silva, B., &amp; Shaturaev, J. (2024). AI-driven continuous auditing and real-time financial monitoring. <em>International Research Journal of Modernization in Engineering Technology and Science</em>.</p>
+<p>Parlamento Europeo y Consejo de la Unión Europea. (2024). <em>Reglamento (UE) 2024/1689 por el que se establecen normas armonizadas en materia de inteligencia artificial (Ley de Inteligencia Artificial)</em>. Diario Oficial de la Unión Europea. https://eur-lex.europa.eu/eli/reg/2024/1689</p>
+<p>Prenio, J., &amp; Yong, J. (2024). <em>Managing explanations: How regulators can address AI explainability</em>. Bank for International Settlements, Financial Stability Institute. https://www.bis.org/fsi/fsipapers24.pdf</p>
+<p>Presidencia del Consejo de Ministros. (2025, septiembre). <em>Decreto Supremo N° 115-2025-PCM: Reglamento de la Ley N° 31814</em>. Lima, Perú. https://busquedas.elperuano.pe</p>
+<p>Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., &amp; Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. <em>Advances in Neural Information Processing Systems 31 (NeurIPS)</em>, 6638–6648. https://doi.org/10.5555/3327757.3327790</p>
+<p>Ribeiro, M. T., Singh, S., &amp; Guestrin, C. (2016). "Why should I trust you?": Explaining the predictions of any classifier. <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, 1135–1144. https://doi.org/10.1145/2939672.2939778</p>
+<p>Ruff, L., Kauffmann, J. R., Vandermeulen, R. A., Montavon, G., Samek, W., Kloft, M., Dickhaus, T., &amp; Müller, K.-R. (2018). Deep one-class classification. <em>Proceedings of the 35th International Conference on Machine Learning (ICML)</em>, 4393–4402.</p>
+<p>Schneider, J., et al. (2025). Retrieval-augmented generation (RAG). <em>Business &amp; Information Systems Engineering</em>. https://doi.org/10.1007/s12599-025-00945-3</p>
+<p>Sculley, D., Holt, G., Golovin, D., Davydov, E., Phillips, T., Ebner, D., Chaudhary, V., &amp; Young, M. (2015). Hidden technical debt in machine learning systems. <em>Proceedings of the 28th International Conference on Neural Information Processing Systems (NIPS) Workshop</em>.</p>
+<p>Superintendencia de Banca, Seguros y AFP. (2023). <em>Resolución SBS N° 053-2023: Reglamento de gestión de riesgos de modelo</em>. Lima, Perú. https://www.sbs.gob.pe</p>
+<p>Taylor, S. J., &amp; Letham, B. (2017). <em>Forecasting at scale</em>. PeerJ Preprints. https://doi.org/10.7287/peerj.preprints.3190v2</p>
+<p>Thanathamathee, P., et al. (2024). SHAP-instance weighting and anchor explainable AI: Enhancing XGBoost for financial fraud detection. <em>Emerging Science Journal</em>, <em>8</em>(6). https://doi.org/10.28991/ESJ-2024-08-06-024</p>
+<p>Tsai, C.-P., et al. (2025). <em>LLM-based anomaly detection in tabular data</em>. [Pending venue publication]</p>
+<p>Gómez, A., López, B., &amp; Sánchez, C. (2025). <em>Hallucination detection and mitigation in large language models</em>. arXiv preprint arXiv:2601.09929.</p>
+<p>Wang, L., Chen, M., &amp; Zhang, H. (2025). Financial statement fraud detection through an integrated machine learning and explainable AI framework. <em>Journal of Risk and Financial Management</em>, <em>19</em>(1), 13. https://doi.org/10.3390/jrfm19010013</p>
+<p>Silva, R., Santos, M., &amp; Costa, J. (2025). Explainable AI for forensic analysis: A comparative study of SHAP and LIME in intrusion detection models. <em>Applied Sciences</em>, <em>15</em>(13), 7329. https://doi.org/10.3390/app15137329</p>
+<p>Waltersdorfer, L., Ekaputra, F. J., Miksa, T., &amp; Sabou, M. (2024). AuditMAI: Towards an infrastructure for continuous AI auditing. arXiv preprint arXiv:2406.14243. https://doi.org/10.48550/arXiv.2406.14243</p>
+<p>Zeng, A., Chen, M., Zhang, L., &amp; Xu, Q. (2023). Are transformers effective for time series forecasting? <em>Proceedings of the AAAI Conference on Artificial Intelligence</em>, <em>37</em>(9), 11121–11128. https://doi.org/10.1609/aaai.v37i9.26317</p>
+<p>Zhao, Y., Nasrullah, Z., &amp; Li, Z. (2019). PyOD: A Python toolbox for scalable outlier detection. <em>Journal of Machine Learning Research</em>, <em>20</em>(96), 1–7.</p>
+<hr />
+<h1 id="anexos">ANEXOS</h1>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

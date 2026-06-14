@@ -97,7 +97,7 @@ def build_admin_snapshot():
                     "kind": file.suffix.lower().lstrip('.') or "file",
                 })
 
-    plan_text = read_text_if_exists(MARKDOWN_DIR / 'plan-detallado.md')
+    plan_text = read_text_if_exists(MARKDOWN_DIR / '01-03-plan-detallado.md')
     pending_items, done_items = parse_checklist_items(plan_text)
     plan_total = len(pending_items) + len(done_items)
     plan_done = len(done_items)
