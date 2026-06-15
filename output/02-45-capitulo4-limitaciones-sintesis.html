@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>02 50 Capitulo5</title>
+    <title>02 45 Capitulo4 Limitaciones Sintesis</title>
     <style>
         * {
             margin: 0;
@@ -274,12 +274,8 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#capitulo-v-conclusiones-y-trabajos-futuros">CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS</a><ul>
-<li><a href="#51-conclusiones">5.1 Conclusiones</a></li>
-<li><a href="#52-limitaciones-de-la-investigacion">5.2 Limitaciones de la Investigación</a></li>
-<li><a href="#53-trabajos-futuros">5.3 Trabajos Futuros</a></li>
-</ul>
-</li>
+<li><a href="#45-limitaciones-de-los-resultados">4.5 Limitaciones de los Resultados</a></li>
+<li><a href="#46-sintesis-del-capitulo-iv">4.6 Sintesis del Capitulo IV</a></li>
 </ul>
 </div>
 
@@ -287,23 +283,34 @@
         
         <div class="main">
             <div class="header">
-                <h1>02 50 Capitulo5</h1>
+                <h1>02 45 Capitulo4 Limitaciones Sintesis</h1>
                 <div class="meta">
                     Autor: Sistema de Tesis | Generado: 2026-06-15 04:19
                 </div>
             </div>
             
-            <h1 id="capitulo-v-conclusiones-y-trabajos-futuros">CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS</h1>
-<blockquote>
-<p><strong>Pendiente:</strong> Capítulo V — depende de los resultados del Capítulo IV</p>
-</blockquote>
-<h2 id="51-conclusiones">5.1 Conclusiones</h2>
-<p><em>(Esqueleto para la síntesis final: el sistema integrado logró los objetivos propuestos, manteniendo el balance entre vanguardia tecnológica y rigor legal. Incluir: conclusión sobre el gap cerrado, métricas alcanzadas vs. objetivos, validación de hipótesis H1a–H1d, aporte al contexto regulatorio peruano).</em></p>
-<h2 id="52-limitaciones-de-la-investigacion">5.2 Limitaciones de la Investigación</h2>
-<p><em>(Abordar: limitaciones del dataset agroexportador integrado; diferencias de granularidad entre datos reales observados, datos agregados, proxies y datos sintéticos controlados; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs actuales en precisión de cálculo aritmético (Maynez et al., 2026)).</em></p>
-<h2 id="53-trabajos-futuros">5.3 Trabajos Futuros</h2>
-<p><em>(Propuestas: integración de GraphRAG para recuperación semántica más rica sobre conocimiento agroexportador; extensión del ensemble con ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) (Li et al., 2022) y modelos de concept drift para supervisión en stream; exploración de Chronos (Ansari et al., 2024) para forecasting de horizonte largo; prueba piloto en una empresa agroexportadora peruana; evaluación de sesgos y limitaciones según Datasheets for Datasets (Gebru et al., 2021)).</em></p>
-<hr />
+            <h2 id="45-limitaciones-de-los-resultados">4.5 Limitaciones de los Resultados</h2>
+<p>Los resultados finales deberan interpretarse considerando:</p>
+<ol>
+<li><strong>Naturaleza integrada del dataset:</strong> el dataset combina datos reales observados, datos reales agregados, proxies y datos sinteticos controlados. Cada capa tiene granularidad y alcance distintos.</li>
+<li><strong>Etiquetas de anomalia:</strong> cuando <code>etiqueta_anomalia</code> derive de reglas o inyeccion sintetica, la evaluacion mide deteccion de desviaciones definidas por protocolo, no necesariamente incidentes reales confirmados por empresa.</li>
+<li><strong>SISAP/MIDAGRI:</strong> aporta contexto de mercado interno mayorista y no debe interpretarse como exportacion.</li>
+<li><strong>Fuentes sanitarias y logisticas:</strong> pueden operar como contexto agregado si no existe llave directa por embarque.</li>
+<li><strong>SHAP:</strong> entrega atribuciones del modelo, no causalidad.</li>
+<li><strong>RAG/LLM:</strong> mejora la redaccion y trazabilidad del reporte, pero requiere validacion contra evidencias y supervision humana.</li>
+<li><strong>Usabilidad:</strong> si el estudio usa muestra pequena, sus conclusiones deben presentarse como piloto especializado.</li>
+</ol>
+<h2 id="46-sintesis-del-capitulo-iv">4.6 Sintesis del Capitulo IV</h2>
+<p>La sintesis final se completara cuando existan resultados integrados verificables:</p>
+<ol>
+<li>El ensemble IF + LOF + ECOD <em>supera/no supera</em> al detector individual en VD1.</li>
+<li>SHAP <em>mejora/no mejora</em> la comprension y trazabilidad explicativa en VD2.</li>
+<li>RAG anclado <em>mejora/no mejora</em> la calidad documental en VD3.</li>
+<li>El sistema integrado <em>reduce/no reduce</em> el tiempo-a-decision en VD4.</li>
+<li>La trazabilidad documental alcanza <em>pendiente</em>% de alertas completas en VD5.</li>
+<li>Las limitaciones por proxies, granularidad y datos sinteticos controlados quedan documentadas para evitar sobreinterpretacion.</li>
+</ol>
+<p>Hasta completar esos puntos, el capitulo se considera una estructura de resultados, no una afirmacion empirica final.</p>
         </div>
     </div>
     

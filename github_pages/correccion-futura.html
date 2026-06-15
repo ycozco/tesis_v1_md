@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correcciones Futuras</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🎓 Tesis IA Agroexportadora</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Tesis Completa</a></li>
+                <li><a href="./propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="./planeamiento.html">Planificación</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn" id="dropdownBtn">Avances de Datos e IA ▾</a>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="./diccionario-fuentes.html">Diccionario de Fuentes</a>
+                        <a href="./calidad-datos.html">Calidad de Datos</a>
+                        <a href="./entrenamiento-modelos.html">Modelos e IA</a>
+                        <a href="./explicabilidad-shap.html">Explicabilidad SHAP</a>
+                        <a href="./reformulacion-tesis.html">Reformulación de Tesis</a>
+                        <a href="./correccion-futura.html">Corrección Futura</a>
+                    </div>
+                </li>
+                <li><a href="./referencias/index.html">Referencias (Directorio)</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em style="margin-left:10px; font-size: 0.8rem; color: var(--text-color);">Dark Mode</em>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-container">
+                <h3>Índice de Contenidos</h3>
+                <div class="toc">
+<ul>
+<li><a href="#reporte-de-correcciones-futuras-y-lineas-de-trabajo">Reporte de Correcciones Futuras y Líneas de Trabajo</a><ul>
+<li><a href="#1-introduccion-y-proposito">1. Introducción y Propósito</a></li>
+<li><a href="#2-inventario-de-correcciones-futuras-y-trabajos-pendientes">2. Inventario de Correcciones Futuras y Trabajos Pendientes</a><ul>
+<li><a href="#a-incremento-del-tamano-de-muestra-en-el-estudio-de-usabilidad-vd4">A. Incremento del Tamaño de Muestra en el Estudio de Usabilidad (VD4)</a></li>
+<li><a href="#b-integracion-productiva-en-tiempo-real-capa-de-ingesta-dinamica">B. Integración Productiva en Tiempo Real (Capa de Ingesta Dinámica)</a></li>
+<li><a href="#c-evaluacion-comparativa-con-modelos-de-deep-learning-tabular-baselines">C. Evaluación Comparativa con Modelos de Deep Learning Tabular (Baselines)</a></li>
+<li><a href="#d-expansion-y-validacion-del-cultivo-secundario-esparrago">D. Expansión y Validación del Cultivo Secundario (Espárrago)</a></li>
+<li><a href="#e-auditorias-de-cumplimiento-regulatorio-externo-sbs-pcm">E. Auditorías de Cumplimiento Regulatorio Externo (SBS / PCM)</a></li>
+</ul>
+</li>
+<li><a href="#3-matriz-de-priorizacion-de-trabajos-futuros">3. Matriz de Priorización de Trabajos Futuros</a></li>
+<li><a href="#4-sustentacion-de-la-postergacion">4. Sustentación de la Postergación</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+            </div>
+        </aside>
+
+        <main class="content">
+            <article class="paper">
+                <h1 id="reporte-de-correcciones-futuras-y-lineas-de-trabajo">Reporte de Correcciones Futuras y Líneas de Trabajo</h1>
+<p>Fecha: 2026-06-14<br />
+Estado: Planificación de Trabajo Futuro  </p>
+<hr />
+<h2 id="1-introduccion-y-proposito">1. Introducción y Propósito</h2>
+<p>Este documento detalla las correcciones metodológicas de mediano plazo, las optimizaciones de arquitectura y las líneas de investigación futuras identificadas durante las auditorías técnicas del sistema de supervisión operativa agroexportadora. Su propósito es servir como hoja de ruta para la continuidad del proyecto tras la defensa de la tesis, aportando transparencia y delimitando claramente los compromisos actuales frente a los desarrollos subsiguientes.</p>
+<hr />
+<h2 id="2-inventario-de-correcciones-futuras-y-trabajos-pendientes">2. Inventario de Correcciones Futuras y Trabajos Pendientes</h2>
+<h3 id="a-incremento-del-tamano-de-muestra-en-el-estudio-de-usabilidad-vd4">A. Incremento del Tamaño de Muestra en el Estudio de Usabilidad (VD4)</h3>
+<ul>
+<li><strong>Contexto Actual:</strong> El estudio de usabilidad con evaluadores humanos se acota a un grupo piloto controlado de $N = 15$ a $27$ participantes con perfiles profesionales en ingeniería o administración para registrar el "tiempo de decisión".</li>
+<li><strong>Trabajo Futuro:</strong> Ampliar la cohorte experimental a $N \geq 52$ analistas y auditores aduaneros activos en empresas del sector agroexportador peruano. Esto permitirá realizar pruebas de potencia estadística más robustas (como t-Student de muestras independientes o ANOVA de medidas repetidas) y generalizar los resultados con menor margen de error.</li>
+</ul>
+<h3 id="b-integracion-productiva-en-tiempo-real-capa-de-ingesta-dinamica">B. Integración Productiva en Tiempo Real (Capa de Ingesta Dinámica)</h3>
+<ul>
+<li><strong>Contexto Actual:</strong> El sistema procesa un dataset histórico estático o semiestático en formato DBF y CSV consolidado hasta mayo de 2026.</li>
+<li><strong>Trabajo Futuro:</strong> Desarrollar adaptadores de datos basados en WebSockets y Webhooks para conectarse en tiempo real con las APIs de la SUNAT, del SISAP/MIDAGRI y de sensores de temperatura IoT en contenedores. El pipeline operará con procesamiento de flujos (<em>stream processing</em>) mediante Apache Kafka o Spark Streaming.</li>
+</ul>
+<h3 id="c-evaluacion-comparativa-con-modelos-de-deep-learning-tabular-baselines">C. Evaluación Comparativa con Modelos de Deep Learning Tabular (Baselines)</h3>
+<ul>
+<li><strong>Contexto Actual:</strong> La tesis prioriza modelos GBDT (XGBoost y LightGBM) debido a su óptimo desempeño en datos tabulares y bajo costo en CPU convencional.</li>
+<li><strong>Trabajo Futuro:</strong> Implementar, entrenar y comparar sistemáticamente arquitecturas de Deep Learning diseñadas para datos tabulares, tales como <em>TabNet</em> y <em>FT-Transformer</em>, utilizando tarjetas gráficas dedicadas (GPUs). Esto permitirá realizar un estudio de comparación empírica de rendimiento y coste computacional.</li>
+</ul>
+<h3 id="d-expansion-y-validacion-del-cultivo-secundario-esparrago">D. Expansión y Validación del Cultivo Secundario (Espárrago)</h3>
+<ul>
+<li><strong>Contexto Actual:</strong> El espárrago (<em>Asparagus officinalis</em>) está clasificado como producto secundario de validación condicionada (2,599 registros) debido a la menor consistencia temporal en algunas variables aduaneras.</li>
+<li><strong>Trabajo Futuro:</strong> Diseñar un pipeline de normalización específico para cultivos de menor densidad, aplicando técnicas avanzadas de imputación por vecinos más cercanos (k-NN) o imputación múltiple por ecuaciones encadenadas (MICE) para estabilizar el comportamiento del espárrago en el dataset de entrenamiento.</li>
+</ul>
+<h3 id="e-auditorias-de-cumplimiento-regulatorio-externo-sbs-pcm">E. Auditorías de Cumplimiento Regulatorio Externo (SBS / PCM)</h3>
+<ul>
+<li><strong>Contexto Actual:</strong> La tesis adopta los principios de gobernanza del D.S. N° 115-2025-PCM y la Resolución SBS N° 053-2023 únicamente como conformidad de diseño metodológico.</li>
+<li><strong>Trabajo Futuro:</strong> Someter el prototipo a una auditoría formal de modelos de inteligencia artificial por una entidad de certificación regulatoria externa para validar el cumplimiento estricto del reglamento de la Ley de IA y auditar los Model Cards y Datasheets en un entorno empresarial de producción real.</li>
+</ul>
+<hr />
+<h2 id="3-matriz-de-priorizacion-de-trabajos-futuros">3. Matriz de Priorización de Trabajos Futuros</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Código</th>
+<th style="text-align: left;">Corrección / Trabajo Futuro</th>
+<th style="text-align: left;">Prioridad</th>
+<th style="text-align: left;">Dificultad</th>
+<th style="text-align: left;">Impacto Académico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CF-01</strong></td>
+<td style="text-align: left;">Ampliación de muestra de usabilidad a $N \geq 52$</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Muy Alto</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CF-02</strong></td>
+<td style="text-align: left;">Integración de baselines TabNet / FT-Transformer</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Alto</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CF-03</strong></td>
+<td style="text-align: left;">Pipeline de scraping en tiempo real (APIs SUNAT)</td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Medio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CF-04</strong></td>
+<td style="text-align: left;">Imputación avanzada MICE para espárrago</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Medio-Alto</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CF-05</strong></td>
+<td style="text-align: left;">Certificación regulatoria externa del framework</td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Muy Alta</td>
+<td style="text-align: left;">Alto</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-sustentacion-de-la-postergacion">4. Sustentación de la Postergación</h2>
+<p>Las exclusiones actuales están sustentadas en criterios de viabilidad de recursos y rigor metodológico:<br />
+1.  <strong>Presupuesto de Cómputo:</strong> La limitación a modelos GBDT y detectores de PyOD en CPU responde a la necesidad de mantener el prototipo accesible para investigadores y PYMES agrarias sin inversión en infraestructura GPU.<br />
+2.  <strong>Delimitación Temporal:</strong> Al estar enfocados en la construcción del dataset histórico integrado (junio 2018 - mayo 2026), la integración en tiempo real representaría una carga operativa ajena a los objetivos académicos primarios.<br />
+3.  <strong>Representatividad del Sector:</strong> Priorizar palta, uva y arándano asegura que el framework sea evaluado sobre los cultivos que representan más del 65% de la canasta agroexportadora peruana, postergando otros cultivos menores para futuros trabajos de especialización.</p>
+            </article>
+        </main>
+    </div>
+
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>

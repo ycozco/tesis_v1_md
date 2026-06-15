@@ -47,6 +47,7 @@ def build_site():
     entrenamiento_content = (Path("codex-revision") / "reporte-entrenamiento-modelos.md").read_text(encoding="utf-8")
     explicabilidad_content = (Path("codex-revision") / "reporte-explicabilidad-shap.md").read_text(encoding="utf-8")
     reformulacion_content = (Path("codex-revision") / "reporte-reformulacion-tesis.md").read_text(encoding="utf-8")
+    correccion_content = (Path("codex-revision") / "correccion-futura.md").read_text(encoding="utf-8")
 
     # Remove the frontmatter if any (though tesis.md is combined and frontmatter might be at the top)
     if tesis_content.startswith("---"):
@@ -79,6 +80,10 @@ def build_site():
     reformulacion_html = md.convert(reformulacion_content)
     reformulacion_toc = md.toc
 
+    md.reset()
+    correccion_html = md.convert(correccion_content)
+    correccion_toc = md.toc
+
     # 3. HTML Template with Planificación link
     def get_template(title, body, toc, relative_root="."):
         return f"""<!DOCTYPE html>
@@ -106,6 +111,7 @@ def build_site():
                         <a href="{relative_root}/entrenamiento-modelos.html">Modelos e IA</a>
                         <a href="{relative_root}/explicabilidad-shap.html">Explicabilidad SHAP</a>
                         <a href="{relative_root}/reformulacion-tesis.html">Reformulación de Tesis</a>
+                        <a href="{relative_root}/correccion-futura.html">Corrección Futura</a>
                     </div>
                 </li>
                 <li><a href="{relative_root}/referencias/index.html">Referencias (Directorio)</a></li>
@@ -153,6 +159,7 @@ def build_site():
     (out_dir / "entrenamiento-modelos.html").write_text(get_template("Entrenamiento de Modelos", entrenamiento_html, entrenamiento_toc, "."), encoding="utf-8")
     (out_dir / "explicabilidad-shap.html").write_text(get_template("Explicabilidad SHAP", explicabilidad_html, explicabilidad_toc, "."), encoding="utf-8")
     (out_dir / "reformulacion-tesis.html").write_text(get_template("Reformulación de Tesis", reformulacion_html, reformulacion_toc, "."), encoding="utf-8")
+    (out_dir / "correccion-futura.html").write_text(get_template("Correcciones Futuras", correccion_html, correccion_toc, "."), encoding="utf-8")
 
     # Write Proposal & Prototype from template file directly
     print("Generando página estática de la propuesta en GitHub Pages...")
@@ -805,6 +812,10 @@ def compile_admin(out_dir, get_template):
     <li class="item">
         <a href="./reformulacion-tesis.html">reporte-reformulacion-tesis.md</a>
         <span class="pill">Fase 8</span>
+    </li>
+    <li class="item">
+        <a href="./correccion-futura.html">correccion-futura.md</a>
+        <span class="pill">Trabajo Futuro</span>
     </li>
     """
     body_content = re.sub(r'{%\s*for\s+doc\s+in\s+docs\s*%}.*?{%\s*endfor\s*%}', docs_list_html, body_content, flags=re.DOTALL)

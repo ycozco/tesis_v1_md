@@ -20,7 +20,12 @@
   - 1.7 Justificación e Importancia
   - 1.8 Alcance
   - 1.9 Línea, Tipo y Nivel de la Investigación
+    - 1.9.1. Línea de la investigación.
+    - 1.9.2. Tipo de la investigación.
+    - 1.9.3. Nivel de la investigación.
   - 1.10 Técnicas e Instrumentos de Recolección de Información
+    - 1.10.1. Técnicas.
+    - 1.10.2. Instrumentos.
 - **CAPÍTULO II: MARCO TEÓRICO**
   - 2.1 Antecedentes de la Investigación
   - 2.2 Estado del Arte

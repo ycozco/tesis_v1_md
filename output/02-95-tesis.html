@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesis Completa — Sistema Integrado Agroexportador</title>
+    <title>Sistema Integrado de Supervisión Operativa con Inteligencia Artificial Explicable para Empresas Agroexportadoras Peruanas</title>
     <style>
         * {
             margin: 0;
@@ -486,20 +486,13 @@
         
         <div class="main">
             <div class="header">
-                <h1>Tesis Completa — Sistema Integrado Agroexportador</h1>
+                <h1>Sistema Integrado de Supervisión Operativa con Inteligencia Artificial Explicable para Empresas Agroexportadoras Peruanas</h1>
                 <div class="meta">
                     Autor: Yoset Cozco Mauri | Generado: 2026-06-15 04:19
                 </div>
             </div>
             
-            <p>﻿---<br />
-title: "Sistema Integrado de Supervisión Operativa con Inteligencia Artificial Explicable para Empresas Agroexportadoras Peruanas"<br />
-author: "Yoset Cozco Mauri"<br />
-date: "2026"<br />
-bibliography: refs.bib<br />
-csl: apa.csl</p>
-<hr />
-<hr />
+            <hr />
 <p><strong>UNIVERSIDAD NACIONAL DE SAN AGUSTÍN DE AREQUIPA</strong></p>
 <p>Facultad de Ingeniería de Producción y Servicios</p>
 <p>Escuela Profesional de Ingeniería de Sistemas</p>
@@ -526,7 +519,11 @@ csl: apa.csl</p>
 <p>El trabajo se organiza en cinco capítulos: el Capítulo I establece el planteamiento del problema, objetivos e hipótesis; el Capítulo II desarrolla el marco teórico con antecedentes y estado del arte; el Capítulo III describe la propuesta metodológica; el Capítulo IV presenta los resultados y discusión; y el Capítulo V contiene las conclusiones y trabajos futuros.</p>
 <p><strong>El Autor</strong></p>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="resumen">RESUMEN</h1>
 <p>Esta tesis propone un sistema integrado de supervision operativa para empresas agroexportadoras peruanas, basado en un dataset agroexportador integrado y trazable. La arquitectura combina prediccion tabular mediante modelos GBDT (Gradient Boosting Decision Trees), deteccion de anomalias operativas mediante ensemble de algoritmos, explicabilidad mediante SHAP (SHapley Additive exPlanations) y generacion automatica de reportes tecnicos con LLMs en arquitectura RAG (Retrieval-Augmented Generation).</p>
 <p>El problema abordado es la fragmentacion de datos agroexportadores y la baja trazabilidad entre fuentes de comercio exterior, mercado interno, variables macroeconomicas, clima, logistica y sanidad. En este contexto, la investigacion se orienta a productos priorizados de agroexportacion peruana: palta, uva y arandano como nucleo; esparrago como producto secundario condicionado a cobertura suficiente; y cacao como producto excluido de la evaluacion principal por baja representatividad en el dataset real auditado.</p>
@@ -540,7 +537,11 @@ csl: apa.csl</p>
 <p>The proposal uses SUNAT/ADUANET as the primary source for real export data, Trade Map as an external benchmark, SISAP/MIDAGRI as domestic wholesale market context, BCRP for macroeconomic variables, and climate, logistics, and sanitary sources as documented proxies. Controlled synthetic data are limited to experimental scenarios, class balancing, alert simulation, or non-public data gaps, and must always be explicitly labeled.</p>
 <p>The main contributions are: (1) a modular four-layer architecture separating prediction, detection, explanation, and reporting; (2) an integrated agro-export dataset approach combining observed real data, aggregated real data, proxies, and controlled synthetic data; (3) SHAP-based attribution of variables in operational alerts; (4) evidence-restricted RAG reports using structured evidence, scores, metadata, and dataset versions; and (5) an evaluation methodology covering technical performance, traceability, operational comprehension, and time-to-decision.</p>
 <p><strong>Keywords</strong>: operational supervision, agro-export, integrated dataset, anomaly detection, AI explainability, SHAP, RAG, GBDT, traceability, artificial intelligence.</p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS</h1>
 <ul>
 <li>DEDICATORIA</li>
@@ -609,7 +610,11 @@ csl: apa.csl</p>
 <li>Fórmula 5 — Valor SHAP: $\phi_i = \sum_{S \subseteq F \setminus {i}} \frac{|S|!(|F|-|S|-1)!}{|F|!}[f(S\cup{i})-f(S)]$</li>
 </ul>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="introduccion">INTRODUCCION</h1>
 <p>La agroexportacion peruana constituye un sector estrategico para la economia nacional debido a su crecimiento sostenido, diversificacion de productos y participacion en mercados internacionales exigentes. De acuerdo con informacion oficial del Ministerio de Desarrollo Agrario y Riego, al cierre de 2025 las agroexportaciones peruanas alcanzaron ventas por USD 15 013 millones, con un crecimiento de 17.3% respecto al anio anterior (MIDAGRI, 2026). Entre los productos de mayor interes para esta investigacion se consideran como nucleo la palta, la uva y el arandano, mientras que el esparrago se mantiene como producto secundario condicionado a la calidad de su cobertura de datos. El cacao, aunque aparece en registros exploratorios, se excluye del nucleo experimental por baja representatividad local.</p>
 <p>En este contexto, las empresas agroexportadoras articulan procesos de produccion agricola, acopio, almacenamiento, control de calidad, cumplimiento fitosanitario, logistica y comercializacion internacional. Cada proceso genera datos que pueden revelar desviaciones relevantes para la gestion operativa: cambios inusuales de precios, variaciones de volumen, condiciones climaticas adversas, incumplimientos de calidad, retrasos logisticos o patrones atipicos en mercados de destino. Sin embargo, la informacion se encuentra dispersa entre fuentes publicas, sistemas internos, reportes agregados y registros tecnicos no siempre compatibles entre si.</p>
@@ -618,7 +623,11 @@ csl: apa.csl</p>
 <p>La tesis propone un sistema integrado de cuatro capas que une prediccion tabular, deteccion de anomalias, explicabilidad y generacion de reportes trazables en un flujo coherente de supervision operativa. El sistema busca mejorar la deteccion de desviaciones, explicar los factores asociados y documentar cada alerta con fuente, score, umbral, variables explicativas y evidencia recuperada. La Resolucion SBS N. 053-2023 (SBS, 2023) se toma como referencia nacional de buenas practicas para gestion de riesgo de modelos, sin asumirla como obligacion directa para agroexportadoras; el D.S. N. 115-2025-PCM (PCM, 2025) se emplea como marco peruano general sobre gobernanza, transparencia y supervision humana en inteligencia artificial.</p>
 <p>El documento se estructura de la siguiente manera: el Capitulo I plantea el problema de investigacion, define objetivos, hipotesis, variables, indicadores, alcance y viabilidad. El Capitulo II desarrolla antecedentes, estado del arte y marco teorico. El Capitulo III describe la arquitectura del sistema, el dataset agroexportador integrado y la configuracion experimental. El Capitulo IV presenta resultados validados o, cuando corresponda, resultados preliminares claramente identificados. El Capitulo V sintetiza conclusiones, limitaciones y trabajos futuros.</p>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="capitulo-i-planteamiento-del-problema">CAPITULO I: PLANTEAMIENTO DEL PROBLEMA</h1>
 <h2 id="11-descripcion-de-la-realidad-problematica">1.1 Descripcion de la realidad problematica</h2>
 <p>Las empresas agroexportadoras peruanas coordinan produccion, acopio, empaque, control de calidad, cumplimiento fitosanitario, logistica y comercializacion internacional. En cada etapa se generan datos relevantes para la supervision operativa: precios, volumenes, fechas de exportacion, mercados destino, condiciones climaticas, alertas sanitarias, costos logisticos, mermas y tiempos de despacho. El problema no es solo la ausencia de modelos predictivos, sino la dispersion de fuentes y la baja trazabilidad entre dato, alerta, explicacion y decision.</p>
@@ -852,7 +861,7 @@ csl: apa.csl</p>
 <td style="text-align: left;">Recolección e integración de microdatos de comercio exterior (SUNAT/ADUANET), mercado interno (SISAP/MIDAGRI), indicadores macroeconómicos (BCRP) y datos climáticos (NASA POWER).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Experimentación Controlada</strong></td>
+<td style="text-align: left;"><strong>Experimentación Controlled</strong></td>
 <td style="text-align: left;">Entorno de desarrollo (Python/VS Code) y Scripts de pruebas</td>
 <td style="text-align: left;">Medición del rendimiento predictivo tabular (XGBoost/LightGBM) y de la precisión del ensemble de anomalías operativas (Isolation Forest, LOF, ECOD).</td>
 </tr>
@@ -952,7 +961,11 @@ csl: apa.csl</p>
 <li>La generalizacion a empresas especificas requiere validacion con datos privados o convenios de acceso.</li>
 </ul>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="capitulo-ii-marco-teorico">CAPÍTULO II: MARCO TEÓRICO</h1>
 <h2 id="21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</h2>
 <p>Los antecedentes de esta investigación se organizan desde dos perspectivas. La primera corresponde a trabajos técnicos sobre datos tabulares, detección de anomalías, explicabilidad y generación de reportes, incluso cuando fueron desarrollados en dominios financieros o contables. Estos trabajos se utilizan como soporte metodológico. La segunda corresponde al dominio de aplicación de esta tesis: supervisión operativa agroexportadora, donde la contribución principal consiste en adaptar e integrar dichas técnicas para detectar, explicar y documentar desviaciones en procesos agroexportadores peruanos.</p>
@@ -981,7 +994,11 @@ csl: apa.csl</p>
 <p>Chávez y Díaz (2023) propusieron un sistema de detección de anomalías no supervisado para contenedores de uva de mesa peruana de exportación en tránsito marítimo utilizando sensores IoT de temperatura, humedad relativa y CO2. Empleando Isolation Forest y LOF de forma aislada, el sistema identificó de manera oportuna desviaciones críticas en la cadena de frío (<em>cold chain failures</em>) y eventos de descalibración de gases, logrando reducir hasta en un 15% las pérdidas por sobre-maduración del producto en destino.</p>
 <p>El antecedente respalda empíricamente la viabilidad de Isolation Forest y LOF en el dominio logístico agrícola peruano. No obstante, los autores reportaron que los supervisores operativos mostraron desconfianza y dificultades para tomar decisiones rápidas ante las alertas porque los algoritmos generaban únicamente puntajes numéricos de anomalía ("cajas negras") sin explicaciones del por qué. Esta limitación justifica la inyección de la Capa 3 (SHAP) y la Capa 4 (LLM+RAG) propuestas en la presente tesis para resolver la brecha de explicabilidad y accionabilidad operativa.</p>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="22-estado-del-arte">2.2 Estado del Arte</h2>
 <p>El estado del arte se organiza en torno a cinco debates fundamentales de la literatura que la presente propuesta debe resolver o posicionarse explícitamente. Cada sub-sección presenta el debate, los trabajos relevantes y la posición de esta tesis. La Tabla 2.1 sintetiza todas las referencias relevantes al final de la sección.</p>
 <h3 id="221-gbdt-gradient-boosting-decision-trees-arboles-de-decision-de-aumento-de-gradiente-versus-deep-learning-para-datos-tabulares-empresariales-y-agroexportadores">2.2.1 GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) versus Deep Learning para Datos Tabulares Empresariales y Agroexportadores</h3>
@@ -1222,7 +1239,11 @@ csl: apa.csl</p>
 </tbody>
 </table>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="23-marco-conceptual">2.3 Marco Conceptual</h2>
 <h3 id="231-reconocimiento-de-patrones-y-aprendizaje-automatico">2.3.1 Reconocimiento de Patrones y Aprendizaje Automático</h3>
 <p>El reconocimiento de patrones es la disciplina de la inteligencia artificial que busca identificar regularidades, estructuras o relaciones en datos a partir de ejemplos históricos. En el aprendizaje automático, este proceso se formaliza mediante modelos que aprenden una función $f: X \rightarrow Y$ a partir de un conjunto de entrenamiento ${(x_i, y_i)}_{i=1}^n$, con el objetivo de generalizar hacia instancias no observadas.</p>
@@ -1294,7 +1315,11 @@ csl: apa.csl</p>
 <p>La <strong>supervisión operativa continua</strong> busca reemplazar ciclos de revisión tardíos por monitoreo frecuente y documentado de indicadores. En este enfoque, cada alerta debe registrar el dato de origen, el modelo aplicado, el score calculado, el umbral utilizado, las variables explicativas y el reporte generado. Esta trazabilidad permite que un supervisor operativo comprenda por qué el sistema marcó un evento como anómalo y qué evidencia respalda la recomendación.</p>
 <p>La integración de IA en supervisión operativa plantea el problema de la confianza en decisiones automáticas. Esta exigencia convierte a la explicabilidad (SHAP), la documentación de datasets (Datasheets), la documentación de modelos (Model Cards) y los logs de decisión en componentes funcionales del sistema. En el marco peruano, el D.S. N° 115-2025-PCM (PCM, 2025) proporciona una base general para el uso responsable de IA; la Resolución SBS N° 053-2023 (SBS, 2023) se conserva solo como referencia nacional de buenas prácticas para gestión de riesgo de modelos.</p>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <div style="background-color: orange; color: white; padding: 10px; text-align: center; font-weight: bold; margin-bottom: 20px; border-radius: 5px;">EN DESARROLLO</div>
 
 <h1 id="capitulo-iii-propuesta-metodologica">CAPITULO III: PROPUESTA METODOLOGICA</h1>
@@ -1509,7 +1534,11 @@ csl: apa.csl</p>
 <li>Reporte de trazabilidad.</li>
 </ul>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="capitulo-iv-resultados-y-discusion">CAPITULO IV: RESULTADOS Y DISCUSION</h1>
 <blockquote>
 <p><strong>Estado:</strong> capitulo modularizado. Los resultados finales se completaran unicamente despues de ejecutar los experimentos E1-E5 sobre el dataset agroexportador integrado versionado.</p>
@@ -1563,7 +1592,11 @@ csl: apa.csl</p>
 </tbody>
 </table>
 <p>La lectura del capitulo debe conservar una regla metodologica: <strong>ninguna metrica se interpreta sin indicar fuente, version de dataset, granularidad, split y estado de validacion</strong>.</p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="41-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.1 Resultados Cuantitativos: Prediccion y Deteccion, VD1</h2>
 <p>Esta seccion reportara el rendimiento de la capa predictiva tabular y del ensemble de deteccion de anomalias. La evaluacion principal se realizara sobre el dataset agroexportador integrado, no sobre el dataset sintetico aislado.</p>
 <h3 id="411-condiciones-minimas-para-reportar-resultados">4.1.1 Condiciones minimas para reportar resultados</h3>
@@ -1741,7 +1774,11 @@ csl: apa.csl</p>
 </tbody>
 </table>
 <p>La columna de origen es obligatoria porque <code>etiqueta_anomalia</code> puede provenir de observacion real, regla derivada, proxy o inyeccion sintetica controlada. Esa distincion determina el alcance de la interpretacion.</p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="42-resultados-cualitativos-explicabilidad-y-reportes-vd2-vd3">4.2 Resultados Cualitativos: Explicabilidad y Reportes, VD2-VD3</h2>
 <p>Esta seccion evaluara si la capa SHAP mejora la interpretacion de alertas y si los reportes RAG/LLM mantienen fidelidad a la evidencia recuperada.</p>
 <h3 id="421-tabla-43-calidad-de-explicabilidad-experimento-e2">4.2.1 Tabla 4.3 - Calidad de explicabilidad, Experimento E2</h3>
@@ -1855,7 +1892,11 @@ csl: apa.csl</p>
 <h3 id="423-ejemplo-de-reporte-generado">4.2.3 Ejemplo de reporte generado</h3>
 <p>El ejemplo final se insertara solo cuando exista una alerta generada desde el dataset integrado. Debe seguir el patron:</p>
 <p><code>dato -&gt; transformacion -&gt; modelo -&gt; score -&gt; umbral -&gt; SHAP top-k -&gt; evidencia RAG -&gt; reporte</code>.</p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="43-resultados-del-estudio-de-usabilidad-y-trazabilidad-vd4-vd5">4.3 Resultados del Estudio de Usabilidad y Trazabilidad, VD4-VD5</h2>
 <p>Esta seccion medira si el sistema integrado reduce el tiempo de interpretacion y mejora la trazabilidad documental frente a componentes aislados.</p>
 <h3 id="431-tabla-45-tiempo-a-decision-y-comprension-experimento-e4">4.3.1 Tabla 4.5 - Tiempo-a-decision y comprension, Experimento E4</h3>
@@ -2012,7 +2053,11 @@ csl: apa.csl</p>
 </tbody>
 </table>
 <p>Las comparaciones E5 no deben mezclar resultados de dataset sintetico con resultados del dataset integrado sin una etiqueta explicita de version.</p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="44-discusion-y-cruce-comparativo">4.4 Discusion y Cruce Comparativo</h2>
 <h3 id="441-proposito-de-la-discusion">4.4.1 Proposito de la discusion</h3>
 <p>La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitulo I, variables operacionalizadas y evidencia generada por el pipeline. Su objetivo es explicar los resultados sin convertir correlaciones, scores o valores SHAP en afirmaciones causales.</p>
@@ -2221,7 +2266,11 @@ csl: apa.csl</p>
 </table>
 <h3 id="447-interpretacion-conjunta">4.4.7 Interpretacion conjunta</h3>
 <p>La contribucion esperada no es solo mejorar una metrica aislada, sino demostrar que la integracion de prediccion, deteccion, explicabilidad y reporte aumenta la capacidad de supervision operativa trazable. Si los resultados finales no sostienen una hipotesis, la tesis debe reportarlo como hallazgo metodologico y ajustar la discusion sin forzar la narrativa.</p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="45-limitaciones-de-los-resultados">4.5 Limitaciones de los Resultados</h2>
 <p>Los resultados finales deberan interpretarse considerando:</p>
 <ol>
@@ -2244,7 +2293,11 @@ csl: apa.csl</p>
 <li>Las limitaciones por proxies, granularidad y datos sinteticos controlados quedan documentadas para evitar sobreinterpretacion.</li>
 </ol>
 <p>Hasta completar esos puntos, el capitulo se considera una estructura de resultados, no una afirmacion empirica final.</p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="capitulo-v-conclusiones-y-trabajos-futuros">CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS</h1>
 <blockquote>
 <p><strong>Pendiente:</strong> Capítulo V — depende de los resultados del Capítulo IV</p>
@@ -2256,7 +2309,11 @@ csl: apa.csl</p>
 <h2 id="53-trabajos-futuros">5.3 Trabajos Futuros</h2>
 <p><em>(Propuestas: integración de GraphRAG para recuperación semántica más rica sobre conocimiento agroexportador; extensión del ensemble con ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) (Li et al., 2022) y modelos de concept drift para supervisión en stream; exploración de Chronos (Ansari et al., 2024) para forecasting de horizonte largo; prueba piloto en una empresa agroexportadora peruana; evaluación de sesgos y limitaciones según Datasheets for Datasets (Gebru et al., 2021)).</em></p>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="cronograma-de-actividades">CRONOGRAMA DE ACTIVIDADES</h1>
 <blockquote>
 <p><strong>Pendiente:</strong> conclusiones finales dependientes de Capitulo IV y Capitulo V.</p>
@@ -2300,7 +2357,11 @@ csl: apa.csl</p>
 </li>
 </ol>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="recomendaciones">RECOMENDACIONES</h1>
 <ol>
 <li>
@@ -2320,7 +2381,11 @@ csl: apa.csl</p>
 </li>
 </ol>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="glosario-de-terminos">GLOSARIO DE TÉRMINOS</h1>
 <p><strong>ADBench</strong> (<em>Anomaly Detection Benchmark</em>): Benchmark sistemático para evaluación comparativa de algoritmos de detección de anomalías, propuesto por Han et al. (2022), que cubre 57 datasets y 30 algoritmos bajo tres niveles de supervisión.</p>
 <p><strong>Alucinación (LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño))</strong>: Fenómeno en el que un modelo de lenguaje genera texto coherente en forma pero incorrecto en contenido, incluyendo afirmaciones factuales erróneas, citas inexistentes o cifras fabricadas.</p>
@@ -2349,7 +2414,11 @@ csl: apa.csl</p>
 <p><strong>TreeSHAP</strong>: Algoritmo exacto para el cálculo de valores SHAP en modelos basados en árboles, con complejidad O(TLD²), que hace viable la explicabilidad en GBDT de producción con millones de transacciones.</p>
 <p><strong>XGBoost</strong> (<em>eXtreme Gradient Boosting</em>): Implementación escalable de gradient boosting (Chen &amp; Guestrin, 2016) con regularización L1/L2, manejo nativo de valores faltantes y paralelización por columnas; baseline universal en competencias de ML con datos tabulares.</p>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="referencias-bibliograficas">REFERENCIAS BIBLIOGRÁFICAS</h1>
 <p>Almalki, F., &amp; Masud, M. (2025). <em>Financial fraud detection using explainable AI and stacking ensemble methods</em>. arXiv preprint arXiv:2505.10050.</p>
 <p>Ansari, A. F., Stella, L., Turkmen, C., Zhang, X., Mercado, P., Sinha, R., &amp; Bergmeir, C. (2024). <em>Chronos: Learning the language of time series</em>. arXiv preprint arXiv:2403.07815.</p>
@@ -2404,7 +2473,11 @@ csl: apa.csl</p>
 <p>Zhao, Y., Nasrullah, Z., &amp; Li, Z. (2019). PyOD: A Python toolbox for scalable outlier detection. <em>Journal of Machine Learning Research</em>, <em>20</em>(96), 1–7.</p>
 <hr />
 <h1 id="anexos">ANEXOS</h1>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h1 id="anexos_1">ANEXOS</h1>
 <h2 id="anexo-a-protocolo-de-evaluacion-de-usabilidad">Anexo A — Protocolo de Evaluación de Usabilidad</h2>
 <blockquote>
@@ -2757,7 +2830,11 @@ Nombre: ____________________  Fecha: __________  Firma: __________
 <p>El protocolo se somete a revisión del asesor de tesis (Dr. Víctor Manuel Cornejo Aparicio) y, si la Escuela de Ingeniería de Sistemas dispone de comité de ética, a su aprobación formal antes del reclutamiento.</p>
 <hr />
 <p><em>Anexo A — versión 1.0 — 2026-05-17. Sometido a revisión final antes de ejecutar el estudio.</em></p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="anexo-b-model-cards">Anexo B - Model Cards</h2>
 <p>Este anexo documenta los modelos de la arquitectura bajo el enfoque de dataset agroexportador integrado versionado.</p>
 <h2 id="b1-dataset-de-referencia">B.1 Dataset de referencia</h2>
@@ -2924,7 +3001,11 @@ Nombre: ____________________  Fecha: __________  Firma: __________
 </tbody>
 </table>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="anexo-c-datasheet-del-dataset-agroexportador-integrado">Anexo C - Datasheet del Dataset Agroexportador Integrado</h2>
 <blockquote>
 <p>Estandar aplicado: Datasheets for Datasets (Gebru et al., 2021).<br />
@@ -3243,13 +3324,21 @@ Estado: actualizado al panorama de fuentes reales, agregadas, proxies y sintetic
 <h3 id="c8-consideraciones-eticas">C.8 Consideraciones eticas</h3>
 <p>El dataset integrado debe proteger trazabilidad y transparencia. Cuando se usen empresas o RUC reales de fuentes publicas, se evaluara anonimizar o agrupar en reportes publicos. Los reportes RAG deben indicar sus fuentes y no emitir recomendaciones fuera de la evidencia recuperada.</p>
 <hr />
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="anexo-d-registro-de-uso-de-herramientas-de-ia">Anexo D — Registro de Uso de Herramientas de IA</h2>
 <p>La presente investigación utilizó herramientas de inteligencia artificial generativa como apoyo en las siguientes actividades: revisión bibliográfica exploratoria, verificación de coherencia de argumentos, corrección de estilo académico y generación de borradores de secciones específicas. Todas las referencias bibliográficas fueron verificadas manualmente en las fuentes originales. Las decisiones de diseño, la interpretación de resultados y las conclusiones son responsabilidad exclusiva del investigador.</p>
 <p><em>(Adjuntar registro detallado de las sesiones de uso según los requerimientos de transparencia de la UNSA)</em></p>
 <hr />
 <p><em>(Documento elaborado con apoyo de herramientas de IA — UNSA Arequipa, 2026)</em></p>
-<hr />
+<div style="page-break-before: always;"></div>
+
+<pre class="codehilite"><code>&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type=&quot;page&quot;/&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+</code></pre>
+
 <h2 id="anexo-e-resumen-general-del-sistema">Anexo E - Resumen general del sistema</h2>
 <p>Este anexo resume la investigacion bajo la version metodologica actual: sistema integrado de supervision operativa con IA explicable y dataset agroexportador integrado.</p>
 <h2 id="1-arquitectura-modular">1. Arquitectura modular</h2>
@@ -3333,7 +3422,6 @@ Estado: actualizado al panorama de fuentes reales, agregadas, proxies y sintetic
 <li>fuente recuperada por RAG;</li>
 <li>reporte generado.</li>
 </ul>
-<hr />
 <hr />
         </div>
     </div>

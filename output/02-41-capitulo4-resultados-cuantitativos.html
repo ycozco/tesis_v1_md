@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>02 50 Capitulo5</title>
+    <title>02 41 Capitulo4 Resultados Cuantitativos</title>
     <style>
         * {
             margin: 0;
@@ -274,10 +274,10 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#capitulo-v-conclusiones-y-trabajos-futuros">CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS</a><ul>
-<li><a href="#51-conclusiones">5.1 Conclusiones</a></li>
-<li><a href="#52-limitaciones-de-la-investigacion">5.2 Limitaciones de la Investigación</a></li>
-<li><a href="#53-trabajos-futuros">5.3 Trabajos Futuros</a></li>
+<li><a href="#41-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.1 Resultados Cuantitativos: Prediccion y Deteccion, VD1</a><ul>
+<li><a href="#411-condiciones-minimas-para-reportar-resultados">4.1.1 Condiciones minimas para reportar resultados</a></li>
+<li><a href="#412-tabla-41-rendimiento-de-deteccion-experimento-e1">4.1.2 Tabla 4.1 - Rendimiento de deteccion, Experimento E1</a></li>
+<li><a href="#413-tabla-42-recall-por-tipo-de-anomalia">4.1.3 Tabla 4.2 - Recall por tipo de anomalia</a></li>
 </ul>
 </li>
 </ul>
@@ -287,23 +287,189 @@
         
         <div class="main">
             <div class="header">
-                <h1>02 50 Capitulo5</h1>
+                <h1>02 41 Capitulo4 Resultados Cuantitativos</h1>
                 <div class="meta">
                     Autor: Sistema de Tesis | Generado: 2026-06-15 04:19
                 </div>
             </div>
             
-            <h1 id="capitulo-v-conclusiones-y-trabajos-futuros">CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS</h1>
+            <h2 id="41-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.1 Resultados Cuantitativos: Prediccion y Deteccion, VD1</h2>
+<p>Esta seccion reportara el rendimiento de la capa predictiva tabular y del ensemble de deteccion de anomalias. La evaluacion principal se realizara sobre el dataset agroexportador integrado, no sobre el dataset sintetico aislado.</p>
+<h3 id="411-condiciones-minimas-para-reportar-resultados">4.1.1 Condiciones minimas para reportar resultados</h3>
+<p>Antes de completar las tablas, debe existir evidencia local de:</p>
+<table>
+<thead>
+<tr>
+<th>Evidencia requerida</th>
+<th>Archivo esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset final versionado</td>
+<td><code>data/dataset_modelo_v_final.csv</code> o <code>codex-revision/data_processed/dataset_modelo_v_final.csv</code></td>
+</tr>
+<tr>
+<td>Split temporal</td>
+<td><code>dataset_train_raw.csv</code>, <code>dataset_validation.csv</code>, <code>dataset_test.csv</code></td>
+</tr>
+<tr>
+<td>Reporte de calidad</td>
+<td><code>reporte-calidad-datos.md</code></td>
+</tr>
+<tr>
+<td>Reporte de entrenamiento</td>
+<td><code>reporte-entrenamiento-modelos.md</code></td>
+</tr>
+<tr>
+<td>Configuracion de semillas</td>
+<td>archivo de experimento o log reproducible</td>
+</tr>
+</tbody>
+</table>
+<h3 id="412-tabla-41-rendimiento-de-deteccion-experimento-e1">4.1.2 Tabla 4.1 - Rendimiento de deteccion, Experimento E1</h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Dataset/version</th>
+<th style="text-align: right;">PR-AUC</th>
+<th style="text-align: right;">ROC-AUC</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Precision</th>
+<th style="text-align: right;">Recall</th>
+<th style="text-align: right;">Tiempo inferencia</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Isolation Forest individual, B1</td>
+<td><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>LOF individual</td>
+<td><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>ECOD individual</td>
+<td><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Ensemble IF + LOF</td>
+<td><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>Ensemble IF + LOF + ECOD, propuesto</td>
+<td><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>XGBoost/LightGBM supervisado, upper bound si hay etiqueta</td>
+<td><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Condicionado</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><strong>Pendiente:</strong> Capítulo V — depende de los resultados del Capítulo IV</p>
+<p>Las corridas historicas sobre versiones sinteticas pueden anexarse como antecedente experimental, pero no reemplazan esta tabla final.</p>
 </blockquote>
-<h2 id="51-conclusiones">5.1 Conclusiones</h2>
-<p><em>(Esqueleto para la síntesis final: el sistema integrado logró los objetivos propuestos, manteniendo el balance entre vanguardia tecnológica y rigor legal. Incluir: conclusión sobre el gap cerrado, métricas alcanzadas vs. objetivos, validación de hipótesis H1a–H1d, aporte al contexto regulatorio peruano).</em></p>
-<h2 id="52-limitaciones-de-la-investigacion">5.2 Limitaciones de la Investigación</h2>
-<p><em>(Abordar: limitaciones del dataset agroexportador integrado; diferencias de granularidad entre datos reales observados, datos agregados, proxies y datos sintéticos controlados; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs actuales en precisión de cálculo aritmético (Maynez et al., 2026)).</em></p>
-<h2 id="53-trabajos-futuros">5.3 Trabajos Futuros</h2>
-<p><em>(Propuestas: integración de GraphRAG para recuperación semántica más rica sobre conocimiento agroexportador; extensión del ensemble con ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) (Li et al., 2022) y modelos de concept drift para supervisión en stream; exploración de Chronos (Ansari et al., 2024) para forecasting de horizonte largo; prueba piloto en una empresa agroexportadora peruana; evaluación de sesgos y limitaciones según Datasheets for Datasets (Gebru et al., 2021)).</em></p>
-<hr />
+<h3 id="413-tabla-42-recall-por-tipo-de-anomalia">4.1.3 Tabla 4.2 - Recall por tipo de anomalia</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de anomalia</th>
+<th>Origen de etiqueta</th>
+<th style="text-align: right;">Recall ensemble</th>
+<th style="text-align: right;">Recall baseline</th>
+<th style="text-align: right;">Diferencia</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>precio</td>
+<td>derivada/proxy/sintetica controlada</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>volumen</td>
+<td>derivada/proxy/sintetica controlada</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>clima</td>
+<td>proxy o regla documentada</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>logistica</td>
+<td>proxy o regla documentada</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+<tr>
+<td>sanidad/calidad</td>
+<td>proxy o regla documentada</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td>Por ejecutar</td>
+</tr>
+</tbody>
+</table>
+<p>La columna de origen es obligatoria porque <code>etiqueta_anomalia</code> puede provenir de observacion real, regla derivada, proxy o inyeccion sintetica controlada. Esa distincion determina el alcance de la interpretacion.</p>
         </div>
     </div>
     

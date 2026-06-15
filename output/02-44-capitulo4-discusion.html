@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>02 50 Capitulo5</title>
+    <title>02 44 Capitulo4 Discusion</title>
     <style>
         * {
             margin: 0;
@@ -274,10 +274,14 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#capitulo-v-conclusiones-y-trabajos-futuros">CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS</a><ul>
-<li><a href="#51-conclusiones">5.1 Conclusiones</a></li>
-<li><a href="#52-limitaciones-de-la-investigacion">5.2 Limitaciones de la Investigación</a></li>
-<li><a href="#53-trabajos-futuros">5.3 Trabajos Futuros</a></li>
+<li><a href="#44-discusion-y-cruce-comparativo">4.4 Discusion y Cruce Comparativo</a><ul>
+<li><a href="#441-proposito-de-la-discusion">4.4.1 Proposito de la discusion</a></li>
+<li><a href="#442-cruce-1-resultados-propios-versus-literatura-comparable">4.4.2 Cruce 1 - Resultados propios versus literatura comparable</a></li>
+<li><a href="#443-cruce-2-contraste-de-hipotesis">4.4.3 Cruce 2 - Contraste de hipotesis</a></li>
+<li><a href="#444-cruce-3-variables-operacionalizadas-versus-indicadores-observados">4.4.4 Cruce 3 - Variables operacionalizadas versus indicadores observados</a></li>
+<li><a href="#445-cruce-4-gobernanza-componente-y-metrica">4.4.5 Cruce 4 - Gobernanza, componente y metrica</a></li>
+<li><a href="#446-cruce-5-errores-por-tipo-de-anomalia">4.4.6 Cruce 5 - Errores por tipo de anomalia</a></li>
+<li><a href="#447-interpretacion-conjunta">4.4.7 Interpretacion conjunta</a></li>
 </ul>
 </li>
 </ul>
@@ -287,23 +291,220 @@
         
         <div class="main">
             <div class="header">
-                <h1>02 50 Capitulo5</h1>
+                <h1>02 44 Capitulo4 Discusion</h1>
                 <div class="meta">
                     Autor: Sistema de Tesis | Generado: 2026-06-15 04:19
                 </div>
             </div>
             
-            <h1 id="capitulo-v-conclusiones-y-trabajos-futuros">CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS</h1>
-<blockquote>
-<p><strong>Pendiente:</strong> Capítulo V — depende de los resultados del Capítulo IV</p>
-</blockquote>
-<h2 id="51-conclusiones">5.1 Conclusiones</h2>
-<p><em>(Esqueleto para la síntesis final: el sistema integrado logró los objetivos propuestos, manteniendo el balance entre vanguardia tecnológica y rigor legal. Incluir: conclusión sobre el gap cerrado, métricas alcanzadas vs. objetivos, validación de hipótesis H1a–H1d, aporte al contexto regulatorio peruano).</em></p>
-<h2 id="52-limitaciones-de-la-investigacion">5.2 Limitaciones de la Investigación</h2>
-<p><em>(Abordar: limitaciones del dataset agroexportador integrado; diferencias de granularidad entre datos reales observados, datos agregados, proxies y datos sintéticos controlados; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs actuales en precisión de cálculo aritmético (Maynez et al., 2026)).</em></p>
-<h2 id="53-trabajos-futuros">5.3 Trabajos Futuros</h2>
-<p><em>(Propuestas: integración de GraphRAG para recuperación semántica más rica sobre conocimiento agroexportador; extensión del ensemble con ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) (Li et al., 2022) y modelos de concept drift para supervisión en stream; exploración de Chronos (Ansari et al., 2024) para forecasting de horizonte largo; prueba piloto en una empresa agroexportadora peruana; evaluación de sesgos y limitaciones según Datasheets for Datasets (Gebru et al., 2021)).</em></p>
-<hr />
+            <h2 id="44-discusion-y-cruce-comparativo">4.4 Discusion y Cruce Comparativo</h2>
+<h3 id="441-proposito-de-la-discusion">4.4.1 Proposito de la discusion</h3>
+<p>La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitulo I, variables operacionalizadas y evidencia generada por el pipeline. Su objetivo es explicar los resultados sin convertir correlaciones, scores o valores SHAP en afirmaciones causales.</p>
+<h3 id="442-cruce-1-resultados-propios-versus-literatura-comparable">4.4.2 Cruce 1 - Resultados propios versus literatura comparable</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Esta tesis</th>
+<th>Literatura comparable</th>
+<th>Lectura esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prediccion tabular</td>
+<td>XGBoost/LightGBM</td>
+<td>GBDT en fraude, auditoria y agroexportacion</td>
+<td>Comparar cobertura y estabilidad, no valores absolutos entre dominios.</td>
+</tr>
+<tr>
+<td>Deteccion de anomalias</td>
+<td>Isolation Forest, LOF, ECOD</td>
+<td>ADBench/PyOD</td>
+<td>Justificar ensemble si mejora o estabiliza resultados.</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>SHAP/TreeSHAP</td>
+<td>XAI tabular</td>
+<td>Evaluar claridad y consistencia, no causalidad.</td>
+</tr>
+<tr>
+<td>Reporte tecnico</td>
+<td>RAG/LLM restringido</td>
+<td>LLMs para auditoria/reportes</td>
+<td>Evaluar fidelidad a evidencia y trazabilidad.</td>
+</tr>
+<tr>
+<td>Dominio</td>
+<td>Agroexportacion peruana</td>
+<td>Finanzas, auditoria, agroclima</td>
+<td>Declarar limites de comparabilidad.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="443-cruce-2-contraste-de-hipotesis">4.4.3 Cruce 2 - Contraste de hipotesis</h3>
+<table>
+<thead>
+<tr>
+<th>Hipotesis</th>
+<th>Evidencia requerida</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1a</td>
+<td>Mejora de VD1 frente a detector individual con split temporal documentado.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1b</td>
+<td>Mejora de VD2 con SHAP frente a condicion sin SHAP.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1c</td>
+<td>Mejora de VD3 con RAG frente a LLM libre/control.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1d</td>
+<td>Reduccion de tiempo-a-decision o mejora de comprension.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1 general</td>
+<td>Mejora conjunta de trazabilidad y supervision operativa.</td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<p>La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar vinculada al reporte de entrenamiento o de usabilidad correspondiente.</p>
+<h3 id="444-cruce-3-variables-operacionalizadas-versus-indicadores-observados">4.4.4 Cruce 3 - Variables operacionalizadas versus indicadores observados</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Indicador</th>
+<th style="text-align: right;">Valor observado</th>
+<th>Cumple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VD1 rendimiento</td>
+<td>PR-AUC, F1, precision, recall</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD2 explicabilidad</td>
+<td>Cobertura top-k, estabilidad, claridad</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD3 reportes</td>
+<td>Rubrica, consistencia numerica, evidencia</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD4 decision</td>
+<td>Tiempo, comprension, decision correcta</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD5 trazabilidad</td>
+<td>Campos completos por alerta</td>
+<td style="text-align: right;"><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="445-cruce-4-gobernanza-componente-y-metrica">4.4.5 Cruce 4 - Gobernanza, componente y metrica</h3>
+<table>
+<thead>
+<tr>
+<th>Principio</th>
+<th>Componente</th>
+<th>Metrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transparencia</td>
+<td>Datasheet, Model Cards, logs</td>
+<td>Cobertura de metadatos.</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>SHAP/TreeSHAP</td>
+<td>VD2.</td>
+</tr>
+<tr>
+<td>Supervision humana</td>
+<td>Protocolo de usabilidad y revision</td>
+<td>VD4.</td>
+</tr>
+<tr>
+<td>Gestion de riesgo</td>
+<td>Validacion temporal y umbrales</td>
+<td>VD1.</td>
+</tr>
+<tr>
+<td>Anti-alucinacion</td>
+<td>RAG anclado a evidencia</td>
+<td>VD3.</td>
+</tr>
+<tr>
+<td>Trazabilidad</td>
+<td>Registro de alerta end-to-end</td>
+<td>VD5.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="446-cruce-5-errores-por-tipo-de-anomalia">4.4.6 Cruce 5 - Errores por tipo de anomalia</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de anomalia</th>
+<th>Posible mecanismo de fallo</th>
+<th>Mejora candidata</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>precio</td>
+<td>Estacionalidad o mercado destino no capturado.</td>
+<td>Media movil por producto-destino.</td>
+</tr>
+<tr>
+<td>volumen</td>
+<td>Campanas pico confundidas con outliers.</td>
+<td>Variables de campana y calendario.</td>
+</tr>
+<tr>
+<td>clima</td>
+<td>Proxy regional demasiado agregado.</td>
+<td>Mayor granularidad geografica.</td>
+</tr>
+<tr>
+<td>logistica</td>
+<td>Falta de llave directa puerto-embarque.</td>
+<td>Agregacion puerto-mes documentada.</td>
+</tr>
+<tr>
+<td>sanidad/calidad</td>
+<td>Alertas agregadas sin trazabilidad por embarque.</td>
+<td>Mantener como contexto, no etiqueta directa.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="447-interpretacion-conjunta">4.4.7 Interpretacion conjunta</h3>
+<p>La contribucion esperada no es solo mejorar una metrica aislada, sino demostrar que la integracion de prediccion, deteccion, explicabilidad y reporte aumenta la capacidad de supervision operativa trazable. Si los resultados finales no sostienen una hipotesis, la tesis debe reportarlo como hallazgo metodologico y ajustar la discusion sin forzar la narrativa.</p>
         </div>
     </div>
     
