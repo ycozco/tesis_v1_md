@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>{% block title %}Oversight{% endblock %} - Agro-Intelligence Oversight</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#3f4a3f",
+                        "surface-container-low": "#171d17",
+                        "primary-container": "#3da35d",
+                        "surface-container-lowest": "#0a100a",
+                        "on-secondary-fixed-variant": "#1e502e",
+                        "inverse-on-surface": "#2c322b",
+                        "surface-container": "#1b211b",
+                        "surface-variant": "#30362f",
+                        "surface-container-highest": "#30362f",
+                        "inverse-primary": "#006d33",
+                        "primary-fixed": "#92f8a9",
+                        "on-surface-variant": "#becabc",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "on-surface": "#dee4da",
+                        "surface-tint": "#76db8f",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001e2f",
+                        "on-background": "#dee4da",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "error-container": "#93000a",
+                        "secondary-container": "#205331",
+                        "primary-fixed-dim": "#76db8f",
+                        "on-secondary-container": "#8fc599",
+                        "on-primary-container": "#003114",
+                        "tertiary": "#89ceff",
+                        "surface-bright": "#343b34",
+                        "secondary": "#9dd3a7",
+                        "on-primary-fixed": "#00210b",
+                        "on-tertiary": "#00344d",
+                        "on-primary": "#003918",
+                        "secondary-fixed": "#b8f0c2",
+                        "background": "#0f150f",
+                        "outline": "#889487",
+                        "tertiary-container": "#009ada",
+                        "primary": "#76db8f",
+                        "on-tertiary-container": "#002d43",
+                        "surface-container-high": "#252c25",
+                        "surface-dim": "#0f150f",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dee4da",
+                        "surface": "#0f150f",
+                        "on-secondary-fixed": "#00210c",
+                        "on-primary-fixed-variant": "#005225",
+                        "on-secondary": "#01391a",
+                        "secondary-fixed-dim": "#9dd3a7",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "card-gap": "20px",
+                        "container-padding": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Outfit"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "mono-data": ["monospace"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Glassmorphism utility classes based on Style Guidance */
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pulse-border {
+            animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(255, 180, 171, 0.5); box-shadow: 0 0 0 0 rgba(255, 180, 171, 0.2); }
+            50% { border-color: rgba(255, 180, 171, 1); box-shadow: 0 0 10px 2px rgba(255, 180, 171, 0.4); }
+        }
+        
+        /* Custom scrollbar for data tables */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+    
+    <!-- Barra superior para Web -->
+    <!-- TopNavBar (Web) -->
+<nav class="hidden md:flex justify-between items-center px-container-padding w-full h-16 bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl docked full-width top-0 border-b border-white/10 shadow-sm z-40 fixed">
+<div class="flex items-center gap-6">
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Agro-Intelligence Oversight</span>
+<div class="hidden lg:flex items-center gap-1 bg-surface-container-high rounded-full px-4 py-1.5 ml-4 border border-white/5">
+<span class="material-symbols-outlined text-primary text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none text-body-sm text-on-surface focus:ring-0 w-48 placeholder:text-on-surface-variant/50" placeholder="Buscar parámetros, nodos..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<ul class="flex items-center gap-6">
+<li class="cursor-pointer active:scale-95 group flex flex-col items-center">
+<span class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors py-1">Telemetría</span>
+</li>
+<li class="cursor-pointer active:scale-95 group flex flex-col items-center">
+<span class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1">Auditorías</span>
+</li>
+<li class="cursor-pointer active:scale-95 group flex flex-col items-center">
+<span class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors py-1">Inventario</span>
+</li>
+</ul>
+<div class="flex items-center gap-4 border-l border-white/10 pl-6">
+<button aria-label="Notifications" class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full animate-pulse"></span>
+</button>
+<button aria-label="Settings" class="text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="flex items-center gap-2 ml-2"><span class="text-body-sm text-on-surface font-medium">{{ session.get("nombre", "Auditor") }}</span><div class="w-8 h-8 rounded-full bg-surface-container-high border border-primary/30 overflow-hidden cursor-pointer"><img alt="Perfil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxwvAsWimcF03V3njsUr4hg_f38wYuUsLCKv-xiu1PqPz3NR0-RIDqBBNh9BwgAvS4ns7FUNBXzxJ7wtir0npR8M3RPlm_whruKlOLHu7mBAhj9UF9FC6Ux9yZFTa-bKIkz5L2xU5CG3U1ETCNh4zAtHRLCE0utlfji8bJ1Tbf87aVkzvF-PF-2Slr3QZHlE-nDxHkXAMrMMDeWRV6ituElBxadSzZzBDRq378bk6lfFuG5I7oDw0ZHMmUPmTDlExpdWyT9v48Xv4"/></div></div>
+</div>
+</div>
+</nav>
+
+    <!-- Contenedor Lateral y Contenido Principal -->
+    <div class="flex h-screen pt-16 md:pt-0">
+        <!-- Navegación lateral -->
+        <!-- SideNavBar & Main Content Wrapper -->
+<div class="flex h-screen pt-16 md:pt-0">
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col py-6 h-full bg-surface-container-lowest dark:bg-surface-container-lowest h-screen w-20 hover:w-64 transition-all duration-300 ease-in-out fixed left-0 top-0 z-50 border-r border-white/5 shadow-2xl group overflow-hidden">
+<!-- Header -->
+<div class="flex items-center px-4 mb-8 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center border border-white/10 shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</div>
+<div class="ml-3">
+<div class="font-headline-sm text-headline-sm text-primary-fixed leading-tight">AUDIT_OS_V1</div>
+<div class="font-label-md text-label-md text-primary/70 uppercase tracking-wider text-[10px]">Terminal Activa</div>
+</div>
+</div>
+<!-- Main Tabs -->
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-2">
+<li>
+<a class="flex items-center px-4 py-3 {% if active_page == 'dashboard' %}bg-primary-container text-on-primary-container{% else %}text-on-surface-variant hover:text-primary hover:bg-surface-variant/20{% endif %} rounded-lg mx-2 transition-all duration-300" href="{{ url_for('dashboard') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="dashboard">dashboard</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 {% if active_page == 'alerts' %}bg-primary-container text-on-primary-container{% else %}text-on-surface-variant hover:text-primary hover:bg-surface-variant/20{% endif %} rounded-lg mx-2 transition-all duration-300" href="{{ url_for('alerts') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="security_update_warning">security_update_warning</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Bandeja Alertas</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 {% if active_page == 'data' %}bg-primary-container text-on-primary-container{% else %}text-on-surface-variant hover:text-primary hover:bg-surface-variant/20{% endif %} rounded-lg mx-2 transition-all duration-300" href="{{ url_for('data_explorer') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="monitoring">monitoring</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Explorar Datos</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 {% if active_page == 'history' %}bg-primary-container text-on-primary-container{% else %}text-on-surface-variant hover:text-primary hover:bg-surface-variant/20{% endif %} rounded-lg mx-2 transition-all duration-300" href="{{ url_for('history') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="fact_check">fact_check</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Historial Auditorías</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 {% if active_page == 'config' %}bg-primary-container text-on-primary-container{% else %}text-on-surface-variant hover:text-primary hover:bg-surface-variant/20{% endif %} rounded-lg mx-2 transition-all duration-300" href="{{ url_for('config') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="settings">settings</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Configuración</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 {% if active_page == 'integrity' %}bg-primary-container text-on-primary-container{% else %}text-on-surface-variant hover:text-primary hover:bg-surface-variant/20{% endif %} rounded-lg mx-2 transition-all duration-300" href="{{ url_for('integrity') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="shield">shield</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Integridad y Sesgo</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 {% if active_page == 'users' %}bg-primary-container text-on-primary-container{% else %}text-on-surface-variant hover:text-primary hover:bg-surface-variant/20{% endif %} rounded-lg mx-2 transition-all duration-300" href="{{ url_for('users') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="supervisor_account">supervisor_account</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Control Usuarios</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 {% if active_page == 'telemetry' %}bg-primary-container text-on-primary-container{% else %}text-on-surface-variant hover:text-primary hover:bg-surface-variant/20{% endif %} rounded-lg mx-2 transition-all duration-300" href="{{ url_for('telemetry') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="science">science</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Telemetría Experimento</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- CTA -->
+<div class="px-4 my-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+<button class="w-full bg-primary/10 hover:bg-primary/20 border border-primary text-primary font-label-md text-label-md uppercase tracking-wider py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                    Exportar Reporte
+                </button>
+</div>
+<!-- Footer Tabs -->
+<div class="mt-auto border-t border-white/5 pt-4">
+<ul class="space-y-2">
+<li class="">
+<a class="flex items-center px-4 py-2 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg group/item transition-all duration-300" href="{{ url_for('logout') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="help">help</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Soporte</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-2 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg group/item transition-all duration-300" href="{{ url_for('logout') }}">
+<span class="material-symbols-outlined shrink-0" data-icon="logout">logout</span><span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Cerrar Sesión</span>
+</a>
+</li>
+</ul>
+</div>
+</aside>
+
+        <!-- Lienzo de Contenido Principal -->
+        <main class="flex-1 md:ml-20 w-full overflow-y-auto bg-background px-4 md:px-container-padding py-8 md:pt-24 pb-24 relative z-10">
+            <!-- Global Environment Banner -->
+            <div class="mb-6 flex items-center justify-center w-full py-1.5 glass-panel rounded-md border-tertiary/30 bg-tertiary/5 text-tertiary font-mono-data text-mono-data uppercase">
+                <span class="material-symbols-outlined text-[16px] mr-2" data-icon="science">science</span>
+                {% if session.get('condicion') %}
+                    ENTORNO DE PRUEBA · EVALUACIÓN EN CURSO ({{ session.get('condicion') }})
+                {% else %}
+                    ENTORNO DE DEMOSTRACIÓN · DATOS SINTÉTICOS
+                {% endif %}
+            </div>
+
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Navegación Móvil Inferior -->
+    <nav class="md:hidden fixed bottom-0 w-full h-16 bg-surface-container/80 backdrop-blur-xl border-t border-white/5 z-50 flex justify-around items-center px-2 pb-safe">
+        <a class="flex flex-col items-center justify-center w-16 h-full {% if active_page == 'dashboard' %}text-primary{% else %}text-on-surface-variant{% endif %}" href="{{ url_for('dashboard') }}">
+            <div class="w-12 h-8 {% if active_page == 'dashboard' %}bg-primary-container{% endif %} rounded-full flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+            </div>
+            <span class="font-label-md text-[10px] tracking-tight">Inicio</span>
+        </a>
+        <a class="flex flex-col items-center justify-center w-16 h-full {% if active_page == 'alerts' %}text-primary{% else %}text-on-surface-variant{% endif %}" href="{{ url_for('alerts') }}">
+            <div class="w-12 h-8 {% if active_page == 'alerts' %}bg-primary-container{% endif %} rounded-full flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+            </div>
+            <span class="font-label-md text-[10px] tracking-tight">Alertas</span>
+        </a>
+        <a class="flex flex-col items-center justify-center w-16 h-full {% if active_page == 'history' %}text-primary{% else %}text-on-surface-variant{% endif %}" href="{{ url_for('history') }}">
+            <div class="w-12 h-8 {% if active_page == 'history' %}bg-primary-container{% endif %} rounded-full flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined" data-icon="history">history</span>
+            </div>
+            <span class="font-label-md text-[10px] tracking-tight">Historial</span>
+        </a>
+        <a class="flex flex-col items-center justify-center w-16 h-full {% if active_page == 'telemetry' %}text-primary{% else %}text-on-surface-variant{% endif %}" href="{{ url_for('telemetry') }}">
+            <div class="w-12 h-8 {% if active_page == 'telemetry' %}bg-primary-container{% endif %} rounded-full flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined" data-icon="science">science</span>
+            </div>
+            <span class="font-label-md text-[10px] tracking-tight">Test</span>
+        </a>
+    </nav>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - Agro-Intelligence Oversight</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#3f4a3f",
+                        "surface-container-low": "#171d17",
+                        "primary-container": "#3da35d",
+                        "surface-container-lowest": "#0a100a",
+                        "on-secondary-fixed-variant": "#1e502e",
+                        "inverse-on-surface": "#2c322b",
+                        "surface-container": "#1b211b",
+                        "surface-variant": "#30362f",
+                        "surface-container-highest": "#30362f",
+                        "inverse-primary": "#006d33",
+                        "primary-fixed": "#92f8a9",
+                        "on-surface-variant": "#becabc",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "on-surface": "#dee4da",
+                        "surface-tint": "#76db8f",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001e2f",
+                        "on-background": "#dee4da",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "error-container": "#93000a",
+                        "secondary-container": "#205331",
+                        "primary-fixed-dim": "#76db8f",
+                        "on-secondary-container": "#8fc599",
+                        "on-primary-container": "#003114",
+                        "tertiary": "#89ceff",
+                        "surface-bright": "#343b34",
+                        "secondary": "#9dd3a7",
+                        "on-primary-fixed": "#00210b",
+                        "on-tertiary": "#00344d",
+                        "on-primary": "#003918",
+                        "secondary-fixed": "#b8f0c2",
+                        "background": "#0f150f",
+                        "outline": "#889487",
+                        "tertiary-container": "#009ada",
+                        "primary": "#76db8f",
+                        "on-tertiary-container": "#002d43",
+                        "surface-container-high": "#252c25",
+                        "surface-dim": "#0f150f",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dee4da",
+                        "surface": "#0f150f",
+                        "on-secondary-fixed": "#00210c",
+                        "on-primary-fixed-variant": "#005225",
+                        "on-secondary": "#01391a",
+                        "secondary-fixed-dim": "#9dd3a7",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "card-gap": "20px",
+                        "container-padding": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Outfit"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "mono-data": ["monospace"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Glassmorphism utility classes based on Style Guidance */
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pulse-border {
+            animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(255, 180, 171, 0.5); box-shadow: 0 0 0 0 rgba(255, 180, 171, 0.2); }
+            50% { border-color: rgba(255, 180, 171, 1); box-shadow: 0 0 10px 2px rgba(255, 180, 171, 0.4); }
+        }
+        
+        /* Custom scrollbar for data tables */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Web) -->
+<nav class="hidden md:flex justify-between items-center px-container-padding w-full h-16 bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl docked full-width top-0 border-b border-white/10 shadow-sm z-40 fixed">
+<div class="flex items-center gap-6">
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Agro-Intelligence Oversight</span>
+<div class="hidden lg:flex items-center gap-1 bg-surface-container-high rounded-full px-4 py-1.5 ml-4 border border-white/5">
+<span class="material-symbols-outlined text-primary text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none text-body-sm text-on-surface focus:ring-0 w-48 placeholder:text-on-surface-variant/50" placeholder="Buscar parámetros, nodos..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<ul class="flex items-center gap-6">
+<li class="cursor-pointer active:scale-95 group flex flex-col items-center">
+<span class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors py-1">Telemetría</span>
+</li>
+<li class="cursor-pointer active:scale-95 group flex flex-col items-center">
+<span class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1">Auditorías</span>
+</li>
+<li class="cursor-pointer active:scale-95 group flex flex-col items-center">
+<span class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors py-1">Inventario</span>
+</li>
+</ul>
+<div class="flex items-center gap-4 border-l border-white/10 pl-6">
+<button aria-label="Notifications" class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full animate-pulse"></span>
+</button>
+<button aria-label="Settings" class="text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-primary/30 overflow-hidden ml-2 cursor-pointer">
+<img alt="Auditor Profile" class="w-full h-full object-cover" data-alt="A highly detailed professional portrait of an agro-industrial auditor. They are wearing modern, high-tech augmented reality safety glasses over a dark, technical field jacket. The background is a blurred, high-tech precision agriculture monitoring room with subtle green neon lighting and holographic data overlays. The image utilizes a cool, deep charcoal-green cinematic color grading, embodying a clinical, vigilant, and technologically advanced 'Dark-Glassmorphism' visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxwvAsWimcF03V3njsUr4hg_f38wYuUsLCKv-xiu1PqPz3NR0-RIDqBBNh9BwgAvS4ns7FUNBXzxJ7wtir0npR8M3RPlm_whruKlOLHu7mBAhj9UF9FC6Ux9yZFTa-bKIkz5L2xU5CG3U1ETCNh4zAtHRLCE0utlfji8bJ1Tbf87aVkzvF-PF-2Slr3QZHlE-nDxHkXAMrMMDeWRV6ituElBxadSzZzBDRq378bk6lfFuG5I7oDw0ZHMmUPmTDlExpdWyT9v48Xv4"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- SideNavBar & Main Content Wrapper -->
+<div class="flex h-screen pt-16 md:pt-0">
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col py-6 h-full bg-surface-container-lowest dark:bg-surface-container-lowest h-screen w-20 hover:w-64 transition-all duration-300 ease-in-out fixed left-0 top-0 z-50 border-r border-white/5 shadow-2xl group overflow-hidden">
+<!-- Header -->
+<div class="flex items-center px-4 mb-8 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center border border-white/10 shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</div>
+<div class="ml-3">
+<div class="font-headline-sm text-headline-sm text-primary-fixed leading-tight">AUDIT_OS_V1</div>
+<div class="font-label-md text-label-md text-primary/70 uppercase tracking-wider text-[10px]">Terminal Activa</div>
+</div>
+</div>
+<!-- Main Tabs -->
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-2">
+<li class="">
+<a class="flex items-center px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 group/item transition-all duration-300" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="dashboard">dashboard</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg group/item transition-all duration-300" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="security_update_warning">security_update_warning</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Análisis de Riesgo</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg group/item transition-all duration-300" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="monitoring">monitoring</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Telemetría</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg group/item transition-all duration-300" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="fact_check">fact_check</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Auditorías</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg group/item transition-all duration-300" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="settings">settings</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Configuración</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- CTA -->
+<div class="px-4 my-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+<button class="w-full bg-primary/10 hover:bg-primary/20 border border-primary text-primary font-label-md text-label-md uppercase tracking-wider py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                    Exportar Reporte
+                </button>
+</div>
+<!-- Footer Tabs -->
+<div class="mt-auto border-t border-white/5 pt-4">
+<ul class="space-y-2">
+<li class="">
+<a class="flex items-center px-4 py-2 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg group/item transition-all duration-300" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="help">help</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Soporte</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-2 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg group/item transition-all duration-300" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="logout">logout</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Cerrar Sesión</span>
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-20 w-full overflow-y-auto bg-background px-4 md:px-container-padding py-8 md:pt-24 pb-24 relative z-10">
+<!-- Global Environment Banner -->
+<div class="mb-6 flex items-center justify-center w-full py-1.5 glass-panel rounded-md border-tertiary/30 bg-tertiary/5 text-tertiary font-mono-data text-mono-data uppercase">
+<span class="material-symbols-outlined text-[16px] mr-2" data-icon="science">science</span>
+                ENTORNO DE DEMOSTRACIÓN · DATOS SINTÉTICOS
+            </div>
+<!-- Page Header -->
+<header class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-1">Terminal del Auditor</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Supervisión en tiempo real y detección de anomalías para nodos primarios.</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-2 font-mono-data text-mono-data text-primary-fixed bg-primary-fixed/10 px-3 py-1.5 rounded border border-primary-fixed/20">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
+                        SISTEMA EN LÍNEA
+                    </span>
+<span class="font-mono-data text-mono-data text-on-surface-variant px-3 py-1.5 rounded glass-panel">
+                        UTC-5 14:32:01
+                    </span>
+</div>
+</header>
+<!-- KPI Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<!-- KPI 1: Active Alerts -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-error/5 to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">ALERTAS ACTIVAS</span>
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center border border-error/20 pulse-border">
+<span class="material-symbols-outlined text-error text-[18px]" data-icon="warning">warning</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-error">14</span>
+<span class="flex items-center font-mono-data text-mono-data text-error bg-error/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_upward">arrow_upward</span>
+                                    5%
+                                </span>
+</div>
+</div>
+</div>
+<!-- Abstract sparkline representation -->
+<div class="absolute bottom-0 left-0 w-full h-12 opacity-30 pointer-events-none">
+<svg class="w-full h-full stroke-error fill-none" preserveaspectratio="none" stroke-width="2" viewbox="0 0 100 30">
+<path d="M0,25 L10,22 L20,28 L30,15 L40,18 L50,10 L60,12 L70,5 L80,8 L90,2 L100,0"></path>
+</svg>
+<svg class="w-full h-full fill-error/20 absolute bottom-0 left-0" preserveaspectratio="none" viewbox="0 0 100 30">
+<path d="M0,30 L0,25 L10,22 L20,28 L30,15 L40,18 L50,10 L60,12 L70,5 L80,8 L90,2 L100,0 L100,30 Z"></path>
+</svg>
+</div>
+</div>
+<!-- KPI 2: Operations Analyzed -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">OPERACIONES ANALIZADAS</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="dataset">dataset</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-on-surface">1,240</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">vol. diario</span>
+</div>
+</div>
+</div>
+</div>
+<!-- KPI 3: Model F1-Score -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">PUNTAJE F1 DEL MODELO</span>
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="model_training">model_training</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-tertiary">0.92</span>
+<span class="font-body-sm text-body-sm text-tertiary/80 bg-tertiary/10 px-2 py-0.5 rounded border border-tertiary/20">alta conf</span>
+</div>
+</div>
+</div>
+</div>
+<!-- KPI 4: Avg Decision Time -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">TIEMPO MEDIO DE DECISIÓN</span>
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="timer">timer</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-on-surface">42s</span>
+<span class="flex items-center font-mono-data text-mono-data text-secondary bg-secondary/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                                    2s
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Center Column (Chart & Table) -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- Alert Trends Chart Container -->
+<div class="glass-card rounded-xl p-6 h-80 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="show_chart">show_chart</span>
+                                Tendencias de Alertas (14 Días)
+                            </h2>
+<div class="flex gap-2">
+<button class="px-3 py-1 font-label-md text-label-md text-on-surface-variant bg-surface-container-high rounded border border-white/5 hover:text-primary transition-colors">7D</button>
+<button class="px-3 py-1 font-label-md text-label-md text-on-primary-container bg-primary-container rounded border border-primary/30">14D</button>
+<button class="px-3 py-1 font-label-md text-label-md text-on-surface-variant bg-surface-container-high rounded border border-white/5 hover:text-primary transition-colors">30D</button>
+</div>
+</div>
+<!-- Simulated Chart Area using Grid & CSS -->
+<div class="flex-1 relative w-full border-b border-l border-white/10 flex items-end pt-4 pb-2 pr-2">
+<!-- Y-axis labels -->
+<div class="absolute left-[-24px] top-0 bottom-0 flex flex-col justify-between text-[10px] font-mono-data text-on-surface-variant py-2">
+<span class="">20</span>
+<span class="">15</span>
+<span class="">10</span>
+<span class="">5</span>
+<span class="">0</span>
+</div>
+<!-- Grid lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none z-0 px-2 py-2">
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+</div>
+<!-- Simulated Line Chart -->
+<div class="relative w-full h-full z-10 flex items-end">
+<svg class="absolute inset-0 w-full h-full stroke-primary fill-none overflow-visible" preserveaspectratio="none" stroke-width="2" vector-effect="non-scaling-stroke" viewbox="0 0 100 100">
+<path d="M0,80 L8,75 L16,60 L24,65 L32,40 L40,45 L48,30 L56,50 L64,20 L72,35 L80,10 L88,25 L96,5 L100,5" stroke-linejoin="round"></path>
+</svg>
+<!-- Area fill -->
+<svg class="absolute inset-0 w-full h-full fill-primary/10" overflow="visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,100 L0,80 L8,75 L16,60 L24,65 L32,40 L40,45 L48,30 L56,50 L64,20 L72,35 L80,10 L88,25 L96,5 L100,5 L100,100 Z"></path>
+</svg>
+<!-- Data points (hover targets) -->
+<div class="absolute w-full h-full flex justify-between items-end px-[0.5%]">
+<div class="w-2 h-2 rounded-full bg-primary border border-background absolute" style="left: 0%; bottom: 20%;"></div>
+<div class="w-2 h-2 rounded-full bg-primary border border-background absolute" style="left: 32%; bottom: 60%;"></div>
+<div class="w-2 h-2 rounded-full bg-error border border-background absolute animate-pulse" style="left: 80%; bottom: 90%;"></div>
+<div class="w-2 h-2 rounded-full bg-primary border border-background absolute" style="left: 100%; bottom: 95%;"></div>
+</div>
+</div>
+<!-- X-axis labels -->
+<div class="absolute bottom-[-20px] left-0 right-0 flex justify-between text-[10px] font-mono-data text-on-surface-variant px-2">
+<span class="">D-14</span>
+<span class="">D-10</span>
+<span class="">D-5</span>
+<span class="">Hoy</span>
+</div>
+</div>
+</div>
+<!-- Priority Alerts Table -->
+<div class="glass-card rounded-xl flex flex-col overflow-hidden">
+<div class="p-6 border-b border-white/5 flex justify-between items-center bg-surface-container/20">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-error" data-icon="policy">policy</span>
+                                Cola de Alertas Prioritarias
+                            </h2>
+<button class="text-primary hover:text-primary-fixed text-sm font-label-md flex items-center gap-1 transition-colors">
+                                Ver Todo
+                                <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead>
+<tr class="bg-surface-container-high/50 border-b-2 border-primary/30">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">ID ALERTA</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">PRODUCTO</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">EXPORTADORA</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">SEVERIDAD</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">ACCIÓN</th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-mono-data">
+<!-- Row 1 (High Severity) -->
+<tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+<td class="py-3 px-4 text-on-surface">AL-2026-0012</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-variant text-on-surface-variant border border-white/10 font-body-sm text-body-sm">
+<span class="w-2 h-2 rounded-full bg-[#4A7C59] mr-2"></span>Palta
+                                            </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">AgroExport Sur S.A.</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error w-[95%]"></div>
+</div>
+<span class="text-error font-bold">0.95</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="px-3 py-1 bg-transparent border border-error text-error rounded hover:bg-error/10 transition-colors font-label-md text-label-md uppercase opacity-80 group-hover:opacity-100">AUDITAR</button>
+</td>
+</tr>
+<!-- Row 2 (Medium Severity) -->
+<tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+<td class="py-3 px-4 text-on-surface">AL-2026-0011</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-variant text-on-surface-variant border border-white/10 font-body-sm text-body-sm">
+<span class="w-2 h-2 rounded-full bg-[#8B5A8C] mr-2"></span>Uva
+                                            </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">Valles del Norte EIRL</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[72%]"></div>
+</div>
+<span class="text-secondary font-bold">0.72</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="px-3 py-1 bg-transparent border border-primary text-primary rounded hover:bg-primary/10 transition-colors font-label-md text-label-md uppercase opacity-80 group-hover:opacity-100">REVISAR</button>
+</td>
+</tr>
+<!-- Row 3 (Medium-Low Severity) -->
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="py-3 px-4 text-on-surface">AL-2026-0010</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-variant text-on-surface-variant border border-white/10 font-body-sm text-body-sm"><span class="w-2 h-2 rounded-full bg-[#3B5998] mr-2"></span>Arándano</span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">BerryCorp Andina</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-[65%]"></div>
+</div>
+<span class="text-primary-fixed-dim font-bold">0.65</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="px-3 py-1 bg-transparent border border-primary text-primary rounded hover:bg-primary/10 transition-colors font-label-md text-label-md uppercase opacity-80 group-hover:opacity-100">REVISAR</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column (Activity Feed) -->
+<div class="glass-card rounded-xl flex flex-col h-[calc(100vh-16rem)] min-h-[500px]">
+<div class="p-6 border-b border-white/5 bg-surface-container/20 shrink-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="history">history</span>
+                            Flujo de Telemetría del Sistema
+                        </h2>
+</div>
+<div class="p-6 overflow-y-auto flex-1 relative">
+<!-- Timeline track -->
+<div class="absolute left-8 top-6 bottom-6 w-px bg-white/10 z-0"></div>
+<ul class="space-y-6 relative z-10">
+<!-- Feed Item 1 -->
+<li class="flex gap-4">
+<div class="w-4 h-4 rounded-full bg-error border-[3px] border-background shrink-0 mt-1 relative z-10 animate-pulse shadow-[0_0_8px_rgba(255,180,171,0.6)]"></div>
+<div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mb-1">Justo ahora · Nodo Alpha</div>
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Alerta de anomalía crítica</div>
+<div class="font-body-sm text-body-sm text-error mt-1 glass-panel p-2 rounded border-error/20 inline-block">Score de varianza: &gt;3σ en humedad de envío</div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mt-1">Valor estimado: S/ 45,000 ($ 12,000)</div>
+</div>
+</li>
+<!-- Feed Item 2 -->
+<li class="flex gap-4">
+<div class="w-4 h-4 rounded-full bg-tertiary border-[3px] border-background shrink-0 mt-1 relative z-10"></div>
+<div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mb-1">-12 min · Auto-Sistema</div>
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Dataset actualizado</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Sincronización de lote LT-998 completada (1.2k registros).</div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mt-1">Lote valorado en: S/ 120,000 ($ 32,000)</div>
+</div>
+</li>
+<!-- Feed Item 3 -->
+<li class="flex gap-4">
+<div class="w-4 h-4 rounded-full bg-primary border-[3px] border-background shrink-0 mt-1 relative z-10"></div>
+<div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mb-1">-45 min · Auditor ID: A-442</div>
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Alerta confirmada por Auditor A</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="check_circle">check_circle</span>
+                                        Resolución aplicada a AL-2026-0009.
+                                    </div>
+</div>
+</li>
+<!-- Feed Item 4 -->
+<li class="flex gap-4">
+<div class="w-4 h-4 rounded-full bg-surface-variant border-[3px] border-background shrink-0 mt-1 relative z-10"></div>
+<div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mb-1">-2 hrs · Rutina del Sistema</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant font-medium">Calibración de modelo predictivo</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant/70 mt-1">Ajuste de pesos base. F1-Score estable.</div>
+</div>
+</li>
+<!-- Feed Item 5 -->
+<li class="flex gap-4 opacity-50">
+<div class="w-4 h-4 rounded-full bg-surface-variant border-[3px] border-background shrink-0 mt-1 relative z-10"></div>
+<div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mb-1">-5 hrs · Admin</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant font-medium">Sesión iniciada</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="p-4 border-t border-white/5 bg-surface-container/10 mt-auto">
+<button class="w-full text-center text-primary font-label-md text-label-md hover:text-primary-fixed transition-colors">Cargar Registros Anteriores</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Nav (Visible only on md hidden) -->
+<nav class="md:hidden fixed bottom-0 w-full h-16 bg-surface-container/80 backdrop-blur-xl border-t border-white/5 z-50 flex justify-around items-center px-2 pb-safe">
+<a class="flex flex-col items-center justify-center w-16 h-full text-primary" href="#">
+<div class="w-12 h-8 bg-primary-container rounded-full flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="dashboard">dashboard</span>
+</div>
+<span class="font-label-md text-[10px] tracking-tight">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<div class="w-12 h-8 flex items-center justify-center mb-1">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+</div>
+<span class="font-label-md text-[10px] tracking-tight">Alertas</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<div class="w-12 h-8 flex items-center justify-center mb-1">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+</div>
+<span class="font-label-md text-[10px] tracking-tight">Métricas</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<div class="w-12 h-8 flex items-center justify-center mb-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<span class="font-label-md text-[10px] tracking-tight">Perfil</span>
+</a>
+</nav>
+</body></html>

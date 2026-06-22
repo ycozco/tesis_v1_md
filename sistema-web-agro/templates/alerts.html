@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% block title %}Cola de Alertas{% endblock %}
+{% block content %}
+    
+<!-- Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-card-gap shrink-0 gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">Bandeja de Alertas de Telemetría</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitoreo de desviaciones en tiempo real en flujos de datos agroexportadores.</p>
+</div>
+<div class="flex gap-3">
+<button class="glass-button-secondary px-4 py-2 rounded-DEFAULT font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">rule</span> Asignación Masiva
+                </button>
+<button class="glass-button-primary px-4 py-2 rounded-DEFAULT font-label-md text-label-md font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">refresh</span> Sincronizar Datos
+                </button>
+</div>
+</header>
+<!-- Advanced Filter Bar (Glass Panel) -->
+<section class="glass-panel rounded-xl p-4 mb-card-gap shrink-0 flex flex-col lg:flex-row gap-4 items-center">
+<!-- Search Input -->
+<div class="relative w-full lg:w-1/3">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="glass-input w-full pl-10 pr-4 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface placeholder:text-outline-variant focus:ring-0" placeholder="Buscar ID / DAM / RUC..." type="text"/>
+</div>
+<div class="flex flex-wrap md:flex-nowrap gap-4 w-full lg:w-2/3">
+<!-- Product Filter -->
+<div class="flex-1 min-w-[120px]">
+<select class="glass-input w-full px-3 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface appearance-none focus:ring-0">
+<option class="bg-surface-container text-on-surface" value="">Producto: Todos</option>
+<option class="bg-surface-container text-on-surface" value="palta">Palta</option>
+<option class="bg-surface-container text-on-surface" value="uva">Uva</option>
+<option class="bg-surface-container text-on-surface" value="arandano">Arándano</option>
+<option class="bg-surface-container text-on-surface" value="mango">Mango</option>
+</select>
+</div>
+<!-- Severity Filter -->
+<div class="flex-1 min-w-[120px]">
+<select class="glass-input w-full px-3 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface appearance-none focus:ring-0">
+<option class="bg-surface-container text-on-surface" value="">Severidad: Todas</option>
+<option class="bg-surface-container text-on-surface" value="critical">Crítico</option>
+<option class="bg-surface-container text-on-surface" value="high">Alto</option>
+<option class="bg-surface-container text-on-surface" value="medium">Medio</option>
+<option class="bg-surface-container text-on-surface" value="low">Bajo</option>
+</select>
+</div>
+<!-- Status Filter -->
+<div class="flex-1 min-w-[120px]">
+<select class="glass-input w-full px-3 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface appearance-none focus:ring-0">
+<option class="bg-surface-container text-on-surface" value="">Estado: Todos</option>
+<option class="bg-surface-container text-on-surface" value="pending">Pendiente</option>
+<option class="bg-surface-container text-on-surface" value="review">En Revisión</option>
+<option class="bg-surface-container text-on-surface" value="confirmed">Confirmado</option>
+<option class="bg-surface-container text-on-surface" value="discarded">Descartado</option>
+</select>
+</div>
+</div>
+<button class="shrink-0 p-2 text-on-surface-variant hover:text-primary transition-colors" title="Limpiar Filtros">
+<span class="material-symbols-outlined">filter_alt_off</span>
+</button>
+</section>
+<!-- Data Table Container -->
+<section class="glass-panel rounded-xl flex-1 flex flex-col overflow-hidden relative">
+<div class="table-container overflow-auto flex-1">
+<table class="w-full text-left border-collapse audit-table whitespace-nowrap">
+<thead class="sticky top-0 z-10 font-label-md text-label-md text-on-surface uppercase tracking-wider">
+<tr>
+<th class="px-4 py-3 w-12 text-center"><input class="rounded-sm" type="checkbox"/></th>
+<th class="px-4 py-3">ID ALERTA</th>
+<th class="px-4 py-3">DAM</th>
+<th class="px-4 py-3">FECHA/HORA</th>
+<th class="px-4 py-3">PRODUCTO</th>
+<th class="px-4 py-3">EXPORTADORA</th>
+<th class="px-4 py-3">DESTINO</th>
+<th class="px-4 py-3 text-right">VALOR FOB</th>
+<th class="px-4 py-3 text-right">Desv %</th>
+<th class="px-4 py-3 text-center">Puntaje</th>
+<th class="px-4 py-3 text-center">Severidad</th>
+<th class="px-4 py-3 text-center">Estado</th>
+<th class="px-4 py-3 w-12"></th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-mono-data text-on-surface-variant">
+<!-- Row 1: Critical -->
+<tr class="hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="px-4 py-3 text-center"><input class="rounded-sm" type="checkbox"/></td>
+<td class="px-4 py-3 text-primary font-bold">ALT-8892</td>
+<td class="px-4 py-3">118-2023-10-123456</td>
+<td class="px-4 py-3 text-body-sm font-body-sm">2023-10-25 14:32:01</td>
+<td class="px-4 py-3"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#5d8a3e]"></span>Palta Hass</span></td>
+<td class="px-4 py-3 font-body-sm font-body-sm truncate max-w-[150px]">AGRO EXPORTACIONES S.A.C.</td>
+<td class="px-4 py-3">Rotterdam (NLRTM)</td>
+<td class="px-4 py-3 text-right">$ 145,200.00</td>
+<td class="px-4 py-3 text-right text-error">+45.2%</td>
+<td class="px-4 py-3 text-center">98.5</td>
+<td class="px-4 py-3 text-center">
+<span class="badge-critical px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> Crítico
+                                </span>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-error-container border border-error-container bg-error-container/10 px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">Pendiente</span>
+</td>
+<td class="px-4 py-3 text-center">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 2: High -->
+<tr class="hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="px-4 py-3 text-center"><input class="rounded-sm" type="checkbox"/></td>
+<td class="px-4 py-3 text-primary font-bold">ALT-8891</td>
+<td class="px-4 py-3">118-2023-10-123412</td>
+<td class="px-4 py-3 text-body-sm font-body-sm">2023-10-25 13:15:44</td>
+<td class="px-4 py-3"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#8b3a62]"></span>Uva Red Globe</span></td>
+<td class="px-4 py-3 font-body-sm font-body-sm truncate max-w-[150px]">FRUTOS DEL SUR E.I.R.L.</td>
+<td class="px-4 py-3">Shanghai (CNSHA)</td>
+<td class="px-4 py-3 text-right">$ 89,500.00</td>
+<td class="px-4 py-3 text-right text-[#ffb4ab]">-28.4%</td>
+<td class="px-4 py-3 text-center">82.1</td>
+<td class="px-4 py-3 text-center">
+<span class="badge-high px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> Alto
+                                </span>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-tertiary border border-tertiary bg-tertiary/10 px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">En Revisión</span>
+</td>
+<td class="px-4 py-3 text-center">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 3: Medium -->
+<tr class="hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="px-4 py-3 text-center"><input class="rounded-sm" type="checkbox"/></td>
+<td class="px-4 py-3 text-primary font-bold">ALT-8890</td>
+<td class="px-4 py-3">084-2023-10-098765</td>
+<td class="px-4 py-3 text-body-sm font-body-sm">2023-10-25 11:05:22</td>
+<td class="px-4 py-3"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#3b5998]"></span>Arándano</span></td>
+<td class="px-4 py-3 font-body-sm font-body-sm truncate max-w-[150px]">BERRIES DEL NORTE S.A.</td>
+<td class="px-4 py-3">Philadelphia (USPHL)</td>
+<td class="px-4 py-3 text-right">$ 210,000.00</td>
+<td class="px-4 py-3 text-right text-[#89ceff]">+15.8%</td>
+<td class="px-4 py-3 text-center">64.3</td>
+<td class="px-4 py-3 text-center">
+<span class="badge-medium px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span> Medio
+                                </span>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-primary border border-primary bg-primary/10 px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">Confirmado</span>
+</td>
+<td class="px-4 py-3 text-center">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 4: Low -->
+<tr class="hover:bg-white/5 transition-colors group cursor-pointer opacity-70 hover:opacity-100">
+<td class="px-4 py-3 text-center"><input class="rounded-sm" type="checkbox"/></td>
+<td class="px-4 py-3 text-primary font-bold">ALT-8889</td>
+<td class="px-4 py-3">118-2023-10-123399</td>
+<td class="px-4 py-3 text-body-sm font-body-sm">2023-10-25 09:44:10</td>
+<td class="px-4 py-3"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#f4a460]"></span>Mango Kent</span></td>
+<td class="px-4 py-3 font-body-sm font-body-sm truncate max-w-[150px]">TROPICAL EXPORTS LLC</td>
+<td class="px-4 py-3">Algeciras (ESALG)</td>
+<td class="px-4 py-3 text-right">$ 42,300.00</td>
+<td class="px-4 py-3 text-right text-[#9dd3a7]">-5.2%</td>
+<td class="px-4 py-3 text-center">31.0</td>
+<td class="px-4 py-3 text-center">
+<span class="badge-low px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Bajo
+                                </span>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-outline border border-outline bg-outline/10 px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">Descartado</span>
+</td>
+<td class="px-4 py-3 text-center">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined">chevron_right</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="border-t border-white/5 p-4 flex justify-between items-center bg-surface-container-low shrink-0">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+                    Mostrando <span class="text-on-surface font-semibold">1</span> a <span class="text-on-surface font-semibold">4</span> de <span class="text-on-surface font-semibold">1,248</span> alertas
+                </div>
+<div class="flex gap-2">
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-outline hover:text-primary hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-primary border-primary bg-primary/10 font-mono-data text-mono-data">1</button>
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-on-surface-variant hover:text-primary hover:border-primary font-mono-data text-mono-data transition-colors">2</button>
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-on-surface-variant hover:text-primary hover:border-primary font-mono-data text-mono-data transition-colors">3</button>
+<span class="px-2 py-1 text-on-surface-variant">...</span>
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-on-surface-variant hover:text-primary hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Supervisión Agro-Inteligente - Explorador de Datos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Outfit:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#3f4a3f",
+                        "surface-container-low": "#171d17",
+                        "primary-container": "#3da35d",
+                        "surface-container-lowest": "#0a100a",
+                        "on-secondary-fixed-variant": "#1e502e",
+                        "inverse-on-surface": "#2c322b",
+                        "surface-container": "#1b211b",
+                        "surface-variant": "#30362f",
+                        "surface-container-highest": "#30362f",
+                        "inverse-primary": "#006d33",
+                        "primary-fixed": "#92f8a9",
+                        "on-surface-variant": "#becabc",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "on-surface": "#dee4da",
+                        "surface-tint": "#76db8f",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001e2f",
+                        "on-background": "#dee4da",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "error-container": "#93000a",
+                        "secondary-container": "#205331",
+                        "primary-fixed-dim": "#76db8f",
+                        "on-secondary-container": "#8fc599",
+                        "on-primary-container": "#003114",
+                        "tertiary": "#89ceff",
+                        "surface-bright": "#343b34",
+                        "secondary": "#9dd3a7",
+                        "on-primary-fixed": "#00210b",
+                        "on-tertiary": "#00344d",
+                        "on-primary": "#003918",
+                        "secondary-fixed": "#b8f0c2",
+                        "background": "#0f150f",
+                        "outline": "#889487",
+                        "tertiary-container": "#009ada",
+                        "primary": "#76db8f",
+                        "on-tertiary-container": "#002d43",
+                        "surface-container-high": "#252c25",
+                        "surface-dim": "#0f150f",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dee4da",
+                        "surface": "#0f150f",
+                        "on-secondary-fixed": "#00210c",
+                        "on-primary-fixed-variant": "#005225",
+                        "on-secondary": "#01391a",
+                        "secondary-fixed-dim": "#9dd3a7",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "card-gap": "20px",
+                        "container-padding": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Outfit"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "mono-data": ["monospace"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "mono-data": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0f150f;
+            color: #dee4da;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-panel-hover:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(118, 219, 143, 0.5); /* Primary tint */
+        }
+        .glass-input {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #76db8f;
+            outline: none;
+            box-shadow: 0 0 0 1px #76db8f;
+        }
+        .drag-active {
+            border-color: #76db8f;
+            background: rgba(118, 219, 143, 0.1);
+        }
+        /* Custom Scrollbar for tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f150f; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30362f; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f4a3f; 
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased">
+<!-- SideNavBar -->
+<nav class="h-screen w-20 hover:w-64 transition-all duration-300 ease-in-out fixed left-0 top-0 z-50 bg-surface-container-lowest dark:bg-surface-container-lowest text-primary font-label-md text-label-md uppercase tracking-wider border-r border-white/5 shadow-2xl flex flex-col py-6 h-full group">
+<div class="flex items-center px-4 mb-8 overflow-hidden whitespace-nowrap">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">terminal</span>
+</div>
+<div class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="font-headline-sm text-headline-sm text-primary-fixed">AUDIT_OS_V1</div>
+<div class="text-on-surface-variant text-[10px] mt-1">Terminal Activa</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto overflow-x-hidden">
+<ul class="space-y-2">
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">security_update_warning</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Alertas</span>
+</a>
+</li>
+<!-- Active Item: Telemetry closely aligns with Data Explorer / Datasets -->
+<li>
+<a class="flex items-center px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 transition-colors" href="#">
+<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Telemetría</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">fact_check</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Explorador de Datos</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Configuración</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="mt-auto px-4 mb-4">
+<button class="w-full flex items-center justify-center py-2 px-4 rounded bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 transition-colors opacity-0 group-hover:opacity-100 whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px] mr-2">download</span>
+                Exportar Reporte
+            </button>
+</div>
+<ul class="space-y-2 border-t border-white/5 pt-4">
+<li>
+<a class="flex items-center px-4 py-2 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined shrink-0 text-[20px]" style="font-variation-settings: 'FILL' 0;">help</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Soporte</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-2 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined shrink-0 text-[20px]" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Cerrar Sesión</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-20 flex flex-col overflow-hidden relative">
+<!-- Subtle Ambient Background -->
+<div class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<!-- TopNavBar -->
+<header class="bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl text-primary font-body-md text-body-md docked full-width top-0 border-b border-white/10 shadow-sm flex justify-between items-center px-container-padding w-full h-16 z-40 relative">
+<div class="flex items-center space-x-8">
+<div class="font-headline-md text-headline-md font-bold text-primary mr-8 tracking-tight">Supervisión Agro-Inteligente</div>
+<nav class="hidden md:flex space-x-6">
+<!-- Active Link -->
+<a class="text-primary border-b-2 border-primary pb-1 cursor-pointer active:scale-95 hover:text-primary transition-colors" href="#">Telemetría</a>
+<a class="text-on-surface-variant cursor-pointer active:scale-95 hover:text-primary transition-colors pb-1" href="#">Auditorías</a>
+<a class="text-on-surface-variant cursor-pointer active:scale-95 hover:text-primary transition-colors pb-1" href="#">Inventario</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="glass-input pl-10 pr-4 py-1.5 rounded-full text-body-sm font-body-sm text-on-surface w-64 placeholder-on-surface-variant focus:w-72 transition-all duration-300" placeholder="Buscar datasets..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-primary/20 overflow-hidden cursor-pointer ml-2">
+<!-- Image Placeholder for Auditor Profile -->
+<img alt="Auditor Profile" class="w-full h-full object-cover" data-alt="A macro shot of an advanced, dark-glassmorphism digital ID badge. The badge displays a sharp, high-contrast abstract geometric avatar against a deep charcoal-green background. Subtle, luminous emerald green data lines intersect across the surface, implying a high-tech, precision-focused environment. High-key white lighting provides a bright, modern specular reflection on the glass surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1oBtPm5K21gjIvYsQgEuVenraPCtl4s1vsZ8g1YlcCOAr5GglBvU85lQhCN9MnmT84ogWkl4pElDf2y2UKpGYa4N0eG97B8uaea1QwyrLbu_rd25965RT5x3gPyiSKagfFdsRnFrY6RzFvFtm2WWS1F_BbIckrPZ5QSt44B9HChPKaTXYVN_0uDWoxM26yOgdrA0qdNexKHjRHeCmJZqGaXo7AmVV-G0lrc8nJdTajE02t-oOdK4Kv-OD4x3tWwVrofSpVNxdMmc"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto p-container-padding z-10 relative">
+<div class="max-w-7xl mx-auto space-y-card-gap">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Explorador de Datos</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Gestionar e ingerir datasets de telemetría para análisis agroindustrial.</p>
+</div>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-card-gap">
+<!-- KPI 1 -->
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-[100px]" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Datasets Totales</div>
+<div class="font-display-lg text-display-lg text-primary">12</div>
+<div class="mt-4 flex items-center text-primary text-sm">
+<span class="material-symbols-outlined text-[16px] mr-1">trending_up</span>
+<span>+2 esta semana</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden">
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-[100px]" style="font-variation-settings: 'FILL' 1;">table_rows</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Registros Totales</div>
+<div class="font-display-lg text-display-lg text-on-surface">1.2M</div>
+<div class="mt-4 flex items-center text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[16px] mr-1">check_circle</span>
+<span>Validado vía OS</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden">
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-[100px]" style="font-variation-settings: 'FILL' 1;">sync</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Última Sincronización</div>
+<div class="font-display-lg text-display-lg text-on-surface">Justo Ahora</div>
+<div class="mt-4 flex items-center text-primary text-sm">
+<span class="flex h-2 w-2 rounded-full bg-primary mr-2 shadow-[0_0_8px_#76db8f] animate-pulse"></span>
+<span>Telemetría en Vivo Activa</span>
+</div>
+</div>
+</div>
+<!-- Main Content Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-card-gap">
+<!-- Left Column: Datasets & Upload -->
+<div class="lg:col-span-1 flex flex-col space-y-card-gap">
+<!-- Upload Zone -->
+<div class="glass-panel rounded-xl p-6 flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Ingesta de Datos</h2>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-8 flex flex-col items-center justify-center text-center transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 cursor-pointer" id="dropzone">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-3">cloud_upload</span>
+<div class="font-body-md text-body-md text-on-surface mb-1">Arrastre y suelte CSV/XLSX</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-4">Tamaño máx. 15MB</div>
+<button class="px-4 py-2 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 transition-colors font-label-md text-label-md">
+                                    Examinar Archivos
+                                </button>
+</div>
+<!-- Mock Progress Bar (Hidden by default, shown for UI demonstration) -->
+<div class="mt-4 pt-4 border-t border-white/5">
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-sm text-body-sm text-on-surface">midagri_export_q3.csv</span>
+<span class="font-body-sm text-body-sm text-primary">45%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[45%] rounded-full shadow-[0_0_10px_rgba(118,219,143,0.5)]"></div>
+</div>
+</div>
+</div>
+<!-- Dataset List -->
+<div class="glass-panel rounded-xl p-6 flex-1">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Datasets Activos</h2>
+<button class="text-primary hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<ul class="space-y-2">
+<li class="glass-panel-hover p-3 rounded-lg border border-transparent cursor-pointer transition-all duration-200 flex items-center justify-between group bg-surface-container-high/30 border-l-2 border-l-primary">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">database</span>
+<div>
+<div class="font-body-sm text-body-sm text-on-surface font-semibold">SUNAT Aduanas</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-0.5">840K filas • Verificado</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</li>
+<li class="glass-panel-hover p-3 rounded-lg border border-transparent cursor-pointer transition-all duration-200 flex items-center justify-between group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">grass</span>
+<div>
+<div class="font-body-sm text-body-sm text-on-surface">MIDAGRI Prices</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-0.5">120K filas • Pendiente</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</li>
+<li class="glass-panel-hover p-3 rounded-lg border border-transparent cursor-pointer transition-all duration-200 flex items-center justify-between group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">partly_cloudy_day</span>
+<div>
+<div class="font-body-sm text-body-sm text-on-surface">SENAMHI Weather</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-0.5">45K filas • Tiempo Real</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</li>
+<li class="glass-panel-hover p-3 rounded-lg border border-transparent cursor-pointer transition-all duration-200 flex items-center justify-between group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">travel_explore</span>
+<div>
+<div class="font-body-sm text-body-sm text-on-surface">TradeMap</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-0.5">195K filas • Histórico</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Right Column: Data Preview -->
+<div class="lg:col-span-2 glass-panel rounded-xl p-6 flex flex-col h-[700px]">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center">
+<span class="material-symbols-outlined text-primary mr-2">view_list</span>
+                                    Previsualización de Dataset Experimental
+                                </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Mostrando las primeras 20 filas de telemetría ingerida</p>
+</div>
+<div class="flex space-x-2">
+<button class="p-2 glass-panel-hover rounded text-on-surface-variant transition-colors" title="Export Segment">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+<button class="p-2 glass-panel-hover rounded text-on-surface-variant transition-colors" title="View Logs">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="flex-1 overflow-auto border border-white/5 rounded-lg bg-surface-container-low/50 relative">
+<table class="w-full text-left border-collapse whitespace-nowrap">
+<thead class="sticky top-0 bg-surface-container-high/90 backdrop-blur-md z-10">
+<tr>
+<th class="font-label-md text-label-md text-on-surface-variant px-4 py-3 border-b-2 border-primary/50 uppercase tracking-wider">RUC</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-4 py-3 border-b-2 border-primary/50 uppercase tracking-wider">FOB (USD/PEN)</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-4 py-3 border-b-2 border-primary/50 uppercase tracking-wider">Volumen (KG)</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-4 py-3 border-b-2 border-primary/50 uppercase tracking-wider">Fecha</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-4 py-3 border-b-2 border-primary/50 uppercase tracking-wider">Estado</th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-mono-data text-on-surface" id="preview-table-body">
+<!-- Rows generated via JS for compactness, simulating 20 rows -->
+<script>
+                                        const tbody = document.getElementById('preview-table-body');
+                                        const statuses = ['VERIFICADO', 'PENDIENTE', 'MARCADO'];
+                                        const statusColors = {'VERIFICADO': 'text-primary', 'PENDIENTE': 'text-tertiary', 'MARCADO': 'text-error animate-pulse'};
+                                        
+                                        for(let i=1; i<=20; i++) {
+                                            const bgClass = i % 2 === 0 ? 'bg-white/[0.02]' : '';
+                                            const status = statuses[Math.floor(Math.random() * 3)];
+                                            const ruc = `20${Math.floor(100000000 + Math.random() * 900000000)}`;
+                                            const fob = (Math.random() * 50000).toFixed(2);
+                                            const vol = (Math.random() * 10000).toFixed(2);
+                                            const currency = Math.random() > 0.5 ? 'S/' : '$';
+                                            
+                                            // Mock dates within last 30 days
+                                            const d = new Date();
+                                            d.setDate(d.getDate() - Math.floor(Math.random() * 30));
+                                            const dateStr = d.toISOString().split('T')[0];
+
+                                            tbody.innerHTML += `
+                                                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors ${bgClass}">
+                                                    <td class="px-4 py-2.5">${ruc}</td>
+                                                    <td class="px-4 py-2.5">${currency}${fob}</td>
+                                                    <td class="px-4 py-2.5">${vol}</td>
+                                                    <td class="px-4 py-2.5 text-on-surface-variant">${dateStr}</td>
+                                                    <td class="px-4 py-2.5 ${statusColors[status]} font-bold text-[12px]">${status}</td>
+                                                </tr>
+                                            `;
+                                        }
+                                    </script>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple Drag and Drop interaction script
+        const dropzone = document.getElementById('dropzone');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropzone.classList.add('drag-active');
+        }
+
+        function unhighlight(e) {
+            dropzone.classList.remove('drag-active');
+        }
+    </script>
+</body></html>

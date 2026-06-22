@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    
+<!-- Global Environment Banner -->
+
+<!-- Page Header -->
+<header class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-1">Terminal del Auditor</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Supervisión en tiempo real y detección de anomalías para nodos primarios.</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-2 font-mono-data text-mono-data text-primary-fixed bg-primary-fixed/10 px-3 py-1.5 rounded border border-primary-fixed/20">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
+                        SISTEMA EN LÍNEA
+                    </span>
+<span class="font-mono-data text-mono-data text-on-surface-variant px-3 py-1.5 rounded glass-panel">
+                        UTC-5 14:32:01
+                    </span>
+</div>
+</header>
+<!-- KPI Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<!-- KPI 1: Active Alerts -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-error/5 to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">ALERTAS ACTIVAS</span>
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center border border-error/20 pulse-border">
+<span class="material-symbols-outlined text-error text-[18px]" data-icon="warning">warning</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-error">{{ active_alerts_count }}</span>
+<span class="flex items-center font-mono-data text-mono-data text-error bg-error/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_upward">arrow_upward</span>
+                                    5%
+                                </span>
+</div>
+</div>
+</div>
+<!-- Abstract sparkline representation -->
+<div class="absolute bottom-0 left-0 w-full h-12 opacity-30 pointer-events-none">
+<svg class="w-full h-full stroke-error fill-none" preserveaspectratio="none" stroke-width="2" viewbox="0 0 100 30">
+<path d="M0,25 L10,22 L20,28 L30,15 L40,18 L50,10 L60,12 L70,5 L80,8 L90,2 L100,0"></path>
+</svg>
+<svg class="w-full h-full fill-error/20 absolute bottom-0 left-0" preserveaspectratio="none" viewbox="0 0 100 30">
+<path d="M0,30 L0,25 L10,22 L20,28 L30,15 L40,18 L50,10 L60,12 L70,5 L80,8 L90,2 L100,0 L100,30 Z"></path>
+</svg>
+</div>
+</div>
+<!-- KPI 2: Operations Analyzed -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">OPERACIONES ANALIZADAS</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="dataset">dataset</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-on-surface">{{ total_alerts_count }}</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">vol. diario</span>
+</div>
+</div>
+</div>
+</div>
+<!-- KPI 3: Model F1-Score -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">PUNTAJE F1 DEL MODELO</span>
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="model_training">model_training</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-tertiary">0.92</span>
+<span class="font-body-sm text-body-sm text-tertiary/80 bg-tertiary/10 px-2 py-0.5 rounded border border-tertiary/20">alta conf</span>
+</div>
+</div>
+</div>
+</div>
+<!-- KPI 4: Avg Decision Time -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">TIEMPO MEDIO DE DECISIÓN</span>
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="timer">timer</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-on-surface">{{ avg_decision_time_s }}s</span>
+<span class="flex items-center font-mono-data text-mono-data text-secondary bg-secondary/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                                    2s
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Center Column (Chart & Table) -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- Alert Trends Chart Container -->
+<div class="glass-card rounded-xl p-6 h-80 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="show_chart">show_chart</span>
+                                Tendencias de Alertas (14 Días)
+                            </h2>
+<div class="flex gap-2">
+<button class="px-3 py-1 font-label-md text-label-md text-on-surface-variant bg-surface-container-high rounded border border-white/5 hover:text-primary transition-colors">7D</button>
+<button class="px-3 py-1 font-label-md text-label-md text-on-primary-container bg-primary-container rounded border border-primary/30">14D</button>
+<button class="px-3 py-1 font-label-md text-label-md text-on-surface-variant bg-surface-container-high rounded border border-white/5 hover:text-primary transition-colors">30D</button>
+</div>
+</div>
+<!-- Simulated Chart Area using Grid & CSS -->
+<div class="flex-1 relative w-full border-b border-l border-white/10 flex items-end pt-4 pb-2 pr-2">
+<!-- Y-axis labels -->
+<div class="absolute left-[-24px] top-0 bottom-0 flex flex-col justify-between text-[10px] font-mono-data text-on-surface-variant py-2">
+<span class="">20</span>
+<span class="">15</span>
+<span class="">10</span>
+<span class="">5</span>
+<span class="">0</span>
+</div>
+<!-- Grid lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none z-0 px-2 py-2">
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+</div>
+<!-- Simulated Line Chart -->
+<div class="relative w-full h-full z-10 flex items-end">
+<svg class="absolute inset-0 w-full h-full stroke-primary fill-none overflow-visible" preserveaspectratio="none" stroke-width="2" vector-effect="non-scaling-stroke" viewbox="0 0 100 100">
+<path d="M0,80 L8,75 L16,60 L24,65 L32,40 L40,45 L48,30 L56,50 L64,20 L72,35 L80,10 L88,25 L96,5 L100,5" stroke-linejoin="round"></path>
+</svg>
+<!-- Area fill -->
+<svg class="absolute inset-0 w-full h-full fill-primary/10" overflow="visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,100 L0,80 L8,75 L16,60 L24,65 L32,40 L40,45 L48,30 L56,50 L64,20 L72,35 L80,10 L88,25 L96,5 L100,5 L100,100 Z"></path>
+</svg>
+<!-- Data points (hover targets) -->
+<div class="absolute w-full h-full flex justify-between items-end px-[0.5%]">
+<div class="w-2 h-2 rounded-full bg-primary border border-background absolute" style="left: 0%; bottom: 20%;"></div>
+<div class="w-2 h-2 rounded-full bg-primary border border-background absolute" style="left: 32%; bottom: 60%;"></div>
+<div class="w-2 h-2 rounded-full bg-error border border-background absolute animate-pulse" style="left: 80%; bottom: 90%;"></div>
+<div class="w-2 h-2 rounded-full bg-primary border border-background absolute" style="left: 100%; bottom: 95%;"></div>
+</div>
+</div>
+<!-- X-axis labels -->
+<div class="absolute bottom-[-20px] left-0 right-0 flex justify-between text-[10px] font-mono-data text-on-surface-variant px-2">
+<span class="">D-14</span>
+<span class="">D-10</span>
+<span class="">D-5</span>
+<span class="">Hoy</span>
+</div>
+</div>
+</div>
+<!-- Priority Alerts Table -->
+<div class="glass-card rounded-xl flex flex-col overflow-hidden">
+<div class="p-6 border-b border-white/5 flex justify-between items-center bg-surface-container/20">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-error" data-icon="policy">policy</span>
+                                Cola de Alertas Prioritarias
+                            </h2>
+<button class="text-primary hover:text-primary-fixed text-sm font-label-md flex items-center gap-1 transition-colors">
+                                Ver Todo
+                                <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead>
+<tr class="bg-surface-container-high/50 border-b-2 border-primary/30">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">ID ALERTA</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">PRODUCTO</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">EXPORTADORA</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">SEVERIDAD</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">ACCIÓN</th>
+</tr>
+</thead>
+
+    <tbody class="font-mono-data text-mono-data">
+        {% for alert in alerts %}
+        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+            <td class="py-3 px-4 text-on-surface">{{ alert.id_alerta }}</td>
+            <td class="py-3 px-4">
+                <span class="inline-flex items-center px-2 py-1 rounded bg-surface-variant text-on-surface-variant border border-white/10 font-body-sm text-body-sm">
+                    <span class="w-2 h-2 rounded-full {% if alert.producto == 'Palta' %}bg-[#4A7C59]{% elif alert.producto == 'Uva' %}bg-[#8B5A8C]{% else %}bg-[#3B5998]{% endif %} mr-2"></span>{{ alert.producto }}
+                </span>
+            </td>
+            <td class="py-3 px-4 text-on-surface-variant">{{ alert.razon_social }}</td>
+            <td class="py-3 px-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full {% if alert.score_anomalia > 0.8 %}bg-error{% elif alert.score_anomalia > 0.6 %}bg-secondary{% else %}bg-primary-fixed-dim{% endif %}" style="width: {{ (alert.score_anomalia * 100) | int }}%"></div>
+                    </div>
+                    <span class="{% if alert.score_anomalia > 0.8 %}text-error{% elif alert.score_anomalia > 0.6 %}text-secondary{% else %}text-primary-fixed-dim{% endif %} font-bold">{{ alert.score_anomalia }}</span>
+                </div>
+            </td>
+            <td class="py-3 px-4 text-right">
+                <a href="{{ url_for('alert_detail', id_alerta=alert.id_alerta) }}" class="inline-block px-3 py-1 bg-transparent border border-error text-error rounded hover:bg-error/10 transition-colors font-label-md text-label-md uppercase opacity-80 group-hover:opacity-100">AUDITAR</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" class="py-6 text-center text-on-surface-variant">No hay alertas de prioridad pendientes.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column (Activity Feed) -->
+<div class="glass-card rounded-xl flex flex-col h-[calc(100vh-16rem)] min-h-[500px]">
+<div class="p-6 border-b border-white/5 bg-surface-container/20 shrink-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="history">history</span>
+                            Flujo de Telemetría del Sistema
+                        </h2>
+</div>
+<div class="p-6 overflow-y-auto flex-1 relative">
+<!-- Timeline track -->
+<div class="absolute left-8 top-6 bottom-6 w-px bg-white/10 z-0"></div>
+
+    <ul class="space-y-6 relative z-10">
+        {% for log in feed_logs %}
+        <li class="flex gap-4">
+            <div class="w-4 h-4 rounded-full {% if 'anomalía' in log.evento or 'LOGIN_FAIL' in log.evento or 'UNAUTHORIZED' in log.evento %}bg-error shadow-[0_0_8px_rgba(255,180,171,0.6)] animate-pulse{% else %}bg-primary{% endif %} border-[3px] border-background shrink-0 mt-1 relative z-10"></div>
+            <div>
+                <div class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mb-1">{{ log.fecha }} · Operador</div>
+                <div class="font-body-sm text-body-sm text-on-surface font-medium">{{ log.evento }}</div>
+            </div>
+        </li>
+        {% else %}
+        <li class="py-4 text-center text-on-surface-variant font-body-sm">Sin telemetría activa en este ciclo.</li>
+        {% endfor %}
+    </ul>
+    
+</div>
+<div class="p-4 border-t border-white/5 bg-surface-container/10 mt-auto">
+<button class="w-full text-center text-primary font-label-md text-label-md hover:text-primary-fixed transition-colors">Cargar Registros Anteriores</button>
+</div>
+</div>
+</div>
+
+{% endblock %}

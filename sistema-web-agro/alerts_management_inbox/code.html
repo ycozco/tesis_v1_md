@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agro-Intelligence Oversight - Alerts Inbox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Outfit:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#3f4a3f",
+                    "surface-container-low": "#171d17",
+                    "primary-container": "#3da35d",
+                    "surface-container-lowest": "#0a100a",
+                    "on-secondary-fixed-variant": "#1e502e",
+                    "inverse-on-surface": "#2c322b",
+                    "surface-container": "#1b211b",
+                    "surface-variant": "#30362f",
+                    "surface-container-highest": "#30362f",
+                    "inverse-primary": "#006d33",
+                    "primary-fixed": "#92f8a9",
+                    "on-surface-variant": "#becabc",
+                    "tertiary-fixed-dim": "#89ceff",
+                    "on-surface": "#dee4da",
+                    "surface-tint": "#76db8f",
+                    "tertiary-fixed": "#c9e6ff",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#001e2f",
+                    "on-background": "#dee4da",
+                    "on-tertiary-fixed-variant": "#004c6e",
+                    "error-container": "#93000a",
+                    "secondary-container": "#205331",
+                    "primary-fixed-dim": "#76db8f",
+                    "on-secondary-container": "#8fc599",
+                    "on-primary-container": "#003114",
+                    "tertiary": "#89ceff",
+                    "surface-bright": "#343b34",
+                    "secondary": "#9dd3a7",
+                    "on-primary-fixed": "#00210b",
+                    "on-tertiary": "#00344d",
+                    "on-primary": "#003918",
+                    "secondary-fixed": "#b8f0c2",
+                    "background": "#0f150f",
+                    "outline": "#889487",
+                    "tertiary-container": "#009ada",
+                    "primary": "#76db8f",
+                    "on-tertiary-container": "#002d43",
+                    "surface-container-high": "#252c25",
+                    "surface-dim": "#0f150f",
+                    "on-error": "#690005",
+                    "inverse-surface": "#dee4da",
+                    "surface": "#0f150f",
+                    "on-secondary-fixed": "#00210c",
+                    "on-primary-fixed-variant": "#005225",
+                    "on-secondary": "#01391a",
+                    "secondary-fixed-dim": "#9dd3a7",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "card-gap": "20px",
+                    "container-padding": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "Outfit"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Outfit"
+                    ],
+                    "display-lg": [
+                            "Outfit"
+                    ],
+                    "headline-lg": [
+                            "Outfit"
+                    ],
+                    "mono-data": [
+                            "monospace"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-sm": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "mono-data": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Base Dark-Glassmorphism Styles */
+        body {
+            background-color: #0c120c; /* Level 0 Background */
+            color: #dee4da; /* on-surface */
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-input {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: #76db8f;
+            box-shadow: 0 0 10px rgba(118, 219, 143, 0.2);
+            outline: none;
+        }
+
+        .glass-button-primary {
+            background-color: #76db8f;
+            color: #003918;
+            transition: all 0.2s ease;
+        }
+        
+        .glass-button-primary:hover {
+            background-color: #92f8a9;
+            box-shadow: 0 0 15px rgba(118, 219, 143, 0.4);
+        }
+
+        .glass-button-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid #76db8f;
+            color: #76db8f;
+            transition: all 0.2s ease;
+        }
+
+        .glass-button-secondary:hover {
+            background: rgba(118, 219, 143, 0.1);
+            box-shadow: 0 0 15px rgba(118, 219, 143, 0.2);
+        }
+        
+        /* Table Styles */
+        .audit-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .audit-table th {
+            background-color: rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid #76db8f;
+        }
+
+        .audit-table td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Anomaly Badges */
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(255, 180, 171, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 180, 171, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 180, 171, 0); }
+        }
+
+        .badge-critical {
+            background: rgba(147, 0, 10, 0.2);
+            border: 1px solid #ffb4ab;
+            color: #ffb4ab;
+            animation: pulse-border 2s infinite;
+        }
+
+        .badge-high {
+            background: rgba(255, 180, 171, 0.1);
+            border: 1px solid #ffb4ab;
+            color: #ffb4ab;
+        }
+        
+        .badge-medium {
+            background: rgba(201, 230, 255, 0.1);
+            border: 1px solid #89ceff;
+            color: #89ceff;
+        }
+
+        .badge-low {
+            background: rgba(157, 211, 167, 0.1);
+            border: 1px solid #9dd3a7;
+            color: #9dd3a7;
+        }
+
+        /* Checkbox Override */
+        [type="checkbox"] {
+            background-color: transparent;
+            border-color: rgba(255,255,255,0.3);
+            border-radius: 2px;
+        }
+        [type="checkbox"]:checked {
+            background-color: #76db8f;
+            border-color: #76db8f;
+        }
+        [type="checkbox"]:focus {
+            --tw-ring-color: #76db8f;
+            --tw-ring-offset-color: #0c120c;
+        }
+
+        /* Custom Scrollbar for table container */
+        .table-container::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .table-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-background text-on-background antialiased flex h-screen overflow-hidden">
+<!-- TopNavBar (Mobile Only) -->
+<nav class="md:hidden flex justify-between items-center px-container-padding w-full h-16 bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl fixed top-0 z-50 border-b border-white/10 shadow-sm">
+<div class="font-headline-md text-headline-md font-bold text-primary">Agro-Intelligence Oversight</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:scale-95" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:scale-95" data-icon="settings">settings</span>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col py-6 h-full h-screen w-20 hover:w-64 transition-all duration-300 ease-in-out fixed left-0 top-0 z-50 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-white/5 shadow-2xl group overflow-hidden">
+<div class="flex items-center px-6 mb-8 whitespace-nowrap">
+<span class="material-symbols-outlined text-primary-fixed text-[32px] shrink-0" data-icon="radar">radar</span>
+<div class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="font-headline-sm text-headline-sm text-primary-fixed">AUDIT_OS_V1</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Terminal Active</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2 w-full px-2">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="dashboard">dashboard</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="security_update_warning">security_update_warning</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">Risk Analysis</span>
+</a>
+<a class="flex items-center px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="monitoring">monitoring</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">Telemetry</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="fact_check">fact_check</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">Audits</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="settings">settings</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">Settings</span>
+</a>
+</div>
+<div class="px-4 mb-4 whitespace-nowrap">
+<button class="w-full flex items-center justify-center py-2 px-4 glass-button-secondary rounded-lg font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="material-symbols-outlined mr-2 text-[18px]">download</span> Export Report
+            </button>
+</div>
+<div class="flex flex-col gap-2 w-full px-2 border-t border-white/5 pt-4">
+<a class="flex items-center px-4 py-2 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined shrink-0 text-[20px]" data-icon="help">help</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">Support</span>
+</a>
+<a class="flex items-center px-4 py-2 text-on-surface-variant hover:text-primary mx-2 hover:bg-surface-variant/20 rounded-lg transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined shrink-0 text-[20px]" data-icon="logout">logout</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-20 mt-16 md:mt-0 p-container-padding flex flex-col h-full overflow-hidden relative z-10 transition-all duration-300">
+<!-- Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-card-gap shrink-0 gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">Telemetry Alerts Inbox</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitoring real-time deviations in agro-export data streams.</p>
+</div>
+<div class="flex gap-3">
+<button class="glass-button-secondary px-4 py-2 rounded-DEFAULT font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">rule</span> Bulk Assign
+                </button>
+<button class="glass-button-primary px-4 py-2 rounded-DEFAULT font-label-md text-label-md font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">refresh</span> Sync Data
+                </button>
+</div>
+</header>
+<!-- Advanced Filter Bar (Glass Panel) -->
+<section class="glass-panel rounded-xl p-4 mb-card-gap shrink-0 flex flex-col lg:flex-row gap-4 items-center">
+<!-- Search Input -->
+<div class="relative w-full lg:w-1/3">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="glass-input w-full pl-10 pr-4 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface placeholder:text-outline-variant focus:ring-0" placeholder="Search ID / DAM / RUC..." type="text"/>
+</div>
+<div class="flex flex-wrap md:flex-nowrap gap-4 w-full lg:w-2/3">
+<!-- Product Filter -->
+<div class="flex-1 min-w-[120px]">
+<select class="glass-input w-full px-3 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface appearance-none focus:ring-0">
+<option class="bg-surface-container text-on-surface" value="">Product: All</option>
+<option class="bg-surface-container text-on-surface" value="palta">Palta</option>
+<option class="bg-surface-container text-on-surface" value="uva">Uva</option>
+<option class="bg-surface-container text-on-surface" value="arandano">Arándano</option>
+<option class="bg-surface-container text-on-surface" value="mango">Mango</option>
+</select>
+</div>
+<!-- Severity Filter -->
+<div class="flex-1 min-w-[120px]">
+<select class="glass-input w-full px-3 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface appearance-none focus:ring-0">
+<option class="bg-surface-container text-on-surface" value="">Severity: All</option>
+<option class="bg-surface-container text-on-surface" value="critical">Critical</option>
+<option class="bg-surface-container text-on-surface" value="high">High</option>
+<option class="bg-surface-container text-on-surface" value="medium">Medium</option>
+<option class="bg-surface-container text-on-surface" value="low">Low</option>
+</select>
+</div>
+<!-- Status Filter -->
+<div class="flex-1 min-w-[120px]">
+<select class="glass-input w-full px-3 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface appearance-none focus:ring-0">
+<option class="bg-surface-container text-on-surface" value="">Status: All</option>
+<option class="bg-surface-container text-on-surface" value="pending">Pending</option>
+<option class="bg-surface-container text-on-surface" value="review">In Review</option>
+<option class="bg-surface-container text-on-surface" value="confirmed">Confirmed</option>
+<option class="bg-surface-container text-on-surface" value="discarded">Discarded</option>
+</select>
+</div>
+</div>
+<button class="shrink-0 p-2 text-on-surface-variant hover:text-primary transition-colors" title="Clear Filters">
+<span class="material-symbols-outlined">filter_alt_off</span>
+</button>
+</section>
+<!-- Data Table Container -->
+<section class="glass-panel rounded-xl flex-1 flex flex-col overflow-hidden relative">
+<div class="table-container overflow-auto flex-1">
+<table class="w-full text-left border-collapse audit-table whitespace-nowrap">
+<thead class="sticky top-0 z-10 font-label-md text-label-md text-on-surface uppercase tracking-wider">
+<tr>
+<th class="px-4 py-3 w-12 text-center"><input class="rounded-sm" type="checkbox"/></th>
+<th class="px-4 py-3">Alert ID</th>
+<th class="px-4 py-3">DAM</th>
+<th class="px-4 py-3">Date/Time</th>
+<th class="px-4 py-3">Product</th>
+<th class="px-4 py-3">Exportadora</th>
+<th class="px-4 py-3">Destination</th>
+<th class="px-4 py-3 text-right">FOB Value</th>
+<th class="px-4 py-3 text-right">Dev %</th>
+<th class="px-4 py-3 text-center">Score</th>
+<th class="px-4 py-3 text-center">Severity</th>
+<th class="px-4 py-3 text-center">Status</th>
+<th class="px-4 py-3 w-12"></th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-mono-data text-on-surface-variant">
+<!-- Row 1: Critical -->
+<tr class="hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="px-4 py-3 text-center"><input class="rounded-sm" type="checkbox"/></td>
+<td class="px-4 py-3 text-primary font-bold">ALT-8892</td>
+<td class="px-4 py-3">118-2023-10-123456</td>
+<td class="px-4 py-3 text-body-sm font-body-sm">2023-10-25 14:32:01</td>
+<td class="px-4 py-3"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#5d8a3e]"></span>Palta Hass</span></td>
+<td class="px-4 py-3 font-body-sm font-body-sm truncate max-w-[150px]">AGRO EXPORTACIONES S.A.C.</td>
+<td class="px-4 py-3">Rotterdam (NLRTM)</td>
+<td class="px-4 py-3 text-right">$ 145,200.00</td>
+<td class="px-4 py-3 text-right text-error">+45.2%</td>
+<td class="px-4 py-3 text-center">98.5</td>
+<td class="px-4 py-3 text-center">
+<span class="badge-critical px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> Critical
+                                </span>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-error-container border border-error-container bg-error-container/10 px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">Pending</span>
+</td>
+<td class="px-4 py-3 text-center">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 2: High -->
+<tr class="hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="px-4 py-3 text-center"><input class="rounded-sm" type="checkbox"/></td>
+<td class="px-4 py-3 text-primary font-bold">ALT-8891</td>
+<td class="px-4 py-3">118-2023-10-123412</td>
+<td class="px-4 py-3 text-body-sm font-body-sm">2023-10-25 13:15:44</td>
+<td class="px-4 py-3"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#8b3a62]"></span>Uva Red Globe</span></td>
+<td class="px-4 py-3 font-body-sm font-body-sm truncate max-w-[150px]">FRUTOS DEL SUR E.I.R.L.</td>
+<td class="px-4 py-3">Shanghai (CNSHA)</td>
+<td class="px-4 py-3 text-right">$ 89,500.00</td>
+<td class="px-4 py-3 text-right text-[#ffb4ab]">-28.4%</td>
+<td class="px-4 py-3 text-center">82.1</td>
+<td class="px-4 py-3 text-center">
+<span class="badge-high px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> High
+                                </span>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-tertiary border border-tertiary bg-tertiary/10 px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">Review</span>
+</td>
+<td class="px-4 py-3 text-center">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 3: Medium -->
+<tr class="hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="px-4 py-3 text-center"><input class="rounded-sm" type="checkbox"/></td>
+<td class="px-4 py-3 text-primary font-bold">ALT-8890</td>
+<td class="px-4 py-3">084-2023-10-098765</td>
+<td class="px-4 py-3 text-body-sm font-body-sm">2023-10-25 11:05:22</td>
+<td class="px-4 py-3"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#3b5998]"></span>Arándano</span></td>
+<td class="px-4 py-3 font-body-sm font-body-sm truncate max-w-[150px]">BERRIES DEL NORTE S.A.</td>
+<td class="px-4 py-3">Philadelphia (USPHL)</td>
+<td class="px-4 py-3 text-right">$ 210,000.00</td>
+<td class="px-4 py-3 text-right text-[#89ceff]">+15.8%</td>
+<td class="px-4 py-3 text-center">64.3</td>
+<td class="px-4 py-3 text-center">
+<span class="badge-medium px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span> Medium
+                                </span>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-primary border border-primary bg-primary/10 px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">Confirmed</span>
+</td>
+<td class="px-4 py-3 text-center">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 4: Low -->
+<tr class="hover:bg-white/5 transition-colors group cursor-pointer opacity-70 hover:opacity-100">
+<td class="px-4 py-3 text-center"><input class="rounded-sm" type="checkbox"/></td>
+<td class="px-4 py-3 text-primary font-bold">ALT-8889</td>
+<td class="px-4 py-3">118-2023-10-123399</td>
+<td class="px-4 py-3 text-body-sm font-body-sm">2023-10-25 09:44:10</td>
+<td class="px-4 py-3"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#f4a460]"></span>Mango Kent</span></td>
+<td class="px-4 py-3 font-body-sm font-body-sm truncate max-w-[150px]">TROPICAL EXPORTS LLC</td>
+<td class="px-4 py-3">Algeciras (ESALG)</td>
+<td class="px-4 py-3 text-right">$ 42,300.00</td>
+<td class="px-4 py-3 text-right text-[#9dd3a7]">-5.2%</td>
+<td class="px-4 py-3 text-center">31.0</td>
+<td class="px-4 py-3 text-center">
+<span class="badge-low px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Low
+                                </span>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-outline border border-outline bg-outline/10 px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">Discarded</span>
+</td>
+<td class="px-4 py-3 text-center">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined">chevron_right</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Loading State (Hidden by default, shown for demonstration) -->
+<!-- 
+                <div class="w-full flex flex-col items-center justify-center py-12 text-outline">
+                    <span class="material-symbols-outlined text-[48px] animate-spin mb-4">autorenew</span>
+                    <p class="font-body-md text-body-md">Ingesting Telemetry Data...</p>
+                </div>
+                -->
+<!-- Empty State (Hidden by default) -->
+<!--
+                <div class="w-full flex flex-col items-center justify-center py-16 text-outline">
+                    <span class="material-symbols-outlined text-[64px] mb-4 opacity-50">data_alert</span>
+                    <p class="font-headline-sm text-headline-sm text-on-surface mb-2">No anomalies detected</p>
+                    <p class="font-body-md text-body-md text-center max-w-md">The current data stream parameters match historical baselines. Adjust filters to search past events.</p>
+                </div>
+                -->
+</div>
+<!-- Table Footer / Pagination -->
+<div class="border-t border-white/5 p-4 flex justify-between items-center bg-surface-container-low shrink-0">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+                    Showing <span class="text-on-surface font-semibold">1</span> to <span class="text-on-surface font-semibold">4</span> of <span class="text-on-surface font-semibold">1,248</span> alerts
+                </div>
+<div class="flex gap-2">
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-outline hover:text-primary hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-primary border-primary bg-primary/10 font-mono-data text-mono-data">1</button>
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-on-surface-variant hover:text-primary hover:border-primary font-mono-data text-mono-data transition-colors">2</button>
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-on-surface-variant hover:text-primary hover:border-primary font-mono-data text-mono-data transition-colors">3</button>
+<span class="px-2 py-1 text-on-surface-variant">...</span>
+<button class="px-3 py-1 glass-panel rounded-DEFAULT text-on-surface-variant hover:text-primary hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Simulated Quick View Drawer (Hidden by default, shown via CSS for demonstration purposes here, normally triggered via JS) -->
+<!-- Add a class like 'translate-x-full' to hide it normally -->
+<aside class="fixed inset-y-0 right-0 w-full md:w-[450px] bg-surface-container-highest/95 backdrop-blur-3xl border-l border-white/10 shadow-[-10px_0_30px_rgba(0,0,0,0.5)] z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col" id="quick-view-drawer">
+<div class="p-6 border-b border-white/10 flex justify-between items-start">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">ALT-8892</h2>
+<span class="badge-critical px-2 py-1 rounded-DEFAULT font-label-md text-[10px] uppercase">Critical</span>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant">DAM: 118-2023-10-123456</p>
+</div>
+<button class="text-outline hover:text-primary transition-colors" onclick="document.getElementById('quick-view-drawer').classList.add('translate-x-full')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 overflow-y-auto flex-1 flex flex-col gap-6">
+<!-- Anomaly Summary -->
+<div class="glass-panel p-4 rounded-xl">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Deviation Signature</h3>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="font-body-sm text-body-sm text-outline">Expected FOB Value</p>
+<p class="font-mono-data text-mono-data text-on-surface">$ 100,000.00</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-outline">Declared FOB Value</p>
+<p class="font-mono-data text-mono-data text-error font-bold">$ 145,200.00</p>
+</div>
+<div class="col-span-2">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden mt-2">
+<div class="bg-error h-full" style="width: 45.2%"></div>
+</div>
+<p class="font-label-md text-label-md text-error mt-1 text-right">+45.2% Overvaluation</p>
+</div>
+</div>
+</div>
+<!-- Context Data -->
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Entity Context</h3>
+<dl class="space-y-3 font-body-sm text-body-sm">
+<div class="flex justify-between">
+<dt class="text-outline">Exportadora</dt>
+<dd class="text-on-surface font-medium text-right max-w-[200px] truncate">AGRO EXPORTACIONES S.A.C.</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">RUC</dt>
+<dd class="font-mono-data text-mono-data text-on-surface">20512345678</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">Product Profile</dt>
+<dd class="text-on-surface">Palta Hass (Fresh)</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">Destination</dt>
+<dd class="text-on-surface">Rotterdam, Netherlands</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">Risk Profile</dt>
+<dd class="text-[#ffb4ab]">High (Prior Infractions: 2)</dd>
+</div>
+</dl>
+</div>
+<!-- Action Area -->
+<div class="mt-auto pt-6 border-t border-white/10">
+<label class="block font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Update Status</label>
+<select class="glass-input w-full px-3 py-2 rounded-DEFAULT font-body-sm text-body-sm text-on-surface appearance-none mb-4">
+<option class="bg-surface-container text-on-surface" value="pending">Pending</option>
+<option class="bg-surface-container text-on-surface" value="review">In Review (Assigning to self)</option>
+<option class="bg-surface-container text-on-surface" value="confirmed">Confirmed (Send to Fiscalización)</option>
+<option class="bg-surface-container text-on-surface" value="discarded">Discarded (False Positive)</option>
+</select>
+<textarea class="glass-input w-full p-3 rounded-DEFAULT font-body-sm text-body-sm text-on-surface placeholder:text-outline-variant mb-4 h-24" placeholder="Add auditor notes..."></textarea>
+<div class="flex gap-3">
+<button class="flex-1 glass-button-secondary py-2 rounded-DEFAULT font-label-md text-label-md">Cancel</button>
+<button class="flex-1 glass-button-primary py-2 rounded-DEFAULT font-label-md text-label-md font-semibold">Save Decision</button>
+</div>
+</div>
+</div>
+</aside>
+<script>
+        // Simple script to demonstrate drawer opening from table row click
+        document.querySelectorAll('.audit-table tbody tr').forEach(row => {
+            row.addEventListener('click', (e) => {
+                // Prevent opening if clicking on checkbox
+                if(e.target.tagName !== 'INPUT') {
+                    document.getElementById('quick-view-drawer').classList.remove('translate-x-full');
+                }
+            });
+        });
+    </script>
+</body></html>

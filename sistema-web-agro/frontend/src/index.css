@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glassmorphism utility classes based on Style Guidance */
+.glass-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel {
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-modal {
+    background: rgba(15, 25, 15, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(118, 219, 143, 0.15);
+}
+
+.glass-input {
+    background: transparent;
+    border: 1px solid rgba(136, 148, 135, 0.5);
+    transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #76db8f;
+    box-shadow: 0 0 15px rgba(118, 219, 143, 0.2);
+    outline: none;
+}
+
+.pulse-border {
+    animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-border {
+    0%, 100% { border-color: rgba(255, 180, 171, 0.5); box-shadow: 0 0 0 0 rgba(255, 180, 171, 0.2); }
+    50% { border-color: rgba(255, 180, 171, 1); box-shadow: 0 0 10px 2px rgba(255, 180, 171, 0.4); }
+}
+
+.pulse-alert {
+    animation: pulse-alert 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-alert {
+    0%, 100% { border-color: rgba(255, 180, 171, 0.25); box-shadow: 0 0 5px 0 rgba(255, 180, 171, 0.1); }
+    50% { border-color: rgba(255, 180, 171, 0.6); box-shadow: 0 0 15px 3px rgba(255, 180, 171, 0.25); }
+}
+
+.pulse-critical {
+    animation: pulse-critical 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-critical {
+    0%, 100% { border-color: rgba(255, 180, 171, 0.2); background-color: rgba(147, 0, 10, 0.05); }
+    50% { border-color: rgba(255, 180, 171, 0.5); background-color: rgba(147, 0, 10, 0.12); }
+}
+
+.btn-glow:hover {
+    box-shadow: 0 0 20px rgba(61, 163, 93, 0.4);
+}
+
+.grid-bg {
+    background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Custom scrollbar for data tables */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}
