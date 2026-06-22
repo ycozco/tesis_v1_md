@@ -284,6 +284,8 @@
 <li><a href="#226-rag-y-control-factual">2.2.6 RAG y Control Factual</a></li>
 <li><a href="#227-arquitecturas-aisladas-frente-a-integradas">2.2.7 Arquitecturas Aisladas frente a Integradas</a></li>
 <li><a href="#228-gobernanza-de-ia-y-trazabilidad">2.2.8 Gobernanza de IA y Trazabilidad</a></li>
+<li><a href="#229-brecha-especifica-que-aborda-la-tesis">2.2.9 Brecha específica que aborda la tesis</a></li>
+<li><a href="#2210-implicancia-para-el-diseno-metodologico">2.2.10 Implicancia para el diseño metodológico</a></li>
 </ul>
 </li>
 </ul>
@@ -297,7 +299,7 @@
             <div class="header">
                 <h1>02 21 Capitulo2 Estadoarte</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 09:46
                 </div>
             </div>
             
@@ -321,6 +323,64 @@
 <h3 id="228-gobernanza-de-ia-y-trazabilidad">2.2.8 Gobernanza de IA y Trazabilidad</h3>
 <p>El despliegue de sistemas inteligentes se enfrenta a exigencias de gobernanza corporativa y rendición de cuentas, reguladas por marcos nacionales como el Decreto Supremo N° 115-2025-PCM (Gobernanza y Supervisión Humana en Perú) y metodologías internacionales como el NIST AI Risk Management Framework (AI RMF 1.0) y las directrices de la Resolución SBS N° 053-2023 para riesgos de modelos. El estado del arte exige que cada alerta sea reproducible mediante marcas de tiempo, identificadores únicos y firmas SHA-256 de todas las fases del procesamiento.</p>
 <hr />
+<h3 id="229-brecha-especifica-que-aborda-la-tesis">2.2.9 Brecha específica que aborda la tesis</h3>
+<p>La revisión anterior permite delimitar una brecha precisa: los trabajos y herramientas existentes suelen resolver de forma separada el pronóstico, la detección de anomalías, la explicabilidad, la generación de reportes o la trazabilidad. En cambio, el problema de supervisión analítica agroexportadora requiere un flujo unido y auditable, porque una alerta solo es útil si puede reconstruirse desde el dato de origen hasta la decisión humana.</p>
+<table>
+<thead>
+<tr>
+<th>Bloque del estado del arte</th>
+<th>Solución dominante</th>
+<th>Brecha persistente</th>
+<th>Decisión de esta tesis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicción tabular</td>
+<td>GBDT, modelos estadísticos y redes tabulares</td>
+<td>Bajo acoplamiento con anomalías y reportes</td>
+<td>Usar XGBoost/LightGBM como estimadores globales de valor FOB y volumen</td>
+</tr>
+<tr>
+<td>Anomalías</td>
+<td>Detectores individuales o benchmarks genéricos</td>
+<td>Sensibilidad al tipo de anomalía y umbral</td>
+<td>Ensemble IF + LOF + ECOD calibrado por percentiles</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>SHAP/LIME como análisis post-hoc</td>
+<td>Explicaciones no siempre llegan al usuario final</td>
+<td>Inyectar top-k SHAP en la alerta y el reporte</td>
+</tr>
+<tr>
+<td>Reportes LLM</td>
+<td>Redacción flexible de texto</td>
+<td>Riesgo de alucinación numérica y factual</td>
+<td>RAG restringido + validador determinístico</td>
+</tr>
+<tr>
+<td>Gobernanza</td>
+<td>Model cards, datasheets y auditoría</td>
+<td>Trazabilidad fragmentada entre archivos</td>
+<td>Hashes SHA-256, UUID y registro de linaje por alerta</td>
+</tr>
+<tr>
+<td>Agroexportación peruana</td>
+<td>Reportes sectoriales y fuentes públicas</td>
+<td>Granularidades heterogéneas y proxies</td>
+<td>Dataset semanal producto-mercado-semana con marcas de origen</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2210-implicancia-para-el-diseno-metodologico">2.2.10 Implicancia para el diseño metodológico</h3>
+<p>El diseño del Capítulo III adopta tres principios derivados del estado del arte:</p>
+<ol>
+<li><strong>Modelo antes que alerta:</strong> la anomalía se interpreta como desviación respecto de un valor esperado, no como simple valor extremo observado.</li>
+<li><strong>Explicación antes que automatización:</strong> el sistema apoya la decisión humana y no ejecuta bloqueos automáticos ni sanciones.</li>
+<li><strong>Evidencia antes que narrativa:</strong> el reporte automático solo es aceptable si sus cifras y afirmaciones pueden rastrearse a datos estructurados, documentos recuperados o logs de ejecución.</li>
+</ol>
+<p>Cuando una fuente no tiene granularidad de embarque, se incorpora como contexto agregado o proxy y se prohíbe interpretarla como causa directa de una falla operativa. Esta regla es central para mantener consistencia entre el alcance de los datos disponibles y las afirmaciones de la tesis.</p>
         </div>
     </div>
     

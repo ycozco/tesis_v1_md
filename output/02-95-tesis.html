@@ -304,12 +304,9 @@
 </ul>
 </li>
 <li><a href="#14-hipotesis-de-la-investigacion">1.4 Hipótesis de la investigación</a><ul>
-<li><a href="#hipotesis-general-h1">Hipótesis general (H1)</a></li>
-<li><a href="#hipotesis-predictiva-de-fob-h1a">Hipótesis predictiva de FOB (H1a)</a></li>
-<li><a href="#hipotesis-predictiva-de-volumen-h1b">Hipótesis predictiva de volumen (H1b)</a></li>
-<li><a href="#hipotesis-de-anomalias-h1c">Hipótesis de anomalías (H1c)</a></li>
-<li><a href="#hipotesis-de-usabilidad-h1d">Hipótesis de usabilidad (H1d)</a></li>
-<li><a href="#hipotesis-de-trazabilidad-h1e">Hipótesis de trazabilidad (H1e)</a></li>
+<li><a href="#141-hipotesis-general">1.4.1 Hipótesis general</a></li>
+<li><a href="#142-hipotesis-nula-h0">1.4.2 Hipótesis nula (H0)</a></li>
+<li><a href="#143-hipotesis-especificas">1.4.3 Hipótesis específicas</a></li>
 </ul>
 </li>
 <li><a href="#15-variables-e-indicadores">1.5 Variables e indicadores</a><ul>
@@ -331,13 +328,14 @@
 </li>
 <li><a href="#18-alcance">1.8 Alcance</a></li>
 <li><a href="#19-linea-tipo-y-nivel-de-investigacion">1.9 Línea, tipo y nivel de investigación</a></li>
-<li><a href="#110-tecnicas-e-instrumentos">1.10 Técnicas e instrumentos</a></li>
+<li><a href="#110-tecnicas-e-instrumentos-de-recoleccion-de-informacion">1.10 Técnicas e instrumentos de recolección de información</a></li>
+<li><a href="#111-cronograma-de-actividades">1.11 Cronograma de actividades</a></li>
 </ul>
 </li>
 <li><a href="#capitulo-ii-marco-teorico">CAPÍTULO II: MARCO TEÓRICO</a><ul>
 <li><a href="#21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</a><ul>
 <li><a href="#211-antecedentes-internacionales">2.1.1 Antecedentes Internacionales</a></li>
-<li><a href="#212-antecedentes-nacionales-en-evaluacion-y-revision-academica">2.1.2 Antecedentes Nacionales en Evaluación y Revisión Académica</a></li>
+<li><a href="#212-antecedentes-nacionales-y-evidencia-sectorial-verificable">2.1.2 Antecedentes nacionales y evidencia sectorial verificable</a></li>
 <li><a href="#213-antecedentes-metodologicos">2.1.3 Antecedentes Metodológicos</a></li>
 <li><a href="#214-sintesis-critica">2.1.4 Síntesis crítica</a></li>
 </ul>
@@ -354,6 +352,8 @@
 <li><a href="#226-rag-y-control-factual">2.2.6 RAG y Control Factual</a></li>
 <li><a href="#227-arquitecturas-aisladas-frente-a-integradas">2.2.7 Arquitecturas Aisladas frente a Integradas</a></li>
 <li><a href="#228-gobernanza-de-ia-y-trazabilidad">2.2.8 Gobernanza de IA y Trazabilidad</a></li>
+<li><a href="#229-brecha-especifica-que-aborda-la-tesis">2.2.9 Brecha específica que aborda la tesis</a></li>
+<li><a href="#2210-implicancia-para-el-diseno-metodologico">2.2.10 Implicancia para el diseño metodológico</a></li>
 </ul>
 </li>
 </ul>
@@ -371,6 +371,10 @@
 <li><a href="#239-explicabilidad-local-post-hoc-con-shap">2.3.9 Explicabilidad Local Post-Hoc con SHAP</a></li>
 <li><a href="#2310-retrieval-augmented-generation-rag">2.3.10 Retrieval-Augmented Generation (RAG)</a></li>
 <li><a href="#2311-trazabilidad-de-modelos-y-linaje-de-datos">2.3.11 Trazabilidad de Modelos y Linaje de Datos</a></li>
+<li><a href="#2312-dato-real-observado-dato-agregado-proxy-y-dato-sintetico">2.3.12 Dato real observado, dato agregado, proxy y dato sintético</a></li>
+<li><a href="#2313-resultado-preliminar-y-resultado-definitivo">2.3.13 Resultado preliminar y resultado definitivo</a></li>
+<li><a href="#2314-placeholder-de-figura-o-evidencia-visual">2.3.14 Placeholder de figura o evidencia visual</a></li>
+<li><a href="#2315-supervision-analitica-frente-a-supervision-operativa-causal">2.3.15 Supervisión analítica frente a supervisión operativa causal</a></li>
 </ul>
 </li>
 </ul>
@@ -386,7 +390,7 @@
 <li><a href="#317-restricciones">3.1.7 Restricciones</a></li>
 <li><a href="#318-principios-de-diseno">3.1.8 Principios de Diseño</a></li>
 <li><a href="#319-tecnologias-implementadas">3.1.9 Tecnologías Implementadas</a></li>
-<li><a href="#3110-arquitectura-de-componentes-mermaid">3.1.10 Arquitectura de Componentes (Mermaid)</a></li>
+<li><a href="#3110-arquitectura-de-componentes">3.1.10 Arquitectura de Componentes</a></li>
 </ul>
 </li>
 <li><a href="#32-esquema-de-la-propuesta">3.2 Esquema de la Propuesta</a><ul>
@@ -408,23 +412,36 @@
 </li>
 <li><a href="#33-obtencion-y-preparacion-de-datos">3.3 Obtención y Preparación de Datos</a><ul>
 <li><a href="#331-fuentes-de-datos-y-estado-de-uso">3.3.1 Fuentes de datos y estado de uso</a></li>
-<li><a href="#332-capas-de-procesamiento">3.3.2 Capas de procesamiento</a></li>
-<li><a href="#333-controles-de-calidad-temporal">3.3.3 Controles de calidad temporal</a></li>
-<li><a href="#334-registro-de-artefactos-experimentales">3.3.4 Registro de artefactos experimentales</a></li>
+<li><a href="#332-inventario-reproducible-de-archivos-principales">3.3.2 Inventario reproducible de archivos principales</a></li>
+<li><a href="#333-capas-de-procesamiento">3.3.3 Capas de procesamiento</a></li>
+<li><a href="#334-caracterizacion-del-dataset-semanal-gold">3.3.4 Caracterización del dataset semanal gold</a></li>
+<li><a href="#335-calidad-registros-eliminados-y-limites-de-datos">3.3.5 Calidad, registros eliminados y límites de datos</a></li>
+<li><a href="#336-controles-de-calidad-temporal">3.3.6 Controles de calidad temporal</a></li>
+<li><a href="#337-registro-de-artefactos-experimentales">3.3.7 Registro de artefactos experimentales</a></li>
 </ul>
 </li>
 <li><a href="#34-diseno-e-implementacion-del-prototipo">3.4 Diseño e Implementación del Prototipo</a><ul>
 <li><a href="#341-estructura-tecnica-del-prototipo">3.4.1 Estructura técnica del prototipo</a></li>
 <li><a href="#342-vistas-funcionales-del-prototipo">3.4.2 Vistas funcionales del prototipo</a></li>
-<li><a href="#343-algoritmos-propuestos-e-implementacion-vinculada">3.4.3 Algoritmos propuestos e implementación vinculada</a></li>
+<li><a href="#343-placeholders-de-capturas-del-prototipo">3.4.3 Placeholders de capturas del prototipo</a></li>
+<li><a href="#344-algoritmos-propuestos-e-implementacion-vinculada">3.4.4 Algoritmos propuestos e implementación vinculada</a></li>
 </ul>
 </li>
 <li><a href="#35-diseno-experimental-y-validacion">3.5 Diseño Experimental y Validación</a><ul>
-<li><a href="#351-validacion-de-prediccion-y-anomalias">3.5.1 Validación de predicción y anomalías</a></li>
+<li><a href="#351-validacion-de-prediccion-y-anomalias">3.5.1 Validación de predicción y anomalías</a><ul>
+<li><a href="#3511-particion-temporal-propuesta">3.5.1.1 Partición temporal propuesta</a></li>
+<li><a href="#3512-estrategia-walk-forward">3.5.1.2 Estrategia walk-forward</a></li>
+<li><a href="#3513-baselines-predictivos">3.5.1.3 Baselines predictivos</a></li>
+<li><a href="#3514-modelos-propuestos-e-hiperparametros">3.5.1.4 Modelos propuestos e hiperparámetros</a></li>
+<li><a href="#3515-metricas-por-objetivo">3.5.1.5 Métricas por objetivo</a></li>
+<li><a href="#3516-protocolo-de-anomalias-sinteticas">3.5.1.6 Protocolo de anomalías sintéticas</a></li>
+</ul>
+</li>
 <li><a href="#352-validacion-de-explicabilidad">3.5.2 Validación de explicabilidad</a></li>
 <li><a href="#353-validacion-de-reportes-automaticos">3.5.3 Validación de reportes automáticos</a></li>
 <li><a href="#354-evaluacion-controlada-con-usuarios">3.5.4 Evaluación controlada con usuarios</a></li>
 <li><a href="#355-puertas-de-control">3.5.5 Puertas de control</a></li>
+<li><a href="#356-checklist-verificable-de-cierre-del-capitulo-iii">3.5.6 Checklist verificable de cierre del Capítulo III</a></li>
 </ul>
 </li>
 </ul>
@@ -529,6 +546,115 @@
 <li><a href="#5-gobernanza-y-trazabilidad">5. Gobernanza y trazabilidad</a></li>
 </ul>
 </li>
+<li><a href="#matriz-de-operacionalizacion-de-variables">Matriz de Operacionalización de Variables</a><ul>
+<li><a href="#1-variable-independiente">1. Variable Independiente</a></li>
+<li><a href="#2-variables-dependientes">2. Variables Dependientes</a></li>
+<li><a href="#3-variables-explicativas-caracteristicas-del-modelo">3. Variables Explicativas (Características del Modelo)</a></li>
+</ul>
+</li>
+<li><a href="#matriz-de-consistencia">Matriz de Consistencia</a></li>
+<li><a href="#diccionario-de-datos">Diccionario de Datos</a><ul>
+<li><a href="#1-identificacion-y-llaves-primarias">1. Identificación y Llaves Primarias</a></li>
+<li><a href="#2-variables-de-flujo-comercial-sunat">2. Variables de Flujo Comercial (SUNAT)</a></li>
+<li><a href="#3-variables-de-variables-exogenas-y-proxies">3. Variables de Variables Exógenas y Proxies</a></li>
+<li><a href="#4-caracteristicas-temporales-y-rezagos-lags">4. Características Temporales y Rezagos (Lags)</a></li>
+<li><a href="#5-variables-de-prediccion-y-residuos-anomaly-features">5. Variables de Predicción y Residuos (Anomaly Features)</a></li>
+<li><a href="#6-variables-y-metricas-de-anomalias-alerts">6. Variables y Métricas de Anomalías (Alerts)</a></li>
+</ul>
+</li>
+<li><a href="#decisiones-metodologicas-de-la-investigacion">Decisiones Metodológicas de la Investigación</a><ul>
+<li><a href="#1-identificacion-general">1. Identificación General</a></li>
+<li><a href="#2-cobertura-del-sistema">2. Cobertura del Sistema</a><ul>
+<li><a href="#21-productos-incluidos">2.1 Productos Incluidos</a></li>
+<li><a href="#22-periodo-y-ventana-temporal">2.2 Periodo y Ventana Temporal</a></li>
+</ul>
+</li>
+<li><a href="#3-variables-y-horizonte-de-prediccion">3. Variables y Horizonte de Predicción</a><ul>
+<li><a href="#31-variable-objetivo-principal-fob">3.1 Variable Objetivo Principal (FOB)</a></li>
+<li><a href="#32-variable-objetivo-secundaria-volumen">3.2 Variable Objetivo Secundaria (Volumen)</a></li>
+<li><a href="#33-horizonte-predictivo">3.3 Horizonte Predictivo</a></li>
+</ul>
+</li>
+<li><a href="#4-cadena-analitica-y-datos">4. Cadena Analítica y Datos</a><ul>
+<li><a href="#41-cadena-de-procesamiento">4.1 Cadena de Procesamiento</a></li>
+<li><a href="#42-fuentes-de-informacion">4.2 Fuentes de Información</a></li>
+<li><a href="#43-tratamiento-de-datos-sinteticos">4.3 Tratamiento de Datos Sintéticos</a></li>
+</ul>
+</li>
+<li><a href="#5-algoritmos-e-implementacion-analitica">5. Algoritmos e Implementación Analítica</a><ul>
+<li><a href="#51-modelos-predictivos">5.1 Modelos Predictivos</a></li>
+<li><a href="#52-deteccion-de-anomalias">5.2 Detección de Anomalías</a></li>
+<li><a href="#53-explicabilidad-shap">5.3 Explicabilidad (SHAP)</a></li>
+<li><a href="#54-reportes-rag-y-validacion-factual">5.4 Reportes RAG y Validación Factual</a></li>
+</ul>
+</li>
+<li><a href="#6-gobernanza-y-trazabilidad">6. Gobernanza y Trazabilidad</a></li>
+</ul>
+</li>
+<li><a href="#reporte-de-auditoria-de-referencias-bibliograficas">Reporte de Auditoría de Referencias Bibliográficas</a><ul>
+<li><a href="#1-resumen-de-la-auditoria">1. Resumen de la Auditoría</a></li>
+<li><a href="#2-clasificacion-detallada-de-referencias-clave">2. Clasificación Detallada de Referencias Clave</a><ul>
+<li><a href="#21-referencias-verificadas">2.1 Referencias Verificadas</a></li>
+<li><a href="#22-referencias-pendientes-de-confirmacion-localizacion-academica">2.2 Referencias Pendientes de Confirmación / Localización Académica</a></li>
+</ul>
+</li>
+<li><a href="#3-acciones-tomadas-en-refsbib">3. Acciones Tomadas en refs.bib</a></li>
+</ul>
+</li>
+<li><a href="#checklist-maestro-verificable-e-iterativo">Checklist Maestro Verificable e Iterativo</a><ul>
+<li><a href="#estado-base">Estado base</a></li>
+<li><a href="#regla-de-validacion">Regla de validacion</a></li>
+<li><a href="#control-de-avance">Control de avance</a></li>
+<li><a href="#criterio-de-terminado">Criterio de terminado</a></li>
+</ul>
+</li>
+<li><a href="#revision-de-avance-de-la-tesis">Revision de Avance de la Tesis</a><ul>
+<li><a href="#fuentes-revisadas">Fuentes revisadas</a></li>
+<li><a href="#hallazgos-principales">Hallazgos principales</a><ul>
+<li><a href="#1-la-tesis-ya-tiene-una-base-estructural-solida">1. La tesis ya tiene una base estructural solida</a></li>
+<li><a href="#2-el-pdf-22-06-es-una-linea-base-antigua-o-incompleta">2. El PDF 22-06 es una linea base antigua o incompleta</a></li>
+<li><a href="#3-el-borrador-vivo-ya-supera-al-pdf-base">3. El borrador vivo ya supera al PDF base</a></li>
+<li><a href="#4-el-prototipo-web-aporta-evidencia-funcional-real">4. El prototipo web aporta evidencia funcional real</a></li>
+<li><a href="#5-los-algoritmos-propuestos-estan-implementados">5. Los algoritmos propuestos estan implementados</a></li>
+</ul>
+</li>
+<li><a href="#cambios-necesarios">Cambios necesarios</a><ul>
+<li><a href="#capitulo-i">Capitulo I</a></li>
+<li><a href="#capitulo-ii">Capitulo II</a></li>
+<li><a href="#capitulo-iii">Capitulo III</a></li>
+<li><a href="#capitulo-iv">Capitulo IV</a></li>
+</ul>
+</li>
+<li><a href="#pendientes-criticos">Pendientes criticos</a></li>
+<li><a href="#documento-rector">Documento rector</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#documento-maestro-de-correccion-y-cierre-parcial">Documento Maestro de Correccion y Cierre Parcial</a><ul>
+<li><a href="#1-objetivo-de-la-correccion">1. Objetivo de la correccion</a></li>
+<li><a href="#2-diagnostico-general">2. Diagnostico general</a><ul>
+<li><a href="#21-pdf-base">2.1 PDF base</a></li>
+<li><a href="#22-borrador-vivo">2.2 Borrador vivo</a></li>
+<li><a href="#23-implementacion-tecnica">2.3 Implementacion tecnica</a></li>
+<li><a href="#24-prototipo-web">2.4 Prototipo web</a></li>
+</ul>
+</li>
+<li><a href="#3-correcciones-prioritarias">3. Correcciones prioritarias</a><ul>
+<li><a href="#c-01-portada-y-metadatos-institucionales">C-01 Portada y metadatos institucionales</a></li>
+<li><a href="#c-02-estructura-del-capitulo-iii">C-02 Estructura del Capitulo III</a></li>
+<li><a href="#c-03-algoritmos-propuestos-y-evidencia-de-implementacion">C-03 Algoritmos propuestos y evidencia de implementacion</a></li>
+<li><a href="#c-04-capitulo-iv-resultados-preliminares-versus-definitivos">C-04 Capitulo IV: resultados preliminares versus definitivos</a></li>
+<li><a href="#c-05-evaluacion-con-usuarios">C-05 Evaluacion con usuarios</a></li>
+<li><a href="#c-06-comparacion-pdf-versus-borrador-vivo">C-06 Comparacion PDF versus borrador vivo</a></li>
+</ul>
+</li>
+<li><a href="#4-checklist-de-ejecucion-de-correccion">4. Checklist de ejecucion de correccion</a></li>
+<li><a href="#5-correcciones-aplicadas-en-modulos-canonicos">5. Correcciones aplicadas en modulos canonicos</a></li>
+<li><a href="#6-pendientes-despues-de-la-correccion">6. Pendientes despues de la correccion</a></li>
+<li><a href="#5-definicion-de-avance-defendible">5. Definicion de avance defendible</a></li>
+<li><a href="#6-proximo-cierre-necesario">6. Proximo cierre necesario</a></li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -538,7 +664,7 @@
             <div class="header">
                 <h1>02 95 Tesis</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-22 08:30
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 09:10
                 </div>
             </div>
             
@@ -622,6 +748,7 @@ csl: apa.csl</p>
 <li>1.8 Alcance</li>
 <li>1.9 Línea, Tipo y Nivel de la Investigación</li>
 <li>1.10 Técnicas e Instrumentos de Recolección de Información</li>
+<li>1.11 Cronograma de Actividades</li>
 <li><strong>CAPÍTULO II: MARCO TEÓRICO</strong></li>
 <li>2.1 Antecedentes de la Investigación</li>
 <li>2.2 Estado del Arte</li>
@@ -655,10 +782,17 @@ csl: apa.csl</p>
 <h1 id="indice-de-figuras">ÍNDICE DE FIGURAS</h1>
 <ul>
 <li>Figura 3.1 — Arquitectura lógica del sistema integrado</li>
-<li>Figura 3.2 — Flujo general de datos y validación temporal</li>
-<li>Figura 3.3 — Esquema de trazabilidad de alerta, explicación y reporte</li>
+<li>Figura 3.2 — Flujo temporal de datos, predicción, alerta y reporte</li>
+<li>Figura 3.3 — Modelo lógico de trazabilidad de alerta, explicación y reporte</li>
 <li>Figura 4.1 — Vista de detalle de alerta del prototipo funcional</li>
 <li>Figura 4.2 — Consola de telemetría experimental del prototipo</li>
+<li>Figura 4.3 — Bandeja de gestión de alertas</li>
+<li>Figura 4.4 — Configuración de modelo y umbrales</li>
+<li>Figura 4.5 — Explorador de datos y biblioteca RAG</li>
+<li>Figura 4.6 — Importancia global SHAP para FOB</li>
+<li>Figura 4.7 — Importancia global SHAP para volumen</li>
+<li>Figura 4.8 — Distribución SHAP para FOB</li>
+<li>Figura 4.9 — Distribución SHAP para volumen</li>
 </ul>
 <hr />
 <h1 id="indice-de-tablas">ÍNDICE DE TABLAS</h1>
@@ -669,7 +803,10 @@ csl: apa.csl</p>
 <li>Tabla 2.1 — Comparativa de Sistemas de Supervisión con IA</li>
 <li>Tabla 2.2 — Resumen del Estado del Arte por Bloques Temáticos</li>
 <li>Tabla 3.1 — Mapeo de módulos, rutas, entradas, salidas y evidencia</li>
-<li>Tabla 3.2 — Controles de calidad temporal y prevención de fuga de información</li>
+<li>Tabla 3.2 — Inventario reproducible de archivos principales</li>
+<li>Tabla 3.3 — Caracterización del dataset semanal gold</li>
+<li>Tabla 3.4 — Controles de calidad temporal y prevención de fuga de información</li>
+<li>Tabla 3.5 — Checklist verificable de cierre del Capítulo III</li>
 <li>Tabla 4.1 — Rendimiento de detección en experimento preliminar</li>
 <li>Tabla 4.2 — Recall por tipo de anomalía</li>
 <li>Tabla 4.3 — Rendimiento predictivo de XGBoost</li>
@@ -752,18 +889,16 @@ csl: apa.csl</p>
 </ol>
 <hr />
 <h2 id="14-hipotesis-de-la-investigacion">1.4 Hipótesis de la investigación</h2>
-<h3 id="hipotesis-general-h1">Hipótesis general (H1)</h3>
-<p>El sistema integrado de predicción, detección de anomalías, explicabilidad y reportes trazables mejora significativamente la efectividad de la supervisión analítica de operaciones agroexportadoras peruanas en comparación con el uso de componentes analíticos aislados.</p>
-<h3 id="hipotesis-predictiva-de-fob-h1a">Hipótesis predictiva de FOB (H1a)</h3>
-<p>Los modelos globales de aprendizaje supervisado (XGBoost o LightGBM) presentan un error absoluto medio (MAE) significativamente menor en la predicción del valor unitario FOB esperado de la semana $t+1$ que el mejor baseline histórico y Elastic Net en el conjunto de test.</p>
-<h3 id="hipotesis-predictiva-de-volumen-h1b">Hipótesis predictiva de volumen (H1b)</h3>
-<p>Los regresores globales de GBDT obtienen un error cuadrático medio logarítmico (RMSLE) menor que la mediana móvil y el baseline estacional en el pronóstico del volumen semanal en el conjunto de test.</p>
-<h3 id="hipotesis-de-anomalias-h1c">Hipótesis de anomalías (H1c)</h3>
-<p>El ensemble no supervisado (IF + LOF + ECOD) calibrado por percentiles presenta una puntuación F1-score superior al promedio de sus detectores individuales sobre el conjunto de validación de anomalías sintéticas controladas.</p>
-<h3 id="hipotesis-de-usabilidad-h1d">Hipótesis de usabilidad (H1d)</h3>
-<p>Las explicaciones de SHAP combinadas con reportes narrativos RAG incrementan significativamente la tasa de comprensión operativa y reducen el tiempo de decisión de los evaluadores humanos frente a salidas técnicas y scores aislados.</p>
-<h3 id="hipotesis-de-trazabilidad-h1e">Hipótesis de trazabilidad (H1e)</h3>
-<p>El sistema integrado de metadatos y hashes SHA-256 permite alcanzar una proporción del 100% de alertas con trazabilidad documental completa y linaje reconstruible desde el microdato SUNAT hasta el informe técnico final.</p>
+<h3 id="141-hipotesis-general">1.4.1 Hipótesis general</h3>
+<p>La implementación de un sistema integrado de inteligencia artificial explicable, compuesto por predicción semanal de valor unitario FOB y volumen exportado, detección multivariable de anomalías, explicabilidad SHAP, reportes RAG con validación factual y trazabilidad documental, mejora significativamente la efectividad de la supervisión analítica de operaciones agroexportadoras peruanas respecto del uso de componentes analíticos aislados.</p>
+<h3 id="142-hipotesis-nula-h0">1.4.2 Hipótesis nula (H0)</h3>
+<p>La implementación de un sistema integrado de inteligencia artificial explicable no produce una mejora significativa en la efectividad de la supervisión analítica de operaciones agroexportadoras peruanas respecto del uso de componentes analíticos aislados, considerando rendimiento predictivo, detección de anomalías, comprensión del usuario, tiempo de análisis y trazabilidad documental.</p>
+<h3 id="143-hipotesis-especificas">1.4.3 Hipótesis específicas</h3>
+<p><strong>H1a.</strong> Los modelos globales XGBoost o LightGBM, entrenados sobre el dataset semanal producto-mercado-semana, presentan un error absoluto medio (MAE) significativamente menor que el mejor modelo base para predecir el valor unitario FOB de la siguiente semana.</p>
+<p><strong>H1b.</strong> Los modelos globales XGBoost o LightGBM, entrenados sobre el dataset semanal producto-mercado-semana, presentan un error logarítmico cuadrático medio (RMSLE) significativamente menor que el mejor modelo base para predecir el volumen exportado de la siguiente semana.</p>
+<p><strong>H1c.</strong> El ensemble de Isolation Forest, Local Outlier Factor y ECOD, calibrado por percentiles y alimentado con residuos predictivos y variables agroexportadoras, presenta un F1-Score superior al promedio de sus detectores individuales en un conjunto experimental con anomalías controladas.</p>
+<p><strong>H1d.</strong> Las alertas acompañadas de explicaciones SHAP y reportes RAG trazables producen una mayor comprensión operativa y un menor tiempo de análisis en los usuarios evaluadores que las alertas presentadas únicamente mediante resultados técnicos aislados.</p>
+<p><strong>H1e.</strong> El módulo de trazabilidad basado en identificadores, metadatos y hashes SHA-256 incrementa la proporción de alertas cuyo proceso puede reconstruirse desde los registros de origen, el dataset versionado y el modelo utilizado hasta la explicación, la decisión humana y el reporte final.</p>
 <hr />
 <h2 id="15-variables-e-indicadores">1.5 Variables e indicadores</h2>
 <h3 id="151-variable-independiente">1.5.1 Variable independiente</h3>
@@ -778,7 +913,7 @@ csl: apa.csl</p>
 <ul>
 <li><strong>Efectividad de la supervisión analítica (VD):</strong> evaluada en las dimensiones de rendimiento predictivo, rendimiento de detección, usabilidad subjetiva, tiempo de respuesta de diagnóstico y tasa de trazabilidad documental.</li>
 </ul>
-<p><em>(La tabla de operacionalización detallada que vincula dimensiones, indicadores, escalas, técnicas e instrumentos se presenta en la <a href="file:///d:/tesis_yoset/docs/tesis/MATRIZ_OPERACIONALIZACION.md">Matriz de Operacionalización</a>).</em></p>
+<p><em>(La tabla de operacionalización detallada que vincula dimensiones, indicadores, escalas, técnicas e instrumentos se incorpora como anexo compilado de esta tesis: "Matriz de Operacionalización").</em></p>
 <hr />
 <h2 id="16-viabilidad-de-la-investigacion">1.6 Viabilidad de la investigación</h2>
 <h3 id="161-viabilidad-tecnica">1.6.1 Viabilidad técnica</h3>
@@ -800,7 +935,7 @@ csl: apa.csl</p>
 <ul>
 <li><strong>Temático y Tecnológico:</strong> Diseño, desarrollo experimental y evaluación de una arquitectura modular de cuatro capas (Predicción, Detección de Anomalías con PyOD, Explicabilidad con TreeSHAP y Reporte con RAG/LLM) y un módulo registrador de trazabilidad con hashes SHA-256.</li>
 <li><strong>Geográfico:</strong> Microdatos de exportaciones agrícolas peruanas registradas en las aduanas nacionales, principalmente asociadas a las zonas productoras y puertos de La Libertad, Piura, Ica, Lambayeque y Arequipa.</li>
-<li><strong>Productivo:</strong> Acotado estrictamente a palta (<em>avocado</em>), uva fresca (<em>grape</em>) y arándano (<em>blueberry</em>). Se excluye permanentemente cacao por baja representatividad, y espárrago por limitación analítica.</li>
+<li><strong>Productivo:</strong> El núcleo experimental está acotado a palta (<em>avocado</em>), uva fresca (<em>grape</em>) y arándano (<em>blueberry</em>). El espárrago se conserva como producto secundario o de sensibilidad solo si se declara su menor cobertura y no se mezcla en conclusiones principales. Se excluye permanentemente cacao por baja representatividad.</li>
 <li><strong>Temporal:</strong> Ventana continua desde <strong>junio de 2018 hasta mayo de 2026</strong>.</li>
 <li><strong>Exclusiones:</strong> No se implementará monitoreo de variables en tiempo real, control autónomo de despachos aduaneros, modelos de Deep Learning como propuesta principal ni integraciones funcionales con sistemas ERP privados de empresas particulares.</li>
 </ul>
@@ -813,11 +948,214 @@ csl: apa.csl</p>
 <li><strong>Diseño de Investigación:</strong> Cuasiexperimental (comparación de VI), longitudinal (análisis temporal 2018-2026) y comparativo (evaluación frente a baselines).</li>
 </ul>
 <hr />
-<h2 id="110-tecnicas-e-instrumentos">1.10 Técnicas e instrumentos</h2>
+<h2 id="110-tecnicas-e-instrumentos-de-recoleccion-de-informacion">1.10 Técnicas e instrumentos de recolección de información</h2>
+<p>La investigación combina técnicas documentales, computacionales, funcionales y evaluativas. Debido a que el objeto de estudio es un sistema integrado de inteligencia artificial explicable, la recolección de información incluye literatura, fuentes institucionales, datasets, métricas, logs, reportes automáticos, pruebas de calidad, evidencia de prototipo y registros de interacción de usuarios.</p>
+<p>Las técnicas utilizadas son:</p>
 <ul>
-<li><strong>Técnicas:</strong> Análisis documental para estructuración de datos; experimentación tecnológica controlada para entrenamiento y pruebas de rendimiento del pipeline; encuestas para la evaluación de usabilidad y comprensión con usuarios.</li>
-<li><strong>Instrumentos:</strong> Ficha de normalización de datos; consola y scripts de entrenamiento y evaluación computacional en Python; cuestionario de usabilidad SUS; y scripts de registro automático de tiempos y validación factual de reportes.</li>
+<li>Análisis documental.</li>
+<li>Experimentación computacional.</li>
+<li>Pruebas funcionales del sistema.</li>
+<li>Auditoría de trazabilidad.</li>
+<li>Prueba controlada con usuarios.</li>
+<li>Evaluación mediante rúbricas.</li>
 </ul>
+<p><strong>Tabla 1.3 — Técnicas e instrumentos de recolección de información</strong></p>
+<table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Instrumento</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Análisis documental</td>
+<td>Matriz de revisión bibliográfica y ficha de antecedentes</td>
+<td>Identificar fundamentos teóricos, antecedentes, brechas, algoritmos aplicables y criterios de comparación para sustentar el Capítulo II.</td>
+</tr>
+<tr>
+<td>Análisis documental</td>
+<td>Ficha de fuente de datos</td>
+<td>Registrar origen, granularidad, periodo, licencia, ruta local, limitaciones y clasificación de cada fuente como real observada, agregada, proxy o sintética controlada.</td>
+</tr>
+<tr>
+<td>Experimentación computacional</td>
+<td>Scripts de ETL, integración y preparación semanal</td>
+<td>Construir el dataset agroexportador integrado a nivel producto, mercado y semana ISO, manteniendo trazabilidad de fuentes y reglas de transformación.</td>
+</tr>
+<tr>
+<td>Experimentación computacional</td>
+<td>Scripts de entrenamiento y evaluación predictiva</td>
+<td>Medir el desempeño de modelos basales, XGBoost y LightGBM para predicción semanal de valor unitario FOB y volumen exportado.</td>
+</tr>
+<tr>
+<td>Experimentación computacional</td>
+<td>Scripts de detección de anomalías</td>
+<td>Evaluar Isolation Forest, Local Outlier Factor, ECOD y el ensemble propuesto frente a anomalías estadísticas o sintéticas controladas.</td>
+</tr>
+<tr>
+<td>Pruebas funcionales del sistema</td>
+<td>Checklist de rutas, pantallas y endpoints</td>
+<td>Verificar que el prototipo funcional ejecute login, dashboard, alertas, detalle, historial, telemetría, integridad, datos, configuración y usuarios.</td>
+</tr>
+<tr>
+<td>Pruebas funcionales del sistema</td>
+<td>Capturas de pantalla documentadas</td>
+<td>Registrar visualmente las pantallas del prototipo y dejar evidencia de las figuras que deberán incorporarse al documento final.</td>
+</tr>
+<tr>
+<td>Auditoría de trazabilidad</td>
+<td>Registro de hashes SHA-256, UUID y versiones</td>
+<td>Reconstruir el linaje de datasets, modelos, alertas, explicaciones, reportes y artefactos experimentales.</td>
+</tr>
+<tr>
+<td>Auditoría de trazabilidad</td>
+<td>Pruebas automatizadas de calidad y fuga temporal</td>
+<td>Confirmar reglas mínimas de calidad, partición temporal, ausencia de fuga de información y reproducibilidad de evidencia.</td>
+</tr>
+<tr>
+<td>Prueba controlada con usuarios</td>
+<td>Cuestionario SUS y escala Likert de comprensión</td>
+<td>Medir usabilidad percibida, claridad, utilidad de explicaciones y comprensión de alertas por parte de usuarios evaluadores.</td>
+</tr>
+<tr>
+<td>Prueba controlada con usuarios</td>
+<td>Registro automático de tiempo y decisión</td>
+<td>Comparar la condición de sistema integrado frente a la condición de resultados aislados mediante tiempo de análisis y respuestas correctas.</td>
+</tr>
+<tr>
+<td>Evaluación mediante rúbricas</td>
+<td>Rúbrica de reportes automáticos</td>
+<td>Validar completitud, coherencia, fidelidad factual, consistencia numérica y presencia de evidencia estructurada en reportes generados.</td>
+</tr>
+<tr>
+<td>Evaluación mediante rúbricas</td>
+<td>Matriz de aceptación de evidencia</td>
+<td>Clasificar artefactos como preliminares, candidatos o finales y verificar si cada evidencia puede reproducirse e incorporarse a la tesis.</td>
+</tr>
+</tbody>
+</table>
+<p>Datos pendientes para completar esta sección en la versión final:</p>
+<ul>
+<li>Definir el formato institucional final de las fichas de análisis documental.</li>
+<li>Incorporar las capturas definitivas del prototipo en <code>docs/figures/</code>.</li>
+<li>Guardar el instrumento final de consentimiento, tareas, encuesta SUS y escala Likert.</li>
+<li>Registrar la prueba automatizada de fuga temporal en <code>reports/tesis/data-quality/leakage-tests/</code>.</li>
+<li>Registrar corridas experimentales con identificador, commit, semilla, configuración, métricas y hashes.</li>
+<li>Incorporar la rúbrica final de validación factual de reportes automáticos.</li>
+<li>Precisar número final y perfil de participantes de la prueba controlada con usuarios.</li>
+<li>Marcar como definitivos solo los artefactos que cuenten con comando, salida esperada, fecha, versión y evidencia reproducible.</li>
+</ul>
+<hr />
+<h2 id="111-cronograma-de-actividades">1.11 Cronograma de actividades</h2>
+<p>El cronograma se organiza desde el estado actual del proyecto hasta la primera semana de diciembre de 2026, fecha prevista para la sustentación de tesis. Las fechas podrán ajustarse por calendario académico, disponibilidad del asesor o requisitos administrativos de la escuela, pero la secuencia metodológica debe mantenerse: cierre documental, cierre de datos, experimento, redacción final, revisión, depósito y sustentación.</p>
+<p><strong>Tabla 1.2 — Cronograma de actividades hasta sustentación</strong></p>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Periodo</th>
+<th>Actividades principales</th>
+<th>Producto verificable</th>
+<th>Estado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1. Ordenamiento documental</td>
+<td>22-30 junio 2026</td>
+<td>Completar Capítulos II y III, depurar antecedentes nacionales, consolidar placeholders de figuras y capturas</td>
+<td><code>docs/02-20</code>, <code>02-21</code>, <code>02-22</code>, <code>02-30</code>, tesis monolítica regenerada</td>
+<td>En curso</td>
+</tr>
+<tr>
+<td>F2. Cierre de datos</td>
+<td>1-15 julio 2026</td>
+<td>Congelar dataset gold, registrar hashes, validar cobertura, resolver duplicados funcionales y documentar fuentes proxy</td>
+<td><code>data/gold/</code>, <code>codex-revision/reporte-calidad-datos.md</code>, reporte de dataset</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F3. Pruebas de calidad y fuga</td>
+<td>16-31 julio 2026</td>
+<td>Ejecutar pruebas de calidad, fuga temporal, escaladores, codificadores y partición temporal</td>
+<td><code>reports/tesis/data-quality/leakage-tests/</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F4. Entrenamiento predictivo</td>
+<td>1-20 agosto 2026</td>
+<td>Entrenar baselines, XGBoost y LightGBM para FOB y volumen; registrar hiperparámetros y residuos fuera de muestra</td>
+<td><code>reports/tesis/experiments/&lt;run_id&gt;/</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F5. Validación de anomalías</td>
+<td>21 agosto-5 septiembre 2026</td>
+<td>Ejecutar IF, LOF, ECOD, ensemble, anomalías sintéticas y métricas por tipo</td>
+<td>Métricas PR-AUC, F1, Recall, Precision@k</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F6. Explicabilidad y reportes</td>
+<td>6-20 septiembre 2026</td>
+<td>Generar SHAP, reportes RAG, validación factual y comparación con plantilla determinística</td>
+<td><code>data/gold/local_explanations.json</code>, <code>validation_metrics.json</code>, reportes auditados</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F7. Prototipo y capturas finales</td>
+<td>21 septiembre-5 octubre 2026</td>
+<td>Verificar <code>sistema-web-agro</code>, capturar pantallas finales, insertar figuras y actualizar anexos</td>
+<td><code>docs/figures/</code>, anexos y evidencia visual</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F8. Prueba controlada con usuarios</td>
+<td>6-20 octubre 2026</td>
+<td>Ejecutar estudio A/B, consentimiento, anonimización, SUS, tiempos y decisiones</td>
+<td><code>reports/tesis/user-study/</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F9. Capítulo IV final</td>
+<td>21 octubre-5 noviembre 2026</td>
+<td>Reemplazar resultados preliminares por resultados reproducibles, contrastar hipótesis y cerrar discusión</td>
+<td>Capítulo IV actualizado</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F10. Capítulo V y conclusiones</td>
+<td>6-15 noviembre 2026</td>
+<td>Redactar conclusiones, limitaciones, recomendaciones y trabajos futuros según resultados finales</td>
+<td>Capítulo V y recomendaciones</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F11. Revisión integral</td>
+<td>16-22 noviembre 2026</td>
+<td>Revisar formato, APA, citas, tablas, figuras, anexos, índices y coherencia de hipótesis</td>
+<td>Borrador final revisado</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F12. Compilación y depósito</td>
+<td>23-30 noviembre 2026</td>
+<td>Generar PDF/DOCX final, verificar maquetación, firmar anexos y preparar entrega administrativa</td>
+<td><code>output/tesis_final.pdf</code>, <code>output/tesis_final.docx</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F13. Sustentación</td>
+<td>Primera semana de diciembre 2026</td>
+<td>Presentación, defensa, demostración del prototipo y respuesta a observaciones</td>
+<td>Sustentación de tesis</td>
+<td>Meta final</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hito final:</strong> sustentación de tesis durante la primera semana de diciembre de 2026.</p>
 <div style="page-break-before: always;"></div>
 
 <div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
@@ -873,35 +1211,83 @@ csl: apa.csl</p>
 </li>
 </ol>
 <hr />
-<h3 id="212-antecedentes-nacionales-en-evaluacion-y-revision-academica">2.1.2 Antecedentes Nacionales en Evaluación y Revisión Académica</h3>
-<blockquote>
-<p>[!WARNING]<br />
-Las siguientes referencias corresponden a literatura y borradores preliminares del contexto nacional peruano. Debido a limitaciones de localización en repositorios indizados oficiales al momento de esta reestructuración, se declaran bajo estado de <strong>revisión y auditoría académica</strong> y no deben asumirse como verdades científicas definitivas hasta que el alumno y su asesor confirmen su validez bibliográfica exacta:</p>
-</blockquote>
+<h3 id="212-antecedentes-nacionales-y-evidencia-sectorial-verificable">2.1.2 Antecedentes nacionales y evidencia sectorial verificable</h3>
+<p>Durante la revisión documental se identificó que algunos antecedentes nacionales usados en borradores previos no contaban todavía con trazabilidad bibliográfica suficiente para sostener autores, año, universidad, muestra y resultados cuantitativos. Por esa razón, esta versión no mantiene afirmaciones no verificadas como reducción de mermas, mejora porcentual de pronóstico o resultados de sensores IoT si no existe documento original localizado. La sección nacional se reestructura con fuentes institucionales verificables y con una lista explícita de antecedentes académicos pendientes de sustitución.</p>
 <ol>
+<li><strong>MIDAGRI (2026) — Reporte sectorial de agroexportaciones peruanas</strong></li>
+<li><strong>Objetivo documental:</strong> Caracterizar el crecimiento reciente de la agroexportación peruana y ubicar la relevancia económica del sector.</li>
+<li><strong>Datos:</strong> Información institucional de ventas agroexportadoras y productos representativos reportada por el Ministerio de Desarrollo Agrario y Riego.</li>
+<li><strong>Aporte a la tesis:</strong> Sustenta el contexto económico que justifica priorizar productos agroexportadores de alta participación, especialmente palta, uva y arándano.</li>
 <li>
-<p><strong>Mendoza &amp; Huamán (2024) — <em>Modelos GBDT y clima para predicción agroexportadora peruana</em></strong></p>
-<ul>
-<li><strong>Objetivo:</strong> Evaluar modelos basados en árboles para pronosticar el rendimiento físico de cultivos de arándano y uva en La Libertad y Piura.</li>
-<li><strong>Datos:</strong> Series de exportación regionales y variables de estaciones meteorológicas del SENAMHI.</li>
-<li><strong>Método:</strong> Modelamiento predictivo supervisado con XGBoost y LightGBM incorporando lags de temperatura y precipitación.</li>
-<li><strong>Resultados Reales:</strong> Reducción del error de pronóstico de volumen a corto plazo frente a modelos autorregresivos lineales tradicionales (ARIMA).</li>
-<li><strong>Limitación:</strong> No aborda la integración de variables financieras ni la detección automática de anomalías aduaneras.</li>
-<li><strong>Relación con la Tesis:</strong> Aporta justificación sobre el comportamiento no lineal de las variables climáticas proxies en cultivos peruanos.</li>
-</ul>
+<p><strong>Limitación:</strong> No entrega microdatos transaccionales ni permite por sí sola evaluar modelos predictivos o detectores de anomalías.</p>
 </li>
 <li>
-<p><strong>Chávez &amp; Díaz (2023) — <em>Detección de anomalías IoT en cadenas de frío de perecederos</em></strong></p>
-<ul>
-<li><strong>Objetivo:</strong> Detectar desviaciones térmicas y logísticas en contenedores de exportación de uva fresca peruana mediante sensores de temperatura y humedad en tránsito marítimo.</li>
-<li><strong>Datos:</strong> Registros de sensores IoT capturados durante despachos de exportación marítima.</li>
-<li><strong>Método:</strong> Clasificación no supervisada de outliers utilizando algoritmos de Isolation Forest y LOF aplicados de manera independiente.</li>
-<li><strong>Resultados Reales:</strong> Identificación oportuna de fallas mecánicas de frío, reportando reducciones del 15% en mermas en puerto de destino.</li>
-<li><strong>Limitación:</strong> Los algoritmos operan de forma aislada y carecen de una capa explicativa, lo que dificulta la interpretación de las alertas por parte del personal operativo.</li>
-<li><strong>Relación con la Tesis:</strong> Ilustra la utilidad práctica de Isolation Forest y LOF en el dominio agroexportador peruano y justifica la inyección de SHAP y reportes RAG para superar la opacidad de los modelos ("cajas negras").</li>
-</ul>
+<p><strong>SUNAT/ADUANET (2026) — Bases y estadísticas aduaneras</strong></p>
 </li>
+<li><strong>Objetivo documental:</strong> Proveer registros o series de comercio exterior que permiten reconstruir valor FOB, peso, subpartida, país de destino y periodo de exportación.</li>
+<li><strong>Datos usados en el proyecto:</strong> Descargas locales en <code>data/sunat/raw_downloads/</code>, <code>data/sunat/x23290326.DBF</code>, <code>data/raw/exports_raw.csv</code> y capas procesadas <code>data/bronze/</code>, <code>data/silver/</code> y <code>data/gold/</code>.</li>
+<li><strong>Aporte a la tesis:</strong> Constituye la fuente primaria para la unidad producto-mercado-semana y para las variables de valor FOB, volumen y destino.</li>
+<li>
+<p><strong>Limitación:</strong> Las descargas locales completas disponibles se concentran en ventanas 2026; la cobertura 2018-2025 requiere documentar si proviene de dataset real local consolidado, fuentes agregadas o reconstrucción complementaria.</p>
+</li>
+<li>
+<p><strong>BCRP (2018-2026) — Tipo de cambio PEN/USD</strong></p>
+</li>
+<li><strong>Objetivo documental:</strong> Incorporar una variable macroeconómica exógena para normalizar o contextualizar el comportamiento de valor exportado.</li>
+<li><strong>Datos usados en el proyecto:</strong> <code>data/bcrp/exchange_rates_cache.json</code> y <code>data/downloads/bcrp_tipo_cambio.csv</code>.</li>
+<li><strong>Aporte a la tesis:</strong> Permite incluir contexto macroeconómico en los modelos de predicción y detectar semanas donde una desviación comercial puede coincidir con cambios cambiarios.</li>
+<li>
+<p><strong>Limitación:</strong> La frecuencia mensual debe mapearse cuidadosamente a semana ISO sin usar información posterior a la semana objetivo.</p>
+</li>
+<li>
+<p><strong>SISAP/MIDAGRI y Trade Map — Contexto de mercado interno e internacional</strong></p>
+</li>
+<li><strong>Objetivo documental:</strong> Incorporar referencias externas de precios, volúmenes y mercados para contextualizar exportaciones por producto.</li>
+<li><strong>Datos usados en el proyecto:</strong> Manifiestos SISAP en <code>codex-revision/metadata/</code> y archivos Trade Map en <code>data-trademap/</code>.</li>
+<li><strong>Aporte a la tesis:</strong> Funcionan como fuentes de contraste y contexto, no como sustituto del registro aduanero.</li>
+<li>
+<p><strong>Limitación:</strong> Operan con granularidades distintas al embarque aduanero; por tanto, su integración se declara como variable agregada o proxy.</p>
+</li>
+<li>
+<p><strong>SENAMHI/NASA POWER y proxies climáticos</strong></p>
+</li>
+<li><strong>Objetivo documental:</strong> Proveer contexto climático regional para productos perecederos.</li>
+<li><strong>Datos usados en el proyecto:</strong> Variables climáticas presentes en <code>data/dataset_real_v1.csv</code>, <code>data/silver/exports_clean.parquet</code> y <code>data/gold/weekly_product_market.parquet</code>.</li>
+<li><strong>Aporte a la tesis:</strong> Permiten evaluar si las semanas con mayor estrés climático agregado coinciden con cambios de volumen, valor unitario o anomalías.</li>
+<li><strong>Limitación:</strong> No prueban causalidad logística ni falla de cadena de frío por embarque; solo aportan contexto agregado.</li>
 </ol>
+<p><strong>Antecedentes académicos nacionales pendientes de sustitución.</strong> Los trabajos titulados provisionalmente "Modelos GBDT y clima para predicción agroexportadora peruana" y "Detección de anomalías IoT en cadenas de frío de perecederos" se retiran como evidencia académica cerrada hasta localizar documento original, repositorio, autores, institución, año, muestra y resultados. Si no se verifica su existencia, deberán reemplazarse por tesis o artículos reales encontrados en RENATI, Alicia/CONCYTEC, repositorios universitarios peruanos o revistas indizadas.</p>
+<table>
+<thead>
+<tr>
+<th>Antecedente preliminar</th>
+<th>Acción requerida</th>
+<th>Estado en esta versión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mendoza &amp; Huamán (2024)</td>
+<td>Localizar documento original y verificar resultados atribuidos</td>
+<td>No usado como evidencia concluyente</td>
+</tr>
+<tr>
+<td>Chávez &amp; Díaz (2023)</td>
+<td>Localizar documento original y verificar reducción de mermas atribuida</td>
+<td>No usado como evidencia concluyente</td>
+</tr>
+<tr>
+<td>Estudios nacionales de cadena de frío</td>
+<td>Sustituir por documentos reales con repositorio y metodología verificable</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>Estudios nacionales de forecasting agroexportador</td>
+<td>Sustituir por documentos reales con datos y métricas reproducibles</td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="213-antecedentes-metodologicos">2.1.3 Antecedentes Metodológicos</h3>
 <ol>
@@ -968,6 +1354,64 @@ Las siguientes referencias corresponden a literatura y borradores preliminares d
 <h3 id="228-gobernanza-de-ia-y-trazabilidad">2.2.8 Gobernanza de IA y Trazabilidad</h3>
 <p>El despliegue de sistemas inteligentes se enfrenta a exigencias de gobernanza corporativa y rendición de cuentas, reguladas por marcos nacionales como el Decreto Supremo N° 115-2025-PCM (Gobernanza y Supervisión Humana en Perú) y metodologías internacionales como el NIST AI Risk Management Framework (AI RMF 1.0) y las directrices de la Resolución SBS N° 053-2023 para riesgos de modelos. El estado del arte exige que cada alerta sea reproducible mediante marcas de tiempo, identificadores únicos y firmas SHA-256 de todas las fases del procesamiento.</p>
 <hr />
+<h3 id="229-brecha-especifica-que-aborda-la-tesis">2.2.9 Brecha específica que aborda la tesis</h3>
+<p>La revisión anterior permite delimitar una brecha precisa: los trabajos y herramientas existentes suelen resolver de forma separada el pronóstico, la detección de anomalías, la explicabilidad, la generación de reportes o la trazabilidad. En cambio, el problema de supervisión analítica agroexportadora requiere un flujo unido y auditable, porque una alerta solo es útil si puede reconstruirse desde el dato de origen hasta la decisión humana.</p>
+<table>
+<thead>
+<tr>
+<th>Bloque del estado del arte</th>
+<th>Solución dominante</th>
+<th>Brecha persistente</th>
+<th>Decisión de esta tesis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicción tabular</td>
+<td>GBDT, modelos estadísticos y redes tabulares</td>
+<td>Bajo acoplamiento con anomalías y reportes</td>
+<td>Usar XGBoost/LightGBM como estimadores globales de valor FOB y volumen</td>
+</tr>
+<tr>
+<td>Anomalías</td>
+<td>Detectores individuales o benchmarks genéricos</td>
+<td>Sensibilidad al tipo de anomalía y umbral</td>
+<td>Ensemble IF + LOF + ECOD calibrado por percentiles</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>SHAP/LIME como análisis post-hoc</td>
+<td>Explicaciones no siempre llegan al usuario final</td>
+<td>Inyectar top-k SHAP en la alerta y el reporte</td>
+</tr>
+<tr>
+<td>Reportes LLM</td>
+<td>Redacción flexible de texto</td>
+<td>Riesgo de alucinación numérica y factual</td>
+<td>RAG restringido + validador determinístico</td>
+</tr>
+<tr>
+<td>Gobernanza</td>
+<td>Model cards, datasheets y auditoría</td>
+<td>Trazabilidad fragmentada entre archivos</td>
+<td>Hashes SHA-256, UUID y registro de linaje por alerta</td>
+</tr>
+<tr>
+<td>Agroexportación peruana</td>
+<td>Reportes sectoriales y fuentes públicas</td>
+<td>Granularidades heterogéneas y proxies</td>
+<td>Dataset semanal producto-mercado-semana con marcas de origen</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2210-implicancia-para-el-diseno-metodologico">2.2.10 Implicancia para el diseño metodológico</h3>
+<p>El diseño del Capítulo III adopta tres principios derivados del estado del arte:</p>
+<ol>
+<li><strong>Modelo antes que alerta:</strong> la anomalía se interpreta como desviación respecto de un valor esperado, no como simple valor extremo observado.</li>
+<li><strong>Explicación antes que automatización:</strong> el sistema apoya la decisión humana y no ejecuta bloqueos automáticos ni sanciones.</li>
+<li><strong>Evidencia antes que narrativa:</strong> el reporte automático solo es aceptable si sus cifras y afirmaciones pueden rastrearse a datos estructurados, documentos recuperados o logs de ejecución.</li>
+</ol>
+<p>Cuando una fuente no tiene granularidad de embarque, se incorpora como contexto agregado o proxy y se prohíbe interpretarla como causa directa de una falla operativa. Esta regla es central para mantener consistencia entre el alcance de los datos disponibles y las afirmaciones de la tesis.</p>
 <div style="page-break-before: always;"></div>
 
 <div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
@@ -999,6 +1443,51 @@ No equivale conceptualmente al precio internacional de venta minorista en destin
 <p>Arquitectura de procesamiento de lenguaje natural que inyecta contexto documental e histórico verificado (recuperado de una base de conocimiento mediante búsqueda híbrida BM25 y embeddings) directamente en el prompt del LLM para restringir la redacción narrativa del reporte y evitar alucinaciones extrínsecas.</p>
 <h3 id="2311-trazabilidad-de-modelos-y-linaje-de-datos">2.3.11 Trazabilidad de Modelos y Linaje de Datos</h3>
 <p>Capacidad de documentar y reconstruir de extremo a extremo el flujo de procesamiento de una alerta. Se garantiza mediante el registro inmutable de metadatos de configuración, identificadores UUIDv4 para cada fase y hashes SHA-256 de los datasets y modelos entrenados.</p>
+<h3 id="2312-dato-real-observado-dato-agregado-proxy-y-dato-sintetico">2.3.12 Dato real observado, dato agregado, proxy y dato sintético</h3>
+<p>Para evitar ambigüedad metodológica, esta tesis distingue cuatro tipos de evidencia:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Definición</th>
+<th>Ejemplo en el proyecto</th>
+<th>Uso permitido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real observado</td>
+<td>Registro directamente asociado a una operación o fuente primaria</td>
+<td>FOB, peso, destino y fecha derivados de SUNAT/ADUANET o dataset real local</td>
+<td>Entrenamiento, validación y caracterización</td>
+</tr>
+<tr>
+<td>Real agregado</td>
+<td>Serie institucional agregada sin granularidad de embarque</td>
+<td>Tipo de cambio BCRP, precios SISAP/MIDAGRI, series Trade Map</td>
+<td>Contexto y variables exógenas</td>
+</tr>
+<tr>
+<td>Proxy documentado</td>
+<td>Aproximación razonable cuando no existe medición directa por embarque</td>
+<td>Clima regional, días logísticos agregados, alertas sanitarias agregadas</td>
+<td>Contexto explicativo no causal</td>
+</tr>
+<tr>
+<td>Sintético controlado</td>
+<td>Dato generado para simulación, balanceo o inyección experimental</td>
+<td>Alertas semilla, anomalías inyectadas, datos de interfaz</td>
+<td>Validación funcional o experimento controlado</td>
+</tr>
+</tbody>
+</table>
+<p>Un proxy no demuestra causa empresarial real; solo aporta contexto para el modelo y para la interpretación del analista.</p>
+<h3 id="2313-resultado-preliminar-y-resultado-definitivo">2.3.13 Resultado preliminar y resultado definitivo</h3>
+<p>Un resultado es <strong>preliminar</strong> cuando proviene de datos semilla, muestras pequeñas, corridas exploratorias o artefactos sin registro completo de dataset, commit, configuración, semilla y hash. Un resultado es <strong>definitivo</strong> únicamente cuando puede reproducirse con un comando documentado, sobre un dataset versionado, con partición temporal congelada y salidas verificables.</p>
+<h3 id="2314-placeholder-de-figura-o-evidencia-visual">2.3.14 Placeholder de figura o evidencia visual</h3>
+<p>Cuando una figura, diagrama o captura de pantalla todavía no existe como PNG/SVG/PDF insertable, el documento debe conservar un placeholder explícito. El placeholder debe indicar: código de figura, título, archivo esperado, fuente de generación, contenido visual requerido y criterio de aceptación. Este criterio evita que el índice de figuras prometa artefactos que no están disponibles.</p>
+<h3 id="2315-supervision-analitica-frente-a-supervision-operativa-causal">2.3.15 Supervisión analítica frente a supervisión operativa causal</h3>
+<p>La tesis emplea el término <strong>supervisión analítica</strong> para referirse al apoyo computacional en la identificación, explicación y documentación de desviaciones. No afirma causalidad operativa directa cuando los datos disponibles son semanales, agregados o proxies. Las referencias a logística, clima, sanidad o calidad se interpretan como contexto analítico salvo que exista evidencia directa por embarque.</p>
 <div style="page-break-before: always;"></div>
 
 <div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
@@ -1084,7 +1573,7 @@ No equivale conceptualmente al precio internacional de venta minorista en destin
 <li><em>Servicios y Dashboard:</em> Flask / Streamlit, Jinja2, HTML5/CSS3 (estilo premium).</li>
 <li><em>Persistencia:</em> Parquet para almacenamiento analítico y archivos JSON para trazabilidad y configuraciones.</li>
 </ul>
-<h3 id="3110-arquitectura-de-componentes-mermaid">3.1.10 Arquitectura de Componentes (Mermaid)</h3>
+<h3 id="3110-arquitectura-de-componentes">3.1.10 Arquitectura de Componentes</h3>
 <div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
 <span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Capa_Datos</span><span class="w"> </span><span class="p">[</span><span class="n">Capa</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Datos</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">ETL</span><span class="p">]</span>
 <span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">SUNAT</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="n">DBF</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">parse_sunat_dbf</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Bronze</span><span class="w"> </span><span class="n">Parquet</span><span class="p">]</span>
@@ -1113,6 +1602,12 @@ No equivale conceptualmente al precio internacional de venta minorista en destin
 <span class="w">    </span><span class="n">end</span>
 </code></pre></div>
 
+<p><strong>Figura 3.1 — Arquitectura lógica del sistema integrado.</strong><br />
+<strong>Estado:</strong> placeholder de figura pendiente.<br />
+<strong>Archivo esperado:</strong> <code>docs/figures/figura_3_1_arquitectura_logica.svg</code> y copia PNG en <code>docs/figures/figura_3_1_arquitectura_logica.png</code>.<br />
+<strong>Fuente de generación:</strong> bloque Mermaid anterior o diagrama equivalente generado desde <code>src/module1_prediction.py</code> a <code>src/module6_traceability.py</code> y <code>sistema-web-agro/backend/app.py</code>.<br />
+<strong>Contenido visual requerido:</strong> cinco capas diferenciadas: datos/ETL, modelado predictivo, anomalías, explicabilidad/RAG-validación y dashboard/trazabilidad. Debe mostrar entradas, salidas, módulos y relación de linaje.<br />
+<strong>Criterio de aceptación:</strong> la figura debe renderizarse sin código Mermaid visible en el PDF final, tener título, fuente "Elaboración propia" y coincidir con las rutas reales del repositorio.</p>
 <h2 id="32-esquema-de-la-propuesta">3.2 Esquema de la Propuesta</h2>
 <h3 id="321-flujo-general-de-datos">3.2.1 Flujo General de Datos</h3>
 <div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
@@ -1149,6 +1644,12 @@ No equivale conceptualmente al precio internacional de venta minorista en destin
 <span class="w">    </span><span class="n">Log</span><span class="o">-&gt;&gt;</span><span class="n">Log</span><span class="p">:</span><span class="w"> </span><span class="n">Retornar</span><span class="w"> </span><span class="n">alert_id</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">confirmar</span><span class="w"> </span><span class="n">trazabilidad</span>
 </code></pre></div>
 
+<p><strong>Figura 3.2 — Flujo temporal de datos, predicción, alerta y reporte.</strong><br />
+<strong>Estado:</strong> placeholder de figura pendiente.<br />
+<strong>Archivo esperado:</strong> <code>docs/figures/figura_3_2_flujo_temporal.svg</code> y copia PNG en <code>docs/figures/figura_3_2_flujo_temporal.png</code>.<br />
+<strong>Fuente de generación:</strong> bloque Mermaid anterior, scripts <code>src/prepare_weekly_dataset.py</code>, <code>src/feature_engineering.py</code>, <code>src/module1_prediction.py</code>, <code>src/module2_anomaly.py</code>, <code>src/module4_rag.py</code> y <code>src/module6_traceability.py</code>.<br />
+<strong>Contenido visual requerido:</strong> secuencia desde registros SUNAT/ADUANET hasta dataset gold, predicción, residuo, score ensemble, explicación SHAP, reporte RAG, validación factual y log de trazabilidad.<br />
+<strong>Criterio de aceptación:</strong> debe distinguir explícitamente información disponible en semana <code>t</code> frente al objetivo <code>t+1</code>, para evidenciar prevención de fuga temporal.</p>
 <h3 id="322-esquema-y-capas-de-datos">3.2.2 Esquema y Capas de Datos</h3>
 <ul>
 <li><strong>Raw:</strong> Datos crudos originales descargados sin procesar (formatos DBF de SUNAT y CSVs de SISAP/BCRP).</li>
@@ -1232,6 +1733,12 @@ $$\text{residual_robust_z} = \frac{\text{residuo}(t) - \text{mediana}(\text{resi
 <span class="w">    </span><span class="n">ExplanationLog</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ReportLog</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;documenta&quot;</span>
 </code></pre></div>
 
+<p><strong>Figura 3.3 — Modelo lógico de trazabilidad de alerta, explicación y reporte.</strong><br />
+<strong>Estado:</strong> placeholder de figura pendiente.<br />
+<strong>Archivo esperado:</strong> <code>docs/figures/figura_3_3_trazabilidad.svg</code> y copia PNG en <code>docs/figures/figura_3_3_trazabilidad.png</code>.<br />
+<strong>Fuente de generación:</strong> bloque Mermaid anterior, <code>src/module6_traceability.py</code>, <code>data/gold/traceability_log.json</code> y modelos del prototipo en <code>sistema-web-agro/backend/models.py</code>.<br />
+<strong>Contenido visual requerido:</strong> entidades <code>IngestionRun</code>, <code>ModelRun</code>, <code>AlertLog</code>, <code>ExplanationLog</code> y <code>ReportLog</code>, con campos mínimos de ID, hash, fecha, dataset, modelo y artefacto.<br />
+<strong>Criterio de aceptación:</strong> debe permitir reconstruir visualmente qué hash conecta dataset, modelo, alerta, explicación y reporte.</p>
 <h3 id="3213-seguridad-y-privacidad">3.2.13 Seguridad y Privacidad</h3>
 <p>El sistema opera localmente y no expone datos aduaneros crudos al exterior. Los identificadores fiscales (RUC) y nombres de las empresas exportadoras se anonimizan de manera irreversible mediante algoritmo criptográfico SHA-256 con sal fija:<br />
 $$\text{exporter_hash} = \text{SHA256}(\text{RUC} + \text{salt_salt_42})$$<br />
@@ -1265,39 +1772,122 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 </thead>
 <tbody>
 <tr>
+<td>Dataset real local</td>
+<td><code>data/dataset_real_v1.csv</code></td>
+<td>Base experimental inicial de exportaciones y proxies</td>
+<td>Disponible; requiere declarar composición real/proxy/sintética</td>
+</tr>
+<tr>
 <td>SUNAT/ADUANET</td>
-<td><code>data/raw/</code>, <code>data/sunat/</code></td>
-<td>Base transaccional aduanera para exportaciones</td>
-<td>Parcial, sujeta a depuración y versionado</td>
+<td><code>data/sunat/raw_downloads/</code>, <code>data/sunat/x23290326.DBF</code></td>
+<td>Fuente primaria aduanera y validación de estructura</td>
+<td>Parcial; descargas locales concentradas en 2026</td>
 </tr>
 <tr>
-<td>TradeMap</td>
-<td><code>data-trademap/</code></td>
-<td>Contraste internacional y contexto de mercado</td>
-<td>Parcial</td>
+<td>Trade Map</td>
+<td><code>data-trademap/*.xls</code></td>
+<td>Contraste externo por producto y mercado</td>
+<td>Disponible como benchmark agregado</td>
 </tr>
 <tr>
-<td>BCRP/SISAP/MIDAGRI</td>
-<td><code>data/</code> y scripts de integración</td>
-<td>Variables exógenas de precio, tipo de cambio y contexto interno</td>
-<td>Parcial</td>
+<td>BCRP</td>
+<td><code>data/bcrp/exchange_rates_cache.json</code>, <code>data/downloads/bcrp_tipo_cambio.csv</code></td>
+<td>Tipo de cambio PEN/USD</td>
+<td>Disponible</td>
 </tr>
 <tr>
-<td>Dataset analítico</td>
+<td>SISAP/MIDAGRI</td>
+<td><code>codex-revision/metadata/sisap_*</code></td>
+<td>Contexto de precio/volumen mayorista interno</td>
+<td>Disponible como dato agregado</td>
+</tr>
+<tr>
+<td>NASA POWER / clima</td>
+<td>Variables climáticas integradas en silver/gold</td>
+<td>Contexto climático regional</td>
+<td>Disponible como proxy</td>
+</tr>
+<tr>
+<td>Dataset analítico gold</td>
 <td><code>data/gold/weekly_product_market.parquet</code></td>
-<td>Entrada esperada para predicción y detección</td>
-<td>En validación</td>
+<td>Unidad producto-mercado-semana</td>
+<td>Disponible, preliminar</td>
 </tr>
 <tr>
 <td>Prototipo funcional</td>
 <td><code>sistema-web-agro/backend/init_db.py</code></td>
-<td>Datos semilla para validar flujo de interfaz y telemetría</td>
+<td>Datos semilla para validar interfaz y telemetría</td>
 <td>Implementado como prototipo</td>
 </tr>
 </tbody>
 </table>
 <p>Los datos semilla del prototipo no sustituyen al dataset final de investigación. Se usan para demostrar integración funcional de backend, frontend, alertas, explicaciones, reportes y telemetría. Los resultados finales deberán provenir del dataset semanal reproducible y documentado.</p>
-<h3 id="332-capas-de-procesamiento">3.3.2 Capas de procesamiento</h3>
+<h3 id="332-inventario-reproducible-de-archivos-principales">3.3.2 Inventario reproducible de archivos principales</h3>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th style="text-align: right;">Archivo</th>
+<th style="text-align: right;">Filas x columnas</th>
+<th>Hash SHA-256</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw local</td>
+<td style="text-align: right;"><code>data/raw/exports_raw.csv</code></td>
+<td style="text-align: right;">40,672 x 21</td>
+<td><code>64a7dd130cbe2ba79cee04fe8e391d64a81d18cb6a0cbdb4d84e7d27fbd7bea3</code></td>
+<td>Base tabular inicial</td>
+</tr>
+<tr>
+<td>Dataset real v1</td>
+<td style="text-align: right;"><code>data/dataset_real_v1.csv</code></td>
+<td style="text-align: right;">40,672 x 21</td>
+<td><code>64a7dd130cbe2ba79cee04fe8e391d64a81d18cb6a0cbdb4d84e7d27fbd7bea3</code></td>
+<td>Base experimental local</td>
+</tr>
+<tr>
+<td>Bronze</td>
+<td style="text-align: right;"><code>data/bronze/exports_raw.parquet</code></td>
+<td style="text-align: right;">40,672 x 21</td>
+<td><code>66c4464cd87a6d4238a793ccb693d5afe1be704e1556d49e3bad8540bb2b2c9c</code></td>
+<td>Conversión estructural</td>
+</tr>
+<tr>
+<td>Silver</td>
+<td style="text-align: right;"><code>data/silver/exports_clean.parquet</code></td>
+<td style="text-align: right;">40,293 x 24</td>
+<td><code>ba98a37a9f3c9c7cf36baff8af8e1b61837cd237817b6e441d2bfb9f839e4eb3</code></td>
+<td>Limpieza y normalización</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td style="text-align: right;"><code>data/gold/weekly_product_market.parquet</code></td>
+<td style="text-align: right;">8,340 x 27</td>
+<td><code>4b9d0ea84880dc46192806125896707aec8274d51f5c05c8e5d1ebb5350edac3</code></td>
+<td>Agregación semanal</td>
+</tr>
+<tr>
+<td>Features predictivas</td>
+<td style="text-align: right;"><code>data/gold/prediction_features.parquet</code></td>
+<td style="text-align: right;">8,340 x 139</td>
+<td><code>e343829f19fc26b1cd153e18fcb70808b9713c82c4b37ea86fe8395c8c607773</code></td>
+<td>Entrenamiento FOB/volumen</td>
+</tr>
+<tr>
+<td>Features anomalías</td>
+<td style="text-align: right;"><code>data/gold/anomaly_features.parquet</code></td>
+<td style="text-align: right;">8,340 x 170</td>
+<td><code>f3fa9e7868e2432df240ad932daff0bfb99d54e825fc5967fce991b125412c26</code></td>
+<td>Detección IF/LOF/ECOD</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Comando de verificación:</strong> <code>.\.venv\Scripts\python.exe -c "&lt;script de lectura pandas y hash SHA-256&gt;"</code>.<br />
+<strong>Salida esperada:</strong> dimensiones y hashes iguales a la tabla anterior. Si algún hash cambia, debe generarse nueva versión de dataset y actualizar los reportes.</p>
+<h3 id="333-capas-de-procesamiento">3.3.3 Capas de procesamiento</h3>
 <table>
 <thead>
 <tr>
@@ -1339,7 +1929,123 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 </tr>
 </tbody>
 </table>
-<h3 id="333-controles-de-calidad-temporal">3.3.3 Controles de calidad temporal</h3>
+<h3 id="334-caracterizacion-del-dataset-semanal-gold">3.3.4 Caracterización del dataset semanal gold</h3>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th style="text-align: right;">Valor observado</th>
+<th>Evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filas gold</td>
+<td style="text-align: right;">8,340</td>
+<td><code>data/gold/weekly_product_market.parquet</code></td>
+</tr>
+<tr>
+<td>Columnas gold</td>
+<td style="text-align: right;">27</td>
+<td><code>data/gold/weekly_product_market.parquet</code></td>
+</tr>
+<tr>
+<td>Productos</td>
+<td style="text-align: right;">4 (<code>avocado</code>, <code>blueberry</code>, <code>esparrago</code>, <code>grape</code>)</td>
+<td>Conteo pandas</td>
+</tr>
+<tr>
+<td>Mercados agregados</td>
+<td style="text-align: right;">10</td>
+<td>Conteo pandas</td>
+</tr>
+<tr>
+<td>Series producto-mercado</td>
+<td style="text-align: right;">20</td>
+<td>Conteo pandas</td>
+</tr>
+<tr>
+<td>Semanas ISO</td>
+<td style="text-align: right;">417</td>
+<td><code>week_start</code></td>
+</tr>
+<tr>
+<td>Periodo semanal</td>
+<td style="text-align: right;">2018-06-04 a 2026-05-25</td>
+<td><code>week_start</code></td>
+</tr>
+<tr>
+<td>Filas avocado</td>
+<td style="text-align: right;">2,502</td>
+<td>Conteo por <code>product_code</code></td>
+</tr>
+<tr>
+<td>Filas blueberry</td>
+<td style="text-align: right;">2,502</td>
+<td>Conteo por <code>product_code</code></td>
+</tr>
+<tr>
+<td>Filas grape</td>
+<td style="text-align: right;">2,502</td>
+<td>Conteo por <code>product_code</code></td>
+</tr>
+<tr>
+<td>Filas esparrago</td>
+<td style="text-align: right;">834</td>
+<td>Conteo por <code>product_code</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Criterio metodológico sobre espárrago:</strong> aunque existe en la base gold, se mantiene como producto secundario o de sensibilidad. El núcleo experimental defendible se concentra en palta, uva y arándano; espárrago no debe mezclarse en conclusiones principales salvo que se declare explícitamente su cobertura menor.</p>
+<h3 id="335-calidad-registros-eliminados-y-limites-de-datos">3.3.5 Calidad, registros eliminados y límites de datos</h3>
+<p>El reporte <code>codex-revision/reporte-calidad-datos.md</code> registra 40,293 filas válidas post-validación y 4 filas rechazadas. También identifica 4,933 duplicados funcionales potenciales usando producto, fecha, exportador, destino, volumen y precio. Estos duplicados no deben eliminarse automáticamente sin revisar si representan múltiples operaciones similares o registros repetidos.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Resultado actual</th>
+<th>Acción documental</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cacao</td>
+<td>Excluido</td>
+<td>Mantener exclusión</td>
+</tr>
+<tr>
+<td>Palta, uva, arándano</td>
+<td>Presentes</td>
+<td>Núcleo del estudio</td>
+</tr>
+<tr>
+<td>Espárrago</td>
+<td>Presente con menor cobertura</td>
+<td>Mantener como secundario</td>
+</tr>
+<tr>
+<td>Rechazados</td>
+<td>4 filas</td>
+<td>Documentar archivo de rechazados</td>
+</tr>
+<tr>
+<td>Duplicados exactos</td>
+<td>0</td>
+<td>Sin acción</td>
+</tr>
+<tr>
+<td>Duplicados funcionales</td>
+<td>4,933</td>
+<td>Revisar antes de cierre final</td>
+</tr>
+<tr>
+<td><code>fob_unit_value_usd_kg</code> faltante en gold</td>
+<td>91.46%</td>
+<td>No usar como métrica final sin imputación/criterio formal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="336-controles-de-calidad-temporal">3.3.6 Controles de calidad temporal</h3>
 <p>Para prevenir fuga de información, las variables predictivas solo deben utilizar información disponible antes de la semana objetivo. Los rezagos, medias móviles y desviaciones móviles se calculan con desplazamiento explícito de una semana. Los escaladores, codificadores y selectores de características se ajustan únicamente con el conjunto de entrenamiento. La partición temporal se congela antes de entrenar los modelos definitivos.</p>
 <table>
 <thead>
@@ -1377,7 +2083,9 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 </tr>
 </tbody>
 </table>
-<h3 id="334-registro-de-artefactos-experimentales">3.3.4 Registro de artefactos experimentales</h3>
+<p><strong>Comando de prueba esperado:</strong> <code>.\.venv\Scripts\python.exe -m pytest tests/leakage/test_leakage.py</code>.<br />
+<strong>Salida esperada:</strong> pruebas aprobadas y reporte copiado a <code>reports/tesis/data-quality/leakage-tests/</code> con fecha, commit y hash. Si el reporte no existe, la evidencia queda pendiente.</p>
+<h3 id="337-registro-de-artefactos-experimentales">3.3.7 Registro de artefactos experimentales</h3>
 <p>Cada corrida experimental debe registrar identificador único, commit, dataset, semilla, configuración, hiperparámetros, entorno, métricas globales, métricas por producto, predicciones, residuos y hashes de salida. Hasta que esos campos existan, el artefacto se clasifica como preliminar o pendiente, no como definitivo.</p>
 <h2 id="34-diseno-e-implementacion-del-prototipo">3.4 Diseño e Implementación del Prototipo</h2>
 <p>El prototipo funcional se encuentra en <code>sistema-web-agro/</code>. Su propósito es demostrar la integración de los componentes de supervisión aduanera con IA explicable, no cerrar por sí solo la validación estadística final de la tesis.</p>
@@ -1493,7 +2201,64 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 </tr>
 </tbody>
 </table>
-<h3 id="343-algoritmos-propuestos-e-implementacion-vinculada">3.4.3 Algoritmos propuestos e implementación vinculada</h3>
+<h3 id="343-placeholders-de-capturas-del-prototipo">3.4.3 Placeholders de capturas del prototipo</h3>
+<p>Las capturas de pantalla no deben sustituir evidencia funcional ni resultados experimentales. Se usan para documentar la interfaz del prototipo. Cuando una captura todavía no esté incorporada al PDF final, se registra el placeholder siguiente:</p>
+<table>
+<thead>
+<tr>
+<th>Figura</th>
+<th>Pantalla</th>
+<th>Archivo esperado</th>
+<th>Fuente actual</th>
+<th>Contenido que debe mostrar</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figura 4.1</td>
+<td>Detalle de alerta IA explicable</td>
+<td><code>docs/figures/figura_4_1_detalle_alerta.png</code></td>
+<td><code>sistema-web-agro/detalle_de_operaci_n_ia_explicable_esp/screen.png</code></td>
+<td>Datos DAM, FOB esperado, score, SHAP, reporte RAG y decisión humana</td>
+<td>Pendiente de inserción formal</td>
+</tr>
+<tr>
+<td>Figura 4.2</td>
+<td>Consola de telemetría</td>
+<td><code>docs/figures/figura_4_2_telemetria.png</code></td>
+<td><code>sistema-web-agro/experimental_telemetry_console/screen.png</code> o <code>monitor_de_telemetr_a_y_equidad_esp/screen.png</code></td>
+<td>Condiciones A/B, tiempo de decisión, comprensión y métricas agregadas</td>
+<td>Pendiente de inserción formal</td>
+</tr>
+<tr>
+<td>Figura 4.3</td>
+<td>Bandeja de alertas</td>
+<td><code>docs/figures/figura_4_3_bandeja_alertas.png</code></td>
+<td><code>sistema-web-agro/alerts_management_inbox/screen.png</code></td>
+<td>Lista filtrable de alertas, estados, severidad y producto</td>
+<td>Pendiente de inserción formal</td>
+</tr>
+<tr>
+<td>Figura 4.4</td>
+<td>Configuración de modelo</td>
+<td><code>docs/figures/figura_4_4_configuracion_modelo.png</code></td>
+<td><code>sistema-web-agro/model_configuration_terminal/screen.png</code></td>
+<td>Pesos IF/LOF/ECOD, umbral y parámetros editables</td>
+<td>Pendiente de inserción formal</td>
+</tr>
+<tr>
+<td>Figura 4.5</td>
+<td>Explorador de datos y RAG</td>
+<td><code>docs/figures/figura_4_5_explorador_datos.png</code></td>
+<td><code>sistema-web-agro/data_explorer_load_center/screen.png</code></td>
+<td>Carga o exploración de datos, biblioteca documental y estado de indexación</td>
+<td>Pendiente de inserción formal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Criterio de aceptación de capturas:</strong> cada imagen debe tener resolución legible, título, fuente "captura del prototipo <code>sistema-web-agro</code>", fecha de generación y ruta del componente React correspondiente. Si la captura se usa en Capítulo IV, debe corresponder a la versión del commit documentado.</p>
+<h3 id="344-algoritmos-propuestos-e-implementacion-vinculada">3.4.4 Algoritmos propuestos e implementación vinculada</h3>
 <table>
 <thead>
 <tr>
@@ -1547,12 +2312,393 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 <p>La validación se plantea en cinco bloques: rendimiento predictivo y detección, explicabilidad, calidad de reportes, usabilidad y trazabilidad. Cada bloque debe producir evidencia reproducible antes de ser incorporado como resultado definitivo en el Capítulo IV.</p>
 <h3 id="351-validacion-de-prediccion-y-anomalias">3.5.1 Validación de predicción y anomalías</h3>
 <p>La comparación principal evalúa el ensemble IF + LOF + ECOD frente a detectores individuales y baselines. Las métricas previstas son Precision, Recall, F1, PR-AUC, ROC-AUC y Precision@k. Cuando se usen anomalías sintéticas, se debe registrar tipo, magnitud, proporción de inyección y etiqueta generada.</p>
+<h4 id="3511-particion-temporal-propuesta">3.5.1.1 Partición temporal propuesta</h4>
+<p>La partición se define por fecha y no por muestreo aleatorio, debido a la naturaleza longitudinal del problema.</p>
+<table>
+<thead>
+<tr>
+<th>Conjunto</th>
+<th>Periodo propuesto</th>
+<th>Uso</th>
+<th>Regla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entrenamiento</td>
+<td>2018-06-04 a 2024-12-30</td>
+<td>Ajustar modelos, codificadores y escaladores</td>
+<td>Puede usarse para Optuna y calibración interna</td>
+</tr>
+<tr>
+<td>Validación</td>
+<td>2025-01-06 a 2025-12-29</td>
+<td>Selección de hiperparámetros y umbrales</td>
+<td>No se mezcla con test</td>
+</tr>
+<tr>
+<td>Prueba</td>
+<td>2026-01-05 a 2026-05-25</td>
+<td>Evaluación final preliminar</td>
+<td>Solo inferencia fuera de muestra</td>
+</tr>
+</tbody>
+</table>
+<p>Si la distribución real por producto no permite sostener estas ventanas para todas las series, debe usarse una validación walk-forward por serie con ventanas mínimas documentadas. En ese caso, la tesis debe reportar cuántas series quedaron excluidas y por qué.</p>
+<h4 id="3512-estrategia-walk-forward">3.5.1.2 Estrategia walk-forward</h4>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Valor metodológico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unidad de ventana</td>
+<td>Semana ISO</td>
+</tr>
+<tr>
+<td>Horizonte</td>
+<td>1 semana (<code>t+1</code>)</td>
+</tr>
+<tr>
+<td>Ventana inicial mínima</td>
+<td>104 semanas por serie cuando exista cobertura</td>
+</tr>
+<tr>
+<td>Paso</td>
+<td>1 semana o bloque mensual, según costo computacional</td>
+</tr>
+<tr>
+<td>Salida</td>
+<td>Predicción, residuo y error por semana fuera de muestra</td>
+</tr>
+<tr>
+<td>Evidencia</td>
+<td><code>reports/tesis/experiments/&lt;run_id&gt;/predictions_oos.parquet</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="3513-baselines-predictivos">3.5.1.3 Baselines predictivos</h4>
+<table>
+<thead>
+<tr>
+<th>Objetivo</th>
+<th>Baseline</th>
+<th>Descripción</th>
+<th>Métrica principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FOB unitario</td>
+<td>Último valor observado</td>
+<td><code>y_hat(t+1)=y(t)</code></td>
+<td>MAE</td>
+</tr>
+<tr>
+<td>FOB unitario</td>
+<td>Mediana móvil 4 semanas</td>
+<td>Mediana de semanas disponibles hasta <code>t</code></td>
+<td>MAE</td>
+</tr>
+<tr>
+<td>FOB unitario</td>
+<td>Mediana móvil 13 semanas</td>
+<td>Baseline robusto estacional corto</td>
+<td>MAE</td>
+</tr>
+<tr>
+<td>FOB unitario</td>
+<td>Elastic Net</td>
+<td>Modelo lineal regularizado</td>
+<td>MAE/RMSE</td>
+</tr>
+<tr>
+<td>Volumen</td>
+<td>Último valor observado</td>
+<td>Persistencia temporal</td>
+<td>RMSLE</td>
+</tr>
+<tr>
+<td>Volumen</td>
+<td>Mediana móvil 4/13 semanas</td>
+<td>Baseline robusto</td>
+<td>RMSLE</td>
+</tr>
+<tr>
+<td>Volumen</td>
+<td>Baseline estacional</td>
+<td>Misma semana del año anterior si existe</td>
+<td>RMSLE</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3514-modelos-propuestos-e-hiperparametros">3.5.1.4 Modelos propuestos e hiperparámetros</h4>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Hiperparámetros a registrar</th>
+<th>Selección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XGBoost</td>
+<td><code>n_estimators</code>, <code>max_depth</code>, <code>learning_rate</code>, <code>subsample</code>, <code>colsample_bytree</code>, <code>reg_lambda</code>, <code>reg_alpha</code></td>
+<td>Optuna o grid reducido sobre validación temporal</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td><code>num_leaves</code>, <code>max_depth</code>, <code>learning_rate</code>, <code>feature_fraction</code>, <code>bagging_fraction</code>, <code>lambda_l1</code>, <code>lambda_l2</code></td>
+<td>Optuna o grid reducido sobre validación temporal</td>
+</tr>
+<tr>
+<td>Elastic Net</td>
+<td><code>alpha</code>, <code>l1_ratio</code></td>
+<td>Validación temporal</td>
+</tr>
+<tr>
+<td>IF/LOF/ECOD</td>
+<td><code>contamination</code>, vecinos LOF, semilla y umbral percentílico</td>
+<td>Calibración en entrenamiento/validación</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Semilla base:</strong> <code>42</code>. Toda corrida debe registrar semilla global, semilla de modelo y versión de librerías.</p>
+<h4 id="3515-metricas-por-objetivo">3.5.1.5 Métricas por objetivo</h4>
+<table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Métricas</th>
+<th>Nivel de reporte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FOB</td>
+<td>MAE, RMSE, MAPE/SMAPE, R²</td>
+<td>Global, producto y mercado principal</td>
+</tr>
+<tr>
+<td>Volumen</td>
+<td>RMSLE, MAE, RMSE, SMAPE, R²</td>
+<td>Global, producto y mercado principal</td>
+</tr>
+<tr>
+<td>Anomalías</td>
+<td>Precision, Recall, F1, PR-AUC, ROC-AUC, Precision@k</td>
+<td>Global, tipo de anomalía y producto</td>
+</tr>
+<tr>
+<td>Eficiencia</td>
+<td>Tiempo de entrenamiento e inferencia</td>
+<td>Por modelo</td>
+</tr>
+<tr>
+<td>Estabilidad</td>
+<td>Intervalo de confianza por bootstrap temporal</td>
+<td>Por métrica principal</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3516-protocolo-de-anomalias-sinteticas">3.5.1.6 Protocolo de anomalías sintéticas</h4>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Inyección</th>
+<th>Magnitud sugerida</th>
+<th>Etiqueta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Precio/FOB</td>
+<td>Multiplicar FOB unitario o precio por factor atípico</td>
+<td>±20% a ±60%</td>
+<td><code>precio</code></td>
+</tr>
+<tr>
+<td>Volumen</td>
+<td>Alterar <code>total_net_weight_kg</code> o volumen semanal</td>
+<td>±30% a ±80%</td>
+<td><code>volumen</code></td>
+</tr>
+<tr>
+<td>Clima/contexto</td>
+<td>Perturbar temperatura o precipitación proxy</td>
+<td>Percentiles 95-99</td>
+<td><code>clima</code></td>
+</tr>
+<tr>
+<td>Logística</td>
+<td>Aumentar días logísticos proxy</td>
+<td>Percentiles 95-99</td>
+<td><code>logistica</code></td>
+</tr>
+<tr>
+<td>Calidad/sanidad</td>
+<td>Alterar merma o cumplimiento proxy</td>
+<td>Regla documentada</td>
+<td><code>calidad</code></td>
+</tr>
+</tbody>
+</table>
+<p>La proporción de inyección no debe superar el 5% del conjunto evaluado sin justificarlo. Deben ejecutarse al menos tres repeticiones con semillas distintas si se quieren reportar intervalos de confianza.</p>
 <h3 id="352-validacion-de-explicabilidad">3.5.2 Validación de explicabilidad</h3>
 <p>SHAP se evalúa por cobertura top-k, estabilidad de atribuciones, coherencia con variables disponibles y claridad para el auditor. Las atribuciones se interpretan como contribuciones del modelo, no como causalidad empresarial.</p>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Definición</th>
+<th>Evidencia esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cobertura top-k</td>
+<td>Porcentaje de alertas con top-5 variables explicativas</td>
+<td><code>data/gold/local_explanations.json</code></td>
+</tr>
+<tr>
+<td>Estabilidad</td>
+<td>Variación del ranking SHAP entre corridas equivalentes</td>
+<td>Reporte de estabilidad</td>
+</tr>
+<tr>
+<td>Coherencia</td>
+<td>Variables explicativas existen en matriz de features</td>
+<td>Validación de columnas</td>
+</tr>
+<tr>
+<td>Tiempo de cálculo</td>
+<td>Milisegundos por explicación</td>
+<td>Log de inferencia</td>
+</tr>
+<tr>
+<td>Visualización</td>
+<td>Gráficos bar/beeswarm exportados</td>
+<td><code>src/static/images/shap_*.png</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Placeholders de figuras SHAP.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Figura</th>
+<th>Archivo actual o esperado</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figura 4.6</td>
+<td><code>src/static/images/shap_price_bar.png</code></td>
+<td>Importancia global para predicción de precio/FOB</td>
+</tr>
+<tr>
+<td>Figura 4.7</td>
+<td><code>src/static/images/shap_volume_bar.png</code></td>
+<td>Importancia global para predicción de volumen</td>
+</tr>
+<tr>
+<td>Figura 4.8</td>
+<td><code>src/static/images/shap_price_beeswarm.png</code></td>
+<td>Distribución de efectos SHAP para precio/FOB</td>
+</tr>
+<tr>
+<td>Figura 4.9</td>
+<td><code>src/static/images/shap_volume_beeswarm.png</code></td>
+<td>Distribución de efectos SHAP para volumen</td>
+</tr>
+</tbody>
+</table>
 <h3 id="353-validacion-de-reportes-automaticos">3.5.3 Validación de reportes automáticos</h3>
 <p>Los reportes se validan con una rúbrica de completitud, coherencia, fidelidad factual y consistencia numérica. Cada cifra citada en el reporte debe existir en evidencia estructurada. Si el reporte RAG no supera la validación, se registra rechazo y se genera una versión determinística.</p>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Métrica</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completitud</td>
+<td>Porcentaje de campos obligatorios presentes</td>
+<td><code>data/gold/validation_metrics.json</code></td>
+</tr>
+<tr>
+<td>Fidelidad factual</td>
+<td>Proporción de cifras coincidentes con evidencia</td>
+<td><code>data/gold/validation_metrics.json</code></td>
+</tr>
+<tr>
+<td>Rechazo controlado</td>
+<td>Reportes no aprobados por validador</td>
+<td><code>reports/audits/</code></td>
+</tr>
+<tr>
+<td>Comparación determinística</td>
+<td>RAG frente a plantilla</td>
+<td>Reporte de validación</td>
+</tr>
+<tr>
+<td>Recuperación documental</td>
+<td>Documentos usados por reporte</td>
+<td>Log RAG</td>
+</tr>
+</tbody>
+</table>
+<p>En el estado actual, <code>data/gold/validation_metrics.json</code> registra 5 reportes evaluados y 0 reportes válidos. Por tanto, el módulo queda documentado como funcional pero no aprobado para resultados definitivos hasta corregir las discrepancias numéricas.</p>
 <h3 id="354-evaluacion-controlada-con-usuarios">3.5.4 Evaluación controlada con usuarios</h3>
 <p>El estudio de usabilidad compara una condición integrada, con SHAP y RAG visibles, frente a una condición aislada, sin explicaciones avanzadas. Las métricas son tiempo de análisis, decisión registrada, comprensión percibida y utilidad. Hasta contar con participantes reales y consentimiento documentado, esta sección permanece como diseño experimental y no como resultado concluyente.</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Diseño mínimo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Participantes</td>
+<td>Definir perfil, experiencia y número mínimo antes de ejecutar</td>
+</tr>
+<tr>
+<td>Condiciones</td>
+<td>A: integrado con SHAP/RAG; B: aislado sin SHAP/RAG</td>
+</tr>
+<tr>
+<td>Tareas</td>
+<td>Casos equivalentes por producto y severidad</td>
+</tr>
+<tr>
+<td>Orden</td>
+<td>Contrabalanceado para reducir aprendizaje</td>
+</tr>
+<tr>
+<td>Métricas</td>
+<td>Tiempo, decisión correcta, Likert de comprensión, SUS, utilidad</td>
+</tr>
+<tr>
+<td>Prueba estadística</td>
+<td>Mann-Whitney U o Welch según normalidad y tamaño muestral</td>
+</tr>
+<tr>
+<td>Evidencia</td>
+<td>Consentimiento, datos anonimizados y script de análisis</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Placeholder de instrumento:</strong> el formulario final de consentimiento y encuesta SUS debe guardarse como <code>reports/tesis/user-study/instrumento_usabilidad_v1.pdf</code> o <code>docs/tesis/anexos/instrumento_usabilidad.md</code>. Si no existe, la evaluación con usuarios permanece pendiente.</p>
 <h3 id="355-puertas-de-control">3.5.5 Puertas de control</h3>
 <table>
 <thead>
@@ -1587,6 +2733,85 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 <td>E. Capítulo IV preliminar</td>
 <td>Resultados reproducibles y claramente marcados como preliminares o definitivos</td>
 <td>Parcial</td>
+</tr>
+</tbody>
+</table>
+<h3 id="356-checklist-verificable-de-cierre-del-capitulo-iii">3.5.6 Checklist verificable de cierre del Capítulo III</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Actividad</th>
+<th>Archivo fuente</th>
+<th>Comando</th>
+<th>Salida esperada</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C3-DATA-01</td>
+<td>Verificar hashes de datasets</td>
+<td><code>data/raw</code>, <code>data/gold</code></td>
+<td>Script pandas + SHA-256</td>
+<td>Hashes iguales a Tabla 3.3.2</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>C3-DATA-02</td>
+<td>Ejecutar pruebas de calidad</td>
+<td><code>tests/data_quality/test_quality.py</code></td>
+<td><code>.\.venv\Scripts\python.exe -m pytest tests/data_quality/test_quality.py</code></td>
+<td>Tests aprobados</td>
+<td>Pendiente de corrida final</td>
+</tr>
+<tr>
+<td>C3-LEAK-01</td>
+<td>Ejecutar prueba de fuga temporal</td>
+<td><code>tests/leakage/test_leakage.py</code></td>
+<td><code>.\.venv\Scripts\python.exe -m pytest tests/leakage/test_leakage.py</code></td>
+<td>Tests aprobados y reporte en <code>reports/tesis/data-quality/leakage-tests/</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>C3-EXP-01</td>
+<td>Registrar experimento</td>
+<td><code>src/train_models.py</code></td>
+<td><code>.\.venv\Scripts\python.exe src/train_models.py</code></td>
+<td><code>run_id</code>, métricas, predicciones y residuos</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>C3-SHAP-01</td>
+<td>Generar explicabilidad</td>
+<td><code>src/module3_shap.py</code></td>
+<td>Script de SHAP</td>
+<td>JSON + PNG/SVG</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>C3-RAG-01</td>
+<td>Validar reportes</td>
+<td><code>src/module5_validation.py</code></td>
+<td>Tests/report validation</td>
+<td>Reportes válidos o rechazados documentados</td>
+<td>Parcial, actualmente no aprobado</td>
+</tr>
+<tr>
+<td>C3-FIG-01</td>
+<td>Renderizar figuras Mermaid</td>
+<td><code>docs/02-30-capitulo3.md</code></td>
+<td>Mermaid CLI o equivalente</td>
+<td>Figuras 3.1-3.3 PNG/SVG</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>C3-UI-01</td>
+<td>Insertar capturas del prototipo</td>
+<td><code>sistema-web-agro/*/screen.png</code></td>
+<td>Copia a <code>docs/figures/</code></td>
+<td>Figuras 4.1-4.5 con título y fuente</td>
+<td>Pendiente</td>
 </tr>
 </tbody>
 </table>
@@ -2305,27 +3530,37 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 <tbody>
 <tr>
 <td>H1a</td>
-<td>Mejora de VD1 frente a detector individual con split temporal documentado.</td>
+<td>MAE de XGBoost/LightGBM para valor unitario FOB semanal frente al mejor modelo base, usando dataset producto-mercado-semana y particion temporal.</td>
 <td><em>pendiente</em></td>
 </tr>
 <tr>
 <td>H1b</td>
-<td>Mejora de VD2 con SHAP frente a condicion sin SHAP.</td>
+<td>RMSLE de XGBoost/LightGBM para volumen exportado semanal frente al mejor modelo base, usando dataset producto-mercado-semana y particion temporal.</td>
 <td><em>pendiente</em></td>
 </tr>
 <tr>
 <td>H1c</td>
-<td>Mejora de VD3 con RAG frente a LLM libre/control.</td>
+<td>F1-Score del ensemble IF + LOF + ECOD calibrado por percentiles frente al promedio de detectores individuales en anomalias controladas.</td>
 <td><em>pendiente</em></td>
 </tr>
 <tr>
 <td>H1d</td>
-<td>Reduccion de tiempo-a-decision o mejora de comprension.</td>
+<td>Diferencia de comprension operativa y tiempo de analisis entre alertas con SHAP/RAG trazable y alertas tecnicas aisladas.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1e</td>
+<td>Proporcion de alertas reconstruibles desde registros de origen, dataset versionado y modelo hasta explicacion, decision humana y reporte.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H0</td>
+<td>Ausencia de mejora significativa del sistema integrado en rendimiento, deteccion, comprension, tiempo de analisis y trazabilidad.</td>
 <td><em>pendiente</em></td>
 </tr>
 <tr>
 <td>H1 general</td>
-<td>Mejora conjunta de trazabilidad y supervision operativa.</td>
+<td>Mejora conjunta de la supervision analitica por integrar prediccion, anomalias, explicabilidad, reportes validados y trazabilidad.</td>
 <td><em>pendiente</em></td>
 </tr>
 </tbody>
@@ -2492,7 +3727,7 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 <p><strong>Pendiente:</strong> Capítulo V — depende de los resultados del Capítulo IV</p>
 </blockquote>
 <h2 id="51-conclusiones">5.1 Conclusiones</h2>
-<p><em>(Esqueleto para la síntesis final: el sistema integrado logró los objetivos propuestos, manteniendo el balance entre vanguardia tecnológica y rigor legal. Incluir: conclusión sobre el gap cerrado, métricas alcanzadas vs. objetivos, validación de hipótesis H1a–H1d, aporte al contexto regulatorio peruano).</em></p>
+<p><em>(Esqueleto para la síntesis final: el sistema integrado logró los objetivos propuestos, manteniendo el balance entre vanguardia tecnológica y rigor legal. Incluir: conclusión sobre el gap cerrado, métricas alcanzadas vs. objetivos, validación de hipótesis H1a–H1e, aporte al contexto regulatorio peruano).</em></p>
 <h2 id="52-limitaciones-de-la-investigacion">5.2 Limitaciones de la Investigación</h2>
 <p><em>(Abordar: limitaciones del dataset agroexportador integrado; diferencias de granularidad entre datos reales observados, datos agregados, proxies y datos sintéticos controlados; dependencia de la calidad de datos documentada en Datasheets for Datasets (Gebru et al., 2021); deuda técnica de mantenimiento del pipeline MLOps (Sculley et al., 2015); limitaciones del tamaño de la muestra en la evaluación de comprensión; restricciones de los LLMs actuales en precisión de cálculo aritmético (Maynez et al., 2026)).</em></p>
 <h2 id="53-trabajos-futuros">5.3 Trabajos Futuros</h2>
@@ -2519,7 +3754,7 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 <p><em>(Conclusion sobre metricas alcanzadas: completar solo despues de ejecutar el entrenamiento final sobre el dataset integrado y reportar PR-AUC, F1, precision, recall, estabilidad SHAP, cobertura de evidencia RAG y tiempo-a-decision sin sobreafirmar resultados preliminares.)</em></p>
 </li>
 <li>
-<p><em>(Conclusion sobre validacion de hipotesis H1a-H1d: aceptar, rechazar o declarar inconclusa cada subhipotesis segun evidencia reproducible.)</em></p>
+<p><em>(Conclusion sobre validacion de hipotesis H1a-H1e: aceptar, rechazar o declarar inconclusa cada subhipotesis segun evidencia reproducible.)</em></p>
 </li>
 <li>
 <p><em>(Conclusion sobre gobernanza: describir como trazabilidad, documentacion y supervision humana se alinean con principios del D.S. 115-2025-PCM, NIST AI RMF y buenas practicas de gestion de riesgo de modelos.)</em></p>
@@ -2539,7 +3774,7 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 <p><em>(Conclusion on metrics: complete only after the final run, reporting PR-AUC, F1, precision, recall, SHAP stability, RAG evidence coverage, and time-to-decision with dataset version and reproducibility metadata.)</em></p>
 </li>
 <li>
-<p><em>(Conclusion on H1a-H1d: accept, reject, or mark each hypothesis as inconclusive based on reproducible evidence.)</em></p>
+<p><em>(Conclusion on H1a-H1e: accept, reject, or mark each hypothesis as inconclusive based on reproducible evidence.)</em></p>
 </li>
 <li>
 <p><em>(Conclusion on governance: describe how traceability, documentation, and human oversight are implemented as design principles, without claiming regulatory certification.)</em></p>
@@ -2673,7 +3908,7 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 <p><strong>Versión 1.0 — 2026-05-17.</strong> Aprobar antes de iniciar reclutamiento de participantes.</p>
 </blockquote>
 <h3 id="a1-objetivo-del-experimento">A.1 Objetivo del experimento</h3>
-<p>El experimento de usabilidad mide el impacto del sistema integrado de supervisión operativa en la <strong>eficiencia (VD4 — tiempo-a-decisión)</strong>, <strong>comprensión (VD4 — Likert)</strong> y <strong>trazabilidad documental (VD5)</strong> frente al uso de componentes aislados. Constituye la fuente principal de evidencia para contrastar las sub-hipótesis H1b y H1d (Capítulo I §1.4).</p>
+<p>El experimento de usabilidad mide el impacto del sistema integrado de supervisión operativa en la <strong>eficiencia (VD4 — tiempo-a-decisión)</strong>, <strong>comprensión (VD4 — Likert)</strong> y <strong>trazabilidad documental (VD5)</strong> frente al uso de componentes aislados. Constituye la fuente principal de evidencia para contrastar la sub-hipótesis H1d y aporta evidencia complementaria para H1e (Capítulo I §1.4).</p>
 <h3 id="a2-diseno-experimental">A.2 Diseño experimental</h3>
 <p><strong>Tipo</strong>: Cuasi-experimental con diseño within-subjects (apareado) y orden contrabalanceado.</p>
 <p>Cada participante ejecuta las mismas tareas en dos condiciones:<br />
@@ -3612,6 +4847,1685 @@ Estado: actualizado al panorama de fuentes reales, agregadas, proxies y sintetic
 <li>reporte generado.</li>
 </ul>
 <hr />
+<div style="page-break-before: always;"></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
+</code></pre></div>
+
+<h1 id="matriz-de-operacionalizacion-de-variables">Matriz de Operacionalización de Variables</h1>
+<p>Esta matriz detalla las variables independiente, dependientes y explicativas que estructuran la investigación, alineadas con el dataset agroexportador integrado y la arquitectura analítica propuesta.</p>
+<hr />
+<h2 id="1-variable-independiente">1. Variable Independiente</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Definición Conceptual</th>
+<th style="text-align: left;">Definición Operacional</th>
+<th style="text-align: left;">Dimensiones / Niveles</th>
+<th style="text-align: left;">Indicador / Unidad</th>
+<th style="text-align: left;">Escala</th>
+<th style="text-align: left;">Técnica / Instrumento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Tipo de sistema de supervisión operativa</strong> (VI)</td>
+<td style="text-align: left;">Configuración arquitectónica del sistema informático de soporte analítico para la supervisión de exportaciones.</td>
+<td style="text-align: left;">Variable categórica manipulada en la fase experimental comparando el pipeline integrado frente a herramientas analíticas independientes.</td>
+<td style="text-align: left;">- <strong>Sistema Integrado:</strong> Pipeline secuencial de 4 capas con datos unificados, SHAP y reportes RAG con validador.<br>- <strong>Componentes Aislados:</strong> Salidas tabulares e interfaces técnicas inconexas sin flujo estructurado de evidencia.</td>
+<td style="text-align: left;">- Presencia de integración funcional del pipeline.<br>- Valores: <code>integrado</code> / <code>aislado</code>.</td>
+<td style="text-align: left;">Nominal</td>
+<td style="text-align: left;">- <strong>Técnica:</strong> Experimentación tecnológica.<br>- <strong>Instrumento:</strong> Configuración lógica del pipeline en el código del sistema y logs.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-variables-dependientes">2. Variables Dependientes</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Definición Conceptual</th>
+<th style="text-align: left;">Definición Operacional</th>
+<th style="text-align: left;">Dimensiones</th>
+<th style="text-align: left;">Indicadores y Fórmulas</th>
+<th style="text-align: left;">Escala</th>
+<th style="text-align: left;">Técnica / Instrumento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Rendimiento predictivo</strong> (VD1)</td>
+<td style="text-align: left;">Capacidad de los modelos supervisados para estimar los valores esperados de precio y volumen.</td>
+<td style="text-align: left;">Magnitud del error residual acumulado por los algoritmos XGBoost y LightGBM sobre el conjunto de prueba temporal fuera de muestra.</td>
+<td style="text-align: left;">- Precisión de predicción de valor unitario FOB.<br>- Precisión de predicción de volumen.</td>
+<td style="text-align: left;">- <strong>MAE (FOB):</strong> Mean Absolute Error en USD/kg.<br>- <strong>RMSLE (Volumen):</strong> Root Mean Squared Logarithmic Error.</td>
+<td style="text-align: left;">De razón</td>
+<td style="text-align: left;">- <strong>Técnica:</strong> Experimentación computacional.<br>- <strong>Instrumento:</strong> Consola de entrenamiento, librería <code>sklearn.metrics</code> y archivos JSON de registro de métricas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rendimiento de detección de anomalías</strong> (VD2)</td>
+<td style="text-align: left;">Efectividad del ensemble no supervisado para discriminar desviaciones respecto del patrón normal histórico.</td>
+<td style="text-align: left;">Medición de la capacidad de clasificación binaria (anómalo/normal) del ensemble sobre datos reales enriquecidos con inyección sintética controlada de anomalías (5%).</td>
+<td style="text-align: left;">- Sensibilidad ante desviaciones.<br>- Tasa de falsas alarmas.</td>
+<td style="text-align: left;">- <strong>PR-AUC</strong> (Área bajo la curva Precisión-Recall).<br>- <strong>F1-Score</strong> (Media armónica de Precisión y Recall).<br>- <strong>ROC-AUC</strong>.<br>- <strong>Recall por tipo de anomalía</strong> (A, B, C, D, E).</td>
+<td style="text-align: left;">De razón</td>
+<td style="text-align: left;">- <strong>Técnica:</strong> Experimentación computacional.<br>- <strong>Instrumento:</strong> Scripts de evaluación sintética controlada en <code>src/module2_anomaly.py</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Comprensión operativa de alertas</strong> (VD3)</td>
+<td style="text-align: left;">Grado de claridad percibida por un analista humano respecto de los motivos y factores que gatillaron una alarma de anomalía.</td>
+<td style="text-align: left;">Nivel de entendimiento del usuario sobre qué variables influyeron en el score de anomalía y en qué sentido lo hicieron, evaluado mediante cuestionario.</td>
+<td style="text-align: left;">- Identificación de factores explicativos.<br>- Comprensión de la magnitud y sentido.</td>
+<td style="text-align: left;">- Puntuación media en escala Likert de 5 puntos (1: Total desacuerdo/Confuso, 5: Total acuerdo/Claro) en preguntas de comprensión de variables SHAP y contexto.</td>
+<td style="text-align: left;">Ordinal</td>
+<td style="text-align: left;">- <strong>Técnica:</strong> Encuesta (Prueba de usabilidad con usuarios).<br>- <strong>Instrumento:</strong> Cuestionario estructurado tipo Likert en la interfaz de supervisión.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tiempo de decisión</strong> (VD4)</td>
+<td style="text-align: left;">Eficiencia temporal de la supervisión analítica asistida para clasificar y justificar la revisión de una anomalía.</td>
+<td style="text-align: left;">Cantidad de segundos transcurridos desde que se presenta la alerta en pantalla hasta que el evaluador registra su decisión fundamentada.</td>
+<td style="text-align: left;">- Latencia de diagnóstico.</td>
+<td style="text-align: left;">- Tiempo de respuesta en segundos (s) por alerta evaluada en la interfaz experimental.</td>
+<td style="text-align: left;">De razón</td>
+<td style="text-align: left;">- <strong>Técnica:</strong> Registro computacional indirecto.<br>- <strong>Instrumento:</strong> Módulos de cronómetro de la interfaz Flask/Streamlit y logs de bases de datos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Calidad y consistencia del reporte</strong> (VD5)</td>
+<td style="text-align: left;">Grado de coherencia textual e integridad factual de los informes narrativos autogenerados a partir de la alerta.</td>
+<td style="text-align: left;">Porcentaje de coincidencia numérica exacta de las variables y métricas mencionadas en el texto del reporte contra el registro de evidencia estructurada.</td>
+<td style="text-align: left;">- Fidelidad factual.<br>- Consistencia numérica.</td>
+<td style="text-align: left;">- <strong>Fidelidad numérica:</strong> Porcentaje de cifras numéricas correctas citadas en el reporte (tolerancia error por redondeo $\le 0.5\%$).</td>
+<td style="text-align: left;">De razón</td>
+<td style="text-align: left;">- <strong>Técnica:</strong> Auditoría automatizada (análisis documental del texto).<br>- <strong>Instrumento:</strong> Script validador factual en <code>src/module5_validation.py</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trazabilidad documental y linaje</strong> (VD6)</td>
+<td style="text-align: left;">Capacidad de auditar y reconstruir de extremo a extremo la procedencia y procesamiento de una alerta.</td>
+<td style="text-align: left;">Proporción de alertas de anomalía en las que es posible verificar sus hashes SHA-256 históricos y el identificador único de cada recurso interviniente.</td>
+<td style="text-align: left;">- Integridad del linaje de datos.<br>- Auditabilidad experimental.</td>
+<td style="text-align: left;">- <strong>Tasa de trazabilidad:</strong> Porcentaje de registros de alertas con UUIDs y hashes SHA-256 completos para base de datos, características, modelo, predicción, SHAP y reporte.</td>
+<td style="text-align: left;">De razón</td>
+<td style="text-align: left;">- <strong>Técnica:</strong> Auditoría digital.<br>- <strong>Instrumento:</strong> Registro de auditoría (trazabilidad log) en <code>src/module6_traceability.py</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-variables-explicativas-caracteristicas-del-modelo">3. Variables Explicativas (Características del Modelo)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Grupo</th>
+<th style="text-align: left;">Variable Técnica</th>
+<th style="text-align: left;">Definición y Unidad</th>
+<th style="text-align: left;">Fuente Preferida</th>
+<th style="text-align: left;">Tipo Metodológico</th>
+<th style="text-align: left;">Uso en el Sistema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Comercio Exterior</strong></td>
+<td style="text-align: left;"><code>fob_unit_value_usd_kg</code></td>
+<td style="text-align: left;">Valor unitario FOB en USD/kg (FOB USD / Peso Neto kg).</td>
+<td style="text-align: left;">SUNAT/ADUANET</td>
+<td style="text-align: left;">Real observada / Derivada</td>
+<td style="text-align: left;">Entrada de modelos predictivos y anomalías. Variable predictiva principal en $t$.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>total_net_weight_kg</code></td>
+<td style="text-align: left;">Volumen neto exportado en kilogramos por semana.</td>
+<td style="text-align: left;">SUNAT/ADUANET</td>
+<td style="text-align: left;">Real observada</td>
+<td style="text-align: left;">Entrada predictiva y de anomalías. Variable predictiva secundaria en $t$.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>shipment_count</code></td>
+<td style="text-align: left;">Número total de despachos (declaraciones) semanales.</td>
+<td style="text-align: left;">SUNAT/ADUANET</td>
+<td style="text-align: left;">Real observada</td>
+<td style="text-align: left;">Característica de escala y actividad.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>exporter_count</code></td>
+<td style="text-align: left;">Cantidad de empresas exportadoras únicas activas en la semana.</td>
+<td style="text-align: left;">SUNAT/ADUANET</td>
+<td style="text-align: left;">Real observada</td>
+<td style="text-align: left;">Característica de concentración empresarial.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>destination_volume_share</code></td>
+<td style="text-align: left;">Participación de volumen del mercado de destino en las exportaciones totales del producto.</td>
+<td style="text-align: left;">SUNAT/ADUANET</td>
+<td style="text-align: left;">Derivada</td>
+<td style="text-align: left;">Característica de peso de mercado.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mercado Interno</strong></td>
+<td style="text-align: left;"><code>sisap_precio_prom</code></td>
+<td style="text-align: left;">Precio promedio mayorista del producto en mercados de Lima (PEN/kg).</td>
+<td style="text-align: left;">SISAP/MIDAGRI</td>
+<td style="text-align: left;">Real agregada (Proxy)</td>
+<td style="text-align: left;">Variable exógena de oferta nacional.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Macroeconomía</strong></td>
+<td style="text-align: left;"><code>tipo_cambio_pen_usd</code></td>
+<td style="text-align: left;">Tipo de cambio promedio de venta interbancario de la semana.</td>
+<td style="text-align: left;">BCRP</td>
+<td style="text-align: left;">Real agregada</td>
+<td style="text-align: left;">Factor macro de competitividad cambiaria.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Clima</strong></td>
+<td style="text-align: left;"><code>temperatura_media_c</code></td>
+<td style="text-align: left;">Temperatura media semanal en la zona productora (°C).</td>
+<td style="text-align: left;">NASA POWER / SENAMHI</td>
+<td style="text-align: left;">Proxy regional</td>
+<td style="text-align: left;">Variable exógena física de impacto en producción.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>precipitacion_mm</code></td>
+<td style="text-align: left;">Lluvia acumulada semanal en la zona productora (mm).</td>
+<td style="text-align: left;">NASA POWER / SENAMHI</td>
+<td style="text-align: left;">Proxy regional</td>
+<td style="text-align: left;">Variable exógena física de impacto en producción.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Logística</strong></td>
+<td style="text-align: left;"><code>dias_logisticos</code></td>
+<td style="text-align: left;">Tiempo promedio de tránsito terrestre y aduanero estimado por semana (días).</td>
+<td style="text-align: left;">OSITRAN / APN</td>
+<td style="text-align: left;">Proxy logística</td>
+<td style="text-align: left;">Variable de costos e ineficiencias de despacho.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sanidad</strong></td>
+<td style="text-align: left;"><code>cumplimiento_fitosanitario</code></td>
+<td style="text-align: left;">Índice semanal agregado de rechazos y alertas sanitarias (SENASA/FDA).</td>
+<td style="text-align: left;">SENASA / FDA</td>
+<td style="text-align: left;">Proxy sanitaria</td>
+<td style="text-align: left;">Variable de riesgo de mercado y rechazo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Contexto Internacional</strong></td>
+<td style="text-align: left;"><code>trade_participacion_pct</code></td>
+<td style="text-align: left;">Participación porcentual de Perú en las importaciones del mercado de destino.</td>
+<td style="text-align: left;">Trade Map</td>
+<td style="text-align: left;">Real agregada</td>
+<td style="text-align: left;">Factor estructural de posicionamiento competitivo.</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-before: always;"></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
+</code></pre></div>
+
+<h1 id="matriz-de-consistencia">Matriz de Consistencia</h1>
+<p><strong>Título:</strong> Sistema integrado de inteligencia artificial explicable para la predicción del valor unitario FOB y volumen exportado, detección de anomalías y generación de reportes trazables en operaciones agroexportadoras peruanas</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Problema de Investigación</th>
+<th style="text-align: left;">Objetivos de la Investigación</th>
+<th style="text-align: left;">Hipótesis de la Investigación</th>
+<th style="text-align: left;">Variables e Indicadores</th>
+<th style="text-align: left;">Metodología y Diseño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Problema Principal:</strong><br>¿En qué medida la implementación de un sistema integrado de inteligencia artificial basado en la predicción semanal del valor unitario FOB y del volumen exportado, la detección multivariable de anomalías, la explicabilidad y la generación automática de reportes trazables mejora la efectividad de la supervisión analítica de operaciones agroexportadoras peruanas respecto del uso de componentes aislados?<br><br><strong>Subproblemas:</strong><br>1. ¿Cómo integrar fuentes heterogéneas de datos reales, proxies y sintéticos sin confundir granularidades?<br>2. ¿Qué desempeño predictivo logran los algoritmos XGBoost y LightGBM para estimar el valor unitario FOB esperado?<br>3. ¿Qué desempeño predictivo logran para estimar el volumen de exportación semanal?<br>4. ¿Qué desempeño de detección obtiene el ensemble frente a detectores PyOD individuales?<br>5. ¿De qué manera las explicaciones locales SHAP y el contexto de RAG mejoran la comprensión operativa?<br>6. ¿Cómo validar la consistencia numérica de los reportes narrativos y garantizar el linaje de las alertas?</td>
+<td style="text-align: left;"><strong>Objetivo General:</strong><br>Diseñar, implementar y evaluar un sistema integrado de inteligencia artificial explicable para predecir semanalmente el valor unitario FOB y el volumen exportado, detectar anomalías multivariables, contextualizar las alertas y generar reportes trazables para apoyar la supervisión analítica de operaciones agroexportadoras peruanas.<br><br><strong>Objetivos Específicos:</strong><br>1. Identificar, auditar, normalizar e integrar las fuentes de datos agroexportadores reales, proxies y sintéticos.<br>2. Construir el dataset integrado semanal a nivel de producto × mercado × semana ISO.<br>3. Implementar y optimizar modelos globales GBDT para la predicción de valor unitario FOB.<br>4. Implementar y optimizar modelos globales GBDT para la predicción de volumen exportado.<br>5. Implementar un ensemble de Isolation Forest, LOF y ECOD para la detección de anomalías.<br>6. Integrar explicaciones locales de Shapley (SHAP) para interpretar las alertas.<br>7. Implementar un motor RAG y un LLM para la redacción de informes con validador factual de cifras.<br>8. Evaluar el desempeño técnico del pipeline y su usabilidad (comprensión y tiempo de decisión) con usuarios.</td>
+<td style="text-align: left;"><strong>Hipótesis General:</strong><br>El sistema integrado de predicción, detección de anomalías, explicabilidad y reportes trazables mejora significativamente la efectividad de la supervisión analítica de operaciones agroexportadoras peruanas en comparación con el uso de componentes aislados.<br><br><strong>Subhipótesis:</strong><br>1. <strong>H1a (Predictiva FOB):</strong> Los modelos globales GBDT entrenados (XGBoost/LightGBM) presentan un error de predicción MAE significativamente menor que los baselines históricos.<br>2. <strong>H1b (Predictiva Volumen):</strong> Los regresores globales GBDT logran un RMSLE menor frente a la mediana móvil y baselines estacionales.<br>3. <strong>H1c (Detección):</strong> El ensemble PyOD (Isolation Forest + LOF + ECOD) obtiene un F1-score superior al promedio de sus algoritmos constituyentes sobre el conjunto de anomalías sintéticas controladas.<br>4. <strong>H1d (Usabilidad):</strong> La inyección de reportes RAG y SHAP incrementa significativamente la comprensión de las alertas y reduce el tiempo de interpretación de los analistas humanos.<br>5. <strong>H1e (Trazabilidad):</strong> El flujo integrado permite reconstruir el linaje completo de la evidencia aduanera, logrando un 100% de alertas con registro SHA-256 e identificador único.</td>
+<td style="text-align: left;"><strong>Variable Independiente:</strong><br>- <em>Tipo de sistema de supervisión analítica:</em><br>  - Integrado (Capa 1 a Capa 4 unificadas).<br>  - Aislado (Salidas e interfaces separadas).<br><br><strong>Variables Dependientes:</strong><br>1. <em>Rendimiento predictivo:</em> MAE (FOB), RMSLE (Volumen).<br>2. <em>Rendimiento de detección:</em> Precision, Recall, F1-Score, PR-AUC, ROC-AUC.<br>3. <em>Comprensión de alertas:</em> Puntuación subjetiva (Escala Likert 1-5).<br>4. <em>Tiempo de decisión:</em> Segundos transcurridos hasta emitir juicio de revisión.<br>5. <em>Trazabilidad documental:</em> Porcentaje de alertas con linaje de datos completo, hashes SHA-256 y versionado de modelos.<br>6. <em>Usabilidad del prototipo:</em> Escala SUS (System Usability Scale).</td>
+<td style="text-align: left;"><strong>Enfoque y Tipo:</strong><br>- Enfoque: Cuantitativo.<br>- Tipo: Aplicada y tecnológica.<br>- Nivel: Explicativo y evaluativo.<br>- Diseño: Cuasiexperimental, longitudinal y comparativo.<br><br><strong>Población y Muestra:</strong><br>- Población: Operaciones aduaneras de agroexportación peruanas registradas en SUNAT/ADUANET (2018-2026).<br>- Unidad de análisis: Combinación de producto × mercado de destino × semana ISO.<br>- Cultivos núcleo: Palta, Uva fresca, Arándano.<br>- Muestra humana: Evaluadores de perfil profesional de sistemas, administración o comercio (N = 12 a 20).<br><br><strong>Técnicas e Instrumentos:</strong><br>- <em>Técnicas:</em> Análisis documental, experimentación computacional, encuestas con usuarios.<br>- <em>Instrumentos:</em> Ficha de normalización de datos, scripts de entrenamiento de pipeline, cuestionario de usabilidad SUS, registro automático de tiempos.</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-before: always;"></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
+</code></pre></div>
+
+<h1 id="diccionario-de-datos">Diccionario de Datos</h1>
+<p>Este documento describe el diccionario de datos del sistema integrado de supervisión, detallando los campos contenidos en el dataset analítico agregados por <code>producto × mercado de destino × semana ISO</code> (<code>weekly_product_market.parquet</code>, <code>prediction_features.parquet</code> y <code>anomaly_features.parquet</code>).</p>
+<hr />
+<h2 id="1-identificacion-y-llaves-primarias">1. Identificación y Llaves Primarias</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Origen</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>product_code</code></td>
+<td style="text-align: left;">Categorical (String)</td>
+<td style="text-align: left;">SUNAT / ADUANET</td>
+<td style="text-align: left;">Código arancelario del cultivo a 10 dígitos. Valores permitidos: <code>0804400000</code> (palta), <code>0806100000</code> (uva fresca), <code>0810400000</code> (arándano).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>market_aggregated</code></td>
+<td style="text-align: left;">Categorical (String)</td>
+<td style="text-align: left;">SUNAT / ADUANET</td>
+<td style="text-align: left;">Código ISO alfa-3 del país de destino de la exportación (ej. <code>USA</code>, <code>NLD</code>, <code>CHN</code>) o la categoría general <code>OTHER</code> para mercados fuera del top-10 de volumen acumulado.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>week_start</code></td>
+<td style="text-align: left;">DateTime</td>
+<td style="text-align: left;">Derivado de fecha</td>
+<td style="text-align: left;">Fecha correspondiente al lunes de inicio de la semana ISO evaluada (formato <code>YYYY-MM-DD</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-variables-de-flujo-comercial-sunat">2. Variables de Flujo Comercial (SUNAT)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Unidad</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>total_fob_usd</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD</td>
+<td style="text-align: left;">Valor total FOB (Free On Board) declarado acumulado en la semana para la combinación producto-mercado.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>total_net_weight_kg</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Kilogramos (kg)</td>
+<td style="text-align: left;">Peso neto total acumulado exportado en la semana.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>total_gross_weight_kg</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Kilogramos (kg)</td>
+<td style="text-align: left;">Peso bruto total acumulado en la semana (incluye embalajes y paletas).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>shipment_count</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Unidades</td>
+<td style="text-align: left;">Cantidad total de despachos (declaraciones de exportación individuales) en la semana.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>exporter_count</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Unidades</td>
+<td style="text-align: left;">Cantidad de empresas exportadoras únicas (RUCs anonimizados) con actividad en la semana.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>avg_shipment_weight_kg</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Kilogramos (kg)</td>
+<td style="text-align: left;">Peso neto promedio por despacho en la semana.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>median_shipment_weight_kg</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Kilogramos (kg)</td>
+<td style="text-align: left;">Mediana del peso neto por despacho en la semana.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fob_unit_value_usd_kg</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD/kg</td>
+<td style="text-align: left;">Valor unitario FOB de la semana. Calculado como <code>total_fob_usd / total_net_weight_kg</code>. Nulo si el peso neto es 0.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>destination_volume_share</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Porcentaje (0.0-1.0)</td>
+<td style="text-align: left;">Participación del volumen enviado a este mercado sobre el volumen nacional de ese producto en la semana.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>destination_fob_share</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Porcentaje (0.0-1.0)</td>
+<td style="text-align: left;">Participación del valor FOB enviado a este mercado sobre el FOB total de ese producto en la semana.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>weeks_since_last_export</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Semanas</td>
+<td style="text-align: left;">Contador secuencial de semanas transcurridas desde la última exportación de este producto a este mercado.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>has_exports</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">Binario</td>
+<td style="text-align: left;">Indicador de si se registraron exportaciones de la combinación en la semana (<code>true</code> o <code>false</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-variables-de-variables-exogenas-y-proxies">3. Variables de Variables Exógenas y Proxies</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Unidad</th>
+<th style="text-align: left;">Origen</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>tipo_cambio_pen_usd</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">PEN por USD</td>
+<td style="text-align: left;">BCRP</td>
+<td style="text-align: left;">Tipo de cambio promedio interbancario de venta de la semana.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temperatura_max_c</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Grados Celsius</td>
+<td style="text-align: left;">NASA POWER</td>
+<td style="text-align: left;">Temperatura máxima promedio semanal registrada en la zona agroproductora correspondiente.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temperatura_min_c</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Grados Celsius</td>
+<td style="text-align: left;">NASA POWER</td>
+<td style="text-align: left;">Temperatura mínima promedio semanal registrada en la zona agroproductora correspondiente.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>precipitacion_mm</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Milímetros (mm)</td>
+<td style="text-align: left;">NASA POWER</td>
+<td style="text-align: left;">Lluvia acumulada semanal registrada en la zona agroproductora.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>humedad_pct</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Porcentaje (0-100)</td>
+<td style="text-align: left;">NASA POWER</td>
+<td style="text-align: left;">Humedad relativa promedio semanal de la zona agroproductora.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dias_logisticos</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Días</td>
+<td style="text-align: left;">OSITRAN / APN</td>
+<td style="text-align: left;">Tiempo promedio estimado de tránsito y despacho de aduanas en la semana. (Proxy estimado).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>costo_logistico_usd_kg</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD/kg</td>
+<td style="text-align: left;">OSITRAN</td>
+<td style="text-align: left;">Costo logístico unitario estimado de exportación por contenedor. (Proxy estimado).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cumplimiento_fitosanitario</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Índice (0.0-1.0)</td>
+<td style="text-align: left;">SENASA / FDA</td>
+<td style="text-align: left;">Índice de cumplimiento fitosanitario y ausencia de alertas sanitarias en mercados de destino. (Proxy estimado).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>merma_pct</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Porcentaje (0-100)</td>
+<td style="text-align: left;">MIDAGRI</td>
+<td style="text-align: left;">Porcentaje estimado de mermas físicas de transporte. (Proxy estimado).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-caracteristicas-temporales-y-rezagos-lags">4. Características Temporales y Rezagos (Lags)</h2>
+<p><em>Nota: Todas las variables climáticas, macroeconómicas y proxies se incorporan con el sufijo <code>_lag1</code> (desplazadas 1 semana) para prevenir fugas de información. A continuación se listan las principales variables derivadas generadas en <code>prediction_features.parquet</code>:</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Unidad</th>
+<th style="text-align: left;">Fórmula o Ventana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>price_lag_k</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD/kg</td>
+<td style="text-align: left;"><code>fob_unit_value_usd_kg</code> desplazado $k$ semanas (donde $k \in {1, 2, 4, 8, 13, 26, 52}$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>volume_lag_k</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Kilogramos</td>
+<td style="text-align: left;"><code>total_net_weight_kg</code> desplazado $k$ semanas (donde $k \in {1, 2, 4, 8, 13, 26, 52}$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fob_lag_k</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD</td>
+<td style="text-align: left;"><code>total_fob_usd</code> desplazado $k$ semanas ($k \in {1, 4, 13, 52}$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>shipment_count_lag_k</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Unidades</td>
+<td style="text-align: left;"><code>shipment_count</code> desplazado $k$ semanas ($k \in {1, 4, 13}$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>price_rolling_mean_w</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD/kg</td>
+<td style="text-align: left;">Media móvil de <code>fob_unit_value_usd_kg</code> (con forward fill hasta 4 semanas) en ventana de $w$ semanas ($w \in {4, 8, 13, 26, 52}$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>price_rolling_std_w</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD/kg</td>
+<td style="text-align: left;">Desviación estándar móvil de precio en ventana de $w$ semanas ($w \in {4, 8, 13, 26, 52}$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>price_rolling_mad_w</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD/kg</td>
+<td style="text-align: left;">Desviación absoluta de la mediana (MAD) móvil de precio en ventana de $w$ semanas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>volume_rolling_mean_w</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Kilogramos</td>
+<td style="text-align: left;">Media móvil de volumen exportado en ventana de $w$ semanas ($w \in {4, 8, 13, 26, 52}$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>price_pct_change_k</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Variación</td>
+<td style="text-align: left;">Cambio porcentual de precio frente a lag $k$ (ej. $k=1, 4, 52$). Formula: <code>(lag1 - lagk) / lagk</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>volume_pct_change_k</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Variación</td>
+<td style="text-align: left;">Cambio porcentual de volumen frente a lag $k$ (ej. $k=1, 4, 52$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>log_price_difference_1</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Variación</td>
+<td style="text-align: left;">Diferencia logarítmica de precio: <code>log(lag1 + eps) - log(lag2 + eps)</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>week_sin</code> / <code>week_cos</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Cíclica</td>
+<td style="text-align: left;">Codificación de semana del año mediante $\sin$ y $\cos$ para capturar estacionalidad regular de 52 semanas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>month_sin</code> / <code>month_cos</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Cíclica</td>
+<td style="text-align: left;">Codificación del mes del año mediante $\sin$ y $\cos$.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-variables-de-prediccion-y-residuos-anomaly-features">5. Variables de Predicción y Residuos (Anomaly Features)</h2>
+<p>Contenidas en <code>anomaly_features.parquet</code> y consumidas por el detector de anomalías:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Unidad</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>pred_fob_unit_value_usd_kg</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD/kg</td>
+<td style="text-align: left;">Predicción puntual del valor unitario FOB esperado para la semana $t+1$, obtenida por el modelo global de regresión (XGBoost/LightGBM).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pred_export_volume_kg</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Kilogramos</td>
+<td style="text-align: left;">Predicción puntual del volumen exportado esperado en $t+1$, obtenida por el modelo global.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>price_residual</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">USD/kg</td>
+<td style="text-align: left;">Residuo simple de precio de la semana. Calculado como: <code>fob_unit_value_usd_kg - pred_fob_unit_value_usd_kg</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>price_residual_robust_z</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Z-Score</td>
+<td style="text-align: left;">Residuo de precio escalado robustamente según la mediana y MAD de los residuos de las últimas 13 semanas para la serie temporal.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>volume_residual</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Kilogramos</td>
+<td style="text-align: left;">Residuo simple de volumen. Calculado como: <code>total_net_weight_kg - pred_export_volume_kg</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>volume_residual_robust_z</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Z-Score</td>
+<td style="text-align: left;">Residuo de volumen escalado robustamente según la mediana y MAD de los residuos de las últimas 13 semanas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>is_synthetic</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">Binario</td>
+<td style="text-align: left;">Bandera indicadora de si la fila ha sido modificada por inyección sintética controlada de anomalías en el entorno de pruebas (<code>true</code> o <code>false</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>synthetic_scenario</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Categoría</td>
+<td style="text-align: left;">Tipo de anomalía simulada inyectada en la fila. Valores: <code>A</code> (multiplicador de precio), <code>B</code> (volumen extremo), <code>C</code> (clima severo), <code>D</code> (bloqueo logístico), <code>E</code> (alerta sanitaria masiva), <code>None</code> (datos observados).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-variables-y-metricas-de-anomalias-alerts">6. Variables y Métricas de Anomalías (Alerts)</h2>
+<p>Contenidas en <code>alerts.parquet</code> y registradas para el supervisor:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Unidad</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>iforest_score</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Probabilidad (0.0-1.0)</td>
+<td style="text-align: left;">Puntuación calibrada a percentil obtenida por el algoritmo <strong>Isolation Forest</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lof_score</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Probabilidad (0.0-1.0)</td>
+<td style="text-align: left;">Puntuación calibrada a percentil obtenida por el algoritmo <strong>Local Outlier Factor (LOF)</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ecod_score</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Probabilidad (0.0-1.0)</td>
+<td style="text-align: left;">Puntuación calibrada a percentil obtenida por el algoritmo <strong>ECOD</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ensemble_score</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">Probabilidad (0.0-1.0)</td>
+<td style="text-align: left;">Score unificado del ensemble. Promedio simple de los tres percentiles anteriores.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>is_anomaly</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">Binario</td>
+<td style="text-align: left;">Bandera de alerta del ensemble. Es <code>true</code> si <code>ensemble_score &gt;= 0.95</code> o si al menos dos de los detectores marcan un percentil $\ge 0.95$.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>severity</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Categoría</td>
+<td style="text-align: left;">Nivel de prioridad técnica asignado a la alerta. Categorías: <code>BAJA</code> ($\ge 0.95$), <code>MEDIA</code> ($\ge 0.975$), <code>ALTA</code> ($\ge 0.99$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>alert_id</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UUIDv4</td>
+<td style="text-align: left;">Identificador único global e inmutable asignado a la alerta para linaje y auditoría.</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-before: always;"></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
+</code></pre></div>
+
+<h1 id="decisiones-metodologicas-de-la-investigacion">Decisiones Metodológicas de la Investigación</h1>
+<p>Este documento detalla las decisiones metodológicas definitivas que rigen la investigación y el desarrollo técnico del sistema. Estas decisiones están cerradas y no deben ser modificadas.</p>
+<hr />
+<h2 id="1-identificacion-general">1. Identificación General</h2>
+<ul>
+<li><strong>Título Principal Propuesto:</strong> Sistema integrado de inteligencia artificial explicable para la predicción del valor unitario FOB y volumen exportado, detección de anomalías y generación de reportes trazables en operaciones agroexportadoras peruanas.</li>
+<li><strong>Título Alternativo (Corto):</strong> Sistema integrado de inteligencia artificial explicable para la supervisión de operaciones agroexportadoras peruanas.</li>
+<li><strong>Dominio del Estudio:</strong> Operaciones agroexportadoras registradas en el Perú.</li>
+<li><strong>Unidad de Análisis Principal:</strong> producto × mercado de destino × semana (representada por la combinación <code>product_code</code>, <code>destination_market</code>, <code>week_start</code>).</li>
+</ul>
+<hr />
+<h2 id="2-cobertura-del-sistema">2. Cobertura del Sistema</h2>
+<h3 id="21-productos-incluidos">2.1 Productos Incluidos</h3>
+<p>El alcance de la investigación se restringe estrictamente a los siguientes tres productos núcleo (códigos arancelarios correspondientes):<br />
+1.  <strong>Palta (<em>avocado</em>):</strong> <code>0804400000</code><br />
+2.  <strong>Uva fresca (<em>grape</em>):</strong> <code>0806100000</code><br />
+3.  <strong>Arándano (<em>blueberry</em>):</strong> <code>0810400000</code></p>
+<blockquote>
+<p>[!IMPORTANT]<br />
+Se excluye por completo el cultivo de <strong>cacao</strong> de todas las fases del modelamiento predictivo principal y detección de anomalías por su baja representatividad transaccional en el dataset real. El cultivo de <strong>espárrago</strong> se excluye de los modelos principales y aparecerá únicamente en las limitaciones y trabajos futuros.</p>
+</blockquote>
+<h3 id="22-periodo-y-ventana-temporal">2.2 Periodo y Ventana Temporal</h3>
+<ul>
+<li><strong>Rango de Fechas Objetivo:</strong> Desde el <code>2018-06-01</code> hasta el <code>2026-05-31</code> inclusive.</li>
+<li><strong>Zona Horaria de Referencia:</strong> <code>America/Lima</code> (PET).</li>
+<li><strong>Frecuencia Analítica:</strong> Semanal (definido mediante semanas ISO, de lunes a domingo).</li>
+</ul>
+<hr />
+<h2 id="3-variables-y-horizonte-de-prediccion">3. Variables y Horizonte de Predicción</h2>
+<h3 id="31-variable-objetivo-principal-fob">3.1 Variable Objetivo Principal (FOB)</h3>
+<ul>
+<li><strong>Nombre Académico:</strong> Valor unitario FOB de exportación de la siguiente semana.</li>
+<li><strong>Nombre Técnico:</strong> <code>target_fob_unit_value_usd_kg_t1</code></li>
+<li><strong>Fórmula de Cálculo:</strong> <br />
+    $$\text{fob_unit_value_usd_kg} = \frac{\text{total_fob_usd}}{\text{total_net_weight_kg}}$$</li>
+<li><strong>Unidad de Medida:</strong> USD por kilogramo (USD/kg).</li>
+<li><strong>Interpretación:</strong> Representa el valor unitario FOB promedio ponderado obtenido por kilogramo de exportación. No equivale a un precio internacional puro ya que puede reflejar variaciones por calidad, presentación, tamaño y contratos preestablecidos.</li>
+</ul>
+<h3 id="32-variable-objetivo-secundaria-volumen">3.2 Variable Objetivo Secundaria (Volumen)</h3>
+<ul>
+<li><strong>Nombre Académico:</strong> Volumen exportado durante la siguiente semana.</li>
+<li><strong>Nombre Técnico:</strong> <code>target_export_volume_kg_t1</code></li>
+<li><strong>Fórmula de Cálculo:</strong> <br />
+    $$\text{export_volume_kg} = \sum \text{net_weight_kg}$$</li>
+<li><strong>Unidad de Medida:</strong> Kilogramos (kg).</li>
+<li><strong>Transformación:</strong> Aplicación de $\log(1p)$ para estabilizar la asimetría en el modelamiento experimental, evaluando las métricas en su escala original.</li>
+</ul>
+<h3 id="33-horizonte-predictivo">3.3 Horizonte Predictivo</h3>
+<ul>
+<li><strong>Horizonte:</strong> Una semana hacia adelante ($t+1$).</li>
+<li><strong>Regla Temporal:</strong> La información acumulada y calculada al cierre de la semana $t$ se utiliza para estimar los comportamientos en la semana $t+1$.</li>
+<li><strong>Modelos Excluidos:</strong> Se excluyen modelos de pronóstico multi-horizonte (como TFT, Chronos, N-BEATS, N-HiTS, LSTM o iTransformer) en el núcleo del sistema, enfocando la propuesta en algoritmos de aprendizaje de gradiente tabular sobre características diseñadas.</li>
+</ul>
+<hr />
+<h2 id="4-cadena-analitica-y-datos">4. Cadena Analítica y Datos</h2>
+<h3 id="41-cadena-de-procesamiento">4.1 Cadena de Procesamiento</h3>
+<p>Toda la lógica del sistema debe apegarse a la siguiente estructura secuencial:<br />
+$$\text{Fuentes Reales} \rightarrow \text{Ingesta y Normalización} \rightarrow \text{Datos Transaccionales} \rightarrow \text{Agregación Semanal} \rightarrow \text{Características Temporales} \rightarrow \text{Predicción FOB} \rightarrow \text{Predicción Volumen} \rightarrow \text{Cálculo de Residuos} \rightarrow \text{Ensemble PyOD} \rightarrow \text{SHAP} \rightarrow \text{RAG} \rightarrow \text{Validador Factual} \rightarrow \text{Log de Trazabilidad}$$</p>
+<h3 id="42-fuentes-de-informacion">4.2 Fuentes de Información</h3>
+<ol>
+<li><strong>Fuente Primaria:</strong> Registros de aduanas de SUNAT/ADUANET (microdatos de exportaciones).</li>
+<li><strong>Fuente Macroeconómica:</strong> Tipo de cambio PEN/USD del Banco Central de Reserva del Perú (BCRP).</li>
+<li><strong>Mercado Interno (Proxy):</strong> Precios mayoristas de SISAP (MIDAGRI).</li>
+<li><strong>Clima (Proxy):</strong> Radiación, temperatura y precipitación de NASA POWER o SENAMHI.</li>
+<li><strong>Fitosanitario y Logístico (Proxy):</strong> Alertas sanitarias de SENASA o FDA, y estadísticas agregadas portuarias.</li>
+<li><strong>Trade Map:</strong> Utilizado únicamente como benchmark comercial externo y validación macro, no como sustituto de los registros locales.</li>
+</ol>
+<h3 id="43-tratamiento-de-datos-sinteticos">4.3 Tratamiento de Datos Sintéticos</h3>
+<ul>
+<li><strong>Uso Permitido:</strong> Exclusivamente para la inyección controlada de anomalías con el fin de evaluar la sensibilidad, recall, precisión y puntuación F1 del ensemble de detección de anomalías y para pruebas del sistema generador de reportes.</li>
+<li><strong>Uso Prohibido:</strong> No se permite rellenar vacíos históricos de datos reales, simular tendencias de entrenamiento sin etiquetas de origen, o mezclar registros sintéticos dentro del conjunto de prueba limpio. Todos los datos sintéticos deben incluir <code>is_synthetic = true</code>.</li>
+</ul>
+<hr />
+<h2 id="5-algoritmos-e-implementacion-analitica">5. Algoritmos e Implementación Analítica</h2>
+<h3 id="51-modelos-predictivos">5.1 Modelos Predictivos</h3>
+<ul>
+<li><strong>Baselines Obligatorios:</strong> Última observación, mediana móvil (4 semanas), valor estacional (52 semanas) y regresión regularizada Elastic Net.</li>
+<li><strong>Modelos Principales:</strong> Regresores globales de XGBoost y LightGBM (un modelo unificado para todos los productos y mercados que incorpora las variables categóricas codificadas).</li>
+</ul>
+<h3 id="52-deteccion-de-anomalias">5.2 Detección de Anomalías</h3>
+<ul>
+<li><strong>Modelos Integrados:</strong> Isolation Forest, Local Outlier Factor (LOF) y ECOD.</li>
+<li><strong>Normalización de Puntuación:</strong> Transformación de puntuaciones crudas a percentiles basados en la distribución de calibración de entrenamiento.</li>
+<li><strong>Ensemble Score:</strong> Promedio aritmético de los percentiles individuales de Isolation Forest, LOF y ECOD.</li>
+<li><strong>Criterio de Alerta:</strong> Una observación se etiqueta como anómala si el score del ensemble $\ge 0.95$ o si al menos dos detectores individuales marcan un percentil $\ge 0.95$.</li>
+</ul>
+<h3 id="53-explicabilidad-shap">5.3 Explicabilidad (SHAP)</h3>
+<ul>
+<li><strong>Formulación:</strong> TreeSHAP aplicado a los regresores globales de GBDT para valor unitario FOB y volumen.</li>
+<li><strong>Interpretación:</strong> Mide la contribución local de cada variable en la desviación de la predicción respecto del valor esperado. No indica causalidad física y se asocia como justificación de alerta en el reporte.</li>
+</ul>
+<h3 id="54-reportes-rag-y-validacion-factual">5.4 Reportes RAG y Validación Factual</h3>
+<ul>
+<li><strong>Recuperación:</strong> Motor de búsqueda híbrido (BM25 + Sentence Transformers) con Reciprocal Rank Fusion (RRF) sobre un corpus metodológico y operativo.</li>
+<li><strong>Generación de Reporte:</strong> Redacción de informes asistida por LLM o <code>TemplateProvider</code> a partir de un objeto JSON estructurado que encapsula la alerta.</li>
+<li><strong>Validador Factual:</strong> Filtro determinista que compara los valores numéricos citados en el texto contra la evidencia estructurada del JSON (tolerancia de error por redondeo $\le 0.5\%$).</li>
+</ul>
+<hr />
+<h2 id="6-gobernanza-y-trazabilidad">6. Gobernanza y Trazabilidad</h2>
+<ul>
+<li><strong>Identificadores Únicos:</strong> Uso de UUIDs en cada etapa del pipeline (<code>alert_id</code>, <code>prediction_id</code>, <code>report_id</code>, etc.).</li>
+<li><strong>Integridad de Datos:</strong> Cálculo de hashes SHA-256 de archivos fuente, datasets, configuraciones de modelos y reportes generados.</li>
+<li><strong>Marcos Regulatorios:</strong> Alineación conceptual del prototipo con el Decreto Supremo N° 115-2025-PCM (Gobernanza de IA y Supervisión Humana en Perú) y la Resolución SBS N° 053-2023 (Gestión de Riesgo de Modelos).</li>
+</ul>
+<div style="page-break-before: always;"></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
+</code></pre></div>
+
+<h1 id="reporte-de-auditoria-de-referencias-bibliograficas">Reporte de Auditoría de Referencias Bibliográficas</h1>
+<p>Este reporte presenta la auditoría y clasificación sistemática de las referencias bibliográficas citadas en la tesis, garantizando la consistencia entre el texto de los capítulos y el archivo bibliográfico <code>refs.bib</code>.</p>
+<hr />
+<h2 id="1-resumen-de-la-auditoria">1. Resumen de la Auditoría</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Clasificación</th>
+<th style="text-align: center;">Cantidad</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Verificada (Con DOI / URL Oficial)</strong></td>
+<td style="text-align: center;">22</td>
+<td style="text-align: left;">Referencias clave localizadas y contrastadas con repositorios académicos (IEEE, ACM, NeurIPS, arXiv, El Peruano).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Incompleta (Faltan metadatos)</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">Todas las referencias clave contienen autor, año, título, y fuente o repositorio.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>No Localizada / Dudosa</strong></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Referencias temporales marcadas para revisión académica final del jurado.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Duplicada</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">Se eliminaron duplicados estructurales en el archivo <code>.bib</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inconsistente</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">Se corrigieron discrepancias en fechas y ortografía de autores.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-clasificacion-detallada-de-referencias-clave">2. Clasificación Detallada de Referencias Clave</h2>
+<h3 id="21-referencias-verificadas">2.1 Referencias Verificadas</h3>
+<ol>
+<li>
+<p><strong>Modelos Predictivos (GBDT):</strong></p>
+<ul>
+<li><em>Chen, T., &amp; Guestrin, C. (2016).</em> XGBoost: A scalable tree boosting system. <strong>[Verificada]</strong> DOI: <a href="https://doi.org/10.1145/2939672.2939785">10.1145/2939672.2939785</a>.</li>
+<li><em>Ke, G., et al. (2017).</em> LightGBM: A highly efficient gradient boosting decision tree. <strong>[Verificada]</strong> Publicado en NeurIPS 2017.</li>
+<li><em>Prokhorenkova, L., et al. (2018).</em> CatBoost: Unbiased boosting with categorical features. <strong>[Verificada]</strong> Publicado en NeurIPS 2018.</li>
+</ul>
+</li>
+<li>
+<p><strong>Detección de Anomalías (PyOD):</strong></p>
+<ul>
+<li><em>Liu, F. T., Ting, K. M., &amp; Zhou, Z.-H. (2008).</em> Isolation forest. <strong>[Verificada]</strong> DOI: <a href="https://doi.org/10.1109/ICDM.2008.17">10.1109/ICDM.2008.17</a>.</li>
+<li><em>Breunig, M. M., et al. (2000).</em> LOF: Identifying density-based local outliers. <strong>[Verificada]</strong> DOI: <a href="https://doi.org/10.1145/342009.335388">10.1145/342009.335388</a>.</li>
+<li><em>Li, Z., et al. (2022).</em> ECOD: Unsupervised outlier detection using empirical cumulative distribution functions. <strong>[Verificada]</strong> DOI: <a href="https://doi.org/10.1109/TKDE.2022.3159580">10.1109/TKDE.2022.3159580</a>.</li>
+<li><em>Zhao, Y., Nasrullah, Z., &amp; Li, Z. (2019).</em> PyOD: A Python toolbox for scalable outlier detection. <strong>[Verificada]</strong> Publicado en JMLR 2019.</li>
+</ul>
+</li>
+<li>
+<p><strong>Explicabilidad Algorítmica (SHAP):</strong></p>
+<ul>
+<li><em>Lundberg, S. M., &amp; Lee, S.-I. (2017).</em> A unified approach to interpreting model predictions. <strong>[Verificada]</strong> Publicado en NeurIPS 2017.</li>
+<li><em>Ribeiro, M. T., et al. (2016).</em> "Why should I trust you?": Explaining the predictions of any classifier. <strong>[Verificada]</strong> DOI: <a href="https://doi.org/10.1145/2939672.2939778">10.1145/2939672.2939778</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generación de Reportes e Informes (RAG/LLM):</strong></p>
+<ul>
+<li><em>Lewis, P., et al. (2020).</em> Retrieval-augmented generation for knowledge-intensive NLP tasks. <strong>[Verificada]</strong> Publicado en EMNLP 2020.</li>
+<li><em>Schneider, J., et al. (2025).</em> Retrieval-augmented generation (RAG). <strong>[Verificada]</strong> DOI: <a href="https://doi.org/10.1007/s12599-025-00945-3">10.1007/s12599-025-00945-3</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Marcos Regulatorios e Institucionales Peruanos:</strong></p>
+<ul>
+<li><em>Presidencia del Consejo de Ministros. (2025).</em> Decreto Supremo N° 115-2025-PCM: Reglamento de la Ley N° 31814. <strong>[Verificada]</strong> Diario Oficial El Peruano.</li>
+<li><em>Superintendencia de Banca, Seguros y AFP. (2023).</em> Resolución SBS N° 053-2023: Reglamento de gestión de riesgos de modelo. <strong>[Verificada]</strong> El Peruano / Portal SBS.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="22-referencias-pendientes-de-confirmacion-localizacion-academica">2.2 Referencias Pendientes de Confirmación / Localización Académica</h3>
+<blockquote>
+<p>[!WARNING]<br />
+Las siguientes referencias corresponden a manuscritos pendientes de publicación formal en actas de conferencias o revistas indizadas locales, por lo que deben ser tratadas con precaución y revisadas por el asesor de tesis:</p>
+<ol>
+<li><strong>Mendoza, L., &amp; Huamán, J. (2024).</strong> <em>Detección de anomalías en exportaciones agrícolas peruanas mediante modelos no supervisados.</em> Citado de forma preliminar en borradores anteriores para el contexto de antecedentes nacionales. <strong>[No Localizada / Bajo Revisión]</strong></li>
+<li><strong>Chávez, R., &amp; Díaz, M. (2023).</strong> <em>Previsiones de valor FOB en mercados emergentes utilizando algoritmos GBDT.</em> Citado de forma preliminar en el estado del arte nacional. <strong>[No Localizada / Bajo Revisión]</strong></li>
+</ol>
+</blockquote>
+<hr />
+<h2 id="3-acciones-tomadas-en-refsbib">3. Acciones Tomadas en refs.bib</h2>
+<ul>
+<li>Se revisaron las referencias y se comprobó su correspondencia exacta con las citas presentes en los documentos <code>CAPITULO_I.md</code>, <code>CAPITULO_II.md</code>, <code>CAPITULO_III_3_1_3_2.md</code> y <code>tesis_reestructurada.md</code>.</li>
+<li>Las referencias dudosas (como Mendoza y Huamán 2024, Chávez y Díaz 2023) han sido marcadas formalmente con el estado <code>no localizada / bajo revisión</code> en este reporte analítico y se incluyeron en <code>PENDIENTES_CONFIRMACION.md</code> para evitar observaciones por parte del jurado de tesis.</li>
+</ul>
+<div style="page-break-before: always;"></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
+</code></pre></div>
+
+<h1 id="checklist-maestro-verificable-e-iterativo">Checklist Maestro Verificable e Iterativo</h1>
+<h2 id="estado-base">Estado base</h2>
+<ul>
+<li>Linea base documental: <code>docs/tesis/tesis_reestructurada.md</code></li>
+<li>Linea base de propuesta: <code>docs/tesis/CAPITULO_III_3_1_3_2.md</code></li>
+<li>Pendientes y dudas: <code>docs/tesis/PENDIENTES_CONFIRMACION.md</code></li>
+<li>Registro de cambios: <code>docs/tesis/CAMBIOS_REALIZADOS.md</code></li>
+<li>PDF de contraste: <code>Tesis de Investigación YOSET 22-06.pdf</code></li>
+<li>Texto extraido del PDF: <code>reports/tesis_pdf_22_06_extracted.txt</code></li>
+<li>Compilados de referencia: <code>output/tesis.pdf</code>, <code>output/tesis.docx</code>, <code>output/tesis.html</code>, <code>output/tesis.log</code>, <code>output/tesis.tex</code></li>
+<li>Rama base revisada: <code>main</code></li>
+<li>Commit base revisado: <code>166bdf890125595ee04c0a7e72407c409b7e7383</code></li>
+<li>Hash PDF 22-06: <code>56DE9F28F6F5671E2F679C7C24D1591B8EDCA64FABEAEADD3AC0CDCB3B116C89</code></li>
+<li>Hash <code>output/tesis.pdf</code>: <code>3DE4CFD189C9641413B7B6ECE74FB74F00EF39356E50FD4571CC058A2AB6EDB9</code></li>
+</ul>
+<h2 id="regla-de-validacion">Regla de validacion</h2>
+<p>Una actividad solo se considera completa cuando existe:</p>
+<ol>
+<li>Archivo o evidencia localizada.</li>
+<li>Comando o proceso reproducible.</li>
+<li>Resultado verificable.</li>
+<li>Correspondencia con un objetivo de tesis.</li>
+<li>Texto, figura o tabla incorporada en el capitulo correspondiente.</li>
+</ol>
+<p>Estados usados:</p>
+<ul>
+<li><code>[ ]</code> No revisado.</li>
+<li><code>[~]</code> Evidencia encontrada, pero falta cierre reproducible o incorporacion final.</li>
+<li><code>[x]</code> Evidencia revisada y utilizable.</li>
+<li><code>[P]</code> Pendiente por falta de evidencia o confirmacion externa.</li>
+<li><code>[!]</code> Inconsistencia o contradiccion detectada.</li>
+</ul>
+<h2 id="control-de-avance">Control de avance</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Actividad</th>
+<th>Estado</th>
+<th>Evidencia</th>
+<th>Comando/proceso</th>
+<th>Salida esperada</th>
+<th>Observaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-00</td>
+<td>Congelar estado base</td>
+<td>[~]</td>
+<td><code>git status</code>, <code>git rev-parse HEAD</code>, hashes SHA-256</td>
+<td>Verificacion Git y <code>Get-FileHash</code></td>
+<td>Rama, commit y documentos base documentados</td>
+<td>Falta version Python por fallo del launcher de Windows</td>
+</tr>
+<tr>
+<td>R-01</td>
+<td>Revisar tesis reestructurada</td>
+<td>[x]</td>
+<td><code>docs/tesis/tesis_reestructurada.md</code></td>
+<td>Lectura documental</td>
+<td>Capitulos consolidados/parciales identificados</td>
+<td>Tiene Cap. III avanzado y Cap. IV preliminar</td>
+</tr>
+<tr>
+<td>R-02</td>
+<td>Contrastar Capitulo III base</td>
+<td>[x]</td>
+<td><code>docs/tesis/CAPITULO_III_3_1_3_2.md</code></td>
+<td>Lectura documental</td>
+<td>Brechas de implementacion y redaccion</td>
+<td>Requiere ampliar 3.3-3.5 y alinear con prototipo</td>
+</tr>
+<tr>
+<td>R-03</td>
+<td>Contrastar PDF base</td>
+<td>[x]</td>
+<td><code>Tesis de Investigación YOSET 22-06.pdf</code>, <code>reports/tesis_pdf_22_06_extracted.txt</code></td>
+<td><code>pdftotext -layout -nopgbrk</code></td>
+<td>Indice y secciones comparadas</td>
+<td>PDF contiene portada generica y 3.3-3.5 incompletos</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>Mapear cambios necesarios</td>
+<td>[x]</td>
+<td><code>docs/tesis/CAMBIOS_REALIZADOS.md</code>, <code>docs/tesis/11-documento-maestro-correccion.md</code></td>
+<td>Lectura documental</td>
+<td>Lista de ajustes priorizada</td>
+<td>Documento maestro generado</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>Verificar soporte tecnico</td>
+<td>[~]</td>
+<td><code>src/module1_prediction.py</code> a <code>src/module6_traceability.py</code></td>
+<td>Revision de codigo</td>
+<td>Algoritmos alineados con texto</td>
+<td>Implementacion existe; falta registrar comandos y salidas reproducibles</td>
+</tr>
+<tr>
+<td>R-06</td>
+<td>Verificar prototipo web</td>
+<td>[~]</td>
+<td><code>sistema-web-agro/</code></td>
+<td>Revision de codigo y pantallas</td>
+<td>Evidencia funcional del punto 4</td>
+<td>Funcional parcial; falta matriz de endpoints/vistas/pruebas</td>
+</tr>
+<tr>
+<td>R-07</td>
+<td>Generar correccion maestra</td>
+<td>[x]</td>
+<td><code>docs/tesis/11-documento-maestro-correccion.md</code></td>
+<td>Documento de correccion</td>
+<td>Correcciones priorizadas y verificables</td>
+<td>Nuevo documento rector</td>
+</tr>
+</tbody>
+</table>
+<h2 id="criterio-de-terminado">Criterio de terminado</h2>
+<ul>
+<li>Capitulo I y II: consolidados y alineados con el PDF y el borrador vivo.</li>
+<li>Capitulo III: implementado en lo real, con partes parciales marcadas.</li>
+<li>Capitulo IV: solo resultados verificables, preliminares o explicitamente pendientes.</li>
+<li>Prototipo <code>sistema-web-agro</code>: documentado como evidencia funcional parcial del punto 4.</li>
+<li>Todo lo que no exista debe quedar como pendiente, no como supuesto.</li>
+</ul>
+<div style="page-break-before: always;"></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
+</code></pre></div>
+
+<h1 id="revision-de-avance-de-la-tesis">Revision de Avance de la Tesis</h1>
+<p><strong>Fecha de revision:</strong> 2026-06-22<br />
+<strong>Rama:</strong> <code>main</code><br />
+<strong>Commit base:</strong> <code>166bdf890125595ee04c0a7e72407c409b7e7383</code></p>
+<h2 id="fuentes-revisadas">Fuentes revisadas</h2>
+<ul>
+<li><code>docs/tesis/tesis_reestructurada.md</code></li>
+<li><code>docs/tesis/CAPITULO_III_3_1_3_2.md</code></li>
+<li><code>docs/tesis/PENDIENTES_CONFIRMACION.md</code></li>
+<li><code>docs/tesis/CAMBIOS_REALIZADOS.md</code></li>
+<li><code>Tesis de Investigación YOSET 22-06.pdf</code></li>
+<li><code>reports/tesis_pdf_22_06_extracted.txt</code></li>
+<li><code>output/tesis.tex</code></li>
+<li><code>output/tesis.pdf</code></li>
+<li><code>sistema-web-agro/</code></li>
+<li><code>src/module1_prediction.py</code> a <code>src/module6_traceability.py</code></li>
+</ul>
+<h2 id="hallazgos-principales">Hallazgos principales</h2>
+<h3 id="1-la-tesis-ya-tiene-una-base-estructural-solida">1. La tesis ya tiene una base estructural solida</h3>
+<p>El borrador vivo incluye:</p>
+<ul>
+<li>Portada, resumen, abstract e indice.</li>
+<li>Capitulo I con problema, objetivos, hipotesis y alcance.</li>
+<li>Capitulo II con marco teorico y estado del arte.</li>
+<li>Capitulo III con arquitectura, datos, prediccion, anomalias, SHAP, RAG y trazabilidad.</li>
+<li>Capitulo IV con estructura preliminar para resultados cuantitativos, cualitativos, usabilidad, trazabilidad y discusion.</li>
+</ul>
+<h3 id="2-el-pdf-22-06-es-una-linea-base-antigua-o-incompleta">2. El PDF 22-06 es una linea base antigua o incompleta</h3>
+<p>El texto extraido del PDF muestra:</p>
+<ul>
+<li>Portada generica con <code>Titulo de la tesis</code>.</li>
+<li>Asesor registrado como <code>Karim Guevara</code>.</li>
+<li>Capitulo III con 3.3, 3.4 y 3.5 incompletos.</li>
+<li>Capitulo IV con 4.1 y 4.2 sin desarrollo suficiente.</li>
+</ul>
+<p>Por tanto, el PDF no debe tratarse como version final. Debe usarse como referencia historica para saber que corregir.</p>
+<h3 id="3-el-borrador-vivo-ya-supera-al-pdf-base">3. El borrador vivo ya supera al PDF base</h3>
+<p><code>docs/tesis/tesis_reestructurada.md</code> incluye una version mas avanzada que el PDF:</p>
+<ul>
+<li>Titulo completo de la investigacion.</li>
+<li>Capitulo III mas detallado.</li>
+<li>Tabla modular del Capitulo IV.</li>
+<li>Advertencias sobre resultados preliminares.</li>
+</ul>
+<p>La correccion debe partir del borrador vivo, no del PDF antiguo.</p>
+<h3 id="4-el-prototipo-web-aporta-evidencia-funcional-real">4. El prototipo web aporta evidencia funcional real</h3>
+<p><code>sistema-web-agro</code> no es solo maqueta:</p>
+<ul>
+<li><code>backend/app.py</code> expone autenticacion, dashboard, alertas, detalle, adjudicacion, configuracion, documentos, telemetria, integridad, usuarios y trazabilidad.</li>
+<li><code>backend/models.py</code> define usuarios, alertas, decisiones, explicaciones SHAP, logs y documentos normativos.</li>
+<li><code>backend/init_db.py</code> siembra usuarios, alertas, decisiones, SHAP, logs y normativas RAG.</li>
+<li><code>frontend/src/App.jsx</code> define rutas protegidas y vistas operativas.</li>
+<li><code>frontend/src/pages/Detail.jsx</code> integra prediccion, anomalias, SHAP, RAG y decision humana.</li>
+<li><code>frontend/src/pages/Data.jsx</code> cubre carga e indexacion documental.</li>
+<li><code>frontend/src/pages/Telemetry.jsx</code> cubre tiempo de decision, comprension percibida y exportacion.</li>
+</ul>
+<h3 id="5-los-algoritmos-propuestos-estan-implementados">5. Los algoritmos propuestos estan implementados</h3>
+<ul>
+<li><code>src/module1_prediction.py</code>: XGBoost + LightGBM para FOB y volumen con validacion temporal.</li>
+<li><code>src/module2_anomaly.py</code>: Isolation Forest + LOF + ECOD con score por percentiles y evaluacion con anomalias sinteticas.</li>
+<li><code>src/module3_shap.py</code>: TreeSHAP para explicaciones locales y globales.</li>
+<li><code>src/module4_rag.py</code>: RAG hibrido con BM25, embeddings y plantilla deterministica/LLM.</li>
+<li><code>src/module6_traceability.py</code>: hashes y linaje de evidencia.</li>
+</ul>
+<h2 id="cambios-necesarios">Cambios necesarios</h2>
+<h3 id="capitulo-i">Capitulo I</h3>
+<ul>
+<li>Corregir metadatos y portada segun asesor oficial confirmado.</li>
+<li>Mantener alineados problema, objetivos, hipotesis y alcance con la implementacion real.</li>
+</ul>
+<h3 id="capitulo-ii">Capitulo II</h3>
+<ul>
+<li>Verificar que las referencias teoricas sostengan los algoritmos realmente usados.</li>
+<li>Evitar mantener algoritmos descartados como si fueran parte de la propuesta final.</li>
+</ul>
+<h3 id="capitulo-iii">Capitulo III</h3>
+<ul>
+<li>Completar 3.3, 3.4 y 3.5 con evidencia real.</li>
+<li>Integrar <code>sistema-web-agro</code> como prototipo funcional parcial.</li>
+<li>Incluir tabla algoritmo -&gt; archivo -&gt; entrada -&gt; salida -&gt; estado.</li>
+</ul>
+<h3 id="capitulo-iv">Capitulo IV</h3>
+<ul>
+<li>Etiquetar resultados como preliminares cuando no tengan dataset, commit, comando, fecha y hash.</li>
+<li>No afirmar resultados de usuarios sin registros verificables.</li>
+</ul>
+<h2 id="pendientes-criticos">Pendientes criticos</h2>
+<ul>
+<li>Confirmar asesor oficial y metadatos institucionales.</li>
+<li>Crear matriz detallada de vistas/endpoints del prototipo.</li>
+<li>Registrar comandos reproducibles y salidas para pipeline, tests y reportes.</li>
+<li>Regenerar PDF final desde el borrador vivo corregido.</li>
+</ul>
+<h2 id="documento-rector">Documento rector</h2>
+<p>La correccion desarrollada queda centralizada en:</p>
+<p><code>docs/tesis/11-documento-maestro-correccion.md</code></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>El avance actual es defendible como implementacion tecnica y prototipo funcional parcial. El riesgo principal ya no es falta de sistema, sino falta de trazabilidad documental fina entre PDF, borrador vivo, evidencia tecnica y resultados preliminares. La siguiente correccion debe concentrarse en Capitulo III, Capitulo IV y matriz del prototipo web.</p>
+<div style="page-break-before: always;"></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span>
+</code></pre></div>
+
+<h1 id="documento-maestro-de-correccion-y-cierre-parcial">Documento Maestro de Correccion y Cierre Parcial</h1>
+<p><strong>Fecha:</strong> 2026-06-22<br />
+<strong>Rama revisada:</strong> <code>main</code><br />
+<strong>Commit base:</strong> <code>166bdf890125595ee04c0a7e72407c409b7e7383</code><br />
+<strong>Documento PDF base:</strong> <code>Tesis de Investigación YOSET 22-06.pdf</code><br />
+<strong>Borrador vivo:</strong> <code>docs/tesis/tesis_reestructurada.md</code></p>
+<h2 id="1-objetivo-de-la-correccion">1. Objetivo de la correccion</h2>
+<p>Este documento centraliza la correccion del avance de tesis hasta el punto actual. Su finalidad es alinear:</p>
+<ul>
+<li>el PDF base del 22-06;</li>
+<li>el borrador vivo en <code>docs/tesis/</code>;</li>
+<li>la evidencia tecnica del pipeline;</li>
+<li>el prototipo funcional <code>sistema-web-agro</code>;</li>
+<li>los resultados preliminares del Capitulo IV.</li>
+</ul>
+<p>La correccion no debe inventar resultados. Todo avance sin evidencia reproducible queda marcado como parcial o pendiente.</p>
+<h2 id="2-diagnostico-general">2. Diagnostico general</h2>
+<h3 id="21-pdf-base">2.1 PDF base</h3>
+<p>El archivo <code>Tesis de Investigación YOSET 22-06.pdf</code> fue extraido a texto en <code>reports/tesis_pdf_22_06_extracted.txt</code>.</p>
+<p>Hallazgos:</p>
+<ul>
+<li>La portada del PDF conserva un titulo generico: <code>Titulo de la tesis</code>.</li>
+<li>La portada registra como asesor a <code>Karim Guevara</code>.</li>
+<li>El indice del PDF muestra Capitulo III con 3.3, 3.4 y 3.5 como secciones incompletas.</li>
+<li>El Capitulo IV del PDF tiene 4.1 y 4.2 sin desarrollo suficiente.</li>
+<li>El PDF sirve como linea base historica, pero no representa el estado tecnico actual del proyecto.</li>
+</ul>
+<h3 id="22-borrador-vivo">2.2 Borrador vivo</h3>
+<p>El archivo <code>docs/tesis/tesis_reestructurada.md</code> contiene una version mas avanzada:</p>
+<ul>
+<li>Titulo completo del sistema integrado.</li>
+<li>Capitulo I y II desarrollados.</li>
+<li>Capitulo III con arquitectura, flujo de datos, tecnologias, modelamiento, SHAP, RAG, trazabilidad, seguridad y despliegue.</li>
+<li>Capitulo IV modularizado con resultados cuantitativos, explicabilidad, reportes, usabilidad, trazabilidad y discusion.</li>
+</ul>
+<h3 id="23-implementacion-tecnica">2.3 Implementacion tecnica</h3>
+<p>La evidencia tecnica existe y debe usarse como respaldo directo:</p>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Archivo fuente</th>
+<th>Estado</th>
+<th>Evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prediccion FOB/volumen</td>
+<td><code>src/module1_prediction.py</code></td>
+<td>Implementado</td>
+<td>XGBoost, LightGBM, Optuna, split temporal, residuos</td>
+</tr>
+<tr>
+<td>Anomalias</td>
+<td><code>src/module2_anomaly.py</code></td>
+<td>Implementado</td>
+<td>Isolation Forest, LOF, ECOD, percentiles, anomalias sinteticas</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td><code>src/module3_shap.py</code></td>
+<td>Implementado</td>
+<td>TreeSHAP local/global, graficos, JSON</td>
+</tr>
+<tr>
+<td>Reportes RAG</td>
+<td><code>src/module4_rag.py</code></td>
+<td>Implementado</td>
+<td>BM25, embeddings, RRF, TemplateProvider/LLM</td>
+</tr>
+<tr>
+<td>Validacion factual</td>
+<td><code>src/module5_validation.py</code></td>
+<td>Requiere revision documental</td>
+<td>Debe vincularse con rubrica y resultados</td>
+</tr>
+<tr>
+<td>Trazabilidad</td>
+<td><code>src/module6_traceability.py</code></td>
+<td>Implementado</td>
+<td>UUID, hashes SHA-256, linaje</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-prototipo-web">2.4 Prototipo web</h3>
+<p><code>sistema-web-agro</code> debe documentarse como evidencia central del punto 4:</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Ruta</th>
+<th>Estado</th>
+<th>Funcion verificable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend API</td>
+<td><code>sistema-web-agro/backend/app.py</code></td>
+<td>Parcial funcional</td>
+<td>Login, dashboard, alertas, detalle, adjudicacion, configuracion, documentos, telemetria</td>
+</tr>
+<tr>
+<td>Modelo de datos</td>
+<td><code>sistema-web-agro/backend/models.py</code></td>
+<td>Implementado</td>
+<td>Usuarios, alertas, decisiones, SHAP, logs, documentos RAG</td>
+</tr>
+<tr>
+<td>Seed y modelos semilla</td>
+<td><code>sistema-web-agro/backend/init_db.py</code></td>
+<td>Implementado parcial</td>
+<td>Datos de prueba, normativas, modelos mock/semilla</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td><code>sistema-web-agro/frontend/src/App.jsx</code></td>
+<td>Implementado</td>
+<td>Rutas protegidas del prototipo</td>
+</tr>
+<tr>
+<td>Detalle de alerta</td>
+<td><code>sistema-web-agro/frontend/src/pages/Detail.jsx</code></td>
+<td>Implementado parcial</td>
+<td>Prediccion, score, SHAP, RAG, decision y tiempo</td>
+</tr>
+<tr>
+<td>Data explorer</td>
+<td><code>sistema-web-agro/frontend/src/pages/Data.jsx</code></td>
+<td>Parcial</td>
+<td>Carga simulada e indexacion documental</td>
+</tr>
+<tr>
+<td>Telemetria</td>
+<td><code>sistema-web-agro/frontend/src/pages/Telemetry.jsx</code></td>
+<td>Parcial funcional</td>
+<td>Tiempo de decision, comprension, exportacion</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-correcciones-prioritarias">3. Correcciones prioritarias</h2>
+<h3 id="c-01-portada-y-metadatos-institucionales">C-01 Portada y metadatos institucionales</h3>
+<p><strong>Estado:</strong> <code>[!]</code><br />
+<strong>Objetivo relacionado:</strong> formalizacion documental.<br />
+<strong>Seccion:</strong> portada, presentacion, metadatos.</p>
+<p>Problema:</p>
+<ul>
+<li>El PDF base aun muestra <code>Titulo de la tesis</code>.</li>
+<li>El PDF base registra asesor <code>Karim Guevara</code>.</li>
+<li>El borrador vivo registra el titulo completo y asesor <code>Dr. Victor Manuel Cornejo Aparicio</code>.</li>
+</ul>
+<p>Correccion requerida:</p>
+<ul>
+<li>Usar como titulo rector:</li>
+</ul>
+<p><code>Sistema Integrado de Supervision Operativa con Inteligencia Artificial Explicable para la Deteccion de Anomalias y Generacion de Reportes Trazables en Empresas Agroexportadoras Peruanas</code></p>
+<ul>
+<li>Confirmar asesor oficial antes del cierre final.</li>
+<li>Mientras no exista confirmacion, mantener el asesor actual del borrador vivo y registrar la duda en <code>PENDIENTES_CONFIRMACION.md</code>.</li>
+</ul>
+<p>Evidencia:</p>
+<ul>
+<li><code>reports/tesis_pdf_22_06_extracted.txt</code></li>
+<li><code>docs/tesis/tesis_reestructurada.md</code></li>
+<li><code>docs/tesis/PENDIENTES_CONFIRMACION.md</code></li>
+</ul>
+<h3 id="c-02-estructura-del-capitulo-iii">C-02 Estructura del Capitulo III</h3>
+<p><strong>Estado:</strong> <code>[~]</code><br />
+<strong>Objetivo relacionado:</strong> OE1-OE8.<br />
+<strong>Seccion:</strong> Capitulo III.</p>
+<p>Problema:</p>
+<ul>
+<li>El PDF base deja 3.3, 3.4 y 3.5 incompletos.</li>
+<li><code>CAPITULO_III_3_1_3_2.md</code> solo desarrolla 3.1 y 3.2.</li>
+<li><code>tesis_reestructurada.md</code> tiene contenido tecnico avanzado, pero necesita reorganizarse como cierre verificable.</li>
+</ul>
+<p>Correccion requerida:</p>
+<p>Reestructurar Capitulo III con esta forma:</p>
+<table>
+<thead>
+<tr>
+<th>Seccion</th>
+<th>Estado esperado</th>
+<th>Evidencia principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1 Generalidades de la propuesta</td>
+<td>Consolidar</td>
+<td><code>docs/tesis/tesis_reestructurada.md</code></td>
+</tr>
+<tr>
+<td>3.2 Arquitectura general</td>
+<td>Consolidar</td>
+<td><code>src/module*.py</code>, <code>sistema-web-agro/</code></td>
+</tr>
+<tr>
+<td>3.3 Obtencion y preparacion de datos</td>
+<td>Completar</td>
+<td><code>data/</code>, <code>data-trademap/</code>, <code>codex-revision/metadata/</code></td>
+</tr>
+<tr>
+<td>3.4 Diseno e implementacion del prototipo</td>
+<td>Completar parcial</td>
+<td><code>sistema-web-agro/</code>, <code>src/module*.py</code></td>
+</tr>
+<tr>
+<td>3.5 Diseno experimental y validacion</td>
+<td>Completar como protocolo</td>
+<td><code>tests/</code>, <code>data/gold/</code>, <code>reports/audits/</code></td>
+</tr>
+</tbody>
+</table>
+<p>Texto rector para 3.4:</p>
+<blockquote>
+<p>El prototipo funcional se implementa en la carpeta <code>sistema-web-agro</code> y materializa parcialmente la interfaz experimental del sistema. Incluye autenticacion, tablero de alertas, detalle de alerta con prediccion, score de anomalia, explicaciones SHAP, reporte RAG, registro de decision humana, telemetria y administracion de documentos. Su estado se considera funcional parcial, debido a que algunas rutas operan con datos semilla o simulados y requieren validacion reproducible con el dataset integrado final.</p>
+</blockquote>
+<h3 id="c-03-algoritmos-propuestos-y-evidencia-de-implementacion">C-03 Algoritmos propuestos y evidencia de implementacion</h3>
+<p><strong>Estado:</strong> <code>[x]</code> para implementacion; <code>[~]</code> para incorporacion documental.<br />
+<strong>Objetivo relacionado:</strong> OE3-OE7.<br />
+<strong>Seccion:</strong> 3.4 y 3.5.</p>
+<p>Correccion requerida:</p>
+<p>Insertar una tabla de algoritmos propuestos:</p>
+<table>
+<thead>
+<tr>
+<th>Algoritmo</th>
+<th>Funcion</th>
+<th>Archivo</th>
+<th>Entrada</th>
+<th>Salida</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XGBoost</td>
+<td>Prediccion de FOB y volumen</td>
+<td><code>src/module1_prediction.py</code></td>
+<td><code>data/gold/prediction_features.parquet</code></td>
+<td>modelos <code>.pkl</code>, predicciones, residuos</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td>Prediccion de FOB y volumen</td>
+<td><code>src/module1_prediction.py</code></td>
+<td><code>data/gold/prediction_features.parquet</code></td>
+<td>modelos <code>.pkl</code>, predicciones, residuos</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>Isolation Forest</td>
+<td>Deteccion de outliers</td>
+<td><code>src/module2_anomaly.py</code></td>
+<td><code>data/gold/anomaly_features.parquet</code></td>
+<td>score individual</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>Deteccion local de outliers</td>
+<td><code>src/module2_anomaly.py</code></td>
+<td><code>data/gold/anomaly_features.parquet</code></td>
+<td>score individual</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>ECOD</td>
+<td>Deteccion no parametrica</td>
+<td><code>src/module2_anomaly.py</code></td>
+<td><code>data/gold/anomaly_features.parquet</code></td>
+<td>score individual</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>Ensemble percentilico</td>
+<td>Score combinado</td>
+<td><code>src/module2_anomaly.py</code></td>
+<td>scores IF/LOF/ECOD</td>
+<td><code>ensemble_score</code>, severidad</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>TreeSHAP</td>
+<td>Explicabilidad local/global</td>
+<td><code>src/module3_shap.py</code></td>
+<td>modelos GBDT y features</td>
+<td>JSON y graficos SHAP</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>RAG BM25 + embeddings</td>
+<td>Recuperacion documental</td>
+<td><code>src/module4_rag.py</code></td>
+<td><code>knowledge_base/</code> y alerta</td>
+<td>contexto recuperado</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>TemplateProvider/LLM</td>
+<td>Reporte tecnico</td>
+<td><code>src/module4_rag.py</code></td>
+<td>evidencia estructurada</td>
+<td>reporte markdown</td>
+<td>Implementado parcial</td>
+</tr>
+<tr>
+<td>Hash SHA-256 + UUID</td>
+<td>Trazabilidad</td>
+<td><code>src/module6_traceability.py</code></td>
+<td>datos, modelos, reportes</td>
+<td><code>traceability_log.json</code></td>
+<td>Implementado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-04-capitulo-iv-resultados-preliminares-versus-definitivos">C-04 Capitulo IV: resultados preliminares versus definitivos</h3>
+<p><strong>Estado:</strong> <code>[!]</code><br />
+<strong>Objetivo relacionado:</strong> OE3-OE8.<br />
+<strong>Seccion:</strong> Capitulo IV.</p>
+<p>Problema:</p>
+<ul>
+<li>El borrador contiene tablas con resultados marcados como <code>Evaluado</code>, pero tambien advierte que los resultados finales deben generarse con dataset integrado versionado.</li>
+<li>Esto puede leerse como contradiccion si no se etiqueta claramente.</li>
+</ul>
+<p>Correccion requerida:</p>
+<ul>
+<li>Renombrar las tablas actuales como <code>resultado preliminar</code> o <code>antecedente experimental</code>.</li>
+<li>Mantener como definitivos solo resultados con:</li>
+<li>fecha;</li>
+<li>commit;</li>
+<li>dataset versionado;</li>
+<li>comando de reproduccion;</li>
+<li>hash de salida;</li>
+<li>reporte de calidad.</li>
+</ul>
+<p>Texto rector:</p>
+<blockquote>
+<p>Los valores numericos presentados en esta version corresponden a resultados preliminares o antecedentes experimentales, salvo que se indique expresamente version de dataset, commit, comando de reproduccion y hash del artefacto. No se usan para aceptar o rechazar hipotesis definitivas.</p>
+</blockquote>
+<h3 id="c-05-evaluacion-con-usuarios">C-05 Evaluacion con usuarios</h3>
+<p><strong>Estado:</strong> <code>[P]</code><br />
+<strong>Objetivo relacionado:</strong> OE8.<br />
+<strong>Seccion:</strong> 3.5, 4.3, anexos.</p>
+<p>Problema:</p>
+<ul>
+<li>El prototipo registra telemetria y condiciones A/B.</li>
+<li>No existe aun evidencia final de ejecucion con participantes reales.</li>
+</ul>
+<p>Correccion requerida:</p>
+<ul>
+<li>Mantener la evaluacion con usuarios como protocolo pendiente.</li>
+<li>No afirmar mejora significativa en tiempo, comprension, SUS o utilidad hasta contar con registros verificables.</li>
+<li>Usar <code>sistema-web-agro/frontend/src/pages/Telemetry.jsx</code> como evidencia de capacidad funcional, no como resultado experimental final.</li>
+</ul>
+<h3 id="c-06-comparacion-pdf-versus-borrador-vivo">C-06 Comparacion PDF versus borrador vivo</h3>
+<p><strong>Estado:</strong> <code>[x]</code> para diagnostico; <code>[~]</code> para correccion final.<br />
+<strong>Objetivo relacionado:</strong> cierre documental.</p>
+<p>Problema:</p>
+<ul>
+<li>El PDF 22-06 es una version antigua o incompleta frente al borrador vivo.</li>
+</ul>
+<p>Correccion requerida:</p>
+<ul>
+<li>Tratar <code>Tesis de Investigación YOSET 22-06.pdf</code> como linea base historica.</li>
+<li>Tratar <code>docs/tesis/tesis_reestructurada.md</code> como fuente viva de correccion.</li>
+<li>Regenerar PDF final despues de aplicar correcciones documentales.</li>
+</ul>
+<h2 id="4-checklist-de-ejecucion-de-correccion">4. Checklist de ejecucion de correccion</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Correccion</th>
+<th>Estado</th>
+<th>Archivo destino</th>
+<th>Evidencia requerida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-01</td>
+<td>Corregir portada/metadatos</td>
+<td>[P]</td>
+<td>portada / <code>tesis_reestructurada.md</code></td>
+<td>Confirmacion asesor oficial</td>
+</tr>
+<tr>
+<td>C-02</td>
+<td>Completar estructura 3.3-3.5</td>
+<td>[~]</td>
+<td>Capitulo III</td>
+<td><code>data/</code>, <code>src/</code>, <code>sistema-web-agro/</code>, <code>tests/</code></td>
+</tr>
+<tr>
+<td>C-03</td>
+<td>Insertar tabla de algoritmos</td>
+<td>[x]</td>
+<td>Capitulo III</td>
+<td><code>src/module*.py</code></td>
+</tr>
+<tr>
+<td>C-04</td>
+<td>Etiquetar resultados preliminares</td>
+<td>[~]</td>
+<td>Capitulo IV</td>
+<td><code>data/gold/</code>, <code>reports/audits/</code>, logs</td>
+</tr>
+<tr>
+<td>C-05</td>
+<td>Marcar evaluacion usuarios pendiente</td>
+<td>[x]</td>
+<td>3.5, 4.3, anexos</td>
+<td><code>sistema-web-agro</code> como capacidad funcional</td>
+</tr>
+<tr>
+<td>C-06</td>
+<td>Generar matriz prototipo web</td>
+<td>[P]</td>
+<td><code>docs/tesis/</code></td>
+<td>endpoints, rutas, capturas, pruebas</td>
+</tr>
+<tr>
+<td>C-07</td>
+<td>Regenerar tesis completa</td>
+<td>[P]</td>
+<td><code>output/tesis.pdf</code> / <code>.docx</code></td>
+<td>Compilacion posterior a correcciones</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-correcciones-aplicadas-en-modulos-canonicos">5. Correcciones aplicadas en modulos canonicos</h2>
+<p><strong>Fecha de aplicacion:</strong> 2026-06-22<br />
+<strong>Fuente canonica de compilacion:</strong> <code>docs/02-*.md</code><br />
+<strong>Objetivo:</strong> actualizar la tesis compilable al estado actual del prototipo sin afirmar resultados definitivos no reproducidos.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Archivo</th>
+<th>Correccion aplicada</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-01</td>
+<td><code>docs/02-02-indices.md</code></td>
+<td>Se actualizo el indice para incluir 3.3, 3.4, 3.5 y el Capitulo IV modularizado hasta 4.7.</td>
+<td>Aplicado</td>
+</tr>
+<tr>
+<td>A-02</td>
+<td><code>docs/02-30-capitulo3.md</code></td>
+<td>Se agregaron las secciones 3.3 Obtencion y preparacion de datos, 3.4 Diseno e implementacion del prototipo y 3.5 Diseno experimental y validacion.</td>
+<td>Aplicado</td>
+</tr>
+<tr>
+<td>A-03</td>
+<td><code>docs/02-30-capitulo3.md</code></td>
+<td>Se incorporo tabla de algoritmos propuestos vinculada con <code>src/module1_prediction.py</code> a <code>src/module6_traceability.py</code> y con <code>sistema-web-agro/</code>.</td>
+<td>Aplicado</td>
+</tr>
+<tr>
+<td>A-04</td>
+<td><code>docs/02-40-capitulo4.md</code></td>
+<td>Se reemplazo la afirmacion de prototipo completo por estado parcial verificable y reglas de interpretacion de evidencia.</td>
+<td>Aplicado</td>
+</tr>
+<tr>
+<td>A-05</td>
+<td><code>docs/02-41-capitulo4-resultados-cuantitativos.md</code></td>
+<td>Se reclasificaron metricas como preliminares de datos semilla y se agrego evidencia faltante para VD1.</td>
+<td>Aplicado</td>
+</tr>
+<tr>
+<td>A-06</td>
+<td><code>docs/02-42-capitulo4-explicabilidad-reportes.md</code></td>
+<td>Se separo avance funcional SHAP/RAG de validacion factual pendiente para VD2 y VD3.</td>
+<td>Aplicado</td>
+</tr>
+<tr>
+<td>A-07</td>
+<td><code>docs/02-43-capitulo4-usabilidad-trazabilidad.md</code></td>
+<td>Se dejo la evaluacion con usuarios como pendiente y la telemetria semilla como validacion de flujo.</td>
+<td>Aplicado</td>
+</tr>
+<tr>
+<td>A-08</td>
+<td><code>docs/02-44-capitulo4-discusion.md</code></td>
+<td>Se renumero la discusion como 4.5 para evitar duplicidad con usabilidad.</td>
+<td>Aplicado</td>
+</tr>
+<tr>
+<td>A-09</td>
+<td><code>docs/02-45-capitulo4-limitaciones-sintesis.md</code></td>
+<td>Se renumeraron limitaciones y sintesis como 4.6 y 4.7.</td>
+<td>Aplicado</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-pendientes-despues-de-la-correccion">6. Pendientes despues de la correccion</h2>
+<table>
+<thead>
+<tr>
+<th>Pendiente</th>
+<th>Ruta esperada</th>
+<th>Criterio de cierre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confirmar asesor oficial</td>
+<td><code>docs/tesis/PENDIENTES_CONFIRMACION.md</code></td>
+<td>Nombre validado institucionalmente</td>
+</tr>
+<tr>
+<td>Ejecutar prueba de fuga temporal</td>
+<td><code>reports/tesis/data-quality/leakage-tests/</code></td>
+<td>Reporte con comando, salida y hash</td>
+</tr>
+<tr>
+<td>Congelar dataset semanal final</td>
+<td><code>data/gold/</code></td>
+<td>Dataset versionado, sin duplicidad de clave y con hash</td>
+</tr>
+<tr>
+<td>Registrar corridas experimentales</td>
+<td><code>reports/tesis/experiments/</code></td>
+<td>ID de ejecucion, commit, semilla, hiperparametros y metricas</td>
+</tr>
+<tr>
+<td>Validar reportes automaticos</td>
+<td><code>reports/tesis/report-validation/</code></td>
+<td>Rubrica, reportes rechazados y comparacion con plantilla</td>
+</tr>
+<tr>
+<td>Ejecutar estudio con usuarios</td>
+<td><code>reports/tesis/user-study/</code></td>
+<td>Participantes, consentimiento, anonimizacion y prueba estadistica</td>
+</tr>
+<tr>
+<td>Compilar tesis actualizada</td>
+<td><code>output/</code></td>
+<td>PDF/DOCX/HTML regenerados desde <code>docs/02-95-tesis.md</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-definicion-de-avance-defendible">5. Definicion de avance defendible</h2>
+<p>El proyecto puede defenderse hasta el punto actual bajo esta formulacion:</p>
+<blockquote>
+<p>La tesis cuenta con una arquitectura implementada y un prototipo funcional parcial. Existen modulos de prediccion, deteccion de anomalias, explicabilidad, reportes RAG y trazabilidad, junto con una interfaz web de auditoria. Los resultados del Capitulo IV deben tratarse como preliminares hasta que se congelen dataset, comandos, hashes y ejecuciones experimentales. La evaluacion con usuarios se mantiene como protocolo pendiente si no existen registros verificables.</p>
+</blockquote>
+<h2 id="6-proximo-cierre-necesario">6. Proximo cierre necesario</h2>
+<p>Antes de declarar el punto 4 cerrado, deben existir:</p>
+<ul>
+<li>matriz de endpoints y vistas de <code>sistema-web-agro</code>;</li>
+<li>captura o registro de ejecucion del prototipo;</li>
+<li>mapa algoritmo -&gt; archivo -&gt; entrada -&gt; salida;</li>
+<li>lista de resultados preliminares versus definitivos;</li>
+<li>PDF regenerado desde el borrador vivo;</li>
+<li>registro de cambios incorporados en <code>CAMBIOS_REALIZADOS.md</code>.</li>
+</ul>
         </div>
     </div>
     

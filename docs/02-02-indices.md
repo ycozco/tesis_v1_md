@@ -21,6 +21,7 @@
   - 1.8 Alcance
   - 1.9 Línea, Tipo y Nivel de la Investigación
   - 1.10 Técnicas e Instrumentos de Recolección de Información
+  - 1.11 Cronograma de Actividades
 - **CAPÍTULO II: MARCO TEÓRICO**
   - 2.1 Antecedentes de la Investigación
   - 2.2 Estado del Arte
@@ -55,10 +56,17 @@
 # ÍNDICE DE FIGURAS
 
 - Figura 3.1 — Arquitectura lógica del sistema integrado
-- Figura 3.2 — Flujo general de datos y validación temporal
-- Figura 3.3 — Esquema de trazabilidad de alerta, explicación y reporte
+- Figura 3.2 — Flujo temporal de datos, predicción, alerta y reporte
+- Figura 3.3 — Modelo lógico de trazabilidad de alerta, explicación y reporte
 - Figura 4.1 — Vista de detalle de alerta del prototipo funcional
 - Figura 4.2 — Consola de telemetría experimental del prototipo
+- Figura 4.3 — Bandeja de gestión de alertas
+- Figura 4.4 — Configuración de modelo y umbrales
+- Figura 4.5 — Explorador de datos y biblioteca RAG
+- Figura 4.6 — Importancia global SHAP para FOB
+- Figura 4.7 — Importancia global SHAP para volumen
+- Figura 4.8 — Distribución SHAP para FOB
+- Figura 4.9 — Distribución SHAP para volumen
 
 ---
 
@@ -70,7 +78,10 @@
 - Tabla 2.1 — Comparativa de Sistemas de Supervisión con IA
 - Tabla 2.2 — Resumen del Estado del Arte por Bloques Temáticos
 - Tabla 3.1 — Mapeo de módulos, rutas, entradas, salidas y evidencia
-- Tabla 3.2 — Controles de calidad temporal y prevención de fuga de información
+- Tabla 3.2 — Inventario reproducible de archivos principales
+- Tabla 3.3 — Caracterización del dataset semanal gold
+- Tabla 3.4 — Controles de calidad temporal y prevención de fuga de información
+- Tabla 3.5 — Checklist verificable de cierre del Capítulo III
 - Tabla 4.1 — Rendimiento de detección en experimento preliminar
 - Tabla 4.2 — Recall por tipo de anomalía
 - Tabla 4.3 — Rendimiento predictivo de XGBoost

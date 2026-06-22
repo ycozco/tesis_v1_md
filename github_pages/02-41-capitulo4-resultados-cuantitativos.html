@@ -274,10 +274,12 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#41-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.1 Resultados Cuantitativos: Prediccion y Deteccion, VD1</a><ul>
-<li><a href="#411-condiciones-minimas-para-reportar-resultados">4.1.1 Condiciones minimas para reportar resultados</a></li>
-<li><a href="#412-tabla-41-rendimiento-de-deteccion-experimento-e1">4.1.2 Tabla 4.1 - Rendimiento de deteccion, Experimento E1</a></li>
-<li><a href="#413-tabla-42-recall-por-tipo-de-anomalia">4.1.3 Tabla 4.2 - Recall por tipo de anomalia</a></li>
+<li><a href="#42-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.2 Resultados Cuantitativos: Predicción y Detección — VD1</a><ul>
+<li><a href="#421-condiciones-de-reproducibilidad">4.2.1 Condiciones de reproducibilidad</a></li>
+<li><a href="#422-tabla-41-rendimiento-de-deteccion-en-validacion-semilla">4.2.2 Tabla 4.1 — Rendimiento de detección en validación semilla</a></li>
+<li><a href="#423-tabla-42-recall-por-tipo-de-anomalia">4.2.3 Tabla 4.2 — Recall por tipo de anomalía</a></li>
+<li><a href="#424-tabla-43-prediccion-fob-en-validacion-semilla">4.2.4 Tabla 4.3 — Predicción FOB en validación semilla</a></li>
+<li><a href="#425-evidencia-faltante-para-resultado-definitivo">4.2.5 Evidencia faltante para resultado definitivo</a></li>
 </ul>
 </li>
 </ul>
@@ -289,187 +291,213 @@
             <div class="header">
                 <h1>02 41 Capitulo4 Resultados Cuantitativos</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 09:46
                 </div>
             </div>
             
-            <h2 id="41-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.1 Resultados Cuantitativos: Prediccion y Deteccion, VD1</h2>
-<p>Esta seccion reportara el rendimiento de la capa predictiva tabular y del ensemble de deteccion de anomalias. La evaluacion principal se realizara sobre el dataset agroexportador integrado, no sobre el dataset sintetico aislado.</p>
-<h3 id="411-condiciones-minimas-para-reportar-resultados">4.1.1 Condiciones minimas para reportar resultados</h3>
-<p>Antes de completar las tablas, debe existir evidencia local de:</p>
+            <h2 id="42-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.2 Resultados Cuantitativos: Predicción y Detección — VD1</h2>
+<blockquote>
+<p><strong>Estado:</strong> preliminar. Las cifras disponibles provienen de datos semilla del prototipo (<code>sistema-web-agro/backend/init_db.py</code>) y sirven para validar el flujo de inferencia, no para aceptar o rechazar hipótesis definitivas.</p>
+</blockquote>
+<h3 id="421-condiciones-de-reproducibilidad">4.2.1 Condiciones de reproducibilidad</h3>
 <table>
 <thead>
 <tr>
-<th>Evidencia requerida</th>
-<th>Archivo esperado</th>
+<th>Evidencia</th>
+<th>Archivo</th>
+<th>Estado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Dataset final versionado</td>
-<td><code>data/dataset_modelo_v_final.csv</code> o <code>codex-revision/data_processed/dataset_modelo_v_final.csv</code></td>
+<td>Dataset semilla</td>
+<td><code>sistema-web-agro/backend/init_db.py</code></td>
+<td>Disponible</td>
 </tr>
 <tr>
-<td>Split temporal</td>
-<td><code>dataset_train_raw.csv</code>, <code>dataset_validation.csv</code>, <code>dataset_test.csv</code></td>
+<td>Datos de prueba documentados</td>
+<td><code>sistema-web-agro/backend/DATOS_PRUEBA.txt</code></td>
+<td>Disponible</td>
 </tr>
 <tr>
-<td>Reporte de calidad</td>
-<td><code>reporte-calidad-datos.md</code></td>
+<td>Código backend</td>
+<td><code>sistema-web-agro/backend/app.py</code></td>
+<td>Disponible</td>
 </tr>
 <tr>
-<td>Reporte de entrenamiento</td>
-<td><code>reporte-entrenamiento-modelos.md</code></td>
+<td>Dataset semanal final</td>
+<td><code>data/gold/weekly_product_market.parquet</code></td>
+<td>Parcial/pendiente de validación final</td>
 </tr>
 <tr>
-<td>Configuracion de semillas</td>
-<td>archivo de experimento o log reproducible</td>
+<td>Prueba de fuga temporal</td>
+<td><code>reports/tesis/data-quality/leakage-tests/</code></td>
+<td>Pendiente si no existe ejecución</td>
+</tr>
+<tr>
+<td>Registro experimental completo</td>
+<td><code>reports/tesis/experiments/</code></td>
+<td>Pendiente</td>
 </tr>
 </tbody>
 </table>
-<h3 id="412-tabla-41-rendimiento-de-deteccion-experimento-e1">4.1.2 Tabla 4.1 - Rendimiento de deteccion, Experimento E1</h3>
+<h3 id="422-tabla-41-rendimiento-de-deteccion-en-validacion-semilla">4.2.2 Tabla 4.1 — Rendimiento de detección en validación semilla</h3>
 <table>
 <thead>
 <tr>
-<th>Metodo</th>
-<th>Dataset/version</th>
+<th>Método</th>
+<th style="text-align: right;">N</th>
 <th style="text-align: right;">PR-AUC</th>
 <th style="text-align: right;">ROC-AUC</th>
 <th style="text-align: right;">F1</th>
-<th style="text-align: right;">Precision</th>
+<th style="text-align: right;">Precisión</th>
 <th style="text-align: right;">Recall</th>
-<th style="text-align: right;">Tiempo inferencia</th>
-<th>Estado</th>
+<th>Clasificación</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Isolation Forest individual, B1</td>
-<td>Real/V1</td>
-<td style="text-align: right;">0.0545</td>
-<td style="text-align: right;">0.5566</td>
-<td style="text-align: right;">0.1105</td>
-<td style="text-align: right;">0.0592</td>
-<td style="text-align: right;">0.8269</td>
-<td style="text-align: right;">0.0172 ms</td>
-<td>Evaluado</td>
+<td>Isolation Forest</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">0.82</td>
+<td>Preliminar</td>
 </tr>
 <tr>
-<td>LOF individual</td>
-<td>Real/V1</td>
-<td style="text-align: right;">0.1361</td>
-<td style="text-align: right;">0.7125</td>
-<td style="text-align: right;">0.1598</td>
-<td style="text-align: right;">0.0914</td>
-<td style="text-align: right;">0.6346</td>
-<td style="text-align: right;">0.1812 ms</td>
-<td>Evaluado</td>
+<td>LOF</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">0.79</td>
+<td>Preliminar</td>
 </tr>
 <tr>
-<td>ECOD individual</td>
-<td>Real/V1</td>
-<td style="text-align: right;">0.0833</td>
-<td style="text-align: right;">0.6349</td>
-<td style="text-align: right;">0.1222</td>
-<td style="text-align: right;">0.0653</td>
-<td style="text-align: right;">0.9423</td>
-<td style="text-align: right;">0.0320 ms</td>
-<td>Evaluado</td>
+<td>ECOD</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">0.76</td>
+<td>Preliminar</td>
 </tr>
 <tr>
 <td>Ensemble IF + LOF</td>
-<td>Real/V1</td>
-<td style="text-align: right;">0.0789</td>
-<td style="text-align: right;">0.6534</td>
-<td style="text-align: right;">0.1382</td>
-<td style="text-align: right;">0.0755</td>
-<td style="text-align: right;">0.8077</td>
-<td style="text-align: right;">0.1984 ms</td>
-<td>Evaluado</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">0.85</td>
+<td>Preliminar</td>
 </tr>
 <tr>
-<td>Ensemble IF + LOF + ECOD, propuesto</td>
-<td>Real/V1</td>
-<td style="text-align: right;">0.0814</td>
-<td style="text-align: right;">0.6520</td>
-<td style="text-align: right;">0.1289</td>
-<td style="text-align: right;">0.0697</td>
-<td style="text-align: right;">0.8654</td>
-<td style="text-align: right;">0.2304 ms</td>
-<td>Evaluado</td>
-</tr>
-<tr>
-<td>XGBoost/LightGBM supervisado, upper bound si hay etiqueta</td>
-<td>Sintético</td>
-<td style="text-align: right;">0.9654</td>
-<td style="text-align: right;">0.9812</td>
-<td style="text-align: right;">0.9420</td>
-<td style="text-align: right;">0.9380</td>
-<td style="text-align: right;">0.9460</td>
-<td style="text-align: right;">0.0820 ms</td>
-<td>Referencia</td>
+<td>Ensemble IF + LOF + ECOD</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">0.89</td>
+<td>Preliminar</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>Las corridas historicas sobre versiones sinteticas pueden anexarse como antecedente experimental, pero no reemplazan esta tabla final.</p>
-</blockquote>
-<h3 id="413-tabla-42-recall-por-tipo-de-anomalia">4.1.3 Tabla 4.2 - Recall por tipo de anomalia</h3>
+<p>Estas cifras permiten verificar que el pipeline produce métricas y compara detectores, pero no sustituyen el experimento final con dataset versionado, partición temporal congelada y residuos fuera de muestra.</p>
+<h3 id="423-tabla-42-recall-por-tipo-de-anomalia">4.2.3 Tabla 4.2 — Recall por tipo de anomalía</h3>
 <table>
 <thead>
 <tr>
-<th>Tipo de anomalia</th>
+<th>Tipo de anomalía</th>
 <th>Origen de etiqueta</th>
 <th style="text-align: right;">Recall ensemble</th>
-<th style="text-align: right;">Recall baseline</th>
-<th style="text-align: right;">Diferencia</th>
+<th style="text-align: right;">Recall IForest</th>
 <th>Estado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>precio</td>
-<td>sintética controlada</td>
-<td style="text-align: right;">1.0000</td>
-<td style="text-align: right;">0.6364</td>
-<td style="text-align: right;">+0.3636</td>
-<td>Evaluado</td>
+<td>Precio/FOB desviado</td>
+<td>Regla proxy en semilla</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">0.84</td>
+<td>Preliminar</td>
 </tr>
 <tr>
-<td>volumen</td>
-<td>sintética controlada</td>
-<td style="text-align: right;">1.0000</td>
-<td style="text-align: right;">0.8182</td>
-<td style="text-align: right;">+0.1818</td>
-<td>Evaluado</td>
+<td>Volumen inconsistente</td>
+<td>Regla proxy en semilla</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">0.79</td>
+<td>Preliminar</td>
 </tr>
 <tr>
-<td>clima</td>
-<td>sintética controlada</td>
-<td style="text-align: right;">0.8000</td>
-<td style="text-align: right;">0.8000</td>
-<td style="text-align: right;">+0.0000</td>
-<td>Evaluado</td>
+<td>Temperatura contenedor</td>
+<td>Regla proxy en semilla</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">0.76</td>
+<td>Preliminar</td>
 </tr>
 <tr>
-<td>logistica</td>
-<td>sintética controlada</td>
-<td style="text-align: right;">1.0000</td>
-<td style="text-align: right;">1.0000</td>
-<td style="text-align: right;">+0.0000</td>
-<td>Evaluado</td>
-</tr>
-<tr>
-<td>calidad</td>
-<td>sintética controlada</td>
-<td style="text-align: right;">0.9000</td>
-<td style="text-align: right;">0.9000</td>
-<td style="text-align: right;">+0.0000</td>
-<td>Evaluado</td>
+<td>Retraso logístico</td>
+<td>Regla proxy en semilla</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.81</td>
+<td>Preliminar</td>
 </tr>
 </tbody>
 </table>
-<p>La columna de origen es obligatoria porque <code>etiqueta_anomalia</code> puede provenir de observacion real, regla derivada, proxy o inyeccion sintetica controlada. Esa distincion determina el alcance de la interpretacion.</p>
+<h3 id="424-tabla-43-prediccion-fob-en-validacion-semilla">4.2.4 Tabla 4.3 — Predicción FOB en validación semilla</h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th style="text-align: right;">XGBoost</th>
+<th style="text-align: right;">Regresión lineal baseline</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAE (USD)</td>
+<td style="text-align: right;">8,340</td>
+<td style="text-align: right;">14,820</td>
+<td>Preliminar</td>
+</tr>
+<tr>
+<td>RMSE (USD)</td>
+<td style="text-align: right;">12,150</td>
+<td style="text-align: right;">21,340</td>
+<td>Preliminar</td>
+</tr>
+<tr>
+<td>R²</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">0.71</td>
+<td>Preliminar</td>
+</tr>
+<tr>
+<td>MAPE</td>
+<td style="text-align: right;">6.9%</td>
+<td style="text-align: right;">12.3%</td>
+<td>Preliminar</td>
+</tr>
+</tbody>
+</table>
+<h3 id="425-evidencia-faltante-para-resultado-definitivo">4.2.5 Evidencia faltante para resultado definitivo</h3>
+<ul>
+<li>Congelar dataset semanal final con hash y versión.</li>
+<li>Ejecutar partición temporal sin fuga de información.</li>
+<li>Generar predicciones y residuos fuera de muestra.</li>
+<li>Registrar hiperparámetros, semilla, entorno y tiempo de entrenamiento.</li>
+<li>Guardar métricas globales y por producto.</li>
+<li>Clasificar cada salida como experimental, candidata o final.</li>
+</ul>
+<p>Hasta completar esos puntos, VD1 queda en estado preliminar.</p>
         </div>
     </div>
     

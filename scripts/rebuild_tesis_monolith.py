@@ -32,6 +32,14 @@ SECTION_ORDER = [
     "02-70-recomendaciones", "02-80-glosario", "02-90-referencias",
     "05-a1-anexo-usabilidad", "05-a2-anexo-modelcards", "05-a3-anexo-datasheet", "05-a4-anexo-ia",
     "05-a5-resumen-general",
+    "tesis/MATRIZ_OPERACIONALIZACION",
+    "tesis/MATRIZ_CONSISTENCIA",
+    "tesis/DICCIONARIO_DATOS",
+    "tesis/DECISIONES_METODOLOGICAS",
+    "tesis/REPORTE_REFERENCIAS",
+    "tesis/00-checklist-maestro",
+    "tesis/10-revision-avance",
+    "tesis/11-documento-maestro-correccion",
 ]
 
 def main():

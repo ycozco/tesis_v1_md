@@ -277,7 +277,7 @@
 <li><a href="#capitulo-ii-marco-teorico">CAPÍTULO II: MARCO TEÓRICO</a><ul>
 <li><a href="#21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</a><ul>
 <li><a href="#211-antecedentes-internacionales">2.1.1 Antecedentes Internacionales</a></li>
-<li><a href="#212-antecedentes-nacionales-en-evaluacion-y-revision-academica">2.1.2 Antecedentes Nacionales en Evaluación y Revisión Académica</a></li>
+<li><a href="#212-antecedentes-nacionales-y-evidencia-sectorial-verificable">2.1.2 Antecedentes nacionales y evidencia sectorial verificable</a></li>
 <li><a href="#213-antecedentes-metodologicos">2.1.3 Antecedentes Metodológicos</a></li>
 <li><a href="#214-sintesis-critica">2.1.4 Síntesis crítica</a></li>
 </ul>
@@ -293,7 +293,7 @@
             <div class="header">
                 <h1>02 20 Capitulo2 Antecedentes</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 09:46
                 </div>
             </div>
             
@@ -347,35 +347,83 @@
 </li>
 </ol>
 <hr />
-<h3 id="212-antecedentes-nacionales-en-evaluacion-y-revision-academica">2.1.2 Antecedentes Nacionales en Evaluación y Revisión Académica</h3>
-<blockquote>
-<p>[!WARNING]<br />
-Las siguientes referencias corresponden a literatura y borradores preliminares del contexto nacional peruano. Debido a limitaciones de localización en repositorios indizados oficiales al momento de esta reestructuración, se declaran bajo estado de <strong>revisión y auditoría académica</strong> y no deben asumirse como verdades científicas definitivas hasta que el alumno y su asesor confirmen su validez bibliográfica exacta:</p>
-</blockquote>
+<h3 id="212-antecedentes-nacionales-y-evidencia-sectorial-verificable">2.1.2 Antecedentes nacionales y evidencia sectorial verificable</h3>
+<p>Durante la revisión documental se identificó que algunos antecedentes nacionales usados en borradores previos no contaban todavía con trazabilidad bibliográfica suficiente para sostener autores, año, universidad, muestra y resultados cuantitativos. Por esa razón, esta versión no mantiene afirmaciones no verificadas como reducción de mermas, mejora porcentual de pronóstico o resultados de sensores IoT si no existe documento original localizado. La sección nacional se reestructura con fuentes institucionales verificables y con una lista explícita de antecedentes académicos pendientes de sustitución.</p>
 <ol>
+<li><strong>MIDAGRI (2026) — Reporte sectorial de agroexportaciones peruanas</strong></li>
+<li><strong>Objetivo documental:</strong> Caracterizar el crecimiento reciente de la agroexportación peruana y ubicar la relevancia económica del sector.</li>
+<li><strong>Datos:</strong> Información institucional de ventas agroexportadoras y productos representativos reportada por el Ministerio de Desarrollo Agrario y Riego.</li>
+<li><strong>Aporte a la tesis:</strong> Sustenta el contexto económico que justifica priorizar productos agroexportadores de alta participación, especialmente palta, uva y arándano.</li>
 <li>
-<p><strong>Mendoza &amp; Huamán (2024) — <em>Modelos GBDT y clima para predicción agroexportadora peruana</em></strong></p>
-<ul>
-<li><strong>Objetivo:</strong> Evaluar modelos basados en árboles para pronosticar el rendimiento físico de cultivos de arándano y uva en La Libertad y Piura.</li>
-<li><strong>Datos:</strong> Series de exportación regionales y variables de estaciones meteorológicas del SENAMHI.</li>
-<li><strong>Método:</strong> Modelamiento predictivo supervisado con XGBoost y LightGBM incorporando lags de temperatura y precipitación.</li>
-<li><strong>Resultados Reales:</strong> Reducción del error de pronóstico de volumen a corto plazo frente a modelos autorregresivos lineales tradicionales (ARIMA).</li>
-<li><strong>Limitación:</strong> No aborda la integración de variables financieras ni la detección automática de anomalías aduaneras.</li>
-<li><strong>Relación con la Tesis:</strong> Aporta justificación sobre el comportamiento no lineal de las variables climáticas proxies en cultivos peruanos.</li>
-</ul>
+<p><strong>Limitación:</strong> No entrega microdatos transaccionales ni permite por sí sola evaluar modelos predictivos o detectores de anomalías.</p>
 </li>
 <li>
-<p><strong>Chávez &amp; Díaz (2023) — <em>Detección de anomalías IoT en cadenas de frío de perecederos</em></strong></p>
-<ul>
-<li><strong>Objetivo:</strong> Detectar desviaciones térmicas y logísticas en contenedores de exportación de uva fresca peruana mediante sensores de temperatura y humedad en tránsito marítimo.</li>
-<li><strong>Datos:</strong> Registros de sensores IoT capturados durante despachos de exportación marítima.</li>
-<li><strong>Método:</strong> Clasificación no supervisada de outliers utilizando algoritmos de Isolation Forest y LOF aplicados de manera independiente.</li>
-<li><strong>Resultados Reales:</strong> Identificación oportuna de fallas mecánicas de frío, reportando reducciones del 15% en mermas en puerto de destino.</li>
-<li><strong>Limitación:</strong> Los algoritmos operan de forma aislada y carecen de una capa explicativa, lo que dificulta la interpretación de las alertas por parte del personal operativo.</li>
-<li><strong>Relación con la Tesis:</strong> Ilustra la utilidad práctica de Isolation Forest y LOF en el dominio agroexportador peruano y justifica la inyección de SHAP y reportes RAG para superar la opacidad de los modelos ("cajas negras").</li>
-</ul>
+<p><strong>SUNAT/ADUANET (2026) — Bases y estadísticas aduaneras</strong></p>
 </li>
+<li><strong>Objetivo documental:</strong> Proveer registros o series de comercio exterior que permiten reconstruir valor FOB, peso, subpartida, país de destino y periodo de exportación.</li>
+<li><strong>Datos usados en el proyecto:</strong> Descargas locales en <code>data/sunat/raw_downloads/</code>, <code>data/sunat/x23290326.DBF</code>, <code>data/raw/exports_raw.csv</code> y capas procesadas <code>data/bronze/</code>, <code>data/silver/</code> y <code>data/gold/</code>.</li>
+<li><strong>Aporte a la tesis:</strong> Constituye la fuente primaria para la unidad producto-mercado-semana y para las variables de valor FOB, volumen y destino.</li>
+<li>
+<p><strong>Limitación:</strong> Las descargas locales completas disponibles se concentran en ventanas 2026; la cobertura 2018-2025 requiere documentar si proviene de dataset real local consolidado, fuentes agregadas o reconstrucción complementaria.</p>
+</li>
+<li>
+<p><strong>BCRP (2018-2026) — Tipo de cambio PEN/USD</strong></p>
+</li>
+<li><strong>Objetivo documental:</strong> Incorporar una variable macroeconómica exógena para normalizar o contextualizar el comportamiento de valor exportado.</li>
+<li><strong>Datos usados en el proyecto:</strong> <code>data/bcrp/exchange_rates_cache.json</code> y <code>data/downloads/bcrp_tipo_cambio.csv</code>.</li>
+<li><strong>Aporte a la tesis:</strong> Permite incluir contexto macroeconómico en los modelos de predicción y detectar semanas donde una desviación comercial puede coincidir con cambios cambiarios.</li>
+<li>
+<p><strong>Limitación:</strong> La frecuencia mensual debe mapearse cuidadosamente a semana ISO sin usar información posterior a la semana objetivo.</p>
+</li>
+<li>
+<p><strong>SISAP/MIDAGRI y Trade Map — Contexto de mercado interno e internacional</strong></p>
+</li>
+<li><strong>Objetivo documental:</strong> Incorporar referencias externas de precios, volúmenes y mercados para contextualizar exportaciones por producto.</li>
+<li><strong>Datos usados en el proyecto:</strong> Manifiestos SISAP en <code>codex-revision/metadata/</code> y archivos Trade Map en <code>data-trademap/</code>.</li>
+<li><strong>Aporte a la tesis:</strong> Funcionan como fuentes de contraste y contexto, no como sustituto del registro aduanero.</li>
+<li>
+<p><strong>Limitación:</strong> Operan con granularidades distintas al embarque aduanero; por tanto, su integración se declara como variable agregada o proxy.</p>
+</li>
+<li>
+<p><strong>SENAMHI/NASA POWER y proxies climáticos</strong></p>
+</li>
+<li><strong>Objetivo documental:</strong> Proveer contexto climático regional para productos perecederos.</li>
+<li><strong>Datos usados en el proyecto:</strong> Variables climáticas presentes en <code>data/dataset_real_v1.csv</code>, <code>data/silver/exports_clean.parquet</code> y <code>data/gold/weekly_product_market.parquet</code>.</li>
+<li><strong>Aporte a la tesis:</strong> Permiten evaluar si las semanas con mayor estrés climático agregado coinciden con cambios de volumen, valor unitario o anomalías.</li>
+<li><strong>Limitación:</strong> No prueban causalidad logística ni falla de cadena de frío por embarque; solo aportan contexto agregado.</li>
 </ol>
+<p><strong>Antecedentes académicos nacionales pendientes de sustitución.</strong> Los trabajos titulados provisionalmente "Modelos GBDT y clima para predicción agroexportadora peruana" y "Detección de anomalías IoT en cadenas de frío de perecederos" se retiran como evidencia académica cerrada hasta localizar documento original, repositorio, autores, institución, año, muestra y resultados. Si no se verifica su existencia, deberán reemplazarse por tesis o artículos reales encontrados en RENATI, Alicia/CONCYTEC, repositorios universitarios peruanos o revistas indizadas.</p>
+<table>
+<thead>
+<tr>
+<th>Antecedente preliminar</th>
+<th>Acción requerida</th>
+<th>Estado en esta versión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mendoza &amp; Huamán (2024)</td>
+<td>Localizar documento original y verificar resultados atribuidos</td>
+<td>No usado como evidencia concluyente</td>
+</tr>
+<tr>
+<td>Chávez &amp; Díaz (2023)</td>
+<td>Localizar documento original y verificar reducción de mermas atribuida</td>
+<td>No usado como evidencia concluyente</td>
+</tr>
+<tr>
+<td>Estudios nacionales de cadena de frío</td>
+<td>Sustituir por documentos reales con repositorio y metodología verificable</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>Estudios nacionales de forecasting agroexportador</td>
+<td>Sustituir por documentos reales con datos y métricas reproducibles</td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="213-antecedentes-metodologicos">2.1.3 Antecedentes Metodológicos</h3>
 <ol>

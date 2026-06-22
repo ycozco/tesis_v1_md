@@ -274,14 +274,14 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#44-discusion-y-cruce-comparativo">4.4 Discusion y Cruce Comparativo</a><ul>
-<li><a href="#441-proposito-de-la-discusion">4.4.1 Proposito de la discusion</a></li>
-<li><a href="#442-cruce-1-resultados-propios-versus-literatura-comparable">4.4.2 Cruce 1 - Resultados propios versus literatura comparable</a></li>
-<li><a href="#443-cruce-2-contraste-de-hipotesis">4.4.3 Cruce 2 - Contraste de hipotesis</a></li>
-<li><a href="#444-cruce-3-variables-operacionalizadas-versus-indicadores-observados">4.4.4 Cruce 3 - Variables operacionalizadas versus indicadores observados</a></li>
-<li><a href="#445-cruce-4-gobernanza-componente-y-metrica">4.4.5 Cruce 4 - Gobernanza, componente y metrica</a></li>
-<li><a href="#446-cruce-5-errores-por-tipo-de-anomalia">4.4.6 Cruce 5 - Errores por tipo de anomalia</a></li>
-<li><a href="#447-interpretacion-conjunta">4.4.7 Interpretacion conjunta</a></li>
+<li><a href="#45-discusion-y-cruce-comparativo">4.5 Discusion y Cruce Comparativo</a><ul>
+<li><a href="#451-proposito-de-la-discusion">4.5.1 Proposito de la discusion</a></li>
+<li><a href="#452-cruce-1-resultados-propios-versus-literatura-comparable">4.5.2 Cruce 1 - Resultados propios versus literatura comparable</a></li>
+<li><a href="#453-cruce-2-contraste-de-hipotesis">4.5.3 Cruce 2 - Contraste de hipotesis</a></li>
+<li><a href="#454-cruce-3-variables-operacionalizadas-versus-indicadores-observados">4.5.4 Cruce 3 - Variables operacionalizadas versus indicadores observados</a></li>
+<li><a href="#455-cruce-4-gobernanza-componente-y-metrica">4.5.5 Cruce 4 - Gobernanza, componente y metrica</a></li>
+<li><a href="#456-cruce-5-errores-por-tipo-de-anomalia">4.5.6 Cruce 5 - Errores por tipo de anomalia</a></li>
+<li><a href="#457-interpretacion-conjunta">4.5.7 Interpretacion conjunta</a></li>
 </ul>
 </li>
 </ul>
@@ -293,14 +293,14 @@
             <div class="header">
                 <h1>02 44 Capitulo4 Discusion</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 09:46
                 </div>
             </div>
             
-            <h2 id="44-discusion-y-cruce-comparativo">4.4 Discusion y Cruce Comparativo</h2>
-<h3 id="441-proposito-de-la-discusion">4.4.1 Proposito de la discusion</h3>
+            <h2 id="45-discusion-y-cruce-comparativo">4.5 Discusion y Cruce Comparativo</h2>
+<h3 id="451-proposito-de-la-discusion">4.5.1 Proposito de la discusion</h3>
 <p>La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitulo I, variables operacionalizadas y evidencia generada por el pipeline. Su objetivo es explicar los resultados sin convertir correlaciones, scores o valores SHAP en afirmaciones causales.</p>
-<h3 id="442-cruce-1-resultados-propios-versus-literatura-comparable">4.4.2 Cruce 1 - Resultados propios versus literatura comparable</h3>
+<h3 id="452-cruce-1-resultados-propios-versus-literatura-comparable">4.5.2 Cruce 1 - Resultados propios versus literatura comparable</h3>
 <table>
 <thead>
 <tr>
@@ -343,7 +343,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="443-cruce-2-contraste-de-hipotesis">4.4.3 Cruce 2 - Contraste de hipotesis</h3>
+<h3 id="453-cruce-2-contraste-de-hipotesis">4.5.3 Cruce 2 - Contraste de hipotesis</h3>
 <table>
 <thead>
 <tr>
@@ -355,33 +355,43 @@
 <tbody>
 <tr>
 <td>H1a</td>
-<td>Mejora de VD1 frente a detector individual con split temporal documentado.</td>
+<td>MAE de XGBoost/LightGBM para valor unitario FOB semanal frente al mejor modelo base, usando dataset producto-mercado-semana y particion temporal.</td>
 <td><em>pendiente</em></td>
 </tr>
 <tr>
 <td>H1b</td>
-<td>Mejora de VD2 con SHAP frente a condicion sin SHAP.</td>
+<td>RMSLE de XGBoost/LightGBM para volumen exportado semanal frente al mejor modelo base, usando dataset producto-mercado-semana y particion temporal.</td>
 <td><em>pendiente</em></td>
 </tr>
 <tr>
 <td>H1c</td>
-<td>Mejora de VD3 con RAG frente a LLM libre/control.</td>
+<td>F1-Score del ensemble IF + LOF + ECOD calibrado por percentiles frente al promedio de detectores individuales en anomalias controladas.</td>
 <td><em>pendiente</em></td>
 </tr>
 <tr>
 <td>H1d</td>
-<td>Reduccion de tiempo-a-decision o mejora de comprension.</td>
+<td>Diferencia de comprension operativa y tiempo de analisis entre alertas con SHAP/RAG trazable y alertas tecnicas aisladas.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1e</td>
+<td>Proporcion de alertas reconstruibles desde registros de origen, dataset versionado y modelo hasta explicacion, decision humana y reporte.</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H0</td>
+<td>Ausencia de mejora significativa del sistema integrado en rendimiento, deteccion, comprension, tiempo de analisis y trazabilidad.</td>
 <td><em>pendiente</em></td>
 </tr>
 <tr>
 <td>H1 general</td>
-<td>Mejora conjunta de trazabilidad y supervision operativa.</td>
+<td>Mejora conjunta de la supervision analitica por integrar prediccion, anomalias, explicabilidad, reportes validados y trazabilidad.</td>
 <td><em>pendiente</em></td>
 </tr>
 </tbody>
 </table>
 <p>La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar vinculada al reporte de entrenamiento o de usabilidad correspondiente.</p>
-<h3 id="444-cruce-3-variables-operacionalizadas-versus-indicadores-observados">4.4.4 Cruce 3 - Variables operacionalizadas versus indicadores observados</h3>
+<h3 id="454-cruce-3-variables-operacionalizadas-versus-indicadores-observados">4.5.4 Cruce 3 - Variables operacionalizadas versus indicadores observados</h3>
 <table>
 <thead>
 <tr>
@@ -424,7 +434,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="445-cruce-4-gobernanza-componente-y-metrica">4.4.5 Cruce 4 - Gobernanza, componente y metrica</h3>
+<h3 id="455-cruce-4-gobernanza-componente-y-metrica">4.5.5 Cruce 4 - Gobernanza, componente y metrica</h3>
 <table>
 <thead>
 <tr>
@@ -466,7 +476,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="446-cruce-5-errores-por-tipo-de-anomalia">4.4.6 Cruce 5 - Errores por tipo de anomalia</h3>
+<h3 id="456-cruce-5-errores-por-tipo-de-anomalia">4.5.6 Cruce 5 - Errores por tipo de anomalia</h3>
 <table>
 <thead>
 <tr>
@@ -503,7 +513,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="447-interpretacion-conjunta">4.4.7 Interpretacion conjunta</h3>
+<h3 id="457-interpretacion-conjunta">4.5.7 Interpretacion conjunta</h3>
 <p>La contribucion esperada no es solo mejorar una metrica aislada, sino demostrar que la integracion de prediccion, deteccion, explicabilidad y reporte aumenta la capacidad de supervision operativa trazable. Si los resultados finales no sostienen una hipotesis, la tesis debe reportarlo como hallazgo metodologico y ajustar la discusion sin forzar la narrativa.</p>
         </div>
     </div>

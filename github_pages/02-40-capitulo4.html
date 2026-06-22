@@ -274,7 +274,16 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#capitulo-iv-resultados-y-discusion">CAPITULO IV: RESULTADOS Y DISCUSION</a></li>
+<li><a href="#capitulo-iv-resultados-y-discusion">CAPÍTULO IV — RESULTADOS Y DISCUSIÓN</a><ul>
+<li><a href="#41-estado-de-implementacion-del-prototipo">4.1 Estado de Implementación del Prototipo</a><ul>
+<li><a href="#411-alcance-verificable">4.1.1 Alcance verificable</a></li>
+<li><a href="#412-reglas-de-interpretacion">4.1.2 Reglas de interpretación</a></li>
+<li><a href="#413-algoritmos-integrados-en-el-avance-actual">4.1.3 Algoritmos integrados en el avance actual</a></li>
+<li><a href="#414-estado-frente-a-las-puertas-de-control">4.1.4 Estado frente a las puertas de control</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -284,63 +293,147 @@
             <div class="header">
                 <h1>02 40 Capitulo4</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 09:46
                 </div>
             </div>
             
-            <h1 id="capitulo-iv-resultados-y-discusion">CAPITULO IV: RESULTADOS Y DISCUSION</h1>
+            <h1 id="capitulo-iv-resultados-y-discusion">CAPÍTULO IV — RESULTADOS Y DISCUSIÓN</h1>
 <blockquote>
-<p><strong>Estado:</strong> capitulo modularizado. Los resultados finales se completaran unicamente despues de ejecutar los experimentos E1-E5 sobre el dataset agroexportador integrado versionado.</p>
+<p><strong>Estado del capítulo:</strong> avance parcial verificable al 22 de junio de 2026. Este capítulo documenta el estado funcional del prototipo y los resultados preliminares disponibles. Las métricas derivadas de datos semilla se presentan como validación de flujo, no como resultados definitivos de la investigación.</p>
 </blockquote>
-<p>Este capitulo organiza la evaluacion empirica del sistema integrado de supervision operativa. Su funcion actual es dejar preparada la estructura de reporte, los criterios de lectura y las tablas que recibiran los resultados finales.</p>
-<p>Los valores obtenidos en corridas previas sobre datasets sinteticos o versiones anteriores se consideran evidencia auxiliar de desarrollo. No deben presentarse como resultados finales de tesis hasta que se regeneren con:</p>
-<ul>
-<li>version del dataset integrado;</li>
-<li>split temporal documentado;</li>
-<li>codigo de experimento;</li>
-<li>fecha de ejecucion;</li>
-<li>semillas utilizadas;</li>
-<li>reporte de calidad de datos;</li>
-<li>trazabilidad de fuente para cada variable.</li>
-</ul>
-<p>La estructura del capitulo queda dividida en modulos para facilitar mantenimiento:</p>
+<h2 id="41-estado-de-implementacion-del-prototipo">4.1 Estado de Implementación del Prototipo</h2>
+<p>El prototipo funcional se ubica en <code>sistema-web-agro/</code> y permite validar la integración de las capas principales de la propuesta: autenticación de auditores, panel operativo, gestión de alertas, detalle de operación con IA explicable, telemetría experimental, métricas de integridad, explorador de datos, configuración del modelo y administración de usuarios.</p>
+<h3 id="411-alcance-verificable">4.1.1 Alcance verificable</h3>
 <table>
 <thead>
 <tr>
-<th>Modulo</th>
-<th>Archivo</th>
-<th>Contenido</th>
+<th>Bloque</th>
+<th>Evidencia principal</th>
+<th>Estado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>4.1</td>
-<td><code>docs/02-41-capitulo4-resultados-cuantitativos.md</code></td>
-<td>Prediccion y deteccion, VD1.</td>
+<td>Backend/API</td>
+<td><code>sistema-web-agro/backend/app.py</code>, <code>models.py</code>, <code>init_db.py</code></td>
+<td>Implementado para prototipo</td>
 </tr>
 <tr>
-<td>4.2</td>
-<td><code>docs/02-42-capitulo4-explicabilidad-reportes.md</code></td>
-<td>SHAP y reportes RAG, VD2-VD3.</td>
+<td>Frontend</td>
+<td><code>sistema-web-agro/frontend/src/pages/</code></td>
+<td>Implementado</td>
 </tr>
 <tr>
-<td>4.3</td>
-<td><code>docs/02-43-capitulo4-usabilidad-trazabilidad.md</code></td>
-<td>Estudio de usuarios y trazabilidad, VD4-VD5.</td>
+<td>Despliegue local</td>
+<td><code>sistema-web-agro/docker-compose.yml</code>, <code>run.ps1</code></td>
+<td>Implementado, sujeto a verificación de entorno</td>
 </tr>
 <tr>
-<td>4.4</td>
-<td><code>docs/02-44-capitulo4-discusion.md</code></td>
-<td>Discusion, contraste con literatura e hipotesis.</td>
+<td>Pantallas y flujo</td>
+<td><code>sistema-web-agro/*/screen.png</code>, <code>frontend/src/pages/*.jsx</code></td>
+<td>Disponible</td>
 </tr>
 <tr>
-<td>4.5-4.6</td>
-<td><code>docs/02-45-capitulo4-limitaciones-sintesis.md</code></td>
-<td>Limitaciones y sintesis final.</td>
+<td>Datos semilla</td>
+<td><code>sistema-web-agro/backend/init_db.py</code>, <code>DATOS_PRUEBA.txt</code></td>
+<td>Disponible para validación funcional</td>
+</tr>
+<tr>
+<td>Dataset final de tesis</td>
+<td><code>data/gold/</code>, <code>reports/tesis/</code></td>
+<td>Parcial o pendiente según evidencia</td>
 </tr>
 </tbody>
 </table>
-<p>La lectura del capitulo debe conservar una regla metodologica: <strong>ninguna metrica se interpreta sin indicar fuente, version de dataset, granularidad, split y estado de validacion</strong>.</p>
+<h3 id="412-reglas-de-interpretacion">4.1.2 Reglas de interpretación</h3>
+<p>Los resultados de este capítulo se clasifican en tres niveles:</p>
+<ol>
+<li><strong>Implementado:</strong> existe ruta real, código o artefacto verificable.</li>
+<li><strong>Preliminar:</strong> existe salida funcional o dato semilla, pero aún no constituye evidencia final.</li>
+<li><strong>Pendiente:</strong> requiere dataset final, experimento formal, prueba automatizada o validación documental adicional.</li>
+</ol>
+<p>Esta separación evita presentar como definitivos los resultados generados con datos de prueba. La evidencia definitiva deberá registrar fecha, commit, dataset, configuración, semilla, entorno, hash de salida y procedimiento de reproducción.</p>
+<h3 id="413-algoritmos-integrados-en-el-avance-actual">4.1.3 Algoritmos integrados en el avance actual</h3>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Algoritmo/técnica</th>
+<th>Uso en el prototipo y tesis</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicción</td>
+<td>XGBoost/LightGBM, GBDT</td>
+<td>Estimar valor FOB o volumen esperado</td>
+<td>Parcial: implementado en scripts/prototipo, pendiente validación final</td>
+</tr>
+<tr>
+<td>Anomalías</td>
+<td>Isolation Forest, LOF, ECOD</td>
+<td>Calcular score individual y score ensemble</td>
+<td>Parcial: funcional con datos semilla</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>SHAP/TreeSHAP</td>
+<td>Mostrar contribuciones locales por variable</td>
+<td>Parcial: funcional con evidencia semilla</td>
+</tr>
+<tr>
+<td>Reportes</td>
+<td>RAG y plantilla determinística</td>
+<td>Generar reporte técnico anclado a documentos</td>
+<td>Parcial: motor funcional, validador formal pendiente</td>
+</tr>
+<tr>
+<td>Trazabilidad</td>
+<td>IDs, hashes, logs, relaciones alerta-decisión</td>
+<td>Reconstruir el flujo de evidencia</td>
+<td>Parcial: flujo implementado, auditoría final pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="414-estado-frente-a-las-puertas-de-control">4.1.4 Estado frente a las puertas de control</h3>
+<table>
+<thead>
+<tr>
+<th>Puerta</th>
+<th>Estado al punto actual</th>
+<th>Observación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. Datos</td>
+<td>Parcial</td>
+<td>Falta congelar dataset semanal final y reporte de fuga de información</td>
+</tr>
+<tr>
+<td>B. Implementación</td>
+<td>Parcialmente aprobada</td>
+<td>El prototipo respalda rutas, pantallas y flujo operativo</td>
+</tr>
+<tr>
+<td>C. Experimento</td>
+<td>Pendiente</td>
+<td>Faltan partición temporal congelada, semillas, métricas definitivas y protocolos corridos</td>
+</tr>
+<tr>
+<td>D. Capítulo III</td>
+<td>En avance</td>
+<td>La arquitectura e implementación ya están documentadas de forma ampliada</td>
+</tr>
+<tr>
+<td>E. Capítulo IV preliminar</td>
+<td>Parcial</td>
+<td>Solo deben incluirse resultados marcados como preliminares o pendientes</td>
+</tr>
+</tbody>
+</table>
+<p>Las secciones siguientes desarrollan los resultados preliminares disponibles y dejan explícito qué evidencia todavía debe completarse.</p>
         </div>
     </div>
     

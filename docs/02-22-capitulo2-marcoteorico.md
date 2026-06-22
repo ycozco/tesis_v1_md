@@ -36,3 +36,24 @@ Arquitectura de procesamiento de lenguaje natural que inyecta contexto documenta
 
 ### 2.3.11 Trazabilidad de Modelos y Linaje de Datos
 Capacidad de documentar y reconstruir de extremo a extremo el flujo de procesamiento de una alerta. Se garantiza mediante el registro inmutable de metadatos de configuración, identificadores UUIDv4 para cada fase y hashes SHA-256 de los datasets y modelos entrenados.
+
+### 2.3.12 Dato real observado, dato agregado, proxy y dato sintético
+Para evitar ambigüedad metodológica, esta tesis distingue cuatro tipos de evidencia:
+
+| Tipo | Definición | Ejemplo en el proyecto | Uso permitido |
+|---|---|---|---|
+| Real observado | Registro directamente asociado a una operación o fuente primaria | FOB, peso, destino y fecha derivados de SUNAT/ADUANET o dataset real local | Entrenamiento, validación y caracterización |
+| Real agregado | Serie institucional agregada sin granularidad de embarque | Tipo de cambio BCRP, precios SISAP/MIDAGRI, series Trade Map | Contexto y variables exógenas |
+| Proxy documentado | Aproximación razonable cuando no existe medición directa por embarque | Clima regional, días logísticos agregados, alertas sanitarias agregadas | Contexto explicativo no causal |
+| Sintético controlado | Dato generado para simulación, balanceo o inyección experimental | Alertas semilla, anomalías inyectadas, datos de interfaz | Validación funcional o experimento controlado |
+
+Un proxy no demuestra causa empresarial real; solo aporta contexto para el modelo y para la interpretación del analista.
+
+### 2.3.13 Resultado preliminar y resultado definitivo
+Un resultado es **preliminar** cuando proviene de datos semilla, muestras pequeñas, corridas exploratorias o artefactos sin registro completo de dataset, commit, configuración, semilla y hash. Un resultado es **definitivo** únicamente cuando puede reproducirse con un comando documentado, sobre un dataset versionado, con partición temporal congelada y salidas verificables.
+
+### 2.3.14 Placeholder de figura o evidencia visual
+Cuando una figura, diagrama o captura de pantalla todavía no existe como PNG/SVG/PDF insertable, el documento debe conservar un placeholder explícito. El placeholder debe indicar: código de figura, título, archivo esperado, fuente de generación, contenido visual requerido y criterio de aceptación. Este criterio evita que el índice de figuras prometa artefactos que no están disponibles.
+
+### 2.3.15 Supervisión analítica frente a supervisión operativa causal
+La tesis emplea el término **supervisión analítica** para referirse al apoyo computacional en la identificación, explicación y documentación de desviaciones. No afirma causalidad operativa directa cuando los datos disponibles son semanales, agregados o proxies. Las referencias a logística, clima, sanidad o calidad se interpretan como contexto analítico salvo que exista evidencia directa por embarque.

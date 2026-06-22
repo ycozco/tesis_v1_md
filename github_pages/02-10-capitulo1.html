@@ -294,12 +294,9 @@
 </ul>
 </li>
 <li><a href="#14-hipotesis-de-la-investigacion">1.4 Hipótesis de la investigación</a><ul>
-<li><a href="#hipotesis-general-h1">Hipótesis general (H1)</a></li>
-<li><a href="#hipotesis-predictiva-de-fob-h1a">Hipótesis predictiva de FOB (H1a)</a></li>
-<li><a href="#hipotesis-predictiva-de-volumen-h1b">Hipótesis predictiva de volumen (H1b)</a></li>
-<li><a href="#hipotesis-de-anomalias-h1c">Hipótesis de anomalías (H1c)</a></li>
-<li><a href="#hipotesis-de-usabilidad-h1d">Hipótesis de usabilidad (H1d)</a></li>
-<li><a href="#hipotesis-de-trazabilidad-h1e">Hipótesis de trazabilidad (H1e)</a></li>
+<li><a href="#141-hipotesis-general">1.4.1 Hipótesis general</a></li>
+<li><a href="#142-hipotesis-nula-h0">1.4.2 Hipótesis nula (H0)</a></li>
+<li><a href="#143-hipotesis-especificas">1.4.3 Hipótesis específicas</a></li>
 </ul>
 </li>
 <li><a href="#15-variables-e-indicadores">1.5 Variables e indicadores</a><ul>
@@ -321,7 +318,8 @@
 </li>
 <li><a href="#18-alcance">1.8 Alcance</a></li>
 <li><a href="#19-linea-tipo-y-nivel-de-investigacion">1.9 Línea, tipo y nivel de investigación</a></li>
-<li><a href="#110-tecnicas-e-instrumentos">1.10 Técnicas e instrumentos</a></li>
+<li><a href="#110-tecnicas-e-instrumentos-de-recoleccion-de-informacion">1.10 Técnicas e instrumentos de recolección de información</a></li>
+<li><a href="#111-cronograma-de-actividades">1.11 Cronograma de actividades</a></li>
 </ul>
 </li>
 </ul>
@@ -333,7 +331,7 @@
             <div class="header">
                 <h1>02 10 Capitulo1</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 09:46
                 </div>
             </div>
             
@@ -381,18 +379,16 @@
 </ol>
 <hr />
 <h2 id="14-hipotesis-de-la-investigacion">1.4 Hipótesis de la investigación</h2>
-<h3 id="hipotesis-general-h1">Hipótesis general (H1)</h3>
-<p>El sistema integrado de predicción, detección de anomalías, explicabilidad y reportes trazables mejora significativamente la efectividad de la supervisión analítica de operaciones agroexportadoras peruanas en comparación con el uso de componentes analíticos aislados.</p>
-<h3 id="hipotesis-predictiva-de-fob-h1a">Hipótesis predictiva de FOB (H1a)</h3>
-<p>Los modelos globales de aprendizaje supervisado (XGBoost o LightGBM) presentan un error absoluto medio (MAE) significativamente menor en la predicción del valor unitario FOB esperado de la semana $t+1$ que el mejor baseline histórico y Elastic Net en el conjunto de test.</p>
-<h3 id="hipotesis-predictiva-de-volumen-h1b">Hipótesis predictiva de volumen (H1b)</h3>
-<p>Los regresores globales de GBDT obtienen un error cuadrático medio logarítmico (RMSLE) menor que la mediana móvil y el baseline estacional en el pronóstico del volumen semanal en el conjunto de test.</p>
-<h3 id="hipotesis-de-anomalias-h1c">Hipótesis de anomalías (H1c)</h3>
-<p>El ensemble no supervisado (IF + LOF + ECOD) calibrado por percentiles presenta una puntuación F1-score superior al promedio de sus detectores individuales sobre el conjunto de validación de anomalías sintéticas controladas.</p>
-<h3 id="hipotesis-de-usabilidad-h1d">Hipótesis de usabilidad (H1d)</h3>
-<p>Las explicaciones de SHAP combinadas con reportes narrativos RAG incrementan significativamente la tasa de comprensión operativa y reducen el tiempo de decisión de los evaluadores humanos frente a salidas técnicas y scores aislados.</p>
-<h3 id="hipotesis-de-trazabilidad-h1e">Hipótesis de trazabilidad (H1e)</h3>
-<p>El sistema integrado de metadatos y hashes SHA-256 permite alcanzar una proporción del 100% de alertas con trazabilidad documental completa y linaje reconstruible desde el microdato SUNAT hasta el informe técnico final.</p>
+<h3 id="141-hipotesis-general">1.4.1 Hipótesis general</h3>
+<p>La implementación de un sistema integrado de inteligencia artificial explicable, compuesto por predicción semanal de valor unitario FOB y volumen exportado, detección multivariable de anomalías, explicabilidad SHAP, reportes RAG con validación factual y trazabilidad documental, mejora significativamente la efectividad de la supervisión analítica de operaciones agroexportadoras peruanas respecto del uso de componentes analíticos aislados.</p>
+<h3 id="142-hipotesis-nula-h0">1.4.2 Hipótesis nula (H0)</h3>
+<p>La implementación de un sistema integrado de inteligencia artificial explicable no produce una mejora significativa en la efectividad de la supervisión analítica de operaciones agroexportadoras peruanas respecto del uso de componentes analíticos aislados, considerando rendimiento predictivo, detección de anomalías, comprensión del usuario, tiempo de análisis y trazabilidad documental.</p>
+<h3 id="143-hipotesis-especificas">1.4.3 Hipótesis específicas</h3>
+<p><strong>H1a.</strong> Los modelos globales XGBoost o LightGBM, entrenados sobre el dataset semanal producto-mercado-semana, presentan un error absoluto medio (MAE) significativamente menor que el mejor modelo base para predecir el valor unitario FOB de la siguiente semana.</p>
+<p><strong>H1b.</strong> Los modelos globales XGBoost o LightGBM, entrenados sobre el dataset semanal producto-mercado-semana, presentan un error logarítmico cuadrático medio (RMSLE) significativamente menor que el mejor modelo base para predecir el volumen exportado de la siguiente semana.</p>
+<p><strong>H1c.</strong> El ensemble de Isolation Forest, Local Outlier Factor y ECOD, calibrado por percentiles y alimentado con residuos predictivos y variables agroexportadoras, presenta un F1-Score superior al promedio de sus detectores individuales en un conjunto experimental con anomalías controladas.</p>
+<p><strong>H1d.</strong> Las alertas acompañadas de explicaciones SHAP y reportes RAG trazables producen una mayor comprensión operativa y un menor tiempo de análisis en los usuarios evaluadores que las alertas presentadas únicamente mediante resultados técnicos aislados.</p>
+<p><strong>H1e.</strong> El módulo de trazabilidad basado en identificadores, metadatos y hashes SHA-256 incrementa la proporción de alertas cuyo proceso puede reconstruirse desde los registros de origen, el dataset versionado y el modelo utilizado hasta la explicación, la decisión humana y el reporte final.</p>
 <hr />
 <h2 id="15-variables-e-indicadores">1.5 Variables e indicadores</h2>
 <h3 id="151-variable-independiente">1.5.1 Variable independiente</h3>
@@ -407,7 +403,7 @@
 <ul>
 <li><strong>Efectividad de la supervisión analítica (VD):</strong> evaluada en las dimensiones de rendimiento predictivo, rendimiento de detección, usabilidad subjetiva, tiempo de respuesta de diagnóstico y tasa de trazabilidad documental.</li>
 </ul>
-<p><em>(La tabla de operacionalización detallada que vincula dimensiones, indicadores, escalas, técnicas e instrumentos se presenta en la <a href="file:///d:/tesis_yoset/docs/tesis/MATRIZ_OPERACIONALIZACION.md">Matriz de Operacionalización</a>).</em></p>
+<p><em>(La tabla de operacionalización detallada que vincula dimensiones, indicadores, escalas, técnicas e instrumentos se incorpora como anexo compilado de esta tesis: "Matriz de Operacionalización").</em></p>
 <hr />
 <h2 id="16-viabilidad-de-la-investigacion">1.6 Viabilidad de la investigación</h2>
 <h3 id="161-viabilidad-tecnica">1.6.1 Viabilidad técnica</h3>
@@ -429,7 +425,7 @@
 <ul>
 <li><strong>Temático y Tecnológico:</strong> Diseño, desarrollo experimental y evaluación de una arquitectura modular de cuatro capas (Predicción, Detección de Anomalías con PyOD, Explicabilidad con TreeSHAP y Reporte con RAG/LLM) y un módulo registrador de trazabilidad con hashes SHA-256.</li>
 <li><strong>Geográfico:</strong> Microdatos de exportaciones agrícolas peruanas registradas en las aduanas nacionales, principalmente asociadas a las zonas productoras y puertos de La Libertad, Piura, Ica, Lambayeque y Arequipa.</li>
-<li><strong>Productivo:</strong> Acotado estrictamente a palta (<em>avocado</em>), uva fresca (<em>grape</em>) y arándano (<em>blueberry</em>). Se excluye permanentemente cacao por baja representatividad, y espárrago por limitación analítica.</li>
+<li><strong>Productivo:</strong> El núcleo experimental está acotado a palta (<em>avocado</em>), uva fresca (<em>grape</em>) y arándano (<em>blueberry</em>). El espárrago se conserva como producto secundario o de sensibilidad solo si se declara su menor cobertura y no se mezcla en conclusiones principales. Se excluye permanentemente cacao por baja representatividad.</li>
 <li><strong>Temporal:</strong> Ventana continua desde <strong>junio de 2018 hasta mayo de 2026</strong>.</li>
 <li><strong>Exclusiones:</strong> No se implementará monitoreo de variables en tiempo real, control autónomo de despachos aduaneros, modelos de Deep Learning como propuesta principal ni integraciones funcionales con sistemas ERP privados de empresas particulares.</li>
 </ul>
@@ -442,11 +438,214 @@
 <li><strong>Diseño de Investigación:</strong> Cuasiexperimental (comparación de VI), longitudinal (análisis temporal 2018-2026) y comparativo (evaluación frente a baselines).</li>
 </ul>
 <hr />
-<h2 id="110-tecnicas-e-instrumentos">1.10 Técnicas e instrumentos</h2>
+<h2 id="110-tecnicas-e-instrumentos-de-recoleccion-de-informacion">1.10 Técnicas e instrumentos de recolección de información</h2>
+<p>La investigación combina técnicas documentales, computacionales, funcionales y evaluativas. Debido a que el objeto de estudio es un sistema integrado de inteligencia artificial explicable, la recolección de información incluye literatura, fuentes institucionales, datasets, métricas, logs, reportes automáticos, pruebas de calidad, evidencia de prototipo y registros de interacción de usuarios.</p>
+<p>Las técnicas utilizadas son:</p>
 <ul>
-<li><strong>Técnicas:</strong> Análisis documental para estructuración de datos; experimentación tecnológica controlada para entrenamiento y pruebas de rendimiento del pipeline; encuestas para la evaluación de usabilidad y comprensión con usuarios.</li>
-<li><strong>Instrumentos:</strong> Ficha de normalización de datos; consola y scripts de entrenamiento y evaluación computacional en Python; cuestionario de usabilidad SUS; y scripts de registro automático de tiempos y validación factual de reportes.</li>
+<li>Análisis documental.</li>
+<li>Experimentación computacional.</li>
+<li>Pruebas funcionales del sistema.</li>
+<li>Auditoría de trazabilidad.</li>
+<li>Prueba controlada con usuarios.</li>
+<li>Evaluación mediante rúbricas.</li>
 </ul>
+<p><strong>Tabla 1.3 — Técnicas e instrumentos de recolección de información</strong></p>
+<table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Instrumento</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Análisis documental</td>
+<td>Matriz de revisión bibliográfica y ficha de antecedentes</td>
+<td>Identificar fundamentos teóricos, antecedentes, brechas, algoritmos aplicables y criterios de comparación para sustentar el Capítulo II.</td>
+</tr>
+<tr>
+<td>Análisis documental</td>
+<td>Ficha de fuente de datos</td>
+<td>Registrar origen, granularidad, periodo, licencia, ruta local, limitaciones y clasificación de cada fuente como real observada, agregada, proxy o sintética controlada.</td>
+</tr>
+<tr>
+<td>Experimentación computacional</td>
+<td>Scripts de ETL, integración y preparación semanal</td>
+<td>Construir el dataset agroexportador integrado a nivel producto, mercado y semana ISO, manteniendo trazabilidad de fuentes y reglas de transformación.</td>
+</tr>
+<tr>
+<td>Experimentación computacional</td>
+<td>Scripts de entrenamiento y evaluación predictiva</td>
+<td>Medir el desempeño de modelos basales, XGBoost y LightGBM para predicción semanal de valor unitario FOB y volumen exportado.</td>
+</tr>
+<tr>
+<td>Experimentación computacional</td>
+<td>Scripts de detección de anomalías</td>
+<td>Evaluar Isolation Forest, Local Outlier Factor, ECOD y el ensemble propuesto frente a anomalías estadísticas o sintéticas controladas.</td>
+</tr>
+<tr>
+<td>Pruebas funcionales del sistema</td>
+<td>Checklist de rutas, pantallas y endpoints</td>
+<td>Verificar que el prototipo funcional ejecute login, dashboard, alertas, detalle, historial, telemetría, integridad, datos, configuración y usuarios.</td>
+</tr>
+<tr>
+<td>Pruebas funcionales del sistema</td>
+<td>Capturas de pantalla documentadas</td>
+<td>Registrar visualmente las pantallas del prototipo y dejar evidencia de las figuras que deberán incorporarse al documento final.</td>
+</tr>
+<tr>
+<td>Auditoría de trazabilidad</td>
+<td>Registro de hashes SHA-256, UUID y versiones</td>
+<td>Reconstruir el linaje de datasets, modelos, alertas, explicaciones, reportes y artefactos experimentales.</td>
+</tr>
+<tr>
+<td>Auditoría de trazabilidad</td>
+<td>Pruebas automatizadas de calidad y fuga temporal</td>
+<td>Confirmar reglas mínimas de calidad, partición temporal, ausencia de fuga de información y reproducibilidad de evidencia.</td>
+</tr>
+<tr>
+<td>Prueba controlada con usuarios</td>
+<td>Cuestionario SUS y escala Likert de comprensión</td>
+<td>Medir usabilidad percibida, claridad, utilidad de explicaciones y comprensión de alertas por parte de usuarios evaluadores.</td>
+</tr>
+<tr>
+<td>Prueba controlada con usuarios</td>
+<td>Registro automático de tiempo y decisión</td>
+<td>Comparar la condición de sistema integrado frente a la condición de resultados aislados mediante tiempo de análisis y respuestas correctas.</td>
+</tr>
+<tr>
+<td>Evaluación mediante rúbricas</td>
+<td>Rúbrica de reportes automáticos</td>
+<td>Validar completitud, coherencia, fidelidad factual, consistencia numérica y presencia de evidencia estructurada en reportes generados.</td>
+</tr>
+<tr>
+<td>Evaluación mediante rúbricas</td>
+<td>Matriz de aceptación de evidencia</td>
+<td>Clasificar artefactos como preliminares, candidatos o finales y verificar si cada evidencia puede reproducirse e incorporarse a la tesis.</td>
+</tr>
+</tbody>
+</table>
+<p>Datos pendientes para completar esta sección en la versión final:</p>
+<ul>
+<li>Definir el formato institucional final de las fichas de análisis documental.</li>
+<li>Incorporar las capturas definitivas del prototipo en <code>docs/figures/</code>.</li>
+<li>Guardar el instrumento final de consentimiento, tareas, encuesta SUS y escala Likert.</li>
+<li>Registrar la prueba automatizada de fuga temporal en <code>reports/tesis/data-quality/leakage-tests/</code>.</li>
+<li>Registrar corridas experimentales con identificador, commit, semilla, configuración, métricas y hashes.</li>
+<li>Incorporar la rúbrica final de validación factual de reportes automáticos.</li>
+<li>Precisar número final y perfil de participantes de la prueba controlada con usuarios.</li>
+<li>Marcar como definitivos solo los artefactos que cuenten con comando, salida esperada, fecha, versión y evidencia reproducible.</li>
+</ul>
+<hr />
+<h2 id="111-cronograma-de-actividades">1.11 Cronograma de actividades</h2>
+<p>El cronograma se organiza desde el estado actual del proyecto hasta la primera semana de diciembre de 2026, fecha prevista para la sustentación de tesis. Las fechas podrán ajustarse por calendario académico, disponibilidad del asesor o requisitos administrativos de la escuela, pero la secuencia metodológica debe mantenerse: cierre documental, cierre de datos, experimento, redacción final, revisión, depósito y sustentación.</p>
+<p><strong>Tabla 1.2 — Cronograma de actividades hasta sustentación</strong></p>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Periodo</th>
+<th>Actividades principales</th>
+<th>Producto verificable</th>
+<th>Estado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1. Ordenamiento documental</td>
+<td>22-30 junio 2026</td>
+<td>Completar Capítulos II y III, depurar antecedentes nacionales, consolidar placeholders de figuras y capturas</td>
+<td><code>docs/02-20</code>, <code>02-21</code>, <code>02-22</code>, <code>02-30</code>, tesis monolítica regenerada</td>
+<td>En curso</td>
+</tr>
+<tr>
+<td>F2. Cierre de datos</td>
+<td>1-15 julio 2026</td>
+<td>Congelar dataset gold, registrar hashes, validar cobertura, resolver duplicados funcionales y documentar fuentes proxy</td>
+<td><code>data/gold/</code>, <code>codex-revision/reporte-calidad-datos.md</code>, reporte de dataset</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F3. Pruebas de calidad y fuga</td>
+<td>16-31 julio 2026</td>
+<td>Ejecutar pruebas de calidad, fuga temporal, escaladores, codificadores y partición temporal</td>
+<td><code>reports/tesis/data-quality/leakage-tests/</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F4. Entrenamiento predictivo</td>
+<td>1-20 agosto 2026</td>
+<td>Entrenar baselines, XGBoost y LightGBM para FOB y volumen; registrar hiperparámetros y residuos fuera de muestra</td>
+<td><code>reports/tesis/experiments/&lt;run_id&gt;/</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F5. Validación de anomalías</td>
+<td>21 agosto-5 septiembre 2026</td>
+<td>Ejecutar IF, LOF, ECOD, ensemble, anomalías sintéticas y métricas por tipo</td>
+<td>Métricas PR-AUC, F1, Recall, Precision@k</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F6. Explicabilidad y reportes</td>
+<td>6-20 septiembre 2026</td>
+<td>Generar SHAP, reportes RAG, validación factual y comparación con plantilla determinística</td>
+<td><code>data/gold/local_explanations.json</code>, <code>validation_metrics.json</code>, reportes auditados</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F7. Prototipo y capturas finales</td>
+<td>21 septiembre-5 octubre 2026</td>
+<td>Verificar <code>sistema-web-agro</code>, capturar pantallas finales, insertar figuras y actualizar anexos</td>
+<td><code>docs/figures/</code>, anexos y evidencia visual</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F8. Prueba controlada con usuarios</td>
+<td>6-20 octubre 2026</td>
+<td>Ejecutar estudio A/B, consentimiento, anonimización, SUS, tiempos y decisiones</td>
+<td><code>reports/tesis/user-study/</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F9. Capítulo IV final</td>
+<td>21 octubre-5 noviembre 2026</td>
+<td>Reemplazar resultados preliminares por resultados reproducibles, contrastar hipótesis y cerrar discusión</td>
+<td>Capítulo IV actualizado</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F10. Capítulo V y conclusiones</td>
+<td>6-15 noviembre 2026</td>
+<td>Redactar conclusiones, limitaciones, recomendaciones y trabajos futuros según resultados finales</td>
+<td>Capítulo V y recomendaciones</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F11. Revisión integral</td>
+<td>16-22 noviembre 2026</td>
+<td>Revisar formato, APA, citas, tablas, figuras, anexos, índices y coherencia de hipótesis</td>
+<td>Borrador final revisado</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F12. Compilación y depósito</td>
+<td>23-30 noviembre 2026</td>
+<td>Generar PDF/DOCX final, verificar maquetación, firmar anexos y preparar entrega administrativa</td>
+<td><code>output/tesis_final.pdf</code>, <code>output/tesis_final.docx</code></td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>F13. Sustentación</td>
+<td>Primera semana de diciembre 2026</td>
+<td>Presentación, defensa, demostración del prototipo y respuesta a observaciones</td>
+<td>Sustentación de tesis</td>
+<td>Meta final</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hito final:</strong> sustentación de tesis durante la primera semana de diciembre de 2026.</p>
         </div>
     </div>
     

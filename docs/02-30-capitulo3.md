@@ -74,7 +74,7 @@ El propósito del sistema inteligente de supervisión agroexportadora es proveer
 *   *Servicios y Dashboard:* Flask / Streamlit, Jinja2, HTML5/CSS3 (estilo premium).
 *   *Persistencia:* Parquet para almacenamiento analítico y archivos JSON para trazabilidad y configuraciones.
 
-### 3.1.10 Arquitectura de Componentes (Mermaid)
+### 3.1.10 Arquitectura de Componentes
 
 ```mermaid
 graph TD
@@ -104,6 +104,13 @@ graph TD
         O -->|Visualización de Alertas y Linaje| P[app.py: Flask Dashboard]
     end
 ```
+
+**Figura 3.1 — Arquitectura lógica del sistema integrado.**  
+**Estado:** placeholder de figura pendiente.  
+**Archivo esperado:** `docs/figures/figura_3_1_arquitectura_logica.svg` y copia PNG en `docs/figures/figura_3_1_arquitectura_logica.png`.  
+**Fuente de generación:** bloque Mermaid anterior o diagrama equivalente generado desde `src/module1_prediction.py` a `src/module6_traceability.py` y `sistema-web-agro/backend/app.py`.  
+**Contenido visual requerido:** cinco capas diferenciadas: datos/ETL, modelado predictivo, anomalías, explicabilidad/RAG-validación y dashboard/trazabilidad. Debe mostrar entradas, salidas, módulos y relación de linaje.  
+**Criterio de aceptación:** la figura debe renderizarse sin código Mermaid visible en el PDF final, tener título, fuente "Elaboración propia" y coincidir con las rutas reales del repositorio.
 
 ## 3.2 Esquema de la Propuesta
 
@@ -143,6 +150,13 @@ sequenceDiagram
     end
     Log->>Log: Retornar alert_id y confirmar trazabilidad
 ```
+
+**Figura 3.2 — Flujo temporal de datos, predicción, alerta y reporte.**  
+**Estado:** placeholder de figura pendiente.  
+**Archivo esperado:** `docs/figures/figura_3_2_flujo_temporal.svg` y copia PNG en `docs/figures/figura_3_2_flujo_temporal.png`.  
+**Fuente de generación:** bloque Mermaid anterior, scripts `src/prepare_weekly_dataset.py`, `src/feature_engineering.py`, `src/module1_prediction.py`, `src/module2_anomaly.py`, `src/module4_rag.py` y `src/module6_traceability.py`.  
+**Contenido visual requerido:** secuencia desde registros SUNAT/ADUANET hasta dataset gold, predicción, residuo, score ensemble, explicación SHAP, reporte RAG, validación factual y log de trazabilidad.  
+**Criterio de aceptación:** debe distinguir explícitamente información disponible en semana `t` frente al objetivo `t+1`, para evidenciar prevención de fuga temporal.
 
 ### 3.2.2 Esquema y Capas de Datos
 *   **Raw:** Datos crudos originales descargados sin procesar (formatos DBF de SUNAT y CSVs de SISAP/BCRP).
@@ -231,6 +245,13 @@ classDiagram
     ExplanationLog --> ReportLog : "documenta"
 ```
 
+**Figura 3.3 — Modelo lógico de trazabilidad de alerta, explicación y reporte.**  
+**Estado:** placeholder de figura pendiente.  
+**Archivo esperado:** `docs/figures/figura_3_3_trazabilidad.svg` y copia PNG en `docs/figures/figura_3_3_trazabilidad.png`.  
+**Fuente de generación:** bloque Mermaid anterior, `src/module6_traceability.py`, `data/gold/traceability_log.json` y modelos del prototipo en `sistema-web-agro/backend/models.py`.  
+**Contenido visual requerido:** entidades `IngestionRun`, `ModelRun`, `AlertLog`, `ExplanationLog` y `ReportLog`, con campos mínimos de ID, hash, fecha, dataset, modelo y artefacto.  
+**Criterio de aceptación:** debe permitir reconstruir visualmente qué hash conecta dataset, modelo, alerta, explicación y reporte.
+
 ### 3.2.13 Seguridad y Privacidad
 El sistema opera localmente y no expone datos aduaneros crudos al exterior. Los identificadores fiscales (RUC) y nombres de las empresas exportadoras se anonimizan de manera irreversible mediante algoritmo criptográfico SHA-256 con sal fija:
 $$\text{exporter\_hash} = \text{SHA256}(\text{RUC} + \text{salt\_salt\_42})$$
@@ -261,15 +282,33 @@ La preparación de datos se organiza como un flujo reproducible por capas. Esta 
 
 | Fuente | Ruta o evidencia | Uso en la tesis | Estado |
 |---|---|---|---|
-| SUNAT/ADUANET | `data/raw/`, `data/sunat/` | Base transaccional aduanera para exportaciones | Parcial, sujeta a depuración y versionado |
-| TradeMap | `data-trademap/` | Contraste internacional y contexto de mercado | Parcial |
-| BCRP/SISAP/MIDAGRI | `data/` y scripts de integración | Variables exógenas de precio, tipo de cambio y contexto interno | Parcial |
-| Dataset analítico | `data/gold/weekly_product_market.parquet` | Entrada esperada para predicción y detección | En validación |
-| Prototipo funcional | `sistema-web-agro/backend/init_db.py` | Datos semilla para validar flujo de interfaz y telemetría | Implementado como prototipo |
+| Dataset real local | `data/dataset_real_v1.csv` | Base experimental inicial de exportaciones y proxies | Disponible; requiere declarar composición real/proxy/sintética |
+| SUNAT/ADUANET | `data/sunat/raw_downloads/`, `data/sunat/x23290326.DBF` | Fuente primaria aduanera y validación de estructura | Parcial; descargas locales concentradas en 2026 |
+| Trade Map | `data-trademap/*.xls` | Contraste externo por producto y mercado | Disponible como benchmark agregado |
+| BCRP | `data/bcrp/exchange_rates_cache.json`, `data/downloads/bcrp_tipo_cambio.csv` | Tipo de cambio PEN/USD | Disponible |
+| SISAP/MIDAGRI | `codex-revision/metadata/sisap_*` | Contexto de precio/volumen mayorista interno | Disponible como dato agregado |
+| NASA POWER / clima | Variables climáticas integradas en silver/gold | Contexto climático regional | Disponible como proxy |
+| Dataset analítico gold | `data/gold/weekly_product_market.parquet` | Unidad producto-mercado-semana | Disponible, preliminar |
+| Prototipo funcional | `sistema-web-agro/backend/init_db.py` | Datos semilla para validar interfaz y telemetría | Implementado como prototipo |
 
 Los datos semilla del prototipo no sustituyen al dataset final de investigación. Se usan para demostrar integración funcional de backend, frontend, alertas, explicaciones, reportes y telemetría. Los resultados finales deberán provenir del dataset semanal reproducible y documentado.
 
-### 3.3.2 Capas de procesamiento
+### 3.3.2 Inventario reproducible de archivos principales
+
+| Capa | Archivo | Filas x columnas | Hash SHA-256 | Uso |
+|---|---:|---:|---|---|
+| Raw local | `data/raw/exports_raw.csv` | 40,672 x 21 | `64a7dd130cbe2ba79cee04fe8e391d64a81d18cb6a0cbdb4d84e7d27fbd7bea3` | Base tabular inicial |
+| Dataset real v1 | `data/dataset_real_v1.csv` | 40,672 x 21 | `64a7dd130cbe2ba79cee04fe8e391d64a81d18cb6a0cbdb4d84e7d27fbd7bea3` | Base experimental local |
+| Bronze | `data/bronze/exports_raw.parquet` | 40,672 x 21 | `66c4464cd87a6d4238a793ccb693d5afe1be704e1556d49e3bad8540bb2b2c9c` | Conversión estructural |
+| Silver | `data/silver/exports_clean.parquet` | 40,293 x 24 | `ba98a37a9f3c9c7cf36baff8af8e1b61837cd237817b6e441d2bfb9f839e4eb3` | Limpieza y normalización |
+| Gold | `data/gold/weekly_product_market.parquet` | 8,340 x 27 | `4b9d0ea84880dc46192806125896707aec8274d51f5c05c8e5d1ebb5350edac3` | Agregación semanal |
+| Features predictivas | `data/gold/prediction_features.parquet` | 8,340 x 139 | `e343829f19fc26b1cd153e18fcb70808b9713c82c4b37ea86fe8395c8c607773` | Entrenamiento FOB/volumen |
+| Features anomalías | `data/gold/anomaly_features.parquet` | 8,340 x 170 | `f3fa9e7868e2432df240ad932daff0bfb99d54e825fc5967fce991b125412c26` | Detección IF/LOF/ECOD |
+
+**Comando de verificación:** `.\.venv\Scripts\python.exe -c "<script de lectura pandas y hash SHA-256>"`.  
+**Salida esperada:** dimensiones y hashes iguales a la tabla anterior. Si algún hash cambia, debe generarse nueva versión de dataset y actualizar los reportes.
+
+### 3.3.3 Capas de procesamiento
 
 | Capa | Descripción | Evidencia esperada |
 |---|---|---|
@@ -280,7 +319,39 @@ Los datos semilla del prototipo no sustituyen al dataset final de investigación
 | Features | Variables predictivas, rezagos y ventanas móviles | Matriz de entrenamiento y prueba de fuga |
 | Evidence | Métricas, residuos, alertas, explicaciones y reportes | Artefactos en `reports/tesis/` |
 
-### 3.3.3 Controles de calidad temporal
+### 3.3.4 Caracterización del dataset semanal gold
+
+| Indicador | Valor observado | Evidencia |
+|---|---:|---|
+| Filas gold | 8,340 | `data/gold/weekly_product_market.parquet` |
+| Columnas gold | 27 | `data/gold/weekly_product_market.parquet` |
+| Productos | 4 (`avocado`, `blueberry`, `esparrago`, `grape`) | Conteo pandas |
+| Mercados agregados | 10 | Conteo pandas |
+| Series producto-mercado | 20 | Conteo pandas |
+| Semanas ISO | 417 | `week_start` |
+| Periodo semanal | 2018-06-04 a 2026-05-25 | `week_start` |
+| Filas avocado | 2,502 | Conteo por `product_code` |
+| Filas blueberry | 2,502 | Conteo por `product_code` |
+| Filas grape | 2,502 | Conteo por `product_code` |
+| Filas esparrago | 834 | Conteo por `product_code` |
+
+**Criterio metodológico sobre espárrago:** aunque existe en la base gold, se mantiene como producto secundario o de sensibilidad. El núcleo experimental defendible se concentra en palta, uva y arándano; espárrago no debe mezclarse en conclusiones principales salvo que se declare explícitamente su cobertura menor.
+
+### 3.3.5 Calidad, registros eliminados y límites de datos
+
+El reporte `codex-revision/reporte-calidad-datos.md` registra 40,293 filas válidas post-validación y 4 filas rechazadas. También identifica 4,933 duplicados funcionales potenciales usando producto, fecha, exportador, destino, volumen y precio. Estos duplicados no deben eliminarse automáticamente sin revisar si representan múltiples operaciones similares o registros repetidos.
+
+| Control | Resultado actual | Acción documental |
+|---|---|---|
+| Cacao | Excluido | Mantener exclusión |
+| Palta, uva, arándano | Presentes | Núcleo del estudio |
+| Espárrago | Presente con menor cobertura | Mantener como secundario |
+| Rechazados | 4 filas | Documentar archivo de rechazados |
+| Duplicados exactos | 0 | Sin acción |
+| Duplicados funcionales | 4,933 | Revisar antes de cierre final |
+| `fob_unit_value_usd_kg` faltante en gold | 91.46% | No usar como métrica final sin imputación/criterio formal |
+
+### 3.3.6 Controles de calidad temporal
 
 Para prevenir fuga de información, las variables predictivas solo deben utilizar información disponible antes de la semana objetivo. Los rezagos, medias móviles y desviaciones móviles se calculan con desplazamiento explícito de una semana. Los escaladores, codificadores y selectores de características se ajustan únicamente con el conjunto de entrenamiento. La partición temporal se congela antes de entrenar los modelos definitivos.
 
@@ -292,7 +363,10 @@ Para prevenir fuga de información, las variables predictivas solo deben utiliza
 | Predicciones fuera de muestra | Residuos generados con validación temporal | Pendiente para dataset final |
 | Reporte de fuga | Guardar en `reports/tesis/data-quality/leakage-tests/` | Pendiente si no existe ejecución |
 
-### 3.3.4 Registro de artefactos experimentales
+**Comando de prueba esperado:** `.\.venv\Scripts\python.exe -m pytest tests/leakage/test_leakage.py`.  
+**Salida esperada:** pruebas aprobadas y reporte copiado a `reports/tesis/data-quality/leakage-tests/` con fecha, commit y hash. Si el reporte no existe, la evidencia queda pendiente.
+
+### 3.3.7 Registro de artefactos experimentales
 
 Cada corrida experimental debe registrar identificador único, commit, dataset, semilla, configuración, hiperparámetros, entorno, métricas globales, métricas por producto, predicciones, residuos y hashes de salida. Hasta que esos campos existan, el artefacto se clasifica como preliminar o pendiente, no como definitivo.
 
@@ -328,7 +402,21 @@ El prototipo incluye vistas para autenticación, panel del auditor, gestión de 
 | Configuración | `/config` | `frontend/src/pages/Config.jsx` |
 | Usuarios | `/users` | `frontend/src/pages/Users.jsx` |
 
-### 3.4.3 Algoritmos propuestos e implementación vinculada
+### 3.4.3 Placeholders de capturas del prototipo
+
+Las capturas de pantalla no deben sustituir evidencia funcional ni resultados experimentales. Se usan para documentar la interfaz del prototipo. Cuando una captura todavía no esté incorporada al PDF final, se registra el placeholder siguiente:
+
+| Figura | Pantalla | Archivo esperado | Fuente actual | Contenido que debe mostrar | Estado |
+|---|---|---|---|---|---|
+| Figura 4.1 | Detalle de alerta IA explicable | `docs/figures/figura_4_1_detalle_alerta.png` | `sistema-web-agro/detalle_de_operaci_n_ia_explicable_esp/screen.png` | Datos DAM, FOB esperado, score, SHAP, reporte RAG y decisión humana | Pendiente de inserción formal |
+| Figura 4.2 | Consola de telemetría | `docs/figures/figura_4_2_telemetria.png` | `sistema-web-agro/experimental_telemetry_console/screen.png` o `monitor_de_telemetr_a_y_equidad_esp/screen.png` | Condiciones A/B, tiempo de decisión, comprensión y métricas agregadas | Pendiente de inserción formal |
+| Figura 4.3 | Bandeja de alertas | `docs/figures/figura_4_3_bandeja_alertas.png` | `sistema-web-agro/alerts_management_inbox/screen.png` | Lista filtrable de alertas, estados, severidad y producto | Pendiente de inserción formal |
+| Figura 4.4 | Configuración de modelo | `docs/figures/figura_4_4_configuracion_modelo.png` | `sistema-web-agro/model_configuration_terminal/screen.png` | Pesos IF/LOF/ECOD, umbral y parámetros editables | Pendiente de inserción formal |
+| Figura 4.5 | Explorador de datos y RAG | `docs/figures/figura_4_5_explorador_datos.png` | `sistema-web-agro/data_explorer_load_center/screen.png` | Carga o exploración de datos, biblioteca documental y estado de indexación | Pendiente de inserción formal |
+
+**Criterio de aceptación de capturas:** cada imagen debe tener resolución legible, título, fuente "captura del prototipo `sistema-web-agro`", fecha de generación y ruta del componente React correspondiente. Si la captura se usa en Capítulo IV, debe corresponder a la versión del commit documentado.
+
+### 3.4.4 Algoritmos propuestos e implementación vinculada
 
 | Módulo | Algoritmo o técnica | Función | Evidencia |
 |---|---|---|---|
@@ -349,17 +437,124 @@ La validación se plantea en cinco bloques: rendimiento predictivo y detección,
 
 La comparación principal evalúa el ensemble IF + LOF + ECOD frente a detectores individuales y baselines. Las métricas previstas son Precision, Recall, F1, PR-AUC, ROC-AUC y Precision@k. Cuando se usen anomalías sintéticas, se debe registrar tipo, magnitud, proporción de inyección y etiqueta generada.
 
+#### 3.5.1.1 Partición temporal propuesta
+
+La partición se define por fecha y no por muestreo aleatorio, debido a la naturaleza longitudinal del problema.
+
+| Conjunto | Periodo propuesto | Uso | Regla |
+|---|---|---|---|
+| Entrenamiento | 2018-06-04 a 2024-12-30 | Ajustar modelos, codificadores y escaladores | Puede usarse para Optuna y calibración interna |
+| Validación | 2025-01-06 a 2025-12-29 | Selección de hiperparámetros y umbrales | No se mezcla con test |
+| Prueba | 2026-01-05 a 2026-05-25 | Evaluación final preliminar | Solo inferencia fuera de muestra |
+
+Si la distribución real por producto no permite sostener estas ventanas para todas las series, debe usarse una validación walk-forward por serie con ventanas mínimas documentadas. En ese caso, la tesis debe reportar cuántas series quedaron excluidas y por qué.
+
+#### 3.5.1.2 Estrategia walk-forward
+
+| Parámetro | Valor metodológico |
+|---|---|
+| Unidad de ventana | Semana ISO |
+| Horizonte | 1 semana (`t+1`) |
+| Ventana inicial mínima | 104 semanas por serie cuando exista cobertura |
+| Paso | 1 semana o bloque mensual, según costo computacional |
+| Salida | Predicción, residuo y error por semana fuera de muestra |
+| Evidencia | `reports/tesis/experiments/<run_id>/predictions_oos.parquet` |
+
+#### 3.5.1.3 Baselines predictivos
+
+| Objetivo | Baseline | Descripción | Métrica principal |
+|---|---|---|---|
+| FOB unitario | Último valor observado | `y_hat(t+1)=y(t)` | MAE |
+| FOB unitario | Mediana móvil 4 semanas | Mediana de semanas disponibles hasta `t` | MAE |
+| FOB unitario | Mediana móvil 13 semanas | Baseline robusto estacional corto | MAE |
+| FOB unitario | Elastic Net | Modelo lineal regularizado | MAE/RMSE |
+| Volumen | Último valor observado | Persistencia temporal | RMSLE |
+| Volumen | Mediana móvil 4/13 semanas | Baseline robusto | RMSLE |
+| Volumen | Baseline estacional | Misma semana del año anterior si existe | RMSLE |
+
+#### 3.5.1.4 Modelos propuestos e hiperparámetros
+
+| Modelo | Hiperparámetros a registrar | Selección |
+|---|---|---|
+| XGBoost | `n_estimators`, `max_depth`, `learning_rate`, `subsample`, `colsample_bytree`, `reg_lambda`, `reg_alpha` | Optuna o grid reducido sobre validación temporal |
+| LightGBM | `num_leaves`, `max_depth`, `learning_rate`, `feature_fraction`, `bagging_fraction`, `lambda_l1`, `lambda_l2` | Optuna o grid reducido sobre validación temporal |
+| Elastic Net | `alpha`, `l1_ratio` | Validación temporal |
+| IF/LOF/ECOD | `contamination`, vecinos LOF, semilla y umbral percentílico | Calibración en entrenamiento/validación |
+
+**Semilla base:** `42`. Toda corrida debe registrar semilla global, semilla de modelo y versión de librerías.
+
+#### 3.5.1.5 Métricas por objetivo
+
+| Bloque | Métricas | Nivel de reporte |
+|---|---|---|
+| FOB | MAE, RMSE, MAPE/SMAPE, R² | Global, producto y mercado principal |
+| Volumen | RMSLE, MAE, RMSE, SMAPE, R² | Global, producto y mercado principal |
+| Anomalías | Precision, Recall, F1, PR-AUC, ROC-AUC, Precision@k | Global, tipo de anomalía y producto |
+| Eficiencia | Tiempo de entrenamiento e inferencia | Por modelo |
+| Estabilidad | Intervalo de confianza por bootstrap temporal | Por métrica principal |
+
+#### 3.5.1.6 Protocolo de anomalías sintéticas
+
+| Tipo | Inyección | Magnitud sugerida | Etiqueta |
+|---|---|---|---|
+| Precio/FOB | Multiplicar FOB unitario o precio por factor atípico | ±20% a ±60% | `precio` |
+| Volumen | Alterar `total_net_weight_kg` o volumen semanal | ±30% a ±80% | `volumen` |
+| Clima/contexto | Perturbar temperatura o precipitación proxy | Percentiles 95-99 | `clima` |
+| Logística | Aumentar días logísticos proxy | Percentiles 95-99 | `logistica` |
+| Calidad/sanidad | Alterar merma o cumplimiento proxy | Regla documentada | `calidad` |
+
+La proporción de inyección no debe superar el 5% del conjunto evaluado sin justificarlo. Deben ejecutarse al menos tres repeticiones con semillas distintas si se quieren reportar intervalos de confianza.
+
 ### 3.5.2 Validación de explicabilidad
 
 SHAP se evalúa por cobertura top-k, estabilidad de atribuciones, coherencia con variables disponibles y claridad para el auditor. Las atribuciones se interpretan como contribuciones del modelo, no como causalidad empresarial.
+
+| Indicador | Definición | Evidencia esperada |
+|---|---|---|
+| Cobertura top-k | Porcentaje de alertas con top-5 variables explicativas | `data/gold/local_explanations.json` |
+| Estabilidad | Variación del ranking SHAP entre corridas equivalentes | Reporte de estabilidad |
+| Coherencia | Variables explicativas existen en matriz de features | Validación de columnas |
+| Tiempo de cálculo | Milisegundos por explicación | Log de inferencia |
+| Visualización | Gráficos bar/beeswarm exportados | `src/static/images/shap_*.png` |
+
+**Placeholders de figuras SHAP.**
+
+| Figura | Archivo actual o esperado | Descripción |
+|---|---|---|
+| Figura 4.6 | `src/static/images/shap_price_bar.png` | Importancia global para predicción de precio/FOB |
+| Figura 4.7 | `src/static/images/shap_volume_bar.png` | Importancia global para predicción de volumen |
+| Figura 4.8 | `src/static/images/shap_price_beeswarm.png` | Distribución de efectos SHAP para precio/FOB |
+| Figura 4.9 | `src/static/images/shap_volume_beeswarm.png` | Distribución de efectos SHAP para volumen |
 
 ### 3.5.3 Validación de reportes automáticos
 
 Los reportes se validan con una rúbrica de completitud, coherencia, fidelidad factual y consistencia numérica. Cada cifra citada en el reporte debe existir en evidencia estructurada. Si el reporte RAG no supera la validación, se registra rechazo y se genera una versión determinística.
 
+| Criterio | Métrica | Fuente |
+|---|---|---|
+| Completitud | Porcentaje de campos obligatorios presentes | `data/gold/validation_metrics.json` |
+| Fidelidad factual | Proporción de cifras coincidentes con evidencia | `data/gold/validation_metrics.json` |
+| Rechazo controlado | Reportes no aprobados por validador | `reports/audits/` |
+| Comparación determinística | RAG frente a plantilla | Reporte de validación |
+| Recuperación documental | Documentos usados por reporte | Log RAG |
+
+En el estado actual, `data/gold/validation_metrics.json` registra 5 reportes evaluados y 0 reportes válidos. Por tanto, el módulo queda documentado como funcional pero no aprobado para resultados definitivos hasta corregir las discrepancias numéricas.
+
 ### 3.5.4 Evaluación controlada con usuarios
 
 El estudio de usabilidad compara una condición integrada, con SHAP y RAG visibles, frente a una condición aislada, sin explicaciones avanzadas. Las métricas son tiempo de análisis, decisión registrada, comprensión percibida y utilidad. Hasta contar con participantes reales y consentimiento documentado, esta sección permanece como diseño experimental y no como resultado concluyente.
+
+| Elemento | Diseño mínimo |
+|---|---|
+| Participantes | Definir perfil, experiencia y número mínimo antes de ejecutar |
+| Condiciones | A: integrado con SHAP/RAG; B: aislado sin SHAP/RAG |
+| Tareas | Casos equivalentes por producto y severidad |
+| Orden | Contrabalanceado para reducir aprendizaje |
+| Métricas | Tiempo, decisión correcta, Likert de comprensión, SUS, utilidad |
+| Prueba estadística | Mann-Whitney U o Welch según normalidad y tamaño muestral |
+| Evidencia | Consentimiento, datos anonimizados y script de análisis |
+
+**Placeholder de instrumento:** el formulario final de consentimiento y encuesta SUS debe guardarse como `reports/tesis/user-study/instrumento_usabilidad_v1.pdf` o `docs/tesis/anexos/instrumento_usabilidad.md`. Si no existe, la evaluación con usuarios permanece pendiente.
 
 ### 3.5.5 Puertas de control
 
@@ -370,6 +565,19 @@ El estudio de usabilidad compara una condición integrada, con SHAP y RAG visibl
 | C. Experimento | Split temporal, métricas, semillas y criterios congelados | Pendiente |
 | D. Capítulo III | Arquitectura e implementación documentadas sin resultados finales | En desarrollo |
 | E. Capítulo IV preliminar | Resultados reproducibles y claramente marcados como preliminares o definitivos | Parcial |
+
+### 3.5.6 Checklist verificable de cierre del Capítulo III
+
+| ID | Actividad | Archivo fuente | Comando | Salida esperada | Estado |
+|---|---|---|---|---|---|
+| C3-DATA-01 | Verificar hashes de datasets | `data/raw`, `data/gold` | Script pandas + SHA-256 | Hashes iguales a Tabla 3.3.2 | Parcial |
+| C3-DATA-02 | Ejecutar pruebas de calidad | `tests/data_quality/test_quality.py` | `.\.venv\Scripts\python.exe -m pytest tests/data_quality/test_quality.py` | Tests aprobados | Pendiente de corrida final |
+| C3-LEAK-01 | Ejecutar prueba de fuga temporal | `tests/leakage/test_leakage.py` | `.\.venv\Scripts\python.exe -m pytest tests/leakage/test_leakage.py` | Tests aprobados y reporte en `reports/tesis/data-quality/leakage-tests/` | Pendiente |
+| C3-EXP-01 | Registrar experimento | `src/train_models.py` | `.\.venv\Scripts\python.exe src/train_models.py` | `run_id`, métricas, predicciones y residuos | Parcial |
+| C3-SHAP-01 | Generar explicabilidad | `src/module3_shap.py` | Script de SHAP | JSON + PNG/SVG | Parcial |
+| C3-RAG-01 | Validar reportes | `src/module5_validation.py` | Tests/report validation | Reportes válidos o rechazados documentados | Parcial, actualmente no aprobado |
+| C3-FIG-01 | Renderizar figuras Mermaid | `docs/02-30-capitulo3.md` | Mermaid CLI o equivalente | Figuras 3.1-3.3 PNG/SVG | Pendiente |
+| C3-UI-01 | Insertar capturas del prototipo | `sistema-web-agro/*/screen.png` | Copia a `docs/figures/` | Figuras 4.1-4.5 con título y fuente | Pendiente |
 
 ---
 

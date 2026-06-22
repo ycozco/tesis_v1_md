@@ -287,6 +287,10 @@
 <li><a href="#239-explicabilidad-local-post-hoc-con-shap">2.3.9 Explicabilidad Local Post-Hoc con SHAP</a></li>
 <li><a href="#2310-retrieval-augmented-generation-rag">2.3.10 Retrieval-Augmented Generation (RAG)</a></li>
 <li><a href="#2311-trazabilidad-de-modelos-y-linaje-de-datos">2.3.11 Trazabilidad de Modelos y Linaje de Datos</a></li>
+<li><a href="#2312-dato-real-observado-dato-agregado-proxy-y-dato-sintetico">2.3.12 Dato real observado, dato agregado, proxy y dato sintético</a></li>
+<li><a href="#2313-resultado-preliminar-y-resultado-definitivo">2.3.13 Resultado preliminar y resultado definitivo</a></li>
+<li><a href="#2314-placeholder-de-figura-o-evidencia-visual">2.3.14 Placeholder de figura o evidencia visual</a></li>
+<li><a href="#2315-supervision-analitica-frente-a-supervision-operativa-causal">2.3.15 Supervisión analítica frente a supervisión operativa causal</a></li>
 </ul>
 </li>
 </ul>
@@ -300,7 +304,7 @@
             <div class="header">
                 <h1>02 22 Capitulo2 Marcoteorico</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-22 08:30
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 09:10
                 </div>
             </div>
             
@@ -330,6 +334,51 @@ No equivale conceptualmente al precio internacional de venta minorista en destin
 <p>Arquitectura de procesamiento de lenguaje natural que inyecta contexto documental e histórico verificado (recuperado de una base de conocimiento mediante búsqueda híbrida BM25 y embeddings) directamente en el prompt del LLM para restringir la redacción narrativa del reporte y evitar alucinaciones extrínsecas.</p>
 <h3 id="2311-trazabilidad-de-modelos-y-linaje-de-datos">2.3.11 Trazabilidad de Modelos y Linaje de Datos</h3>
 <p>Capacidad de documentar y reconstruir de extremo a extremo el flujo de procesamiento de una alerta. Se garantiza mediante el registro inmutable de metadatos de configuración, identificadores UUIDv4 para cada fase y hashes SHA-256 de los datasets y modelos entrenados.</p>
+<h3 id="2312-dato-real-observado-dato-agregado-proxy-y-dato-sintetico">2.3.12 Dato real observado, dato agregado, proxy y dato sintético</h3>
+<p>Para evitar ambigüedad metodológica, esta tesis distingue cuatro tipos de evidencia:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Definición</th>
+<th>Ejemplo en el proyecto</th>
+<th>Uso permitido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real observado</td>
+<td>Registro directamente asociado a una operación o fuente primaria</td>
+<td>FOB, peso, destino y fecha derivados de SUNAT/ADUANET o dataset real local</td>
+<td>Entrenamiento, validación y caracterización</td>
+</tr>
+<tr>
+<td>Real agregado</td>
+<td>Serie institucional agregada sin granularidad de embarque</td>
+<td>Tipo de cambio BCRP, precios SISAP/MIDAGRI, series Trade Map</td>
+<td>Contexto y variables exógenas</td>
+</tr>
+<tr>
+<td>Proxy documentado</td>
+<td>Aproximación razonable cuando no existe medición directa por embarque</td>
+<td>Clima regional, días logísticos agregados, alertas sanitarias agregadas</td>
+<td>Contexto explicativo no causal</td>
+</tr>
+<tr>
+<td>Sintético controlado</td>
+<td>Dato generado para simulación, balanceo o inyección experimental</td>
+<td>Alertas semilla, anomalías inyectadas, datos de interfaz</td>
+<td>Validación funcional o experimento controlado</td>
+</tr>
+</tbody>
+</table>
+<p>Un proxy no demuestra causa empresarial real; solo aporta contexto para el modelo y para la interpretación del analista.</p>
+<h3 id="2313-resultado-preliminar-y-resultado-definitivo">2.3.13 Resultado preliminar y resultado definitivo</h3>
+<p>Un resultado es <strong>preliminar</strong> cuando proviene de datos semilla, muestras pequeñas, corridas exploratorias o artefactos sin registro completo de dataset, commit, configuración, semilla y hash. Un resultado es <strong>definitivo</strong> únicamente cuando puede reproducirse con un comando documentado, sobre un dataset versionado, con partición temporal congelada y salidas verificables.</p>
+<h3 id="2314-placeholder-de-figura-o-evidencia-visual">2.3.14 Placeholder de figura o evidencia visual</h3>
+<p>Cuando una figura, diagrama o captura de pantalla todavía no existe como PNG/SVG/PDF insertable, el documento debe conservar un placeholder explícito. El placeholder debe indicar: código de figura, título, archivo esperado, fuente de generación, contenido visual requerido y criterio de aceptación. Este criterio evita que el índice de figuras prometa artefactos que no están disponibles.</p>
+<h3 id="2315-supervision-analitica-frente-a-supervision-operativa-causal">2.3.15 Supervisión analítica frente a supervisión operativa causal</h3>
+<p>La tesis emplea el término <strong>supervisión analítica</strong> para referirse al apoyo computacional en la identificación, explicación y documentación de desviaciones. No afirma causalidad operativa directa cuando los datos disponibles son semanales, agregados o proxies. Las referencias a logística, clima, sanidad o calidad se interpretan como contexto analítico salvo que exista evidencia directa por embarque.</p>
         </div>
     </div>
     

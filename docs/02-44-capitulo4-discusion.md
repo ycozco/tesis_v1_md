@@ -18,11 +18,13 @@ La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitu
 
 | Hipotesis | Evidencia requerida | Decision |
 |---|---|---|
-| H1a | Mejora de VD1 frente a detector individual con split temporal documentado. | _pendiente_ |
-| H1b | Mejora de VD2 con SHAP frente a condicion sin SHAP. | _pendiente_ |
-| H1c | Mejora de VD3 con RAG frente a LLM libre/control. | _pendiente_ |
-| H1d | Reduccion de tiempo-a-decision o mejora de comprension. | _pendiente_ |
-| H1 general | Mejora conjunta de trazabilidad y supervision operativa. | _pendiente_ |
+| H1a | MAE de XGBoost/LightGBM para valor unitario FOB semanal frente al mejor modelo base, usando dataset producto-mercado-semana y particion temporal. | _pendiente_ |
+| H1b | RMSLE de XGBoost/LightGBM para volumen exportado semanal frente al mejor modelo base, usando dataset producto-mercado-semana y particion temporal. | _pendiente_ |
+| H1c | F1-Score del ensemble IF + LOF + ECOD calibrado por percentiles frente al promedio de detectores individuales en anomalias controladas. | _pendiente_ |
+| H1d | Diferencia de comprension operativa y tiempo de analisis entre alertas con SHAP/RAG trazable y alertas tecnicas aisladas. | _pendiente_ |
+| H1e | Proporcion de alertas reconstruibles desde registros de origen, dataset versionado y modelo hasta explicacion, decision humana y reporte. | _pendiente_ |
+| H0 | Ausencia de mejora significativa del sistema integrado en rendimiento, deteccion, comprension, tiempo de analisis y trazabilidad. | _pendiente_ |
+| H1 general | Mejora conjunta de la supervision analitica por integrar prediccion, anomalias, explicabilidad, reportes validados y trazabilidad. | _pendiente_ |
 
 La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar vinculada al reporte de entrenamiento o de usabilidad correspondiente.
 

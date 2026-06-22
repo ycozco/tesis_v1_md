@@ -38,26 +38,48 @@
 
 ---
 
-### 2.1.2 Antecedentes Nacionales en Evaluación y Revisión Académica
+### 2.1.2 Antecedentes nacionales y evidencia sectorial verificable
 
-> [!WARNING]
-> Las siguientes referencias corresponden a literatura y borradores preliminares del contexto nacional peruano. Debido a limitaciones de localización en repositorios indizados oficiales al momento de esta reestructuración, se declaran bajo estado de **revisión y auditoría académica** y no deben asumirse como verdades científicas definitivas hasta que el alumno y su asesor confirmen su validez bibliográfica exacta:
+Durante la revisión documental se identificó que algunos antecedentes nacionales usados en borradores previos no contaban todavía con trazabilidad bibliográfica suficiente para sostener autores, año, universidad, muestra y resultados cuantitativos. Por esa razón, esta versión no mantiene afirmaciones no verificadas como reducción de mermas, mejora porcentual de pronóstico o resultados de sensores IoT si no existe documento original localizado. La sección nacional se reestructura con fuentes institucionales verificables y con una lista explícita de antecedentes académicos pendientes de sustitución.
 
-1.  **Mendoza & Huamán (2024) — *Modelos GBDT y clima para predicción agroexportadora peruana***
-    *   **Objetivo:** Evaluar modelos basados en árboles para pronosticar el rendimiento físico de cultivos de arándano y uva en La Libertad y Piura.
-    *   **Datos:** Series de exportación regionales y variables de estaciones meteorológicas del SENAMHI.
-    *   **Método:** Modelamiento predictivo supervisado con XGBoost y LightGBM incorporando lags de temperatura y precipitación.
-    *   **Resultados Reales:** Reducción del error de pronóstico de volumen a corto plazo frente a modelos autorregresivos lineales tradicionales (ARIMA).
-    *   **Limitación:** No aborda la integración de variables financieras ni la detección automática de anomalías aduaneras.
-    *   **Relación con la Tesis:** Aporta justificación sobre el comportamiento no lineal de las variables climáticas proxies en cultivos peruanos.
+1. **MIDAGRI (2026) — Reporte sectorial de agroexportaciones peruanas**
+   * **Objetivo documental:** Caracterizar el crecimiento reciente de la agroexportación peruana y ubicar la relevancia económica del sector.
+   * **Datos:** Información institucional de ventas agroexportadoras y productos representativos reportada por el Ministerio de Desarrollo Agrario y Riego.
+   * **Aporte a la tesis:** Sustenta el contexto económico que justifica priorizar productos agroexportadores de alta participación, especialmente palta, uva y arándano.
+   * **Limitación:** No entrega microdatos transaccionales ni permite por sí sola evaluar modelos predictivos o detectores de anomalías.
 
-2.  **Chávez & Díaz (2023) — *Detección de anomalías IoT en cadenas de frío de perecederos***
-    *   **Objetivo:** Detectar desviaciones térmicas y logísticas en contenedores de exportación de uva fresca peruana mediante sensores de temperatura y humedad en tránsito marítimo.
-    *   **Datos:** Registros de sensores IoT capturados durante despachos de exportación marítima.
-    *   **Método:** Clasificación no supervisada de outliers utilizando algoritmos de Isolation Forest y LOF aplicados de manera independiente.
-    *   **Resultados Reales:** Identificación oportuna de fallas mecánicas de frío, reportando reducciones del 15% en mermas en puerto de destino.
-    *   **Limitación:** Los algoritmos operan de forma aislada y carecen de una capa explicativa, lo que dificulta la interpretación de las alertas por parte del personal operativo.
-    *   **Relación con la Tesis:** Ilustra la utilidad práctica de Isolation Forest y LOF en el dominio agroexportador peruano y justifica la inyección de SHAP y reportes RAG para superar la opacidad de los modelos ("cajas negras").
+2. **SUNAT/ADUANET (2026) — Bases y estadísticas aduaneras**
+   * **Objetivo documental:** Proveer registros o series de comercio exterior que permiten reconstruir valor FOB, peso, subpartida, país de destino y periodo de exportación.
+   * **Datos usados en el proyecto:** Descargas locales en `data/sunat/raw_downloads/`, `data/sunat/x23290326.DBF`, `data/raw/exports_raw.csv` y capas procesadas `data/bronze/`, `data/silver/` y `data/gold/`.
+   * **Aporte a la tesis:** Constituye la fuente primaria para la unidad producto-mercado-semana y para las variables de valor FOB, volumen y destino.
+   * **Limitación:** Las descargas locales completas disponibles se concentran en ventanas 2026; la cobertura 2018-2025 requiere documentar si proviene de dataset real local consolidado, fuentes agregadas o reconstrucción complementaria.
+
+3. **BCRP (2018-2026) — Tipo de cambio PEN/USD**
+   * **Objetivo documental:** Incorporar una variable macroeconómica exógena para normalizar o contextualizar el comportamiento de valor exportado.
+   * **Datos usados en el proyecto:** `data/bcrp/exchange_rates_cache.json` y `data/downloads/bcrp_tipo_cambio.csv`.
+   * **Aporte a la tesis:** Permite incluir contexto macroeconómico en los modelos de predicción y detectar semanas donde una desviación comercial puede coincidir con cambios cambiarios.
+   * **Limitación:** La frecuencia mensual debe mapearse cuidadosamente a semana ISO sin usar información posterior a la semana objetivo.
+
+4. **SISAP/MIDAGRI y Trade Map — Contexto de mercado interno e internacional**
+   * **Objetivo documental:** Incorporar referencias externas de precios, volúmenes y mercados para contextualizar exportaciones por producto.
+   * **Datos usados en el proyecto:** Manifiestos SISAP en `codex-revision/metadata/` y archivos Trade Map en `data-trademap/`.
+   * **Aporte a la tesis:** Funcionan como fuentes de contraste y contexto, no como sustituto del registro aduanero.
+   * **Limitación:** Operan con granularidades distintas al embarque aduanero; por tanto, su integración se declara como variable agregada o proxy.
+
+5. **SENAMHI/NASA POWER y proxies climáticos**
+   * **Objetivo documental:** Proveer contexto climático regional para productos perecederos.
+   * **Datos usados en el proyecto:** Variables climáticas presentes en `data/dataset_real_v1.csv`, `data/silver/exports_clean.parquet` y `data/gold/weekly_product_market.parquet`.
+   * **Aporte a la tesis:** Permiten evaluar si las semanas con mayor estrés climático agregado coinciden con cambios de volumen, valor unitario o anomalías.
+   * **Limitación:** No prueban causalidad logística ni falla de cadena de frío por embarque; solo aportan contexto agregado.
+
+**Antecedentes académicos nacionales pendientes de sustitución.** Los trabajos titulados provisionalmente "Modelos GBDT y clima para predicción agroexportadora peruana" y "Detección de anomalías IoT en cadenas de frío de perecederos" se retiran como evidencia académica cerrada hasta localizar documento original, repositorio, autores, institución, año, muestra y resultados. Si no se verifica su existencia, deberán reemplazarse por tesis o artículos reales encontrados en RENATI, Alicia/CONCYTEC, repositorios universitarios peruanos o revistas indizadas.
+
+| Antecedente preliminar | Acción requerida | Estado en esta versión |
+|---|---|---|
+| Mendoza & Huamán (2024) | Localizar documento original y verificar resultados atribuidos | No usado como evidencia concluyente |
+| Chávez & Díaz (2023) | Localizar documento original y verificar reducción de mermas atribuida | No usado como evidencia concluyente |
+| Estudios nacionales de cadena de frío | Sustituir por documentos reales con repositorio y metodología verificable | Pendiente |
+| Estudios nacionales de forecasting agroexportador | Sustituir por documentos reales con datos y métricas reproducibles | Pendiente |
 
 ---
 
