@@ -1,70 +1,64 @@
 ## 4.4 Usabilidad y Trazabilidad — VD4, VD5
 
-> **Estado:** Estructura de telemetría implementada y funcional. Datos semilla disponibles para validar el flujo de captura. Los resultados definitivos requieren el experimento con participantes reales (≥10 por condición).
+> **Estado:** diseño experimental y validación funcional parcial. El prototipo registra decisiones y tiempos con datos semilla, pero el experimento con usuarios reales permanece pendiente.
 
-### 4.4.1 Diseño del Estudio de Usabilidad
+### 4.4.1 Diseño del estudio de usabilidad — VD4
 
-El experimento mide el impacto de la explicabilidad de IA en auditores aduaneros bajo dos condiciones controladas:
+El estudio compara dos condiciones:
 
-- **Condición A (INTEGRADO):** Acceso completo a las 4 capas de IA — FOB esperado, score ensemble, atribuciones SHAP y narrativa RAG con citas normativas.
-- **Condición B (AISLADO):** Solo acceso a datos de la DAM, FOB esperado y score ensemble. Sin SHAP ni narrativa RAG.
+- **Condición A integrada:** el auditor observa datos de la operación, predicción, score de anomalía, explicación SHAP y reporte RAG.
+- **Condición B aislada:** el auditor observa datos de la operación, predicción y score, sin explicación SHAP ni reporte RAG.
 
-**Hipótesis de investigación:**
+Las variables dependientes son tiempo de análisis, decisión registrada, comprensión percibida, utilidad percibida y exactitud de la decisión frente a un criterio de referencia.
 
-| Hipótesis | Enunciado |
+| Requisito | Estado |
 |---|---|
-| H1 | Los auditores con acceso a explicaciones SHAP + RAG (Condición A) toman decisiones más rápidas que en Condición B |
-| H2 | Los auditores en Condición A reportan mayor comprensión percibida (Likert) que en Condición B |
-| H3 | El sistema integrado produce mayor porcentaje de trazabilidad completa que los componentes aislados |
+| Cantidad y perfil de participantes | Pendiente |
+| Consentimiento informado y anonimización | Pendiente |
+| Tareas equivalentes por condición | Pendiente |
+| Contrabalanceo del orden | Pendiente |
+| Prueba estadística definida | Pendiente |
+| Registro de decisiones y tiempos | Implementado en prototipo |
 
-### 4.4.2 Telemetría Implementada
+### 4.4.2 Telemetría semilla
 
-El endpoint `POST /api/alerts/<id>/adjudicate` captura automáticamente:
+El prototipo registra decisiones de auditoría mediante el flujo de adjudicación de alertas. Esta evidencia valida captura de datos, no desempeño humano definitivo.
 
-```python
-DecisionAuditoria(
-    id_alerta=id_alerta,
-    id_auditor=current_user_id,
-    condicion_experimental=user.condicion_experimental,  # "INTEGRADO" | "AISLADO"
-    decision_resultado=decision,                          # 0=Falsa alarma, 1=Confirmada, 2=Inspección
-    likert_comprension=likert,                            # 1-5
-    time_to_decision_ms=time_to_decision,                 # ms desde carga de alerta
-    timestamp_decision=datetime.utcnow()
-)
-```
+**Tabla 4.7 — Telemetría semilla de validación de flujo**
 
-### 4.4.3 Tabla 4.7 — Datos de Telemetría (Datos Semilla — Validación de Flujo)
+| Alerta | Auditor | Condición | Decisión | Comprensión | Tiempo |
+|---|---|---|---|---:|---:|
+| AL-2026-0009 | auditor1 | Integrado | Anomalía confirmada | 5/5 | 25.6 s |
+| AL-2026-0006 | auditor1 | Aislado | Falsa alarma | 3/5 | 49.2 s |
+| AL-2026-0005 | auditor2 | Integrado | Requiere inspección | 4/5 | 31.2 s |
+| AL-2026-0004 | auditor2 | Aislado | Falsa alarma | 2/5 | 65.4 s |
 
-| Alerta | Auditor | Condición | Decisión | Comprensión (Likert) | T. Decisión |
-|---|---|---|---|---|---|
-| AL-2026-0009 | auditor1 | INTEGRADO | Anomalía Confirmada (1) | 5/5 | 25.6 s |
-| AL-2026-0006 | auditor1 | AISLADO | Falsa Alarma (0) | 3/5 | 49.2 s |
-| AL-2026-0005 | auditor2 | INTEGRADO | Requiere Inspección (2) | 4/5 | 31.2 s |
-| AL-2026-0004 | auditor2 | AISLADO | Falsa Alarma (0) | 2/5 | 65.4 s |
+Con N=2 por condición no corresponde afirmar significancia estadística. Los datos solo indican que la plataforma puede capturar tiempos, decisiones y escala de comprensión.
 
-**Agregados preliminares (N=2 por condición — solo validación de flujo):**
+### 4.4.3 Trazabilidad — VD5
 
-| Métrica | Condición A (INTEGRADO) | Condición B (AISLADO) | Diferencia observada |
-|---|---|---|---|
-| T. decisión promedio | 28.4 s | 57.3 s | −50.4% |
-| Comprensión promedio (Likert) | 4.5 / 5 | 2.5 / 5 | +2.0 puntos |
+La trazabilidad se evalúa verificando que cada alerta pueda reconstruirse desde entrada, predicción, score, explicación, reporte, decisión humana y registro temporal.
 
-> **Advertencia:** Con N=2 por condición no es posible obtener significancia estadística. Estos valores validan únicamente que el sistema de captura de telemetría funciona correctamente. El experimento formal requerirá N≥10 por condición y análisis con prueba de Mann-Whitney U.
+**Tabla 4.8 — Campos de trazabilidad esperados**
 
-### 4.4.4 Trazabilidad del Sistema — VD5
+| Campo | Evidencia | Estado |
+|---|---|---|
+| ID de alerta | Registro de alerta | Disponible en prototipo |
+| Score de anomalía | Resultado del ensemble | Disponible en prototipo |
+| FOB esperado vs declarado | Salida predictiva | Disponible en prototipo |
+| Valores SHAP | Detalle de explicación | Parcial |
+| Reporte generado | Reporte RAG o plantilla | Parcial |
+| Documentos recuperados | IDs/citas del RAG | Parcial |
+| Decisión humana | Registro de adjudicación | Disponible en prototipo |
+| Timestamp | Registro de decisión | Disponible en prototipo |
+| Hash de artefactos | Control de auditoría | Pendiente para cierre final |
 
-**Tabla 4.8 — Porcentaje de Campos de Trazabilidad Completos**
+### 4.4.4 Evidencia faltante
 
-| Campo de Trazabilidad | Cobertura (datos semilla) |
-|---|---|
-| ID de alerta | 100% |
-| Score de anomalía | 100% |
-| FOB esperado vs declarado | 100% |
-| Valores SHAP por variable | 100% |
-| Condición experimental del auditor | 100% |
-| Timestamp de decisión | 100% |
-| Decisión registrada | 100% |
-| Comprensión Likert | 100% |
-| **Trazabilidad completa (VD5)** | **100%** |
+- Ejecutar el experimento con participantes reales.
+- Registrar consentimiento, perfil y anonimización.
+- Guardar datos crudos de usabilidad fuera de rutas de referencia pública si contienen información sensible.
+- Ejecutar prueba estadística definida.
+- Generar reporte de trazabilidad con hash de artefactos y commit.
 
-El umbral de calidad de trazabilidad definido en el protocolo experimental es ≥ 90%. El prototipo supera este umbral en los datos semilla de validación.
+Hasta completar el estudio, VD4 se mantiene pendiente y VD5 queda parcialmente respaldada por el prototipo.

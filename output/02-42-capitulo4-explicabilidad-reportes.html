@@ -274,10 +274,11 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#42-resultados-cualitativos-explicabilidad-y-reportes-vd2-vd3">4.2 Resultados Cualitativos: Explicabilidad y Reportes, VD2-VD3</a><ul>
-<li><a href="#421-tabla-43-calidad-de-explicabilidad-experimento-e2">4.2.1 Tabla 4.3 - Calidad de explicabilidad, Experimento E2</a></li>
-<li><a href="#422-tabla-44-calidad-de-reportes-generados-experimento-e3">4.2.2 Tabla 4.4 - Calidad de reportes generados, Experimento E3</a></li>
-<li><a href="#423-ejemplo-de-reporte-generado">4.2.3 Ejemplo de reporte generado</a></li>
+<li><a href="#43-explicabilidad-local-y-reportes-automaticos-vd2-vd3">4.3 Explicabilidad Local y Reportes Automáticos — VD2, VD3</a><ul>
+<li><a href="#431-explicabilidad-local-con-shap-vd2">4.3.1 Explicabilidad local con SHAP — VD2</a></li>
+<li><a href="#432-reportes-rag-vd3">4.3.2 Reportes RAG — VD3</a></li>
+<li><a href="#433-tabla-46-documentos-recuperados-en-muestras-semilla">4.3.3 Tabla 4.6 — Documentos recuperados en muestras semilla</a></li>
+<li><a href="#434-evidencia-faltante-para-cierre-de-vd2-y-vd3">4.3.4 Evidencia faltante para cierre de VD2 y VD3</a></li>
 </ul>
 </li>
 </ul>
@@ -289,123 +290,138 @@
             <div class="header">
                 <h1>02 42 Capitulo4 Explicabilidad Reportes</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 08:30
                 </div>
             </div>
             
-            <h2 id="42-resultados-cualitativos-explicabilidad-y-reportes-vd2-vd3">4.2 Resultados Cualitativos: Explicabilidad y Reportes, VD2-VD3</h2>
-<p>Esta seccion evaluara si la capa SHAP mejora la interpretacion de alertas y si los reportes RAG/LLM mantienen fidelidad a la evidencia recuperada.</p>
-<h3 id="421-tabla-43-calidad-de-explicabilidad-experimento-e2">4.2.1 Tabla 4.3 - Calidad de explicabilidad, Experimento E2</h3>
+            <h2 id="43-explicabilidad-local-y-reportes-automaticos-vd2-vd3">4.3 Explicabilidad Local y Reportes Automáticos — VD2, VD3</h2>
+<blockquote>
+<p><strong>Estado:</strong> parcial verificable. El prototipo muestra explicaciones y reportes para datos semilla; la validación factual completa y la comparación formal contra plantilla determinística quedan pendientes hasta ejecutar el protocolo definitivo.</p>
+</blockquote>
+<h3 id="431-explicabilidad-local-con-shap-vd2">4.3.1 Explicabilidad local con SHAP — VD2</h3>
+<p>El sistema utiliza explicabilidad local para que el auditor observe qué variables empujan el riesgo estimado en una alerta. En la propuesta metodológica, este bloque se vincula con <code>src/module3_shap.py</code>; en el prototipo funcional se evidencia en la vista de detalle de alerta de <code>sistema-web-agro/frontend/src/pages/Detail.jsx</code> y <code>AuditDetail.jsx</code>.</p>
+<p><strong>Tabla 4.4 — Atribuciones SHAP promedio en datos semilla</strong></p>
 <table>
 <thead>
 <tr>
-<th>Metrica</th>
-<th style="text-align: right;">Sistema con SHAP</th>
-<th style="text-align: right;">Sistema sin SHAP</th>
-<th style="text-align: right;">p-value</th>
-<th>Estado</th>
+<th>Variable</th>
+<th style="text-align: right;">SHAP promedio</th>
+<th>Dirección</th>
+<th>Interpretación operacional</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Cobertura top-3</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;">N/A</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td><code>valor_fob_declarado</code></td>
+<td style="text-align: right;">+0.4231</td>
+<td>Aumenta riesgo</td>
+<td>Desviación del valor FOB frente a referencia esperada</td>
 </tr>
 <tr>
-<td>Cobertura top-5</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;">N/A</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td><code>temperatura_contenedor_c</code></td>
+<td style="text-align: right;">+0.2184</td>
+<td>Aumenta riesgo</td>
+<td>Posible deterioro o condición logística atípica</td>
 </tr>
 <tr>
-<td>Estabilidad SHAP</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;">N/A</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td><code>dias_retraso_logistico</code></td>
+<td style="text-align: right;">+0.1562</td>
+<td>Aumenta riesgo</td>
+<td>Retraso asociado a mayor incertidumbre operativa</td>
 </tr>
 <tr>
-<td>Claridad operativa Likert 1-5</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td><code>peso_neto_kg</code></td>
+<td style="text-align: right;">-0.0891</td>
+<td>Reduce riesgo</td>
+<td>Consistencia entre volumen y valor declarado</td>
 </tr>
 </tbody>
 </table>
-<p>SHAP se interpretara como atribucion del modelo, no como causalidad. Cada variable explicativa usada en SHAP debe tener fuente, tipo metodologico y granularidad documentados.</p>
-<h3 id="422-tabla-44-calidad-de-reportes-generados-experimento-e3">4.2.2 Tabla 4.4 - Calidad de reportes generados, Experimento E3</h3>
+<p>Estos valores se interpretan como contribuciones del modelo, no como causalidad. La validación definitiva debe guardar top-k de variables por alerta, estabilidad de la explicación, tiempo de cálculo y hash del modelo usado.</p>
+<h3 id="432-reportes-rag-vd3">4.3.2 Reportes RAG — VD3</h3>
+<p>El prototipo contempla generación de reportes técnicos con recuperación documental y respaldo de citas. La tesis propone que cada reporte sea validado con reglas determinísticas antes de incorporarse como evidencia.</p>
+<p><strong>Tabla 4.5 — Rúbrica requerida para reportes automáticos</strong></p>
 <table>
 <thead>
 <tr>
-<th>Dimension</th>
-<th style="text-align: right;">RAG/LLM anclado</th>
-<th style="text-align: right;">LLM libre/control</th>
-<th style="text-align: right;">Kappa Cohen</th>
-<th style="text-align: right;">p-value</th>
+<th>Criterio</th>
+<th>Verificación requerida</th>
 <th>Estado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Completitud</td>
-<td style="text-align: right;">1.0000</td>
-<td style="text-align: right;">0.7000</td>
-<td style="text-align: right;">0.8500</td>
-<td style="text-align: right;">&lt; 0.01</td>
-<td>Evaluado</td>
+<td>Score, FOB esperado, variables SHAP y recomendación presentes</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>Coherencia</td>
+<td>El reporte no contradice los datos de la alerta</td>
+<td>Pendiente de validador formal</td>
+</tr>
+<tr>
+<td>Fidelidad factual</td>
+<td>Cada cifra existe en evidencia estructurada</td>
+<td>Pendiente</td>
 </tr>
 <tr>
 <td>Consistencia numérica</td>
-<td style="text-align: right;">0.6667</td>
-<td style="text-align: right;">0.5200</td>
-<td style="text-align: right;">0.9200</td>
-<td style="text-align: right;">&lt; 0.01</td>
-<td>Evaluado</td>
+<td>Diferencia numérica dentro del umbral definido</td>
+<td>Pendiente</td>
 </tr>
 <tr>
-<td>Correspondencia con evidencia</td>
-<td style="text-align: right;">0.6667</td>
-<td style="text-align: right;">0.6500</td>
-<td style="text-align: right;">0.8900</td>
-<td style="text-align: right;">&lt; 0.01</td>
-<td>Evaluado</td>
-</tr>
-<tr>
-<td>Accionabilidad</td>
-<td style="text-align: right;">0.9200</td>
-<td style="text-align: right;">0.6000</td>
-<td style="text-align: right;">0.7800</td>
-<td style="text-align: right;">&lt; 0.01</td>
-<td>Evaluado</td>
-</tr>
-<tr>
-<td>Coherencia textual</td>
-<td style="text-align: right;">0.9600</td>
-<td style="text-align: right;">0.8200</td>
-<td style="text-align: right;">0.8800</td>
-<td style="text-align: right;">&lt; 0.01</td>
-<td>Evaluado</td>
+<td>Trazabilidad documental</td>
+<td>Citas o documentos recuperados guardados con ID</td>
+<td>Parcial</td>
 </tr>
 </tbody>
 </table>
-<p>El reporte RAG debe citar o registrar internamente:</p>
+<h3 id="433-tabla-46-documentos-recuperados-en-muestras-semilla">4.3.3 Tabla 4.6 — Documentos recuperados en muestras semilla</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de alerta</th>
+<th>Documento 1</th>
+<th>Documento 2</th>
+<th>Documento 3</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Palta, FOB bajo, temperatura alta</td>
+<td>FDA-1</td>
+<td>SENASA-2</td>
+<td>LEY_IA-3</td>
+<td>Preliminar</td>
+</tr>
+<tr>
+<td>Uva, retraso logístico</td>
+<td>SENASA-2</td>
+<td>FDA-1</td>
+<td>LEY_IA-3</td>
+<td>Preliminar</td>
+</tr>
+<tr>
+<td>Arándano, score alto</td>
+<td>FDA-1</td>
+<td>LEY_IA-3</td>
+<td>SENASA-2</td>
+<td>Preliminar</td>
+</tr>
+</tbody>
+</table>
+<h3 id="434-evidencia-faltante-para-cierre-de-vd2-y-vd3">4.3.4 Evidencia faltante para cierre de VD2 y VD3</h3>
 <ul>
-<li>registro evaluado;</li>
-<li>score y umbral;</li>
-<li>top variables SHAP;</li>
-<li>fuente recuperada;</li>
-<li>version de dataset;</li>
-<li>fecha de generacion;</li>
-<li>advertencia cuando una variable sea proxy o sintetica controlada.</li>
+<li>Guardar cada explicación SHAP con <code>alert_id</code>, <code>model_version_id</code>, fecha, commit y hash.</li>
+<li>Validar que los valores SHAP correspondan al modelo entrenado para esa ejecución.</li>
+<li>Guardar prompt, modelo, parámetros y documentos recuperados.</li>
+<li>Registrar reportes rechazados por el validador factual.</li>
+<li>Comparar reporte RAG contra plantilla determinística.</li>
+<li>Marcar afirmaciones no sustentadas y excluirlas del borrador final.</li>
 </ul>
-<h3 id="423-ejemplo-de-reporte-generado">4.2.3 Ejemplo de reporte generado</h3>
-<p>El ejemplo final se insertara solo cuando exista una alerta generada desde el dataset integrado. Debe seguir el patron:</p>
-<p><code>dato -&gt; transformacion -&gt; modelo -&gt; score -&gt; umbral -&gt; SHAP top-k -&gt; evidencia RAG -&gt; reporte</code>.</p>
+<p>Hasta completar esos puntos, VD2 y VD3 quedan como avances funcionales, no como resultados finales.</p>
         </div>
     </div>
     

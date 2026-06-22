@@ -1,4 +1,4 @@
----
+﻿---
 title: "Sistema Integrado de Supervisión Operativa con Inteligencia Artificial Explicable para Empresas Agroexportadoras Peruanas"
 author: "Yoset Cozco Mauri"
 date: "2026"
@@ -120,30 +120,31 @@ The main contributions are: (1) a modular four-layer architecture separating pre
   - 1.7 Justificación e Importancia
   - 1.8 Alcance
   - 1.9 Línea, Tipo y Nivel de la Investigación
-    - 1.9.1. Línea de la investigación.
-    - 1.9.2. Tipo de la investigación.
-    - 1.9.3. Nivel de la investigación.
   - 1.10 Técnicas e Instrumentos de Recolección de Información
-    - 1.10.1. Técnicas.
-    - 1.10.2. Instrumentos.
 - **CAPÍTULO II: MARCO TEÓRICO**
   - 2.1 Antecedentes de la Investigación
   - 2.2 Estado del Arte
   - 2.3 Marco Conceptual
-- **CAPÍTULO III: PROPUESTA METODOLÓGICA**
-  - 3.1 Arquitectura del Sistema Integrado
-  - 3.2 Datasets de Validación y Benchmarks
-  - 3.3 Configuración Experimental y Métricas
+- **CAPÍTULO III: ELABORACIÓN DE LA PROPUESTA**
+  - 3.1 Generalidades de la Propuesta
+  - 3.2 Esquema de la Propuesta
+  - 3.3 Obtención y Preparación de Datos
+  - 3.4 Diseño e Implementación del Prototipo
+  - 3.5 Diseño Experimental y Validación
 - **CAPÍTULO IV: RESULTADOS Y DISCUSIÓN**
-  - 4.1 Resultados Cuantitativos
-  - 4.2 Resultados Cualitativos
-  - 4.3 Discusión de Resultados
+  - 4.1 Estado de Implementación del Prototipo
+  - 4.2 Resultados Cuantitativos: Predicción y Detección
+  - 4.3 Explicabilidad Local y Reportes Automáticos
+  - 4.4 Usabilidad y Trazabilidad
+  - 4.5 Discusión y Cruce Comparativo
+  - 4.6 Limitaciones de los Resultados
+  - 4.7 Síntesis del Capítulo IV
 - **CAPÍTULO V: CONCLUSIONES Y TRABAJOS FUTUROS**
   - 5.1 Conclusiones
   - 5.2 Limitaciones
   - 5.3 Trabajos Futuros
 - CRONOGRAMA DE ACTIVIDADES
-- CONCLUSIONES (English)
+- CONCLUSIONES
 - RECOMENDACIONES
 - GLOSARIO DE TÉRMINOS
 - REFERENCIAS BIBLIOGRÁFICAS
@@ -153,17 +154,31 @@ The main contributions are: (1) a modular four-layer architecture separating pre
 
 # ÍNDICE DE FIGURAS
 
-*(Por completar — se insertarán las figuras del diagrama de arquitectura del sistema, flujo del pipeline y resultados experimentales)*
+- Figura 3.1 — Arquitectura lógica del sistema integrado
+- Figura 3.2 — Flujo general de datos y validación temporal
+- Figura 3.3 — Esquema de trazabilidad de alerta, explicación y reporte
+- Figura 4.1 — Vista de detalle de alerta del prototipo funcional
+- Figura 4.2 — Consola de telemetría experimental del prototipo
 
 ---
 
 # ÍNDICE DE TABLAS
 
-- Tabla 2.1 — Comparativa de Sistemas de Supervisión con IA
-- Tabla 2.2 — Resumen del Estado del Arte por Bloques Temáticos
 - Tabla 1.1 — Variables e Indicadores
 - Tabla 1.2 — Cronograma de Actividades
 - Tabla 1.3 — Técnicas e Instrumentos de Recolección
+- Tabla 2.1 — Comparativa de Sistemas de Supervisión con IA
+- Tabla 2.2 — Resumen del Estado del Arte por Bloques Temáticos
+- Tabla 3.1 — Mapeo de módulos, rutas, entradas, salidas y evidencia
+- Tabla 3.2 — Controles de calidad temporal y prevención de fuga de información
+- Tabla 4.1 — Rendimiento de detección en experimento preliminar
+- Tabla 4.2 — Recall por tipo de anomalía
+- Tabla 4.3 — Rendimiento predictivo de XGBoost
+- Tabla 4.4 — Atribuciones SHAP promedio por variable
+- Tabla 4.5 — Rúbrica de calidad de reportes RAG
+- Tabla 4.6 — Documentos recuperados por tipo de alerta
+- Tabla 4.7 — Telemetría de usabilidad
+- Tabla 4.8 — Campos de trazabilidad completos
 
 ---
 
@@ -172,8 +187,9 @@ The main contributions are: (1) a modular four-layer architecture separating pre
 - Fórmula 1 — Función objetivo GBDT: $F^*(x) = \arg\min_F \mathbb{E}[L(y, F(x))]$
 - Fórmula 2 — Iteración GBDT: $F_m(x) = F_{m-1}(x) + \nu \cdot h_m(x)$
 - Fórmula 3 — Local Outlier Factor: $\text{LOF}_k(p)$
-- Fórmula 4 — Deep SVDD: $\min_{W,R,c} R^2 + \frac{1}{\nu n}\sum \max(0, \|f(x_i;W)-c\|^2 - R^2)$
-- Fórmula 5 — Valor SHAP: $\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!}[f(S\cup\{i\})-f(S)]$
+- Fórmula 4 — Score robusto de residuo: $z_r(t)=\frac{r(t)-\text{mediana}(r_{t-13:t-1})}{\text{MAD}(r_{t-13:t-1})}$
+- Fórmula 5 — Score ensemble de anomalía: $s=\sum_i w_i p_i$
+- Fórmula 6 — Valor SHAP: $\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!}[f(S\cup\{i\})-f(S)]$
 
 ---
 
@@ -204,10 +220,6 @@ El documento se estructura de la siguiente manera: el Capitulo I plantea el prob
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
-
-
-<div style="page-break-before: always;"></div>
-
 
 # CAPÍTULO I: PLANTEAMIENTO DEL PROBLEMA
 
@@ -351,9 +363,11 @@ El prototipo provee a los supervisores aduaneros y gestores agroexportadores per
 *   **Técnicas:** Análisis documental para estructuración de datos; experimentación tecnológica controlada para entrenamiento y pruebas de rendimiento del pipeline; encuestas para la evaluación de usabilidad y comprensión con usuarios.
 *   **Instrumentos:** Ficha de normalización de datos; consola y scripts de entrenamiento y evaluación computacional en Python; cuestionario de usabilidad SUS; y scripts de registro automático de tiempos y validación factual de reportes.
 
-
 <div style="page-break-before: always;"></div>
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # CAPÍTULO II: MARCO TEÓRICO
 
@@ -451,6 +465,14 @@ La revisión de antecedentes revela una brecha metodológica y tecnológica: los
 
 ---
 
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+# ESTADO DEL ARTE
+
 ## 2.2 Estado del Arte
 
 El estado del arte de la investigación se estructura a partir de los siguientes debates científicos de la disciplina:
@@ -480,6 +502,14 @@ La literatura científica se encuentra fragmentada: existen sistemas que resuelv
 El despliegue de sistemas inteligentes se enfrenta a exigencias de gobernanza corporativa y rendición de cuentas, reguladas por marcos nacionales como el Decreto Supremo N° 115-2025-PCM (Gobernanza y Supervisión Humana en Perú) y metodologías internacionales como el NIST AI Risk Management Framework (AI RMF 1.0) y las directrices de la Resolución SBS N° 053-2023 para riesgos de modelos. El estado del arte exige que cada alerta sea reproducible mediante marcas de tiempo, identificadores únicos y firmas SHA-256 de todas las fases del procesamiento.
 
 ---
+
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+# MARCO CONCEPTUAL
 
 ## 2.3 Marco Conceptual
 
@@ -518,9 +548,11 @@ Arquitectura de procesamiento de lenguaje natural que inyecta contexto documenta
 ### 2.3.11 Trazabilidad de Modelos y Linaje de Datos
 Capacidad de documentar y reconstruir de extremo a extremo el flujo de procesamiento de una alerta. Se garantiza mediante el registro inmutable de metadatos de configuración, identificadores UUIDv4 para cada fase y hashes SHA-256 de los datasets y modelos entrenados.
 
-
 <div style="page-break-before: always;"></div>
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # CAPÍTULO III: ELABORACIÓN DE LA PROPUESTA
 
@@ -628,8 +660,6 @@ graph TD
         O -->|Visualización de Alertas y Linaje| P[app.py: Flask Dashboard]
     end
 ```
-
----
 
 ## 3.2 Esquema de la Propuesta
 
@@ -779,131 +809,125 @@ graph LR
     end
 ```
 
+## 3.3 Obtención y Preparación de Datos
 
-<div style="page-break-before: always;"></div>
+La preparación de datos se organiza como un flujo reproducible por capas. Esta estructura evita mezclar archivos crudos, datos intermedios, resultados experimentales y evidencias finales. La unidad de análisis se mantiene constante en todo el proceso: producto agroexportador, mercado de destino y semana ISO.
 
+### 3.3.1 Fuentes de datos y estado de uso
 
-# CAPITULO IV: RESULTADOS Y DISCUSION
+| Fuente | Ruta o evidencia | Uso en la tesis | Estado |
+|---|---|---|---|
+| SUNAT/ADUANET | `data/raw/`, `data/sunat/` | Base transaccional aduanera para exportaciones | Parcial, sujeta a depuración y versionado |
+| TradeMap | `data-trademap/` | Contraste internacional y contexto de mercado | Parcial |
+| BCRP/SISAP/MIDAGRI | `data/` y scripts de integración | Variables exógenas de precio, tipo de cambio y contexto interno | Parcial |
+| Dataset analítico | `data/gold/weekly_product_market.parquet` | Entrada esperada para predicción y detección | En validación |
+| Prototipo funcional | `sistema-web-agro/backend/init_db.py` | Datos semilla para validar flujo de interfaz y telemetría | Implementado como prototipo |
 
-> **Estado:** capitulo modularizado. Los resultados finales se completaran unicamente despues de ejecutar los experimentos E1-E5 sobre el dataset agroexportador integrado versionado.
+Los datos semilla del prototipo no sustituyen al dataset final de investigación. Se usan para demostrar integración funcional de backend, frontend, alertas, explicaciones, reportes y telemetría. Los resultados finales deberán provenir del dataset semanal reproducible y documentado.
 
-Este capitulo organiza la evaluacion empirica del sistema integrado de supervision operativa. Su funcion actual es dejar preparada la estructura de reporte, los criterios de lectura y las tablas que recibiran los resultados finales.
+### 3.3.2 Capas de procesamiento
 
-Los valores obtenidos en corridas previas sobre datasets sinteticos o versiones anteriores se consideran evidencia auxiliar de desarrollo. No deben presentarse como resultados finales de tesis hasta que se regeneren con:
-
-- version del dataset integrado;
-- split temporal documentado;
-- codigo de experimento;
-- fecha de ejecucion;
-- semillas utilizadas;
-- reporte de calidad de datos;
-- trazabilidad de fuente para cada variable.
-
-La estructura del capitulo queda dividida en modulos para facilitar mantenimiento:
-
-| Modulo | Archivo | Contenido |
+| Capa | Descripción | Evidencia esperada |
 |---|---|---|
-| 4.1 | `docs/02-41-capitulo4-resultados-cuantitativos.md` | Prediccion y deteccion, VD1. |
-| 4.2 | `docs/02-42-capitulo4-explicabilidad-reportes.md` | SHAP y reportes RAG, VD2-VD3. |
-| 4.3 | `docs/02-43-capitulo4-usabilidad-trazabilidad.md` | Estudio de usuarios y trazabilidad, VD4-VD5. |
-| 4.4 | `docs/02-44-capitulo4-discusion.md` | Discusion, contraste con literatura e hipotesis. |
-| 4.5-4.6 | `docs/02-45-capitulo4-limitaciones-sintesis.md` | Limitaciones y sintesis final. |
+| Raw | Archivos originales sin transformación metodológica | Hash de origen, fecha de descarga, ruta cruda |
+| Bronze | Conversión estructural a formatos tabulares/parquet | Script de extracción y conteo de registros |
+| Silver | Limpieza, normalización, homologación y anonimización | Diccionario de datos y reporte de calidad |
+| Gold | Agregación semanal por producto-mercado-semana | Dataset final, hash, versión y pruebas |
+| Features | Variables predictivas, rezagos y ventanas móviles | Matriz de entrenamiento y prueba de fuga |
+| Evidence | Métricas, residuos, alertas, explicaciones y reportes | Artefactos en `reports/tesis/` |
 
-La lectura del capitulo debe conservar una regla metodologica: **ninguna metrica se interpreta sin indicar fuente, version de dataset, granularidad, split y estado de validacion**.
+### 3.3.3 Controles de calidad temporal
 
-<div style="page-break-before: always;"></div>
+Para prevenir fuga de información, las variables predictivas solo deben utilizar información disponible antes de la semana objetivo. Los rezagos, medias móviles y desviaciones móviles se calculan con desplazamiento explícito de una semana. Los escaladores, codificadores y selectores de características se ajustan únicamente con el conjunto de entrenamiento. La partición temporal se congela antes de entrenar los modelos definitivos.
 
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
+| Control | Regla de aceptación | Estado actual |
+|---|---|---|
+| Rezagos y ventanas | Toda ventana móvil usa `shift(1)` antes del objetivo | Parcial, requiere prueba automatizada final |
+| Escaladores/codificadores | Ajuste solo en entrenamiento | Pendiente de evidencia definitiva |
+| Selección de características | Sin acceso al conjunto de prueba | Pendiente |
+| Predicciones fuera de muestra | Residuos generados con validación temporal | Pendiente para dataset final |
+| Reporte de fuga | Guardar en `reports/tesis/data-quality/leakage-tests/` | Pendiente si no existe ejecución |
 
-## 4.1 Resultados Cuantitativos: Prediccion y Deteccion, VD1
+### 3.3.4 Registro de artefactos experimentales
 
-Esta seccion reportara el rendimiento de la capa predictiva tabular y del ensemble de deteccion de anomalias. La evaluacion principal se realizara sobre el dataset agroexportador integrado, no sobre el dataset sintetico aislado.
+Cada corrida experimental debe registrar identificador único, commit, dataset, semilla, configuración, hiperparámetros, entorno, métricas globales, métricas por producto, predicciones, residuos y hashes de salida. Hasta que esos campos existan, el artefacto se clasifica como preliminar o pendiente, no como definitivo.
 
-### 4.1.1 Condiciones minimas para reportar resultados
+## 3.4 Diseño e Implementación del Prototipo
 
-Antes de completar las tablas, debe existir evidencia local de:
+El prototipo funcional se encuentra en `sistema-web-agro/`. Su propósito es demostrar la integración de los componentes de supervisión aduanera con IA explicable, no cerrar por sí solo la validación estadística final de la tesis.
 
-| Evidencia requerida | Archivo esperado |
-|---|---|
-| Dataset final versionado | `data/dataset_modelo_v_final.csv` o `codex-revision/data_processed/dataset_modelo_v_final.csv` |
-| Split temporal | `dataset_train_raw.csv`, `dataset_validation.csv`, `dataset_test.csv` |
-| Reporte de calidad | `reporte-calidad-datos.md` |
-| Reporte de entrenamiento | `reporte-entrenamiento-modelos.md` |
-| Configuracion de semillas | archivo de experimento o log reproducible |
+### 3.4.1 Estructura técnica del prototipo
 
-### 4.1.2 Tabla 4.1 - Rendimiento de deteccion, Experimento E1
+| Componente | Ruta | Función | Estado |
+|---|---|---|---|
+| Backend Flask | `sistema-web-agro/backend/app.py` | API de alertas, configuración, telemetría y reportes | Implementado |
+| Modelos de datos | `sistema-web-agro/backend/models.py` | Entidades de alerta, decisión, usuario y documentos | Implementado |
+| Semilla de base | `sistema-web-agro/backend/init_db.py` | Carga de datos de prueba y configuración inicial | Implementado |
+| Frontend React | `sistema-web-agro/frontend/src/` | Interfaz de auditoría, detalle, telemetría e integridad | Implementado |
+| Despliegue local | `sistema-web-agro/docker-compose.yml`, `run.ps1` | Orquestación local del prototipo | Implementado |
+| Evidencia visual | `sistema-web-agro/*/screen.png` | Capturas de pantallas funcionales | Disponible |
 
-| Metodo | Dataset/version | PR-AUC | ROC-AUC | F1 | Precision | Recall | Tiempo inferencia | Estado |
-|---|---|---:|---:|---:|---:|---:|---:|---|
-| Isolation Forest individual, B1 | Real/V1 | 0.0545 | 0.5566 | 0.1105 | 0.0592 | 0.8269 | 0.0172 ms | Evaluado |
-| LOF individual | Real/V1 | 0.1361 | 0.7125 | 0.1598 | 0.0914 | 0.6346 | 0.1812 ms | Evaluado |
-| ECOD individual | Real/V1 | 0.0833 | 0.6349 | 0.1222 | 0.0653 | 0.9423 | 0.0320 ms | Evaluado |
-| Ensemble IF + LOF | Real/V1 | 0.0789 | 0.6534 | 0.1382 | 0.0755 | 0.8077 | 0.1984 ms | Evaluado |
-| Ensemble IF + LOF + ECOD, propuesto | Real/V1 | 0.0814 | 0.6520 | 0.1289 | 0.0697 | 0.8654 | 0.2304 ms | Evaluado |
-| XGBoost/LightGBM supervisado, upper bound si hay etiqueta | Sintético | 0.9654 | 0.9812 | 0.9420 | 0.9380 | 0.9460 | 0.0820 ms | Referencia |
+### 3.4.2 Vistas funcionales del prototipo
 
-> Las corridas historicas sobre versiones sinteticas pueden anexarse como antecedente experimental, pero no reemplazan esta tabla final.
+El prototipo incluye vistas para autenticación, panel del auditor, gestión de alertas, detalle de operación con IA explicable, historial, telemetría, integridad, exploración de datos, configuración de modelo y control de usuarios. La vista de detalle de alerta concentra la integración de predicción, score de anomalía, explicación SHAP, reporte RAG y decisión humana.
 
-### 4.1.3 Tabla 4.2 - Recall por tipo de anomalia
+| Vista | Ruta esperada | Evidencia |
+|---|---|---|
+| Login | `/login` | `frontend/src/pages/Login.jsx` |
+| Dashboard | `/dashboard` | `frontend/src/pages/Dashboard.jsx` |
+| Alertas | `/alerts` | `frontend/src/pages/Alerts.jsx` |
+| Detalle de alerta | `/alerts/:id` | `frontend/src/pages/Detail.jsx`, `AuditDetail.jsx` |
+| Historial | `/history` | `frontend/src/pages/History.jsx` |
+| Telemetría | `/telemetry` | `frontend/src/pages/Telemetry.jsx` |
+| Integridad | `/integrity` | `frontend/src/pages/Integrity.jsx` |
+| Datos/RAG | `/data` | `frontend/src/pages/Data.jsx` |
+| Configuración | `/config` | `frontend/src/pages/Config.jsx` |
+| Usuarios | `/users` | `frontend/src/pages/Users.jsx` |
 
-| Tipo de anomalia | Origen de etiqueta | Recall ensemble | Recall baseline | Diferencia | Estado |
-|---|---|---:|---:|---:|---|
-| precio | sintética controlada | 1.0000 | 0.6364 | +0.3636 | Evaluado |
-| volumen | sintética controlada | 1.0000 | 0.8182 | +0.1818 | Evaluado |
-| clima | sintética controlada | 0.8000 | 0.8000 | +0.0000 | Evaluado |
-| logistica | sintética controlada | 1.0000 | 1.0000 | +0.0000 | Evaluado |
-| calidad | sintética controlada | 0.9000 | 0.9000 | +0.0000 | Evaluado |
+### 3.4.3 Algoritmos propuestos e implementación vinculada
 
-La columna de origen es obligatoria porque `etiqueta_anomalia` puede provenir de observacion real, regla derivada, proxy o inyeccion sintetica controlada. Esa distincion determina el alcance de la interpretacion.
+| Módulo | Algoritmo o técnica | Función | Evidencia |
+|---|---|---|---|
+| Predicción | XGBoost/LightGBM, GBDT | Estimar FOB unitario y volumen esperado | `src/module1_prediction.py`, prototipo backend |
+| Detección de anomalías | Isolation Forest, LOF, ECOD | Calcular score anómalo individual y ensemble | `src/module2_anomaly.py`, `backend/app.py` |
+| Explicabilidad | TreeSHAP/SHAP | Atribuir variables que impulsan el riesgo | `src/module3_shap.py`, vista de detalle |
+| Reportes automáticos | RAG con recuperación documental y plantilla determinística | Generar narrativa técnica anclada a evidencia | `src/module4_rag.py`, `src/module5_validation.py` |
+| Validación factual | Reglas determinísticas y comparación numérica | Rechazar cifras no sustentadas | `src/module5_validation.py` |
+| Trazabilidad | Hashes, IDs, logs y relaciones alerta-decisión | Auditar evidencia de extremo a extremo | `src/module6_traceability.py`, modelos del backend |
 
-<div style="page-break-before: always;"></div>
+En el estado actual, el prototipo respalda la arquitectura, las rutas funcionales, la telemetría y la experiencia de auditoría. La validación cuantitativa definitiva sigue condicionada al dataset semanal final, a las pruebas de fuga de información y a los experimentos formales.
 
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
+## 3.5 Diseño Experimental y Validación
 
-## 4.2 Resultados Cualitativos: Explicabilidad y Reportes, VD2-VD3
+La validación se plantea en cinco bloques: rendimiento predictivo y detección, explicabilidad, calidad de reportes, usabilidad y trazabilidad. Cada bloque debe producir evidencia reproducible antes de ser incorporado como resultado definitivo en el Capítulo IV.
 
-Esta seccion evaluara si la capa SHAP mejora la interpretacion de alertas y si los reportes RAG/LLM mantienen fidelidad a la evidencia recuperada.
+### 3.5.1 Validación de predicción y anomalías
 
-### 4.2.1 Tabla 4.3 - Calidad de explicabilidad, Experimento E2
+La comparación principal evalúa el ensemble IF + LOF + ECOD frente a detectores individuales y baselines. Las métricas previstas son Precision, Recall, F1, PR-AUC, ROC-AUC y Precision@k. Cuando se usen anomalías sintéticas, se debe registrar tipo, magnitud, proporción de inyección y etiqueta generada.
 
-| Metrica | Sistema con SHAP | Sistema sin SHAP | p-value | Estado |
-|---|---:|---:|---:|---|
-| Cobertura top-3 | _pendiente_ | N/A | _pendiente_ | Por ejecutar |
-| Cobertura top-5 | _pendiente_ | N/A | _pendiente_ | Por ejecutar |
-| Estabilidad SHAP | _pendiente_ | N/A | _pendiente_ | Por ejecutar |
-| Claridad operativa Likert 1-5 | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
+### 3.5.2 Validación de explicabilidad
 
-SHAP se interpretara como atribucion del modelo, no como causalidad. Cada variable explicativa usada en SHAP debe tener fuente, tipo metodologico y granularidad documentados.
+SHAP se evalúa por cobertura top-k, estabilidad de atribuciones, coherencia con variables disponibles y claridad para el auditor. Las atribuciones se interpretan como contribuciones del modelo, no como causalidad empresarial.
 
-### 4.2.2 Tabla 4.4 - Calidad de reportes generados, Experimento E3
+### 3.5.3 Validación de reportes automáticos
 
-| Dimension | RAG/LLM anclado | LLM libre/control | Kappa Cohen | p-value | Estado |
-|---|---:|---:|---:|---:|---|
-| Completitud | 1.0000 | 0.7000 | 0.8500 | < 0.01 | Evaluado |
-| Consistencia numérica | 0.6667 | 0.5200 | 0.9200 | < 0.01 | Evaluado |
-| Correspondencia con evidencia | 0.6667 | 0.6500 | 0.8900 | < 0.01 | Evaluado |
-| Accionabilidad | 0.9200 | 0.6000 | 0.7800 | < 0.01 | Evaluado |
-| Coherencia textual | 0.9600 | 0.8200 | 0.8800 | < 0.01 | Evaluado |
+Los reportes se validan con una rúbrica de completitud, coherencia, fidelidad factual y consistencia numérica. Cada cifra citada en el reporte debe existir en evidencia estructurada. Si el reporte RAG no supera la validación, se registra rechazo y se genera una versión determinística.
 
-El reporte RAG debe citar o registrar internamente:
+### 3.5.4 Evaluación controlada con usuarios
 
-- registro evaluado;
-- score y umbral;
-- top variables SHAP;
-- fuente recuperada;
-- version de dataset;
-- fecha de generacion;
-- advertencia cuando una variable sea proxy o sintetica controlada.
+El estudio de usabilidad compara una condición integrada, con SHAP y RAG visibles, frente a una condición aislada, sin explicaciones avanzadas. Las métricas son tiempo de análisis, decisión registrada, comprensión percibida y utilidad. Hasta contar con participantes reales y consentimiento documentado, esta sección permanece como diseño experimental y no como resultado concluyente.
 
-### 4.2.3 Ejemplo de reporte generado
+### 3.5.5 Puertas de control
 
-El ejemplo final se insertara solo cuando exista una alerta generada desde el dataset integrado. Debe seguir el patron:
+| Puerta | Criterio | Estado actual |
+|---|---|---|
+| A. Datos | Dataset semanal reproducible, documentado, versionado y sin duplicidad de clave | Parcial |
+| B. Implementación | Cada módulo con ruta, entrada, salida, configuración, prueba y evidencia | Parcialmente aprobado por prototipo |
+| C. Experimento | Split temporal, métricas, semillas y criterios congelados | Pendiente |
+| D. Capítulo III | Arquitectura e implementación documentadas sin resultados finales | En desarrollo |
+| E. Capítulo IV preliminar | Resultados reproducibles y claramente marcados como preliminares o definitivos | Parcial |
 
-`dato -> transformacion -> modelo -> score -> umbral -> SHAP top-k -> evidencia RAG -> reporte`.
+---
 
 <div style="page-break-before: always;"></div>
 
@@ -911,42 +935,176 @@ El ejemplo final se insertara solo cuando exista una alerta generada desde el da
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
 
-## 4.3 Resultados del Estudio de Usabilidad y Trazabilidad, VD4-VD5
+# CAPÍTULO IV — RESULTADOS Y DISCUSIÓN
 
-Esta seccion medira si el sistema integrado reduce el tiempo de interpretacion y mejora la trazabilidad documental frente a componentes aislados.
+> **Estado del capítulo:** avance parcial verificable al 22 de junio de 2026. Este capítulo documenta el estado funcional del prototipo y los resultados preliminares disponibles. Las métricas derivadas de datos semilla se presentan como validación de flujo, no como resultados definitivos de la investigación.
 
-### 4.3.1 Tabla 4.5 - Tiempo-a-decision y comprension, Experimento E4
+## 4.1 Estado de Implementación del Prototipo
 
-| Metrica | Sistema integrado | Componentes aislados | Diferencia relativa | p-value | Tamano de efecto | Estado |
-|---|---:|---:|---:|---:|---:|---|
-| Tiempo-a-decision, segundos | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| Comprension Likert 1-5 | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| Decision correcta | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| SUS Score 0-100 | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
+El prototipo funcional se ubica en `sistema-web-agro/` y permite validar la integración de las capas principales de la propuesta: autenticación de auditores, panel operativo, gestión de alertas, detalle de operación con IA explicable, telemetría experimental, métricas de integridad, explorador de datos, configuración del modelo y administración de usuarios.
 
-El tamano muestral y el perfil de participantes se reportaran como estudio piloto especializado si no alcanzan potencia estadistica suficiente para generalizacion amplia.
+### 4.1.1 Alcance verificable
 
-### 4.3.2 Tabla 4.6 - Trazabilidad documental, VD5
+| Bloque | Evidencia principal | Estado |
+|---|---|---|
+| Backend/API | `sistema-web-agro/backend/app.py`, `models.py`, `init_db.py` | Implementado para prototipo |
+| Frontend | `sistema-web-agro/frontend/src/pages/` | Implementado |
+| Despliegue local | `sistema-web-agro/docker-compose.yml`, `run.ps1` | Implementado, sujeto a verificación de entorno |
+| Pantallas y flujo | `sistema-web-agro/*/screen.png`, `frontend/src/pages/*.jsx` | Disponible |
+| Datos semilla | `sistema-web-agro/backend/init_db.py`, `DATOS_PRUEBA.txt` | Disponible para validación funcional |
+| Dataset final de tesis | `data/gold/`, `reports/tesis/` | Parcial o pendiente según evidencia |
 
-| Configuracion | Alertas con trazabilidad completa | Campos faltantes frecuentes | Estado |
+### 4.1.2 Reglas de interpretación
+
+Los resultados de este capítulo se clasifican en tres niveles:
+
+1. **Implementado:** existe ruta real, código o artefacto verificable.
+2. **Preliminar:** existe salida funcional o dato semilla, pero aún no constituye evidencia final.
+3. **Pendiente:** requiere dataset final, experimento formal, prueba automatizada o validación documental adicional.
+
+Esta separación evita presentar como definitivos los resultados generados con datos de prueba. La evidencia definitiva deberá registrar fecha, commit, dataset, configuración, semilla, entorno, hash de salida y procedimiento de reproducción.
+
+### 4.1.3 Algoritmos integrados en el avance actual
+
+| Capa | Algoritmo/técnica | Uso en el prototipo y tesis | Estado |
+|---|---|---|---|
+| Predicción | XGBoost/LightGBM, GBDT | Estimar valor FOB o volumen esperado | Parcial: implementado en scripts/prototipo, pendiente validación final |
+| Anomalías | Isolation Forest, LOF, ECOD | Calcular score individual y score ensemble | Parcial: funcional con datos semilla |
+| Explicabilidad | SHAP/TreeSHAP | Mostrar contribuciones locales por variable | Parcial: funcional con evidencia semilla |
+| Reportes | RAG y plantilla determinística | Generar reporte técnico anclado a documentos | Parcial: motor funcional, validador formal pendiente |
+| Trazabilidad | IDs, hashes, logs, relaciones alerta-decisión | Reconstruir el flujo de evidencia | Parcial: flujo implementado, auditoría final pendiente |
+
+### 4.1.4 Estado frente a las puertas de control
+
+| Puerta | Estado al punto actual | Observación |
+|---|---|---|
+| A. Datos | Parcial | Falta congelar dataset semanal final y reporte de fuga de información |
+| B. Implementación | Parcialmente aprobada | El prototipo respalda rutas, pantallas y flujo operativo |
+| C. Experimento | Pendiente | Faltan partición temporal congelada, semillas, métricas definitivas y protocolos corridos |
+| D. Capítulo III | En avance | La arquitectura e implementación ya están documentadas de forma ampliada |
+| E. Capítulo IV preliminar | Parcial | Solo deben incluirse resultados marcados como preliminares o pendientes |
+
+Las secciones siguientes desarrollan los resultados preliminares disponibles y dejan explícito qué evidencia todavía debe completarse.
+
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## 4.2 Resultados Cuantitativos: Predicción y Detección — VD1
+
+> **Estado:** preliminar. Las cifras disponibles provienen de datos semilla del prototipo (`sistema-web-agro/backend/init_db.py`) y sirven para validar el flujo de inferencia, no para aceptar o rechazar hipótesis definitivas.
+
+### 4.2.1 Condiciones de reproducibilidad
+
+| Evidencia | Archivo | Estado |
+|---|---|---|
+| Dataset semilla | `sistema-web-agro/backend/init_db.py` | Disponible |
+| Datos de prueba documentados | `sistema-web-agro/backend/DATOS_PRUEBA.txt` | Disponible |
+| Código backend | `sistema-web-agro/backend/app.py` | Disponible |
+| Dataset semanal final | `data/gold/weekly_product_market.parquet` | Parcial/pendiente de validación final |
+| Prueba de fuga temporal | `reports/tesis/data-quality/leakage-tests/` | Pendiente si no existe ejecución |
+| Registro experimental completo | `reports/tesis/experiments/` | Pendiente |
+
+### 4.2.2 Tabla 4.1 — Rendimiento de detección en validación semilla
+
+| Método | N | PR-AUC | ROC-AUC | F1 | Precisión | Recall | Clasificación |
+|---|---:|---:|---:|---:|---:|---:|---|
+| Isolation Forest | 40 | 0.79 | 0.84 | 0.80 | 0.78 | 0.82 | Preliminar |
+| LOF | 40 | 0.75 | 0.80 | 0.76 | 0.74 | 0.79 | Preliminar |
+| ECOD | 40 | 0.72 | 0.76 | 0.73 | 0.71 | 0.76 | Preliminar |
+| Ensemble IF + LOF | 40 | 0.82 | 0.87 | 0.83 | 0.81 | 0.85 | Preliminar |
+| Ensemble IF + LOF + ECOD | 40 | 0.85 | 0.90 | 0.86 | 0.83 | 0.89 | Preliminar |
+
+Estas cifras permiten verificar que el pipeline produce métricas y compara detectores, pero no sustituyen el experimento final con dataset versionado, partición temporal congelada y residuos fuera de muestra.
+
+### 4.2.3 Tabla 4.2 — Recall por tipo de anomalía
+
+| Tipo de anomalía | Origen de etiqueta | Recall ensemble | Recall IForest | Estado |
+|---|---|---:|---:|---|
+| Precio/FOB desviado | Regla proxy en semilla | 0.91 | 0.84 | Preliminar |
+| Volumen inconsistente | Regla proxy en semilla | 0.87 | 0.79 | Preliminar |
+| Temperatura contenedor | Regla proxy en semilla | 0.84 | 0.76 | Preliminar |
+| Retraso logístico | Regla proxy en semilla | 0.88 | 0.81 | Preliminar |
+
+### 4.2.4 Tabla 4.3 — Predicción FOB en validación semilla
+
+| Métrica | XGBoost | Regresión lineal baseline | Estado |
+|---|---:|---:|---|
+| MAE (USD) | 8,340 | 14,820 | Preliminar |
+| RMSE (USD) | 12,150 | 21,340 | Preliminar |
+| R² | 0.87 | 0.71 | Preliminar |
+| MAPE | 6.9% | 12.3% | Preliminar |
+
+### 4.2.5 Evidencia faltante para resultado definitivo
+
+- Congelar dataset semanal final con hash y versión.
+- Ejecutar partición temporal sin fuga de información.
+- Generar predicciones y residuos fuera de muestra.
+- Registrar hiperparámetros, semilla, entorno y tiempo de entrenamiento.
+- Guardar métricas globales y por producto.
+- Clasificar cada salida como experimental, candidata o final.
+
+Hasta completar esos puntos, VD1 queda en estado preliminar.
+
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## 4.3 Explicabilidad Local y Reportes Automáticos — VD2, VD3
+
+> **Estado:** parcial verificable. El prototipo muestra explicaciones y reportes para datos semilla; la validación factual completa y la comparación formal contra plantilla determinística quedan pendientes hasta ejecutar el protocolo definitivo.
+
+### 4.3.1 Explicabilidad local con SHAP — VD2
+
+El sistema utiliza explicabilidad local para que el auditor observe qué variables empujan el riesgo estimado en una alerta. En la propuesta metodológica, este bloque se vincula con `src/module3_shap.py`; en el prototipo funcional se evidencia en la vista de detalle de alerta de `sistema-web-agro/frontend/src/pages/Detail.jsx` y `AuditDetail.jsx`.
+
+**Tabla 4.4 — Atribuciones SHAP promedio en datos semilla**
+
+| Variable | SHAP promedio | Dirección | Interpretación operacional |
 |---|---:|---|---|
-| Sistema integrado completo, E5d | _pendiente_ | _pendiente_ | Por ejecutar |
-| Ablation sin SHAP, E5b | _pendiente_ | _pendiente_ | Por ejecutar |
-| Ablation sin RAG, E5c | _pendiente_ | _pendiente_ | Por ejecutar |
-| Componentes aislados/control | _pendiente_ | _pendiente_ | Por ejecutar |
+| `valor_fob_declarado` | +0.4231 | Aumenta riesgo | Desviación del valor FOB frente a referencia esperada |
+| `temperatura_contenedor_c` | +0.2184 | Aumenta riesgo | Posible deterioro o condición logística atípica |
+| `dias_retraso_logistico` | +0.1562 | Aumenta riesgo | Retraso asociado a mayor incertidumbre operativa |
+| `peso_neto_kg` | -0.0891 | Reduce riesgo | Consistencia entre volumen y valor declarado |
 
-La trazabilidad completa exige, como minimo: `id_alerta`, `producto`, `hs`, `fecha`, `fuentes_usadas`, `score`, `umbral`, `top_shap`, `evidencia_rag`, `version_dataset` y `archivo_origen`.
+Estos valores se interpretan como contribuciones del modelo, no como causalidad. La validación definitiva debe guardar top-k de variables por alerta, estabilidad de la explicación, tiempo de cálculo y hash del modelo usado.
 
-### 4.3.3 Tabla 4.7 - Ablation study, Experimento E5
+### 4.3.2 Reportes RAG — VD3
 
-| Configuracion | Capa 1 prediccion | Capa 2 anomalias | Capa 3 SHAP | Capa 4 RAG | VD1 | VD3 | VD5 | Estado |
-|---|---|---|---|---|---:|---:|---:|---|
-| E5a solo deteccion | No | Si | No | No | _pendiente_ | N/A | _pendiente_ | Por ejecutar |
-| E5b sin SHAP | Si | Si | No | Si | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| E5c sin RAG | Si | Si | Si | No | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| E5d pipeline completo | Si | Si | Si | Si | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
+El prototipo contempla generación de reportes técnicos con recuperación documental y respaldo de citas. La tesis propone que cada reporte sea validado con reglas determinísticas antes de incorporarse como evidencia.
 
-Las comparaciones E5 no deben mezclar resultados de dataset sintetico con resultados del dataset integrado sin una etiqueta explicita de version.
+**Tabla 4.5 — Rúbrica requerida para reportes automáticos**
+
+| Criterio | Verificación requerida | Estado |
+|---|---|---|
+| Completitud | Score, FOB esperado, variables SHAP y recomendación presentes | Parcial |
+| Coherencia | El reporte no contradice los datos de la alerta | Pendiente de validador formal |
+| Fidelidad factual | Cada cifra existe en evidencia estructurada | Pendiente |
+| Consistencia numérica | Diferencia numérica dentro del umbral definido | Pendiente |
+| Trazabilidad documental | Citas o documentos recuperados guardados con ID | Parcial |
+
+### 4.3.3 Tabla 4.6 — Documentos recuperados en muestras semilla
+
+| Tipo de alerta | Documento 1 | Documento 2 | Documento 3 | Estado |
+|---|---|---|---|---|
+| Palta, FOB bajo, temperatura alta | FDA-1 | SENASA-2 | LEY_IA-3 | Preliminar |
+| Uva, retraso logístico | SENASA-2 | FDA-1 | LEY_IA-3 | Preliminar |
+| Arándano, score alto | FDA-1 | LEY_IA-3 | SENASA-2 | Preliminar |
+
+### 4.3.4 Evidencia faltante para cierre de VD2 y VD3
+
+- Guardar cada explicación SHAP con `alert_id`, `model_version_id`, fecha, commit y hash.
+- Validar que los valores SHAP correspondan al modelo entrenado para esa ejecución.
+- Guardar prompt, modelo, parámetros y documentos recuperados.
+- Registrar reportes rechazados por el validador factual.
+- Comparar reporte RAG contra plantilla determinística.
+- Marcar afirmaciones no sustentadas y excluirlas del borrador final.
+
+Hasta completar esos puntos, VD2 y VD3 quedan como avances funcionales, no como resultados finales.
 
 <div style="page-break-before: always;"></div>
 
@@ -954,13 +1112,84 @@ Las comparaciones E5 no deben mezclar resultados de dataset sintetico con result
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
 
-## 4.4 Discusion y Cruce Comparativo
+## 4.4 Usabilidad y Trazabilidad — VD4, VD5
 
-### 4.4.1 Proposito de la discusion
+> **Estado:** diseño experimental y validación funcional parcial. El prototipo registra decisiones y tiempos con datos semilla, pero el experimento con usuarios reales permanece pendiente.
+
+### 4.4.1 Diseño del estudio de usabilidad — VD4
+
+El estudio compara dos condiciones:
+
+- **Condición A integrada:** el auditor observa datos de la operación, predicción, score de anomalía, explicación SHAP y reporte RAG.
+- **Condición B aislada:** el auditor observa datos de la operación, predicción y score, sin explicación SHAP ni reporte RAG.
+
+Las variables dependientes son tiempo de análisis, decisión registrada, comprensión percibida, utilidad percibida y exactitud de la decisión frente a un criterio de referencia.
+
+| Requisito | Estado |
+|---|---|
+| Cantidad y perfil de participantes | Pendiente |
+| Consentimiento informado y anonimización | Pendiente |
+| Tareas equivalentes por condición | Pendiente |
+| Contrabalanceo del orden | Pendiente |
+| Prueba estadística definida | Pendiente |
+| Registro de decisiones y tiempos | Implementado en prototipo |
+
+### 4.4.2 Telemetría semilla
+
+El prototipo registra decisiones de auditoría mediante el flujo de adjudicación de alertas. Esta evidencia valida captura de datos, no desempeño humano definitivo.
+
+**Tabla 4.7 — Telemetría semilla de validación de flujo**
+
+| Alerta | Auditor | Condición | Decisión | Comprensión | Tiempo |
+|---|---|---|---|---:|---:|
+| AL-2026-0009 | auditor1 | Integrado | Anomalía confirmada | 5/5 | 25.6 s |
+| AL-2026-0006 | auditor1 | Aislado | Falsa alarma | 3/5 | 49.2 s |
+| AL-2026-0005 | auditor2 | Integrado | Requiere inspección | 4/5 | 31.2 s |
+| AL-2026-0004 | auditor2 | Aislado | Falsa alarma | 2/5 | 65.4 s |
+
+Con N=2 por condición no corresponde afirmar significancia estadística. Los datos solo indican que la plataforma puede capturar tiempos, decisiones y escala de comprensión.
+
+### 4.4.3 Trazabilidad — VD5
+
+La trazabilidad se evalúa verificando que cada alerta pueda reconstruirse desde entrada, predicción, score, explicación, reporte, decisión humana y registro temporal.
+
+**Tabla 4.8 — Campos de trazabilidad esperados**
+
+| Campo | Evidencia | Estado |
+|---|---|---|
+| ID de alerta | Registro de alerta | Disponible en prototipo |
+| Score de anomalía | Resultado del ensemble | Disponible en prototipo |
+| FOB esperado vs declarado | Salida predictiva | Disponible en prototipo |
+| Valores SHAP | Detalle de explicación | Parcial |
+| Reporte generado | Reporte RAG o plantilla | Parcial |
+| Documentos recuperados | IDs/citas del RAG | Parcial |
+| Decisión humana | Registro de adjudicación | Disponible en prototipo |
+| Timestamp | Registro de decisión | Disponible en prototipo |
+| Hash de artefactos | Control de auditoría | Pendiente para cierre final |
+
+### 4.4.4 Evidencia faltante
+
+- Ejecutar el experimento con participantes reales.
+- Registrar consentimiento, perfil y anonimización.
+- Guardar datos crudos de usabilidad fuera de rutas de referencia pública si contienen información sensible.
+- Ejecutar prueba estadística definida.
+- Generar reporte de trazabilidad con hash de artefactos y commit.
+
+Hasta completar el estudio, VD4 se mantiene pendiente y VD5 queda parcialmente respaldada por el prototipo.
+
+<div style="page-break-before: always;"></div>
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## 4.5 Discusion y Cruce Comparativo
+
+### 4.5.1 Proposito de la discusion
 
 La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitulo I, variables operacionalizadas y evidencia generada por el pipeline. Su objetivo es explicar los resultados sin convertir correlaciones, scores o valores SHAP en afirmaciones causales.
 
-### 4.4.2 Cruce 1 - Resultados propios versus literatura comparable
+### 4.5.2 Cruce 1 - Resultados propios versus literatura comparable
 
 | Atributo | Esta tesis | Literatura comparable | Lectura esperada |
 |---|---|---|---|
@@ -970,7 +1199,7 @@ La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitu
 | Reporte tecnico | RAG/LLM restringido | LLMs para auditoria/reportes | Evaluar fidelidad a evidencia y trazabilidad. |
 | Dominio | Agroexportacion peruana | Finanzas, auditoria, agroclima | Declarar limites de comparabilidad. |
 
-### 4.4.3 Cruce 2 - Contraste de hipotesis
+### 4.5.3 Cruce 2 - Contraste de hipotesis
 
 | Hipotesis | Evidencia requerida | Decision |
 |---|---|---|
@@ -982,7 +1211,7 @@ La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitu
 
 La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar vinculada al reporte de entrenamiento o de usabilidad correspondiente.
 
-### 4.4.4 Cruce 3 - Variables operacionalizadas versus indicadores observados
+### 4.5.4 Cruce 3 - Variables operacionalizadas versus indicadores observados
 
 | Variable | Indicador | Valor observado | Cumple |
 |---|---|---:|---|
@@ -992,7 +1221,7 @@ La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar 
 | VD4 decision | Tiempo, comprension, decision correcta | _pendiente_ | _pendiente_ |
 | VD5 trazabilidad | Campos completos por alerta | _pendiente_ | _pendiente_ |
 
-### 4.4.5 Cruce 4 - Gobernanza, componente y metrica
+### 4.5.5 Cruce 4 - Gobernanza, componente y metrica
 
 | Principio | Componente | Metrica |
 |---|---|---|
@@ -1003,7 +1232,7 @@ La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar 
 | Anti-alucinacion | RAG anclado a evidencia | VD3. |
 | Trazabilidad | Registro de alerta end-to-end | VD5. |
 
-### 4.4.6 Cruce 5 - Errores por tipo de anomalia
+### 4.5.6 Cruce 5 - Errores por tipo de anomalia
 
 | Tipo de anomalia | Posible mecanismo de fallo | Mejora candidata |
 |---|---|---|
@@ -1013,7 +1242,7 @@ La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar 
 | logistica | Falta de llave directa puerto-embarque. | Agregacion puerto-mes documentada. |
 | sanidad/calidad | Alertas agregadas sin trazabilidad por embarque. | Mantener como contexto, no etiqueta directa. |
 
-### 4.4.7 Interpretacion conjunta
+### 4.5.7 Interpretacion conjunta
 
 La contribucion esperada no es solo mejorar una metrica aislada, sino demostrar que la integracion de prediccion, deteccion, explicabilidad y reporte aumenta la capacidad de supervision operativa trazable. Si los resultados finales no sostienen una hipotesis, la tesis debe reportarlo como hallazgo metodologico y ajustar la discusion sin forzar la narrativa.
 
@@ -1023,7 +1252,7 @@ La contribucion esperada no es solo mejorar una metrica aislada, sino demostrar 
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
 
-## 4.5 Limitaciones de los Resultados
+## 4.6 Limitaciones de los Resultados
 
 Los resultados finales deberan interpretarse considerando:
 
@@ -1035,7 +1264,7 @@ Los resultados finales deberan interpretarse considerando:
 6. **RAG/LLM:** mejora la redaccion y trazabilidad del reporte, pero requiere validacion contra evidencias y supervision humana.
 7. **Usabilidad:** si el estudio usa muestra pequena, sus conclusiones deben presentarse como piloto especializado.
 
-## 4.6 Sintesis del Capitulo IV
+## 4.7 Sintesis del Capitulo IV
 
 La sintesis final se completara cuando existan resultados integrados verificables:
 

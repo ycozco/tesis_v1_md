@@ -305,6 +305,27 @@
 <li><a href="#3214-esquema-de-despliegue-local">3.2.14 Esquema de Despliegue Local</a></li>
 </ul>
 </li>
+<li><a href="#33-obtencion-y-preparacion-de-datos">3.3 Obtención y Preparación de Datos</a><ul>
+<li><a href="#331-fuentes-de-datos-y-estado-de-uso">3.3.1 Fuentes de datos y estado de uso</a></li>
+<li><a href="#332-capas-de-procesamiento">3.3.2 Capas de procesamiento</a></li>
+<li><a href="#333-controles-de-calidad-temporal">3.3.3 Controles de calidad temporal</a></li>
+<li><a href="#334-registro-de-artefactos-experimentales">3.3.4 Registro de artefactos experimentales</a></li>
+</ul>
+</li>
+<li><a href="#34-diseno-e-implementacion-del-prototipo">3.4 Diseño e Implementación del Prototipo</a><ul>
+<li><a href="#341-estructura-tecnica-del-prototipo">3.4.1 Estructura técnica del prototipo</a></li>
+<li><a href="#342-vistas-funcionales-del-prototipo">3.4.2 Vistas funcionales del prototipo</a></li>
+<li><a href="#343-algoritmos-propuestos-e-implementacion-vinculada">3.4.3 Algoritmos propuestos e implementación vinculada</a></li>
+</ul>
+</li>
+<li><a href="#35-diseno-experimental-y-validacion">3.5 Diseño Experimental y Validación</a><ul>
+<li><a href="#351-validacion-de-prediccion-y-anomalias">3.5.1 Validación de predicción y anomalías</a></li>
+<li><a href="#352-validacion-de-explicabilidad">3.5.2 Validación de explicabilidad</a></li>
+<li><a href="#353-validacion-de-reportes-automaticos">3.5.3 Validación de reportes automáticos</a></li>
+<li><a href="#354-evaluacion-controlada-con-usuarios">3.5.4 Evaluación controlada con usuarios</a></li>
+<li><a href="#355-puertas-de-control">3.5.5 Puertas de control</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -316,7 +337,7 @@
             <div class="header">
                 <h1>02 30 Capitulo3</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 08:30
                 </div>
             </div>
             
@@ -429,7 +450,6 @@
 <span class="w">    </span><span class="n">end</span>
 </code></pre></div>
 
-<hr />
 <h2 id="32-esquema-de-la-propuesta">3.2 Esquema de la Propuesta</h2>
 <h3 id="321-flujo-general-de-datos">3.2.1 Flujo General de Datos</h3>
 <div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
@@ -567,6 +587,347 @@ Las claves de API de los LLMs se cargan mediante variables de entorno estrictame
 <span class="w">        </span><span class="n">E</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Navegador</span><span class="w"> </span><span class="n">Supervisor</span><span class="p">]</span>
 <span class="w">    </span><span class="n">end</span>
 </code></pre></div>
+
+<h2 id="33-obtencion-y-preparacion-de-datos">3.3 Obtención y Preparación de Datos</h2>
+<p>La preparación de datos se organiza como un flujo reproducible por capas. Esta estructura evita mezclar archivos crudos, datos intermedios, resultados experimentales y evidencias finales. La unidad de análisis se mantiene constante en todo el proceso: producto agroexportador, mercado de destino y semana ISO.</p>
+<h3 id="331-fuentes-de-datos-y-estado-de-uso">3.3.1 Fuentes de datos y estado de uso</h3>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Ruta o evidencia</th>
+<th>Uso en la tesis</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUNAT/ADUANET</td>
+<td><code>data/raw/</code>, <code>data/sunat/</code></td>
+<td>Base transaccional aduanera para exportaciones</td>
+<td>Parcial, sujeta a depuración y versionado</td>
+</tr>
+<tr>
+<td>TradeMap</td>
+<td><code>data-trademap/</code></td>
+<td>Contraste internacional y contexto de mercado</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>BCRP/SISAP/MIDAGRI</td>
+<td><code>data/</code> y scripts de integración</td>
+<td>Variables exógenas de precio, tipo de cambio y contexto interno</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>Dataset analítico</td>
+<td><code>data/gold/weekly_product_market.parquet</code></td>
+<td>Entrada esperada para predicción y detección</td>
+<td>En validación</td>
+</tr>
+<tr>
+<td>Prototipo funcional</td>
+<td><code>sistema-web-agro/backend/init_db.py</code></td>
+<td>Datos semilla para validar flujo de interfaz y telemetría</td>
+<td>Implementado como prototipo</td>
+</tr>
+</tbody>
+</table>
+<p>Los datos semilla del prototipo no sustituyen al dataset final de investigación. Se usan para demostrar integración funcional de backend, frontend, alertas, explicaciones, reportes y telemetría. Los resultados finales deberán provenir del dataset semanal reproducible y documentado.</p>
+<h3 id="332-capas-de-procesamiento">3.3.2 Capas de procesamiento</h3>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Descripción</th>
+<th>Evidencia esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw</td>
+<td>Archivos originales sin transformación metodológica</td>
+<td>Hash de origen, fecha de descarga, ruta cruda</td>
+</tr>
+<tr>
+<td>Bronze</td>
+<td>Conversión estructural a formatos tabulares/parquet</td>
+<td>Script de extracción y conteo de registros</td>
+</tr>
+<tr>
+<td>Silver</td>
+<td>Limpieza, normalización, homologación y anonimización</td>
+<td>Diccionario de datos y reporte de calidad</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td>Agregación semanal por producto-mercado-semana</td>
+<td>Dataset final, hash, versión y pruebas</td>
+</tr>
+<tr>
+<td>Features</td>
+<td>Variables predictivas, rezagos y ventanas móviles</td>
+<td>Matriz de entrenamiento y prueba de fuga</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Métricas, residuos, alertas, explicaciones y reportes</td>
+<td>Artefactos en <code>reports/tesis/</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="333-controles-de-calidad-temporal">3.3.3 Controles de calidad temporal</h3>
+<p>Para prevenir fuga de información, las variables predictivas solo deben utilizar información disponible antes de la semana objetivo. Los rezagos, medias móviles y desviaciones móviles se calculan con desplazamiento explícito de una semana. Los escaladores, codificadores y selectores de características se ajustan únicamente con el conjunto de entrenamiento. La partición temporal se congela antes de entrenar los modelos definitivos.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Regla de aceptación</th>
+<th>Estado actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rezagos y ventanas</td>
+<td>Toda ventana móvil usa <code>shift(1)</code> antes del objetivo</td>
+<td>Parcial, requiere prueba automatizada final</td>
+</tr>
+<tr>
+<td>Escaladores/codificadores</td>
+<td>Ajuste solo en entrenamiento</td>
+<td>Pendiente de evidencia definitiva</td>
+</tr>
+<tr>
+<td>Selección de características</td>
+<td>Sin acceso al conjunto de prueba</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>Predicciones fuera de muestra</td>
+<td>Residuos generados con validación temporal</td>
+<td>Pendiente para dataset final</td>
+</tr>
+<tr>
+<td>Reporte de fuga</td>
+<td>Guardar en <code>reports/tesis/data-quality/leakage-tests/</code></td>
+<td>Pendiente si no existe ejecución</td>
+</tr>
+</tbody>
+</table>
+<h3 id="334-registro-de-artefactos-experimentales">3.3.4 Registro de artefactos experimentales</h3>
+<p>Cada corrida experimental debe registrar identificador único, commit, dataset, semilla, configuración, hiperparámetros, entorno, métricas globales, métricas por producto, predicciones, residuos y hashes de salida. Hasta que esos campos existan, el artefacto se clasifica como preliminar o pendiente, no como definitivo.</p>
+<h2 id="34-diseno-e-implementacion-del-prototipo">3.4 Diseño e Implementación del Prototipo</h2>
+<p>El prototipo funcional se encuentra en <code>sistema-web-agro/</code>. Su propósito es demostrar la integración de los componentes de supervisión aduanera con IA explicable, no cerrar por sí solo la validación estadística final de la tesis.</p>
+<h3 id="341-estructura-tecnica-del-prototipo">3.4.1 Estructura técnica del prototipo</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Ruta</th>
+<th>Función</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend Flask</td>
+<td><code>sistema-web-agro/backend/app.py</code></td>
+<td>API de alertas, configuración, telemetría y reportes</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>Modelos de datos</td>
+<td><code>sistema-web-agro/backend/models.py</code></td>
+<td>Entidades de alerta, decisión, usuario y documentos</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>Semilla de base</td>
+<td><code>sistema-web-agro/backend/init_db.py</code></td>
+<td>Carga de datos de prueba y configuración inicial</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>Frontend React</td>
+<td><code>sistema-web-agro/frontend/src/</code></td>
+<td>Interfaz de auditoría, detalle, telemetría e integridad</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>Despliegue local</td>
+<td><code>sistema-web-agro/docker-compose.yml</code>, <code>run.ps1</code></td>
+<td>Orquestación local del prototipo</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>Evidencia visual</td>
+<td><code>sistema-web-agro/*/screen.png</code></td>
+<td>Capturas de pantallas funcionales</td>
+<td>Disponible</td>
+</tr>
+</tbody>
+</table>
+<h3 id="342-vistas-funcionales-del-prototipo">3.4.2 Vistas funcionales del prototipo</h3>
+<p>El prototipo incluye vistas para autenticación, panel del auditor, gestión de alertas, detalle de operación con IA explicable, historial, telemetría, integridad, exploración de datos, configuración de modelo y control de usuarios. La vista de detalle de alerta concentra la integración de predicción, score de anomalía, explicación SHAP, reporte RAG y decisión humana.</p>
+<table>
+<thead>
+<tr>
+<th>Vista</th>
+<th>Ruta esperada</th>
+<th>Evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Login</td>
+<td><code>/login</code></td>
+<td><code>frontend/src/pages/Login.jsx</code></td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td><code>/dashboard</code></td>
+<td><code>frontend/src/pages/Dashboard.jsx</code></td>
+</tr>
+<tr>
+<td>Alertas</td>
+<td><code>/alerts</code></td>
+<td><code>frontend/src/pages/Alerts.jsx</code></td>
+</tr>
+<tr>
+<td>Detalle de alerta</td>
+<td><code>/alerts/:id</code></td>
+<td><code>frontend/src/pages/Detail.jsx</code>, <code>AuditDetail.jsx</code></td>
+</tr>
+<tr>
+<td>Historial</td>
+<td><code>/history</code></td>
+<td><code>frontend/src/pages/History.jsx</code></td>
+</tr>
+<tr>
+<td>Telemetría</td>
+<td><code>/telemetry</code></td>
+<td><code>frontend/src/pages/Telemetry.jsx</code></td>
+</tr>
+<tr>
+<td>Integridad</td>
+<td><code>/integrity</code></td>
+<td><code>frontend/src/pages/Integrity.jsx</code></td>
+</tr>
+<tr>
+<td>Datos/RAG</td>
+<td><code>/data</code></td>
+<td><code>frontend/src/pages/Data.jsx</code></td>
+</tr>
+<tr>
+<td>Configuración</td>
+<td><code>/config</code></td>
+<td><code>frontend/src/pages/Config.jsx</code></td>
+</tr>
+<tr>
+<td>Usuarios</td>
+<td><code>/users</code></td>
+<td><code>frontend/src/pages/Users.jsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="343-algoritmos-propuestos-e-implementacion-vinculada">3.4.3 Algoritmos propuestos e implementación vinculada</h3>
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th>Algoritmo o técnica</th>
+<th>Función</th>
+<th>Evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicción</td>
+<td>XGBoost/LightGBM, GBDT</td>
+<td>Estimar FOB unitario y volumen esperado</td>
+<td><code>src/module1_prediction.py</code>, prototipo backend</td>
+</tr>
+<tr>
+<td>Detección de anomalías</td>
+<td>Isolation Forest, LOF, ECOD</td>
+<td>Calcular score anómalo individual y ensemble</td>
+<td><code>src/module2_anomaly.py</code>, <code>backend/app.py</code></td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>TreeSHAP/SHAP</td>
+<td>Atribuir variables que impulsan el riesgo</td>
+<td><code>src/module3_shap.py</code>, vista de detalle</td>
+</tr>
+<tr>
+<td>Reportes automáticos</td>
+<td>RAG con recuperación documental y plantilla determinística</td>
+<td>Generar narrativa técnica anclada a evidencia</td>
+<td><code>src/module4_rag.py</code>, <code>src/module5_validation.py</code></td>
+</tr>
+<tr>
+<td>Validación factual</td>
+<td>Reglas determinísticas y comparación numérica</td>
+<td>Rechazar cifras no sustentadas</td>
+<td><code>src/module5_validation.py</code></td>
+</tr>
+<tr>
+<td>Trazabilidad</td>
+<td>Hashes, IDs, logs y relaciones alerta-decisión</td>
+<td>Auditar evidencia de extremo a extremo</td>
+<td><code>src/module6_traceability.py</code>, modelos del backend</td>
+</tr>
+</tbody>
+</table>
+<p>En el estado actual, el prototipo respalda la arquitectura, las rutas funcionales, la telemetría y la experiencia de auditoría. La validación cuantitativa definitiva sigue condicionada al dataset semanal final, a las pruebas de fuga de información y a los experimentos formales.</p>
+<h2 id="35-diseno-experimental-y-validacion">3.5 Diseño Experimental y Validación</h2>
+<p>La validación se plantea en cinco bloques: rendimiento predictivo y detección, explicabilidad, calidad de reportes, usabilidad y trazabilidad. Cada bloque debe producir evidencia reproducible antes de ser incorporado como resultado definitivo en el Capítulo IV.</p>
+<h3 id="351-validacion-de-prediccion-y-anomalias">3.5.1 Validación de predicción y anomalías</h3>
+<p>La comparación principal evalúa el ensemble IF + LOF + ECOD frente a detectores individuales y baselines. Las métricas previstas son Precision, Recall, F1, PR-AUC, ROC-AUC y Precision@k. Cuando se usen anomalías sintéticas, se debe registrar tipo, magnitud, proporción de inyección y etiqueta generada.</p>
+<h3 id="352-validacion-de-explicabilidad">3.5.2 Validación de explicabilidad</h3>
+<p>SHAP se evalúa por cobertura top-k, estabilidad de atribuciones, coherencia con variables disponibles y claridad para el auditor. Las atribuciones se interpretan como contribuciones del modelo, no como causalidad empresarial.</p>
+<h3 id="353-validacion-de-reportes-automaticos">3.5.3 Validación de reportes automáticos</h3>
+<p>Los reportes se validan con una rúbrica de completitud, coherencia, fidelidad factual y consistencia numérica. Cada cifra citada en el reporte debe existir en evidencia estructurada. Si el reporte RAG no supera la validación, se registra rechazo y se genera una versión determinística.</p>
+<h3 id="354-evaluacion-controlada-con-usuarios">3.5.4 Evaluación controlada con usuarios</h3>
+<p>El estudio de usabilidad compara una condición integrada, con SHAP y RAG visibles, frente a una condición aislada, sin explicaciones avanzadas. Las métricas son tiempo de análisis, decisión registrada, comprensión percibida y utilidad. Hasta contar con participantes reales y consentimiento documentado, esta sección permanece como diseño experimental y no como resultado concluyente.</p>
+<h3 id="355-puertas-de-control">3.5.5 Puertas de control</h3>
+<table>
+<thead>
+<tr>
+<th>Puerta</th>
+<th>Criterio</th>
+<th>Estado actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. Datos</td>
+<td>Dataset semanal reproducible, documentado, versionado y sin duplicidad de clave</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>B. Implementación</td>
+<td>Cada módulo con ruta, entrada, salida, configuración, prueba y evidencia</td>
+<td>Parcialmente aprobado por prototipo</td>
+</tr>
+<tr>
+<td>C. Experimento</td>
+<td>Split temporal, métricas, semillas y criterios congelados</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>D. Capítulo III</td>
+<td>Arquitectura e implementación documentadas sin resultados finales</td>
+<td>En desarrollo</td>
+</tr>
+<tr>
+<td>E. Capítulo IV preliminar</td>
+<td>Resultados reproducibles y claramente marcados como preliminares o definitivos</td>
+<td>Parcial</td>
+</tr>
+</tbody>
+</table>
+<hr />
         </div>
     </div>
     

@@ -105,8 +105,6 @@ graph TD
     end
 ```
 
----
-
 ## 3.2 Esquema de la Propuesta
 
 ### 3.2.1 Flujo General de Datos
@@ -254,3 +252,124 @@ graph LR
         E <--> G[Navegador Supervisor]
     end
 ```
+
+## 3.3 Obtención y Preparación de Datos
+
+La preparación de datos se organiza como un flujo reproducible por capas. Esta estructura evita mezclar archivos crudos, datos intermedios, resultados experimentales y evidencias finales. La unidad de análisis se mantiene constante en todo el proceso: producto agroexportador, mercado de destino y semana ISO.
+
+### 3.3.1 Fuentes de datos y estado de uso
+
+| Fuente | Ruta o evidencia | Uso en la tesis | Estado |
+|---|---|---|---|
+| SUNAT/ADUANET | `data/raw/`, `data/sunat/` | Base transaccional aduanera para exportaciones | Parcial, sujeta a depuración y versionado |
+| TradeMap | `data-trademap/` | Contraste internacional y contexto de mercado | Parcial |
+| BCRP/SISAP/MIDAGRI | `data/` y scripts de integración | Variables exógenas de precio, tipo de cambio y contexto interno | Parcial |
+| Dataset analítico | `data/gold/weekly_product_market.parquet` | Entrada esperada para predicción y detección | En validación |
+| Prototipo funcional | `sistema-web-agro/backend/init_db.py` | Datos semilla para validar flujo de interfaz y telemetría | Implementado como prototipo |
+
+Los datos semilla del prototipo no sustituyen al dataset final de investigación. Se usan para demostrar integración funcional de backend, frontend, alertas, explicaciones, reportes y telemetría. Los resultados finales deberán provenir del dataset semanal reproducible y documentado.
+
+### 3.3.2 Capas de procesamiento
+
+| Capa | Descripción | Evidencia esperada |
+|---|---|---|
+| Raw | Archivos originales sin transformación metodológica | Hash de origen, fecha de descarga, ruta cruda |
+| Bronze | Conversión estructural a formatos tabulares/parquet | Script de extracción y conteo de registros |
+| Silver | Limpieza, normalización, homologación y anonimización | Diccionario de datos y reporte de calidad |
+| Gold | Agregación semanal por producto-mercado-semana | Dataset final, hash, versión y pruebas |
+| Features | Variables predictivas, rezagos y ventanas móviles | Matriz de entrenamiento y prueba de fuga |
+| Evidence | Métricas, residuos, alertas, explicaciones y reportes | Artefactos en `reports/tesis/` |
+
+### 3.3.3 Controles de calidad temporal
+
+Para prevenir fuga de información, las variables predictivas solo deben utilizar información disponible antes de la semana objetivo. Los rezagos, medias móviles y desviaciones móviles se calculan con desplazamiento explícito de una semana. Los escaladores, codificadores y selectores de características se ajustan únicamente con el conjunto de entrenamiento. La partición temporal se congela antes de entrenar los modelos definitivos.
+
+| Control | Regla de aceptación | Estado actual |
+|---|---|---|
+| Rezagos y ventanas | Toda ventana móvil usa `shift(1)` antes del objetivo | Parcial, requiere prueba automatizada final |
+| Escaladores/codificadores | Ajuste solo en entrenamiento | Pendiente de evidencia definitiva |
+| Selección de características | Sin acceso al conjunto de prueba | Pendiente |
+| Predicciones fuera de muestra | Residuos generados con validación temporal | Pendiente para dataset final |
+| Reporte de fuga | Guardar en `reports/tesis/data-quality/leakage-tests/` | Pendiente si no existe ejecución |
+
+### 3.3.4 Registro de artefactos experimentales
+
+Cada corrida experimental debe registrar identificador único, commit, dataset, semilla, configuración, hiperparámetros, entorno, métricas globales, métricas por producto, predicciones, residuos y hashes de salida. Hasta que esos campos existan, el artefacto se clasifica como preliminar o pendiente, no como definitivo.
+
+## 3.4 Diseño e Implementación del Prototipo
+
+El prototipo funcional se encuentra en `sistema-web-agro/`. Su propósito es demostrar la integración de los componentes de supervisión aduanera con IA explicable, no cerrar por sí solo la validación estadística final de la tesis.
+
+### 3.4.1 Estructura técnica del prototipo
+
+| Componente | Ruta | Función | Estado |
+|---|---|---|---|
+| Backend Flask | `sistema-web-agro/backend/app.py` | API de alertas, configuración, telemetría y reportes | Implementado |
+| Modelos de datos | `sistema-web-agro/backend/models.py` | Entidades de alerta, decisión, usuario y documentos | Implementado |
+| Semilla de base | `sistema-web-agro/backend/init_db.py` | Carga de datos de prueba y configuración inicial | Implementado |
+| Frontend React | `sistema-web-agro/frontend/src/` | Interfaz de auditoría, detalle, telemetría e integridad | Implementado |
+| Despliegue local | `sistema-web-agro/docker-compose.yml`, `run.ps1` | Orquestación local del prototipo | Implementado |
+| Evidencia visual | `sistema-web-agro/*/screen.png` | Capturas de pantallas funcionales | Disponible |
+
+### 3.4.2 Vistas funcionales del prototipo
+
+El prototipo incluye vistas para autenticación, panel del auditor, gestión de alertas, detalle de operación con IA explicable, historial, telemetría, integridad, exploración de datos, configuración de modelo y control de usuarios. La vista de detalle de alerta concentra la integración de predicción, score de anomalía, explicación SHAP, reporte RAG y decisión humana.
+
+| Vista | Ruta esperada | Evidencia |
+|---|---|---|
+| Login | `/login` | `frontend/src/pages/Login.jsx` |
+| Dashboard | `/dashboard` | `frontend/src/pages/Dashboard.jsx` |
+| Alertas | `/alerts` | `frontend/src/pages/Alerts.jsx` |
+| Detalle de alerta | `/alerts/:id` | `frontend/src/pages/Detail.jsx`, `AuditDetail.jsx` |
+| Historial | `/history` | `frontend/src/pages/History.jsx` |
+| Telemetría | `/telemetry` | `frontend/src/pages/Telemetry.jsx` |
+| Integridad | `/integrity` | `frontend/src/pages/Integrity.jsx` |
+| Datos/RAG | `/data` | `frontend/src/pages/Data.jsx` |
+| Configuración | `/config` | `frontend/src/pages/Config.jsx` |
+| Usuarios | `/users` | `frontend/src/pages/Users.jsx` |
+
+### 3.4.3 Algoritmos propuestos e implementación vinculada
+
+| Módulo | Algoritmo o técnica | Función | Evidencia |
+|---|---|---|---|
+| Predicción | XGBoost/LightGBM, GBDT | Estimar FOB unitario y volumen esperado | `src/module1_prediction.py`, prototipo backend |
+| Detección de anomalías | Isolation Forest, LOF, ECOD | Calcular score anómalo individual y ensemble | `src/module2_anomaly.py`, `backend/app.py` |
+| Explicabilidad | TreeSHAP/SHAP | Atribuir variables que impulsan el riesgo | `src/module3_shap.py`, vista de detalle |
+| Reportes automáticos | RAG con recuperación documental y plantilla determinística | Generar narrativa técnica anclada a evidencia | `src/module4_rag.py`, `src/module5_validation.py` |
+| Validación factual | Reglas determinísticas y comparación numérica | Rechazar cifras no sustentadas | `src/module5_validation.py` |
+| Trazabilidad | Hashes, IDs, logs y relaciones alerta-decisión | Auditar evidencia de extremo a extremo | `src/module6_traceability.py`, modelos del backend |
+
+En el estado actual, el prototipo respalda la arquitectura, las rutas funcionales, la telemetría y la experiencia de auditoría. La validación cuantitativa definitiva sigue condicionada al dataset semanal final, a las pruebas de fuga de información y a los experimentos formales.
+
+## 3.5 Diseño Experimental y Validación
+
+La validación se plantea en cinco bloques: rendimiento predictivo y detección, explicabilidad, calidad de reportes, usabilidad y trazabilidad. Cada bloque debe producir evidencia reproducible antes de ser incorporado como resultado definitivo en el Capítulo IV.
+
+### 3.5.1 Validación de predicción y anomalías
+
+La comparación principal evalúa el ensemble IF + LOF + ECOD frente a detectores individuales y baselines. Las métricas previstas son Precision, Recall, F1, PR-AUC, ROC-AUC y Precision@k. Cuando se usen anomalías sintéticas, se debe registrar tipo, magnitud, proporción de inyección y etiqueta generada.
+
+### 3.5.2 Validación de explicabilidad
+
+SHAP se evalúa por cobertura top-k, estabilidad de atribuciones, coherencia con variables disponibles y claridad para el auditor. Las atribuciones se interpretan como contribuciones del modelo, no como causalidad empresarial.
+
+### 3.5.3 Validación de reportes automáticos
+
+Los reportes se validan con una rúbrica de completitud, coherencia, fidelidad factual y consistencia numérica. Cada cifra citada en el reporte debe existir en evidencia estructurada. Si el reporte RAG no supera la validación, se registra rechazo y se genera una versión determinística.
+
+### 3.5.4 Evaluación controlada con usuarios
+
+El estudio de usabilidad compara una condición integrada, con SHAP y RAG visibles, frente a una condición aislada, sin explicaciones avanzadas. Las métricas son tiempo de análisis, decisión registrada, comprensión percibida y utilidad. Hasta contar con participantes reales y consentimiento documentado, esta sección permanece como diseño experimental y no como resultado concluyente.
+
+### 3.5.5 Puertas de control
+
+| Puerta | Criterio | Estado actual |
+|---|---|---|
+| A. Datos | Dataset semanal reproducible, documentado, versionado y sin duplicidad de clave | Parcial |
+| B. Implementación | Cada módulo con ruta, entrada, salida, configuración, prueba y evidencia | Parcialmente aprobado por prototipo |
+| C. Experimento | Split temporal, métricas, semillas y criterios congelados | Pendiente |
+| D. Capítulo III | Arquitectura e implementación documentadas sin resultados finales | En desarrollo |
+| E. Capítulo IV preliminar | Resultados reproducibles y claramente marcados como preliminares o definitivos | Parcial |
+
+---
+

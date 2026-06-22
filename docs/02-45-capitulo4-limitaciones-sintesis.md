@@ -1,4 +1,4 @@
-## 4.5 Limitaciones de los Resultados
+## 4.6 Limitaciones de los Resultados
 
 Los resultados finales deberan interpretarse considerando:
 
@@ -10,7 +10,7 @@ Los resultados finales deberan interpretarse considerando:
 6. **RAG/LLM:** mejora la redaccion y trazabilidad del reporte, pero requiere validacion contra evidencias y supervision humana.
 7. **Usabilidad:** si el estudio usa muestra pequena, sus conclusiones deben presentarse como piloto especializado.
 
-## 4.6 Sintesis del Capitulo IV
+## 4.7 Sintesis del Capitulo IV
 
 La sintesis final se completara cuando existan resultados integrados verificables:
 

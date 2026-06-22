@@ -274,10 +274,11 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#43-resultados-del-estudio-de-usabilidad-y-trazabilidad-vd4-vd5">4.3 Resultados del Estudio de Usabilidad y Trazabilidad, VD4-VD5</a><ul>
-<li><a href="#431-tabla-45-tiempo-a-decision-y-comprension-experimento-e4">4.3.1 Tabla 4.5 - Tiempo-a-decision y comprension, Experimento E4</a></li>
-<li><a href="#432-tabla-46-trazabilidad-documental-vd5">4.3.2 Tabla 4.6 - Trazabilidad documental, VD5</a></li>
-<li><a href="#433-tabla-47-ablation-study-experimento-e5">4.3.3 Tabla 4.7 - Ablation study, Experimento E5</a></li>
+<li><a href="#44-usabilidad-y-trazabilidad-vd4-vd5">4.4 Usabilidad y Trazabilidad — VD4, VD5</a><ul>
+<li><a href="#441-diseno-del-estudio-de-usabilidad-vd4">4.4.1 Diseño del estudio de usabilidad — VD4</a></li>
+<li><a href="#442-telemetria-semilla">4.4.2 Telemetría semilla</a></li>
+<li><a href="#443-trazabilidad-vd5">4.4.3 Trazabilidad — VD5</a></li>
+<li><a href="#444-evidencia-faltante">4.4.4 Evidencia faltante</a></li>
 </ul>
 </li>
 </ul>
@@ -289,166 +290,173 @@
             <div class="header">
                 <h1>02 43 Capitulo4 Usabilidad Trazabilidad</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
+                    Autor: Sistema de Tesis | Generado: 2026-06-22 08:30
                 </div>
             </div>
             
-            <h2 id="43-resultados-del-estudio-de-usabilidad-y-trazabilidad-vd4-vd5">4.3 Resultados del Estudio de Usabilidad y Trazabilidad, VD4-VD5</h2>
-<p>Esta seccion medira si el sistema integrado reduce el tiempo de interpretacion y mejora la trazabilidad documental frente a componentes aislados.</p>
-<h3 id="431-tabla-45-tiempo-a-decision-y-comprension-experimento-e4">4.3.1 Tabla 4.5 - Tiempo-a-decision y comprension, Experimento E4</h3>
+            <h2 id="44-usabilidad-y-trazabilidad-vd4-vd5">4.4 Usabilidad y Trazabilidad — VD4, VD5</h2>
+<blockquote>
+<p><strong>Estado:</strong> diseño experimental y validación funcional parcial. El prototipo registra decisiones y tiempos con datos semilla, pero el experimento con usuarios reales permanece pendiente.</p>
+</blockquote>
+<h3 id="441-diseno-del-estudio-de-usabilidad-vd4">4.4.1 Diseño del estudio de usabilidad — VD4</h3>
+<p>El estudio compara dos condiciones:</p>
+<ul>
+<li><strong>Condición A integrada:</strong> el auditor observa datos de la operación, predicción, score de anomalía, explicación SHAP y reporte RAG.</li>
+<li><strong>Condición B aislada:</strong> el auditor observa datos de la operación, predicción y score, sin explicación SHAP ni reporte RAG.</li>
+</ul>
+<p>Las variables dependientes son tiempo de análisis, decisión registrada, comprensión percibida, utilidad percibida y exactitud de la decisión frente a un criterio de referencia.</p>
 <table>
 <thead>
 <tr>
-<th>Metrica</th>
-<th style="text-align: right;">Sistema integrado</th>
-<th style="text-align: right;">Componentes aislados</th>
-<th style="text-align: right;">Diferencia relativa</th>
-<th style="text-align: right;">p-value</th>
-<th style="text-align: right;">Tamano de efecto</th>
+<th>Requisito</th>
 <th>Estado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Tiempo-a-decision, segundos</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td>Cantidad y perfil de participantes</td>
+<td>Pendiente</td>
 </tr>
 <tr>
-<td>Comprension Likert 1-5</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td>Consentimiento informado y anonimización</td>
+<td>Pendiente</td>
 </tr>
 <tr>
-<td>Decision correcta</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td>Tareas equivalentes por condición</td>
+<td>Pendiente</td>
 </tr>
 <tr>
-<td>SUS Score 0-100</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td>Contrabalanceo del orden</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>Prueba estadística definida</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>Registro de decisiones y tiempos</td>
+<td>Implementado en prototipo</td>
 </tr>
 </tbody>
 </table>
-<p>El tamano muestral y el perfil de participantes se reportaran como estudio piloto especializado si no alcanzan potencia estadistica suficiente para generalizacion amplia.</p>
-<h3 id="432-tabla-46-trazabilidad-documental-vd5">4.3.2 Tabla 4.6 - Trazabilidad documental, VD5</h3>
+<h3 id="442-telemetria-semilla">4.4.2 Telemetría semilla</h3>
+<p>El prototipo registra decisiones de auditoría mediante el flujo de adjudicación de alertas. Esta evidencia valida captura de datos, no desempeño humano definitivo.</p>
+<p><strong>Tabla 4.7 — Telemetría semilla de validación de flujo</strong></p>
 <table>
 <thead>
 <tr>
-<th>Configuracion</th>
-<th style="text-align: right;">Alertas con trazabilidad completa</th>
-<th>Campos faltantes frecuentes</th>
+<th>Alerta</th>
+<th>Auditor</th>
+<th>Condición</th>
+<th>Decisión</th>
+<th style="text-align: right;">Comprensión</th>
+<th style="text-align: right;">Tiempo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AL-2026-0009</td>
+<td>auditor1</td>
+<td>Integrado</td>
+<td>Anomalía confirmada</td>
+<td style="text-align: right;">5/5</td>
+<td style="text-align: right;">25.6 s</td>
+</tr>
+<tr>
+<td>AL-2026-0006</td>
+<td>auditor1</td>
+<td>Aislado</td>
+<td>Falsa alarma</td>
+<td style="text-align: right;">3/5</td>
+<td style="text-align: right;">49.2 s</td>
+</tr>
+<tr>
+<td>AL-2026-0005</td>
+<td>auditor2</td>
+<td>Integrado</td>
+<td>Requiere inspección</td>
+<td style="text-align: right;">4/5</td>
+<td style="text-align: right;">31.2 s</td>
+</tr>
+<tr>
+<td>AL-2026-0004</td>
+<td>auditor2</td>
+<td>Aislado</td>
+<td>Falsa alarma</td>
+<td style="text-align: right;">2/5</td>
+<td style="text-align: right;">65.4 s</td>
+</tr>
+</tbody>
+</table>
+<p>Con N=2 por condición no corresponde afirmar significancia estadística. Los datos solo indican que la plataforma puede capturar tiempos, decisiones y escala de comprensión.</p>
+<h3 id="443-trazabilidad-vd5">4.4.3 Trazabilidad — VD5</h3>
+<p>La trazabilidad se evalúa verificando que cada alerta pueda reconstruirse desde entrada, predicción, score, explicación, reporte, decisión humana y registro temporal.</p>
+<p><strong>Tabla 4.8 — Campos de trazabilidad esperados</strong></p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Evidencia</th>
 <th>Estado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Sistema integrado completo, E5d</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td>ID de alerta</td>
+<td>Registro de alerta</td>
+<td>Disponible en prototipo</td>
 </tr>
 <tr>
-<td>Ablation sin SHAP, E5b</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td>Score de anomalía</td>
+<td>Resultado del ensemble</td>
+<td>Disponible en prototipo</td>
 </tr>
 <tr>
-<td>Ablation sin RAG, E5c</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td>FOB esperado vs declarado</td>
+<td>Salida predictiva</td>
+<td>Disponible en prototipo</td>
 </tr>
 <tr>
-<td>Componentes aislados/control</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td><em>pendiente</em></td>
-<td>Por ejecutar</td>
+<td>Valores SHAP</td>
+<td>Detalle de explicación</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>Reporte generado</td>
+<td>Reporte RAG o plantilla</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>Documentos recuperados</td>
+<td>IDs/citas del RAG</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>Decisión humana</td>
+<td>Registro de adjudicación</td>
+<td>Disponible en prototipo</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Registro de decisión</td>
+<td>Disponible en prototipo</td>
+</tr>
+<tr>
+<td>Hash de artefactos</td>
+<td>Control de auditoría</td>
+<td>Pendiente para cierre final</td>
 </tr>
 </tbody>
 </table>
-<p>La trazabilidad completa exige, como minimo: <code>id_alerta</code>, <code>producto</code>, <code>hs</code>, <code>fecha</code>, <code>fuentes_usadas</code>, <code>score</code>, <code>umbral</code>, <code>top_shap</code>, <code>evidencia_rag</code>, <code>version_dataset</code> y <code>archivo_origen</code>.</p>
-<h3 id="433-tabla-47-ablation-study-experimento-e5">4.3.3 Tabla 4.7 - Ablation study, Experimento E5</h3>
-<table>
-<thead>
-<tr>
-<th>Configuracion</th>
-<th>Capa 1 prediccion</th>
-<th>Capa 2 anomalias</th>
-<th>Capa 3 SHAP</th>
-<th>Capa 4 RAG</th>
-<th style="text-align: right;">VD1</th>
-<th style="text-align: right;">VD3</th>
-<th style="text-align: right;">VD5</th>
-<th>Estado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>E5a solo deteccion</td>
-<td>No</td>
-<td>Si</td>
-<td>No</td>
-<td>No</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;">N/A</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
-</tr>
-<tr>
-<td>E5b sin SHAP</td>
-<td>Si</td>
-<td>Si</td>
-<td>No</td>
-<td>Si</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
-</tr>
-<tr>
-<td>E5c sin RAG</td>
-<td>Si</td>
-<td>Si</td>
-<td>Si</td>
-<td>No</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
-</tr>
-<tr>
-<td>E5d pipeline completo</td>
-<td>Si</td>
-<td>Si</td>
-<td>Si</td>
-<td>Si</td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td style="text-align: right;"><em>pendiente</em></td>
-<td>Por ejecutar</td>
-</tr>
-</tbody>
-</table>
-<p>Las comparaciones E5 no deben mezclar resultados de dataset sintetico con resultados del dataset integrado sin una etiqueta explicita de version.</p>
+<h3 id="444-evidencia-faltante">4.4.4 Evidencia faltante</h3>
+<ul>
+<li>Ejecutar el experimento con participantes reales.</li>
+<li>Registrar consentimiento, perfil y anonimización.</li>
+<li>Guardar datos crudos de usabilidad fuera de rutas de referencia pública si contienen información sensible.</li>
+<li>Ejecutar prueba estadística definida.</li>
+<li>Generar reporte de trazabilidad con hash de artefactos y commit.</li>
+</ul>
+<p>Hasta completar el estudio, VD4 se mantiene pendiente y VD5 queda parcialmente respaldada por el prototipo.</p>
         </div>
     </div>
     

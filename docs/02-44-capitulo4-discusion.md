@@ -1,10 +1,10 @@
-## 4.4 Discusion y Cruce Comparativo
+## 4.5 Discusion y Cruce Comparativo
 
-### 4.4.1 Proposito de la discusion
+### 4.5.1 Proposito de la discusion
 
 La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitulo I, variables operacionalizadas y evidencia generada por el pipeline. Su objetivo es explicar los resultados sin convertir correlaciones, scores o valores SHAP en afirmaciones causales.
 
-### 4.4.2 Cruce 1 - Resultados propios versus literatura comparable
+### 4.5.2 Cruce 1 - Resultados propios versus literatura comparable
 
 | Atributo | Esta tesis | Literatura comparable | Lectura esperada |
 |---|---|---|---|
@@ -14,7 +14,7 @@ La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitu
 | Reporte tecnico | RAG/LLM restringido | LLMs para auditoria/reportes | Evaluar fidelidad a evidencia y trazabilidad. |
 | Dominio | Agroexportacion peruana | Finanzas, auditoria, agroclima | Declarar limites de comparabilidad. |
 
-### 4.4.3 Cruce 2 - Contraste de hipotesis
+### 4.5.3 Cruce 2 - Contraste de hipotesis
 
 | Hipotesis | Evidencia requerida | Decision |
 |---|---|---|
@@ -26,7 +26,7 @@ La discusion triangula cuatro bloques: literatura revisada, hipotesis del Capitu
 
 La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar vinculada al reporte de entrenamiento o de usabilidad correspondiente.
 
-### 4.4.4 Cruce 3 - Variables operacionalizadas versus indicadores observados
+### 4.5.4 Cruce 3 - Variables operacionalizadas versus indicadores observados
 
 | Variable | Indicador | Valor observado | Cumple |
 |---|---|---:|---|
@@ -36,7 +36,7 @@ La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar 
 | VD4 decision | Tiempo, comprension, decision correcta | _pendiente_ | _pendiente_ |
 | VD5 trazabilidad | Campos completos por alerta | _pendiente_ | _pendiente_ |
 
-### 4.4.5 Cruce 4 - Gobernanza, componente y metrica
+### 4.5.5 Cruce 4 - Gobernanza, componente y metrica
 
 | Principio | Componente | Metrica |
 |---|---|---|
@@ -47,7 +47,7 @@ La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar 
 | Anti-alucinacion | RAG anclado a evidencia | VD3. |
 | Trazabilidad | Registro de alerta end-to-end | VD5. |
 
-### 4.4.6 Cruce 5 - Errores por tipo de anomalia
+### 4.5.6 Cruce 5 - Errores por tipo de anomalia
 
 | Tipo de anomalia | Posible mecanismo de fallo | Mejora candidata |
 |---|---|---|
@@ -57,6 +57,6 @@ La decision puede ser: aceptar, rechazar o inconclusa. Toda decision debe estar 
 | logistica | Falta de llave directa puerto-embarque. | Agregacion puerto-mes documentada. |
 | sanidad/calidad | Alertas agregadas sin trazabilidad por embarque. | Mantener como contexto, no etiqueta directa. |
 
-### 4.4.7 Interpretacion conjunta
+### 4.5.7 Interpretacion conjunta
 
 La contribucion esperada no es solo mejorar una metrica aislada, sino demostrar que la integracion de prediccion, deteccion, explicabilidad y reporte aumenta la capacidad de supervision operativa trazable. Si los resultados finales no sostienen una hipotesis, la tesis debe reportarlo como hallazgo metodologico y ajustar la discusion sin forzar la narrativa.

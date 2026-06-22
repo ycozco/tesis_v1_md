@@ -1,0 +1,1633 @@
+UNIVERSIDAD NACIONAL DE SAN AGUSTÍN DE AREQUIPA
+FACULTAD DE INGENIERÍA DE PRODUCCIÓN Y SERVICIOS
+     ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS
+
+
+
+
+                         TESIS
+                   Título de la tesis
+
+                           Presentado por el bachiller:
+                            yoset cozco mauri
+                           Para optar el título profesional de
+                           Ingeniero de Sistemas
+
+
+
+
+                           Asesor:
+                           Karim Guevara
+
+
+
+
+                   Arequipa – Perú
+                        2026
+
+
+                                                                 1
+DEDICATORIA
+
+
+
+
+              2
+AGRADECIMIENTOS
+
+
+
+
+                  3
+PRESENTACIÓN
+
+
+
+
+               4
+                  RESUMEN
+
+Palabras Clave:
+
+
+
+
+                            5
+            ABSTRACT
+
+Key Word:
+
+
+
+
+                       6
+                          ÍNDICE DE CONTENIDOS
+
+
+DEDICATORIA​                                                  II
+
+
+
+AGRADECIMIENTOS​                                             III
+
+
+
+PRESENTACIÓN​                                                IV
+
+
+
+RESUMEN​                                                      V
+
+
+
+ABSTRACT​                                                    VI
+
+
+
+ÍNDICE DE CONTENIDOS​                                       VII
+
+
+
+ÍNDICE DE FIGURAS​                                            X
+
+
+
+ÍNDICE DE TABLAS​                                            XI
+
+
+
+ÍNDICE DE FORMULAS​                                         XII
+
+
+
+INTRODUCCIÓN​                                               XIII
+
+
+
+CAPÍTULO I : PLANTEAMIENTO DEL PROBLEMA​                     1
+
+1.1.​   Descripción de la Realidad Problemática​              1
+
+1.2.​   Problema principal.​                                  1
+
+1.3.​ Objetivos​                                              1
+   1.3.1.​ Objetivo principal​                                1
+   1.3.2.​ Objetivos específicos​                             1
+
+1.4.​   Hipótesis de la investigación.​                       1
+
+1.5.​ Variables e Indicadores​                                1
+   1.5.1.​ Variable Independiente​                            1
+   1.5.2.​ Variable Dependiente​                              1
+
+1.6.​ Viabilidad de la investigación.​                        1
+   1.6.1.​ Viabilidad técnica​                                1
+   1.6.2.​ Viabilidad operativa.​                             1
+   1.6.3.​ Viabilidad económica.​                             1
+
+1.7.​   Justificación e Importancia de la Investigación.​     1
+
+
+                                                              7
+  1.7.1.​   Justificación​                                          1
+  1.7.2.​   Importancia.​                                           2
+
+1.8.​   Alcance​                                                    2
+
+1.9.​ Línea, Tipo y Nivel de la investigación​                      2
+   1.9.1.​ Línea de la investigación.​                              2
+   1.9.2.​ Tipo de la investigación.​                               2
+   1.9.3.​ Nivel de la investigación.​                              2
+
+1.10.​     Técnicas e Instrumentos de Recolección de Información​   2
+   1.10.1.​ Técnicas.​                                              2
+   1.10.2.​ Instrumentos.​                                          2
+
+
+CAPÍTULO II: MARCO TEÓRICO​                                         3
+
+2.1.​   Antecedentes de la Investigación​                           3
+
+2.2.​   Estado del Arte​                                            3
+
+2.3.​   Marco Conceptual​                                           3
+
+
+CAPÍTULO III : ELABORACIÓN DE LA PROPUESTA​                         4
+
+3.1.​   Generalidades.​                                             4
+
+3.2.​   Esquema de la propuesta​                                    4
+
+3.3.​   ……………..​                                                    4
+
+3.4.​   ……………..​                                                    4
+
+3.5.​   ……………..​                                                    4
+
+
+CAPÍTULO IV: ANÁLISIS E INTERPRETACIÓN DE LOS RESULTADOS​           5
+
+4.1.​                                                               5
+
+4.2.​                                                               5
+
+
+CONCLUSIONES​                                                       6
+
+CONCLUSIONS​                                                        7
+
+RECOMENDACIONES​                                                    8
+
+GLOSARIO DE TÉRMINOS​                                               9
+
+
+                                                                    8
+REFERENCIAS BIBLIOGRÁFICAS​   10
+
+ANEXOS​                       11
+
+
+
+
+                               9
+ÍNDICE DE FIGURAS
+
+
+
+
+                    10
+ÍNDICE DE TABLAS
+
+
+
+
+                   11
+ÍNDICE DE FORMULAS
+
+
+
+
+                     12
+INTRODUCCIÓN
+
+
+
+
+               13
+                       CAPÍTULO I : ​
+               PLANTEAMIENTO DEL PROBLEMA
+1.1.​   Descripción de la Realidad Problemática
+
+        El sector agroexportador peruano desarrolla operaciones comerciales
+        caracterizadas por la movilización continua de productos agrícolas hacia
+        diferentes mercados internacionales. Estas operaciones generan
+        registros relacionados con fechas de exportación, productos, mercados
+        de destino, valores FOB, pesos netos, cantidad de operaciones,
+        participación por destino y otras variables comerciales que permiten
+        analizar el comportamiento de las exportaciones a lo largo del tiempo.
+
+        A estos registros se pueden incorporar variables contextuales
+        provenientes de fuentes oficiales, tales como información de mercados
+        mayoristas, indicadores macroeconómicos y, cuando exista una
+        correspondencia geográfica y temporal válida, datos climáticos,
+        logísticos o sanitarios agregados. Sin embargo, estas fuentes presentan
+        diferencias de estructura, periodicidad, unidad de medida y nivel de
+        agregación, lo que dificulta su integración dentro de un mismo proceso
+        analítico.
+
+        Los registros de comercio exterior pueden encontrarse a nivel de
+        declaración o transacción diaria, mientras que las variables
+        macroeconómicas pueden tener frecuencia mensual y otras fuentes
+        contextuales pueden publicarse con periodicidad diaria, semanal o
+        mensual. La integración incorrecta de estas granularidades puede
+        producir duplicidades, asociaciones no justificadas o fuga de
+        información, afectando la validez de los modelos desarrollados.
+
+        Además de la fragmentación de fuentes, existe una dificultad analítica
+        para determinar cuándo un valor observado debe considerarse inusual.
+        Por ejemplo, un incremento del valor FOB total o una reducción del
+        volumen exportado no representan necesariamente una anomalía,
+        debido a que pueden corresponder a comportamientos estacionales,
+        cambios de mercado, variaciones en la composición de los destinos o
+        modificaciones propias de una campaña agroexportadora.
+
+        Por esta razón, la supervisión analítica no debe limitarse a observar los
+        valores registrados. Es necesario estimar previamente cuál era el
+        comportamiento esperado para un producto y mercado determinados. La
+        diferencia entre el valor observado y el valor esperado permite calcular
+        residuos predictivos que, combinados con indicadores históricos y
+        técnicas de detección multivariable, pueden servir para identificar
+        operaciones o periodos que requieren revisión.
+
+        En la presente investigación se consideran dos indicadores principales.
+        El primero es el valor unitario FOB, expresado en dólares
+
+                                                                               1
+estadounidenses por kilogramo, calculado como la relación entre el valor
+FOB total y el peso neto exportado. El segundo es el volumen exportado,
+expresado en kilogramos. Ambos indicadores serán analizados con
+frecuencia semanal y bajo una unidad de análisis definida por la
+combinación de producto, mercado de destino y semana.
+
+La predicción de estos indicadores permitirá estimar el valor unitario
+FOB y el volumen esperado para la siguiente semana. Posteriormente,
+los residuos obtenidos al comparar los valores esperados con los
+observados serán incorporados a un conjunto de variables para la
+detección de anomalías mediante Isolation Forest, Local Outlier Factor y
+ECOD.
+
+Sin embargo, una puntuación de anomalía no es suficiente para apoyar
+la supervisión. Los usuarios necesitan comprender qué indicadores
+presentaron desviaciones, cómo se comparan con el comportamiento
+histórico y qué variables influyeron en las predicciones. Los modelos de
+aprendizaje automático pueden producir resultados técnicamente
+adecuados, pero su uso aislado dificulta interpretar las alertas y verificar
+el proceso que condujo a su generación.
+
+La explicabilidad mediante SHAP permite interpretar las predicciones
+generadas por modelos basados en árboles, como XGBoost y
+LightGBM. Estas explicaciones muestran la contribución de las
+características utilizadas para elevar o reducir el valor esperado. No
+obstante, SHAP no establece relaciones causales ni explica
+directamente el score combinado de todos los detectores no
+supervisados. Por ello, la interpretación de una alerta debe combinar
+valores SHAP, residuos predictivos, desviaciones históricas y
+puntuaciones individuales de los detectores.
+
+Otro problema corresponde a la documentación de las alertas. Cuando
+los resultados de los modelos, las explicaciones y las fuentes se
+procesan por separado, resulta difícil reconstruir qué registros, versiones
+de datos, parámetros y evidencias originaron un reporte. Esta situación
+limita la auditabilidad y reduce la confianza en el sistema.
+
+Los modelos de lenguaje pueden facilitar la transformación de resultados
+técnicos en reportes comprensibles. Sin embargo, su uso libre puede
+introducir cifras, causas o conclusiones no sustentadas. Por esta razón,
+la generación de reportes debe restringirse a evidencias estructuradas,
+documentos recuperados y valores verificados mediante controles
+determinísticos.
+
+En consecuencia, se identifica la necesidad de diseñar e implementar un
+sistema integrado que articule la recolección y normalización de datos, la
+predicción del valor unitario FOB y del volumen exportado, la detección
+multivariable de anomalías, la explicabilidad de las predicciones, la
+generación controlada de reportes y la trazabilidad completa del
+proceso.
+
+                                                                          2
+        La investigación se concentrará en palta, uva fresca y arándano. La
+        unidad de análisis será producto por mercado de destino por semana, y
+        el horizonte predictivo será de una semana. El sistema será evaluado
+        como prototipo experimental y no como una solución conectada en
+        tiempo real con los sistemas internos de una empresa agroexportadora.
+
+
+
+1.2.​   Problema principal.
+
+        ¿En qué medida la implementación de un sistema integrado de
+        inteligencia artificial basado en la predicción semanal del valor unitario
+        FOB y del volumen exportado, la detección multivariable de anomalías,
+        la explicabilidad y la generación automática de reportes trazables mejora
+        la efectividad de la supervisión analítica de operaciones
+        agroexportadoras peruanas respecto del uso de componentes analíticos
+        aislados?
+
+
+        Problemas identificados
+           1.​ ¿Cómo integrar registros de comercio exterior y variables
+               contextuales con diferentes estructuras, periodicidades y
+               granularidades dentro de un conjunto de datos semanal trazable?
+           2.​ ¿Qué desempeño presentan XGBoost y LightGBM para predecir
+               el valor unitario FOB de la siguiente semana en comparación con
+               modelos base?
+           3.​ ¿Qué desempeño presentan XGBoost y LightGBM para predecir
+               el volumen exportado de la siguiente semana en comparación con
+               modelos base?
+           4.​ ¿En qué medida la combinación de Isolation Forest, Local Outlier
+               Factor y ECOD permite detectar anomalías multivariables sobre
+               los indicadores y residuos predictivos?
+           5.​ ¿Cómo pueden las explicaciones SHAP, los residuos y las
+               desviaciones históricas facilitar la interpretación de las alertas
+               generadas?
+           6.​ ¿Cómo generar reportes automáticos sustentados en evidencias
+               estructuradas sin incorporar cifras o afirmaciones no verificables?
+           7.​ ¿En qué medida el sistema integrado mejora la comprensión, el
+               tiempo de análisis y la trazabilidad respecto de la presentación
+               aislada de resultados técnicos?
+
+1.3.​   Objetivos
+        1.3.1.​ Objetivo principal
+
+              Diseñar, implementar y evaluar un sistema integrado de
+              inteligencia artificial explicable para predecir semanalmente el
+              valor unitario FOB y el volumen exportado, detectar anomalías
+              multivariables, contextualizar las alertas y generar reportes
+
+                                                                                3
+              trazables que apoyen la supervisión analítica de operaciones
+              agroexportadoras peruanas.
+
+        1.3.2.​ Objetivos específicos
+
+
+           1.​ Identificar, auditar, normalizar e integrar las fuentes de datos de
+               comercio exterior y las variables contextuales seleccionadas,
+               documentando su procedencia, granularidad, cobertura y calidad.
+           2.​ Construir un conjunto de datos analítico semanal cuya unidad de
+               análisis corresponda a producto, mercado de destino y semana
+               para palta, uva fresca y arándano.
+           3.​ Implementar y evaluar modelos XGBoost y LightGBM para
+               predecir el valor unitario FOB por kilogramo de la siguiente
+               semana.
+           4.​ Implementar y evaluar modelos XGBoost y LightGBM para
+               predecir el volumen exportado de la siguiente semana.
+           5.​ Implementar un enfoque de detección multivariable de anomalías
+               mediante Isolation Forest, Local Outlier Factor y ECOD, utilizando
+               variables comerciales, temporales y residuos predictivos fuera de
+               muestra.
+           6.​ Incorporar explicaciones globales y locales mediante SHAP para
+               interpretar las predicciones y complementar la contextualización
+               de las alertas.
+           7.​ Desarrollar un componente de generación automática de reportes
+               mediante recuperación aumentada por información y un modelo
+               de lenguaje, aplicando validación numérica y factual.
+           8.​ Evaluar el desempeño predictivo, la capacidad de detección, la
+               comprensión de las alertas, la calidad de los reportes, el tiempo
+               de análisis y la trazabilidad del sistema.
+
+1.4.​   Hipótesis de la investigación.
+        1.4.1Hipotesis general
+
+        La implementación de un sistema integrado de inteligencia artificial
+        mejora significativamente la efectividad de la supervisión analítica de
+        operaciones agroexportadoras respecto del uso de componentes
+        analíticos aislados.
+
+        1.4.2 Hipótesis Nula (H0)
+
+        La implementación de un sistema integrado de inteligencia artificial no
+        produce una mejora significativa en la efectividad de la supervisión
+        analítica de operaciones agroexportadoras respecto del uso de
+        componentes analíticos aislados.
+
+​
+        1.4.2 Hipótesis específicas
+
+                                                                                  4
+        H1a. Los modelos XGBoost o LightGBM presentan un error absoluto
+        medio significativamente menor que el mejor modelo base para predecir
+        el valor unitario FOB de la siguiente semana.
+
+        H1b. Los modelos XGBoost o LightGBM presentan un error logarítmico
+        cuadrático medio significativamente menor que el mejor modelo base
+        para predecir el volumen exportado de la siguiente semana.
+
+        H1c. El ensemble de Isolation Forest, Local Outlier Factor y ECOD
+        presenta un F1-Score superior al promedio de sus detectores
+        individuales en un conjunto experimental con anomalías controladas.
+
+        H1d. Las alertas acompañadas de explicaciones y reportes trazables
+        producen una mayor comprensión y un menor tiempo de análisis que las
+        alertas presentadas únicamente mediante resultados técnicos aislados.
+
+        H1e. El sistema integrado incrementa la proporción de alertas cuyo
+        proceso puede reconstruirse desde los registros de origen hasta el
+        reporte final.
+
+1.5.​   Variables e Indicadores
+        1.5.1.​ Variable Independiente
+                La variable independiente es el tipo de sistema utilizado para la
+                supervisión analítica de las operaciones agroexportadoras.
+
+              Esta variable presenta dos modalidades:
+
+                  1.​ Componentes analíticos aislados.
+                  2.​ Sistema integrado de inteligencia artificial.
+
+              En la primera modalidad, las predicciones, puntuaciones de
+              anomalía, explicaciones y reportes son presentados de forma
+              independiente o requieren documentación manual. En la segunda
+              modalidad,    los    componentes        intercambian evidencias
+              estructuradas dentro de un flujo trazable.
+
+              Tabla 1
+              Operacionalización de la variable independiente
+
+               Variable          Modalidad        Definición          Indicadores
+                                                  operacional
+
+               Tipo de           Componentes      Predicciones,       Número de
+               sistema de        aislados         scores y            componentes
+               supervisión                        resultados          integrados,
+               analítica                          presentados         disponibilidad
+                                                  sin                 de
+
+
+                                                                                       5
+                                          integración       explicación,
+                                          estructurada      disponibilidad
+                                          de                de reporte
+                                          explicación,      automático y
+                                          reporte y         nivel de
+                                          linaje            trazabilidad
+
+       Tipo de          Sistema           Flujo             Integración de
+       sistema de       integrado         articulado de     módulos,
+       supervisión                        datos,            evidencia
+       analítica                          predicción,       estructurada,
+                                          anomalías,        validación
+                                          SHAP, reporte     factual y
+                                          y trazabilidad    reconstrucció
+                                                            n de alertas
+
+
+
+1.5.2.​ Variable Dependiente
+
+      La variable dependiente es la efectividad de la supervisión
+      analítica de operaciones agroexportadoras.
+
+      Se define como el nivel de desempeño alcanzado por el sistema
+      para estimar indicadores esperados, identificar desviaciones,
+      facilitar la comprensión de las alertas, reducir el tiempo de
+      análisis, documentar los resultados y reconstruir el origen de cada
+      reporte.
+
+      Tabla 2
+      Operacionalización de la variable dependiente
+
+       Variable      Indicadore     Unidad o      Técnica      Instrument
+                     s              escala                     o
+
+       Predicción    MAE,           USD/kg,       Experiment   Protocolo
+       del valor     RMSE,          porcentaje    ación        experimen
+       unitario      SMAPE y        y             computaci    tal y
+       FOB           R²             coeficiente   onal         registro de
+                                                               métricas
+
+       Predicción    RMSLE,         Logaritmo,    Experiment   Protocolo
+       del           MAE,           kilogramos    ación        experimen
+       volumen       RMSE,          ,             computaci    tal y
+                     SMAPE y        porcentaje    onal         registro de
+                     R²             y                          métricas
+                                    coeficiente
+
+       Detección     Precision,     Razón de      Experiment Dataset
+       de            Recall, F1,    0a1           ación      de
+
+                                                                             6
+               anomalías     PR-AUC,                   controlada   anomalías
+                             ROC-AUC                                controlada
+                             y                                      s y matriz
+                             Precision                              de
+                             @k                                     resultados
+
+               Efectividad   Respuesta    Porcentaje   Prueba       uestionari
+               Comprensi     s            y escala     con          o y rúbrica
+               ón de         correctas,   Likert       usuarios
+               alertas       claridad y
+                             utilidad
+                             percibida
+
+               Calidad de    Completitu Rúbrica de Evaluación       Rúbrica y
+               reportes      d,          1a5y      documenta        validador
+                             coherencia porcentaje l                automátic
+                             , fidelidad                            o
+                             factual y
+                             consistenc
+                             ia
+                             numérica
+
+
+
+
+1.6.​   Viabilidad de la investigación.
+        La viabilidad de la investigación se fundamenta en la disponibilidad de
+        registros de comercio exterior, herramientas de código abierto y recursos
+        computacionales suficientes para desarrollar y evaluar un prototipo
+        experimental.
+        1.6.1.​ Viabilidad técnica
+        El sistema será implementado utilizando Python y bibliotecas de
+        aprendizaje automático, procesamiento de datos, explicabilidad y
+        recuperación de información. La arquitectura se diseñará de forma
+        modular para separar la ingesta, validación, transformación,
+        entrenamiento, detección, explicación, generación de reportes y
+        trazabilidad.
+
+        SUNAT o ADUANET constituirán la fuente principal para calcular el
+        valor unitario FOB y el volumen exportado. Otras fuentes podrán
+        incorporarse como contexto cuando presenten cobertura,
+        correspondencia temporal y reglas de integración suficientemente
+        documentadas.
+
+        Las diferencias de granularidad serán atendidas mediante una
+        agregación semanal. La unidad final de análisis será producto por
+        mercado de destino por semana. Las características temporales
+        serán construidas utilizando exclusivamente información disponible
+
+                                                                                  7
+antes del periodo objetivo, con el propósito de evitar fuga de
+información.
+
+Los experimentos podrán ejecutarse en un equipo convencional
+con procesamiento mediante CPU. No se requiere una
+infraestructura distribuida ni una unidad de procesamiento gráfico
+de alto rendimiento para los modelos seleccionados.
+
+El número definitivo de registros válidos, la cobertura por producto
+y la cobertura por fuente serán consignados después de concluir la
+auditoría del dataset. No se presentará una cantidad de registros
+como definitiva sin el correspondiente reporte de calidad.
+
+Las variables de merma, días logísticos, costos privados o
+cumplimiento por embarque no serán utilizadas como variables
+reales cuando no exista una fuente directa que las respalde. Los
+escenarios sintéticos serán utilizados únicamente para evaluar
+anomalías controladas y no para completar el dataset histórico.
+
+1.6.2.​ Viabilidad operativa
+La propuesta será evaluada como prototipo experimental y no requerirá
+integración con sistemas ERP, sensores o plataformas productivas de
+empresas reales.
+La evaluación se organizará en experimentos para medir:
+   1.​ Predicción del valor unitario FOB.
+   2.​ Predicción del volumen.
+   3.​ Detección de anomalías.
+   4.​ Estabilidad e interpretación de explicaciones.
+   5.​ Calidad, trazabilidad y utilidad de los reportes.
+La evaluación con personas se realizará mediante un diseño controlado
+que compare dos condiciones: resultados técnicos aislados y sistema
+integrado. Se registrarán el tiempo de análisis, las respuestas correctas,
+la claridad y la utilidad percibida.
+
+
+La realización de pruebas con usuarios dependerá de la disponibilidad
+de participantes y de la aplicación de un protocolo de consentimiento y
+anonimización. La tesis no afirmará que la evaluación fue realizada
+hasta disponer de sus evidencias.
+
+
+1.6.3.​ Viabilidad económica.
+La investigación utilizará principalmente herramientas de código abierto,
+datos públicos y recursos computacionales disponibles. No se requiere
+
+
+                                                                        8
+        la adquisición de licencias empresariales,            sensores,    servidores
+        especializados ni integración productiva.
+
+
+        El presupuesto debe considerar:
+
+
+
+         Recurso                                Condición
+
+         Equipo de cómputo                      Recurso disponible
+
+         Software de desarrollo                 Código abierto
+
+         Almacenamiento                         Local o servicio de bajo costo
+
+         Servicio de modelo de lenguaje         Opcional; debe existir alternativa
+                                                local o por plantilla
+
+         Internet                               Recurso necesario para consulta
+                                                y descarga
+
+         Documentación e impresión              Costo administrativo
+
+         Contingencia                           Reserva para servicios menores
+
+
+        El beneficio económico será planteado como impacto potencial
+        relacionado con una reducción del tiempo de análisis y una mejor
+        documentación de las alertas. No se afirmará una reducción real de
+        pérdidas empresariales porque dicho efecto no forma parte de la
+        evaluación experimental.
+
+
+1.7.​    Justificación e Importancia de la Investigación.
+        1.7.1.​ Justificación
+                A.​ Teórica
+                    La presente investigación se justifica teóricamente al proponer
+                    y validar un framework de integración conceptual para la
+                    supervisión operativa que unifica cuatro áreas de la
+                    inteligencia artificial tradicionalmente aisladas en la literatura:
+                    (1) predicción supervisada en datos estructurados mediante
+                    árboles de decisión optimizados (XGBoost y LightGBM); (2)
+                    detección de anomalías no supervisada en entornos
+                    multidimensionales        mediante    un ensemble unificado
+                    probabilísticamente (PyOD); (3) explicabilidad local post-hoc
+                    basada en la teoría de juegos cooperativos (SHAP); y (4)
+                    generación narrativa en lenguaje natural mediante modelos de
+                    lenguaje acotados por contexto (RAG).
+
+
+
+                                                                                     9
+   El principal aporte teórico radica en resolver el problema del
+   acoplamiento débil entre modelos predictivos y modelos
+   generativos, aportando una metodología formal para mitigar el
+   riesgo de alucinación numérica del LLM al forzarlo a operar
+   sobre un espacio de representación cerrado estructurado por
+   scores y vectores de importancia SHAP. Esto contribuye a la
+   teoría de sistemas inteligentes orientados a la auditoría
+   continua, demostrando cómo la explicabilidad matemática
+   puede ser convertida en una interfaz narrativa útil para la
+   supervisión humana, en concordancia con los principios de
+   gobernanza algorítmica.
+
+B.​ Económica
+    Desde el punto de vista económico, el sector agroexportador
+    peruano constituye una de las columnas vertebrales de la
+    economía nacional, con transacciones que superan los USD
+    15,000 millones anuales (MIDAGRI, 2026). No obstante, la
+    variabilidad del precio FOB por kilogramo, el descalibrado
+    estacional y las ineficiencias logísticas en puertos representan
+    un riesgo constante para la rentabilidad de las organizaciones.
+    Un solo día de retraso logístico o una desviación en la cadena
+    de frío de productos altamente perecederos (como la palta,
+    uva y arándano) puede reducir la vida útil del cultivo en destino
+    hasta en un 15%, generando reclamos de calidad que
+    deprecian el valor comercial del embarque hasta en un 30%.
+
+   Esta investigación se justifica económicamente al dotar a las
+   empresas de una herramienta de detección temprana que
+   identifica desviaciones operativas y de precios en los registros
+   aduaneros y contextuales antes de que se consoliden pérdidas
+   irreparables. Al automatizar la documentación y explicación de
+   anomalías, el sistema reduce el costo de auditoría operativa
+   interna de horas a segundos, protegiendo los márgenes de
+   ganancia de los exportadores peruanos frente a la volatilidad
+   internacional.
+
+C.​ Social
+    Socialmente, la agricultura de exportación representa la mayor
+    fuente de empleo formal, directo y descentralizado en las
+    regiones del Perú, albergando a más de un millón de
+    trabajadores en la costa y valles andinos (con especial
+    concentración en La Libertad, Piura, Ica y Arequipa). La
+    estabilidad laboral y el ingreso de miles de familias dependen
+    directamente de la competitividad y la continuidad de los flujos
+    de exportación de las empresas del sector.
+
+   Las crisis operativas no detectadas a tiempo o los rechazos
+   fitosanitarios masivos en aduanas extranjeras provocan
+   suspensiones de contratos y despidos masivos en las plantas
+   de empaque y campos de cultivo. Al optimizar y dar visibilidad
+
+                                                                  10
+                  a la cadena de valor operativa mediante la detección de
+                  anomalías, esta tesis contribuye indirectamente a la protección
+                  del empleo agrario formal y a la reducción de la vulnerabilidad
+                  económica de las comunidades rurales peruanas,
+                  promoviendo el desarrollo regional sostenible.
+
+        1.7.2.​ Importancia.
+               La importancia práctica de esta investigación radica en entregar
+               un prototipo auditable y trazable alineado con los desafíos de
+               gobernanza de la inteligencia artificial en el Perú. Bajo el marco
+               regulatorio del Decreto Supremo N.° 115-2025-PCM y el estándar
+               internacional del NIST AI Risk Management Framework, los
+               sistemas basados en IA aplicados a la toma de decisiones críticas
+               deben ser transparentes, seguros y explicables para el usuario.
+               Esta tesis rompe con el paradigma de los modelos predictivos tipo
+               "caja negra" al traducir puntuaciones numéricas abstractas y
+               vectores multidimensionales SHAP en reportes narrativos en
+               lenguaje natural de alta fidelidad factual.
+
+              La solución es de suma importancia para analistas logísticos,
+              supervisores de operaciones, gerentes de calidad y auditores de
+              TI, puesto que les permite entender instantáneamente qué
+              factores determinan una alerta operativa (por ejemplo, si el desvío
+              es causado por anomalía de volumen o por variables
+              climatológicas extremas) y rastrear la evidencia de vuelta a las
+              bases de datos originales de SUNAT o MIDAGRI. Esto no solo
+              acelera la velocidad de reacción corporativa, sino que
+              democratiza el acceso a la IA para profesionales sin
+              conocimientos en ciencia de datos, garantizando una supervisión
+              humana efectiva y responsable sobre la tecnología.
+
+1.8.​   Alcance
+
+        Alcance temático
+
+        La investigación comprende:
+
+           ●​ integración y normalización de datos;
+           ●​ construcción de un dataset semanal;
+           ●​ predicción de valor unitario FOB;
+           ●​ predicción de volumen;
+           ●​ cálculo de residuos;
+           ●​ detección de anomalías;
+           ●​ explicabilidad;
+           ●​ generación de reportes;
+           ●​ validación factual;
+           ●​ trazabilidad.’
+
+        Alcance productivo
+
+
+                                                                              11
+        Se consideran exclusivamente:
+
+           1.​ Palta.
+           2.​ Uva fresca.
+           3.​ Arándano.
+
+        El espárrago, cacao y otros productos quedan fuera de la evaluación
+        principal.
+
+        Alcance geográfico
+
+        La investigación utiliza operaciones de exportación registradas en el
+        Perú.
+
+        No se realizará una delimitación por departamento de producción
+        mientras no exista un campo confiable que identifique el origen
+        productivo. La aduana, el puerto o el domicilio del exportador no serán
+        considerados equivalentes al lugar de producción.
+
+        Alcance temporal
+
+        La ventana prevista comprende desde junio de 2018 hasta mayo de
+        2026. La cobertura real será documentada por producto y fuente
+        después de la auditoría de los archivos.
+
+
+1.9.​   Línea, Tipo y Nivel de la investigación
+        1.9.1.​ Línea de la investigación.
+
+              La investigación se adscribirá a la línea oficial de la Escuela
+              Profesional de Ingeniería de Sistemas relacionada con
+              inteligencia artificial, ciencia de datos o computación aplicada.
+              La temática secundaria se relaciona con ingeniería de software,
+              trazabilidad y gobernanza de sistemas inteligentes.
+
+        1.9.2.​ Tipo de la investigación.
+
+
+              La investigación es aplicada porque utiliza métodos y tecnologías
+              existentes para atender un problema concreto de integración,
+              análisis y documentación de datos agroexportadores.
+
+              Asimismo, es tecnológica porque comprende el diseño,
+              implementación y evaluación de un artefacto de software
+              funcional.
+
+              El enfoque es cuantitativo, debido a que el desempeño se
+              evaluará mediante métricas numéricas, tiempos, proporciones y
+              pruebas estadísticas.
+
+                                                                            12
+     1.9.3.​ Nivel de la investigación.
+
+              La investigación presenta un nivel explicativo-evaluativo.
+
+              Es explicativa porque analiza el efecto del sistema integrado
+              sobre la comprensión, el tiempo de análisis y la trazabilidad.
+
+              Es evaluativa porque compara modelos, detectores y condiciones
+              de uso mediante experimentos controlados.
+
+              El diseño es cuasiexperimental, longitudinal y comparativo:
+
+                 ●​ cuasiexperimental por la comparación de condiciones sin
+                    asignación aleatoria completa de una población
+                    empresarial;
+                 ●​ longitudinal por el uso de datos ordenados temporalmente;
+                 ●​ comparativo por la evaluación de modelos base, modelos
+                    GBDT, detectores individuales y sistema integrado.
+
+1.10.​ Técnicas e Instrumentos de Recolección de Información
+         ●​   Análisis documental.
+         ●​   Experimentación computacional.
+         ●​   Pruebas funcionales del sistema.
+         ●​   Auditoría de trazabilidad.
+         ●​   Prueba controlada con usuarios.
+         ●​   Evaluación mediante rúbricas.
+
+
+      Técnica                      Instrumento            Propósito
+
+
+
+
+1.11.​ Cronograma
+
+
+      primera semana de diciembre
+
+
+
+
+                                                                            13
+                             CAPÍTULO II:​
+                            MARCO TEÓRICO
+2.1.​   Antecedentes de la Investigación
+
+        El desarrollo de sistemas de predicción, detección de anomalías y
+        generación de reportes en entornos financieros empresariales ha
+        seguido una trayectoria de especialización creciente en los últimos años,
+        marcada por tres tendencias paralelas: el auge de los modelos basados
+        en árboles de decisión para datos tabulares, la proliferación de
+        benchmarks sistemáticos de evaluación, y la emergencia de los modelos
+        de lenguaje como capa de interpretación en sistemas analíticos. Los
+        antecedentes que se presentan a continuación son trabajos
+        seleccionados por su proximidad temática y metodológica con la
+        propuesta de esta investigación.
+
+        2.1.1 Kadir et al. (2025)
+
+        Kadir et al. (2025), en el estudio AuditCopilot: Large Language Models in
+        Accounting Audit, desarrollaron una propuesta orientada a la
+        automatización de auditorías contables mediante la integración de
+        modelos de lenguaje de gran escala con técnicas de detección de
+        anomalías sobre registros financieros. La investigación plantea un
+        pipeline compuesto por detección supervisada de irregularidades en
+        asientos contables, interpretación contextual mediante LLMs
+        especializados en terminología contable y generación automática de
+        explicaciones narrativas dirigidas a auditores.
+
+        Los resultados mostraron mejoras en la identificación de irregularidades
+        y reducción del tiempo de revisión frente a procesos manuales
+        tradicionales. Además, las explicaciones generadas fueron valoradas
+        positivamente por especialistas del dominio. Sin embargo, el estudio no
+        reporta métricas comparables con benchmarks públicos ni evalúa
+        aspectos de gobernanza regulatoria o control explícito de alucinaciones.
+        Este antecedente resulta relevante para la presente investigación porque
+        valida el uso de LLMs como capa de interpretación y generación de
+        reportes automatizados, aunque no incorpora predicción tabular,
+        forecasting temporal ni mecanismos formales de trazabilidad regulatoria.
+
+        2.1.2 Park (2024)
+
+        Park (2024), en la investigación Enhancing Anomaly Detection in
+        Financial Markets with an LLM-Based Multi-Agent Framework, propuso
+        una arquitectura basada en agentes especializados para mejorar la
+        validación de anomalías en mercados financieros. El sistema distribuye
+        funciones entre múltiples agentes encargados de transformar datos
+        estructurados, analizar patrones temporales, validar señales y consolidar
+        reportes finales.
+
+                                                                              14
+Los experimentos realizados sobre datos del índice bursátil S&P 500
+mostraron una mejora en la tasa de verdaderos positivos y una
+reducción de falsos positivos respecto a enfoques basados en un único
+LLM. Los resultados demuestran que la especialización funcional mejora
+la robustez analítica. Este trabajo aporta evidencia para utilizar LLMs
+como capa interpretativa sobre modelos cuantitativos, aunque su
+aplicación se limita a mercados financieros y no contempla entornos
+empresariales operativos con necesidades de trazabilidad y auditoría
+interna.
+
+2.1.3 Mongolia et al. (2025)
+
+Mongolia et al. (2025), en el estudio Financial Statement Fraud Detection
+through an Integrated Machine Learning and Explainable AI Framework,
+desarrollaron un framework de detección de fraude financiero basado en
+técnicas de ensamble y explicabilidad. La propuesta integra modelos
+XGBoost, LightGBM y CatBoost dentro de una arquitectura Stacking
+Ensemble, complementada con explicabilidad mediante SHAP.
+
+Los resultados reportaron un PR-AUC de 0.93 y un F1-Score de 0.83,
+superando arquitecturas de Deep Learning sobre el mismo conjunto de
+datos. Además, el índice de estabilidad SHAP evidenció consistencia
+forense en las explicaciones generadas. Este antecedente respalda
+directamente la decisión de utilizar modelos GBDT como núcleo
+predictivo en esta investigación. No obstante, su alcance se limita a
+clasificación supervisada de fraude y no integra forecasting, detección no
+supervisada ni generación automática de reportes.
+
+2.1.4 Han et al. (2022)
+
+Han et al. (2022), mediante el estudio ADBench: Anomaly Detection
+Benchmark, presentaron uno de los benchmarks más completos para
+evaluación de algoritmos de detección de anomalías. La investigación
+evaluó 30 algoritmos sobre 57 datasets pertenecientes a diferentes
+dominios, incluyendo finanzas, medicina, industria y ciberseguridad.
+
+Los resultados evidenciaron que no existe un único algoritmo
+universalmente superior, sino que el rendimiento depende de la
+distribución de los datos y del tipo de anomalía analizada. Asimismo, se
+observó que los enfoques ensemble superan consistentemente a
+detectores individuales en escenarios de alta variabilidad. Este
+antecedente justifica metodológicamente la implementación de múltiples
+detectores de anomalías dentro de la presente investigación.
+
+2.1.5 Grinsztajn et al. (2022)
+
+Grinsztajn et al. (2022), en Why do Tree-Based Models Still Outperform
+Deep Learning on Tabular Data?, analizaron comparativamente el
+rendimiento de modelos basados en árboles frente a arquitecturas de
+
+                                                                       15
+        Deep Learning en datos tabulares. La evaluación incluyó 45 datasets
+        públicos y modelos como Gradient Boosting, Random Forest, MLP,
+        TabNet y FT-Transformer.
+
+        Los resultados demostraron que los modelos basados en árboles
+        superan a los modelos de Deep Learning en aproximadamente el 95%
+        de los datasets con menos de 50,000 registros. Los autores concluyen
+        que la estructura de los datos tabulares favorece a los métodos GBDT
+        en escenarios empresariales de tamaño mediano. Este antecedente
+        sustenta bibliográficamente la elección de modelos GBDT como
+        backbone predictivo de esta tesis.
+
+        2.1.6 Lim et al. (2021)
+
+        Lim et al. (2021), en Temporal Fusion Transformers for Interpretable
+        Multi-Horizon Time Series Forecasting, propusieron una arquitectura
+        Transformer especializada en predicción temporal interpretable. El
+        modelo integra mecanismos de atención, selección de variables y
+        análisis de covariables estáticas y dinámicas para realizar forecasting
+        multi-horizonte.
+
+        Los resultados evidenciaron mejoras respecto a LSTM y otros modelos
+        de series temporales en distintos datasets reales. Además, los
+        mecanismos de atención facilitaron la interpretabilidad del proceso
+        predictivo. Este antecedente resulta relevante para la presente
+        investigación, ya que respalda la incorporación de módulos de
+        forecasting interpretable para anticipar comportamientos operativos y
+        riesgos futuros.
+
+        2.1.7 Zhao et al. (2019)
+
+        Zhao et al. (2019), en el estudio PyOD: A Python Toolbox for Scalable
+        Outlier Detection, desarrollaron una librería especializada para detección
+        de anomalías que integra más de 40 algoritmos bajo una API unificada
+        compatible con scikit-learn.
+
+        La propuesta permitió estandarizar experimentos de detección de
+        outliers y facilitar la reproducibilidad en investigación aplicada. La librería
+        ha sido ampliamente adoptada en entornos académicos e industriales y
+        fue utilizada posteriormente como base experimental en benchmarks
+        como ADBench. Este antecedente resulta importante para esta tesis
+        porque proporciona la base técnica para implementar y comparar
+        múltiples detectores de anomalías dentro de un pipeline experimental
+        reproducible.
+
+2.2.​   Estado del Arte
+
+
+        La revisión del estado del arte permitió identificar cinco líneas de
+        discusión predominantes dentro de la literatura científica vinculada al
+
+                                                                                    16
+diseño de sistemas inteligentes para predicción, detección de anomalías,
+explicabilidad y generación automatizada de reportes en entornos
+empresariales. El análisis de estas líneas permite contextualizar la
+propuesta de investigación y fundamentar técnicamente las decisiones
+metodológicas adoptadas.
+
+2.2.1 Modelos basados en árboles frente a Deep Learning en datos
+tabulares
+
+El análisis de datos tabulares ha seguido una evolución distinta a otras
+áreas de la inteligencia artificial, como la visión computacional o el
+procesamiento del lenguaje natural. En este tipo de datos, los modelos
+basados en árboles continúan mostrando ventajas competitivas en
+términos de robustez, interpretabilidad y desempeño predictivo.
+
+XGBoost, propuesto por Tianqi Chen y Carlos Guestrin en 2016,
+introdujo un enfoque escalable de gradient boosting con mecanismos de
+regularización y manejo eficiente de valores faltantes. Posteriormente,
+LightGBM y CatBoost ampliaron estas capacidades mediante mejoras en
+velocidad de entrenamiento y tratamiento de variables categóricas.
+
+En contraste, arquitecturas recientes como FT-Transformer y TabNet
+buscaron adaptar redes profundas a datos estructurados. No obstante,
+Grinsztajn et al. (2022) demostraron, sobre múltiples datasets públicos,
+que los modelos GBDT mantienen un rendimiento superior en la mayoría
+de escenarios empresariales con volúmenes medianos de datos.
+
+Considerando     que    las empresas agroexportadoras trabajan
+principalmente con información estructurada asociada a producción,
+inventario, costos y calidad, la evidencia revisada respalda el uso de
+modelos basados en árboles como núcleo predictivo de la presente
+investigación.
+
+2.2.2 Detectores individuales frente a enfoques ensemble para
+anomalías
+
+La detección de anomalías ha evolucionado desde algoritmos clásicos
+basados en densidad o proximidad hasta enfoques híbridos y
+arquitecturas profundas capaces de modelar comportamientos
+complejos.
+
+Entre los algoritmos más representativos destacan Isolation Forest, LOF
+y Deep SVDD, ampliamente utilizados en escenarios no supervisados.
+Sin embargo, estudios comparativos recientes como ADBench,
+desarrollado por Han et al. (2022), evidencian que ningún detector
+individual mantiene un desempeño consistentemente superior en todos
+los dominios de aplicación.
+
+Los resultados sugieren que la efectividad depende de factores como la
+distribución de los datos, el tipo de anomalía y la disponibilidad de
+
+                                                                     17
+etiquetas. Esta variabilidad resulta especialmente relevante en
+operaciones agroexportadoras, donde pueden coexistir anomalías
+relacionadas con producción, logística, inventario o control de calidad.
+
+A partir de esta evidencia, la presente investigación adopta una
+estrategia basada en múltiples detectores, buscando mejorar la robustez
+y reducir la dependencia de un único algoritmo.
+
+2.2.3 Modelos de lenguaje en análisis empresarial
+
+La aparición de los modelos de lenguaje de gran escala ha abierto
+nuevas posibilidades en sistemas inteligentes orientados al análisis
+empresarial. Algunas investigaciones han explorado su uso directo en
+tareas de clasificación o detección, mientras que otras los emplean como
+mecanismos de interpretación y generación de reportes.
+
+Trabajos recientes como TabLLM y la arquitectura multiagente propuesta
+por Park (2024) muestran resultados prometedores en tareas de análisis
+automatizado. No obstante, diversos estudios también reportan
+limitaciones importantes, especialmente relacionadas con errores
+numéricos, generación de información no verificable y falta de
+consistencia en contextos críticos.
+
+En entornos empresariales, donde una interpretación incorrecta puede
+impactar procesos operativos o decisiones estratégicas, estas
+limitaciones deben ser consideradas cuidadosamente.
+
+Por ello, en esta investigación los modelos de lenguaje no serán
+utilizados como mecanismo principal de detección, sino como una capa
+orientada a traducir resultados técnicos en reportes comprensibles y
+auditables para los responsables de la operación.
+
+2.2.4 Integración de componentes analíticos
+
+La literatura revisada muestra que muchas soluciones actuales abordan
+de forma aislada componentes específicos del proceso analítico, tales
+como predicción, forecasting, detección de anomalías o generación
+automatizada de reportes.
+
+Aunque estos enfoques han demostrado utilidad en contextos
+particulares, la separación entre componentes limita la trazabilidad,
+dificulta la auditoría y reduce la capacidad de tomar decisiones basadas
+en información integrada.
+
+En el sector agroexportador, donde la operación depende
+simultáneamente de variables relacionadas con producción, clima,
+costos, inventario, transporte y calidad, la integración de estos módulos
+representa una necesidad estratégica.
+
+
+
+                                                                      18
+    En función de esta brecha identificada, la propuesta de esta tesis plantea
+    una arquitectura modular que permita conectar predicción, detección,
+    explicabilidad y generación de reportes dentro de un mismo flujo
+    operacional.
+
+    2.2.5 Gobernanza, explicabilidad y cumplimiento
+
+    La incorporación de inteligencia artificial en procesos empresariales ha
+    incrementado la necesidad de establecer mecanismos de gobernanza,
+    trazabilidad y explicabilidad que permitan garantizar la confiabilidad de
+    los sistemas automatizados.
+
+    Organizaciones como el National Institute of Standards and Technology
+    han desarrollado marcos de referencia orientados a la gestión
+    responsable de sistemas inteligentes, promoviendo principios asociados
+    con transparencia, confiabilidad y auditoría.
+
+    En el contexto peruano, aunque la regulación específica sobre
+    inteligencia artificial aún se encuentra en proceso de consolidación, las
+    organizaciones enfrentan una creciente necesidad de fortalecer sus
+    mecanismos de control interno y gestión de riesgos tecnológicos.
+
+    En sectores como el agroexportador, donde la trazabilidad de procesos y
+    el cumplimiento de estándares internacionales constituyen factores
+    estratégicos, la interpretabilidad de las decisiones algorítmicas adquiere
+    una importancia fundamental.
+
+    En ese contexto, la presente investigación incorpora técnicas de
+    explicabilidad como SHAP, con el propósito de fortalecer la transparencia
+    del sistema y facilitar procesos de supervisión, validación y auditoría.
+
+    A partir del análisis de la literatura científica, se identifica una brecha de
+    investigación relacionada con la ausencia de propuestas que integren,
+    dentro de una misma arquitectura operacional orientada al sector
+    agroexportador, modelos predictivos para datos tabulares, técnicas de
+    predicción de series temporales, detección de anomalías basada en
+    métodos de ensamble, mecanismos de explicabilidad y generación
+    automatizada de reportes. Esta brecha constituye el espacio de
+    investigación abordado en la presente tesis.
+
+  Autor(es)      Añ           Aporte relevante para la investigación
+                  o
+
+T. Chen y C. 201       Propusieron XGBoost, algoritmo de gradient boosting
+Guestrin     6         optimizado para datos tabulares, ampliamente
+                       adoptado por su escalabilidad, manejo de datos
+                       faltantes  y   alto  rendimiento    en     entornos
+                       empresariales.
+
+
+
+                                                                               19
+G. Ke et al.       201   Desarrollaron LightGBM, arquitectura basada en
+                   7     histogramas que reduce costos computacionales y
+                         acelera el entrenamiento sobre grandes volúmenes
+                         de datos estructurados.
+
+L.                 201   Introdujeron CatBoost, modelo optimizado para
+Prokhorenkova      8     variables categóricas que evita target leakage,
+et al.                   especialmente útil en dominios empresariales con
+                         atributos categóricos complejos.
+
+Y. Gorishniy et 202      Presentaron FT-Transformer, una de las primeras
+al.             1        arquitecturas Transformer adaptadas a datos
+                         tabulares para comparar Deep Learning frente a
+                         modelos GBDT.
+
+S. Lundberg y 201        Propusieron SHAP, método de explicabilidad basado
+S.-I. Lee     7          en teoría de juegos que permite interpretar la
+                         contribución individual de cada variable en una
+                         predicción.
+
+M. Ribeiro et 201        Desarrollaron LIME, técnica de explicabilidad local
+al.           6          orientada a interpretar decisiones individuales de
+                         modelos de aprendizaje automático.
+
+R. J. Hyndman 200        Propusieron AutoARIMA, método automatizado para
+y Y. Khandakar 8         selección óptima de modelos de series temporales.
+
+S. J. Taylor y B. 201    Desarrollaron Prophet, modelo robusto para
+Letham            7      forecasting empresarial con componentes de
+                         tendencia y estacionalidad.
+
+B. Lim et al.      202   Introdujeron     Temporal      Fusion   Transformer,
+                   1     arquitectura     interpretable    para    forecasting
+                         multi-horizonte con selección automática de variables
+                         relevantes.
+
+F. T. Liu et al.   200   Propusieron Isolation Forest, algoritmo eficiente de
+                   8     detección de anomalías en escenarios no
+                         supervisados.
+
+M. M. Breunig 200        Introdujeron LOF, método basado en densidad local
+et al.        0          para detección de outliers en patrones heterogéneos.
+
+L. Ruff et al.     201   Presentaron Deep SVDD, arquitectura profunda para
+                   8     detección de anomalías en espacios no lineales.
+
+S. Han et al.      202   Desarrollaron ADBench, benchmark de referencia
+                   2     para evaluación comparativa de algoritmos de
+                         detección de anomalías.
+
+
+
+
+                                                                            20
+M. A. Kadir et 202      Propusieron AuditCopilot, integrando LLMs para
+al.            5        interpretación de resultados y generación de reportes
+                        automatizados en auditoría.
+
+T. Gebru et al.   202   Introdujeron el enfoque Datasheets for Datasets,
+                  1     orientado a mejorar transparencia y documentación
+                        de datasets.
+
+NIST              202   Publicó el marco de gestión de riesgos en IA,
+                  3     estableciendo      lineamientos      de    gobernanza,
+                        trazabilidad y confiabilidad en sistemas inteligentes.
+
+
+
+
+                                                                            21
+                       CAPÍTULO III :​
+                ELABORACIÓN DE LA PROPUESTA
+3.1.​   Generalidades.
+             La propuesta consiste en el desarrollo de un sistema integrado de
+             inteligencia artificial explicable para apoyar la supervisión analítica de
+             operaciones agroexportadoras peruanas.
+               El sistema recibirá registros de exportación y variables contextuales,
+               realizará procesos de validación y normalización, construirá un dataset
+               semanal, generará predicciones del valor unitario FOB y del volumen,
+               detectará desviaciones multivariables, elaborará explicaciones y
+               producirá reportes trazables.
+               La unidad de análisis será la combinación de producto, mercado de
+               destino y semana. Los productos comprendidos serán palta, uva fresca y
+               arándano. El horizonte predictivo será de una semana.
+
+
+               Los usuarios previstos son:
+                   ●​ analistas de datos;
+                   ●​ supervisores de operaciones;
+                   ●​ responsables de control;
+                   ●​ auditores de tecnologías de información;
+                   ●​ investigadores;
+                   ●​ administradores del sistema.
+
+
+               Las entradas principales serán:
+
+
+                   ●​ registros de exportación;
+                   ●​ catálogos de productos y destinos;
+                   ●​ variables macroeconómicas;
+                   ●​ variables contextuales con cobertura válida;
+                   ●​ archivos de configuración;
+                   ●​ documentos metodológicos para recuperación.
+
+
+               Las salidas principales serán:
+
+
+                   ●​ predicción del valor unitario FOB;
+
+                                                                                          22
+                     ●​ predicción del volumen;
+                     ●​ residuos predictivos;
+                     ●​ puntuación de cada detector;
+                     ●​ score combinado;
+                     ●​ nivel de severidad;
+                     ●​ explicación local;
+                     ●​ reporte validado;
+                     ●​ registro de trazabilidad.
+
+
+                 El sistema se desarrollará bajo los principios de modularidad,
+                 reproducibilidad, explicabilidad, validación de evidencia, supervisión
+                 humana y separación de responsabilidades.
+
+
+                 La propuesta no contempla monitoreo en tiempo real, integración
+                 directa con ERP, decisiones automáticas, identificación causal de riesgos
+                 ni sustitución del criterio humano.
+
+
+3.2.​   Esquema de la propuesta
+
+        El esquema general comprende las siguientes etapas:
+
+        Fuentes de datos → Ingesta → Validación → Normalización →
+        Agregación semanal → Ingeniería de características → Predicción →
+        Residuos → Detección de anomalías → Explicabilidad → Recuperación
+        de evidencia → Generación del reporte → Validación → Trazabilidad
+
+
+3.3.​   Capa de datos
+        ​       Los archivos originales serán conservados sin modificaciones en una zona raw.
+        Posteriormente serán convertidos a una estructura tabular normalizada.
+
+        La arquitectura considerará:
+
+            ●​   raw: archivos originales;
+            ●​   bronze: archivos estructurados sin transformación analítica;
+            ●​   silver: datos limpios y normalizados;
+            ●​   gold: dataset semanal, características y variables objetivo.
+
+
+
+        Cada archivo y dataset contará con identificador, fecha de procesamiento, cantidad de
+        registros y hash.
+
+
+3.4.​   ……………..
+
+
+                                                                                           23
+3.5.​   …………….. enviar al correo electronico karim
+
+
+
+
+                                                     24
+                  CAPÍTULO IV:​
+ ANÁLISIS E INTERPRETACIÓN DE LOS RESULTADOS
+4.1.​
+
+
+4.2.​
+
+
+
+
+                                           25
+      CONCLUSIONES
+1.​
+
+2.​
+
+3.​
+
+4.​
+
+5.​
+
+
+
+
+                     26
+            CONCLUSIONS
+First.​
+
+Second.​
+
+Third.​
+
+Quarter.​
+
+Fifth.​
+
+
+
+
+                          27
+      RECOMENDACIONES
+1.​
+
+2.​
+
+3.​
+
+4.​
+
+5.​
+
+
+
+
+                        28
+GLOSARIO DE TÉRMINOS
+
+
+
+
+                       29
+                REFERENCIAS BIBLIOGRÁFICAS
+Almalki, F., & Masud, M. (2025). Financial fraud detection using explainable AI
+and stacking ensemble methods. arXiv preprint arXiv:2505.10050.
+
+Ansari, A. F., Stella, L., Turkmen, C., Zhang, X., Mercado, P., Sinha, R., &
+Bergmeir, C. (2024). Chronos: Learning the language of time series. arXiv
+preprint arXiv:2403.07815.
+
+Arik, S. O., & Pfister, T. (2021). TabNet: Attentive interpretable tabular learning.
+Proceedings of the AAAI Conference on Artificial Intelligence, 35(8),
+6679–6687. https://doi.org/10.1609/aaai.v35i8.16842
+
+Barclays Research. (2025). Beyond the black box: Interpretability of LLMs in
+finance. arXiv preprint arXiv:2505.24650.
+
+Breunig, M. M., Kriegel, H.-P., Ng, R. T., & Sander, J. (2000). LOF: Identifying
+density-based local outliers. ACM SIGMOD Record, 29(2), 93–104.
+https://doi.org/10.1145/342009.335388
+
+Center for Audit Quality. (2024). Auditing in the age of generative AI. CAQ.
+https://thecaq.org/wp-content/uploads/2024/04/caq_auditing-in-the-age-of-gener
+ative-ai__2024-04.pdf
+
+Challu, C., Olivares, K. G., Oreshkin, B., Garza, F., Mergenthaler-Canseco, M.,
+& Dubrawski, A. (2022). N-HiTS: Neural hierarchical interpolation for time series
+forecasting. Advances in Neural Information Processing Systems, 35.
+(arXiv:2201.12886)
+
+Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system.
+Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge
+Discovery and Data Mining, 785–794. https://doi.org/10.1145/2939672.2939785
+
+Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daumé
+III, H., & Crawford, K. (2021). Datasheets for datasets. Communications of the
+ACM, 64(12), 86–92. https://doi.org/10.1145/3458723
+
+Gorishniy, Y., Rubashevskiy, I., Khrulkov, V., & Babenko, A. (2021). Revisiting
+deep learning models for tabular data. Advances in Neural Information
+Processing Systems 34 (NeurIPS), 8946–8959.
+
+Grinsztajn, L., Oyallon, E., & Varoquaux, G. (2022). Why do tree-based models
+still outperform deep learning on tabular data? Advances in Neural Information
+Processing Systems 35 (NeurIPS), 507–520.
+
+Han, X., Hu, Y., Venevdev, L., Liu, M., Wen, Q., & Zhang, Y. (2022). ADBench:
+Anomaly detection benchmark. Advances in Neural Information Processing
+Systems, 35.
+
+
+
+
+                                                                                 30
+Hegselmann, S., Buendia, A., Lang, H., Agrawal, M., Jiang, X., & Sontag, D.
+(2022). TabLLM: Few-shot classification of tabular data with large language
+models. arXiv preprint arXiv:2210.10723.
+
+Hyndman, R. J., & Khandakar, Y. (2008). Automatic time series forecasting: The
+forecast package for R. Journal of Statistical Software, 27(3), 1–22.
+https://doi.org/10.18637/jss.v027.i03
+
+Jesus, S., Pombal, J., Alves, D., Cruz, A., Saleiro, P., Ribeiro, R. P., Gama, J., &
+Bizarro, P. (2022). Turning the tables: Biased, imbalanced, dynamic tabular
+datasets for ML evaluation. arXiv preprint arXiv:2211.13358. [NeurIPS 2022]
+
+Kadir, M. A., Macharla Vasu, S. S., Nair, S. S., & Sonntag, D. (2025).
+AuditCopilot: Leveraging LLMs for fraud detection in double-entry bookkeeping.
+arXiv preprint arXiv:2512.02726. https://doi.org/10.48550/arXiv.2512.02726
+
+Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., & Liu, T.-Y.
+(2017). LightGBM: A highly efficient gradient boosting decision tree. Advances
+in Neural Information Processing Systems 30 (NeurIPS), 3146–3154.
+
+Kreuzberger, D., Kühl, N., & Hirschl, G. (2022). MLOps: Overview, definition,
+and         architecture.   IEEE        Access,     10,      86995–87010.
+https://doi.org/10.1109/ACCESS.2022.3197550
+
+Leocádio, D., et al. (2024). Continuous auditing artificial intelligence framework.
+[Pending venue publication]
+
+Lewis, P., Perez, E., Piktus, A., Schwenk, H., Schwab, C., Yeh, C., & Kiela, D.
+(2020). Retrieval-augmented generation for knowledge-intensive NLP tasks.
+Proceedings of the 2020 Conference on Empirical Methods in Natural
+Language               Processing            (EMNLP),              9457–9474.
+https://doi.org/10.18653/v1/2020.emnlp-main.727
+
+Li, Z., Zhao, Y., Hu, X., Botta, N., Ionescu, C., & Chen, G. H. (2022). ECOD:
+Unsupervised outlier detection using empirical cumulative distribution functions.
+IEEE Transactions on Knowledge and Data Engineering, 35(12), 12181–12193.
+https://doi.org/10.1109/TKDE.2022.3159580
+
+Lim, B., Arik, S. O., Loeff, N., & Pfister, T. (2021). Temporal fusion transformers
+for interpretable multi-horizon time series forecasting. International Conference
+on Learning Representations (ICLR). (arXiv:1912.09300)
+
+Lin, C.-Y. (2004). ROUGE: A package for automatic evaluation of summaries.
+Proceedings of the Workshop on Text Summarization Branches Out (ACL
+2004), 74–81.
+
+Liu, F. T., Ting, K. M., & Zhou, Z.-H. (2008). Isolation forest. Proceedings of the
+8th IEEE International Conference on Data Mining (ICDM), 413–422.
+https://doi.org/10.1109/ICDM.2008.17
+
+
+                                                                                 31
+Liu, Y., Hu, T., Zhang, H., Wu, H., Wang, S., Ma, L., & Long, M. (2024).
+iTransformer: Inverted transformers are effective for time series forecasting.
+International Conference on Learning Representations (ICLR).
+
+Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model
+predictions. Advances in Neural Information Processing Systems 30 (NeurIPS),
+4765–4774.
+
+Mitchell, M., Wu, S., Zaldivar, A., Barnes, P., Vasserman, L., Hutchinson, B.,
+Spitzer, E., Raji, I. D., & Gebru, T. (2019). Model cards for model reporting.
+Proceedings of the Conference on Fairness, Accountability, and Transparency
+(FAccT), 220–229. https://doi.org/10.1145/3287560.3287596
+
+National Institute of Standards and Technology. (2023). Artificial intelligence risk
+management            framework        (AI        RMF           1.0).         NIST.
+https://doi.org/10.6028/NIST.AI.600-1
+
+Nie, Y., Nguyen, N. H., Sinthong, P., & Kalagnanam, J. (2023). A time series is
+worth 64 words: Long-term forecasting with transformers. International
+Conference on Learning Representations (ICLR).
+
+Oreshkin, B. N., Carpov, D., Chapados, N., & Bengio, Y. (2020). N-BEATS:
+Neural basis expansion analysis for interpretable time series forecasting.
+Proceedings of the 37th International Conference on Machine Learning (ICML),
+4799–4808. https://doi.org/10.5555/3524938.3525255
+
+Papineni, K., Roukos, S., Ward, T., & Zhu, W.-J. (2002). BLEU: A method for
+automatic evaluation of machine translation. Proceedings of the 40th Annual
+Meeting of the Association for Computational Linguistics (ACL), 311–318.
+https://doi.org/10.3115/1073083.1073135
+
+Park, S. (2024). LLMs for anomaly validation and report generation in financial
+systems. arXiv preprint arXiv:2403.19735.
+
+Patel, R., Khan, F., Silva, B., & Shaturaev, J. (2024). AI-driven continuous
+auditing and real-time financial monitoring. International Research Journal of
+Modernization in Engineering Technology and Science.
+
+Parlamento Europeo y Consejo de la Unión Europea. (2024). Reglamento (UE)
+2024/1689 por el que se establecen normas armonizadas en materia de
+inteligencia artificial (Ley de Inteligencia Artificial). Diario Oficial de la Unión
+Europea. https://eur-lex.europa.eu/eli/reg/2024/1689
+
+Prenio, J., & Yong, J. (2024). Managing explanations: How regulators can
+address AI explainability. Bank for International Settlements, Financial Stability
+Institute. https://www.bis.org/fsi/fsipapers24.pdf
+
+Presidencia del Consejo de Ministros. (2025, septiembre). Decreto Supremo N°
+115-2025-PCM: Reglamento de la Ley N° 31814. Lima, Perú.
+https://busquedas.elperuano.pe
+
+                                                                                 32
+Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., & Gulin, A. (2018).
+CatBoost: Unbiased boosting with categorical features. Advances in Neural
+Information      Processing    Systems      31    (NeurIPS),      6638–6648.
+https://doi.org/10.5555/3327757.3327790
+
+Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). "Why should I trust you?":
+Explaining the predictions of any classifier. Proceedings of the 22nd ACM
+SIGKDD International Conference on Knowledge Discovery and Data Mining,
+1135–1144. https://doi.org/10.1145/2939672.2939778
+
+Ruff, L., Kauffmann, J. R., Vandermeulen, R. A., Montavon, G., Samek, W.,
+Kloft, M., Dickhaus, T., & Müller, K.-R. (2018). Deep one-class classification.
+Proceedings of the 35th International Conference on Machine Learning (ICML),
+4393–4402.
+
+Schneider, J., et al. (2025). Retrieval-augmented generation (RAG). Business &
+Information Systems Engineering. https://doi.org/10.1007/s12599-025-00945-3
+
+Sculley, D., Holt, G., Golovin, D., Davydov, E., Phillips, T., Ebner, D.,
+Chaudhary, V., & Young, M. (2015). Hidden technical debt in machine learning
+systems. Proceedings of the 28th International Conference on Neural
+Information Processing Systems (NIPS) Workshop.
+
+Superintendencia de Banca, Seguros y AFP. (2023). Resolución SBS N°
+053-2023: Reglamento de gestión de riesgos de modelo. Lima, Perú.
+https://www.sbs.gob.pe
+
+Taylor, S. J., & Letham, B. (2017). Forecasting at scale. PeerJ Preprints.
+https://doi.org/10.7287/peerj.preprints.3190v2
+
+Thanathamathee, P., et al. (2024). SHAP-instance weighting and anchor
+explainable AI: Enhancing XGBoost for financial fraud detection. Emerging
+Science Journal, 8(6). https://doi.org/10.28991/ESJ-2024-08-06-024
+
+Tsai, C.-P., et al. (2025). LLM-based anomaly detection in tabular data.
+[Pending venue publication]
+
+Varios autores. (2025). Hallucination detection and mitigation in large language
+models. arXiv preprint arXiv:2601.09929.
+
+Varios autores. (2025). Financial statement fraud detection through an
+integrated machine learning and explainable AI framework. Journal of Risk and
+Financial Management, 19(1), 13. https://doi.org/10.3390/jrfm19010013
+
+Varios autores. (2025). Explainable AI for forensic analysis: A comparative
+study of SHAP and LIME in intrusion detection models. Applied Sciences,
+15(13), 7329. https://doi.org/10.3390/app15137329
+
+
+
+                                                                             33
+Waltersdorfer, L., Ekaputra, F. J., Miksa, T., & Sabou, M. (2024). AuditMAI:
+Towards an infrastructure for continuous AI auditing. arXiv preprint
+arXiv:2406.14243. https://doi.org/10.48550/arXiv.2406.14243
+
+Zeng, A., Chen, M., Zhang, L., & Xu, Q. (2023). Are transformers effective for
+time series forecasting? Proceedings of the AAAI Conference on Artificial
+Intelligence, 37(9), 11121–11128. https://doi.org/10.1609/aaai.v37i9.26317
+
+Zhao, Y., Nasrullah, Z., & Li, Z. (2019). PyOD: A Python toolbox for scalable
+outlier detection. Journal of Machine Learning Research, 20(96), 1–7.
+
+
+
+
+                                ANEXOS
+
+
+
+
+                                                                           34
