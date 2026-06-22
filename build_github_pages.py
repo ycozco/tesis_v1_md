@@ -102,6 +102,7 @@ def build_site():
             <ul class="nav-links">
                 <li><a href="{relative_root}/index.html">Tesis Completa</a></li>
                 <li><a href="{relative_root}/propuesta.html">Propuesta y Prototipo</a></li>
+                <li><a href="{relative_root}/supervisor.html">Supervisor IA</a></li>
                 <li><a href="{relative_root}/planeamiento.html">Planificación</a></li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn" id="dropdownBtn">Avances de Datos e IA ▾</a>
@@ -581,7 +582,9 @@ document.addEventListener('DOMContentLoaded', () => {
     compile_diagrams(out_dir, get_template)
     compile_datos(out_dir, get_template)
     compile_admin(out_dir, get_template)
+    compile_supervisor(out_dir)
     export_csv_to_json(out_dir)
+    export_supervisor_api(out_dir)
 
     print("✅ Github Pages built successfully!")
 
@@ -691,8 +694,9 @@ def compile_datos(out_dir, get_template):
     nav_menu_static = """
             <a href="./index.html" class="nav-item">🏠 Inicio</a>
             <a href="./propuesta.html" class="nav-item">📊 Propuesta y Prototipo</a>
-            <a href="./planeamiento.html" class="nav-item">📅 Planificación</a>
+            <a href="./supervisor.html" class="nav-item">🔍 Supervisor IA</a>
             <a href="./datos.html" class="nav-item active">🗃️ Datos</a>
+            <a href="./planeamiento.html" class="nav-item">📅 Planificación</a>
             <a href="./admin.html" class="nav-item">⚙️ Administración</a>
     """
     text = re.sub(r'<nav class="main-navbar">.*?</nav>', f"""
@@ -934,6 +938,125 @@ def export_csv_to_json(out_dir):
             "stats": {"num_rows": 0, "num_cols": 0, "null_counts": {}, "filename": "No disponible localmente"}
         }
         (api_dir / f"{key}.json").write_text(json.dumps(json_data), encoding="utf-8")
+
+def compile_supervisor(out_dir):
+    """Compila el supervisor.html estático resolviendo los bloques extendidos de base.html."""
+    supervisor_tmpl_path = Path("src/templates/supervisor.html")
+    base_tmpl_path = Path("src/templates/base.html")
+    if not supervisor_tmpl_path.exists() or not base_tmpl_path.exists():
+        print("❌ Error: No se encontró supervisor.html o base.html")
+        return
+        
+    supervisor_text = supervisor_tmpl_path.read_text(encoding="utf-8")
+    base_text = base_tmpl_path.read_text(encoding="utf-8")
+    
+    # Extraer bloques de supervisor.html
+    title_match = re.search(r'{%\s*block\s+title\s*%}(.*?){%\s*endblock\s*%}', supervisor_text, re.DOTALL)
+    title = title_match.group(1).strip() if title_match else "Supervisor de Operaciones IA"
+    
+    head_match = re.search(r'{%\s*block\s+head\s*%}(.*?){%\s*endblock\s*%}', supervisor_text, re.DOTALL)
+    head = head_match.group(1).strip() if head_match else ""
+    
+    styles_match = re.search(r'{%\s*block\s+styles\s*%}(.*?){%\s*endblock\s*%}', supervisor_text, re.DOTALL)
+    styles = styles_match.group(1).strip() if styles_match else ""
+    
+    body_match = re.search(r'{%\s*block\s+body\s*%}(.*?){%\s*endblock\s*%}', supervisor_text, re.DOTALL)
+    body = body_match.group(1).strip() if body_match else ""
+    
+    scripts_match = re.search(r'{%\s*block\s+scripts\s*%}(.*?){%\s*endblock\s*%}', supervisor_text, re.DOTALL)
+    scripts = scripts_match.group(1).strip() if scripts_match else ""
+    
+    # Reemplazar en base.html
+    output_text = base_text
+    output_text = re.sub(r'{%\s*block\s+title\s*%}.*?{%\s*endblock\s*%}', title, output_text, flags=re.DOTALL)
+    output_text = re.sub(r'{%\s*block\s+head\s*%}.*?{%\s*endblock\s*%}', head, output_text, flags=re.DOTALL)
+    output_text = re.sub(r'{%\s*block\s+styles\s*%}.*?{%\s*endblock\s*%}', f"<style>{styles}</style>", output_text, flags=re.DOTALL)
+    output_text = re.sub(r'{%\s*block\s+body\s*%}.*?{%\s*endblock\s*%}', body, output_text, flags=re.DOTALL)
+    output_text = re.sub(r'{%\s*block\s+scripts\s*%}.*?{%\s*endblock\s*%}', f"<script>{scripts}</script>", output_text, flags=re.DOTALL)
+    
+    # Ruteo estático del menú de navegación
+    static_nav = """
+            <div class="nav-menu">
+                <a href="./index.html" class="nav-item">🏠 Inicio</a>
+                <a href="./datos.html" class="nav-item">🗃️ Datos</a>
+                <a href="./propuesta.html" class="nav-item">📊 Propuesta y Prototipo</a>
+                <a href="./supervisor.html" class="nav-item active">🔍 Supervisor IA</a>
+                <a href="./planeamiento.html" class="nav-item">📅 Planificación</a>
+                <a href="./admin.html" class="nav-item">⚙️ Administración</a>
+            </div>
+    """
+    output_text = re.sub(r'<div class="nav-menu">.*?</div>', static_nav, output_text, flags=re.DOTALL)
+    
+    # Cambiar rutas relativas en general
+    output_text = output_text.replace('href="/"', 'href="./index.html"')
+    output_text = output_text.replace('href="/secciones"', 'href="./index.html#secciones"')
+    output_text = output_text.replace('href="/datos"', 'href="./datos.html"')
+    output_text = output_text.replace('href="/propuesta"', 'href="./propuesta.html"')
+    output_text = output_text.replace('href="/supervisor"', 'href="./supervisor.html"')
+    output_text = output_text.replace('href="/planeamiento"', 'href="./planeamiento.html"')
+    output_text = output_text.replace('href="/admin"', 'href="./admin.html"')
+    
+    # Modificar endpoints fetch de la API del supervisor para que apunten a los JSONs locales
+    output_text = output_text.replace("fetch('/api/supervisor/alerts')", "fetch('./api/supervisor/alerts.json')")
+    output_text = output_text.replace("fetch(`/api/supervisor/report/${key}`)", "fetch(`./api/supervisor/report/${key}.json`)")
+    output_text = output_text.replace("fetch(`/api/supervisor/traceability/${key}`)", "fetch(`./api/supervisor/traceability/${key}.json`)")
+    
+    (out_dir / "supervisor.html").write_text(output_text, encoding="utf-8")
+    print("✅ supervisor.html generado exitosamente.")
+
+def export_supervisor_api(out_dir):
+    """Exporta los datos JSON del supervisor de operaciones a rutas estáticas de GitHub Pages."""
+    import json
+    api_dir = out_dir / "api" / "supervisor"
+    api_dir.mkdir(parents=True, exist_ok=True)
+    
+    # 1. Alertas locales y explicaciones
+    alerts_path = Path("data/gold/local_explanations.json")
+    if alerts_path.exists():
+        try:
+            shutil.copy2(alerts_path, api_dir / "alerts.json")
+            print("✅ Exportado alerts.json")
+            
+            with open(alerts_path, "r", encoding="utf-8") as f:
+                alerts_data = json.load(f)
+                
+            # 2. Reportes
+            reports_path = Path("data/gold/generated_reports.json")
+            reports_api_dir = api_dir / "report"
+            reports_api_dir.mkdir(parents=True, exist_ok=True)
+            if reports_path.exists():
+                with open(reports_path, "r", encoding="utf-8") as f:
+                    reports_data = json.load(f)
+                for key in alerts_data.keys():
+                    key_data = reports_data.get(key, {"report_content": "No se encontró el contenido del reporte."})
+                    (reports_api_dir / f"{key}.json").write_text(json.dumps(key_data, indent=2), encoding="utf-8")
+                print(f"✅ Exportados {len(alerts_data)} reportes individuales.")
+            else:
+                for key in alerts_data.keys():
+                    placeholder = {"report_content": "Reporte no disponible."}
+                    (reports_api_dir / f"{key}.json").write_text(json.dumps(placeholder, indent=2), encoding="utf-8")
+            
+            # 3. Trazabilidad
+            trace_path = Path("data/gold/traceability_log.json")
+            trace_api_dir = api_dir / "traceability"
+            trace_api_dir.mkdir(parents=True, exist_ok=True)
+            if trace_path.exists():
+                with open(trace_path, "r", encoding="utf-8") as f:
+                    trace_data = json.load(f)
+                for key in alerts_data.keys():
+                    key_data = trace_data.get(key, {"error": "No se encontraron datos de trazabilidad."})
+                    (trace_api_dir / f"{key}.json").write_text(json.dumps(key_data, indent=2), encoding="utf-8")
+                print(f"✅ Exportados {len(alerts_data)} registros de trazabilidad.")
+            else:
+                for key in alerts_data.keys():
+                    placeholder = {"error": "Trazabilidad no disponible."}
+                    (trace_api_dir / f"{key}.json").write_text(json.dumps(placeholder, indent=2), encoding="utf-8")
+                    
+        except Exception as e:
+            print(f"⚠️ Error exportando supervisor API: {e}")
+    else:
+        print("⚠️ Advertencia: No se encontró local_explanations.json. Escribiendo placeholders de supervisor API...")
+        (api_dir / "alerts.json").write_text("{}", encoding="utf-8")
 
 if __name__ == "__main__":
     build_site()

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Integrado de Auditoría Continua con IA: Predicción, Detección de Anomalías y Generación de Reportes Automáticos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#capitulo-i-planteamiento-del-problema">CAPÍTULO I: PLANTEAMIENTO DEL PROBLEMA</a><ul>
+<li><a href="#11-descripcion-de-la-realidad-problematica">1.1 Descripción de la Realidad Problemática</a><ul>
+<li><a href="#contexto-empresarial-y-financiero">Contexto empresarial y financiero</a></li>
+<li><a href="#problemas-identificados">Problemas identificados</a></li>
+</ul>
+</li>
+<li><a href="#12-problema-principal">1.2 Problema Principal</a><ul>
+<li><a href="#sub-problemas">Sub-problemas</a></li>
+</ul>
+</li>
+<li><a href="#13-objetivos">1.3 Objetivos</a><ul>
+<li><a href="#131-objetivo-principal">1.3.1 Objetivo Principal</a></li>
+<li><a href="#132-objetivos-especificos">1.3.2 Objetivos Específicos</a></li>
+</ul>
+</li>
+<li><a href="#14-hipotesis-de-la-investigacion">1.4 Hipótesis de la Investigación</a></li>
+<li><a href="#15-variables-e-indicadores">1.5 Variables e Indicadores</a><ul>
+<li><a href="#151-variable-independiente">1.5.1 Variable Independiente</a></li>
+<li><a href="#152-variables-dependientes">1.5.2 Variables Dependientes</a></li>
+</ul>
+</li>
+<li><a href="#16-viabilidad-de-la-investigacion">1.6 Viabilidad de la Investigación</a><ul>
+<li><a href="#161-viabilidad-tecnica">1.6.1 Viabilidad Técnica</a></li>
+<li><a href="#162-viabilidad-operativa">1.6.2 Viabilidad Operativa</a></li>
+<li><a href="#163-viabilidad-economica">1.6.3 Viabilidad Económica</a></li>
+</ul>
+</li>
+<li><a href="#17-justificacion-e-importancia-de-la-investigacion">1.7 Justificación e Importancia de la Investigación</a><ul>
+<li><a href="#171-justificacion-teorica">1.7.1 Justificación Teórica</a></li>
+<li><a href="#172-justificacion-economica">1.7.2 Justificación Económica</a></li>
+<li><a href="#173-justificacion-social">1.7.3 Justificación Social</a></li>
+<li><a href="#174-importancia">1.7.4 Importancia</a></li>
+</ul>
+</li>
+<li><a href="#18-alcance">1.8 Alcance</a></li>
+</ul>
+</li>
+<li><a href="#capitulo-ii-marco-teorico">CAPÍTULO II: MARCO TEÓRICO</a><ul>
+<li><a href="#21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</a><ul>
+<li><a href="#avances-en-modelos-para-datos-tabulares">Avances en modelos para datos tabulares</a></li>
+<li><a href="#series-temporales-y-forecasting">Series temporales y forecasting</a></li>
+<li><a href="#deteccion-de-anomalias">Detección de anomalías</a></li>
+<li><a href="#fraude-y-auditoria-continua">Fraude y auditoría continua</a></li>
+<li><a href="#modelos-de-lenguaje-en-auditoria">Modelos de lenguaje en auditoría</a></li>
+<li><a href="#gobernanza-y-calidad-en-sistemas-ia">Gobernanza y calidad en sistemas IA</a></li>
+<li><a href="#sintesis-de-antecedentes">Síntesis de antecedentes</a></li>
+</ul>
+</li>
+<li><a href="#22-estado-del-arte">2.2 Estado del Arte</a></li>
+<li><a href="#23-marco-conceptual">2.3 Marco Conceptual</a><ul>
+<li><a href="#231-reconocimiento-de-patrones">2.3.1 Reconocimiento de patrones</a></li>
+<li><a href="#232-aprendizaje-automatico-machine-learning">2.3.2 Aprendizaje automático (Machine Learning)</a></li>
+<li><a href="#233-modelos-basados-en-arboles-y-gradient-boosting">2.3.3 Modelos basados en árboles y Gradient Boosting</a></li>
+<li><a href="#234-datos-tabulares-en-sistemas-empresariales">2.3.4 Datos tabulares en sistemas empresariales</a></li>
+<li><a href="#235-series-temporales-y-prediccion">2.3.5 Series temporales y predicción</a></li>
+<li><a href="#236-deteccion-de-anomalias">2.3.6 Detección de anomalías</a></li>
+<li><a href="#237-deteccion-de-fraude-y-auditoria-inteligente">2.3.7 Detección de fraude y auditoría inteligente</a></li>
+<li><a href="#238-modelos-de-lenguaje-llms-y-generacion-de-reportes">2.3.8 Modelos de lenguaje (LLMs) y generación de reportes</a></li>
+<li><a href="#239-gobernanza-y-calidad-en-sistemas-de-ia">2.3.9 Gobernanza y calidad en sistemas de IA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>Sistema Integrado de Auditoría Continua con IA: Predicción, Detección de Anomalías y Generación de Reportes Automáticos</h1>
+                <div class="meta">
+                    Autor: Tu Nombre | Generado: 2026-05-25 01:12
+                </div>
+            </div>
+            
+            <h1 id="capitulo-i-planteamiento-del-problema">CAPÍTULO I: PLANTEAMIENTO DEL PROBLEMA</h1>
+<h2 id="11-descripcion-de-la-realidad-problematica">1.1 Descripción de la Realidad Problemática</h2>
+<h3 id="contexto-empresarial-y-financiero">Contexto empresarial y financiero</h3>
+<p>En instituciones financieras (bancos, cooperativas, financieras), la auditoría de transacciones es crítica para detectar fraude, incumplimiento normativo y lavado de dinero. Actualmente, los sistemas de detección operan en silos: modelos de predicción (XGBoost), algoritmos de anomalías (Isolation Forest), y reportería manual o semiautomática.</p>
+<p>La magnitud del problema es significativa: en contextos con millones de transacciones diarias, la auditoría manual es inviable. Sin embargo, sistemas automatizados sin explicabilidad erosionan confianza regulatoria y corporativa. Las autoridades (SBS en Perú, Basilea III a nivel internacional, NIST AI RMF) demandan audibilidad: ¿por qué el sistema tomó esta decisión?</p>
+<h3 id="problemas-identificados">Problemas identificados</h3>
+<ol>
+<li>
+<p><strong>Falta de integración</strong>: Cada componente funciona independientemente; las decisiones del modelo no se comunican a los auditores con contexto completo.</p>
+</li>
+<li>
+<p><strong>Baja explicabilidad</strong>: Los modelos GBDT producen predicciones numéricas, pero sin explicación de por qué un cliente/transacción se marcó como anómala. Auditores requieren justificación clara para acciones.</p>
+</li>
+<li>
+<p><strong>Reportería manual</strong>: Los hallazgos de anomalías requieren redacción manual de reportes, con riesgo de inconsistencia, ineficiencia a escala e incumplimiento de SLA.</p>
+</li>
+<li>
+<p><strong>Falta de trazabilidad regulatoria</strong>: Reguladores demandan audibilidad end-to-end. Los silos no permiten rastrabilidad de decisiones automáticas.</p>
+</li>
+<li>
+<p><strong>Ausencia de validación cruzada</strong>: Las anomalías detectadas por un método no se validan contra múltiples perspectivas (temporal, comportamental, multidimensional).</p>
+</li>
+<li>
+<p><strong>Riesgos de sesgo sin control</strong>: Modelos no explicables pueden incrustar sesgos discriminatorios; sin explicabilidad, es difícil detectarlos.</p>
+</li>
+</ol>
+<h2 id="12-problema-principal">1.2 Problema Principal</h2>
+<p><strong>¿Cómo diseñar e implementar un sistema integrado de auditoría continua que unifique predicción, detección de anomalías, explicabilidad y generación de reportes, manteniendo trazabilidad regulatoria y explicabilidad en cada componente, superior en usabilidad y confianza respecto a sistemas con componentes aislados?</strong></p>
+<h3 id="sub-problemas">Sub-problemas</h3>
+<ul>
+<li>¿Qué arquitectura modular minimiza acoplamiento entre componentes pero garantiza coherencia de decisiones?</li>
+<li>¿Cuál es el trade-off entre precisión de detección y explicabilidad?</li>
+<li>¿Cómo evaluar que reportes generados automáticamente son de calidad aceptable para auditores?</li>
+<li>¿Es viable integrar LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) en sistemas de auditoría financiera manteniendo trazabilidad?</li>
+</ul>
+<h2 id="13-objetivos">1.3 Objetivos</h2>
+<h3 id="131-objetivo-principal">1.3.1 Objetivo Principal</h3>
+<p>Diseñar, implementar y evaluar un sistema integrado de auditoría continua que combine predicción tabular, detección de anomalías mediante ensemble, explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), y generación automática de reportes con LLMs en arquitectura RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación), demostrando que la integración produce mejor trazabilidad, usabilidad y confianza que sistemas aislados.</p>
+<h3 id="132-objetivos-especificos">1.3.2 Objetivos Específicos</h3>
+<ol>
+<li>
+<p><strong>Arquitectura y modularidad</strong>: Definir una arquitectura en capas (predicción → detección → explicación → reporte) que separe responsabilidades según principios de gobernanza NIST AI RMF, permitiendo reemplazo de componentes sin breaking changes.</p>
+</li>
+<li>
+<p><strong>Predicción y detección robusto</strong>: Implementar pipeline de predicción (XGBoost/LightGBM) + ensemble de detectores (Isolation Forest, LOF (Local Outlier Factor - Factor de Anomalía Local), Deep SVDD) y demostrar superioridad respecto a métodos aislados usando BAF Benchmark (AUC ≥ 0.92).</p>
+</li>
+<li>
+<p><strong>Explicabilidad verificable</strong>: Integrar SHAP para generar explicaciones de decisiones del modelo; validar que top-3 features explican ≥70% de varianza por muestra.</p>
+</li>
+<li>
+<p><strong>Generación de reportes de calidad</strong>: Implementar componente LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG que traduzca anomalías + explicaciones SHAP a reportes en lenguaje natural; alcanzar ROUGE-1 ≥ 0.50 vs. referencia humana.</p>
+</li>
+<li>
+<p><strong>Evaluación integrada y usabilidad</strong>: Diseñar experimento comparativo (sistema integrado vs. componentes aislados) con métricas de tiempo-a-decisión (reducción ≥30%), confianza auditor (+1 punto escala 5), y precisión de decisiones.</p>
+</li>
+</ol>
+<h2 id="14-hipotesis-de-la-investigacion">1.4 Hipótesis de la Investigación</h2>
+<p><strong>Hipótesis General (H1)</strong>: Un sistema integrado que combina predicción GBDT, detección de anomalías mediante ensemble, explicabilidad SHAP y generación de reportes con LLM+RAG produce mayor trazabilidad regulatoria, usabilidad y confianza en auditores que sistemas con componentes aislados.</p>
+<p><strong>Hipótesis Nula (H0)</strong>: No existe diferencia estadísticamente significativa entre sistema integrado y componentes aislados en trazabilidad, usabilidad o confianza.</p>
+<p><strong>Sub-hipótesis</strong>:<br />
+- H1a: El ensemble de anomalías (IF (Isolation Forest - Bosque de Aislamiento)+LOF+SVDD) supera métodos aislados en robustez ante diversas distribuciones de datos.<br />
+- H1b: Explicaciones SHAP son suficientemente interpretables para auditores (coherencia ≥80% en evaluación cualitativa).<br />
+- H1c: Reportes LLM+RAG alcanzan calidad comparable a referencia humana (ROUGE-1 ≥0.50).<br />
+- H1d: Sistema integrado reduce tiempo-a-decisión ≥30% sin sacrificar precisión.</p>
+<h2 id="15-variables-e-indicadores">1.5 Variables e Indicadores</h2>
+<h3 id="151-variable-independiente">1.5.1 Variable Independiente</h3>
+<p><strong>Sistema de auditoría (categoría)</strong>:<br />
+- VI1: Sistema integrado (predicción + detección + SHAP + LLM+RAG)<br />
+- VI2: Componentes aislados (baseline)</p>
+<p><strong>Indicador</strong>: Tipo de sistema utilizado (categórico: integrado vs. aislado)</p>
+<h3 id="152-variables-dependientes">1.5.2 Variables Dependientes</h3>
+<p><strong>VD1: Rendimiento de detección</strong><br />
+- Indicador: ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), Precision, Recall, F1-score<br />
+- Métrica: Score numérico [0, 1]<br />
+- Rango aceptable: AUC ≥ 0.90</p>
+<p><strong>VD2: Calidad de explicabilidad</strong><br />
+- Indicador: Coverage (% features en top-3), Consistency (coherencia cualitativa)<br />
+- Métrica: Porcentaje explicado, puntuación Likert 1-5<br />
+- Rango aceptable: Coverage ≥70%, Consistency ≥4</p>
+<p><strong>VD3: Calidad de reportes</strong><br />
+- Indicador: ROUGE-1, ROUGE-L, coherencia, completitud<br />
+- Métrica: Score ROUGE [0, 1], evaluación manual<br />
+- Rango aceptable: ROUGE-1 ≥0.50</p>
+<p><strong>VD4: Usabilidad y confianza</strong><br />
+- Indicador: Tiempo-a-decisión (segundos), confianza (Likert 1-5), precisión decisión<br />
+- Métrica: Δ tiempo, Δ confianza, % correcto<br />
+- Rango aceptable: Δ tiempo ≥30%, Δ confianza ≥+1, % correcto ≥85%</p>
+<p><strong>VD5: Trazabilidad regulatoria</strong><br />
+- Indicador: Audibilidad de decisiones (escala NIST AI RMF), documentación<br />
+- Métrica: Cumplimiento con NIST RMF (Govern, Map, Measure, Manage)<br />
+- Rango aceptable: Cumplimiento ≥80% de requisitos</p>
+<h2 id="16-viabilidad-de-la-investigacion">1.6 Viabilidad de la Investigación</h2>
+<h3 id="161-viabilidad-tecnica">1.6.1 Viabilidad Técnica</h3>
+<p><strong>✓ Disponibilidad de tecnologías</strong>:<br />
+- Modelos GBDT: XGBoost, LightGBM, CatBoost (open-source, bien documentados)<br />
+- Detección anomalías: scikit-learn (IF, LOF), torch (Deep SVDD)<br />
+- Explicabilidad: SHAP library (estándar académico)<br />
+- LLMs: acceso a APIs (OpenAI, Anthropic) o modelos locales (Llama 2)<br />
+- Infraestructura: Python 3.9+, PyTorch/TensorFlow, Pandas</p>
+<p><strong>✓ Datos disponibles</strong>:<br />
+- BAF Benchmark (público, reproducible) para evaluación<br />
+- Posibilidad de acceso a datos anonimizados de institución financiera (confidencial)</p>
+<p><strong>✓ Metodologías establecidas</strong>:<br />
+- Pipelines ML maduros (scikit-learn, MLOps best practices)<br />
+- Evaluación estándar (ROC-AUC, ROUGE, métricas usabilidad)</p>
+<p><strong>Riesgos técnicos identificados</strong>:<br />
+- Latencia SHAP en datasets grandes (&gt;1M filas): mitigación con approximation methods<br />
+- Variabilidad de LLMs: requerir fine-tuning y prompt engineering robusto<br />
+- <strong>Mitigación</strong>: Pruebas piloto con datos subconjunto, benchmarking iterativo</p>
+<h3 id="162-viabilidad-operativa">1.6.2 Viabilidad Operativa</h3>
+<p><strong>✓ Recursos humanos</strong>:<br />
+- Investigador principal (diseño, implementación, análisis)<br />
+- Acceso a expertos en ML y auditoría (asesoría)<br />
+- Posibilidad de reclutamiento de auditores voluntarios para evaluación</p>
+<p><strong>✓ Timeline realista</strong>:<br />
+- Fase 1 (Meses 1-2): Preparación datos, implementación arquitectura base<br />
+- Fase 2 (Meses 2-3): Entrenamiento modelos, validación<br />
+- Fase 3 (Mes 4): Test de usabilidad con usuarios<br />
+- Fase 4 (Mes 5): Análisis, escritura, defensa</p>
+<p><strong>✓ Acceso a datos</strong>:<br />
+- BAF Benchmark es abierto (GitHub)<br />
+- Negociaciones en curso con institución financiera para dataset real</p>
+<p><strong>Riesgos operativos</strong>:<br />
+- Confidencialidad de datos financieros: requerir NDA, anonimización<br />
+- Disponibilidad de auditores para test: usar voluntarios o simulación</p>
+<h3 id="163-viabilidad-economica">1.6.3 Viabilidad Económica</h3>
+<p><strong>✓ Presupuesto estimado</strong>:<br />
+- Infraestructura (GPU cloud, APIs LLM): $500-1000 USD<br />
+- Licencias/herramientas: $0 (stack open-source)<br />
+- Incentivos participantes test: $200-300 USD<br />
+- <strong>Total aprox.</strong>: $800-1300 USD</p>
+<p><strong>✓ Financiamiento disponible</strong>:<br />
+- Becas de investigación universitaria<br />
+- Recursos propios del investigador<br />
+- Posible apoyo de institución financiera colaboradora</p>
+<p><strong>Eficiencia costo-beneficio</strong>:<br />
+- Bajo costo relativo comparado con impacto potencial (aplicación en producción)</p>
+<h2 id="17-justificacion-e-importancia-de-la-investigacion">1.7 Justificación e Importancia de la Investigación</h2>
+<h3 id="171-justificacion-teorica">1.7.1 Justificación Teórica</h3>
+<p><strong>Aporte a la literatura académica</strong>:</p>
+<p>Existe una brecha identificada en la literatura: no hay trabajos que unifiquen en una sola arquitectura verificada:<br />
+1. Predicción tabular (GBDT) + detección anomalías (ensemble) + explicabilidad (SHAP) + generación reportes (LLM+RAG)<br />
+2. Con énfasis en trazabilidad regulatoria (NIST AI RMF)<br />
+3. Con evaluación empírica de usabilidad en usuarios reales (auditores)</p>
+<p>Esta tesis aporta:<br />
+- <strong>Modelo conceptual</strong> integrado documentado y evaluado<br />
+- <strong>Validación empírica</strong> de que integración &gt; silos en contexto financiero<br />
+- <strong>Guía de implementación</strong> para instituciones financieras</p>
+<h3 id="172-justificacion-economica">1.7.2 Justificación Económica</h3>
+<p><strong>Potencial de mercado</strong>:</p>
+<p>Instituciones financieras enfrentan:<br />
+- Costo de auditoría manual: &gt;$1M USD/año en grandes bancos (5000+ transacciones/día)<br />
+- Riesgo regulatorio: multas por incumplimiento (e.g., SBS Perú: hasta 3% ingresos)<br />
+- Oportunidad: automatización + explicabilidad reduce ambos</p>
+<p>Sistema integrado podría:<br />
+- Reducir costo auditoría 40-50% mediante automatización<br />
+- Reducir riesgo regulatorio mediante trazabilidad<br />
+- ROI estimado: 18-24 meses en implementación</p>
+<h3 id="173-justificacion-social">1.7.3 Justificación Social</h3>
+<p><strong>Impacto regulatorio y confianza</strong>:</p>
+<ul>
+<li>Reguladores (SBS, Basilea III) demandan IA explicable en finanzas</li>
+<li>Confianza ciudadana en sistemas automáticos requiere transparencia</li>
+<li>Sistema integrado demuestra viabilidad de IA responsable en decisiones críticas</li>
+</ul>
+<p><strong>Inclusión financiera</strong>:</p>
+<ul>
+<li>Mejor detección fraude protege a usuarios vulnerables</li>
+<li>Reportería automatizada permite atender casos más rápidamente</li>
+</ul>
+<h3 id="174-importancia">1.7.4 Importancia</h3>
+<p><strong>Nivel académico</strong>:<br />
+- Contribución a campos: ML interpretable, auditoría computarizada, gobernanza IA<br />
+- Potencial publicación en congresos (ICML, AAAI, FAccT) y revistas (IEEE TKDE, ACM TIST)</p>
+<p><strong>Nivel profesional</strong>:<br />
+- Guía de referencia para instituciones financieras adoptando IA<br />
+- Buenas prácticas documentadas en diseño modular, explicabilidad, gobernanza</p>
+<p><strong>Nivel institucional</strong>:<br />
+- Fortalece posicionamiento de universidad en IA responsable<br />
+- Establece colaboraciones con sector financiero</p>
+<h2 id="18-alcance">1.8 Alcance</h2>
+<p><strong>Alcance temático</strong>:<br />
+- Predicción con GBDT, detección anomalías ensemble, explicabilidad SHAP, generación reportes LLM<br />
+- Marco de gobernanza NIST AI RMF<br />
+- <strong>Excluye</strong>: Deep learning puro, modelos de series temporales avanzados (fuera del scope), regulación detallada SBS</p>
+<p><strong>Alcance geográfico</strong>:<br />
+- Contexto de banco/institución financiera típica en América Latina (Perú, formato SBS)<br />
+- Datos sintéticos (BAF Benchmark) + posiblemente data anónima local</p>
+<p><strong>Alcance temporal</strong>:<br />
+- Evaluación en dataset static (no live monitoring en producción)<br />
+- Tiempo de estudio: 5 meses</p>
+<p><strong>Alcance de usuarios</strong>:<br />
+- Auditores de instituciones financieras (n=10-20 en test de usabilidad)<br />
+- Reguladores (audiencia secundaria para recomendaciones)</p>
+<hr />
+<h1 id="capitulo-ii-marco-teorico">CAPÍTULO II: MARCO TEÓRICO</h1>
+<h2 id="21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</h2>
+<p>El desarrollo de sistemas de predicción, detección de anomalías y generación de reportes en entornos empresariales ha evolucionado significativamente en los últimos años, impulsado por avances en aprendizaje automático, modelado de series temporales y el uso emergente de modelos de lenguaje.</p>
+<h3 id="avances-en-modelos-para-datos-tabulares">Avances en modelos para datos tabulares</h3>
+<p>En el ámbito de los datos tabulares, diversos estudios han demostrado que los métodos basados en GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) continúan siendo altamente competitivos. El modelo XGBoost [1] introdujo mejoras significativas en escalabilidad y rendimiento para grandes volúmenes de datos estructurados, mientras que LightGBM [2] optimizó el proceso de entrenamiento mediante técnicas como histogram-based learning y reducción de dimensionalidad. Por su parte, CatBoost [3] resolvió de manera eficiente el tratamiento de variables categóricas mediante codificación ordenada, evitando problemas de target leakage. Investigaciones más recientes han evaluado modelos profundos para datos tabulares, concluyendo que arquitecturas como FT-Transformer [4] pueden ser competitivas, aunque no superan consistentemente a los métodos basados en árboles en todos los escenarios [11].</p>
+<h3 id="series-temporales-y-forecasting">Series temporales y forecasting</h3>
+<p>En el campo del modelado de series temporales, los enfoques tradicionales continúan siendo relevantes. El método AutoARIMA [6] permite la selección automática de modelos estadísticos adecuados para forecasting, mientras que Prophet [7] facilita la modelación de estacionalidades y tendencias en entornos empresariales. Sin embargo, modelos más recientes como N-BEATS [8], N-HiTS [9] y Temporal Fusion Transformers [10] han demostrado mejoras en la predicción multi-horizonte y la incorporación de variables exógenas, lo cual resulta relevante para sistemas que requieren proyecciones complejas.</p>
+<h3 id="deteccion-de-anomalias">Detección de anomalías</h3>
+<p>En cuanto a la detección de anomalías, el algoritmo Isolation Forest [11] ha sido ampliamente adoptado debido a su eficiencia y capacidad para detectar valores atípicos sin supervisión. Métodos clásicos como Local Outlier Factor (LOF) [12] permiten identificar anomalías basadas en densidad local, mientras que enfoques más recientes como Deep SVDD [13] extienden el problema a representaciones profundas. No obstante, estudios comparativos como ADBench [14] evidencian que no existe un algoritmo universalmente superior, y que el rendimiento depende del tipo de anomalía, la calidad de los datos y el nivel de supervisión disponible.</p>
+<h3 id="fraude-y-auditoria-continua">Fraude y auditoría continua</h3>
+<p>En el contexto específico de fraude y auditoría, la literatura reciente destaca desafíos recurrentes como el desbalance extremo de clases, el concept drift y la necesidad de interpretabilidad en los modelos. Asimismo, se ha identificado una transición hacia sistemas de auditoría continua apoyados en inteligencia artificial, capaces de monitorear operaciones en tiempo real y detectar irregularidades de manera proactiva. En este sentido, el uso de datasets sintéticos como el Bank Account Fraud Benchmark [15] ha permitido simular condiciones reales de fraude, incluyendo sesgos y dinámica temporal.</p>
+<h3 id="modelos-de-lenguaje-en-auditoria">Modelos de lenguaje en auditoría</h3>
+<p>De manera complementaria, el uso de modelos de lenguaje (LLMs) ha comenzado a integrarse en tareas de análisis y detección de anomalías. Investigaciones recientes exploran su aplicación en datos tabulares [18] y en auditoría contable mediante sistemas como AuditCopilot [19], los cuales combinan detección automatizada con generación de explicaciones en lenguaje natural. Sin embargo, estos enfoques aún se consideran complementarios a los modelos tradicionales, especialmente en tareas críticas donde la trazabilidad y la precisión son fundamentales.</p>
+<h3 id="gobernanza-y-calidad-en-sistemas-ia">Gobernanza y calidad en sistemas IA</h3>
+<p>Finalmente, el desarrollo de estos sistemas requiere considerar aspectos de gobernanza y calidad, alineados con marcos como el AI Risk Management Framework del NIST [20], así como prácticas de documentación como Datasheets for Datasets [22] y Model Cards [23], que permiten garantizar transparencia, reproducibilidad y control del sesgo en los modelos.</p>
+<h3 id="sintesis-de-antecedentes">Síntesis de antecedentes</h3>
+<p>En conjunto, estos antecedentes evidencian que la tendencia actual no se orienta hacia el uso de un único modelo, sino hacia arquitecturas híbridas que integran predicción, detección de anomalías y explicabilidad, soportadas por prácticas de MLOps y evaluación rigurosa. Este enfoque resulta particularmente relevante en entornos empresariales donde la toma de decisiones depende de la confiabilidad y trazabilidad de los resultados.</p>
+<h2 id="22-estado-del-arte">2.2 Estado del Arte</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Autor(es)</th>
+<th>Año</th>
+<th>Tema</th>
+<th>Aporte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[1]</td>
+<td>T. Chen y C. Guestrin</td>
+<td>2016</td>
+<td>Modelos Tabulares</td>
+<td>XGBoost: modelo de boosting optimizado para datos tabulares, destacando por escalabilidad y rendimiento en problemas estructurados.</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>G. Ke et al.</td>
+<td>2017</td>
+<td>Modelos Tabulares</td>
+<td>LightGBM: mejora en eficiencia de entrenamiento mediante histogramas y reducción de complejidad computacional.</td>
+</tr>
+<tr>
+<td>[3]</td>
+<td>L. Prokhorenkova et al.</td>
+<td>2018</td>
+<td>Modelos Tabulares</td>
+<td>CatBoost: optimizado para variables categóricas, evitando fuga de información (target leakage).</td>
+</tr>
+<tr>
+<td>[4]</td>
+<td>Y. Gorishniy et al.</td>
+<td>2021</td>
+<td>Modelos Tabulares</td>
+<td>FT-Transformer: arquitectura deep learning para datos tabulares, competitiva con GBDT en ciertos escenarios.</td>
+</tr>
+<tr>
+<td>[6]</td>
+<td>R. J. Hyndman y Y. Khandakar</td>
+<td>2008</td>
+<td>Series Temporales</td>
+<td>AutoARIMA: método automático para selección de modelos de series temporales.</td>
+</tr>
+<tr>
+<td>[7]</td>
+<td>S. J. Taylor y B. Letham</td>
+<td>2017</td>
+<td>Series Temporales</td>
+<td>Prophet: modelo robusto para forecasting con estacionalidad y tendencia en entornos empresariales.</td>
+</tr>
+<tr>
+<td>[8]</td>
+<td>B. N. Oreshkin et al.</td>
+<td>2020</td>
+<td>Series Temporales</td>
+<td>N-BEATS: modelo profundo para series temporales con alta precisión en predicción multi-horizonte.</td>
+</tr>
+<tr>
+<td>[9]</td>
+<td>C. Challu et al.</td>
+<td>2023</td>
+<td>Series Temporales</td>
+<td>N-HiTS: arquitectura optimizada para forecasting en horizontes largos.</td>
+</tr>
+<tr>
+<td>[10]</td>
+<td>B. Lim et al.</td>
+<td>2021</td>
+<td>Series Temporales</td>
+<td>Temporal Fusion Transformer (TFT): modelo interpretable para predicción multi-horizonte.</td>
+</tr>
+<tr>
+<td>[11]</td>
+<td>F. T. Liu et al.</td>
+<td>2008</td>
+<td>Anomalías</td>
+<td>Isolation Forest: algoritmo eficiente para detección de anomalías sin supervisión.</td>
+</tr>
+<tr>
+<td>[12]</td>
+<td>M. M. Breunig et al.</td>
+<td>2000</td>
+<td>Anomalías</td>
+<td>LOF: método basado en densidad para detección de outliers locales.</td>
+</tr>
+<tr>
+<td>[13]</td>
+<td>L. Ruff et al.</td>
+<td>2018</td>
+<td>Anomalías</td>
+<td>Deep SVDD: enfoque profundo para detección de anomalías en espacios complejos.</td>
+</tr>
+<tr>
+<td>[14]</td>
+<td>S. Han et al.</td>
+<td>2022</td>
+<td>Anomalías</td>
+<td>ADBench: benchmark para evaluar algoritmos de detección de anomalías bajo distintos escenarios.</td>
+</tr>
+<tr>
+<td>[15]</td>
+<td>S. Jesus et al.</td>
+<td>2022</td>
+<td>Fraude Bancario</td>
+<td>BAF Benchmark: dataset realista para evaluación de fraude financiero con drift temporal.</td>
+</tr>
+<tr>
+<td>[16]</td>
+<td>R. E. Machado et al.</td>
+<td>2024</td>
+<td>Fraude Detectión</td>
+<td>Revisión sistemática sobre detección de fraude, identificando desafíos como desbalance y drift.</td>
+</tr>
+<tr>
+<td>[17]</td>
+<td>D. Leocádio et al.</td>
+<td>2024</td>
+<td>Auditoría IA</td>
+<td>Marco conceptual de auditoría con IA, enfocándose en monitoreo continuo y soporte a decisiones.</td>
+</tr>
+<tr>
+<td>[18]</td>
+<td>C.-P. Tsai et al.</td>
+<td>2025</td>
+<td>LLMs Tabulares</td>
+<td>Exploración de LLMs en detección de anomalías tabulares, ampliando enfoques tradicionales.</td>
+</tr>
+<tr>
+<td>[19]</td>
+<td>M. A. Kadir et al.</td>
+<td>2025</td>
+<td>Auditoría LLM</td>
+<td>AuditCopilot: integración de LLMs en auditoría contable con generación de explicaciones.</td>
+</tr>
+<tr>
+<td>[20]</td>
+<td>NIST</td>
+<td>2023</td>
+<td>Gobernanza IA</td>
+<td>AI Risk Management Framework: lineamientos de gobernanza, confiabilidad y riesgo en sistemas IA.</td>
+</tr>
+<tr>
+<td>[21]</td>
+<td>D. Sculley et al.</td>
+<td>2015</td>
+<td>MLOps</td>
+<td>Hidden Technical Debt in ML Systems: análisis de complejidad operativa de sistemas ML.</td>
+</tr>
+<tr>
+<td>[22]</td>
+<td>T. Gebru et al.</td>
+<td>2021</td>
+<td>Documentación</td>
+<td>Datasheets for Datasets: enfoque para documentar datasets y mejorar transparencia.</td>
+</tr>
+<tr>
+<td>[23]</td>
+<td>M. Mitchell et al.</td>
+<td>2019</td>
+<td>Documentación</td>
+<td>Model Cards: documentación estructurada para modelos de ML.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="23-marco-conceptual">2.3 Marco Conceptual</h2>
+<p>El marco conceptual del presente estudio se sustenta en los principios del aprendizaje automático, análisis de datos y sistemas inteligentes aplicados a entornos empresariales. Se abordan los conceptos clave necesarios para comprender el diseño de un sistema híbrido orientado a la predicción, detección de anomalías y generación de reportes.</p>
+<h3 id="231-reconocimiento-de-patrones">2.3.1 Reconocimiento de patrones</h3>
+<p>El reconocimiento de patrones es un campo fundamental dentro de la inteligencia artificial que se encarga de identificar regularidades, estructuras o relaciones en los datos. Este proceso permite transformar datos crudos en información útil mediante la identificación de tendencias y comportamientos recurrentes.</p>
+<p>En el contexto del aprendizaje automático, el reconocimiento de patrones se realiza a través de modelos que aprenden funciones a partir de datos históricos, permitiendo generalizar hacia nuevos datos no observados. Este proceso es la base para tareas como clasificación, regresión y detección de anomalías [16].</p>
+<h3 id="232-aprendizaje-automatico-machine-learning">2.3.2 Aprendizaje automático (Machine Learning)</h3>
+<p>El aprendizaje automático es una disciplina que permite a los sistemas mejorar su desempeño mediante la experiencia, es decir, a través del análisis de datos. Se clasifica en tres tipos principales:</p>
+<ul>
+<li><strong>Aprendizaje supervisado</strong>: Utiliza datos etiquetados para entrenar modelos predictivos.</li>
+<li><strong>Aprendizaje no supervisado</strong>: Identifica patrones sin necesidad de etiquetas.</li>
+<li><strong>Aprendizaje semi-supervisado</strong>: Combina ambos enfoques cuando las etiquetas son limitadas.</li>
+</ul>
+<p>Estos enfoques son ampliamente utilizados en aplicaciones empresariales como análisis de clientes, predicción de demanda y detección de fraude [16].</p>
+<h3 id="233-modelos-basados-en-arboles-y-gradient-boosting">2.3.3 Modelos basados en árboles y Gradient Boosting</h3>
+<p>Los modelos basados en árboles de decisión son ampliamente utilizados en datos tabulares debido a su interpretabilidad y capacidad para manejar relaciones no lineales. El enfoque de Gradient Boosting combina múltiples árboles débiles para construir un modelo robusto mediante optimización iterativa.</p>
+<p>Algoritmos como XGBoost [1], LightGBM [2] y CatBoost [3] han demostrado alto rendimiento en problemas de predicción estructurada, mejorando aspectos como eficiencia computacional, manejo de datos categóricos y escalabilidad.</p>
+<h3 id="234-datos-tabulares-en-sistemas-empresariales">2.3.4 Datos tabulares en sistemas empresariales</h3>
+<p>Los datos tabulares representan la forma más común de almacenamiento en sistemas empresariales, donde cada fila corresponde a una instancia y cada columna a una variable. Este tipo de datos se encuentra en sistemas como ERP, CRM y bases de datos financieras.</p>
+<p>Estudios recientes indican que los modelos basados en árboles siguen siendo una referencia sólida para este tipo de datos, incluso frente a modelos profundos más complejos [4].</p>
+<h3 id="235-series-temporales-y-prediccion">2.3.5 Series temporales y predicción</h3>
+<p>Las series temporales son secuencias de datos ordenados en el tiempo, utilizadas para analizar tendencias, estacionalidad y comportamiento dinámico. El objetivo principal es predecir valores futuros a partir de datos históricos.</p>
+<p>Modelos clásicos como ARIMA permiten capturar relaciones lineales [6], mientras que modelos modernos como Prophet [7] facilitan el modelado de tendencias y estacionalidad. En paralelo, arquitecturas profundas como N-BEATS [8], N-HiTS [9] y TFT [10] han demostrado mejoras en predicción multi-horizonte y manejo de variables externas.</p>
+<h3 id="236-deteccion-de-anomalias">2.3.6 Detección de anomalías</h3>
+<p>La detección de anomalías consiste en identificar observaciones que se desvían significativamente del comportamiento esperado. Este proceso es clave en aplicaciones como fraude, monitoreo y auditoría.</p>
+<p>El algoritmo Isolation Forest [11] permite detectar anomalías mediante la partición aleatoria del espacio de datos, mientras que LOF [12] se basa en la densidad local. En escenarios más complejos, se emplean enfoques profundos como Deep SVDD [13]. Sin embargo, la literatura evidencia que la efectividad depende del contexto y tipo de datos [14].</p>
+<h3 id="237-deteccion-de-fraude-y-auditoria-inteligente">2.3.7 Detección de fraude y auditoría inteligente</h3>
+<p>Los sistemas modernos de detección de fraude combinan modelos predictivos, detección de anomalías y reglas de negocio. Estos sistemas enfrentan desafíos como el desbalance de clases y la variabilidad temporal de los datos.</p>
+<p>Investigaciones recientes destacan la necesidad de arquitecturas híbridas que integren múltiples enfoques para mejorar la precisión y robustez del sistema [16], [17]. Además, el uso de datasets sintéticos permite simular escenarios reales y evaluar el desempeño de los modelos [15].</p>
+<h3 id="238-modelos-de-lenguaje-llms-y-generacion-de-reportes">2.3.8 Modelos de lenguaje (LLMs) y generación de reportes</h3>
+<p>Los modelos de lenguaje de gran escala (LLMs) permiten generar texto en lenguaje natural a partir de datos estructurados. En sistemas empresariales, se utilizan para transformar resultados analíticos en reportes comprensibles para usuarios no técnicos.</p>
+<p>Sin embargo, su uso debe ser complementario a modelos determinísticos, debido a limitaciones en precisión y trazabilidad [18], [19].</p>
+<h3 id="239-gobernanza-y-calidad-en-sistemas-de-ia">2.3.9 Gobernanza y calidad en sistemas de IA</h3>
+<p>El desarrollo de sistemas de inteligencia artificial requiere garantizar confiabilidad, transparencia y control del riesgo. El marco de gestión de riesgos del NIST [20] proporciona lineamientos para asegurar estos aspectos.</p>
+<p>Asimismo, prácticas como Datasheets for Datasets [22] y Model Cards [23] permiten documentar datasets y modelos, mejorando la reproducibilidad y reduciendo sesgos en sistemas productivos.</p>
+<hr />
+<p>(Continúa en siguiente sección: Capítulo III Propuesta Metodológica)</p>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

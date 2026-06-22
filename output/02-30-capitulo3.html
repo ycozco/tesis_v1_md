@@ -274,21 +274,37 @@
             <h3>📑 Índice</h3>
             <div class="toc">
 <ul>
-<li><a href="#capitulo-iii-propuesta-metodologica">CAPITULO III: PROPUESTA METODOLOGICA</a><ul>
-<li><a href="#31-arquitectura-del-sistema-integrado">3.1 Arquitectura del sistema integrado</a></li>
-<li><a href="#32-dataset-agroexportador-integrado-y-trazable">3.2 Dataset agroexportador integrado y trazable</a><ul>
-<li><a href="#321-segmentacion-de-productos">3.2.1 Segmentacion de productos</a></li>
-<li><a href="#322-uso-de-fuentes">3.2.2 Uso de fuentes</a></li>
+<li><a href="#capitulo-iii-elaboracion-de-la-propuesta">CAPÍTULO III: ELABORACIÓN DE LA PROPUESTA</a><ul>
+<li><a href="#31-generalidades">3.1 Generalidades</a><ul>
+<li><a href="#311-proposito">3.1.1 Propósito</a></li>
+<li><a href="#312-usuarios-del-sistema">3.1.2 Usuarios del Sistema</a></li>
+<li><a href="#313-entradas">3.1.3 Entradas</a></li>
+<li><a href="#314-salidas">3.1.4 Salidas</a></li>
+<li><a href="#315-requisitos-funcionales">3.1.5 Requisitos Funcionales</a></li>
+<li><a href="#316-requisitos-no-funcionales">3.1.6 Requisitos No Funcionales</a></li>
+<li><a href="#317-restricciones">3.1.7 Restricciones</a></li>
+<li><a href="#318-principios-de-diseno">3.1.8 Principios de Diseño</a></li>
+<li><a href="#319-tecnologias-implementadas">3.1.9 Tecnologías Implementadas</a></li>
+<li><a href="#3110-arquitectura-de-componentes-mermaid">3.1.10 Arquitectura de Componentes (Mermaid)</a></li>
 </ul>
 </li>
-<li><a href="#33-configuracion-experimental-y-metricas">3.3 Configuracion experimental y metricas</a><ul>
-<li><a href="#331-division-temporal">3.3.1 Division temporal</a></li>
-<li><a href="#332-metricas-por-variable-dependiente">3.3.2 Metricas por variable dependiente</a></li>
-<li><a href="#333-experimentos-e1-e5">3.3.3 Experimentos E1-E5</a></li>
-<li><a href="#334-baselines">3.3.4 Baselines</a></li>
+<li><a href="#32-esquema-de-la-propuesta">3.2 Esquema de la Propuesta</a><ul>
+<li><a href="#321-flujo-general-de-datos">3.2.1 Flujo General de Datos</a></li>
+<li><a href="#322-esquema-y-capas-de-datos">3.2.2 Esquema y Capas de Datos</a></li>
+<li><a href="#323-unidad-de-analisis">3.2.3 Unidad de Análisis</a></li>
+<li><a href="#324-variables-objetivo">3.2.4 Variables Objetivo</a></li>
+<li><a href="#325-integracion-de-fuentes-exogenas">3.2.5 Integración de Fuentes Exógenas</a></li>
+<li><a href="#326-ingenieria-de-caracteristicas-prevencion-de-data-leakage">3.2.6 Ingeniería de Características (Prevención de Data Leakage)</a></li>
+<li><a href="#327-modelamiento-predictivo-global">3.2.7 Modelamiento Predictivo Global</a></li>
+<li><a href="#328-calculo-de-residuos-robustos">3.2.8 Cálculo de Residuos Robustos</a></li>
+<li><a href="#329-ensemble-de-anomalias-y-percentiles">3.2.9 Ensemble de Anomalías y Percentiles</a></li>
+<li><a href="#3210-explicabilidad-shap-y-atribucion-local">3.2.10 Explicabilidad SHAP y Atribución local</a></li>
+<li><a href="#3211-rag-con-validador-factual">3.2.11 RAG con Validador Factual</a></li>
+<li><a href="#3212-trazabilidad-de-auditoria">3.2.12 Trazabilidad de Auditoría</a></li>
+<li><a href="#3213-seguridad-y-privacidad">3.2.13 Seguridad y Privacidad</a></li>
+<li><a href="#3214-esquema-de-despliegue-local">3.2.14 Esquema de Despliegue Local</a></li>
 </ul>
 </li>
-<li><a href="#34-reproducibilidad">3.4 Reproducibilidad</a></li>
 </ul>
 </li>
 </ul>
@@ -300,224 +316,257 @@
             <div class="header">
                 <h1>02 30 Capitulo3</h1>
                 <div class="meta">
-                    Autor: Sistema de Tesis | Generado: 2026-06-15 04:19
+                    Autor: Sistema de Tesis | Generado: 2026-06-18 21:31
                 </div>
             </div>
             
-            <div style="background-color: orange; color: white; padding: 10px; text-align: center; font-weight: bold; margin-bottom: 20px; border-radius: 5px;">EN DESARROLLO</div>
-
-<h1 id="capitulo-iii-propuesta-metodologica">CAPITULO III: PROPUESTA METODOLOGICA</h1>
-<h2 id="31-arquitectura-del-sistema-integrado">3.1 Arquitectura del sistema integrado</h2>
-<p>La arquitectura propuesta se divide en cuatro capas secuenciales y trazables:</p>
+            <h1 id="capitulo-iii-elaboracion-de-la-propuesta">CAPÍTULO III: ELABORACIÓN DE LA PROPUESTA</h1>
+<h2 id="31-generalidades">3.1 Generalidades</h2>
+<h3 id="311-proposito">3.1.1 Propósito</h3>
+<p>El propósito del sistema inteligente de supervisión agroexportadora es proveer una plataforma unificada para detectar desviaciones operativas y aduaneras en exportaciones peruanas de palta, uva y arándano. El sistema apoya a los encargados de control y analistas en la toma de decisiones informadas mediante la estimación de valores esperados, detección de anomalías multivariables, explicaciones locales SHAP y generación automática de reportes técnicos trazables RAG.</p>
+<h3 id="312-usuarios-del-sistema">3.1.2 Usuarios del Sistema</h3>
 <ol>
-<li><strong>Capa 1: Prediccion tabular.</strong> Modelos GBDT, principalmente XGBoost y LightGBM, estiman valores esperados de precio o volumen usando variables comerciales, macroeconomicas, climaticas, logisticas y de contexto.</li>
-<li><strong>Capa 2: Deteccion de anomalias.</strong> Un ensemble de Isolation Forest, LOF y ECOD produce un score de anomalia. El LLM no detecta anomalias.</li>
-<li><strong>Capa 3: Explicabilidad.</strong> SHAP/TreeSHAP identifica las variables con mayor contribucion a la alerta. Las explicaciones son atribuciones del modelo, no causalidad.</li>
-<li><strong>Capa 4: Reportes RAG/LLM.</strong> Un LLM restringido por evidencias redacta reportes tecnicos a partir de datos, score, umbral, SHAP, fuente y metadatos.</li>
+<li><strong>Analista de Control Operativo:</strong> Revisa alertas, explora las variables incidentes mediante SHAP e inicia solicitudes de auditoría.</li>
+<li><strong>Supervisor de Operaciones / Auditor Interno:</strong> Encargado de la firma de conformidad de los reportes. Valida y autoriza acciones correctivas.</li>
+<li><strong>Administrador de Datos / Ingeniero de ML:</strong> Monitorea la calidad de datos, el linaje, el ajuste de los modelos y el reentrenamiento.</li>
+<li><strong>Investigador / Usuario Académico:</strong> Analiza patrones históricos de mermas, clima o comportamiento de mercado agregados.</li>
 </ol>
-<pre class="codehilite"><code>[Dataset agroexportador integrado]
-        |
-        v
-[Capa 1: GBDT] -&gt; valor esperado / residuo
-        |
-        v
-[Capa 2: IF + LOF + ECOD] -&gt; score anomalia
-        |
-        v
-[Capa 3: SHAP] -&gt; top variables explicativas
-        |
-        v
-[Capa 4: RAG/LLM] -&gt; reporte trazable
-</code></pre>
+<h3 id="313-entradas">3.1.3 Entradas</h3>
+<ul>
+<li>Registros transaccionales de aduanas parseados de SUNAT/ADUANET (formato DBF/CSV).</li>
+<li>Series de tiempo diarias y mensuales del tipo de cambio PEN/USD de la API o caches de BCRP.</li>
+<li>Series de tiempo mensuales de precios y volúmenes mayoristas nacionales de SISAP (MIDAGRI).</li>
+<li>Proxies climáticos semanales de temperatura, humedad y lluvias acumuladas de NASA POWER.</li>
+<li>Proxies de alertas fitosanitarias mensuales de SENASA y la FDA.</li>
+<li>Configuraciones en YAML para productos arancelarios, modelos e inyección de anomalías.</li>
+</ul>
+<h3 id="314-salidas">3.1.4 Salidas</h3>
+<ul>
+<li>Predicciones puntuales de valor unitario FOB y volumen exportado para la semana $t+1$.</li>
+<li>Scores consolidados de anomalías y alertas clasificadas por severidad (<code>BAJA</code>, <code>MEDIA</code>, <code>ALTA</code>).</li>
+<li>Visualizaciones y mapas de atribución locales SHAP (PNG/SVG) de las variables predictivas.</li>
+<li>Informes narrativos en markdown validados factual y numéricamente (con linaje SHA-256).</li>
+<li>Base de datos de auditoría de trazabilidad en JSON/DuckDB.</li>
+<li>Dashboard interactivo web de visualización en Streamlit/Flask.</li>
+</ul>
+<h3 id="315-requisitos-funcionales">3.1.5 Requisitos Funcionales</h3>
+<ul>
+<li><strong>RF-01 (Importar Datos):</strong> Permitir la ingesta de archivos DBF, CSV y Parquet de las fuentes de origen.</li>
+<li><strong>RF-02 (Validar Datos):</strong> Verificar tipos de datos, códigos arancelarios válidos a 10 dígitos y países normalizados ISO alfa-3.</li>
+<li><strong>RF-03 (Normalizar y Anonimizar):</strong> Homologar escalas de peso (kg) y valor (USD), y anonimizar exportadores con hashes SHA-256 salteados.</li>
+<li><strong>RF-04 (Agregar Semanalmente):</strong> Agrupar y consolidar transacciones por combinación <code>producto × mercado × semana ISO</code>.</li>
+<li><strong>RF-05 (Entrenar Modelos):</strong> Ajustar de forma global algoritmos XGBoost y LightGBM con búsqueda de hiperparámetros en Optuna.</li>
+<li><strong>RF-06 (Predecir FOB y Volumen):</strong> Generar las estimaciones puntuales de valor unitario FOB y volumen para la semana $t+1$.</li>
+<li><strong>RF-07 (Detectar Anomalías):</strong> Calcular los percentiles de Isolation Forest, LOF y ECOD, y generar alertas si se cruzan los umbrales.</li>
+<li><strong>RF-08 (Explicar con SHAP):</strong> Estimar las contribuciones locales TreeSHAP de las variables predictoras sobre la desviación de la alerta.</li>
+<li><strong>RF-09 (Recuperar Contexto):</strong> Buscar y recuperar fragmentos semánticos en el corpus RAG mediante indexado híbrido (BM25 y embeddings).</li>
+<li><strong>RF-10 (Reportar con LLM):</strong> Generar el reporte en markdown estructurado inyectando evidencias cuantitativas y textos recuperados.</li>
+<li><strong>RF-11 (Validar Reporte):</strong> Analizar sintácticamente el texto del reporte y rechazarlo ante discrepancias numéricas superiores al 0.5%.</li>
+<li><strong>RF-12 (Consultar Trazabilidad):</strong> Permitir la reconstrucción de la alerta ingresando su identificador UUID (<code>alert_id</code>).</li>
+<li><strong>RF-13 (Revisar Alertas):</strong> Proveer filtros en la interfaz por producto, mercado, semana y nivel de severidad.</li>
+<li><strong>RF-14 (Exportar Resultados):</strong> Permitir la descarga de reportes markdown firmados y tablas de métricas del pipeline.</li>
+</ul>
+<h3 id="316-requisitos-no-funcionales">3.1.6 Requisitos No Funcionales</h3>
+<ul>
+<li><strong>Reproducibilidad:</strong> Fijación de semillas aleatorias globales (<code>42</code>) y secundarias en todos los modelos e inyección de datos.</li>
+<li><strong>Auditabilidad:</strong> Inmutabilidad mediante hashes SHA-256 registrados para cada entrada de datos, configuraciones, modelos y salidas.</li>
+<li><strong>Rendimiento:</strong> Tiempos de inferencia combinada por registro en la escala de milisegundos en CPU de uso general.</li>
+<li><strong>Modularidad:</strong> Arquitectura modular monolítica desacoplada mediante scripts independientes para ingesta, modelamiento y reporte.</li>
+<li><strong>Usabilidad:</strong> Interfaz interactiva fluida con directrices estéticas premium (vibrant dark mode y visualizaciones simplificadas).</li>
+<li><strong>Privacidad:</strong> Anonimización irreversible de los identificadores comerciales de exportadores.</li>
+</ul>
+<h3 id="317-restricciones">3.1.7 Restricciones</h3>
+<ul>
+<li><strong>Procesamiento por Lotes (Batch):</strong> El sistema está acotado a ejecuciones programadas semanales, excluyendo telemetría en tiempo real.</li>
+<li><strong>Soporte Consultivo:</strong> El sistema provee soporte a la decisión humana, no autoriza bloqueos automáticos en aduanas ni reemplaza firmas.</li>
+<li><strong>Variables Proxies:</strong> Variables críticas como mermas, costos logísticos o riesgos sanitarios se declaran conceptualmente como estimaciones o proxies, no mediciones directas.</li>
+</ul>
+<h3 id="318-principios-de-diseno">3.1.8 Principios de Diseño</h3>
+<ol>
+<li><strong>Separación de Responsabilidades:</strong> Desacoplamiento estricto del cálculo cuantitativo frente a la redacción narrativa del LLM.</li>
+<li><strong>Evidencia Primero:</strong> El prompt del modelo de lenguaje se restringe exclusivamente a las evidencias cuantitativas inyectadas.</li>
+<li><strong>Human-in-the-Loop:</strong> Cada alerta y reporte requiere revisión y firma del supervisor humano antes de su registro oficial.</li>
+<li><strong>Trazabilidad:</strong> Cada elemento del sistema hereda y propaga el linaje de identificadores y hashes.</li>
+<li><strong>Control Factual:</strong> Rechazo sistemático de reportes con discrepancias numéricas.</li>
+<li><strong>Mínimo Privilegio:</strong> Restricción de permisos y control de acceso local a los datos brutos de aduana.</li>
+</ol>
+<h3 id="319-tecnologias-implementadas">3.1.9 Tecnologías Implementadas</h3>
+<ul>
+<li><em>Lenguaje de programación:</em> Python (versión 3.11.x).</li>
+<li><em>Análisis y manipulación de datos:</em> Pandas, Numpy, PyArrow (formato Parquet).</li>
+<li><em>Algoritmos de ML y Anomalías:</em> XGBoost, LightGBM, PyOD (Isolation Forest, LOF, ECOD), Scikit-Learn, Optuna.</li>
+<li><em>Explicabilidad:</em> SHAP (TreeSHAP).</li>
+<li><em>RAG e Indexado:</em> Rank-BM25, Sentence-Transformers (<code>paraphrase-multilingual-MiniLM-L12-v2</code>).</li>
+<li><em>Servicios y Dashboard:</em> Flask / Streamlit, Jinja2, HTML5/CSS3 (estilo premium).</li>
+<li><em>Persistencia:</em> Parquet para almacenamiento analítico y archivos JSON para trazabilidad y configuraciones.</li>
+</ul>
+<h3 id="3110-arquitectura-de-componentes-mermaid">3.1.10 Arquitectura de Componentes (Mermaid)</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Capa_Datos</span><span class="w"> </span><span class="p">[</span><span class="n">Capa</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Datos</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">ETL</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">SUNAT</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="n">DBF</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">parse_sunat_dbf</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Bronze</span><span class="w"> </span><span class="n">Parquet</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C</span><span class="p">[</span><span class="n">BCRP</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SISAP</span><span class="w"> </span><span class="n">CSV</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">integrate_proxies</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Silver</span><span class="w"> </span><span class="n">Parquet</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">prepare_weekly_dataset</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Gold</span><span class="w"> </span><span class="n">weekly_product_market</span><span class="p">.</span><span class="n">parquet</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
 
-<h2 id="32-dataset-agroexportador-integrado-y-trazable">3.2 Dataset agroexportador integrado y trazable</h2>
-<p>La validacion principal no dependera de un dataset sintetico aislado. Se trabajara con un <strong>dataset agroexportador integrado</strong>, construido desde cuatro tipos de informacion:</p>
-<table>
-<thead>
-<tr>
-<th>Capa de datos</th>
-<th>Fuentes</th>
-<th>Rol</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Datos reales observados</td>
-<td>SUNAT/ADUANET, <code>data/dataset_real_v1.csv</code></td>
-<td>Base primaria de exportaciones.</td>
-</tr>
-<tr>
-<td>Datos reales agregados</td>
-<td>Trade Map, SISAP/MIDAGRI, BCRP, MIDAGRI compendios, FAOSTAT</td>
-<td>Validacion externa y contexto.</td>
-</tr>
-<tr>
-<td>Proxies documentados</td>
-<td>NASA POWER, SENAMHI, APN, OSITRAN, SENASA/FDA/RASFF</td>
-<td>Variables explicativas agregadas.</td>
-</tr>
-<tr>
-<td>Datos sinteticos controlados</td>
-<td><code>data/dataset_agro_sintetico_v1.csv</code> y reglas de inyeccion</td>
-<td>Escenarios auxiliares, balanceo y etiquetas experimentales.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="321-segmentacion-de-productos">3.2.1 Segmentacion de productos</h3>
-<table>
-<thead>
-<tr>
-<th>Producto</th>
-<th>HS</th>
-<th>Decision</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Palta</td>
-<td><code>080440</code></td>
-<td>Producto nucleo.</td>
-</tr>
-<tr>
-<td>Uva</td>
-<td><code>080610</code></td>
-<td>Producto nucleo.</td>
-</tr>
-<tr>
-<td>Arandano</td>
-<td><code>081040</code></td>
-<td>Producto nucleo; sin dependencia de SISAP.</td>
-</tr>
-<tr>
-<td>Esparrago</td>
-<td><code>070920</code></td>
-<td>Producto secundario condicionado.</td>
-</tr>
-<tr>
-<td>Cacao</td>
-<td>Verificar</td>
-<td>Excluido del nucleo por baja representatividad.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="322-uso-de-fuentes">3.2.2 Uso de fuentes</h3>
-<ul>
-<li><strong>SUNAT/ADUANET:</strong> fuente primaria para volumen, valor FOB, partida, fecha, empresa y destino.</li>
-<li><strong>Trade Map:</strong> benchmark internacional por producto y mercado destino.</li>
-<li><strong>SISAP/MIDAGRI:</strong> precio y volumen mayorista interno para palta, uva y esparrago; no mide exportaciones.</li>
-<li><strong>BCRP:</strong> tipo de cambio mensual.</li>
-<li><strong>Clima/logistica/sanidad:</strong> proxies agregados cuando no existe llave directa por embarque.</li>
-<li><strong>Sinteticos:</strong> escenarios controlados y balanceo, siempre etiquetados.</li>
-</ul>
-<h2 id="33-configuracion-experimental-y-metricas">3.3 Configuracion experimental y metricas</h2>
-<h3 id="331-division-temporal">3.3.1 Division temporal</h3>
-<p>Para evitar fuga de informacion temporal:</p>
-<ul>
-<li>Train: 70% inicial.</li>
-<li>Validation: 10% siguiente.</li>
-<li>Test: 20% final.</li>
-</ul>
-<p>El split aleatorio no se usara como evaluacion principal.</p>
-<h3 id="332-metricas-por-variable-dependiente">3.3.2 Metricas por variable dependiente</h3>
-<table>
-<thead>
-<tr>
-<th>VD</th>
-<th>Metricas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>VD1 rendimiento</td>
-<td>PR-AUC, ROC-AUC, F1, precision, recall.</td>
-</tr>
-<tr>
-<td>VD2 explicabilidad</td>
-<td>Cobertura top-k SHAP, estabilidad, claridad.</td>
-</tr>
-<tr>
-<td>VD3 reportes</td>
-<td>Rubrica de completitud, consistencia, accionabilidad y evidencia.</td>
-</tr>
-<tr>
-<td>VD4 decision</td>
-<td>Tiempo-a-decision, Likert, decision correcta.</td>
-</tr>
-<tr>
-<td>VD5 trazabilidad</td>
-<td>Porcentaje de alertas con campos completos.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="333-experimentos-e1-e5">3.3.3 Experimentos E1-E5</h3>
-<table>
-<thead>
-<tr>
-<th>Exp.</th>
-<th>Nombre</th>
-<th>Condicion experimental</th>
-<th>Control</th>
-<th>VD</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>E1</td>
-<td>Rendimiento de deteccion</td>
-<td>Ensemble IF + LOF + ECOD</td>
-<td>Detectores individuales</td>
-<td>VD1</td>
-</tr>
-<tr>
-<td>E2</td>
-<td>Aporte SHAP</td>
-<td>Alertas con SHAP</td>
-<td>Alertas solo con score</td>
-<td>VD2</td>
-</tr>
-<tr>
-<td>E3</td>
-<td>Aporte RAG</td>
-<td>Reporte RAG anclado</td>
-<td>LLM sin RAG</td>
-<td>VD3</td>
-</tr>
-<tr>
-<td>E4</td>
-<td>Sistema integrado</td>
-<td>Pipeline completo</td>
-<td>Componentes aislados</td>
-<td>VD4, VD5</td>
-</tr>
-<tr>
-<td>E5</td>
-<td>Ablation</td>
-<td>Variantes por capas</td>
-<td>Pipeline completo</td>
-<td>VD1, VD5</td>
-</tr>
-</tbody>
-</table>
-<h3 id="334-baselines">3.3.4 Baselines</h3>
-<ul>
-<li>B1: Isolation Forest individual.</li>
-<li>B2: Ensemble IF + LOF.</li>
-<li>B3: XGBoost supervisado si existe etiqueta confiable.</li>
-<li>B4: LLM sin RAG ni evidencia SHAP.</li>
-</ul>
-<h2 id="34-reproducibilidad">3.4 Reproducibilidad</h2>
-<p>Cada corrida debe registrar:</p>
-<ul>
-<li>Version del dataset.</li>
-<li>Fecha de generacion.</li>
-<li>Fuentes usadas.</li>
-<li>Semilla.</li>
-<li>Particion temporal.</li>
-<li>Modelo y parametros.</li>
-<li>Metricas.</li>
-<li>Reporte de trazabilidad.</li>
-</ul>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Capa_Modelado</span><span class="w"> </span><span class="p">[</span><span class="n">Capa</span><span class="w"> </span><span class="n">Analítica</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Modelado</span><span class="p">]</span>
+<span class="w">        </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">feature_engineering</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Prediction</span><span class="w"> </span><span class="n">Features</span><span class="p">]</span>
+<span class="w">        </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">module1_prediction</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">GBDT</span><span class="w"> </span><span class="n">Models</span><span class="o">:</span><span class="w"> </span><span class="n">XGB</span><span class="o">/</span><span class="n">LGBM</span><span class="p">]</span>
+<span class="w">        </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Cálculo</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Residuos</span><span class="o">|</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Anomaly</span><span class="w"> </span><span class="n">Features</span><span class="p">]</span>
+<span class="w">        </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">module2_anomaly</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">PyOD</span><span class="w"> </span><span class="n">Ensemble</span><span class="o">:</span><span class="w"> </span><span class="n">IF</span><span class="o">+</span><span class="n">LOF</span><span class="o">+</span><span class="n">ECOD</span><span class="p">]</span>
+<span class="w">        </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">module3_shap</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">TreeSHAP</span><span class="w"> </span><span class="n">Explanations</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Capa_Servicios</span><span class="w"> </span><span class="p">[</span><span class="n">Capa</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Reportes</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">Servicios</span><span class="w"> </span><span class="n">RAG</span><span class="p">]</span>
+<span class="w">        </span><span class="n">I</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Evidencia</span><span class="w"> </span><span class="n">JSON</span><span class="o">|</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">module4_rag</span><span class="p">.</span><span class="n">py</span><span class="o">:</span><span class="w"> </span><span class="n">LLM</span><span class="w"> </span><span class="n">RAG</span><span class="w"> </span><span class="n">Generator</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L</span><span class="p">[</span><span class="n">Knowledge</span><span class="w"> </span><span class="n">Base</span><span class="w"> </span><span class="n">Markdown</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Búsqueda</span><span class="w"> </span><span class="n">Híbrida</span><span class="w"> </span><span class="n">BM25</span><span class="o">+</span><span class="n">Embeddings</span><span class="o">|</span><span class="w"> </span><span class="n">K</span>
+<span class="w">        </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Draft</span><span class="w"> </span><span class="n">Report</span><span class="o">|</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">module5_validation</span><span class="p">.</span><span class="n">py</span><span class="o">:</span><span class="w"> </span><span class="n">Factual</span><span class="w"> </span><span class="n">Validator</span><span class="p">]</span>
+<span class="w">        </span><span class="n">M</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Validación</span><span class="w"> </span><span class="n">Factual</span><span class="o">|</span><span class="w"> </span><span class="n">N</span><span class="p">[</span><span class="n">Final</span><span class="w"> </span><span class="n">Report</span><span class="w"> </span><span class="n">Markdown</span><span class="p">]</span>
+<span class="w">        </span><span class="n">N</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">module6_traceability</span><span class="p">.</span><span class="n">py</span><span class="o">|</span><span class="w"> </span><span class="n">O</span><span class="p">[</span><span class="n">Traceability</span><span class="w"> </span><span class="n">Log</span><span class="w"> </span><span class="n">JSON</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Interfaz_Usuario</span><span class="w"> </span><span class="p">[</span><span class="n">Capa</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Visualización</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">Dashboard</span><span class="p">]</span>
+<span class="w">        </span><span class="n">O</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Visualización</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Alertas</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">Linaje</span><span class="o">|</span><span class="w"> </span><span class="n">P</span><span class="p">[</span><span class="n">app</span><span class="p">.</span><span class="n">py</span><span class="o">:</span><span class="w"> </span><span class="n">Flask</span><span class="w"> </span><span class="n">Dashboard</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+</code></pre></div>
+
 <hr />
+<h2 id="32-esquema-de-la-propuesta">3.2 Esquema de la Propuesta</h2>
+<h3 id="321-flujo-general-de-datos">3.2.1 Flujo General de Datos</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">autonumber</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">SUNAT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">SUNAT</span><span class="w"> </span><span class="n">aduanas</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">ETL</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">ETL</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Agregación</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Models</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Predicción</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Residuos</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">PyOD</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Ensemble</span><span class="w"> </span><span class="n">Outliers</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">SHAP</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">TreeSHAP</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">RAG</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">RAG</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">LLM</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Val</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Validador</span><span class="w"> </span><span class="n">Factual</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Log</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Traceability</span><span class="w"> </span><span class="n">Log</span>
+
+<span class="w">    </span><span class="n">SUNAT</span><span class="o">-&gt;&gt;</span><span class="n">ETL</span><span class="p">:</span><span class="w"> </span><span class="n">Enviar</span><span class="w"> </span><span class="n">registros</span><span class="w"> </span><span class="n">transaccionales</span>
+<span class="w">    </span><span class="n">ETL</span><span class="o">-&gt;&gt;</span><span class="n">ETL</span><span class="p">:</span><span class="w"> </span><span class="n">Agrupar</span><span class="w"> </span><span class="n">por</span><span class="w"> </span><span class="n">producto</span><span class="o">-</span><span class="n">mercado</span><span class="o">-</span><span class="n">semana</span><span class="w"> </span><span class="n">ISO</span>
+<span class="w">    </span><span class="n">ETL</span><span class="o">-&gt;&gt;</span><span class="n">Models</span><span class="p">:</span><span class="w"> </span><span class="n">Dataset</span><span class="w"> </span><span class="n">gold</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">ingeniería</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">lags</span>
+<span class="w">    </span><span class="n">Models</span><span class="o">-&gt;&gt;</span><span class="n">Models</span><span class="p">:</span><span class="w"> </span><span class="n">Entrenar</span><span class="w"> </span><span class="n">XGBoost</span><span class="o">/</span><span class="n">LightGBM</span><span class="w"> </span><span class="n">global</span>
+<span class="w">    </span><span class="n">Models</span><span class="o">-&gt;&gt;</span><span class="n">PyOD</span><span class="p">:</span><span class="w"> </span><span class="n">Residuos</span><span class="w"> </span><span class="n">robustos</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">características</span>
+<span class="w">    </span><span class="n">PyOD</span><span class="o">-&gt;&gt;</span><span class="n">PyOD</span><span class="p">:</span><span class="w"> </span><span class="n">Calcular</span><span class="w"> </span><span class="n">percentiles</span><span class="w"> </span><span class="n">consolidados</span>
+<span class="w">    </span><span class="n">PyOD</span><span class="o">-&gt;&gt;</span><span class="n">SHAP</span><span class="p">:</span><span class="w"> </span><span class="n">Gatillar</span><span class="w"> </span><span class="n">alerta</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0.95</span><span class="p">)</span>
+<span class="w">    </span><span class="n">SHAP</span><span class="o">-&gt;&gt;</span><span class="n">SHAP</span><span class="p">:</span><span class="w"> </span><span class="n">Calcular</span><span class="w"> </span><span class="n">contribución</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">variables</span>
+<span class="w">    </span><span class="n">SHAP</span><span class="o">-&gt;&gt;</span><span class="n">RAG</span><span class="p">:</span><span class="w"> </span><span class="n">Enviar</span><span class="w"> </span><span class="n">evidencia</span><span class="w"> </span><span class="p">(</span><span class="n">valores</span><span class="p">,</span><span class="w"> </span><span class="n">SHAP</span><span class="p">,</span><span class="w"> </span><span class="n">metadatos</span><span class="p">)</span>
+<span class="w">    </span><span class="n">RAG</span><span class="o">-&gt;&gt;</span><span class="n">RAG</span><span class="p">:</span><span class="w"> </span><span class="n">Recuperar</span><span class="w"> </span><span class="n">documentos</span><span class="w"> </span><span class="n">contextuales</span>
+<span class="w">    </span><span class="n">RAG</span><span class="o">-&gt;&gt;</span><span class="n">RAG</span><span class="p">:</span><span class="w"> </span><span class="n">Redactar</span><span class="w"> </span><span class="n">reporte</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">markdown</span>
+<span class="w">    </span><span class="n">RAG</span><span class="o">-&gt;&gt;</span><span class="n">Val</span><span class="p">:</span><span class="w"> </span><span class="n">Enviar</span><span class="w"> </span><span class="n">reporte</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">revisión</span>
+<span class="w">    </span><span class="n">alt</span><span class="w"> </span><span class="n">Reporte</span><span class="w"> </span><span class="n">válido</span><span class="w"> </span><span class="p">(</span><span class="n">error</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.5</span><span class="o">%</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Val</span><span class="o">-&gt;&gt;</span><span class="n">Log</span><span class="p">:</span><span class="w"> </span><span class="n">Guardar</span><span class="w"> </span><span class="n">reporte</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">registrar</span><span class="w"> </span><span class="nb">hash</span><span class="w"> </span><span class="n">SHA</span><span class="o">-</span><span class="mi">256</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="n">Reporte</span><span class="w"> </span><span class="n">inválido</span><span class="w"> </span><span class="p">(</span><span class="n">error</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="o">%</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Val</span><span class="o">-&gt;&gt;</span><span class="n">RAG</span><span class="p">:</span><span class="w"> </span><span class="n">Solicitar</span><span class="w"> </span><span class="n">corrección</span><span class="w"> </span><span class="p">(</span><span class="n">máx</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">intento</span><span class="p">)</span>
+<span class="w">        </span><span class="n">alt</span><span class="w"> </span><span class="n">Corrección</span><span class="w"> </span><span class="n">fallida</span>
+<span class="w">            </span><span class="n">Val</span><span class="o">-&gt;&gt;</span><span class="n">Log</span><span class="p">:</span><span class="w"> </span><span class="n">Generar</span><span class="w"> </span><span class="n">reporte</span><span class="w"> </span><span class="n">determinista</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">TemplateProvider</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">registrar</span>
+<span class="w">        </span><span class="n">end</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">Log</span><span class="o">-&gt;&gt;</span><span class="n">Log</span><span class="p">:</span><span class="w"> </span><span class="n">Retornar</span><span class="w"> </span><span class="n">alert_id</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">confirmar</span><span class="w"> </span><span class="n">trazabilidad</span>
+</code></pre></div>
+
+<h3 id="322-esquema-y-capas-de-datos">3.2.2 Esquema y Capas de Datos</h3>
+<ul>
+<li><strong>Raw:</strong> Datos crudos originales descargados sin procesar (formatos DBF de SUNAT y CSVs de SISAP/BCRP).</li>
+<li><strong>Bronze:</strong> Transformación inicial uno-a-uno a formato estructurado de alto rendimiento (Parquet) sin alterar campos.</li>
+<li><strong>Silver:</strong> Limpieza de nulos, homologación de códigos arancelarios a 10 dígitos, normalización de países ISO alfa-3, y anonimización de exportadores con hashes criptográficos. Exclusión sistemática de cacao.</li>
+<li><strong>Gold:</strong> Cuadrícula temporal de agregación semanal de combinación única <code>product_code</code>, <code>market_aggregated</code>, <code>week_start</code>. Generación de lags, rolling statistics y características cíclicas calendario.</li>
+</ul>
+<h3 id="323-unidad-de-analisis">3.2.3 Unidad de Análisis</h3>
+<ul>
+<li>Definición metodológica única y obligatoria: la combinación de <strong>producto × mercado de destino × semana ISO</strong> iniciada en la fecha <code>week_start</code>.</li>
+<li>Unidad de registro en los archivos analíticos de entrada a los modelos: cada fila describe el comportamiento acumulado de una subpartida arancelaria para un mercado específico durante una semana ISO (lunes a domingo).</li>
+</ul>
+<h3 id="324-variables-objetivo">3.2.4 Variables Objetivo</h3>
+<ul>
+<li><strong>FOB Unitario Promedio Semanal ($t+1$):</strong><br />
+    $$Y_{FOB}(t+1) = \frac{\sum \text{FOB_USD}<em t_1="t+1">{t+1}}{\sum \text{Net_Weight_kg}</em>$$}</li>
+<li><strong>Volumen Neto Semanal ($t+1$):</strong><br />
+    $$Y_{Vol}(t+1) = \sum \text{Net_Weight_kg}_{t+1}$$</li>
+</ul>
+<h3 id="325-integracion-de-fuentes-exogenas">3.2.5 Integración de Fuentes Exógenas</h3>
+<ul>
+<li><em>Tipo de cambio (BCRP):</em> Mapeado semanalmente a través del mes de la fecha <code>week_start</code>.</li>
+<li><em>Precios internos (SISAP):</em> Incorporados semanalmente mediante correspondencia de producto.</li>
+<li><em>Clima regional (NASA):</em> Agregado semanalmente y desplazado en una semana (<code>lag1</code>) para representar la información disponible al cierre de la semana de predicción.</li>
+</ul>
+<h3 id="326-ingenieria-de-caracteristicas-prevencion-de-data-leakage">3.2.6 Ingeniería de Características (Prevención de Data Leakage)</h3>
+<p>Todas las variables de predicción correspondientes a estadísticas móviles (<code>rolling mean</code>, <code>rolling std</code>, <code>rolling mad</code>) y variaciones porcentuales se calculan desplazando los datos observados en una semana (<code>shift(1)</code>). Esto asegura que ninguna información correspondiente a la semana $t+1$ o posterior se filtre en el conjunto de entrenamiento de la semana $t$.</p>
+<h3 id="327-modelamiento-predictivo-global">3.2.7 Modelamiento Predictivo Global</h3>
+<p>Se entrena un único modelo global de regresión multivariable (un modelo para valor unitario FOB y otro para volumen) para todos los productos y mercados seleccionados, incorporando las características categóricas codificadas mediante One-Hot Encoding. La optimización de hiperparámetros se realiza mediante Optuna sobre el split de validación temporal.</p>
+<h3 id="328-calculo-de-residuos-robustos">3.2.8 Cálculo de Residuos Robustos</h3>
+<p>Los detectores de anomalías se alimentan de los residuos de predicción fuera de muestra (predicciones OOF generadas mediante validación temporal cruzada). El residuo se escala mediante robust-z score móvil:<br />
+$$\text{residual_robust_z} = \frac{\text{residuo}(t) - \text{mediana}(\text{residuos}<em t-13..t-1="t-13..t-1">{t-13..t-1})}{\text{MAD}(\text{residuos}</em>$$})</p>
+<h3 id="329-ensemble-de-anomalias-y-percentiles">3.2.9 Ensemble de Anomalías y Percentiles</h3>
+<p>Las puntuaciones crudas de Isolation Forest, LOF y ECOD se calibran en la distribución del conjunto de entrenamiento para transformarlas a percentiles acotados en el rango $[0, 1]$. El ensemble consolida las puntuaciones promediándolas y gatilla la alerta si se supera el percentil 95.</p>
+<h3 id="3210-explicabilidad-shap-y-atribucion-local">3.2.10 Explicabilidad SHAP y Atribución local</h3>
+<p>TreeSHAP se aplica sobre los regresores globales de GBDT entrenados para calcular las contribuciones marginales locales de cada característica. El sistema extrae el top-5 de variables que empujaron positivamente la predicción esperada y el top-5 que la redujeron, inyectándolos en el prompt de la alerta.</p>
+<h3 id="3211-rag-con-validador-factual">3.2.11 RAG con Validador Factual</h3>
+<p>El motor RAG recupera información metodológica y limitaciones del corpus documental de <code>knowledge_base/</code>. El LLM recibe las evidencias de la alerta y redacta el reporte técnico. El validador determinista realiza un análisis numérico mediante expresiones regulares, comparando los números del reporte contra el JSON de entrada, cayendo en <code>TemplateProvider</code> ante discrepancias persistentes.</p>
+<h3 id="3212-trazabilidad-de-auditoria">3.2.12 Trazabilidad de Auditoría</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">classDiagram</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">IngestionRun</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">ingestion_run_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">dataset_version_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">sunat_source_hash</span>
+<span class="w">        </span><span class="o">+</span><span class="n">DateTime</span><span class="w"> </span><span class="n">timestamp</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">ModelRun</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">model_version_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">dataset_version_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">model_parameters_hash</span>
+<span class="w">        </span><span class="o">+</span><span class="n">Float</span><span class="w"> </span><span class="n">mae_fob_val</span>
+<span class="w">        </span><span class="o">+</span><span class="n">Float</span><span class="w"> </span><span class="n">rmsle_vol_val</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">AlertLog</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">alert_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">model_version_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">product_code</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">market_aggregated</span>
+<span class="w">        </span><span class="o">+</span><span class="n">DateTime</span><span class="w"> </span><span class="n">week_start</span>
+<span class="w">        </span><span class="o">+</span><span class="n">Float</span><span class="w"> </span><span class="n">ensemble_score</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">severity</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">ExplanationLog</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">explanation_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">alert_id</span>
+<span class="w">        </span><span class="o">+</span><span class="n">List</span><span class="w"> </span><span class="n">top_k_shap_variables</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">shap_plot_path</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">ReportLog</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">report_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">alert_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">explanation_id</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">report_text_hash</span>
+<span class="w">        </span><span class="o">+</span><span class="n">Boolean</span><span class="w"> </span><span class="n">is_factual_valid</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="n">template_used</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">IngestionRun</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ModelRun</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alimenta&quot;</span>
+<span class="w">    </span><span class="n">ModelRun</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">AlertLog</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;evalúa y detecta&quot;</span>
+<span class="w">    </span><span class="n">AlertLog</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ExplanationLog</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;explica&quot;</span>
+<span class="w">    </span><span class="n">ExplanationLog</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ReportLog</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;documenta&quot;</span>
+</code></pre></div>
+
+<h3 id="3213-seguridad-y-privacidad">3.2.13 Seguridad y Privacidad</h3>
+<p>El sistema opera localmente y no expone datos aduaneros crudos al exterior. Los identificadores fiscales (RUC) y nombres de las empresas exportadoras se anonimizan de manera irreversible mediante algoritmo criptográfico SHA-256 con sal fija:<br />
+$$\text{exporter_hash} = \text{SHA256}(\text{RUC} + \text{salt_salt_42})$$<br />
+Las claves de API de los LLMs se cargan mediante variables de entorno estrictamente privadas en el archivo <code>.env</code>.</p>
+<h3 id="3214-esquema-de-despliegue-local">3.2.14 Esquema de Despliegue Local</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Servidor_Local</span><span class="w"> </span><span class="p">[</span><span class="n">Servidor</span><span class="w"> </span><span class="n">Local</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Entorno</span><span class="w"> </span><span class="n">Virtual</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">SQLite</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">DuckDB</span><span class="w"> </span><span class="n">Metadata</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">FastAPI</span><span class="w"> </span><span class="n">Backend</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">App</span><span class="w"> </span><span class="n">Logic</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C</span><span class="p">[</span><span class="n">Parquet</span><span class="o">/</span><span class="n">JSON</span><span class="w"> </span><span class="n">Gold</span><span class="w"> </span><span class="n">Store</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">B</span>
+<span class="w">        </span><span class="n">D</span><span class="p">[</span><span class="n">Model</span><span class="w"> </span><span class="n">Binaries</span><span class="w"> </span><span class="p">.</span><span class="n">joblib</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span>
+<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Streamlit</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Flask</span><span class="w"> </span><span class="n">Dashboard</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span><span class="p">[</span><span class="n">Clientes</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Red</span><span class="w"> </span><span class="n">Local</span><span class="p">]</span>
+<span class="w">        </span><span class="n">E</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Navegador</span><span class="w"> </span><span class="n">Analista</span><span class="p">]</span>
+<span class="w">        </span><span class="n">E</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Navegador</span><span class="w"> </span><span class="n">Supervisor</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+</code></pre></div>
         </div>
     </div>
     

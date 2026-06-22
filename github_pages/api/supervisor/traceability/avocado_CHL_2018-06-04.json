@@ -1,0 +1,75 @@
+{
+  "traceability_uuid": "d27dea3d-a749-5217-a963-c6245fdaaa05",
+  "alert_key": "avocado_CHL_2018-06-04",
+  "data_origin": {
+    "product_code": "avocado",
+    "market": "CHL",
+    "week_start": "2018-06-04",
+    "raw_dataset_hash": "64a7dd130cbe2ba79cee04fe8e391d64a81d18cb6a0cbdb4d84e7d27fbd7bea3",
+    "weekly_dataset_hash": "4b9d0ea84880dc46192806125896707aec8274d51f5c05c8e5d1ebb5350edac3",
+    "prediction_features_hash": "e343829f19fc26b1cd153e18fcb70808b9713c82c4b37ea86fe8395c8c607773"
+  },
+  "layer1_regression": {
+    "pred_price": NaN,
+    "pred_volume": 0.4787481042510076,
+    "price_residual": 0.0,
+    "volume_residual": -0.4787481042510076,
+    "price_robust_z": 0.0,
+    "volume_robust_z": 0.0,
+    "models_used": [
+      {
+        "model": "XGBoost Price",
+        "hash": "74b5191c33fc322b9df1d553194d0e73a74c861287ef32f937fcf42122048660"
+      },
+      {
+        "model": "LightGBM Price",
+        "hash": "c386ea136c56d543597a0e27b5d0313af4f23d31eabe202d15455829ac2a2b3f"
+      },
+      {
+        "model": "XGBoost Volume",
+        "hash": "f709090793f1985cd3d8c1c659f98de70efbbb29d80159b2e66dac4a64fe41c5"
+      },
+      {
+        "model": "LightGBM Volume",
+        "hash": "e5ebe7f50a426ed332e40b8e662538685da2aa8b9c48fa26f0b9026892c2eae8"
+      }
+    ]
+  },
+  "layer2_anomaly_detection": {
+    "ensemble_score": 0.8826027397260274,
+    "severity": "Baja",
+    "is_anomaly": 1,
+    "models_used": [
+      {
+        "model": "Isolation Forest",
+        "hash": "5e471c083158131504e959795df72fcaa38c3153fcee25c3cab5c8911d7c0b7d"
+      },
+      {
+        "model": "LOF",
+        "hash": "7bb86673bdde1af5499adc4abcb79c011c28a411ec4eda0b8c5985cabaebe262"
+      },
+      {
+        "model": "ECOD",
+        "hash": "02b77d1ff1b688d96b8bbda577afb87c9127bd77a18e53e54600e7eaa13965b1"
+      }
+    ]
+  },
+  "layer3_explainability": {
+    "price_explanation_hash": "c9b9a1c6a7a7f8befe7a4af47caf69f6b5116631c6089a653552fb85f991ed0e",
+    "volume_explanation_hash": "59ed9b9d77d6af73ddba04a5a8baf70585048ab7063421419cb67c1ce0f4304f",
+    "top_features": [
+      "price_rolling_min_4",
+      "price_rolling_max_4",
+      "volume_rolling_mean_52",
+      "volume_rolling_max_8",
+      "volume_pct_change_4"
+    ]
+  },
+  "layer4_5_report_and_validation": {
+    "report_filepath": "reports\\audits\\audit_report_avocado_CHL_2018-06-04.md",
+    "report_sha256": "1fdf16635e6a089e5ba9829a513b87268cbd6dede9b173c22efca0571b7fecd7",
+    "is_factually_valid": false,
+    "fidelity_score": 0.7777777777777778,
+    "completeness_score": 1.0
+  }
+}

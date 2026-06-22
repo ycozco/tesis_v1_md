@@ -1,0 +1,30 @@
+{
+  "avocado": [
+    "NLD",
+    "CHL",
+    "CHN",
+    "ESP",
+    "USA",
+    "OTHER"
+  ],
+  "grape": [
+    "USA",
+    "NLD",
+    "MEX",
+    "ESP",
+    "HKG",
+    "OTHER"
+  ],
+  "blueberry": [
+    "USA",
+    "NLD",
+    "HKG",
+    "CHN",
+    "CAN",
+    "OTHER"
+  ],
+  "esparrago": [
+    "PAN",
+    "OTHER"
+  ]
+}

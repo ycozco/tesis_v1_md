@@ -1,0 +1,17 @@
+products:
+  avocado:
+    display_name: "Palta o aguacate"
+    tariff_codes:
+      - "0804400000"
+  grape:
+    display_name: "Uva fresca"
+    tariff_codes:
+      - "0806100000"
+  blueberry:
+    display_name: "Arándano"
+    tariff_codes:
+      - "0810400000"
+  esparrago:
+    display_name: "Espárrago"
+    tariff_codes:
+      - "0709200000"

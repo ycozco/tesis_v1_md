@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2 Anexo Modelcards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#anexo-b-model-cards-del-sistema">Anexo B — Model Cards del Sistema</a><ul>
+<li><a href="#b1-model-card-modulo-de-prediccion-tabular-xgboost-lightgbm">B.1 Model Card — Módulo de Predicción Tabular (XGBoost / LightGBM)</a></li>
+<li><a href="#b2-model-card-modulo-de-deteccion-de-anomalias-ensemble-if-isolation-forest-bosque-de-aislamiento-lof-local-outlier-factor-factor-de-anomalia-local-ecod-empirical-cumulative-distribution-outlier-detection-deteccion-de-anomalias-por-distribucion-acumulada-empirica">B.2 Model Card — Módulo de Detección de Anomalías (Ensemble IF (Isolation Forest - Bosque de Aislamiento) + LOF (Local Outlier Factor - Factor de Anomalía Local) + ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica))</a></li>
+<li><a href="#b3-model-card-modulo-de-explicabilidad-treeshap">B.3 Model Card — Módulo de Explicabilidad (TreeSHAP)</a></li>
+<li><a href="#b4-model-card-modulo-de-generacion-de-reportes-llm-rag">B.4 Model Card — Módulo de Generación de Reportes (LLM + RAG)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>A2 Anexo Modelcards</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-07 19:20
+                </div>
+            </div>
+            
+            <h2 id="anexo-b-model-cards-del-sistema">Anexo B — Model Cards del Sistema</h2>
+<blockquote>
+<p><strong>Estándar aplicado</strong>: Mitchell et al. (2019) — Model Cards for Model Reporting (Mitchell et al., 2019).<br />
+<strong>Estado</strong>: 📐 Plantillas listas, métricas pendientes de completar tras experimentos E1–E5.</p>
+<p>Cada Model Card sigue las 9 secciones de Mitchell et al.: detalles del modelo, uso previsto, factores, métricas, datos de evaluación, datos de entrenamiento, análisis cuantitativos, consideraciones éticas, advertencias y recomendaciones.</p>
+</blockquote>
+<hr />
+<h3 id="b1-model-card-modulo-de-prediccion-tabular-xgboost-lightgbm">B.1 Model Card — Módulo de Predicción Tabular (XGBoost / LightGBM)</h3>
+<p><strong>1. Detalles del modelo</strong><br />
+- Nombre: <code>module1_prediction</code><br />
+- Tipo: Ensemble de Gradient Boosting Decision Trees (XGBoost + LightGBM)<br />
+- Versión: 1.0<br />
+- Autor: Yoset Cozco Mauri (UNSA)<br />
+- Licencia del modelo entrenado: MIT<br />
+- Citación recomendada: Cozco Mauri (2026), <em>Tesis UNSA</em>.<br />
+- Hiperparámetros: definidos mediante Optuna TPE con 50 trials, optimizando PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad).</p>
+<p><strong>2. Uso previsto</strong><br />
+- Estimar el riesgo operativo (valor esperado de score) de cada registro agroexportador.<br />
+- Usuario primario: módulo de detección de anomalías (capa 2) y supervisor operativo a través del dashboard.<br />
+- Uso fuera de alcance: clasificación de decisiones legales o financieras automatizadas; no debe usarse en contextos distintos al sector agroexportador peruano sin recalibración.</p>
+<p><strong>3. Factores</strong><br />
+- Producto, zona, mes, destino.<br />
+- Variables climáticas (temperatura, precipitación, humedad).<br />
+- Cumplimiento fitosanitario y días logísticos.</p>
+<p><strong>4. Métricas</strong><br />
+- PR-AUC, ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), F1, Precision, Recall.<br />
+- Reportadas como media ± DE sobre 6 semillas en el test set.</p>
+<p><strong>5. Datos de evaluación</strong><br />
+- Dataset sintético agroexportador v1.0 (Anexo C), conjunto de test (20% cronológicamente posterior).</p>
+<p><strong>6. Datos de entrenamiento</strong><br />
+- Dataset sintético v1.0, conjunto de train (70%) + validation (10%).</p>
+<p><strong>7. Análisis cuantitativos</strong><br />
+| Métrica | Valor (mean ± SD) |<br />
+|---|---|<br />
+| PR-AUC | <em>pendiente</em> |<br />
+| ROC-AUC | <em>pendiente</em> |<br />
+| F1 | <em>pendiente</em> |<br />
+| Precision | <em>pendiente</em> |<br />
+| Recall | <em>pendiente</em> |</p>
+<p>Análisis por subgrupos (fairness):<br />
+| Subgrupo | PR-AUC | F1 |<br />
+|---|---|---|<br />
+| Producto = arándano | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Producto = uva | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Producto = palta | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Producto = cacao | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Producto = espárrago | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Zona = Ica | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Zona = La Libertad | <em>pendiente</em> | <em>pendiente</em> |</p>
+<p><strong>8. Consideraciones éticas</strong><br />
+- Datos sintéticos: cero riesgo de exposición de información personal o empresarial.<br />
+- Posible sesgo geográfico: solo 5 departamentos modelados.<br />
+- Mitigación: documentación explícita del alcance y limitaciones de generalización.</p>
+<p><strong>9. Advertencias y recomendaciones</strong><br />
+- Recalibrar antes de uso operativo real con datos de empresa.<br />
+- Monitorear data drift mensual (KS test sobre distribuciones de input).<br />
+- No usar como única fuente de decisión; siempre con revisión humana.</p>
+<hr />
+<h3 id="b2-model-card-modulo-de-deteccion-de-anomalias-ensemble-if-isolation-forest-bosque-de-aislamiento-lof-local-outlier-factor-factor-de-anomalia-local-ecod-empirical-cumulative-distribution-outlier-detection-deteccion-de-anomalias-por-distribucion-acumulada-empirica">B.2 Model Card — Módulo de Detección de Anomalías (Ensemble IF (Isolation Forest - Bosque de Aislamiento) + LOF (Local Outlier Factor - Factor de Anomalía Local) + ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica))</h3>
+<p><strong>1. Detalles del modelo</strong><br />
+- Nombre: <code>module2_anomaly</code><br />
+- Tipo: Ensemble no supervisado (Isolation Forest + LOF + ECOD)<br />
+- Versión: 1.0<br />
+- Infraestructura: PyOD (Zhao et al., 2019)<br />
+- Estrategia de combinación: promedio normalizado de scores (alternativa: voto por mayoría con umbral por detector).</p>
+<p><strong>2. Uso previsto</strong><br />
+- Identificar registros operativos atípicos en el dataset agroexportador.<br />
+- Salida: score continuo (0–1) y bandera binaria (≥ umbral → anomalía).</p>
+<p><strong>3. Factores</strong><br />
+- Mismas variables que módulo 1, con preprocesamiento StandardScaler para LOF.</p>
+<p><strong>4. Métricas</strong><br />
+- PR-AUC, ROC-AUC, F1 con umbral óptimo, Specificity.<br />
+- Tasa de falsos positivos como métrica operativa (cuántas alertas se generan al día).</p>
+<p><strong>5. Datos de evaluación</strong><br />
+- Conjunto de test del dataset sintético v1.0.</p>
+<p><strong>6. Datos de entrenamiento</strong><br />
+- Conjunto de train (no se usan etiquetas durante el fit — entrenamiento no supervisado).</p>
+<p><strong>7. Análisis cuantitativos</strong><br />
+| Detector | PR-AUC | ROC-AUC | F1 | FPR |<br />
+|---|---|---|---|---|<br />
+| Isolation Forest individual | <em>pendiente</em> | <em>pendiente</em> | <em>pendiente</em> | <em>pendiente</em> |<br />
+| LOF individual | <em>pendiente</em> | <em>pendiente</em> | <em>pendiente</em> | <em>pendiente</em> |<br />
+| ECOD individual | <em>pendiente</em> | <em>pendiente</em> | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Ensemble IF+LOF+ECOD | <em>pendiente</em> | <em>pendiente</em> | <em>pendiente</em> | <em>pendiente</em> |</p>
+<p>Por tipo de anomalía inyectada:<br />
+| Tipo | Recall ensemble | Recall IF solo |<br />
+|---|---|---|<br />
+| precio | <em>pendiente</em> | <em>pendiente</em> |<br />
+| volumen | <em>pendiente</em> | <em>pendiente</em> |<br />
+| clima | <em>pendiente</em> | <em>pendiente</em> |<br />
+| logistica | <em>pendiente</em> | <em>pendiente</em> |<br />
+| calidad | <em>pendiente</em> | <em>pendiente</em> |</p>
+<p><strong>8. Consideraciones éticas</strong><br />
+- Riesgo de sobre-alerta sobre productos o zonas específicas si la distribución del dataset está sesgada.<br />
+- Mitigación: análisis de tasa de alerta por subgrupo y calibración de umbral por categoría.</p>
+<p><strong>9. Advertencias y recomendaciones</strong><br />
+- Ajustar umbral según costo operativo de falsos positivos en cada empresa.<br />
+- No usar sin la capa de explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) (las alertas sin contexto generan ruido).</p>
+<hr />
+<h3 id="b3-model-card-modulo-de-explicabilidad-treeshap">B.3 Model Card — Módulo de Explicabilidad (TreeSHAP)</h3>
+<p><strong>1. Detalles del modelo</strong><br />
+- Nombre: <code>module3_shap</code><br />
+- Tipo: TreeSHAP (cálculo exacto de valores de Shapley en árboles)<br />
+- Versión: 1.0 (librería <code>shap</code>)<br />
+- Fundamento: Lundberg &amp; Lee (2017); TreeSHAP — Lundberg et al. (2020)</p>
+<p><strong>2. Uso previsto</strong><br />
+- Generar vectores de contribución por variable para cada alerta.<br />
+- Alimentar la capa LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) con evidencia cuantitativa estructurada.</p>
+<p><strong>3. Factores</strong><br />
+- Las mismas variables del modelo predictor; las contribuciones se reportan en la escala del logit del XGBoost.</p>
+<p><strong>4. Métricas</strong><br />
+- Cobertura top-k (k=3, k=5).<br />
+- Consistencia ρ entre alertas del mismo tipo (Spearman).<br />
+- Claridad operativa (Likert 1–5 evaluada en estudio de usabilidad).</p>
+<p><strong>5. Datos de evaluación</strong><br />
+- Subconjunto de 100 alertas seleccionadas aleatoriamente del test set.</p>
+<p><strong>6. Datos de entrenamiento</strong><br />
+- N/A — SHAP es un método post-hoc, no se entrena.</p>
+<p><strong>7. Análisis cuantitativos</strong><br />
+| Métrica | Valor |<br />
+|---|---|<br />
+| Cobertura top-5 (mediana) | <em>pendiente</em> |<br />
+| Cobertura top-3 (mediana) | <em>pendiente</em> |<br />
+| Consistencia ρ (mediana) | <em>pendiente</em> |<br />
+| Likert claridad (mediana) | <em>pendiente</em> |</p>
+<p><strong>8. Consideraciones éticas</strong><br />
+- SHAP puede inducir sobre-confianza si se interpreta como causalidad. Es una atribución, no una causa.<br />
+- Mitigación: documentación explícita en el dashboard y en el reporte generado.</p>
+<p><strong>9. Advertencias y recomendaciones</strong><br />
+- TreeSHAP es exacto solo para árboles; no aplicar a modelos no-árbol.<br />
+- El orden y magnitud de las contribuciones depende del modelo predictor; cambiar el modelo invalida explicaciones previas.</p>
+<hr />
+<h3 id="b4-model-card-modulo-de-generacion-de-reportes-llm-rag">B.4 Model Card — Módulo de Generación de Reportes (LLM + RAG)</h3>
+<p><strong>1. Detalles del modelo</strong><br />
+- Nombre: <code>module4_rag</code><br />
+- Componentes:<br />
+  - LLM base: Anthropic Claude Sonnet 4.6 (o alternativa local Llama 3.1 8B Instruct).<br />
+  - Retriever: BM25 sobre fuentes agroexportadoras + vectores SHAP estructurados.<br />
+  - Prompt template: estructurado con campos obligatorios (dato, modelo, score, umbral, SHAP, fuente, recomendación).<br />
+- Versión: 1.0<br />
+- Parámetros: temperature = 0.2, max_tokens = 800.</p>
+<p><strong>2. Uso previsto</strong><br />
+- Generar reporte narrativo de cada alerta operativa, anclado en evidencias SHAP y fuentes recuperadas.<br />
+- Usuario primario: supervisor operativo, auditor interno.</p>
+<p><strong>3. Factores</strong><br />
+- Vector SHAP top-5 de la alerta.<br />
+- Score y umbral aplicado.<br />
+- Fragmentos recuperados de la base de conocimiento (fuentes MIDAGRI, SENAMHI, etc.).</p>
+<p><strong>4. Métricas</strong><br />
+- Rúbrica de 5 dimensiones (completitud, consistencia numérica, accionabilidad, coherencia textual, correspondencia con evidencias).<br />
+- ROUGE-1, ROUGE-L cuando exista referencia humana.<br />
+- Kappa de Cohen entre dos revisores.</p>
+<p><strong>5. Datos de evaluación</strong><br />
+- 20 reportes generados a partir de alertas seleccionadas aleatoriamente del test set.<br />
+- Evaluación por 2 revisores independientes con la rúbrica del Capítulo III §3.3.</p>
+<p><strong>6. Datos de entrenamiento</strong><br />
+- N/A — LLM no se fine-tunea. El conocimiento operativo se inyecta vía RAG en tiempo de inferencia.</p>
+<p><strong>7. Análisis cuantitativos</strong><br />
+| Dimensión | Valor (media de 2 revisores) | Kappa Cohen |<br />
+|---|---|---|<br />
+| Completitud | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Consistencia numérica | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Accionabilidad | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Coherencia textual | <em>pendiente</em> | <em>pendiente</em> |<br />
+| Correspondencia con evidencias | <em>pendiente</em> | <em>pendiente</em> |<br />
+| <strong>Promedio total</strong> | <em>pendiente</em> | <em>pendiente</em> |<br />
+| ROUGE-L (subset con referencia humana) | <em>pendiente</em> | — |</p>
+<p><strong>8. Consideraciones éticas</strong><br />
+- Riesgo de alucinación numérica residual (intrinsic hallucination): un porcentaje de reportes puede contener números no presentes en SHAP.<br />
+- Mitigación: validación posterior automática (regex extrae números del reporte y compara con vector SHAP).<br />
+- Dependencia de API comercial: variabilidad por versión de modelo.</p>
+<p><strong>9. Advertencias y recomendaciones</strong><br />
+- Ningún reporte debe usarse sin revisión humana en contextos operativos críticos.<br />
+- Documentar siempre la versión exacta del LLM al generar el reporte.<br />
+- Verificar coincidencia numérica entre reporte y SHAP antes de publicar.</p>
+<hr />
+<p><em>Anexo B — versión 1.0 — 2026-05-17. Plantillas completas; métricas se completan tras experimentos E1–E5.</em></p>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

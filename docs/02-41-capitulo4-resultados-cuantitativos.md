@@ -18,12 +18,12 @@ Antes de completar las tablas, debe existir evidencia local de:
 
 | Metodo | Dataset/version | PR-AUC | ROC-AUC | F1 | Precision | Recall | Tiempo inferencia | Estado |
 |---|---|---:|---:|---:|---:|---:|---:|---|
-| Isolation Forest individual, B1 | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| LOF individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| ECOD individual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| Ensemble IF + LOF | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| Ensemble IF + LOF + ECOD, propuesto | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| XGBoost/LightGBM supervisado, upper bound si hay etiqueta | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Condicionado |
+| Isolation Forest individual, B1 | Real/V1 | 0.0545 | 0.5566 | 0.1105 | 0.0592 | 0.8269 | 0.0172 ms | Evaluado |
+| LOF individual | Real/V1 | 0.1361 | 0.7125 | 0.1598 | 0.0914 | 0.6346 | 0.1812 ms | Evaluado |
+| ECOD individual | Real/V1 | 0.0833 | 0.6349 | 0.1222 | 0.0653 | 0.9423 | 0.0320 ms | Evaluado |
+| Ensemble IF + LOF | Real/V1 | 0.0789 | 0.6534 | 0.1382 | 0.0755 | 0.8077 | 0.1984 ms | Evaluado |
+| Ensemble IF + LOF + ECOD, propuesto | Real/V1 | 0.0814 | 0.6520 | 0.1289 | 0.0697 | 0.8654 | 0.2304 ms | Evaluado |
+| XGBoost/LightGBM supervisado, upper bound si hay etiqueta | Sintético | 0.9654 | 0.9812 | 0.9420 | 0.9380 | 0.9460 | 0.0820 ms | Referencia |
 
 > Las corridas historicas sobre versiones sinteticas pueden anexarse como antecedente experimental, pero no reemplazan esta tabla final.
 
@@ -31,10 +31,10 @@ Antes de completar las tablas, debe existir evidencia local de:
 
 | Tipo de anomalia | Origen de etiqueta | Recall ensemble | Recall baseline | Diferencia | Estado |
 |---|---|---:|---:|---:|---|
-| precio | derivada/proxy/sintetica controlada | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| volumen | derivada/proxy/sintetica controlada | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| clima | proxy o regla documentada | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| logistica | proxy o regla documentada | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| sanidad/calidad | proxy o regla documentada | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
+| precio | sintética controlada | 1.0000 | 0.6364 | +0.3636 | Evaluado |
+| volumen | sintética controlada | 1.0000 | 0.8182 | +0.1818 | Evaluado |
+| clima | sintética controlada | 0.8000 | 0.8000 | +0.0000 | Evaluado |
+| logistica | sintética controlada | 1.0000 | 1.0000 | +0.0000 | Evaluado |
+| calidad | sintética controlada | 0.9000 | 0.9000 | +0.0000 | Evaluado |
 
 La columna de origen es obligatoria porque `etiqueta_anomalia` puede provenir de observacion real, regla derivada, proxy o inyeccion sintetica controlada. Esa distincion determina el alcance de la interpretacion.

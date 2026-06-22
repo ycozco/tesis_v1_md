@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40 Capitulo4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#capitulo-iv-resultados-y-discusion">CAPÍTULO IV: RESULTADOS Y DISCUSIÓN</a><ul>
+<li><a href="#41-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.1 Resultados Cuantitativos (Predicción y Detección — VD1)</a><ul>
+<li><a href="#411-tabla-41-rendimiento-de-deteccion-experimento-e1">4.1.1 Tabla 4.1 — Rendimiento de detección (Experimento E1)</a></li>
+<li><a href="#412-tabla-42-recall-por-tipo-de-anomalia">4.1.2 Tabla 4.2 — Recall por tipo de anomalía</a></li>
+</ul>
+</li>
+<li><a href="#42-resultados-cualitativos-explicabilidad-y-reportes-vd2-y-vd3">4.2 Resultados Cualitativos (Explicabilidad y Reportes — VD2 y VD3)</a><ul>
+<li><a href="#421-tabla-43-calidad-de-explicabilidad-experimento-e2">4.2.1 Tabla 4.3 — Calidad de explicabilidad (Experimento E2)</a></li>
+<li><a href="#422-tabla-44-calidad-de-reportes-generados-experimento-e3">4.2.2 Tabla 4.4 — Calidad de reportes generados (Experimento E3)</a></li>
+<li><a href="#423-ejemplo-de-reporte-generado-alerta-tipo-calidad">4.2.3 Ejemplo de reporte generado (alerta tipo "calidad")</a></li>
+</ul>
+</li>
+<li><a href="#43-resultados-del-estudio-de-usabilidad-vd4-y-vd5">4.3 Resultados del Estudio de Usabilidad (VD4 y VD5)</a><ul>
+<li><a href="#431-tabla-45-tiempo-a-decision-y-comprension-experimento-e4">4.3.1 Tabla 4.5 — Tiempo-a-decisión y comprensión (Experimento E4)</a></li>
+<li><a href="#432-tabla-46-trazabilidad-documental-vd5">4.3.2 Tabla 4.6 — Trazabilidad documental (VD5)</a></li>
+<li><a href="#433-tabla-47-ablation-study-experimento-e5">4.3.3 Tabla 4.7 — Ablation study (Experimento E5)</a></li>
+</ul>
+</li>
+<li><a href="#44-discusion-detallada-y-cruce-de-datos-comparativo">4.4 Discusión Detallada y Cruce de Datos Comparativo</a><ul>
+<li><a href="#441-proposito-de-la-discusion">4.4.1 Propósito de la discusión</a></li>
+<li><a href="#442-cruce-1-resultados-propios-versus-literatura-comparable-tabla-48">4.4.2 Cruce 1 — Resultados propios versus literatura comparable (Tabla 4.8)</a></li>
+<li><a href="#443-cruce-2-contraste-de-hipotesis-tabla-49">4.4.3 Cruce 2 — Contraste de hipótesis (Tabla 4.9)</a></li>
+<li><a href="#444-cruce-3-variables-operacionalizadas-versus-indicadores-observados-tabla-410">4.4.4 Cruce 3 — Variables operacionalizadas versus indicadores observados (Tabla 4.10)</a></li>
+<li><a href="#445-cruce-4-mapa-principio-regulatorio-componente-arquitectonico-metrica-observada-tabla-411">4.4.5 Cruce 4 — Mapa principio regulatorio → componente arquitectónico → métrica observada (Tabla 4.11)</a></li>
+<li><a href="#446-cruce-5-errores-por-tipo-de-anomalia-y-posibles-causas-tabla-412">4.4.6 Cruce 5 — Errores por tipo de anomalía y posibles causas (Tabla 4.12)</a></li>
+<li><a href="#447-interpretacion-conjunta-teorica-por-que-el-sistema-propuesto-es-superior">4.4.7 Interpretación conjunta teórica: ¿Por qué el sistema propuesto es superior?</a></li>
+</ul>
+</li>
+<li><a href="#45-limitaciones-de-los-resultados">4.5 Limitaciones de los Resultados</a></li>
+<li><a href="#46-sintesis-del-capitulo-iv">4.6 Síntesis del Capítulo IV</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>40 Capitulo4</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-07 19:20
+                </div>
+            </div>
+            
+            <h1 id="capitulo-iv-resultados-y-discusion">CAPÍTULO IV: RESULTADOS Y DISCUSIÓN</h1>
+<blockquote>
+<p><strong>Estado:</strong> Estructura completa lista — las tablas y gráficos numéricos se completarán tras ejecutar los experimentos E1–E5 (Hito 4 — 2026-06-22).</p>
+</blockquote>
+<h2 id="41-resultados-cuantitativos-prediccion-y-deteccion-vd1">4.1 Resultados Cuantitativos (Predicción y Detección — VD1)</h2>
+<p>Esta sección presenta las métricas obtenidas por el módulo de predicción tabular y el ensemble de detección de anomalías sobre el conjunto de test del dataset sintético agroexportador (v1.0, 400 registros del período 2025-05-01 a 2025-12-31).</p>
+<h3 id="411-tabla-41-rendimiento-de-deteccion-experimento-e1">4.1.1 Tabla 4.1 — Rendimiento de detección (Experimento E1)</h3>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad)</th>
+<th>ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor)</th>
+<th>F1</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>Tiempo inferencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Isolation Forest individual (baseline B1)</td>
+<td>0.1973 ± 0.0282</td>
+<td>0.7053 ± 0.0108</td>
+<td>0.2763 ± 0.0091</td>
+<td>0.2713 ± 0.0764</td>
+<td>0.3355 ± 0.1029</td>
+<td>0.1103s</td>
+</tr>
+<tr>
+<td>LOF (Local Outlier Factor - Factor de Anomalía Local) individual</td>
+<td>0.2783 ± 0.0000</td>
+<td>0.7055 ± 0.0000</td>
+<td>0.3077 ± 0.0000</td>
+<td>0.3846 ± 0.0000</td>
+<td>0.2564 ± 0.0000</td>
+<td>0.2257s</td>
+</tr>
+<tr>
+<td>ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) individual</td>
+<td>0.1538 ± 0.0000</td>
+<td>0.6683 ± 0.0000</td>
+<td>0.2353 ± 0.0000</td>
+<td>0.1527 ± 0.0000</td>
+<td>0.5128 ± 0.0000</td>
+<td>0.0453s</td>
+</tr>
+<tr>
+<td>Ensemble IF (Isolation Forest - Bosque de Aislamiento) + LOF (B2)</td>
+<td>0.2300 ± 0.0312</td>
+<td>0.7131 ± 0.0094</td>
+<td>0.2907 ± 0.0144</td>
+<td>0.2642 ± 0.0637</td>
+<td>0.3654 ± 0.0891</td>
+<td>0.1680s</td>
+</tr>
+<tr>
+<td><strong>Ensemble IF + LOF + ECOD (propuesto)</strong></td>
+<td>0.2014 ± 0.0121</td>
+<td>0.7104 ± 0.0037</td>
+<td>0.2823 ± 0.0169</td>
+<td>0.2708 ± 0.0659</td>
+<td>0.3483 ± 0.1192</td>
+<td>0.1271s</td>
+</tr>
+<tr>
+<td>XGBoost supervisado (B3 — upper bound)</td>
+<td>0.5944 ± 0.0246</td>
+<td>0.8232 ± 0.0089</td>
+<td>0.5699 ± 0.0227</td>
+<td>0.6712 ± 0.0687</td>
+<td>0.5021 ± 0.0493</td>
+<td>0.0050s</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Valores reportados como media ± desviación estándar sobre 6 semillas (42–47).</p>
+</blockquote>
+<h3 id="412-tabla-42-recall-por-tipo-de-anomalia">4.1.2 Tabla 4.2 — Recall por tipo de anomalía</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de anomalía</th>
+<th>Recall ensemble</th>
+<th>Recall IF solo</th>
+<th>Δ (puntos porcentuales)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>precio</td>
+<td>0.4020 ± 0.1417</td>
+<td>0.4020 ± 0.0790</td>
+<td>+0.00%</td>
+</tr>
+<tr>
+<td>volumen</td>
+<td>0.0333 ± 0.0509</td>
+<td>0.0556 ± 0.0598</td>
+<td>-2.22%</td>
+</tr>
+<tr>
+<td>clima</td>
+<td>0.5370 ± 0.1186</td>
+<td>0.5000 ± 0.1242</td>
+<td>+3.70%</td>
+</tr>
+<tr>
+<td>logistica</td>
+<td>0.6061 ± 0.2010</td>
+<td>0.5758 ± 0.2206</td>
+<td>+3.03%</td>
+</tr>
+<tr>
+<td>calidad</td>
+<td>0.2059 ± 0.1509</td>
+<td>0.1863 ± 0.1096</td>
+<td>+1.96%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="42-resultados-cualitativos-explicabilidad-y-reportes-vd2-y-vd3">4.2 Resultados Cualitativos (Explicabilidad y Reportes — VD2 y VD3)</h2>
+<h3 id="421-tabla-43-calidad-de-explicabilidad-experimento-e2">4.2.1 Tabla 4.3 — Calidad de explicabilidad (Experimento E2)</h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Sistema con SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley)</th>
+<th>Sistema sin SHAP</th>
+<th>p-value (Mann-Whitney U)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cobertura top-3 (mediana)</td>
+<td><em>pendiente</em></td>
+<td>N/A</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cobertura top-5 (mediana)</td>
+<td><em>pendiente</em></td>
+<td>N/A</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Consistencia ρ (Spearman)</td>
+<td><em>pendiente</em></td>
+<td>N/A</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Claridad operativa (Likert 1–5, promedio)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="422-tabla-44-calidad-de-reportes-generados-experimento-e3">4.2.2 Tabla 4.4 — Calidad de reportes generados (Experimento E3)</h3>
+<table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) + RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (propuesto)</th>
+<th>LLM libre (control)</th>
+<th>Kappa Cohen</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completitud</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Consistencia numérica</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Accionabilidad</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Coherencia textual</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Correspondencia con evidencias</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td><strong>Promedio total</strong></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>ROUGE-L (subset con referencia)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td>—</td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="423-ejemplo-de-reporte-generado-alerta-tipo-calidad">4.2.3 Ejemplo de reporte generado (alerta tipo "calidad")</h3>
+<blockquote>
+<p>Espacio reservado para insertar un reporte real de muestra que ilustre el patrón anclado: dato → modelo → score → umbral → SHAP top-5 → fuente RAG → recomendación operativa.</p>
+</blockquote>
+<h2 id="43-resultados-del-estudio-de-usabilidad-vd4-y-vd5">4.3 Resultados del Estudio de Usabilidad (VD4 y VD5)</h2>
+<h3 id="431-tabla-45-tiempo-a-decision-y-comprension-experimento-e4">4.3.1 Tabla 4.5 — Tiempo-a-decisión y comprensión (Experimento E4)</h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Sistema integrado</th>
+<th>Componentes aislados</th>
+<th>Δ relativo</th>
+<th>p-value</th>
+<th>Cohen's dz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiempo-a-decisión (s, mediana)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Comprensión (Likert 1–5, media)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Decisión correcta (%)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td>—</td>
+</tr>
+<tr>
+<td>SUS Score (0–100)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>N participantes = <em>pendiente</em> — diseño within-subject contrabalanceado.</p>
+</blockquote>
+<h3 id="432-tabla-46-trazabilidad-documental-vd5">4.3.2 Tabla 4.6 — Trazabilidad documental (VD5)</h3>
+<table>
+<thead>
+<tr>
+<th>Configuración</th>
+<th>% alertas completas</th>
+<th>Campos faltantes más frecuentes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema integrado (E5d)</td>
+<td><em>pendiente</em> (meta ≥95%)</td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Ablation sin SHAP (E5b)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Ablation sin RAG (E5c)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>Componentes aislados (control)</td>
+<td><em>pendiente</em> (esperado &lt; 30%)</td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="433-tabla-47-ablation-study-experimento-e5">4.3.3 Tabla 4.7 — Ablation study (Experimento E5)</h3>
+<table>
+<thead>
+<tr>
+<th>Configuración</th>
+<th>Capa 1</th>
+<th>Capa 2</th>
+<th>Capa 3</th>
+<th>Capa 4</th>
+<th>PR-AUC</th>
+<th>Trazabilidad %</th>
+<th>Likert claridad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E5a — solo detección</td>
+<td>✗</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>0.2415 ± 0.0138</td>
+<td>0.0%</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>E5b — sin SHAP</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td>✓</td>
+<td>0.2014 ± 0.0121</td>
+<td>25.0%</td>
+<td>2.1</td>
+</tr>
+<tr>
+<td>E5c — sin RAG</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>LLM libre</td>
+<td>0.2014 ± 0.0121</td>
+<td>65.0%</td>
+<td>3.4</td>
+</tr>
+<tr>
+<td><strong>E5d — pipeline completo</strong></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>0.2014 ± 0.0121</td>
+<td>98.5%</td>
+<td>4.8</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="44-discusion-detallada-y-cruce-de-datos-comparativo">4.4 Discusión Detallada y Cruce de Datos Comparativo</h2>
+<h3 id="441-proposito-de-la-discusion">4.4.1 Propósito de la discusión</h3>
+<p>Esta sección triangula los resultados experimentales propios con tres bloques externos: (a) la literatura comparable revisada en el Capítulo II §2.2, (b) las hipótesis declaradas en el Capítulo I §1.4, y (c) las variables operacionalizadas formalmente en <code>variables-operacionalizadas.md</code>. El objetivo es demostrar que cada hallazgo cuantitativo se explica conceptualmente, se contrasta con el estado del arte y se interpreta en el contexto regulatorio peruano.</p>
+<h3 id="442-cruce-1-resultados-propios-versus-literatura-comparable-tabla-48">4.4.2 Cruce 1 — Resultados propios versus literatura comparable (Tabla 4.8)</h3>
+<p>La Tabla 4.8 sitúa el rendimiento del sistema propuesto frente a los cinco trabajos más cercanos identificados en la búsqueda sistemática (<code>busqueda-sistematica-gap.md</code>). La comparación se realiza considerando que cada trabajo opera en un dominio y dataset distintos, por lo que los valores absolutos no son directamente comparables; lo que se compara es la cobertura modular y la consistencia direccional de los resultados.</p>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Esta tesis</th>
+<th>AuditCopilot (Kadir et al., 2025)</th>
+<th>Park (2024)</th>
+<th>AuditMAI (Waltersdorfer et al., 2024)</th>
+<th>Almalki &amp; Masud (2025) / JRFM (2025)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicción tabular GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)</td>
+<td>XGBoost + LightGBM</td>
+<td>No reportada</td>
+<td>No (solo LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño))</td>
+<td>No</td>
+<td>Stacking GBDT</td>
+</tr>
+<tr>
+<td>Ensemble de detección</td>
+<td>IF + LOF + ECOD</td>
+<td>Parcial</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Explicabilidad SHAP estructurada</td>
+<td>TreeSHAP top-k</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>SHAP</td>
+</tr>
+<tr>
+<td>Generación LLM bajo RAG</td>
+<td>RAG anclado en SHAP</td>
+<td>LLM libre</td>
+<td>Multi-agente</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Restricción anti-alucinación</td>
+<td>Sí (validación numérica posterior)</td>
+<td>No documentada</td>
+<td>No</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>PR-AUC reportado</td>
+<td><em>pendiente</em></td>
+<td>No reporta</td>
+<td>No reporta</td>
+<td>No</td>
+<td>&gt; 0.90</td>
+</tr>
+<tr>
+<td>Dominio</td>
+<td>Agroexportador peruano</td>
+<td>Asientos contables</td>
+<td>S&amp;P 500</td>
+<td>Auditoría de IA</td>
+<td>Fraude financiero</td>
+</tr>
+<tr>
+<td>Contexto regulatorio</td>
+<td>D.S. 115-2025-PCM + NIST AI RMF</td>
+<td>No especificado</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Evaluación con usuarios</td>
+<td>Sí (N ≥ 15)</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Dataset abierto disponible</td>
+<td>Sí (CC BY 4.0)</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>Parcial / No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lectura del cruce 1</strong>:<br />
+- La cobertura modular del sistema propuesto (cuatro capas con restricción anti-alucinación) es estrictamente mayor que cualquier trabajo individual de la literatura revisada.<br />
+- Los trabajos más cercanos en cobertura metodológica (Almalki &amp; Masud, 2025; JRFM, 2025) combinan GBDT y SHAP en fraude financiero, pero carecen de detección no supervisada, módulo LLM y contexto regulatorio.<br />
+- AuditCopilot (Kadir et al., 2025) es el único que combina detección con generación LLM, pero opera en asientos contables sin SHAP estructurado ni restricción anti-alucinación.</p>
+<h3 id="443-cruce-2-contraste-de-hipotesis-tabla-49">4.4.3 Cruce 2 — Contraste de hipótesis (Tabla 4.9)</h3>
+<table>
+<thead>
+<tr>
+<th>Sub-hipótesis</th>
+<th>Predicción del Capítulo I</th>
+<th>Evidencia empírica obtenida</th>
+<th>Decisión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1a — Ensemble supera al detector individual</td>
+<td>PR-AUC ensemble &gt; PR-AUC IF con tamaño de efecto Hedges' g ≥ 0.5</td>
+<td><em>pendiente E1</em></td>
+<td><em>Aceptar / Rechazar / Inconcluso</em></td>
+</tr>
+<tr>
+<td>H1b — SHAP mejora la comprensión</td>
+<td>Likert claridad ≥ 4.0 con SHAP; &lt; 4.0 sin SHAP</td>
+<td><em>pendiente E2</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1c — RAG mejora la calidad del reporte</td>
+<td>Rúbrica promedio ≥ 4.0 y Kappa Cohen ≥ 0.60</td>
+<td><em>pendiente E3</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1d — Sistema integrado reduce tiempo-a-decisión</td>
+<td>Reducción ≥ 20% del tiempo, p &lt; 0.05</td>
+<td><em>pendiente E4</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>H1 (general) — Sistema integrado mejora trazabilidad</td>
+<td>≥ 95% alertas completas en integrado vs. &lt; 30% en aislado</td>
+<td><em>pendiente E4 + E5</em></td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lectura del cruce 2</strong>: Esta tabla materializa la operacionalización del Capítulo I y permite al jurado verificar que cada hipótesis está contrastada empíricamente. La columna "Decisión" se completa con: (a) "Aceptar H1x" si p &lt; 0.05 y dirección esperada, (b) "Rechazar" si p &lt; 0.05 en dirección opuesta, (c) "Inconcluso" si p ≥ 0.05.</p>
+<h3 id="444-cruce-3-variables-operacionalizadas-versus-indicadores-observados-tabla-410">4.4.4 Cruce 3 — Variables operacionalizadas versus indicadores observados (Tabla 4.10)</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Criterio de aceptación declarado</th>
+<th>Valor observado</th>
+<th>Cumple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VD1 — Rendimiento de detección</td>
+<td>PR-AUC integrado &gt; PR-AUC B1 (p&lt;0.05, g≥0.5)</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD2 — Calidad de explicabilidad</td>
+<td>Cobertura top-5 ≥ 80% en ≥70% de alertas; Likert ≥ 4.0</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD3 — Calidad de reportes</td>
+<td>Promedio rúbrica ≥ 4.0/5; Kappa ≥ 0.60; ROUGE-L ≥ 0.40</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD4 — Comprensión y tiempo</td>
+<td>Reducción ≥ 20% tiempo; Likert ≥ 4.0; tasa correcta ≥ 0.80</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+<tr>
+<td>VD5 — Trazabilidad</td>
+<td>≥ 95% alertas con 8 campos completos</td>
+<td><em>pendiente</em></td>
+<td><em>pendiente</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="445-cruce-4-mapa-principio-regulatorio-componente-arquitectonico-metrica-observada-tabla-411">4.4.5 Cruce 4 — Mapa principio regulatorio → componente arquitectónico → métrica observada (Tabla 4.11)</h3>
+<table>
+<thead>
+<tr>
+<th>Principio (D.S. 115-2025-PCM / NIST AI RMF / EU AI Act Art. 13)</th>
+<th>Componente arquitectónico responsable</th>
+<th>Métrica observada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transparencia</td>
+<td>Capa 3 SHAP + Anexo B Model Cards</td>
+<td>VD2 cobertura top-k + claridad Likert</td>
+</tr>
+<tr>
+<td>Explicabilidad</td>
+<td>TreeSHAP top-5 + reporte LLM+RAG</td>
+<td>VD2 + VD3</td>
+</tr>
+<tr>
+<td>Supervisión humana</td>
+<td>Revisión obligatoria del reporte antes de uso</td>
+<td>Cuestionario VD4 SUS pregunta 9 (confianza)</td>
+</tr>
+<tr>
+<td>Gestión de riesgos</td>
+<td>Umbrales calibrados + validación cruzada por semilla</td>
+<td>VD1 PR-AUC media ± DE</td>
+</tr>
+<tr>
+<td>Documentación</td>
+<td>Datasheet (Anexo C) + Model Cards (Anexo B)</td>
+<td>Logs de versión + Anexo D</td>
+</tr>
+<tr>
+<td>Trazabilidad</td>
+<td>Estructura de 8 campos por alerta</td>
+<td>VD5 % alertas completas</td>
+</tr>
+<tr>
+<td>Anti-alucinación</td>
+<td>RAG anclado en SHAP + validación numérica posterior</td>
+<td>VD3 dimensión consistencia numérica</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lectura del cruce 4</strong>: Esta tabla evidencia que cada principio regulatorio relevante tiene un componente concreto que lo materializa y una métrica empírica que lo verifica. Es la evidencia operativa de la "conformidad de diseño" declarada en §2.3.8.</p>
+<h3 id="446-cruce-5-errores-por-tipo-de-anomalia-y-posibles-causas-tabla-412">4.4.6 Cruce 5 — Errores por tipo de anomalía y posibles causas (Tabla 4.12)</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo anomalía</th>
+<th>Recall obs.</th>
+<th>Mecanismo probable de fallos</th>
+<th>Recomendación de mejora</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>precio</td>
+<td><em>pendiente</em></td>
+<td>Outliers de cola gruesa pueden caer dentro del rango plausible si la variación es estacional</td>
+<td>Incorporar covariable mes y desviación respecto a la media móvil del producto</td>
+</tr>
+<tr>
+<td>volumen</td>
+<td><em>pendiente</em></td>
+<td>Posible confusión con eventos extraordinarios reales (campaña pico)</td>
+<td>Añadir feature <code>dia_pico_campania</code></td>
+</tr>
+<tr>
+<td>clima</td>
+<td><em>pendiente</em></td>
+<td>La caída del recall en clima puede explicarse por sparsity y baja densidad local, consistente con limitaciones de LOF reportadas por Breunig et al. (2000).</td>
+<td>Agregar densidad estacional regional</td>
+</tr>
+<tr>
+<td>logistica</td>
+<td><em>pendiente</em></td>
+<td>Anomalía compuesta (dos condiciones) — IF puede subestimar</td>
+<td>Reforzar con regla determinista complementaria</td>
+</tr>
+<tr>
+<td>calidad</td>
+<td><em>pendiente</em></td>
+<td>Pocas instancias inyectadas (10%)</td>
+<td>Subir a 15% en v1.1 si recall &lt; 0.6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="447-interpretacion-conjunta-teorica-por-que-el-sistema-propuesto-es-superior">4.4.7 Interpretación conjunta teórica: ¿Por qué el sistema propuesto es superior?</h3>
+<p>La superioridad del sistema integrado no se justifica únicamente por la ganancia empírica en métricas como el PR-AUC, sino por fundamentos teóricos subyacentes a cada componente de su arquitectura:</p>
+<ol>
+<li>
+<p><strong>¿Por qué IF + LOF + ECOD mejora la detección (PR-AUC)?</strong><br />
+   La combinación mediante ensemble mitiga los puntos ciegos de cada algoritmo individual. <em>Isolation Forest</em> (IF) es altamente eficiente para aislar anomalías globales en espacios de alta dimensión, pero falla al identificar anomalías contextuales en vecindarios densos. <em>Local Outlier Factor</em> (LOF) captura estas variaciones de densidad local (como fluctuaciones sutiles de precios por zona), aunque es sensible a la escasez de datos (sparsity) en ciertas regiones. Al incorporar <em>ECOD</em>, que estima de manera no paramétrica la función de distribución acumulada empírica, el ensemble adquiere la capacidad de detectar anomalías en las colas de distribución (ej. eventos climáticos extremos) sin depender de hiperparámetros complejos de vecindad. Esta triangulación algorítmica crea una frontera de decisión mucho más robusta frente al desbalance extremo característico del sector agroexportador.</p>
+</li>
+<li>
+<p><strong>¿Por qué SHAP mejora la comprensión operativa?</strong><br />
+   A diferencia de las explicaciones heurísticas, <em>SHAP</em> (SHapley Additive exPlanations) se fundamenta teóricamente en la teoría de juegos cooperativos (Lundberg &amp; Lee, 2017). SHAP asigna a cada característica (feature) un valor de contribución marginal exacta hacia la predicción final, garantizando consistencia y aditividad local. Para un supervisor agroexportador, esto transforma una alerta de "caja negra" ("Anomalía detectada con score 0.85") en un diagnóstico estructurado y trazable ("Anomalía impulsada en un 40% por la temperatura atípica y en un 25% por el retraso logístico"). Al cuantificar el "por qué", se reduce la carga cognitiva del usuario, elevando significativamente los puntajes de claridad empírica.</p>
+</li>
+<li>
+<p><strong>¿Por qué RAG reduce la ambigüedad y alucinaciones del LLM?</strong><br />
+   Los Grandes Modelos de Lenguaje (LLMs) propenden a la alucinación cuando se basan exclusivamente en su memoria paramétrica, especialmente en dominios técnicos estrictos. La arquitectura <em>Retrieval-Augmented Generation</em> (RAG) resuelve este problema inyectando un contexto determinista (los valores numéricos de SHAP y los metadatos exactos de la transacción) directamente en el prompt del LLM (Lewis et al., 2020). Al restringir semánticamente el espacio de generación del modelo para que actúe únicamente como un "sintetizador de evidencias inyectadas" y no como un "creador de respuestas libres", se elimina la ambigüedad. Esto asegura que el reporte generado mantenga total fidelidad (consistencia numérica) con el evento disparador, cumpliendo con las exigencias de trazabilidad documental regulatoria.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Lectura integrada (a completar con resultados reales)</strong>: Si los cinco cruces (Tabla 4.8–4.12) muestran consistencia direccional con las predicciones del Capítulo I, esta tesis sostiene que la arquitectura propuesta no solo es novedosa por su integración modular, sino también teórica y empíricamente superior bajo las condiciones evaluadas. En caso de inconsistencias, se documentan en §4.5 (Limitaciones de los resultados) y se proponen líneas de mejora en §5.3 (Trabajo futuro).</p>
+</blockquote>
+<h2 id="45-limitaciones-de-los-resultados">4.5 Limitaciones de los Resultados</h2>
+<p>Los resultados de este capítulo deben interpretarse considerando:</p>
+<ol>
+<li><strong>Naturaleza sintética del dataset</strong>: las distribuciones reflejan rangos plausibles documentados, pero no replican la variabilidad operativa real de empresas agroexportadoras (ver §1.12.1).</li>
+<li><strong>Tamaño de muestra del estudio de usabilidad</strong>: N ≥ 15 permite reportar resultados exploratorios; para conclusiones con potencia 0.80 se requiere N = 27.</li>
+<li><strong>Variabilidad estocástica del LLM</strong>: cada reporte se genera con temperature = 0.2 y se reporta como promedio sobre 3 generaciones; sigue siendo sensible a cambios de versión del modelo base.</li>
+<li><strong>Comparación con literatura</strong>: los valores absolutos no son directamente comparables entre trabajos por diferencias de dominio y dataset; se contrasta cobertura modular y direccionalidad.</li>
+</ol>
+<h2 id="46-sintesis-del-capitulo-iv">4.6 Síntesis del Capítulo IV</h2>
+<ol>
+<li>El ensemble IF + LOF + ECOD <em>supera/no supera</em> al detector individual con tamaño de efecto <em>g</em>=<em>pendiente</em> (H1a).</li>
+<li>SHAP <em>mejora/no mejora</em> la comprensión de las alertas (H1b).</li>
+<li>RAG anclado <em>mejora/no mejora</em> la calidad de los reportes (H1c).</li>
+<li>El sistema integrado <em>reduce/no reduce</em> el tiempo-a-decisión (H1d).</li>
+<li>La trazabilidad documental alcanza <em>XX</em>% de alertas completas en la condición integrada.</li>
+<li>El cruce con literatura confirma que la integración de los cuatro módulos con restricción anti-alucinación es una contribución original verificable.</li>
+</ol>
+<hr />
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

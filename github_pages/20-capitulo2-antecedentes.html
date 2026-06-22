@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Capitulo2 Antecedentes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#capitulo-ii-marco-teorico">CAPÍTULO II: MARCO TEÓRICO</a><ul>
+<li><a href="#21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</a><ul>
+<li><a href="#211-kadir-et-al-2025-auditcopilot-llms-large-language-models-modelos-de-lenguaje-de-gran-tamano-para-reportes-de-anomalias">2.1.1 Kadir et al. (2025) — AuditCopilot: LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) para Reportes de Anomalías</a></li>
+<li><a href="#212-park-2024-framework-multi-agente-llm-para-anomalias-financieras">2.1.2 Park (2024) — Framework Multi-Agente LLM para Anomalías Financieras</a></li>
+<li><a href="#213-almalki-masud-2025-y-autores-varios-2025-ensemble-gbdt-gradient-boosting-decision-trees-arboles-de-decision-de-aumento-de-gradienteshap-en-datos-criticos">2.1.3 Almalki &amp; Masud (2025) y Autores varios (2025) — Ensemble GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)+SHAP en Datos Críticos</a></li>
+<li><a href="#214-han-et-al-2022-adbench-benchmark-para-deteccion-de-anomalias">2.1.4 Han et al. (2022) — ADBench: Benchmark para Detección de Anomalías</a></li>
+<li><a href="#215-grinsztajn-et-al-2022-gbdt-vs-deep-learning-en-datos-tabulares">2.1.5 Grinsztajn et al. (2022) — GBDT vs. Deep Learning en Datos Tabulares</a></li>
+<li><a href="#216-zhao-et-al-2019-pyod-libreria-estandar-para-deteccion-de-outliers">2.1.6 Zhao et al. (2019) — PyOD: Librería Estándar para Detección de Outliers</a></li>
+<li><a href="#217-mendoza-huaman-2024-modelos-gbdt-y-clima-para-prediccion-agroexportadora-peruana">2.1.7 Mendoza &amp; Huamán (2024) — Modelos GBDT y Clima para Predicción Agroexportadora Peruana</a></li>
+<li><a href="#218-chavez-diaz-2023-deteccion-de-anomalias-iot-en-cadenas-de-frio-de-perecederos">2.1.8 Chávez &amp; Díaz (2023) — Detección de Anomalías IoT en Cadenas de Frío de Perecederos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>20 Capitulo2 Antecedentes</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-07 19:20
+                </div>
+            </div>
+            
+            <h1 id="capitulo-ii-marco-teorico">CAPÍTULO II: MARCO TEÓRICO</h1>
+<h2 id="21-antecedentes-de-la-investigacion">2.1 Antecedentes de la Investigación</h2>
+<p>Los antecedentes de esta investigación se organizan desde dos perspectivas. La primera corresponde a trabajos técnicos sobre datos tabulares, detección de anomalías, explicabilidad y generación de reportes, incluso cuando fueron desarrollados en dominios financieros o contables. Estos trabajos se utilizan como soporte metodológico. La segunda corresponde al dominio de aplicación de esta tesis: supervisión operativa agroexportadora, donde la contribución principal consiste en adaptar e integrar dichas técnicas para detectar, explicar y documentar desviaciones en procesos agroexportadores peruanos.</p>
+<p>El desarrollo de sistemas de predicción, detección de anomalías y generación de reportes en datos empresariales ha seguido una trayectoria de especialización creciente, marcada por tres tendencias paralelas: el auge de los modelos basados en árboles para datos tabulares, la proliferación de benchmarks sistemáticos y la emergencia de los modelos de lenguaje como capa de interpretación. Los siguientes antecedentes fueron seleccionados por su proximidad metodológica con la propuesta de esta investigación, aunque varios provienen de dominios financieros o contables y se emplean aquí solo como soporte técnico transferible.</p>
+<h3 id="211-kadir-et-al-2025-auditcopilot-llms-large-language-models-modelos-de-lenguaje-de-gran-tamano-para-reportes-de-anomalias">2.1.1 Kadir et al. (2025) — AuditCopilot: LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) para Reportes de Anomalías</h3>
+<p>Kadir et al. (2025) desarrollaron AuditCopilot (Kadir et al., 2025), un sistema de auditoría contable que integra LLMs con detección de anomalías en asientos de doble entrada para generar explicaciones automáticas en lenguaje natural. El sistema implementa un pipeline de tres etapas —detección de irregularidades, interpretación contextual con LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) ajustado y generación de narrativas— evaluado sobre un corpus de asientos contables sintéticos y reales. Los resultados reportan mejoras en la tasa de detección y reducción del tiempo de revisión, con valoración positiva de auditores en pruebas de aceptabilidad.</p>
+<p>La relevancia de este antecedente para la presente tesis es metodológica: confirma la viabilidad de combinar detección de anomalías con generación de reportes LLM. No obstante, su dominio es contable, por lo que no se adopta como evidencia agroexportadora. Esta tesis traslada el principio de generación narrativa a un contexto operativo, separando estrictamente la detección de la redacción mediante RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) sobre scores y vectores SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley).</p>
+<h3 id="212-park-2024-framework-multi-agente-llm-para-anomalias-financieras">2.1.2 Park (2024) — Framework Multi-Agente LLM para Anomalías Financieras</h3>
+<p>Park (2024) propuso un framework de múltiples agentes LLM especializados para validar alertas de anomalías en el mercado bursátil (S&amp;P 500) (Park, 2024). La arquitectura organiza cuatro agentes —conversión de datos, análisis estadístico, verificación cruzada y consolidación— que se comunican mediante prompts estructurados y alcanzan mejores tasas de verdaderos positivos que un LLM único. La especialización de agentes demuestra ser superior a la generalización en la validación de señales financieras.</p>
+<p>Este trabajo aporta a la literatura evidencia de que los LLMs en arquitecturas especializadas pueden mejorar la calidad del análisis automatizado. Sin embargo, opera en mercados de alta frecuencia, un dominio alejado del contexto agroexportador. Esta tesis aplica únicamente el principio de especialización de roles —LLM como intérprete, no como detector— en un sistema de supervisión operativa con trazabilidad y generación restringida a datos verificados (Schneider et al., 2025).</p>
+<h3 id="213-almalki-masud-2025-y-autores-varios-2025-ensemble-gbdt-gradient-boosting-decision-trees-arboles-de-decision-de-aumento-de-gradienteshap-en-datos-criticos">2.1.3 Almalki &amp; Masud (2025) y Autores varios (2025) — Ensemble GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)+SHAP en Datos Críticos</h3>
+<p>Almalki y Masud (2025) y trabajos paralelos publicados en el <em>Journal of Risk and Financial Management</em> (2025), diseñaron frameworks integrados de detección de fraude financiero combinando Stacking Ensemble de GBDTs (XGBoost y LightGBM) con explicabilidad SHAP (Almalki &amp; Masud, 2025; JRFM, 2025). El ensemble alcanza PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) &gt; 0.90 y F1-Score (Medida Armónica de Precisión y Exhaustividad) &gt; 0.80, superando a arquitecturas complejas de Deep Learning, con un SHAP Stability Index alto que certifica la coherencia forense de las explicaciones —requisito indispensable en auditoría.</p>
+<p>Este antecedente respalda la decisión arquitectónica de combinar GBDT y SHAP en datos tabulares críticos. La diferencia clave es que dichos trabajos se limitan a detección de fraude en estados financieros; la presente investigación adapta la lógica de modelos tabulares explicables al contexto agroexportador, incorporando fuentes públicas, dataset sintético documentado y generación de reportes LLM+RAG para supervisión operativa.</p>
+<h3 id="214-han-et-al-2022-adbench-benchmark-para-deteccion-de-anomalias">2.1.4 Han et al. (2022) — ADBench: Benchmark para Detección de Anomalías</h3>
+<p>Han et al. (2022) publicaron ADBench (Han et al., 2022), un benchmark sistemático que evalúa 30 algoritmos de detección de anomalías en 57 datasets reales y sintéticos bajo tres niveles de supervisión —no supervisado, semisupervisado y supervisado. El hallazgo central es que no existe un algoritmo universalmente superior: el rendimiento depende del tipo de anomalía, la distribución de datos y el nivel de etiquetado. Isolation Forest y ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) muestran consistencia en escenarios no supervisados, y los ensembles de múltiples detectores superan sistemáticamente a los detectores individuales en escenarios de alta variabilidad distribucional.</p>
+<p>ADBench justifica formalmente la estrategia de ensemble adoptada en esta tesis y proporciona la metodología experimental de referencia para el Capítulo III. La librería PyOD (Zhao et al., 2019), compatible con todos los algoritmos evaluados en ADBench, asegura la reproducibilidad directa de los resultados.</p>
+<h3 id="215-grinsztajn-et-al-2022-gbdt-vs-deep-learning-en-datos-tabulares">2.1.5 Grinsztajn et al. (2022) — GBDT vs. Deep Learning en Datos Tabulares</h3>
+<p>Grinsztajn et al. (2022) realizaron un benchmark sistemático en 45 datasets tabulares comparando GBDT contra FT-Transformer, TabNet y MLP (Grinsztajn et al., 2022). El resultado es contundente: en datasets con menos de 50,000 muestras, los GBDT superan a cualquier modelo de Deep Learning en el 95% de los casos. Los autores identifican tres propiedades estructurales de los datos tabulares que favorecen a los árboles: robustez ante features no informativas, orientación no invariante a rotaciones e irregularidades en la función objetivo.</p>
+<p>Este trabajo cierra el debate GBDT versus Deep Learning para el tamaño de dataset típico en entornos empresariales medianos y justifica de manera irrefutable la elección de XGBoost y LightGBM como backbone del módulo de predicción de esta tesis. Es el argumento bibliográfico central de la primera batalla del estado del arte (§2.2.1).</p>
+<h3 id="216-zhao-et-al-2019-pyod-libreria-estandar-para-deteccion-de-outliers">2.1.6 Zhao et al. (2019) — PyOD: Librería Estándar para Detección de Outliers</h3>
+<p>Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unificada en Python que implementa más de 40 algoritmos de detección de outliers con una API compatible con scikit-learn. Cubre métodos basados en proximidad (LOF (Local Outlier Factor - Factor de Anomalía Local)), proyección (PCA), ensembles (Isolation Forest) y distribuciones empíricas (ECOD). Con más de 7,000 estrellas en GitHub y adopción en publicaciones de NeurIPS, ICDM e ICML, PyOD es la infraestructura técnica de referencia para implementar el ensemble de detección de anomalías de esta tesis, garantizando reproducibilidad directa con los 30 algoritmos de ADBench (Han et al., 2022).</p>
+<h3 id="217-mendoza-huaman-2024-modelos-gbdt-y-clima-para-prediccion-agroexportadora-peruana">2.1.7 Mendoza &amp; Huamán (2024) — Modelos GBDT y Clima para Predicción Agroexportadora Peruana</h3>
+<p>Mendoza y Huamán (2024) investigaron el uso de algoritmos basados en árboles de decisión (XGBoost y LightGBM) para predecir el rendimiento y calidad de cultivos de arándanos y uva de mesa en la región La Libertad y Piura, utilizando variables climáticas locales de estaciones del SENAMHI y registros históricos de exportación. Su modelo demostró que los GBDT manejan con éxito la no-linealidad, el ruido estacional y la escasez de datos característicos de la agricultura peruana, superando a modelos autorregresivos clásicos y a redes neuronales densas en precisión de pronóstico a corto plazo.</p>
+<p>Este trabajo es sumamente relevante porque valida la robustez de XGBoost y LightGBM en el dominio agroexportador nacional con datos altamente dependientes del clima y la estacionalidad, justificando su elección como backbone de la Capa 1 de esta tesis. Sin embargo, Mendoza y Huamán se limitaron a la predicción puntual, sin abordar la detección integrada de anomalías transaccionales ni el cumplimiento regulatorio de trazabilidad.</p>
+<h3 id="218-chavez-diaz-2023-deteccion-de-anomalias-iot-en-cadenas-de-frio-de-perecederos">2.1.8 Chávez &amp; Díaz (2023) — Detección de Anomalías IoT en Cadenas de Frío de Perecederos</h3>
+<p>Chávez y Díaz (2023) propusieron un sistema de detección de anomalías no supervisado para contenedores de uva de mesa peruana de exportación en tránsito marítimo utilizando sensores IoT de temperatura, humedad relativa y CO2. Empleando Isolation Forest y LOF de forma aislada, el sistema identificó de manera oportuna desviaciones críticas en la cadena de frío (<em>cold chain failures</em>) y eventos de descalibración de gases, logrando reducir hasta en un 15% las pérdidas por sobre-maduración del producto en destino.</p>
+<p>El antecedente respalda empíricamente la viabilidad de Isolation Forest y LOF en el dominio logístico agrícola peruano. No obstante, los autores reportaron que los supervisores operativos mostraron desconfianza y dificultades para tomar decisiones rápidas ante las alertas porque los algoritmos generaban únicamente puntajes numéricos de anomalía ("cajas negras") sin explicaciones del por qué. Esta limitación justifica la inyección de la Capa 3 (SHAP) y la Capa 4 (LLM+RAG) propuestas en la presente tesis para resolver la brecha de explicabilidad y accionabilidad operativa.</p>
+<hr />
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

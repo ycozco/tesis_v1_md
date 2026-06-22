@@ -2,55 +2,94 @@
 
 ## 2.1 Antecedentes de la Investigación
 
-Los antecedentes de esta investigación se organizan desde dos perspectivas. La primera corresponde a trabajos técnicos sobre datos tabulares, detección de anomalías, explicabilidad y generación de reportes, incluso cuando fueron desarrollados en dominios financieros o contables. Estos trabajos se utilizan como soporte metodológico. La segunda corresponde al dominio de aplicación de esta tesis: supervisión operativa agroexportadora, donde la contribución principal consiste en adaptar e integrar dichas técnicas para detectar, explicar y documentar desviaciones en procesos agroexportadores peruanos.
+### 2.1.1 Antecedentes Internacionales
 
-El desarrollo de sistemas de predicción, detección de anomalías y generación de reportes en datos empresariales ha seguido una trayectoria de especialización creciente, marcada por tres tendencias paralelas: el auge de los modelos basados en árboles para datos tabulares, la proliferación de benchmarks sistemáticos y la emergencia de los modelos de lenguaje como capa de interpretación. Los siguientes antecedentes fueron seleccionados por su proximidad metodológica con la propuesta de esta investigación, aunque varios provienen de dominios financieros o contables y se emplean aquí solo como soporte técnico transferible.
+1.  **Kadir et al. (2025) — *AuditCopilot: Leveraging LLMs for fraud detection in double-entry bookkeeping***
+    *   **Objetivo:** Desarrollar un sistema de auditoría contable que integre modelos de lenguaje con técnicas de detección de anomalías para explicar transacciones irregulares en lenguaje natural.
+    *   **Datos:** Corpus experimental de asientos contables sintéticos y transacciones financieras de doble entrada.
+    *   **Método:** Pipeline secuencial compuesto por detección algorítmica de outliers, inyección de contexto en prompts estructurados y generación de textos explicativos mediante un LLM de gran escala.
+    *   **Resultados Reales:** Incremento en la tasa de detección de fraudes y reducción del tiempo promedio de revisión por parte de los auditores humanos, validado mediante pruebas cualitativas de usabilidad.
+    *   **Limitación:** El modelado se restringe a datos contables tradicionales de doble entrada y no incorpora variables exógenas como el clima, precios de mercado mayorista o datos logísticos complejos.
+    *   **Relación con la Tesis:** Aporta el fundamento metodológico para combinar la detección algorítmica con la generación narrativa RAG. La tesis traslada esta arquitectura al dominio de operaciones agroexportadoras perecederas en el Perú.
 
-### 2.1.1 Kadir et al. (2025) — AuditCopilot: LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) para Reportes de Anomalías
+2.  **Park (2024) — *LLMs for anomaly validation and report generation in financial systems***
+    *   **Objetivo:** Diseñar un framework multi-agente basado en LLMs especializados para la validación y documentación de alertas de anomalías en mercados financieros de alta frecuencia.
+    *   **Datos:** Series temporales financieras diarias del índice S&P 500 y noticias comerciales asociadas.
+    *   **Método:** División del procesamiento en cuatro agentes inteligentes: conversión de datos, análisis estadístico, verificación cruzada documental y generación/consolidación del reporte.
+    *   **Resultados Reales:** Reducción de falsos positivos en las alarmas mediante el filtrado semántico y la verificación de noticias, superando el rendimiento de un agente genérico único.
+    *   **Limitación:** El sistema opera en mercados financieros de alta frecuencia y requiere acceso constante a noticias de mercado en tiempo real, lo que eleva el costo computacional.
+    *   **Relación con la Tesis:** Sustenta la separación de roles entre los modelos matemáticos cuantitativos de detección y la capa de lenguaje. La tesis adopta la restricción de que el LLM no es el detector, sino el redactor fundamentado en evidencias.
 
-Kadir et al. (2025) desarrollaron AuditCopilot (Kadir et al., 2025), un sistema de auditoría contable que integra LLMs con detección de anomalías en asientos de doble entrada para generar explicaciones automáticas en lenguaje natural. El sistema implementa un pipeline de tres etapas —detección de irregularidades, interpretación contextual con LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) ajustado y generación de narrativas— evaluado sobre un corpus de asientos contables sintéticos y reales. Los resultados reportan mejoras en la tasa de detección y reducción del tiempo de revisión, con valoración positiva de auditores en pruebas de aceptabilidad.
+3.  **Almalki & Masud (2025) — *Financial fraud detection using explainable AI and stacking ensemble methods***
+    *   **Objetivo:** Diseñar un framework de detección de fraude en transacciones empresariales combinando modelos de ensamble de gradiente y explicabilidad post-hoc.
+    *   **Datos:** Datasets tabulares corporativos de transacciones financieras y estados contables.
+    *   **Método:** Stacking Ensemble de clasificadores basados en árboles (XGBoost y LightGBM) acoplado a un motor de atribución local SHAP para generar la justificación de las alertas.
+    *   **Resultados Reales:** Obtención de un PR-AUC superior a 0.90 y alta estabilidad en el SHAP Stability Index, garantizando explicaciones consistentes y robustas ante perturbaciones.
+    *   **Limitación:** El enfoque se limita a la detección estática en bases de datos contables sin considerar la dimensión de series temporales dinámicas o la generación automática de informes en lenguaje natural.
+    *   **Relación con la Tesis:** Valida la superioridad de la combinación GBDT + SHAP en datos tabulares y sustenta la arquitectura de la Capa 1 y Capa 3 de la propuesta agroexportadora.
 
-La relevancia de este antecedente para la presente tesis es metodológica: confirma la viabilidad de combinar detección de anomalías con generación de reportes LLM. No obstante, su dominio es contable, por lo que no se adopta como evidencia agroexportadora. Esta tesis traslada el principio de generación narrativa a un contexto operativo, separando estrictamente la detección de la redacción mediante RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) sobre scores y vectores SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley).
-
-### 2.1.2 Park (2024) — Framework Multi-Agente LLM para Anomalías Financieras
-
-Park (2024) propuso un framework de múltiples agentes LLM especializados para validar alertas de anomalías en el mercado bursátil (S&P 500) (Park, 2024). La arquitectura organiza cuatro agentes —conversión de datos, análisis estadístico, verificación cruzada y consolidación— que se comunican mediante prompts estructurados y alcanzan mejores tasas de verdaderos positivos que un LLM único. La especialización de agentes demuestra ser superior a la generalización en la validación de señales financieras.
-
-Este trabajo aporta a la literatura evidencia de que los LLMs en arquitecturas especializadas pueden mejorar la calidad del análisis automatizado. Sin embargo, opera en mercados de alta frecuencia, un dominio alejado del contexto agroexportador. Esta tesis aplica únicamente el principio de especialización de roles —LLM como intérprete, no como detector— en un sistema de supervisión operativa con trazabilidad y generación restringida a datos verificados (Schneider et al., 2025).
-
-### 2.1.3 Almalki & Masud (2025) y Autores varios (2025) — Ensemble GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)+SHAP en Datos Críticos
-
-Almalki y Masud (2025) y trabajos paralelos publicados en el *Journal of Risk and Financial Management* (2025), diseñaron frameworks integrados de detección de fraude financiero combinando Stacking Ensemble de GBDTs (XGBoost y LightGBM) con explicabilidad SHAP (Almalki & Masud, 2025; JRFM, 2025). El ensemble alcanza PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad) > 0.90 y F1-Score (Medida Armónica de Precisión y Exhaustividad) > 0.80, superando a arquitecturas complejas de Deep Learning, con un SHAP Stability Index alto que certifica la coherencia forense de las explicaciones —requisito indispensable en auditoría.
-
-Este antecedente respalda la decisión arquitectónica de combinar GBDT y SHAP en datos tabulares críticos. La diferencia clave es que dichos trabajos se limitan a detección de fraude en estados financieros; la presente investigación adapta la lógica de modelos tabulares explicables al contexto agroexportador, incorporando un dataset agroexportador integrado con fuentes públicas, proxies documentados, datos sintéticos controlados y generación de reportes LLM+RAG para supervisión operativa.
-
-### 2.1.4 Han et al. (2022) — ADBench: Benchmark para Detección de Anomalías
-
-Han et al. (2022) publicaron ADBench (Han et al., 2022), un benchmark sistemático que evalúa 30 algoritmos de detección de anomalías en 57 datasets reales y sintéticos bajo tres niveles de supervisión —no supervisado, semisupervisado y supervisado. El hallazgo central es que no existe un algoritmo universalmente superior: el rendimiento depende del tipo de anomalía, la distribución de datos y el nivel de etiquetado. Isolation Forest y ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) muestran consistencia en escenarios no supervisados, y los ensembles de múltiples detectores superan sistemáticamente a los detectores individuales en escenarios de alta variabilidad distribucional.
-
-ADBench justifica formalmente la estrategia de ensemble adoptada en esta tesis y proporciona la metodología experimental de referencia para el Capítulo III. La librería PyOD (Zhao et al., 2019), compatible con todos los algoritmos evaluados en ADBench, asegura la reproducibilidad directa de los resultados.
-
-### 2.1.5 Grinsztajn et al. (2022) — GBDT vs. Deep Learning en Datos Tabulares
-
-Grinsztajn et al. (2022) realizaron un benchmark sistemático en 45 datasets tabulares comparando GBDT contra FT-Transformer, TabNet y MLP (Grinsztajn et al., 2022). El resultado es contundente: en datasets con menos de 50,000 muestras, los GBDT superan a cualquier modelo de Deep Learning en el 95% de los casos. Los autores identifican tres propiedades estructurales de los datos tabulares que favorecen a los árboles: robustez ante features no informativas, orientación no invariante a rotaciones e irregularidades en la función objetivo.
-
-Este trabajo cierra el debate GBDT versus Deep Learning para el tamaño de dataset típico en entornos empresariales medianos y justifica de manera irrefutable la elección de XGBoost y LightGBM como backbone del módulo de predicción de esta tesis. Es el argumento bibliográfico central de la primera batalla del estado del arte (§2.2.1).
-
-### 2.1.6 Zhao et al. (2019) — PyOD: Librería Estándar para Detección de Outliers
-
-Zhao et al. (2019) desarrollaron PyOD (Zhao et al., 2019), una librería unificada en Python que implementa más de 40 algoritmos de detección de outliers con una API compatible con scikit-learn. Cubre métodos basados en proximidad (LOF (Local Outlier Factor - Factor de Anomalía Local)), proyección (PCA), ensembles (Isolation Forest) y distribuciones empíricas (ECOD). Con más de 7,000 estrellas en GitHub y adopción en publicaciones de NeurIPS, ICDM e ICML, PyOD es la infraestructura técnica de referencia para implementar el ensemble de detección de anomalías de esta tesis, garantizando reproducibilidad directa con los 30 algoritmos de ADBench (Han et al., 2022).
-
-### 2.1.7 Mendoza & Huamán (2024) — Modelos GBDT y Clima para Predicción Agroexportadora Peruana
-
-Mendoza y Huamán (2024) investigaron el uso de algoritmos basados en árboles de decisión (XGBoost y LightGBM) para predecir el rendimiento y calidad de cultivos de arándanos y uva de mesa en la región La Libertad y Piura, utilizando variables climáticas locales de estaciones del SENAMHI y registros históricos de exportación. Su modelo demostró que los GBDT manejan con éxito la no-linealidad, el ruido estacional y la escasez de datos característicos de la agricultura peruana, superando a modelos autorregresivos clásicos y a redes neuronales densas en precisión de pronóstico a corto plazo.
-
-Este trabajo es sumamente relevante porque valida la robustez de XGBoost y LightGBM en el dominio agroexportador nacional con datos altamente dependientes del clima y la estacionalidad, justificando su elección como backbone de la Capa 1 de esta tesis. Sin embargo, Mendoza y Huamán se limitaron a la predicción puntual, sin abordar la detección integrada de anomalías transaccionales ni el cumplimiento regulatorio de trazabilidad.
-
-### 2.1.8 Chávez & Díaz (2023) — Detección de Anomalías IoT en Cadenas de Frío de Perecederos
-
-Chávez y Díaz (2023) propusieron un sistema de detección de anomalías no supervisado para contenedores de uva de mesa peruana de exportación en tránsito marítimo utilizando sensores IoT de temperatura, humedad relativa y CO2. Empleando Isolation Forest y LOF de forma aislada, el sistema identificó de manera oportuna desviaciones críticas en la cadena de frío (*cold chain failures*) y eventos de descalibración de gases, logrando reducir hasta en un 15% las pérdidas por sobre-maduración del producto en destino.
-
-El antecedente respalda empíricamente la viabilidad de Isolation Forest y LOF en el dominio logístico agrícola peruano. No obstante, los autores reportaron que los supervisores operativos mostraron desconfianza y dificultades para tomar decisiones rápidas ante las alertas porque los algoritmos generaban únicamente puntajes numéricos de anomalía ("cajas negras") sin explicaciones del por qué. Esta limitación justifica la inyección de la Capa 3 (SHAP) y la Capa 4 (LLM+RAG) propuestas en la presente tesis para resolver la brecha de explicabilidad y accionabilidad operativa.
+4.  **Grinsztajn et al. (2022) — *Why do tree-based models still outperform deep learning on tabular data?***
+    *   **Objetivo:** Analizar y comparar el rendimiento de los modelos basados en árboles (GBDT) frente a modelos de aprendizaje profundo (Deep Learning) especializados para datos tabulares.
+    *   **Datos:** 45 datasets tabulares reales y sintéticos de diversos sectores económicos con muestras menores a 50,000 registros.
+    *   **Método:** Evaluación empírica sistemática de XGBoost, LightGBM y CatBoost frente a FT-Transformer, TabNet y perceptrones multicapa (MLP) mediante optimización de hiperparámetros.
+    *   **Resultados Reales:** Los modelos GBDT superaron a las redes neuronales en el 95% de los escenarios tabulares evaluados. Se identificaron tres factores de éxito: robustez ante variables no informativas, falta de invarianza ante rotaciones de datos y discontinuidades en las fronteras de decisión.
+    *   **Limitación:** El estudio no aborda el modelamiento de secuencias temporales autoregresivas complejas, limitándose a problemas de clasificación y regresión estándar.
+    *   **Relación con la Tesis:** Justifica teórica y empíricamente la decisión de seleccionar XGBoost y LightGBM como los regresores globales de la tesis agroexportadora en lugar de modelos Deep Learning tabulares.
 
 ---
 
+### 2.1.2 Antecedentes Nacionales en Evaluación y Revisión Académica
+
+> [!WARNING]
+> Las siguientes referencias corresponden a literatura y borradores preliminares del contexto nacional peruano. Debido a limitaciones de localización en repositorios indizados oficiales al momento de esta reestructuración, se declaran bajo estado de **revisión y auditoría académica** y no deben asumirse como verdades científicas definitivas hasta que el alumno y su asesor confirmen su validez bibliográfica exacta:
+
+1.  **Mendoza & Huamán (2024) — *Modelos GBDT y clima para predicción agroexportadora peruana***
+    *   **Objetivo:** Evaluar modelos basados en árboles para pronosticar el rendimiento físico de cultivos de arándano y uva en La Libertad y Piura.
+    *   **Datos:** Series de exportación regionales y variables de estaciones meteorológicas del SENAMHI.
+    *   **Método:** Modelamiento predictivo supervisado con XGBoost y LightGBM incorporando lags de temperatura y precipitación.
+    *   **Resultados Reales:** Reducción del error de pronóstico de volumen a corto plazo frente a modelos autorregresivos lineales tradicionales (ARIMA).
+    *   **Limitación:** No aborda la integración de variables financieras ni la detección automática de anomalías aduaneras.
+    *   **Relación con la Tesis:** Aporta justificación sobre el comportamiento no lineal de las variables climáticas proxies en cultivos peruanos.
+
+2.  **Chávez & Díaz (2023) — *Detección de anomalías IoT en cadenas de frío de perecederos***
+    *   **Objetivo:** Detectar desviaciones térmicas y logísticas en contenedores de exportación de uva fresca peruana mediante sensores de temperatura y humedad en tránsito marítimo.
+    *   **Datos:** Registros de sensores IoT capturados durante despachos de exportación marítima.
+    *   **Método:** Clasificación no supervisada de outliers utilizando algoritmos de Isolation Forest y LOF aplicados de manera independiente.
+    *   **Resultados Reales:** Identificación oportuna de fallas mecánicas de frío, reportando reducciones del 15% en mermas en puerto de destino.
+    *   **Limitación:** Los algoritmos operan de forma aislada y carecen de una capa explicativa, lo que dificulta la interpretación de las alertas por parte del personal operativo.
+    *   **Relación con la Tesis:** Ilustra la utilidad práctica de Isolation Forest y LOF en el dominio agroexportador peruano y justifica la inyección de SHAP y reportes RAG para superar la opacidad de los modelos ("cajas negras").
+
+---
+
+### 2.1.3 Antecedentes Metodológicos
+
+1.  **Han et al. (2022) — *ADBench: Anomaly detection benchmark***
+    *   **Objetivo:** Evaluar sistemática y exhaustivamente algoritmos de detección de anomalías bajo múltiples niveles de supervisión.
+    *   **Datos:** 57 conjuntos de datos tabulares reales y sintéticos con inyección controlada de ruido y anomalías de distinta dimensionalidad.
+    *   **Método:** Comparativa de 30 algoritmos de detección (incluyendo Isolation Forest, LOF, ECOD, One-Class SVM y Autoencoders).
+    *   **Resultados Reales:** Confirmación de que ningún detector es superior en todos los escenarios; sin embargo, los enfoques de ensemble unificados mitigan el riesgo de sobreajuste y logran mayor estabilidad y robustez general ante cambios distribucionales.
+    *   **Limitación:** La mayoría de los datasets evaluados son estáticos y no corresponden a series temporales operacionales estructuradas.
+    *   **Relación con la Tesis:** Provee el soporte metodológico y la justificación teórica para construir un ensemble unificado no supervisado en la Capa 2 (PyOD) del sistema.
+
+2.  **Lundberg & Lee (2017) — *A unified approach to interpreting model predictions***
+    *   **Objetivo:** Desarrollar un marco unificado con consistencia axiomática para la atribución de variables locales en modelos de aprendizaje automático.
+    *   **Datos:** Evaluado en diversos datasets tabulares y de imágenes.
+    *   **Método:** Formulación de los valores de Shapley (SHAP) a partir de la teoría de juegos cooperativos, garantizando propiedades de eficiencia, simetría, aditividad y consistencia.
+    *   **Resultados Reales:** Demostración de que SHAP unifica métodos previos (LIME, DeepLIFT) resolviendo sus inconsistencias matemáticas locales.
+    *   **Limitación:** El cálculo exacto tiene complejidad exponencial en función del número de características.
+    *   **Relación con la Tesis:** Sustenta el uso del componente de explicabilidad (Capa 3) del sistema, aplicando la optimización TreeSHAP para modelos de árboles de decisión.
+
+3.  **Lewis et al. (2020) — *Retrieval-augmented generation for knowledge-intensive NLP tasks***
+    *   **Objetivo:** Combinar modelos generativos de lenguaje con sistemas de recuperación de información externa para resolver tareas intensivas en conocimiento sin requerir reentrenamiento masivo.
+    *   **Datos:** Wikipedia dump e índices vectoriales de preguntas y respuestas.
+    *   **Método:** Arquitectura RAG que recupera fragmentos relevantes a partir de una consulta y los inyecta en el contexto de entrada de un modelo secuencia a secuencia (BART/T5).
+    *   **Resultados Reales:** Reducción de la tasa de alucinación semántica y mejora de la precisión factual en la generación de textos.
+    *   **Limitación:** Sensible a la calidad y consistencia lógica de la base de conocimiento indexada.
+    *   **Relación con la Tesis:** Define la estructura de la Capa 4 para generar reportes fundamentados exclusivamente en la base documental del corpus y los datos estructurados.
+
+---
+
+### 2.1.4 Síntesis crítica
+La revisión de antecedentes revela una brecha metodológica y tecnológica: los trabajos analíticos en agroexportación peruana se han limitado a predicciones puntuales de volumen o a detección aislada de fallas logísticas de frío mediante sensores IoT. Por otra parte, las propuestas metodológicas de IA explicable y automatización de reportes (AuditCopilot, AuditMAI) se restringen a dominios contables y financieros estáticos. **No existe en la literatura revisada un sistema integrado que unifique la predicción de valor unitario y volumen semanal, la detección de anomalías mediante un ensemble calibrado por percentiles, la explicabilidad con SHAP y la redacción de informes con RAG factual** en el dominio agroexportador peruano.
+
+---

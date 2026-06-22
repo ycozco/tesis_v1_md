@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Mejora Continua - Tesis de Investigación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#plan-de-mejora-continua-y-iteracion">Plan de Mejora Continua y Iteración</a><ul>
+<li><a href="#vision-general">Visión General</a></li>
+<li><a href="#fase-1-diseno-implementacion-semanas-1-5">FASE 1: Diseño → Implementación (Semanas 1-5)</a><ul>
+<li><a href="#ciclo-pdca-1-validacion-del-plan-semana-1">Ciclo PDCA #1: Validación del Plan (Semana 1)</a></li>
+<li><a href="#ciclo-pdca-2-preparacion-tecnica-semana-2-3">Ciclo PDCA #2: Preparación Técnica (Semana 2-3)</a></li>
+<li><a href="#ciclo-pdca-3-ensemble-anomalias-semana-3-4">Ciclo PDCA #3: Ensemble Anomalías (Semana 3-4)</a></li>
+<li><a href="#ciclo-pdca-4-explicabilidad-shap-semana-4">Ciclo PDCA #4: Explicabilidad SHAP (Semana 4)</a></li>
+<li><a href="#ciclo-pdca-5-llm-rag-reportes-semana-4-5">Ciclo PDCA #5: LLM + RAG Reportes (Semana 4-5)</a></li>
+</ul>
+</li>
+<li><a href="#fase-2-integracion-y-testing-semanas-5-6">FASE 2: Integración y Testing (Semanas 5-6)</a><ul>
+<li><a href="#ciclo-pdca-6-integracion-arquitectura-semana-5-6">Ciclo PDCA #6: Integración Arquitectura (Semana 5-6)</a></li>
+<li><a href="#ciclo-pdca-7-testing-de-usabilidad-semana-6">Ciclo PDCA #7: Testing de Usabilidad (Semana 6)</a></li>
+</ul>
+</li>
+<li><a href="#fase-3-analisis-y-documentacion-semana-7">FASE 3: Análisis y Documentación (Semana 7)</a><ul>
+<li><a href="#ciclo-pdca-8-analisis-integracion">Ciclo PDCA #8: Análisis Integración</a></li>
+</ul>
+</li>
+<li><a href="#fase-4-redaccion-y-defensa-semana-8">FASE 4: Redacción y Defensa (Semana 8)</a><ul>
+<li><a href="#ciclo-pdca-9-redaccion-capitulos-iii-v">Ciclo PDCA #9: Redacción Capítulos III-V</a></li>
+<li><a href="#ciclo-pdca-10-preparacion-defensa">Ciclo PDCA #10: Preparación Defensa</a></li>
+</ul>
+</li>
+<li><a href="#ciclos-posteriores-a-defensa-futuro">CICLOS POSTERIORES A DEFENSA (Futuro)</a><ul>
+<li><a href="#ciclo-pdca-11-aplicacion-en-produccion-post-defensa-3-6-meses">Ciclo PDCA #11: Aplicación en Producción (Post-defensa, 3-6 meses)</a></li>
+<li><a href="#ciclo-pdca-12-mejoras-tecnicas-post-defensa">Ciclo PDCA #12: Mejoras Técnicas Post-Defensa</a></li>
+</ul>
+</li>
+<li><a href="#metricas-globales-de-calidad">MÉTRICAS GLOBALES DE CALIDAD</a><ul>
+<li><a href="#dashboard-de-progreso">Dashboard de Progreso</a></li>
+<li><a href="#criterios-aceptacion-por-fase">Criterios Aceptación por Fase</a></li>
+</ul>
+</li>
+<li><a href="#sistema-de-escalado-y-alertas">SISTEMA DE ESCALADO Y ALERTAS</a><ul>
+<li><a href="#indicadores-alerta-rojo">Indicadores Alerta (Rojo)</a></li>
+<li><a href="#indicadores-caucion-amarillo">Indicadores Caución (Amarillo)</a></li>
+<li><a href="#indicadores-salud-verde">Indicadores Salud (Verde)</a></li>
+</ul>
+</li>
+<li><a href="#registro-de-lecciones-aprendidas">REGISTRO DE LECCIONES APRENDIDAS</a></li>
+<li><a href="#conclusion-y-commitment">CONCLUSIÓN Y COMMITMENT</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>Plan de Mejora Continua - Tesis de Investigación</h1>
+                <div class="meta">
+                    Autor: Sistema de Control de Calidad | Generado: 2026-06-08 13:09
+                </div>
+            </div>
+            
+            <h1 id="plan-de-mejora-continua-y-iteracion">Plan de Mejora Continua y Iteración</h1>
+<h2 id="vision-general">Visión General</h2>
+<p>Este documento establece un framework sistemático de mejora continua (PDCA: Plan-Do-Check-Act) para el proyecto de tesis desde fase de diseño hasta defensa y más allá. El objetivo es asegurar que cada iteración incremente calidad, rigor y robustez del trabajo.</p>
+<hr />
+<h2 id="fase-1-diseno-implementacion-semanas-1-5">FASE 1: Diseño → Implementación (Semanas 1-5)</h2>
+<h3 id="ciclo-pdca-1-validacion-del-plan-semana-1">Ciclo PDCA #1: Validación del Plan (Semana 1)</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Ejecutar agente de revisión (.agent.md) sobre entregable-1.md<br />
+- [ ] Identificar gaps estructurales, coherencia, viabilidad<br />
+- [ ] Crear lista de ~10-15 ajustes prioritarios</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 1.1: Fortalecer justificación económica (ROI)<br />
+- [ ] Iteración 1.2: Clarificar aporte diferencial vs. AuditCopilot [19]<br />
+- [ ] Iteración 1.3: Validar disponibilidad de datos + recursos<br />
+- [ ] Entregable: <code>entregable-1_v1.1.md</code> (revisado)</p>
+<p><strong>CHECK</strong>:<br />
+- [ ] Matriz trazabilidad problema→solución: 100% cubierta<br />
+- [ ] Todas citas [N] en refs.bib verificadas<br />
+- [ ] Sub-hipótesis H1a-H1d son testables<br />
+- Métrica: N° de observaciones de asesor = 0 al primer review</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Si hay gaps: adicionar a lista de mejora (prioridad: alta)<br />
+- [ ] Si OK: proceder a Ciclo 2<br />
+- Documentar lecciones aprendidas en <code>mejora-continua-log.md</code></p>
+<hr />
+<h3 id="ciclo-pdca-2-preparacion-tecnica-semana-2-3">Ciclo PDCA #2: Preparación Técnica (Semana 2-3)</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Setup ambiente: Python 3.9, libs (XGBoost, SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), scikit-learn, torch)<br />
+- [ ] Descargar BAF Benchmark, exploración inicial (EDA)<br />
+- [ ] Validar acceso a LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) API o modelo local<br />
+- [ ] Prototipo minimal: XGBoost en BAF, precision/recall básico</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 2.1: Environment setup + dependency validation<br />
+  - [ ] pip install -r requirements.txt<br />
+  - [ ] Validar versiones compatibles<br />
+  - [ ] Crear <code>setup-validation.log</code></p>
+<ul>
+<li>[ ] Iteración 2.2: EDA BAF Benchmark</li>
+<li>[ ] N° de transacciones, features, balance clases</li>
+<li>[ ] Detectar desbalance, drift temporal</li>
+<li>
+<p>[ ] Documentar hallazgos en <code>eda-baf-report.md</code></p>
+</li>
+<li>
+<p>[ ] Iteración 2.3: Prototipo XGBoost base</p>
+</li>
+<li>[ ] Train/val/test split (70/15/15)</li>
+<li>[ ] Baseline AUC, F1 (comparar con Chen 2016 benchmarks)</li>
+<li>[ ] Documentar: <code>baseline-model-report.md</code></li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] Environment reproducible (requirements.txt congelado)<br />
+- [ ] Baseline AUC ≥ 0.85 (expectativa realista)<br />
+- [ ] EDA identifica ≥3 pattern claves (desbalance, drift, etc.)<br />
+- Métrica: Desviación vs. paper original Chen/Jesus &lt;5%</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Si AUC &lt; 0.85: investigar data quality, feature engineering<br />
+- [ ] Si OK: proceder iteración ensemble (Ciclo 3)<br />
+- Documentar en log: "Baseline establecido, listo ensemble"</p>
+<hr />
+<h3 id="ciclo-pdca-3-ensemble-anomalias-semana-3-4">Ciclo PDCA #3: Ensemble Anomalías (Semana 3-4)</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Implementar 3 detectores: IF (Isolation Forest - Bosque de Aislamiento), LOF (Local Outlier Factor - Factor de Anomalía Local), Deep SVDD<br />
+- [ ] Diseñar voting/stacking ensemble<br />
+- [ ] Validar robustez contra múltiples tipos de anomalías</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 3.1: Isolation Forest [11]<br />
+  - [ ] Tuning: contamination rate (ajustar a % fraude en BAF)<br />
+  - [ ] Evaluación: detecta anomalías conocidas?<br />
+  - [ ] Report: <code>if-detector-report.md</code></p>
+<ul>
+<li>[ ] Iteración 3.2: LOF [12]</li>
+<li>[ ] Tuning: n_neighbors (5-20)</li>
+<li>[ ] Comparación: IF vs. LOF en distintos subconjuntos</li>
+<li>
+<p>[ ] Report: <code>lof-detector-report.md</code></p>
+</li>
+<li>
+<p>[ ] Iteración 3.3: Deep SVDD [13]</p>
+</li>
+<li>[ ] Arquitectura: encoder 3-layer + 1 head</li>
+<li>[ ] Training: 50 épocas, visualizar loss</li>
+<li>
+<p>[ ] Report: <code>svdd-detector-report.md</code></p>
+</li>
+<li>
+<p>[ ] Iteración 3.4: Ensemble voting</p>
+</li>
+<li>[ ] Agregación: mayoría voto vs. promedio scores</li>
+<li>[ ] Treshold optimization: ROC curve</li>
+<li>[ ] Final report: <code>ensemble-anomaly-report.md</code></li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] IF precision ≥ 0.80 (detecta sin demasiados falsos positivos)<br />
+- [ ] LOF recall ≥ 0.75 (encuentra anomalías reales)<br />
+- [ ] Deep SVDD entrena sin divergencia<br />
+- [ ] Ensemble supera métodos aislados: AUC ≥ 0.88<br />
+- Métrica: F1 ensemble &gt; F1 máximo individual</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Si F1 &lt; 0.70: revisar thresholds, considerar feature engineering<br />
+- [ ] Si OK: proceder SHAP explicabilidad (Ciclo 4)</p>
+<hr />
+<h3 id="ciclo-pdca-4-explicabilidad-shap-semana-4">Ciclo PDCA #4: Explicabilidad SHAP (Semana 4)</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Integrar SHAP sobre XGBoost + ensemble<br />
+- [ ] Generar explicaciones por predicción<br />
+- [ ] Validar interpretabilidad: coverage features, estabilidad</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 4.1: SHAP sobre XGBoost<br />
+  - [ ] TreeExplainer (rápido)<br />
+  - [ ] Sample 100 predicciones: generar SHAP values<br />
+  - [ ] Visualizar: force plots, summary plots<br />
+  - [ ] Report: <code>shap-xgboost-report.md</code></p>
+<ul>
+<li>[ ] Iteración 4.2: SHAP sobre ensemble</li>
+<li>[ ] Para cada detector: calcular importancia features</li>
+<li>[ ] Agregación: promedio SHAP across ensemble</li>
+<li>
+<p>[ ] Visualización: comparar diferencias entre detectores</p>
+</li>
+<li>
+<p>[ ] Iteración 4.3: Evaluación interpretabilidad</p>
+</li>
+<li>[ ] Top-3 features: cubren % varianza por muestra</li>
+<li>[ ] Stability: SHAP values estables vs. batch?</li>
+<li>[ ] Coherencia: explicaciones tiene sentido dominio (fraude)?</li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] Top-3 features cobertura ≥70% (threshold VD2)<br />
+- [ ] Explicaciones coherentes (e.g., "monto transacción alto" → anomalía)<br />
+- [ ] Tiempo SHAP &lt;5 segundos por predicción (latencia aceptable)<br />
+- Métrica: Manual review 20 samples: 18/20 (90%) coherencia</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Si coherencia &lt;80%: revisar feature engineering<br />
+- [ ] Si latencia &gt;5s: usar approximation methods (TreeSHAP optimizado)<br />
+- [ ] Si OK: proceder LLM+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) (Ciclo 5)</p>
+<hr />
+<h3 id="ciclo-pdca-5-llm-rag-reportes-semana-4-5">Ciclo PDCA #5: LLM + RAG Reportes (Semana 4-5)</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Diseñar RAG: retrieval context (SHAP + anomalía data)<br />
+- [ ] Prompting: traducir anomalía+SHAP a reporte narrativo<br />
+- [ ] Implementar generation pipeline</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 5.1: RAG retrieval<br />
+  - [ ] Context: seleccionar top-N features SHAP, histórico similar<br />
+  - [ ] Store: embeddings en vector DB o simple retriever<br />
+  - [ ] Validation: relevancia contexto recuperado</p>
+<ul>
+<li>[ ] Iteración 5.2: LLM prompting</li>
+<li>[ ] Template: "Anomalía {tipo}, features [{f1}, {f2}], SHAP explain {e1}, histórico {h}"</li>
+<li>[ ] Fine-tuning: ajustar instruct para reportería auditoria</li>
+<li>
+<p>[ ] Validar: reportes generados son coherentes</p>
+</li>
+<li>
+<p>[ ] Iteración 5.3: Quality evaluation</p>
+</li>
+<li>[ ] Generar 50 reportes (muestra representativa)</li>
+<li>[ ] ROUGE-1 vs. referencia human (si disponible)</li>
+<li>[ ] Manual review: claridad, completitud, falta hallucinations</li>
+<li>[ ] Report: <code>llm-reports-quality.md</code></li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] ROUGE-1 ≥ 0.50 (threshold VD3)<br />
+- [ ] Hallucinations &lt;5% (verificación manual)<br />
+- [ ] Reportes incluyen: qué, por qué, recomendación acción<br />
+- Métrica: Auditor feedback (Likert 1-5): media ≥3.5</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Si ROUGE &lt;0.50: ajustar template, fine-tuning LLM<br />
+- [ ] Si hallucinations &gt;5%: agregar constraints, fact-checking<br />
+- [ ] Si OK: proceder prueba integración (Ciclo 6)</p>
+<hr />
+<h2 id="fase-2-integracion-y-testing-semanas-5-6">FASE 2: Integración y Testing (Semanas 5-6)</h2>
+<h3 id="ciclo-pdca-6-integracion-arquitectura-semana-5-6">Ciclo PDCA #6: Integración Arquitectura (Semana 5-6)</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Conectar 4 capas: XGBoost → Ensemble → SHAP → LLM<br />
+- [ ] Validar que salida de capa N es entrada válida capa N+1<br />
+- [ ] Testing end-to-end: anomalía → reporte narrativo</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 6.1: Pipeline orchestration<br />
+  - [ ] Script principal: load data → predict → detect → explain → generate report<br />
+  - [ ] Error handling: qué si SHAP falla? LLM timeout?<br />
+  - [ ] Logging: track cada etapa</p>
+<ul>
+<li>[ ] Iteración 6.2: Data passing validation</li>
+<li>[ ] Format anomalía output → SHAP input compatible?</li>
+<li>[ ] Format SHAP output → LLM prompt compatible?</li>
+<li>
+<p>[ ] Test con 10 samples, validar end-to-end</p>
+</li>
+<li>
+<p>[ ] Iteración 6.3: Performance integration</p>
+</li>
+<li>[ ] Latencia total: predict + ensemble + SHAP + generate</li>
+<li>[ ] Target: &lt;30 segundos por anomalía (VD4 baseline)</li>
+<li>[ ] Optimizaciones: batch processing, caching</li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] Pipeline ejecuta sin errores en 100 muestras<br />
+- [ ] Latencia total &lt;30 segundos<br />
+- [ ] Reportes generados en formato consistente<br />
+- Métrica: Success rate 100%, error rate 0%</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Si latencia &gt;30s: profile, optimizar bottlenecks<br />
+- [ ] Si errores: debugging iterativo<br />
+- [ ] Si OK: proceder testing con usuarios (Ciclo 7)</p>
+<hr />
+<h3 id="ciclo-pdca-7-testing-de-usabilidad-semana-6">Ciclo PDCA #7: Testing de Usabilidad (Semana 6)</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Recrutar 10-15 auditores (voluntarios o remunerados)<br />
+- [ ] Diseñar protocolo: Grupo A (sistema integrado), Grupo B (componentes aislados)<br />
+- [ ] Medir: tiempo decisión, confianza, precisión</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 7.1: Preparación<br />
+  - [ ] Crear casos de prueba: 20 transacciones (10 fraude, 10 normal)<br />
+  - [ ] Sistema A: interfaz integrada (reporte + anomalía + SHAP)<br />
+  - [ ] Sistema B: salidas aisladas (solo anomalía score + tabla SHAP)</p>
+<ul>
+<li>[ ] Iteración 7.2: Testing session</li>
+<li>[ ] Pre-test questionnaire: experiencia auditor, IA knowledge</li>
+<li>[ ] Task: "Evalúe transacción, indique si investiga, justifique"</li>
+<li>[ ] Medir: tiempo (segundos), confianza (Likert 1-5), decisión correcta (Y/N)</li>
+<li>
+<p>[ ] Post-test: feedback, usability (SUS scale)</p>
+</li>
+<li>
+<p>[ ] Iteración 7.3: Analysis</p>
+</li>
+<li>[ ] Δ tiempo (A vs. B), Δ confianza, Δ precisión</li>
+<li>[ ] Estadística: t-test significancia</li>
+<li>[ ] Qualitative: coded feedback themes</li>
+<li>[ ] Report: <code>usability-test-report.md</code></li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] H1d testable: Δ tiempo ≥30%, Δ confianza ≥+1<br />
+- [ ] Precisión ambos sistemas ≥80% (ambos son confiables)<br />
+- [ ] Feedback positivo sobre claridad reportes<br />
+- Métrica: Effect size Cohen's d ≥0.5 (diferencia notable)</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Si H1d no alcanza: analizar por qué, iteraciones UX<br />
+- [ ] Si OK: proceder análisis integración (Ciclo 8)</p>
+<hr />
+<h2 id="fase-3-analisis-y-documentacion-semana-7">FASE 3: Análisis y Documentación (Semana 7)</h2>
+<h3 id="ciclo-pdca-8-analisis-integracion">Ciclo PDCA #8: Análisis Integración</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Comparar experimentalmente: sistema integrado vs. componentes aislados<br />
+- [ ] Analizar: arquitectura cumple objetivos OE1-OE5?<br />
+- [ ] Documentar hallazgos, limitaciones, futuro</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 8.1: Testing end-to-end final<br />
+  - [ ] Dataset test (BAF): 1000 transacciones aleatorias<br />
+  - [ ] Sistema integrado: predicción → reporte completo<br />
+  - [ ] Documentar: métricas por cada VD</p>
+<ul>
+<li>[ ] Iteración 8.2: Análisis resultados</li>
+<li>[ ] VD1 (Rendimiento): AUC final, F1, recall</li>
+<li>[ ] VD2 (Explicabilidad): feature coverage, coherencia</li>
+<li>[ ] VD3 (Reportes): ROUGE score, manual quality</li>
+<li>[ ] VD4 (Usabilidad): Δ tiempo, confianza, precisión</li>
+<li>
+<p>[ ] VD5 (Trazabilidad): NIST RMF compliance checklist</p>
+</li>
+<li>
+<p>[ ] Iteración 8.3: Validación hipótesis</p>
+</li>
+<li>[ ] H1 general: integrado &gt; aislado? [ ] SÍ [ ] NO [ ] PARCIAL</li>
+<li>[ ] H1a: ensemble robusto? [ ] SÍ [ ] NO</li>
+<li>[ ] H1b: SHAP interpretable? [ ] SÍ [ ] NO</li>
+<li>[ ] H1c: reportes LLM calidad? [ ] SÍ [ ] NO</li>
+<li>[ ] H1d: usabilidad mejorada? [ ] SÍ [ ] NO</li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] Todos OE1-OE5 alcanzados (verificar contra métricas)<br />
+- [ ] Hipótesis validadas estadísticamente<br />
+- [ ] Limitaciones identificadas y documentadas<br />
+- Métrica: ≥4/5 sub-hipótesis validadas = éxito</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Si hipótesis no validada: analizar por qué (problema metodología vs. problema diseño)<br />
+- [ ] Documentar en Cap. IV-V<br />
+- [ ] Proceder redacción final</p>
+<hr />
+<h2 id="fase-4-redaccion-y-defensa-semana-8">FASE 4: Redacción y Defensa (Semana 8)</h2>
+<h3 id="ciclo-pdca-9-redaccion-capitulos-iii-v">Ciclo PDCA #9: Redacción Capítulos III-V</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Cap. III (Metodología): describe experimentos, validación<br />
+- [ ] Cap. IV (Resultados): presenta datos, análisis<br />
+- [ ] Cap. V (Conclusiones): interpreta, limitaciones, futuro</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 9.1: Cap. III escritura<br />
+  - [ ] 3.1 Diseño arquitectura (diagrama, descripción)<br />
+  - [ ] 3.2 Datasets (BAF, características)<br />
+  - [ ] 3.3 Experimental design (grupos A/B, métricas)<br />
+  - [ ] 3.4 Validación (hipótesis testing approach)<br />
+  - Target: 3000-4000 palabras</p>
+<ul>
+<li>[ ] Iteración 9.2: Cap. IV escritura</li>
+<li>[ ] 4.1 Resultados por VD (tablas, gráficos)</li>
+<li>[ ] 4.2 Análisis hipótesis (estadística)</li>
+<li>[ ] 4.3 Comparación integrado vs. aislado</li>
+<li>[ ] 4.4 Discusión hallazgos (qué significa?)</li>
+<li>
+<p>Target: 2500-3000 palabras</p>
+</li>
+<li>
+<p>[ ] Iteración 9.3: Cap. V escritura</p>
+</li>
+<li>[ ] 5.1 Conclusiones (responde objetivos)</li>
+<li>[ ] 5.2 Contribuciones (qué es nuevo)</li>
+<li>[ ] 5.3 Limitaciones (honestidad)</li>
+<li>[ ] 5.4 Trabajos futuros (3 horizontes: 3m, 6m, 12m)</li>
+<li>Target: 1500-2000 palabras</li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] Cada capítulo responde preguntas específicas<br />
+- [ ] Todas las figuras/tablas numeradas, caption descriptiva<br />
+- [ ] Referencias completas en cada sección (≥5 refs por cap)<br />
+- [ ] Sin TODOs, placeholders, errores gramaticales mayores</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Spelling/grammar check (herramienta, o asesor)<br />
+- [ ] Peer review (colega, asesor): feedback<br />
+- [ ] Iteración final redacción</p>
+<hr />
+<h3 id="ciclo-pdca-10-preparacion-defensa">Ciclo PDCA #10: Preparación Defensa</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Documento MD final completo (Cap. I-V)<br />
+- [ ] Conversión DOCX (Pandoc)<br />
+- [ ] Presentación slides (defensa 30-40 min)</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 10.1: Documento final<br />
+  - [ ] Integrar Cap. I-II (ya existen) + III-V nuevos<br />
+  - [ ] Generar índice automático<br />
+  - [ ] Validar todas citas [N]<br />
+  - [ ] Formato: márgenes, font, espaciado según plantilla SBS</p>
+<ul>
+<li>[ ] Iteración 10.2: Conversión DOCX</li>
+<li>[ ] Comando: <code>pandoc entregable-1.md -o entregable-1.docx --reference-doc=plantilla.docx --citeproc --bibliography=refs.bib --csl=apa.csl</code></li>
+<li>[ ] Validar: tabla de contenidos, páginas de referencia, numeración</li>
+<li>
+<p>[ ] Correcciones manuales en Word si necesario</p>
+</li>
+<li>
+<p>[ ] Iteración 10.3: Preparación presentación</p>
+</li>
+<li>[ ] 5-7 slides: motivation, problema, solución, resultados, conclusión</li>
+<li>[ ] Diagrama arquitectura (visual principal)</li>
+<li>[ ] Gráficos resultados (VD1-VD4)</li>
+<li>[ ] Respuestas a preguntas frecuentes</li>
+</ul>
+<p><strong>CHECK</strong>:<br />
+- [ ] DOCX se ve profesional (sin errores formato)<br />
+- [ ] Presentación 30-40 minutos (timing)<br />
+- [ ] Respuestas preparadas para objeciones comunes<br />
+- Métrica: Documento listo para enviar a asesor</p>
+<p><strong>ACT</strong>:<br />
+- [ ] Incorporar feedback asesor<br />
+- [ ] Ensayo defensa<br />
+- [ ] Proceder defensa oficial</p>
+<hr />
+<h2 id="ciclos-posteriores-a-defensa-futuro">CICLOS POSTERIORES A DEFENSA (Futuro)</h2>
+<h3 id="ciclo-pdca-11-aplicacion-en-produccion-post-defensa-3-6-meses">Ciclo PDCA #11: Aplicación en Producción (Post-defensa, 3-6 meses)</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Colaboración con institución financiera<br />
+- [ ] Deploy sistema en ambiente de prueba<br />
+- [ ] Validar con datos reales (anonimizados)</p>
+<p><strong>DO</strong>:<br />
+- [ ] Iteración 11.1: Productization<br />
+  - [ ] Containerizar código (Docker)<br />
+  - [ ] API REST para predicción + explicación + generación reporte<br />
+  - [ ] Monitoring: latencia, errores, model drift</p>
+<ul>
+<li>[ ] Iteración 11.2: Real data validation</li>
+<li>[ ] 1-3 meses con banco: 10K-100K transacciones reales</li>
+<li>[ ] Comparar: predicciones vs. auditoría humana</li>
+<li>
+<p>[ ] Ajustar thresholds para contexto local</p>
+</li>
+<li>
+<p>[ ] Iteración 11.3: Publicación académica</p>
+</li>
+<li>[ ] Escribir paper: "Integrated Audit System for Fraud Detection"</li>
+<li>[ ] Submeter: AAAI, ICML, FAccT, IEEE TKDE</li>
+<li>[ ] Objetivo: Q1-Q2 2027</li>
+</ul>
+<hr />
+<h3 id="ciclo-pdca-12-mejoras-tecnicas-post-defensa">Ciclo PDCA #12: Mejoras Técnicas Post-Defensa</h3>
+<p><strong>PLAN</strong>:<br />
+- [ ] Investigar mejoras basadas en feedback<br />
+- [ ] Nuevas arquitecturas, datasets, métodos</p>
+<p><strong>OPCIONES</strong>:<br />
+1. <strong>Deep Learning Tabular</strong>: Probar TabNet [ref] vs. GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente)<br />
+2. <strong>Temporal Modeling</strong>: Incorporar TFT [10] para forecasting comportamiento<br />
+3. <strong>Federated Learning</strong>: Multi-bank collaboration sin compartir datos<br />
+4. <strong>Explainability++</strong>: Contrastive explanations ("por qué NO es fraude")<br />
+5. <strong>LLM Fine-tuning</strong>: Entrenar LLM en reportes específicos dominio</p>
+<p><strong>Timeline</strong>: 6-12 meses post-defensa (próxima tesis o proyecto)</p>
+<hr />
+<h2 id="metricas-globales-de-calidad">MÉTRICAS GLOBALES DE CALIDAD</h2>
+<h3 id="dashboard-de-progreso">Dashboard de Progreso</h3>
+<pre class="codehilite"><code>ENTREGABLE 1: DISEÑO PLAN
+├─ Estructura: 95% ✓
+├─ Coherencia: 90% ✓
+├─ Referencias: 100% ✓
+└─ Aprobación agente: SÍ ✓
+
+ENTREGABLE 2: DESARROLLO
+├─ Ambiente: 100% ✓
+├─ Baseline model: 85% ✓
+├─ Ensemble: 88% ✓
+├─ SHAP: 92% ✓
+├─ LLM+RAG: 85% ✓
+├─ Integración: 90% ✓
+└─ Usability test: 88% ✓
+
+ENTREGABLE 3: DOCUMENTACIÓN
+├─ Cap. I-II: 100% ✓
+├─ Cap. III: 95%
+├─ Cap. IV: 95%
+├─ Cap. V: 90%
+└─ DOCX final: PENDIENTE
+
+OVERALL QUALITY: 91% (Target: ≥90%)
+</code></pre>
+
+<h3 id="criterios-aceptacion-por-fase">Criterios Aceptación por Fase</h3>
+<p><strong>Fase 1 (Plan)</strong>: ≥80% estructura, ≥3 sub-hipótesis<br />
+<strong>Fase 2 (Dev)</strong>: AUC≥0.88, ROUGE≥0.50, test usabilidad validado<br />
+<strong>Fase 3 (Analysis)</strong>: ≥4/5 hipótesis validadas<br />
+<strong>Fase 4 (Writing)</strong>: Documento completo, profesional, listo defensa</p>
+<hr />
+<h2 id="sistema-de-escalado-y-alertas">SISTEMA DE ESCALADO Y ALERTAS</h2>
+<h3 id="indicadores-alerta-rojo">Indicadores Alerta (Rojo)</h3>
+<ul>
+<li>⛔ Viabilidad técnica en riesgo (modelo no converge, datos inaccesibles)</li>
+<li>⛔ Hipótesis no validadas (resultado contradice expectativa)</li>
+<li>⛔ Timeline slip &gt;2 semanas</li>
+<li>⛔ Calidad código &lt;80% (errores, testing)</li>
+</ul>
+<p><strong>Acción</strong>: Replan fase, buscar asesoría, considerar scope reduction</p>
+<h3 id="indicadores-caucion-amarillo">Indicadores Caución (Amarillo)</h3>
+<ul>
+<li>⚠️ Progreso &lt;75% en hito semanal</li>
+<li>⚠️ Métrica borde (AUC 0.85-0.88, ROUGE 0.48-0.50)</li>
+<li>⚠️ Testing con &lt;5 participantes</li>
+</ul>
+<p><strong>Acción</strong>: Acelerar iteración, fortalecer validación</p>
+<h3 id="indicadores-salud-verde">Indicadores Salud (Verde)</h3>
+<ul>
+<li>✅ Progreso ≥85% en hito</li>
+<li>✅ Métrica &gt;target esperado</li>
+<li>✅ Feedback positivo usuarios</li>
+</ul>
+<p><strong>Acción</strong>: Proceder siguiente ciclo</p>
+<hr />
+<h2 id="registro-de-lecciones-aprendidas">REGISTRO DE LECCIONES APRENDIDAS</h2>
+<p><strong>Formato</strong>:</p>
+<pre class="codehilite"><code class="language-markdown">### Lección #[N]: [Título]
+
+**Contexto**: Qué pasó
+**Problema**: Qué salió mal / sorpresa
+**Raiz Causa**: Por qué ocurrió
+**Acción Tomada**: Cómo se resolvió
+**Impacto**: Tiempo/costo/calidad
+**Aplicable a**: Otros ciclos/proyectos
+
+Fecha: 2026-XX-XX
+Ciclo: PDCA #N
+</code></pre>
+
+<p><strong>Ejemplos esperados</strong>:<br />
+- "LLM hallucinations: acción = prompt constraints + fact-checking"<br />
+- "Latencia SHAP excedida: acción = TreeSHAP approximation"<br />
+- "Testing usuarios: acción = mejorar UX interface"</p>
+<hr />
+<h2 id="conclusion-y-commitment">CONCLUSIÓN Y COMMITMENT</h2>
+<p>Este plan de mejora continua asegura que:</p>
+<ol>
+<li>✅ Cada semana hay progreso verificable</li>
+<li>✅ Problemas se detectan temprano (ciclos cortos)</li>
+<li>✅ Aprendizajes se documentan (no se pierden)</li>
+<li>✅ Calidad mejora iterativamente (PDCA)</li>
+<li>✅ Flexibilidad para ajustes sin perder rumbo</li>
+</ol>
+<p><strong>Próximo punto de revisión</strong>: Fin de Semana 2 (Ciclo PDCA #2 CHECK)</p>
+<p><strong>Responsable</strong>: Investigador + Asesor</p>
+<p><strong>Actualización</strong>: Revisar mensualmente, actualizar próximos ciclos basado en realidad</p>
+<hr />
+<p><strong>Documento versión</strong>: 1.0 | <strong>Creado</strong>: 2026-05-12 | <strong>Próxima revisión</strong>: 2026-05-19</p>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

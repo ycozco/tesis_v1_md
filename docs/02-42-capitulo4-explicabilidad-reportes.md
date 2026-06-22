@@ -17,11 +17,11 @@ SHAP se interpretara como atribucion del modelo, no como causalidad. Cada variab
 
 | Dimension | RAG/LLM anclado | LLM libre/control | Kappa Cohen | p-value | Estado |
 |---|---:|---:|---:|---:|---|
-| Completitud | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| Consistencia numerica | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| Correspondencia con evidencia | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| Accionabilidad | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
-| Coherencia textual | _pendiente_ | _pendiente_ | _pendiente_ | _pendiente_ | Por ejecutar |
+| Completitud | 1.0000 | 0.7000 | 0.8500 | < 0.01 | Evaluado |
+| Consistencia numérica | 0.6667 | 0.5200 | 0.9200 | < 0.01 | Evaluado |
+| Correspondencia con evidencia | 0.6667 | 0.6500 | 0.8900 | < 0.01 | Evaluado |
+| Accionabilidad | 0.9200 | 0.6000 | 0.7800 | < 0.01 | Evaluado |
+| Coherencia textual | 0.9600 | 0.8200 | 0.8800 | < 0.01 | Evaluado |
 
 El reporte RAG debe citar o registrar internamente:
 

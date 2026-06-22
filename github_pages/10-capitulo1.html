@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Capitulo1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#capitulo-i-planteamiento-del-problema">CAPÍTULO I: PLANTEAMIENTO DEL PROBLEMA</a><ul>
+<li><a href="#11-descripcion-de-la-realidad-problematica">1.1 Descripción de la Realidad Problemática</a><ul>
+<li><a href="#contexto-agroexportador-y-empresarial">Contexto agroexportador y empresarial</a></li>
+<li><a href="#problemas-identificados">Problemas identificados</a></li>
+</ul>
+</li>
+<li><a href="#12-problema-principal">1.2 Problema Principal</a><ul>
+<li><a href="#sub-problemas">Sub-problemas</a></li>
+</ul>
+</li>
+<li><a href="#13-objetivos">1.3 Objetivos</a><ul>
+<li><a href="#131-objetivo-principal">1.3.1 Objetivo Principal</a></li>
+<li><a href="#132-objetivos-especificos">1.3.2 Objetivos Específicos</a></li>
+</ul>
+</li>
+<li><a href="#14-hipotesis-de-la-investigacion">1.4 Hipótesis de la Investigación</a></li>
+<li><a href="#15-variables-e-indicadores">1.5 Variables e Indicadores</a><ul>
+<li><a href="#151-variable-independiente">1.5.1 Variable Independiente</a></li>
+<li><a href="#152-variables-dependientes">1.5.2 Variables Dependientes</a></li>
+</ul>
+</li>
+<li><a href="#16-viabilidad-de-la-investigacion">1.6 Viabilidad de la Investigación</a><ul>
+<li><a href="#161-viabilidad-tecnica">1.6.1 Viabilidad Técnica</a></li>
+<li><a href="#162-viabilidad-operativa">1.6.2 Viabilidad Operativa</a></li>
+<li><a href="#163-viabilidad-economica">1.6.3 Viabilidad Económica</a></li>
+</ul>
+</li>
+<li><a href="#17-justificacion-e-importancia-de-la-investigacion">1.7 Justificación e Importancia de la Investigación</a><ul>
+<li><a href="#171-justificacion-teorica">1.7.1 Justificación Teórica</a></li>
+<li><a href="#172-justificacion-economica">1.7.2 Justificación Económica</a></li>
+<li><a href="#173-justificacion-social">1.7.3 Justificación Social</a></li>
+<li><a href="#174-importancia">1.7.4 Importancia</a></li>
+</ul>
+</li>
+<li><a href="#18-alcance">1.8 Alcance</a></li>
+<li><a href="#19-linea-tipo-y-nivel-de-la-investigacion">1.9 Línea, Tipo y Nivel de la Investigación</a><ul>
+<li><a href="#191-linea-de-investigacion">1.9.1 Línea de Investigación</a></li>
+<li><a href="#192-marco-epistemologico">1.9.2 Marco Epistemológico</a></li>
+<li><a href="#193-tipo-de-investigacion">1.9.3 Tipo de Investigación</a></li>
+<li><a href="#194-nivel-de-investigacion">1.9.4 Nivel de Investigación</a></li>
+<li><a href="#195-diseno-de-la-investigacion">1.9.5 Diseño de la Investigación</a></li>
+</ul>
+</li>
+<li><a href="#110-tecnicas-e-instrumentos-de-recoleccion-de-informacion">1.10 Técnicas e Instrumentos de Recolección de Información</a><ul>
+<li><a href="#1101-tecnicas">1.10.1 Técnicas</a></li>
+<li><a href="#1102-instrumentos">1.10.2 Instrumentos</a></li>
+</ul>
+</li>
+<li><a href="#111-cronograma-de-actividades">1.11 Cronograma de Actividades</a></li>
+<li><a href="#112-limitaciones-de-la-investigacion">1.12 Limitaciones de la Investigación</a><ul>
+<li><a href="#1121-limitaciones-de-validez-externa">1.12.1 Limitaciones de validez externa</a></li>
+<li><a href="#1122-limitaciones-de-validez-interna">1.12.2 Limitaciones de validez interna</a></li>
+<li><a href="#1123-limitaciones-de-validez-de-constructo">1.12.3 Limitaciones de validez de constructo</a></li>
+<li><a href="#1124-limitaciones-tecnicas-y-de-recursos">1.12.4 Limitaciones técnicas y de recursos</a></li>
+</ul>
+</li>
+<li><a href="#113-declaracion-de-intereses-y-aspectos-eticos">1.13 Declaración de Intereses y Aspectos Éticos</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>10 Capitulo1</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-07 19:20
+                </div>
+            </div>
+            
+            <h1 id="capitulo-i-planteamiento-del-problema">CAPÍTULO I: PLANTEAMIENTO DEL PROBLEMA</h1>
+<h2 id="11-descripcion-de-la-realidad-problematica">1.1 Descripción de la Realidad Problemática</h2>
+<h3 id="contexto-agroexportador-y-empresarial">Contexto agroexportador y empresarial</h3>
+<p>En empresas agroexportadoras —dedicadas a la producción, acopio, procesamiento, empaque, control de calidad y comercialización internacional de productos agrícolas— la supervisión operativa constituye una actividad crítica para detectar desviaciones productivas, mermas, variaciones de precios, condiciones climáticas adversas, retrasos logísticos e incumplimientos de estándares fitosanitarios. Estas desviaciones —tales como la pérdida de calibración térmica en contenedores refrigerados (<em>cold chain failure</em>) camino al puerto de Paita o Callao, el rechazo fitosanitario de SENASA o FDA por trazas de pesticidas superiores al Límite Máximo de Residuos (LMR), o desvíos en el calibre óptimo de frutos causados por olas de calor registradas por el SENAMHI— afectan directamente la rentabilidad, continuidad operativa y competitividad internacional de la empresa.</p>
+<p>La magnitud económica del sector refuerza la necesidad de sistemas de supervisión más oportunos y trazables. Según MIDAGRI, las agroexportaciones peruanas superaron los USD 15 013 millones al cierre de 2025, con crecimiento de 17.3% respecto al año anterior (MIDAGRI, 2026). Este dinamismo incrementa la complejidad de las cadenas agroexportadoras, que deben coordinar producción, calidad, sanidad, logística y comercio exterior bajo condiciones cambiantes de clima, demanda internacional y requisitos de destino.</p>
+<p>En el contexto peruano, la transformación digital y la adopción de sistemas inteligentes exigen mayores niveles de gobernanza tecnológica y trazabilidad operativa. La Ley N.° 31814 y su reglamento aprobado mediante D.S. N.° 115-2025-PCM (PCM, 2025) establecen un marco general para promover el uso responsable de la inteligencia artificial, con énfasis en transparencia, supervisión humana y gestión de riesgos. Es pertinente precisar que, dado que esta ley regula obligatoriamente de forma directa a las entidades de la administración pública, su adopción por parte de empresas agroexportadoras privadas se inscribe en un enfoque de <strong>conformidad voluntaria por diseño</strong> (<em>Voluntary Compliance by Design</em>) y responsabilidad proactiva (<em>Accountability</em>). Esto no solo mitiga riesgos de sesgo y alucinación, sino que posiciona a las empresas competitivamente frente a barreras comerciales no arancelarias en mercados exigentes sujetos a normativas homólogas (como la Unión Europea bajo el EU AI Act). Asimismo, la Resolución SBS N.° 053-2023 (SBS, 2023) se considera en esta tesis únicamente como referencia nacional de buenas prácticas para gestión de riesgo de modelos, validación y monitoreo, sin asumirla como obligación directa para empresas agroexportadoras.</p>
+<p>En escenarios donde una empresa agroexportadora integra datos de producción, precios, clima, inventario, calidad, logística y exportación, la supervisión manual resulta operativamente limitada. Sin embargo, sistemas automatizados sin mecanismos de explicabilidad reducen la confianza organizacional y dificultan la revisión interna de decisiones. En consecuencia, surge la necesidad de sistemas integrados capaces de detectar anomalías operativas en tiempo oportuno, explicar sus causas probables y generar reportes trazables que permitan justificar cada alerta dentro de la cadena agroexportadora.</p>
+<h3 id="problemas-identificados">Problemas identificados</h3>
+<ol>
+<li>
+<p><strong>Falta de integración entre módulos operativos</strong>: Los componentes de predicción, detección de anomalías y generación de reportes funcionan de forma independiente. Los hallazgos de un módulo no se comunican al siguiente con contexto semántico, lo que impide obtener una visión coherente del estado operativo de la empresa.</p>
+</li>
+<li>
+<p><strong>Baja explicabilidad de las alertas automáticas</strong>: Los modelos predictivos generan puntuaciones de riesgo sin justificar qué variables operativas (mermas, retrasos, desvíos de calidad) determinaron el resultado. Los gestores y auditores internos requieren explicaciones comprensibles para tomar decisiones correctivas.</p>
+</li>
+<li>
+<p><strong>Reportería manual e ineficiente</strong>: La detección de anomalías operativas —en producción, inventario, logística o calidad— exige la redacción manual de informes por parte de analistas, con riesgo de inconsistencia, errores de interpretación y demoras que comprometen la capacidad de respuesta empresarial.</p>
+</li>
+<li>
+<p><strong>Falta de trazabilidad en la cadena de decisiones</strong>: La gobernanza tecnológica y la auditoría interna requieren poder rastrear el fundamento de cada alerta desde el dato de origen (sensor, ERP, reporte de campo) hasta el informe ejecutivo. Los sistemas en silos no permiten esta trazabilidad end-to-end.</p>
+</li>
+<li>
+<p><strong>Ausencia de validación cruzada entre dimensiones operativas</strong>: Una anomalía detectada en producción no se correlaciona automáticamente con posibles irregularidades en inventario, logística o calidad. Esta falta de perspectiva multidimensional genera falsos positivos que saturan a los analistas y falsos negativos que pasan desapercibidos.</p>
+</li>
+<li>
+<p><strong>Incapacidad de anticipar riesgos operativos</strong>: Los sistemas reactivos detectan anomalías ya ocurridas, pero no predicen tendencias de riesgo emergentes. La ausencia de módulos predictivos integrados impide anticipar desviaciones estacionales, cuellos de botella logísticos o deterioro progresivo de indicadores de calidad.</p>
+</li>
+</ol>
+<h2 id="12-problema-principal">1.2 Problema Principal</h2>
+<p><strong>¿Cómo mejorar la detección, explicación y documentación de anomalías operativas en empresas agroexportadoras peruanas mediante un sistema integrado de inteligencia artificial explicable que combine predicción tabular, detección de anomalías, explicabilidad y generación de reportes trazables?</strong></p>
+<h3 id="sub-problemas">Sub-problemas</h3>
+<ul>
+<li>¿Qué variables operativas, climáticas, comerciales y fitosanitarias pueden utilizarse para caracterizar el comportamiento normal y anómalo de procesos agroexportadores peruanos?</li>
+<li>¿Qué arquitectura de inteligencia artificial permite integrar predicción tabular, detección de anomalías, explicabilidad y generación de reportes en un flujo operativo trazable?</li>
+<li>¿De qué manera la explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) contribuye a que supervisores operativos comprendan las causas probables de una alerta?</li>
+<li>¿Cómo generar reportes automáticos que sean comprensibles, accionables y trazables sin permitir que el modelo de lenguaje tome decisiones o invente información?</li>
+<li>¿Cómo evaluar si el sistema integrado mejora la trazabilidad, comprensión de alertas y tiempo de decisión frente al uso de componentes aislados?</li>
+</ul>
+<h2 id="13-objetivos">1.3 Objetivos</h2>
+<h3 id="131-objetivo-principal">1.3.1 Objetivo Principal</h3>
+<p>Diseñar, implementar y evaluar un sistema integrado de supervisión operativa basado en inteligencia artificial explicable para detectar anomalías en datos agroexportadores, explicar los factores asociados mediante SHAP y generar reportes trazables que apoyen la toma de decisiones en empresas agroexportadoras peruanas.</p>
+<h3 id="132-objetivos-especificos">1.3.2 Objetivos Específicos</h3>
+<ol>
+<li>
+<p><strong>Fuentes de datos y dominio</strong>: Identificar y documentar fuentes de datos públicas y sintéticas aplicables a la supervisión operativa agroexportadora, considerando variables de precios, volúmenes, clima, comercio exterior y cumplimiento fitosanitario.</p>
+</li>
+<li>
+<p><strong>Arquitectura y modularidad</strong>: Diseñar una arquitectura modular de cuatro capas (predicción → detección → explicación → reporte) que integre modelos tabulares, detectores de anomalías, explicabilidad y generación de reportes trazables.</p>
+</li>
+<li>
+<p><strong>Predicción y detección robusta</strong>: Implementar modelos de predicción y detección de anomalías sobre datos agroexportadores públicos y sintéticos, utilizando algoritmos adecuados para datos tabulares y series temporales.</p>
+</li>
+<li>
+<p><strong>Explicabilidad verificable</strong>: Integrar SHAP (Lundberg &amp; Lee, 2017) para identificar las variables que más contribuyen a cada alerta generada por el sistema.</p>
+</li>
+<li>
+<p><strong>Generación de reportes trazables</strong>: Diseñar un componente LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño)+RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) que redacte explicaciones operativas basadas exclusivamente en evidencias estructuradas del sistema.</p>
+</li>
+<li>
+<p><strong>Evaluación integrada</strong>: Evaluar el sistema integrado mediante métricas técnicas, trazabilidad documental y prueba de comprensión/tiempo de decisión con usuarios o evaluadores simulados.</p>
+</li>
+</ol>
+<h2 id="14-hipotesis-de-la-investigacion">1.4 Hipótesis de la Investigación</h2>
+<p><strong>Hipótesis General (H1)</strong>: Un sistema integrado de predicción, detección de anomalías, explicabilidad y generación de reportes trazables mejora la trazabilidad de decisiones, la comprensión de alertas y el tiempo de decisión de supervisores operativos frente al uso de componentes aislados.</p>
+<p><strong>Hipótesis Nula (H0)</strong>: No existe diferencia significativa entre el sistema integrado y los componentes aislados en trazabilidad de decisiones, comprensión de alertas o tiempo de decisión de supervisores operativos.</p>
+<p><strong>Sub-hipótesis</strong>:</p>
+<ul>
+<li><strong>H1a</strong>: El uso combinado de modelos tabulares y detectores de anomalías (ensemble) permite identificar desviaciones operativas con mayor rendimiento de detección, medido mediante el área bajo la curva de precisión y exhaustividad (PR-AUC $\ge 0.85$ y F1-Score $\ge 0.80$), que detectores individuales aplicados de forma aislada.</li>
+<li><strong>H1b</strong>: Las explicaciones SHAP incrementan la comprensión de las alertas por parte de supervisores operativos, al identificar variables relevantes y dirección de impacto.</li>
+<li><strong>H1c</strong>: Los reportes generados mediante RAG a partir de evidencias estructuradas presentan mayor trazabilidad y consistencia que reportes generados sin recuperación de contexto.</li>
+<li><strong>H1d</strong>: El sistema integrado reduce en al menos un 20% el tiempo promedio requerido para interpretar una alerta operativa frente a un flujo basado en tablas, gráficos o salidas técnicas aisladas, con significancia estadística bajo la prueba de Wilcoxon ($\alpha = 0.05$).</li>
+</ul>
+<h2 id="15-variables-e-indicadores">1.5 Variables e Indicadores</h2>
+<h3 id="151-variable-independiente">1.5.1 Variable Independiente</h3>
+<p><strong>Tipo de sistema de supervisión operativa (variable categórica)</strong>:<br />
+- VI1: Sistema integrado (predicción tabular + detección de anomalías + SHAP + LLM+RAG)<br />
+- VI2: Componentes aislados (salidas técnicas independientes por módulo)</p>
+<h3 id="152-variables-dependientes">1.5.2 Variables Dependientes</h3>
+<p><strong>VD1: Rendimiento de detección</strong><br />
+- Indicadores: ROC-AUC (Receiver Operating Characteristic Area Under the Curve - Área Bajo la Curva de Característica Operativa del Receptor), Precisión, Recall, F1-Score (Medida Armónica de Precisión y Exhaustividad), PR-AUC (Precision-Recall Area Under the Curve - Área Bajo la Curva de Precisión y Exhaustividad)<br />
+- Criterio de aceptación: superar el baseline individual o justificar rendimiento equivalente con mayor trazabilidad</p>
+<p><strong>VD2: Calidad de explicabilidad</strong><br />
+- Indicadores: cobertura top-k SHAP, consistencia cualitativa, claridad de variables explicativas<br />
+- Criterio de aceptación: las variables principales deben permitir explicar operativamente la alerta</p>
+<p><strong>VD3: Calidad de reportes generados</strong><br />
+- Indicadores: completitud, consistencia, accionabilidad, coherencia textual y correspondencia con evidencias<br />
+- Criterio de aceptación: evaluación manual ≥ 4/5 en rúbrica de reporte trazable</p>
+<p><strong>VD4: Comprensión y tiempo de decisión del supervisor</strong><br />
+- Indicadores: tiempo-a-decisión (segundos), comprensión de alerta (Likert 1–5), decisión final correcta<br />
+- Criterio de aceptación: reducción de tiempo y mejora de comprensión respecto a componentes aislados</p>
+<p><strong>VD5: Trazabilidad documental</strong><br />
+- Indicadores: porcentaje de alertas con dato, modelo, score, umbral, explicación, fuente recuperada y reporte generado<br />
+- Criterio de aceptación: ≥ 95% de alertas con campos de trazabilidad completos</p>
+<h2 id="16-viabilidad-de-la-investigacion">1.6 Viabilidad de la Investigación</h2>
+<h3 id="161-viabilidad-tecnica">1.6.1 Viabilidad Técnica</h3>
+<p><strong>Disponibilidad de tecnologías</strong>: El stack tecnológico es completamente open-source y maduro: XGBoost (Chen &amp; Guestrin, 2016) y LightGBM (Ke et al., 2017) para predicción tabular; PyOD (Zhao et al., 2019) para ensemble de anomalías con acceso a Isolation Forest (Liu et al., 2008), LOF (Local Outlier Factor - Factor de Anomalía Local) (Breunig et al., 2000) y Deep SVDD (Ruff et al., 2018); SHAP (Lundberg &amp; Lee, 2017) para explicabilidad; APIs de LLM (Anthropic Claude, OpenAI GPT-4) o modelos locales (Llama 3) para generación de reportes.</p>
+<p><strong>Datos disponibles</strong>: Se contemplan tres niveles de datos. El primer nivel corresponde a fuentes públicas oficiales: MIDAGRI para agroexportaciones, precios y boletines sectoriales; SENAMHI para variables climáticas; SENASA para requisitos fitosanitarios; SUNAT para exportaciones; INEI para indicadores económicos; FAOSTAT y UN Comtrade para validación internacional. El segundo nivel corresponde a un dataset sintético agroexportador documentado, construido con variables operativas plausibles y etiquetas de anomalía controladas. El tercer nivel, opcional, corresponde a datos privados de una empresa agroexportadora bajo acuerdo de confidencialidad. Como referencia metodológica complementaria puede utilizarse el BAF Benchmark (Jesus et al., 2022), no como evidencia directa del dominio agroexportador, sino como benchmark tabular desbalanceado con drift temporal.</p>
+<p><strong>Riesgos técnicos identificados</strong>: La latencia de SHAP en datasets grandes (&gt;1M filas) puede mitigarse con los métodos de aproximación TreeSHAP. La variabilidad en salidas de LLMs (Large Language Models - Modelos de Lenguaje de Gran Tamaño) requiere prompt engineering robusto y restricción mediante RAG. La mitigación incluye pruebas piloto en subconjuntos de datos y benchmarking iterativo.</p>
+<h3 id="162-viabilidad-operativa">1.6.2 Viabilidad Operativa</h3>
+<p><strong>Timeline</strong>: Fase 1 (meses 1–2): preparación de datos, implementación de arquitectura base. Fase 2 (meses 2–3): entrenamiento de modelos, validación experimental. Fase 3 (mes 4): test de usabilidad con auditores voluntarios. Fase 4 (mes 5): análisis de resultados, escritura y defensa.</p>
+<p><strong>Presupuesto estimado</strong>: Infraestructura GPU cloud y APIs LLM: USD 500–1,000. Stack open-source: USD 0. Incentivos para participantes del test de usabilidad: USD 200–300. Total aproximado: USD 800–1,300.</p>
+<h3 id="163-viabilidad-economica">1.6.3 Viabilidad Económica</h3>
+<p>La viabilidad económica se justifica por la relevancia del sector agroexportador peruano y por el costo operativo asociado a decisiones tardías ante desviaciones de precio, volumen, calidad, clima o logística. MIDAGRI reportó agroexportaciones por USD 15 013 millones al cierre de 2025 (MIDAGRI, 2026), por lo que incluso mejoras marginales en detección temprana, trazabilidad y tiempo de respuesta pueden representar beneficios operativos relevantes. En esta fase, los beneficios económicos se tratarán como escenarios exploratorios y no como resultados finales hasta contar con evaluación experimental y supuestos documentados.</p>
+<h2 id="17-justificacion-e-importancia-de-la-investigacion">1.7 Justificación e Importancia de la Investigación</h2>
+<h3 id="171-justificacion-teorica">1.7.1 Justificación Teórica</h3>
+<p>La revisión sistemática de la literatura revela avances importantes en modelos tabulares, detección de anomalías, explicabilidad y generación de reportes mediante LLMs. Sin embargo, estos componentes suelen estudiarse de forma aislada y en dominios distintos al agroexportador. Trabajos de auditoría financiera o fraude contable, como AuditCopilot (Kadir et al., 2025), se utilizan solo como antecedentes metodológicos sobre automatización de reportes y detección de anomalías, no como eje del dominio de aplicación. La brecha central de esta tesis es la ausencia de una arquitectura integrada y trazable para supervisión operativa agroexportadora peruana que combine fuentes públicas oficiales, datos sintéticos documentados, predicción tabular, detección de anomalías por ensemble, explicabilidad SHAP y reportes basados en evidencia bajo restricción anti-alucinación.</p>
+<p><strong>Aporte original específico</strong>: Esta tesis constituye, en el conocimiento del autor (verificado mediante búsqueda sistemática documentada en <code>docs/busqueda-sistematica-gap.md</code>), la primera arquitectura integrada de cuatro capas (GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) + ensemble Isolation Forest/LOF/ECOD (Empirical Cumulative Distribution Outlier Detection - Detección de Anomalías por Distribución Acumulada Empírica) + TreeSHAP + LLM-RAG con restricción anti-alucinación) evaluada sobre datos agroexportadores peruanos públicos y sintéticos, con trazabilidad documental diseñada conforme al D.S. N° 115-2025-PCM y los principios del NIST AI RMF (NIST, 2023).</p>
+<p>Esta tesis aporta a la literatura y a la práctica profesional cuatro elementos diferenciados y verificables:</p>
+<ol>
+<li>
+<p><strong>Aporte arquitectónico</strong>: Un modelo conceptual integrado de cuatro capas para supervisión operativa agroexportadora, donde la separación estricta de responsabilidades entre detección determinista (GBDT + ensemble) y narración asistida (LLM-RAG anclado en vectores SHAP) constituye un patrón de diseño anti-alucinación replicable en otros dominios regulados.</p>
+</li>
+<li>
+<p><strong>Aporte de datos abiertos</strong>: Un protocolo público y reproducible de construcción y documentación de un dataset sintético agroexportador, calibrado con rangos plausibles de MIDAGRI/SENAMHI/SENASA y descrito según Datasheets for Datasets (Gebru et al., 2021), disponible para la comunidad como referencia metodológica.</p>
+</li>
+<li>
+<p><strong>Aporte de evaluación</strong>: Una metodología de evaluación dual que combina métricas técnicas (PR-AUC, F1, ROC-AUC) con métricas de utilidad operativa (tiempo-a-decisión, comprensión Likert, trazabilidad documental) y aplica pruebas estadísticas formales (Wilcoxon signed-rank, t-Student apareado) para contrastar las sub-hipótesis H1a–H1d.</p>
+</li>
+<li>
+<p><strong>Aporte regulatorio</strong>: Una primera traducción operativa de los principios del D.S. N° 115-2025-PCM al diseño de un sistema de IA empresarial peruano, mostrando cómo cada capa de la arquitectura puede mapear con requisitos de explicabilidad, supervisión humana y trazabilidad documental.</p>
+</li>
+</ol>
+<h3 id="172-justificacion-economica">1.7.2 Justificación Económica</h3>
+<p>La automatización inteligente de la supervisión operativa tiene impacto económico potencial al reducir el tiempo de análisis, mejorar la detección temprana de desviaciones y facilitar la documentación de decisiones. En empresas agroexportadoras, las alertas oportunas sobre precios, volúmenes, clima, mermas, calidad o logística pueden apoyar decisiones correctivas antes de que la desviación se convierta en pérdida operativa o incumplimiento comercial. La escalabilidad del sistema permite adaptarlo a empresas de distintos tamaños mediante fuentes públicas, datos internos o datos sintéticos documentados.</p>
+<h3 id="173-justificacion-social">1.7.3 Justificación Social</h3>
+<p>El Decreto Supremo N° 115-2025-PCM, reglamento de la Ley N° 31814 de Inteligencia Artificial del Perú, proporciona un marco nacional para promover el uso responsable de la IA, incluyendo transparencia, supervisión humana y gestión de riesgos (PCM, 2025). A nivel internacional, el Reglamento (UE) 2024/1689 —EU AI Act— refuerza la importancia de documentar sistemas de IA, especialmente cuando sus resultados afectan decisiones relevantes (Parlamento Europeo y Consejo, 2024). El sistema propuesto incorpora estos principios mediante explicabilidad, trazabilidad documental y revisión humana de reportes.</p>
+<p>Adicionalmente, una detección temprana de anomalías operativas protege a las empresas agroexportadoras de tamaño medio —que representan la mayoría del sector exportador peruano— frente a pérdidas acumuladas por mermas, incumplimientos de calidad y fallas logísticas que, sin sistemas de alerta temprana, solo se visibilizan en los estados financieros al cierre del período.</p>
+<h3 id="174-importancia">1.7.4 Importancia</h3>
+<p><strong>Nivel académico</strong>: Contribución a los campos de ML interpretable, detección de anomalías, supervisión operativa y gobernanza de IA aplicada a cadenas agroexportadoras.</p>
+<p><strong>Nivel profesional</strong>: Guía de referencia para empresas agroexportadoras que busquen incorporar IA explicable en procesos de control operativo, calidad, logística y toma de decisiones.</p>
+<p><strong>Nivel institucional</strong>: Fortalece el posicionamiento de la UNSA en investigación aplicada en IA responsable y establece vínculos de colaboración con el sector financiero regional.</p>
+<h2 id="18-alcance">1.8 Alcance</h2>
+<!-- GUÍA ACADÉMICA: El alcance define los límites temáticos, geográficos y temporales de la tesis. Aquí se delimita explícitamente que la investigación se centra en datos tabulares y agroexportación peruana, excluyendo modelos de Deep Learning tabulares puros (de acuerdo con el benchmark de Grinsztajn et al., 2022) o despliegues productivos en tiempo real. -->
+
+<p><strong>Alcance temático</strong>: Predicción con GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente), detección de anomalías mediante ensemble, explicabilidad SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley), generación de reportes con LLM (Large Language Model - Modelo de Lenguaje de Gran Tamaño) + RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación), documentación de datasets y trazabilidad de alertas operativas. <strong>Excluye</strong>: modelos de Deep Learning puro para datos tabulares como propuesta principal, implementación productiva en tiempo real, reemplazo de la decisión humana y análisis legal profundo de regulación sectorial.</p>
+<p><strong>Alcance geográfico</strong>: Empresas agroexportadoras peruanas, con énfasis en productos representativos como arándanos, uvas, paltas, cacao y espárragos. La investigación utiliza fuentes públicas oficiales y dataset sintético documentado; los datos privados de empresa quedan como extensión futura u opcional.</p>
+<p><strong>Alcance temporal</strong>: Evaluación en dataset estático o semiestático, sin monitoreo en producción. Estudio en 5 meses. Evaluación de comprensión y tiempo de decisión con supervisores, auditores internos o evaluadores simulados según disponibilidad.</p>
+<h2 id="19-linea-tipo-y-nivel-de-la-investigacion">1.9 Línea, Tipo y Nivel de la Investigación</h2>
+<!-- GUÍA ACADÉMICA: En esta sección se fundamenta la investigación bajo la línea de IA e Ingeniería de Software Aplicada de la UNSA. Se adopta un marco epistemológico post-positivista, justificando por qué combinamos métricas técnicas duras (como PR-AUC) con evaluaciones subjetivas (como escalas Likert de usabilidad). Se clasifica la investigación como aplicada y el nivel como explicativo-evaluativo (utilizando análisis ablativo). -->
+
+<h3 id="191-linea-de-investigacion">1.9.1 Línea de Investigación</h3>
+<p>La presente investigación se enmarca en la línea de <strong>Inteligencia Artificial e Ingeniería de Software Aplicada</strong> de la Escuela Profesional de Ingeniería de Sistemas de la Universidad Nacional de San Agustín de Arequipa. Específicamente, se inscribe en el área de sistemas inteligentes para la toma de decisiones en organizaciones empresariales, con énfasis en gobernanza tecnológica y conformidad regulatoria.</p>
+<h3 id="192-marco-epistemologico">1.9.2 Marco Epistemológico</h3>
+<p>La investigación adopta un enfoque <strong>post-positivista</strong> (Creswell &amp; Creswell, 2018): asume que los fenómenos operativos del dominio agroexportador (precios, volúmenes, mermas, condiciones climáticas, cumplimiento fitosanitario, tiempos logísticos) son medibles de manera objetiva mediante variables cuantitativas y rangos plausibles documentables. Al mismo tiempo, se reconoce que la evaluación de utilidad operativa de un sistema de supervisión asistida por IA incorpora componentes subjetivos —comprensión, confianza, accionabilidad del reporte— que requieren triangulación entre métricas cuantitativas (PR-AUC, tiempo-a-decisión) y métricas cualitativas (escalas Likert, rúbricas de evaluación). Esta postura justifica la combinación metodológica utilizada y excluye afirmaciones de causalidad en sentido experimental estricto, sustituyéndolas por afirmaciones sobre <strong>efecto diferencial</strong> entre condiciones experimentales controladas (sistema integrado vs. sistema con componentes aislados).</p>
+<h3 id="193-tipo-de-investigacion">1.9.3 Tipo de Investigación</h3>
+<p>La investigación es de tipo <strong>aplicada</strong>, dado que utiliza conocimiento teórico y metodológico existente en machine learning, detección de anomalías, explicabilidad algorítmica y modelos de lenguaje para diseñar, implementar y evaluar un sistema concreto que resuelve un problema identificado en el contexto empresarial agroexportador peruano. No se busca generar nuevos algoritmos de base, sino integrar y validar una arquitectura que produce valor operativo y regulatorio verificable.</p>
+<h3 id="194-nivel-de-investigacion">1.9.4 Nivel de Investigación</h3>
+<p>El nivel de la investigación es <strong>explicativo-evaluativo</strong>. Se parte de un diagnóstico descriptivo del problema (sistemas de supervisión fragmentados y sin trazabilidad), se propone una solución arquitectónica basada en literatura existente, y se diseñan experimentos controlados que permiten evaluar la relación entre integración de componentes y mejoras en trazabilidad, comprensión operativa y tiempo de decisión. La evaluación combina métricas cuantitativas (PR-AUC, F1-Score, cobertura de trazabilidad, tiempo-a-decisión) y cualitativas (escala Likert con supervisores o evaluadores). Las conclusiones explicativas se derivan del análisis ablativo (Experimento E5) que aísla la contribución de cada capa al rendimiento global, distinguiendo así qué componente arquitectónico es responsable de cada mejora observada.</p>
+<h3 id="195-diseno-de-la-investigacion">1.9.5 Diseño de la Investigación</h3>
+<p>El diseño es <strong>cuasi-experimental con grupos contrabalanceados</strong> para la evaluación de utilidad operativa (VD4): cada participante del estudio de usabilidad evalúa ambas condiciones (sistema integrado y componentes aislados) en orden aleatorizado, controlando por el efecto de aprendizaje mediante diseño within-subjects. Para las variables técnicas (VD1, VD2, VD3, VD5) el diseño es <strong>comparativo en condiciones controladas</strong>: el mismo dataset, mismas particiones train/test temporales (sin solapamiento) y misma semilla aleatoria se aplican a todas las configuraciones experimentales (E1–E5), variando únicamente la condición evaluada (detector individual vs. ensemble, sin SHAP vs. con SHAP, sin RAG vs. con RAG, sin pipeline integrado vs. con pipeline integrado).</p>
+<h2 id="110-tecnicas-e-instrumentos-de-recoleccion-de-informacion">1.10 Técnicas e Instrumentos de Recolección de Información</h2>
+<!-- GUÍA ACADÉMICA: Define las técnicas (revisión de literatura, análisis documental, experimentos, pruebas de usabilidad) y los instrumentos específicos de recolección de información. Cada instrumento debe estar mapeado directamente a la variable dependiente (VD) que mide, garantizando la consistencia del diseño experimental. -->
+
+<h3 id="1101-tecnicas">1.10.1 Técnicas</h3>
+<p>Las técnicas de recolección de información utilizadas en esta investigación son:</p>
+<ol>
+<li>
+<p><strong>Revisión sistemática de literatura</strong>: Búsqueda estructurada en bases de datos académicas (IEEE Xplore, ACM Digital Library, arXiv, Google Scholar, Scopus) utilizando términos de búsqueda como "anomaly detection ensemble", "GBDT tabular data", "SHAP explainability", "RAG generated reports", "AI governance Peru" y "agricultural anomaly detection". Se aplican criterios de inclusión: publicaciones entre 2017 y 2026, en inglés o español, con evaluación empírica o propuesta metodológica verificable.</p>
+</li>
+<li>
+<p><strong>Análisis documental</strong>: Revisión de fuentes oficiales nacionales (MIDAGRI, SENASA, SENAMHI, SUNAT, INEI), regulaciones nacionales sobre IA (Ley N° 31814 y D.S. N° 115-2025-PCM) y marcos internacionales de gobernanza (EU AI Act 2024, NIST AI RMF 1.0). La Resolución SBS N° 053-2023 se considera solo como referencia metodológica de gestión de riesgo de modelos.</p>
+</li>
+<li>
+<p><strong>Experimentación controlada</strong>: Diseño de experimentos comparativos con el sistema integrado versus componentes aislados, evaluados sobre datos públicos/sintéticos agroexportadores. El BAF Benchmark (Jesus et al., 2022) puede emplearse solo como benchmark metodológico complementario para datos tabulares desbalanceados.</p>
+</li>
+<li>
+<p><strong>Evaluación con usuarios o evaluadores simulados</strong>: Prueba de comprensión y tiempo de decisión con supervisores, auditores internos, estudiantes avanzados o evaluadores simulados mediante protocolo de tareas cronometradas y cuestionario post-tarea.</p>
+</li>
+</ol>
+<h3 id="1102-instrumentos">1.10.2 Instrumentos</h3>
+<table>
+<thead>
+<tr>
+<th>Instrumento</th>
+<th>Propósito</th>
+<th>Variable que mide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fuentes públicas oficiales</td>
+<td>Construir contexto, variables y rangos plausibles del dominio agroexportador</td>
+<td>VD1, VD5</td>
+</tr>
+<tr>
+<td>Dataset sintético agroexportador</td>
+<td>Evaluación controlada de predicción, anomalías y reportes</td>
+<td>VD1, VD2, VD3</td>
+</tr>
+<tr>
+<td>BAF Benchmark (Jesus et al., 2022)</td>
+<td>Benchmark metodológico complementario para datos tabulares desbalanceados</td>
+<td>VD1</td>
+</tr>
+<tr>
+<td>Cuestionario de comprensión (Likert 1–5)</td>
+<td>Evaluar claridad de explicaciones y reportes para supervisores</td>
+<td>VD2, VD3, VD4</td>
+</tr>
+<tr>
+<td>Registro de tiempo-a-decisión</td>
+<td>Medir segundos requeridos para interpretar y decidir sobre una alerta</td>
+<td>VD4</td>
+</tr>
+<tr>
+<td>Checklist de trazabilidad</td>
+<td>Verificar dato, modelo, score, umbral, explicación, fuente y reporte por alerta</td>
+<td>VD5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="111-cronograma-de-actividades">1.11 Cronograma de Actividades</h2>
+<table>
+<thead>
+<tr>
+<th>Actividad</th>
+<th style="text-align: center;">Mes 1</th>
+<th style="text-align: center;">Mes 2</th>
+<th style="text-align: center;">Mes 3</th>
+<th style="text-align: center;">Mes 4</th>
+<th style="text-align: center;">Mes 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revisión bibliográfica y marco teórico</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Obtención y preprocesamiento de datos</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Implementación Capa 1 (Predicción Tabular GBDT)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Implementación Capa 2 (Ensemble anomalías)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Implementación Capa 3 (SHAP)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Implementación Capa 4 (LLM+RAG)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Integración del pipeline completo</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Experimentos comparativos (baselines)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Prueba de usabilidad con auditores</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Análisis de resultados y discusión</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Redacción del documento final</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td>Revisión del asesor y correcciones</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td>Presentación y defensa</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+</tr>
+</tbody>
+</table>
+<h2 id="112-limitaciones-de-la-investigacion">1.12 Limitaciones de la Investigación</h2>
+<p>La presente investigación adopta un enfoque transparente respecto a sus limitaciones, declarando de forma explícita las amenazas a la validez que podrían afectar la interpretación o generalización de los resultados. Esta declaración es un requisito de rigor académico y constituye una práctica estándar en la literatura de IA responsable.</p>
+<h3 id="1121-limitaciones-de-validez-externa">1.12.1 Limitaciones de validez externa</h3>
+<p><strong>Dataset sintético</strong>: La evaluación principal se realiza sobre un dataset sintético agroexportador documentado con criterios de Datasheets for Datasets (Gebru et al., 2021). Aunque las distribuciones y mecanismos de inyección de anomalías se calibran con rangos plausibles tomados de fuentes oficiales (MIDAGRI, SENAMHI, SENASA, SUNAT), un dataset sintético no reproduce todas las dinámicas operativas, sesgos de medición y patrones de drift presentes en datos reales de una empresa agroexportadora. Por lo tanto, los resultados deben interpretarse como evidencia de viabilidad arquitectónica y comportamiento esperado bajo condiciones controladas, no como predictores directos del rendimiento en producción.</p>
+<p><strong>Generalización a otros sectores</strong>: La arquitectura se diseña y evalúa para el dominio agroexportador peruano. Su extensión a otros sectores (minería, manufactura, retail) requiere recalibración de variables, ajustes en el dataset y nueva validación experimental antes de afirmar transferibilidad.</p>
+<p><strong>Generalización a otros países</strong>: El marco regulatorio que orienta el diseño (D.S. N° 115-2025-PCM, Ley N° 31814) corresponde al contexto peruano. Aunque los principios subyacentes (transparencia, supervisión humana, gestión de riesgos) son compatibles con marcos internacionales como el EU AI Act y el NIST AI RMF, la aplicabilidad directa del sistema en otras jurisdicciones requiere una revisión de conformidad específica.</p>
+<h3 id="1122-limitaciones-de-validez-interna">1.12.2 Limitaciones de validez interna</h3>
+<p><strong>Tamaño de muestra del estudio de usabilidad</strong>: La evaluación de VD4 (comprensión y tiempo de decisión) requiere participantes humanos con perfil de supervisor operativo, analista de calidad o auditor interno. La disponibilidad realista en el contexto de una tesis individual es de 15 a 20 participantes mediante un diseño within-subject (cada participante evalúa ambas condiciones en orden aleatorizado). Con este tamaño, los resultados de VD4 deben reportarse como exploratorios, calculando intervalos de confianza y tamaño de efecto (Cohen's d) en lugar de afirmar significancia estadística con potencia plena.</p>
+<p><strong>Sesgo del evaluador</strong>: Los participantes en el estudio de usabilidad pueden conocer la procedencia del sistema integrado, lo cual puede introducir un sesgo de expectativa. Se mitiga mediante: (a) orden contrabalanceado de presentación de las condiciones, (b) cuestionario post-tarea con preguntas no directivas, y (c) registro automático de tiempo-a-decisión (no dependiente de auto-reporte).</p>
+<p><strong>Variabilidad del LLM</strong>: El módulo de generación de reportes utiliza un modelo de lenguaje cuyas respuestas presentan variación estocástica entre ejecuciones, incluso con el mismo prompt. Para mitigar este efecto se fija el parámetro de temperatura (temperature = 0.2), se documenta la versión exacta del modelo utilizado y se reportan los resultados como promedio sobre al menos 3 generaciones por alerta.</p>
+<h3 id="1123-limitaciones-de-validez-de-constructo">1.12.3 Limitaciones de validez de constructo</h3>
+<p><strong>Definición de "anomalía operativa"</strong>: La etiqueta <code>etiqueta_anomalia</code> del dataset sintético se construye mediante un protocolo de inyección controlada, lo que define la anomalía operativamente a partir de reglas predeterminadas. En la práctica empresarial, la categorización de un registro como "anómalo" depende de criterios contextuales no siempre formalizables. El sistema, por tanto, evalúa su capacidad de detectar desviaciones según reglas declaradas, no como reemplazo del juicio experto.</p>
+<p><strong>Métrica de comprensión (VD2)</strong>: La "claridad de variables explicativas" se mide mediante una escala Likert 1–5 que captura percepción subjetiva del evaluador. Esta métrica está expuesta a sesgos de halo y aquiescencia. Se complementa con métricas objetivas (cobertura top-k SHAP) para triangulación.</p>
+<h3 id="1124-limitaciones-tecnicas-y-de-recursos">1.12.4 Limitaciones técnicas y de recursos</h3>
+<p><strong>Dependencia de APIs comerciales de LLM</strong>: La generación de reportes puede emplear servicios comerciales (Anthropic Claude, OpenAI GPT-4) cuya versión, costo y disponibilidad pueden variar durante el horizonte experimental. Se documenta la versión exacta utilizada en cada experimento y se evalúa la posibilidad de réplica con modelos locales (Llama 3) como verificación cruzada.</p>
+<p><strong>Recursos computacionales</strong>: La investigación se ejecuta en infraestructura GPU cloud limitada por presupuesto académico. Esto restringe la exploración exhaustiva de hiperparámetros y limita el tamaño del dataset experimental a un rango medio (2,000–5,000 registros). La escalabilidad a millones de registros queda como trabajo futuro.</p>
+<h2 id="113-declaracion-de-intereses-y-aspectos-eticos">1.13 Declaración de Intereses y Aspectos Éticos</h2>
+<p>Se declara que el autor de esta investigación no mantiene relación contractual, comercial o financiera con empresas agroexportadoras específicas que pudiera condicionar la independencia metodológica de los resultados. La investigación se desarrolla en el marco de la formación de pregrado en la Universidad Nacional de San Agustín de Arequipa y no cuenta con financiamiento externo.</p>
+<p>El uso de datos en esta tesis se restringe a fuentes públicas oficiales (MIDAGRI, SENAMHI, SENASA, SUNAT, INEI, FAOSTAT, UN Comtrade) y a un dataset sintético generado por el autor con un protocolo documentado. No se utilizan datos personales, datos de empresas bajo confidencialidad ni datos que pudieran exponer información sensible de actores del sector.</p>
+<p>El estudio de usabilidad con participantes humanos (VD4) sigue los principios de consentimiento informado, voluntariedad, anonimato y derecho de retiro establecidos en la Declaración de Helsinki y adaptados al contexto de investigación en ingeniería. El protocolo completo, formulario de consentimiento y cuestionario figuran en el Anexo A.</p>
+<p>El uso de herramientas de IA durante la elaboración de la tesis (búsqueda bibliográfica, revisión de redacción, apoyo en codificación) se documenta en el Anexo D, conforme a las prácticas emergentes de transparencia académica sobre el uso de IA generativa en investigación.</p>
+<hr />
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

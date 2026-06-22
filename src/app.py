@@ -515,6 +515,52 @@ def serve_gantt_chart():
     return flask.send_file('d:/tesis_yoset/data/downloads/gantt_chart.png')
 
 
+@app.route('/supervisor')
+def supervisor_panel():
+    """Sirve la página interactiva del panel de supervisión de operaciones con IA."""
+    return render_template('supervisor.html', active_page='supervisor')
+
+
+@app.route('/api/supervisor/alerts')
+def api_supervisor_alerts():
+    """Retorna el listado de alertas y sus explicaciones locales."""
+    import json
+    path = Path('data/gold/local_explanations.json')
+    if not path.exists():
+        return jsonify({})
+    with open(path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return jsonify(data)
+
+
+@app.route('/api/supervisor/report/<key>')
+def api_supervisor_report(key):
+    """Retorna el reporte de auditoría (Markdown) para una alerta específica."""
+    import json
+    path = Path('data/gold/generated_reports.json')
+    if not path.exists():
+        return jsonify({"report_content": "No se encontró el índice de reportes."}), 404
+    with open(path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    if key not in data:
+        return jsonify({"report_content": f"Reporte para la alerta {key} no encontrado."}), 404
+    return jsonify(data[key])
+
+
+@app.route('/api/supervisor/traceability/<key>')
+def api_supervisor_traceability(key):
+    """Retorna el log de trazabilidad (Capa 6) para una alerta."""
+    import json
+    path = Path('data/gold/traceability_log.json')
+    if not path.exists():
+        return jsonify({"error": "No se encontró el log de trazabilidad."}), 404
+    with open(path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    if key not in data:
+        return jsonify({"error": f"Trazabilidad para la alerta {key} no encontrada."}), 404
+    return jsonify(data[key])
+
+
 if __name__ == '__main__':
     import glob
     extra_md = glob.glob('/app/docs/*.md')

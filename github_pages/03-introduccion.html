@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 Introduccion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-size: 14px;
+            display: block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .sidebar a:hover {
+            background: #ecf0f1;
+            color: #2980b9;
+        }
+        
+        .sidebar ul ul {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        
+        .main {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        h4, h5, h6 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        a:hover {
+            background: #ecf0f1;
+        }
+        
+        code {
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        table thead {
+            background: #ecf0f1;
+        }
+        
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .main {
+                padding: 20px;
+            }
+        }
+        
+        @print {
+            body {
+                background: white;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📑 Índice</h3>
+            <div class="toc">
+<ul>
+<li><a href="#introduccion">INTRODUCCIÓN</a></li>
+</ul>
+</div>
+
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <h1>03 Introduccion</h1>
+                <div class="meta">
+                    Autor: Sistema de Tesis | Generado: 2026-06-07 19:20
+                </div>
+            </div>
+            
+            <h1 id="introduccion">INTRODUCCIÓN</h1>
+<p>La agroexportación peruana constituye un sector estratégico para la economía nacional debido a su crecimiento sostenido, diversificación de productos y participación en mercados internacionales exigentes. De acuerdo con información oficial del Ministerio de Desarrollo Agrario y Riego, al cierre de 2025 las agroexportaciones peruanas alcanzaron ventas por USD 15 013 millones, con un crecimiento de 17.3% respecto al año anterior (MIDAGRI, 2026). Entre los principales productos exportados destacaron arándanos, uvas, paltas, cacao y espárragos, lo que evidencia la importancia económica y operativa de las cadenas agroexportadoras peruanas.</p>
+<p>En este contexto, las empresas agroexportadoras articulan procesos de producción agrícola, acopio, almacenamiento, control de calidad, cumplimiento fitosanitario, logística y comercialización internacional. Cada uno de estos procesos genera datos que pueden revelar desviaciones relevantes para la gestión operativa: cambios inusuales en precios, variaciones de volumen, condiciones climáticas adversas, incumplimientos de calidad, retrasos logísticos o patrones atípicos en el comportamiento exportador. No obstante, la supervisión de estos procesos suele depender de reportes manuales, hojas de cálculo, sistemas no integrados o análisis posteriores a la ocurrencia del problema.</p>
+<p>La inteligencia artificial ofrece herramientas adecuadas para abordar esta brecha. Los modelos GBDT (Gradient Boosting Decision Trees - Árboles de Decisión de Aumento de Gradiente) han demostrado buen desempeño en datos tabulares estructurados (Grinsztajn et al., 2022); los ensembles de detectores de anomalías permiten identificar comportamientos atípicos de manera más robusta que un detector individual (Han et al., 2022); la explicabilidad mediante SHAP (SHapley Additive exPlanations - Explicaciones Aditivas de Shapley) convierte predicciones opacas en justificaciones comprensibles (Lundberg &amp; Lee, 2017); y los modelos de lenguaje con arquitectura RAG (Retrieval-Augmented Generation - Generación Aumentada por Recuperación) pueden transformar resultados cuantitativos en reportes comprensibles siempre que se restrinja su función a la generación narrativa basada en evidencias (Schneider et al., 2025).</p>
+<p>La presente investigación propone un sistema integrado de cuatro capas que une predicción tabular, detección de anomalías, explicabilidad y generación de reportes trazables en un flujo coherente de supervisión operativa. El sistema se orienta al contexto agroexportador peruano y busca mejorar la capacidad de detectar desviaciones operativas, explicar sus posibles causas y documentar cada alerta de manera comprensible para supervisores, responsables de calidad, gestores logísticos y auditores internos. La Resolución SBS N° 053-2023 (SBS, 2023) se toma como referencia nacional de buenas prácticas para gestión de riesgo de modelos, sin asumirla como obligación directa para agroexportadoras; el D.S. N° 115-2025-PCM (PCM, 2025) se emplea como marco peruano general sobre gobernanza, transparencia y supervisión humana en inteligencia artificial.</p>
+<p>El documento se estructura de la siguiente manera: el Capítulo I plantea el problema de investigación, define los objetivos, hipótesis, variables e indicadores, y evalúa la viabilidad del proyecto. El Capítulo II desarrolla el marco teórico, incluyendo antecedentes nacionales e internacionales, estado del arte organizado en cinco debates argumentativos, y el marco conceptual que fundamenta cada componente técnico de la propuesta. El Capítulo III describe la arquitectura del sistema propuesto, los datasets de validación y la configuración experimental. El Capítulo IV presenta los resultados obtenidos y la discusión de los hallazgos. Finalmente, el Capítulo V sintetiza las conclusiones, limitaciones de la investigación y propuestas de trabajos futuros.</p>
+<hr />
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Arriba
+    </div>
+    
+    <script>
+        // Mostrar botón "Back to Top" al scrollear
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Hacer checkboxes interactivos
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                // Guardar estado en localStorage
+                const id = Math.random();
+                localStorage.setItem('checkbox-' + id, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>
