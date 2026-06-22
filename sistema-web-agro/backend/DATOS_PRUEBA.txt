@@ -1,0 +1,115 @@
+================================================================================
+   AGRO-INTELLIGENCE OVERSIGHT — DATOS DE PRUEBA Y CREDENCIALES
+   Sistema de Auditoría Aduanera Agroexportadora con IA Explicable
+   Tesis: UNSA / 2026
+================================================================================
+
+ESTADO DE SERVICIOS
+--------------------
+  Frontend (React + Nginx) : http://localhost:8050
+  Backend  (Flask + Gunicorn): http://localhost:5000
+  Base de Datos (PostgreSQL + pgvector): localhost:5432  DB: agro_audit
+
+================================================================================
+  USUARIOS DE PRUEBA
+================================================================================
+
+  ┌─────────────┬──────────────────────────────┬──────────────┬─────────────┬──────────────────────────────┐
+  │  USERNAME   │         NOMBRE COMPLETO       │  CONTRASEÑA  │     ROL     │           EMAIL              │
+  ├─────────────┼──────────────────────────────┼──────────────┼─────────────┼──────────────────────────────┤
+  │  auditor1   │  Yoset Cozco Mauri           │  correct     │  AUDITOR    │  ycozco@unsa.edu.pe          │
+  │  auditor2   │  Ing. Carlos Mendoza         │  correct     │  AUDITOR    │  auditor_fito@agro.gob.pe    │
+  │  admin      │  Dr. Víctor Cornejo Aparicio │  correct     │  ADMIN      │  vcornejo@unsa.edu.pe        │
+  └─────────────┴──────────────────────────────┴──────────────┴─────────────┴──────────────────────────────┘
+
+  CONDICIONES EXPERIMENTALES (Tesis):
+    auditor1  → Condición A (INTEGRADO)  — Ve capas de IA: SHAP + RAG + Narrativa
+    auditor2  → Condición B (AISLADO)    — Solo ve datos de la alerta, sin explicabilidad
+
+================================================================================
+  ALERTAS SEMBRADAS (OperacionAlerta)
+================================================================================
+
+  ID             │ DAM               │ EMPRESA                 │ PRODUCTO  │ FOB DECL.  │ FOB ESPER. │ SCORE  │ ESTADO
+  ───────────────┼───────────────────┼─────────────────────────┼───────────┼────────────┼────────────┼────────┼──────────────────
+  AL-2026-0012   │ 118-2026-10-012345│ Agroworld S.A.C.        │ Palta     │ $120,000   │ $135,000   │ 0.9500 │ PENDIENTE
+  AL-2026-0013   │ 118-2026-10-012348│ Campos de Ica S.A.      │ Palta     │  $95,000   │ $112,000   │ 0.7800 │ PENDIENTE
+  AL-2026-0014   │ 118-2026-10-012349│ Frutas del Pedregal S.A.│ Mango     │  $60,000   │  $75,000   │ 0.8200 │ PENDIENTE
+  AL-2026-0011   │ 118-2026-10-012346│ Valles del Norte EIRL   │ Uva       │  $85,000   │ $110,000   │ 0.7200 │ PENDIENTE
+  AL-2026-0010   │ 118-2026-10-012347│ BerryCorp Andina        │ Arándano  │ $145,000   │ $160,000   │ 0.6500 │ PENDIENTE
+  AL-2026-0008   │ 118-2026-10-012340│ Valles del Norte EIRL   │ Uva       │  $98,000   │ $105,000   │ 0.5800 │ EN_REVISION
+  AL-2026-0007   │ 118-2026-10-012339│ Agroworld S.A.C.        │ Palta     │ $130,000   │ $133,000   │ 0.3500 │ EN_REVISION
+  AL-2026-0009   │ 118-2026-10-012341│ Agroworld S.A.C.        │ Palta     │ $110,000   │ $130,000   │ 0.8800 │ CONFIRMADA
+  AL-2026-0006   │ 118-2026-10-012338│ BerryCorp Andina        │ Arándano  │ $150,000   │ $152,000   │ 0.4200 │ FALSA_ALARMA
+  AL-2026-0005   │ 118-2026-10-012337│ Frutas del Pedregal S.A.│ Mango     │  $55,000   │  $68,000   │ 0.7600 │ REFIERE_INSPECCION
+  AL-2026-0004   │ 118-2026-10-012336│ Campos de Ica S.A.      │ Palta     │ $105,000   │ $108,000   │ 0.3100 │ FALSA_ALARMA
+
+================================================================================
+  DECISIONES DE AUDITORÍA YA REGISTRADAS (Telemetría)
+================================================================================
+
+  ALERTA        │ AUDITOR   │ CONDICIÓN  │ DECISIÓN                  │ COMPRENSIÓN │ T. DECISIÓN
+  ───────────────┼───────────┼────────────┼───────────────────────────┼─────────────┼────────────
+  AL-2026-0009   │ auditor1  │ INTEGRADO  │ Anomalía Confirmada (1)   │ 5/5 ★★★★★  │ 25.6 s
+  AL-2026-0006   │ auditor1  │ AISLADO    │ Falsa Alarma (0)          │ 3/5 ★★★    │ 49.2 s
+  AL-2026-0005   │ auditor2  │ INTEGRADO  │ Requiere Inspección (2)   │ 4/5 ★★★★  │ 31.2 s
+  AL-2026-0004   │ auditor2  │ AISLADO    │ Falsa Alarma (0)          │ 2/5 ★★     │ 65.4 s
+
+================================================================================
+  NORMATIVAS RAG (pgvector — documentos_normativos)
+================================================================================
+
+  ID  │ CATEGORÍA  │ TÍTULO
+  ────┼────────────┼──────────────────────────────────────────────────────────
+   1  │ FDA        │ FDA CFR Title 21 - Importación de Perecederos (Capítulo 1)
+   2  │ SENASA     │ SENASA Directiva de Control Fitosanitario Agroexportador N° 04-2026
+   3  │ LEY_IA     │ Reglamento de la Ley de IA del Perú (D.S. N° 115-2025-PCM)
+
+  CITAS en reportes RAG: [FDA-1], [SENASA-2], [LEY_IA-3]
+  Nuevos documentos se indexan desde: Explorador de Datos → Indexar Nueva Directiva
+
+================================================================================
+  MODELOS DE IA ENTRENADOS (models_weights/)
+================================================================================
+
+  ARCHIVO                        │ ALGORITMO          │ FUNCIÓN
+  ───────────────────────────────┼────────────────────┼───────────────────────────────
+  xgboost_fob_predictor.json     │ XGBoost Regressor  │ Predicción FOB Esperado (Capa 1)
+  scaler_fob.bin                 │ StandardScaler     │ Normalización de variables
+  iforest_model.pkl              │ Isolation Forest   │ Detección de outliers (Capa 2)
+  lof_model.pkl                  │ Local Outlier Factor│ Detección de outliers (Capa 2)
+  ecod_model.pkl                 │ ECOD               │ Detección de outliers (Capa 2)
+
+  PESOS ENSEMBLE (configurables desde /api/config):
+    Isolation Forest: 45%  |  LOF: 30%  |  ECOD: 25%
+  UMBRAL GLOBAL: 0.65 (score ≥ 0.65 → alerta activa)
+
+================================================================================
+  VARIABLES DE ENTORNO (docker-compose)
+================================================================================
+
+  DATABASE_URL = postgresql://postgres:postgres@db:5432/agro_audit
+  SECRET_KEY   = agro-intelligence-secret-2026-key
+  GEMINI_API_KEY = (no configurado — modo offline heurístico activo)
+
+================================================================================
+  FLUJO DE PRUEBA SUGERIDO PARA TESIS
+================================================================================
+
+  1. Abrir http://localhost:8050/login
+  2. Ingresar con auditor1 / correct  → Condición A (INTEGRADO con IA)
+  3. Hacer clic en alerta AL-2026-0012 (Palta - RIESGO CRÍTICO)
+  4. Observar:
+       Capa 1: XGBoost calcula FOB Esperado en tiempo real
+       Capa 2: PyOD Ensemble calcula score de anomalía (IForest + LOF + ECOD)
+       Capa 3: TreeSHAP muestra variables de influencia local
+       Capa 4: RAG recupera normativas por similitud semántica (pgvector)
+               con citas clickeables [FDA-1], [SENASA-2] que abren modales
+  5. Adjudicar la alerta y registrar en telemetría
+  6. Ir a Explorador de Datos → Indexar nueva normativa RAG
+  7. Cerrar sesión → Entrar con auditor2 / correct → Condición B (AISLADO)
+  8. Comparar tiempos y comprensión en Métricas de Usabilidad (/telemetry)
+
+================================================================================
+  FIN DEL ARCHIVO DE REFERENCIA DE DATOS DE PRUEBA
+================================================================================

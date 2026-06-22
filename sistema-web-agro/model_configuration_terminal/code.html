@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Model Configuration &amp; Pipeline Management - Agro-Intelligence Oversight</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#3f4a3f",
+                    "surface-container-low": "#171d17",
+                    "primary-container": "#3da35d",
+                    "surface-container-lowest": "#0a100a",
+                    "on-secondary-fixed-variant": "#1e502e",
+                    "inverse-on-surface": "#2c322b",
+                    "surface-container": "#1b211b",
+                    "surface-variant": "#30362f",
+                    "surface-container-highest": "#30362f",
+                    "inverse-primary": "#006d33",
+                    "primary-fixed": "#92f8a9",
+                    "on-surface-variant": "#becabc",
+                    "tertiary-fixed-dim": "#89ceff",
+                    "on-surface": "#dee4da",
+                    "surface-tint": "#76db8f",
+                    "tertiary-fixed": "#c9e6ff",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#001e2f",
+                    "on-background": "#dee4da",
+                    "on-tertiary-fixed-variant": "#004c6e",
+                    "error-container": "#93000a",
+                    "secondary-container": "#205331",
+                    "primary-fixed-dim": "#76db8f",
+                    "on-secondary-container": "#8fc599",
+                    "on-primary-container": "#003114",
+                    "tertiary": "#89ceff",
+                    "surface-bright": "#343b34",
+                    "secondary": "#9dd3a7",
+                    "on-primary-fixed": "#00210b",
+                    "on-tertiary": "#00344d",
+                    "on-primary": "#003918",
+                    "secondary-fixed": "#b8f0c2",
+                    "background": "#0f150f",
+                    "outline": "#889487",
+                    "tertiary-container": "#009ada",
+                    "primary": "#76db8f",
+                    "on-tertiary-container": "#002d43",
+                    "surface-container-high": "#252c25",
+                    "surface-dim": "#0f150f",
+                    "on-error": "#690005",
+                    "inverse-surface": "#dee4da",
+                    "surface": "#0f150f",
+                    "on-secondary-fixed": "#00210c",
+                    "on-primary-fixed-variant": "#005225",
+                    "on-secondary": "#01391a",
+                    "secondary-fixed-dim": "#9dd3a7",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "card-gap": "20px",
+                    "container-padding": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Outfit"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Outfit"],
+                    "display-lg": ["Outfit"],
+                    "headline-lg": ["Outfit"],
+                    "mono-data": ["monospace"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "mono-data": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-panel:hover {
+            border-color: rgba(118, 219, 143, 0.3); /* Primary color low opacity */
+        }
+        .data-value {
+            font-family: monospace;
+        }
+        
+        /* Custom Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #76db8f; /* primary */
+            cursor: pointer;
+            margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+            box-shadow: 0 0 10px rgba(118, 219, 143, 0.5);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        
+        /* Modal Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; backdrop-filter: blur(0px); }
+            to { opacity: 1; backdrop-filter: blur(10px); }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-overlay[data-state="open"] {
+            animation: fadeIn 0.2s ease-out forwards;
+        }
+        .modal-content[data-state="open"] {
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl docked full-width top-0 border-b border-white/10 shadow-sm flex justify-between items-center px-container-padding w-full h-16 fixed z-40">
+<div class="font-headline-md text-headline-md font-bold text-primary">
+            Agro-Intelligence Oversight
+        </div>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-primary hover:text-primary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex bg-surface-container-lowest dark:bg-surface-container-lowest h-screen w-20 hover:w-64 transition-all duration-300 ease-in-out fixed left-0 top-0 z-50 border-r border-white/5 shadow-2xl flex-col py-6 h-full group overflow-hidden">
+<div class="flex flex-col items-center group-hover:items-start group-hover:px-6 w-full mb-8">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-4 group-hover:mb-2 shrink-0 border border-primary/30">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div class="hidden group-hover:block transition-opacity opacity-0 group-hover:opacity-100 duration-300">
+<h1 class="font-headline-sm text-headline-sm text-primary-fixed truncate w-full">AUDIT_OS_V1</h1>
+<p class="font-label-md text-label-md text-primary-fixed-dim/70 tracking-widest uppercase">Terminal Active</p>
+</div>
+</div>
+<ul class="flex-1 w-full space-y-2">
+<li>
+<a class="flex items-center text-on-surface-variant hover:text-primary mx-2 p-3 hover:bg-surface-variant/20 rounded-lg transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex-shrink-0 flex items-center justify-center" data-icon="dashboard">dashboard</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider hidden group-hover:block whitespace-nowrap">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center text-on-surface-variant hover:text-primary mx-2 p-3 hover:bg-surface-variant/20 rounded-lg transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex-shrink-0 flex items-center justify-center" data-icon="security_update_warning">security_update_warning</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider hidden group-hover:block whitespace-nowrap">Risk Analysis</span>
+</a>
+</li>
+<li>
+<a class="flex items-center text-on-surface-variant hover:text-primary mx-2 p-3 hover:bg-surface-variant/20 rounded-lg transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex-shrink-0 flex items-center justify-center" data-icon="monitoring">monitoring</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider hidden group-hover:block whitespace-nowrap">Telemetry</span>
+</a>
+</li>
+<li>
+<a class="flex items-center text-on-surface-variant hover:text-primary mx-2 p-3 hover:bg-surface-variant/20 rounded-lg transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex-shrink-0 flex items-center justify-center" data-icon="fact_check">fact_check</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider hidden group-hover:block whitespace-nowrap">Audits</span>
+</a>
+</li>
+<li>
+<a class="flex items-center bg-primary-container text-on-primary-container rounded-lg mx-2 p-3 hover:bg-surface-variant/20 transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex-shrink-0 flex items-center justify-center" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider hidden group-hover:block whitespace-nowrap">Settings</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto w-full">
+<div class="px-4 mb-4 hidden group-hover:block">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md uppercase py-2 rounded-md hover:bg-primary-fixed-dim transition-colors shadow-sm">
+                    Export Report
+                </button>
+</div>
+<ul class="w-full space-y-2 border-t border-white/5 pt-4">
+<li>
+<a class="flex items-center text-on-surface-variant hover:text-primary mx-2 p-3 hover:bg-surface-variant/20 rounded-lg transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex-shrink-0 flex items-center justify-center" data-icon="help">help</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider hidden group-hover:block whitespace-nowrap">Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center text-on-surface-variant hover:text-primary mx-2 p-3 hover:bg-surface-variant/20 rounded-lg transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex-shrink-0 flex items-center justify-center" data-icon="logout">logout</span>
+<span class="ml-4 font-label-md text-label-md uppercase tracking-wider hidden group-hover:block whitespace-nowrap">Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-20 transition-all duration-300 pt-16 md:pt-0 p-container-padding flex flex-col gap-card-gap max-w-[1600px] mx-auto w-full">
+<!-- Header -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-white/5">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary-fixed mb-1">Model Configuration</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Pipeline Management &amp; Hyperparameter Tuning</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 rounded-DEFAULT glass-panel text-on-surface hover:text-primary transition-all font-label-md text-label-md uppercase tracking-wider flex items-center gap-2" id="btn-test">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+                    Test Connection
+                </button>
+<button class="px-6 py-2 rounded-DEFAULT bg-primary text-on-primary hover:bg-primary-fixed-dim transition-all font-label-md text-label-md uppercase tracking-wider flex items-center gap-2 shadow-[0_0_15px_rgba(118,219,143,0.3)] hover:shadow-[0_0_20px_rgba(118,219,143,0.5)]" id="btn-apply">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">save</span>
+                    Apply Changes
+                </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-card-gap">
+<!-- Predictor Section (Span 8) -->
+<section class="lg:col-span-8 glass-panel rounded-xl p-6 flex flex-col gap-6 relative overflow-hidden">
+<!-- Subtle background accent -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">online_prediction</span>
+                            Active Predictor
+                        </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Core telemetry forecasting model</p>
+</div>
+<div class="relative group">
+<select class="appearance-none bg-surface-container-high border border-outline-variant text-on-surface rounded-lg px-4 py-2 pr-10 font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer">
+<option selected="" value="xgboost">XGBoost v2.1</option>
+<option value="lightgbm">LightGBM v3.3</option>
+<option value="rf">Random Forest</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Metrics Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-2">
+<div class="bg-surface-container-low/50 border border-white/5 rounded-lg p-4 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Mean Absolute Error</span>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg text-headline-lg text-primary data-value">0.024</span>
+<span class="font-body-sm text-body-sm text-tertiary mb-1">↓ 0.002</span>
+</div>
+</div>
+<div class="bg-surface-container-low/50 border border-white/5 rounded-lg p-4 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Root Mean Sq. Error</span>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface data-value">0.038</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mb-1">Steady</span>
+</div>
+</div>
+<div class="bg-surface-container-low/50 border border-white/5 rounded-lg p-4 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">R² Score</span>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg text-headline-lg text-primary-fixed data-value">0.942</span>
+<span class="font-body-sm text-body-sm text-tertiary mb-1">↑ 0.01</span>
+</div>
+</div>
+</div>
+<!-- SHAP Explainability Settings inline -->
+<div class="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+<span class="font-body-sm text-body-sm">SHAP Explainability View</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-md text-label-md uppercase text-on-surface-variant">Top Variables:</span>
+<div class="flex bg-surface-container-high rounded-md p-1 border border-white/5">
+<button class="px-3 py-1 rounded text-body-sm font-body-sm bg-surface-variant text-on-surface transition-colors">Top 5</button>
+<button class="px-3 py-1 rounded text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface transition-colors">Top 8</button>
+</div>
+</div>
+</div>
+</section>
+<!-- RAG/LLM Config (Span 4) -->
+<aside class="lg:col-span-4 glass-panel rounded-xl p-6 flex flex-col gap-6 relative">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary">memory</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">LLM Interrogator</h2>
+</div>
+<div class="space-y-5">
+<!-- Provider -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Provider Engine</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low border border-white/10 text-on-surface rounded-lg px-4 py-2 pr-10 font-body-md text-body-md focus:outline-none focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-colors">
+<option selected="" value="gpt4o">OpenAI GPT-4o</option>
+<option value="claude3">Anthropic Claude 3.5</option>
+<option value="llama3">Meta Llama 3 70B</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Temperature -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Creativity (Temperature)</label>
+<span class="font-mono-data text-mono-data text-tertiary data-value">0.1</span>
+</div>
+<input class="w-full accent-tertiary" max="1" min="0" step="0.1" style="--tw-accent: #89ceff;" type="range" value="0.1"/>
+<div class="flex justify-between text-xs text-on-surface-variant/50">
+<span>Precise</span>
+<span>Creative</span>
+</div>
+</div>
+<!-- Similarity Threshold -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Vector Similarity Cutoff</label>
+<span class="font-mono-data text-mono-data text-tertiary data-value">0.75</span>
+</div>
+<input class="w-full accent-tertiary" max="1" min="0" step="0.05" style="--tw-accent: #89ceff;" type="range" value="0.75"/>
+</div>
+</div>
+</aside>
+<!-- Ensemble Settings (Span 12) -->
+<section class="lg:col-span-12 glass-panel rounded-xl p-6 flex flex-col gap-6">
+<header class="flex justify-between items-end border-b border-white/5 pb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">scatter_plot</span>
+                            Anomaly Ensemble Weights
+                        </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Adjust contribution of distinct outlier detection algorithms.</p>
+</div>
+<div class="flex flex-col items-end gap-1 bg-surface-container-low/50 px-4 py-2 rounded-lg border border-error/20">
+<span class="font-label-md text-label-md text-error uppercase tracking-wider">Global Threshold</span>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-error">0.65</span>
+<span class="material-symbols-outlined text-error text-[16px]">warning</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Isolation Forest -->
+<div class="flex flex-col gap-3 group">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<label class="font-body-md text-body-md text-on-surface font-medium">Isolation Forest</label>
+</div>
+<span class="font-mono-data text-mono-data text-secondary bg-secondary/10 px-2 py-0.5 rounded">w: 0.45</span>
+</div>
+<input class="w-full group-hover:opacity-100 opacity-80 transition-opacity" max="1" min="0" step="0.05" type="range" value="0.45"/>
+</div>
+<!-- Local Outlier Factor -->
+<div class="flex flex-col gap-3 group">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<label class="font-body-md text-body-md text-on-surface font-medium">LOF (Density)</label>
+</div>
+<span class="font-mono-data text-mono-data text-tertiary bg-tertiary/10 px-2 py-0.5 rounded">w: 0.30</span>
+</div>
+<input class="w-full group-hover:opacity-100 opacity-80 transition-opacity" max="1" min="0" step="0.05" type="range" value="0.30"/>
+</div>
+<!-- ECOD -->
+<div class="flex flex-col gap-3 group">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-fixed"></div>
+<label class="font-body-md text-body-md text-on-surface font-medium">ECOD (Empirical)</label>
+</div>
+<span class="font-mono-data text-mono-data text-primary-fixed bg-primary-fixed/10 px-2 py-0.5 rounded">w: 0.25</span>
+</div>
+<input class="w-full group-hover:opacity-100 opacity-80 transition-opacity" max="1" min="0" step="0.05" type="range" value="0.25"/>
+</div>
+</div>
+<!-- Summation indicator -->
+<div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden flex mt-2">
+<div class="h-full bg-secondary" style="width: 45%;"></div>
+<div class="h-full bg-tertiary" style="width: 30%;"></div>
+<div class="h-full bg-primary-fixed" style="width: 25%;"></div>
+</div>
+<div class="text-right font-label-md text-label-md text-on-surface-variant">Σ 1.00</div>
+</section>
+</div>
+</main>
+<!-- Modals -->
+<!-- Test Connection Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4" id="modal-test">
+<div class="absolute inset-0 bg-background/80 backdrop-blur-sm modal-overlay" id="overlay-test"></div>
+<div class="relative bg-surface-container-low border border-white/10 rounded-xl shadow-2xl w-full max-w-md overflow-hidden modal-content flex flex-col">
+<!-- Pulsing line at top -->
+<div class="h-1 w-full bg-gradient-to-r from-transparent via-tertiary to-transparent opacity-50 relative overflow-hidden">
+<div class="absolute inset-0 bg-tertiary w-1/3 animate-[translateX_1.5s_infinite_ease-in-out]" style="animation: pulse-line 1.5s infinite;"></div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center border border-tertiary/30">
+<span class="material-symbols-outlined text-tertiary text-2xl animate-spin" style="animation-duration: 3s;">hub</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Verifying Connection</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pinging model endpoints...</p>
+</div>
+</div>
+<div class="space-y-3 font-mono-data text-mono-data text-xs text-on-surface-variant bg-surface-container-lowest p-4 rounded-lg border border-white/5">
+<div class="flex justify-between"><span>&gt; Ping ML_Cluster_Alpha</span><span class="text-primary">OK (12ms)</span></div>
+<div class="flex justify-between"><span>&gt; Check OpenAI API Key</span><span class="text-primary">Valid</span></div>
+<div class="flex justify-between"><span>&gt; Verify Vector DB Sync</span><span class="text-tertiary animate-pulse">Syncing...</span></div>
+</div>
+</div>
+<div class="px-6 py-4 border-t border-white/5 flex justify-end">
+<button class="btn-close-modal px-4 py-2 rounded text-on-surface font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">Cancel</button>
+</div>
+</div>
+</div>
+<!-- Apply Changes Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4" id="modal-apply">
+<div class="absolute inset-0 bg-background/80 backdrop-blur-sm modal-overlay" id="overlay-apply"></div>
+<div class="relative bg-surface-container-low border border-primary/20 rounded-xl shadow-[0_0_40px_rgba(61,163,93,0.1)] w-full max-w-md overflow-hidden modal-content flex flex-col">
+<div class="p-6">
+<div class="flex items-start gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30 shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl">warning</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Deploy Configuration?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">This will hot-swap the active ensemble weights and hyper-parameters in the live environment. Temporary telemetry latency (&lt; 2s) may occur.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-white/5 flex flex-col gap-2 mb-6">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider border-b border-white/5 pb-2">Diff Summary</span>
+<div class="flex justify-between text-body-sm"><span class="text-on-surface-variant">Active Model</span> <span class="text-on-surface">XGBoost v2.1</span></div>
+<div class="flex justify-between text-body-sm"><span class="text-on-surface-variant">Ensemble LOF</span> <span class="text-primary">0.25 → 0.30</span></div>
+<div class="flex justify-between text-body-sm"><span class="text-on-surface-variant">LLM Temp</span> <span class="text-on-surface">0.1 (Unchanged)</span></div>
+</div>
+<div class="flex gap-3 w-full">
+<button class="btn-close-modal flex-1 px-4 py-3 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-variant/50 transition-colors uppercase">Cancel</button>
+<button class="btn-close-modal flex-1 px-4 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-fixed-dim transition-colors uppercase shadow-[0_0_15px_rgba(118,219,143,0.3)]">Confirm Deploy</button>
+</div>
+</div>
+</div>
+</div>
+<style>
+        @keyframes pulse-line {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(300%); }
+        }
+    </style>
+<script>
+        // Simple Modal Logic
+        const btnTest = document.getElementById('btn-test');
+        const modalTest = document.getElementById('modal-test');
+        const overlayTest = document.getElementById('overlay-test');
+
+        const btnApply = document.getElementById('btn-apply');
+        const modalApply = document.getElementById('modal-apply');
+        const overlayApply = document.getElementById('overlay-apply');
+
+        const closeBtns = document.querySelectorAll('.btn-close-modal');
+
+        function openModal(modal, overlay) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // Trigger reflow
+            void modal.offsetWidth;
+            overlay.setAttribute('data-state', 'open');
+            modal.querySelector('.modal-content').setAttribute('data-state', 'open');
+        }
+
+        function closeModal(modal, overlay) {
+             overlay.removeAttribute('data-state');
+             modal.querySelector('.modal-content').removeAttribute('data-state');
+             
+             // Wait for animation to finish
+             setTimeout(() => {
+                 modal.classList.add('hidden');
+                 modal.classList.remove('flex');
+             }, 200); // match animation duration
+        }
+
+        btnTest.addEventListener('click', () => openModal(modalTest, overlayTest));
+        btnApply.addEventListener('click', () => openModal(modalApply, overlayApply));
+
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const modal = e.target.closest('.fixed');
+                const overlay = modal.querySelector('.modal-overlay');
+                closeModal(modal, overlay);
+            });
+        });
+
+        // Update range values visually (simple implementation)
+        document.querySelectorAll('input[type="range"]').forEach(input => {
+            input.addEventListener('input', (e) => {
+                const targetDisplay = e.target.parentElement.querySelector('.data-value') || 
+                                      e.target.parentElement.querySelector('.text-mono-data.px-2');
+                if(targetDisplay) {
+                    if(targetDisplay.textContent.includes('w:')) {
+                         targetDisplay.textContent = `w: ${parseFloat(e.target.value).toFixed(2)}`;
+                    } else {
+                         targetDisplay.textContent = parseFloat(e.target.value).toFixed(2);
+                    }
+                }
+            });
+        });
+    </script>
+</body></html>

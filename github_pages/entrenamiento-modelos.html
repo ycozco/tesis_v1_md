@@ -45,9 +45,19 @@
                 <h3>Índice de Contenidos</h3>
                 <div class="toc">
 <ul>
-<li><a href="#reporte-de-entrenamiento-de-modelos">Reporte de Entrenamiento de Modelos</a><ul>
-<li><a href="#metricas-por-producto-y-modelo">Metricas por producto y modelo</a></li>
-<li><a href="#notas">Notas</a></li>
+<li><a href="#sistema-agro-intelligence-oversight-prototipo-implementado">Sistema Agro-Intelligence Oversight — Prototipo Implementado</a><ul>
+<li><a href="#descripcion-general">Descripción General</a></li>
+<li><a href="#pipeline-de-4-capas-de-ia">Pipeline de 4 Capas de IA</a><ul>
+<li><a href="#capa-1-prediccion-fob-xgboost">Capa 1 — Predicción FOB (XGBoost)</a></li>
+<li><a href="#capa-2-ensemble-de-deteccion-de-anomalias-pyod">Capa 2 — Ensemble de Detección de Anomalías (PyOD)</a></li>
+<li><a href="#capa-3-explicabilidad-local-treeshap">Capa 3 — Explicabilidad Local (TreeSHAP)</a></li>
+<li><a href="#capa-4-rag-con-pgvector-recuperacion-aumentada-por-generacion">Capa 4 — RAG con pgvector (Recuperación Aumentada por Generación)</a></li>
+</ul>
+</li>
+<li><a href="#stack-tecnologico">Stack Tecnológico</a></li>
+<li><a href="#capturas-del-sistema">Capturas del Sistema</a></li>
+<li><a href="#despliegue-local">Despliegue Local</a></li>
+<li><a href="#codigo-fuente">Código Fuente</a></li>
 </ul>
 </li>
 </ul>
@@ -58,214 +68,177 @@
 
         <main class="content">
             <article class="paper">
-                <h1 id="reporte-de-entrenamiento-de-modelos">Reporte de Entrenamiento de Modelos</h1>
-<p>Fecha: 2026-06-07<br />
-Script: <code>src/train_models.py</code></p>
-<h2 id="metricas-por-producto-y-modelo">Metricas por producto y modelo</h2>
+                <h1 id="sistema-agro-intelligence-oversight-prototipo-implementado">Sistema Agro-Intelligence Oversight — Prototipo Implementado</h1>
+<blockquote>
+<p><strong>Acceso al prototipo:</strong> Despliegue local con Docker Compose — ver <code>sistema-web-agro/GUIA_DESPLIEGUE_LOCAL.md</code></p>
+</blockquote>
+<hr />
+<h2 id="descripcion-general">Descripción General</h2>
+<p>El sistema <strong>Agro-Intelligence Oversight</strong> es un prototipo funcional completo de supervisión aduanera agroexportadora con IA explicable. Implementado como arquitectura de microservicios Docker, integra un pipeline de 4 capas de Inteligencia Artificial en tiempo real para Declaraciones Aduaneras de Mercancías (DAM).</p>
+<hr />
+<h2 id="pipeline-de-4-capas-de-ia">Pipeline de 4 Capas de IA</h2>
+<h3 id="capa-1-prediccion-fob-xgboost">Capa 1 — Predicción FOB (XGBoost)</h3>
+<p>El modelo XGBoost Regressor estima el <strong>valor FOB esperado</strong> para cada embarque dado un vector de características operacionales: <code>[fob_declarado, peso_neto, temperatura_contenedor, días_retraso]</code>. La desviación entre el FOB declarado y el estimado constituye el primer indicador de riesgo financiero.</p>
+<ul>
+<li><strong>Algoritmo:</strong> XGBoost 2.0 (<code>reg:squarederror</code>)</li>
+<li><strong>Hiperparámetros:</strong> <code>max_depth=6</code>, <code>n_estimators=200</code>, <code>learning_rate=0.1</code>, <code>subsample=0.8</code></li>
+<li><strong>Serialización:</strong> <code>models_weights/xgboost_fob_predictor.json</code></li>
+</ul>
+<h3 id="capa-2-ensemble-de-deteccion-de-anomalias-pyod">Capa 2 — Ensemble de Detección de Anomalías (PyOD)</h3>
+<p>Un ensemble ponderado de tres detectores no supervisados de PyOD 2.0 produce un <strong>score de anomalía compuesto</strong> ∈ [0,1]:</p>
 <table>
 <thead>
 <tr>
-<th>producto</th>
-<th>modelo</th>
-<th>rmse</th>
-<th>mae</th>
-<th>mape</th>
-<th>r2</th>
-<th>smape</th>
-<th>n</th>
+<th>Detector</th>
+<th>Peso</th>
+<th>Rol</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>palta</td>
-<td>baseline</td>
-<td>0.7407</td>
-<td>0.4909</td>
-<td>159.2574</td>
-<td>-0.01</td>
-<td>25.401</td>
-<td>3142</td>
+<td>Isolation Forest</td>
+<td>45%</td>
+<td>Outliers globales en espacio multidimensional</td>
 </tr>
 <tr>
-<td>palta</td>
-<td>lgbm_seed42</td>
-<td>0.7498</td>
-<td>0.5043</td>
-<td>166.0621</td>
-<td>-0.035</td>
-<td>25.9767</td>
-<td>3142</td>
+<td>Local Outlier Factor</td>
+<td>30%</td>
+<td>Outliers locales en vecindades</td>
 </tr>
 <tr>
-<td>palta</td>
-<td>lgbm_seed123</td>
-<td>0.7498</td>
-<td>0.5043</td>
-<td>166.0621</td>
-<td>-0.035</td>
-<td>25.9767</td>
-<td>3142</td>
-</tr>
-<tr>
-<td>palta</td>
-<td>lgbm_seed456</td>
-<td>0.7498</td>
-<td>0.5043</td>
-<td>166.0621</td>
-<td>-0.035</td>
-<td>25.9767</td>
-<td>3142</td>
-</tr>
-<tr>
-<td>palta</td>
-<td>xgb</td>
-<td>0.7532</td>
-<td>0.5055</td>
-<td>166.6433</td>
-<td>-0.0442</td>
-<td>26.0365</td>
-<td>3142</td>
-</tr>
-<tr>
-<td>palta</td>
-<td>baseline_test</td>
-<td>1.6975</td>
-<td>0.5185</td>
-<td>27.3839</td>
-<td>-0.0292</td>
-<td>26.5315</td>
-<td>6614</td>
-</tr>
-<tr>
-<td>uva</td>
-<td>baseline</td>
-<td>0.7789</td>
-<td>0.6262</td>
-<td>23.7453</td>
-<td>-0.0833</td>
-<td>21.269</td>
-<td>273</td>
-</tr>
-<tr>
-<td>uva</td>
-<td>lgbm_seed42</td>
-<td>0.753</td>
-<td>0.5797</td>
-<td>20.5142</td>
-<td>-0.0126</td>
-<td>19.7531</td>
-<td>273</td>
-</tr>
-<tr>
-<td>uva</td>
-<td>lgbm_seed123</td>
-<td>0.753</td>
-<td>0.5797</td>
-<td>20.5142</td>
-<td>-0.0126</td>
-<td>19.7531</td>
-<td>273</td>
-</tr>
-<tr>
-<td>uva</td>
-<td>lgbm_seed456</td>
-<td>0.753</td>
-<td>0.5797</td>
-<td>20.5142</td>
-<td>-0.0126</td>
-<td>19.7531</td>
-<td>273</td>
-</tr>
-<tr>
-<td>uva</td>
-<td>xgb</td>
-<td>0.7408</td>
-<td>0.5757</td>
-<td>20.6736</td>
-<td>0.02</td>
-<td>19.6029</td>
-<td>273</td>
-</tr>
-<tr>
-<td>uva</td>
-<td>baseline_test</td>
-<td>0.8029</td>
-<td>0.6388</td>
-<td>23.2342</td>
-<td>-0.1733</td>
-<td>21.6059</td>
-<td>165</td>
-</tr>
-<tr>
-<td>arandano</td>
-<td>baseline</td>
-<td>2.2092</td>
-<td>1.7141</td>
-<td>514.4005</td>
-<td>-0.0029</td>
-<td>21.9106</td>
-<td>128</td>
-</tr>
-<tr>
-<td>arandano</td>
-<td>lgbm_seed42</td>
-<td>2.3657</td>
-<td>1.9335</td>
-<td>506.1184</td>
-<td>-0.15</td>
-<td>24.7721</td>
-<td>128</td>
-</tr>
-<tr>
-<td>arandano</td>
-<td>lgbm_seed123</td>
-<td>2.3657</td>
-<td>1.9335</td>
-<td>506.1184</td>
-<td>-0.15</td>
-<td>24.7721</td>
-<td>128</td>
-</tr>
-<tr>
-<td>arandano</td>
-<td>lgbm_seed456</td>
-<td>2.3657</td>
-<td>1.9335</td>
-<td>506.1184</td>
-<td>-0.15</td>
-<td>24.7721</td>
-<td>128</td>
-</tr>
-<tr>
-<td>arandano</td>
-<td>xgb</td>
-<td>2.3578</td>
-<td>1.8476</td>
-<td>485.8873</td>
-<td>-0.1423</td>
-<td>23.5059</td>
-<td>128</td>
-</tr>
-<tr>
-<td>arandano</td>
-<td>baseline_test</td>
-<td>2.2059</td>
-<td>1.7143</td>
-<td>24.0087</td>
-<td>-0.0561</td>
-<td>21.8339</td>
-<td>363</td>
+<td>ECOD</td>
+<td>25%</td>
+<td>Sin asunciones de distribución</td>
 </tr>
 </tbody>
 </table>
-<h2 id="notas">Notas</h2>
+<p>Los pesos y el umbral global (default: 0.65) son <strong>configurables en tiempo real</strong> desde la interfaz de administración.</p>
+<h3 id="capa-3-explicabilidad-local-treeshap">Capa 3 — Explicabilidad Local (TreeSHAP)</h3>
+<p><code>shap.TreeExplainer</code> descompone cada predicción XGBoost en contribuciones individuales de Shapley por variable. Los valores SHAP se persisten en <code>explicaciones_shap</code> (Numeric 16,6) y se visualizan como gráfico de barras horizontales coloreadas por dirección del efecto:</p>
 <ul>
-<li>Seeds usadas: [42, 123, 456, 789, 2026]</li>
-<li>Target: <code>precio_kg_usd</code></li>
-<li>Features: 12 numericas + 3 categoricas</li>
-<li>Splits: 70/10/20 temporal sin mezcla aleatoria</li>
-<li>Los modelos <code>.pkl</code> estan en <code>models/</code></li>
-<li>Metricas completas en <code>codex-revision/results_metrics_2026-06-07.json</code></li>
+<li>🔴 Positivo: variable impulsa el riesgo</li>
+<li>🔵 Negativo: variable reduce el riesgo</li>
+</ul>
+<h3 id="capa-4-rag-con-pgvector-recuperacion-aumentada-por-generacion">Capa 4 — RAG con pgvector (Recuperación Aumentada por Generación)</h3>
+<ol>
+<li>La consulta de alerta es codificada como embedding 384-dim con <code>BAAI/bge-small-en-v1.5</code></li>
+<li>Búsqueda por similitud coseno (<code>&lt;=&gt;</code>) en <code>documentos_normativos</code> (PostgreSQL + pgvector)</li>
+<li>Recuperación de las 3 normativas más relevantes (FDA, SENASA, Ley IA)</li>
+<li>Generación del informe técnico con Gemini 1.5 Flash o motor heurístico offline</li>
+<li>Citas <code>[CAT-ID]</code> se renderizan como modales interactivos en la UI React</li>
+</ol>
+<hr />
+<h2 id="stack-tecnologico">Stack Tecnológico</h2>
+<pre><code>Frontend:     React 18 + Vite + Tailwind CSS → Nginx
+Backend:      Python 3.11 + Flask + Gunicorn
+Base Datos:   PostgreSQL 15 + pgvector v0.5
+ML/IA:        XGBoost 2.0, PyOD 2.0, SHAP 0.45
+NLP/RAG:      sentence-transformers 3.0 (BAAI/bge-small-en-v1.5)
+LLM:          Google Gemini 1.5 Flash
+Orquestación: Docker Compose v2
+</code></pre>
+<hr />
+<h2 id="capturas-del-sistema">Capturas del Sistema</h2>
+<p>El sistema cuenta con 10 vistas completas implementadas en React:</p>
+<table>
+<thead>
+<tr>
+<th>Vista</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Login</td>
+<td>Autenticación + asignación de condición experimental A/B</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>KPIs globales, alertas de mayor riesgo, gráficos de tendencia</td>
+</tr>
+<tr>
+<td>Gestión de Alertas</td>
+<td>Listado filtrable de DAMs con scores y estados</td>
+</tr>
+<tr>
+<td><strong>Detalle de Alerta</strong></td>
+<td><strong>Vista central: 4 capas IA, SHAP, RAG, adjudicación</strong></td>
+</tr>
+<tr>
+<td>Telemetría</td>
+<td>Boxplots A/B comparativos de tiempos y comprensión</td>
+</tr>
+<tr>
+<td>Integridad</td>
+<td>FPR por producto, Recall por segmento, DPR</td>
+</tr>
+<tr>
+<td>Explorador de Datos</td>
+<td>Explorador de DAMs + Biblioteca RAG interactiva</td>
+</tr>
+<tr>
+<td>Configuración</td>
+<td>Pesos del ensemble, umbral global (ajustable en vivo)</td>
+</tr>
+<tr>
+<td>Historial</td>
+<td>Decisiones pasadas y estados</td>
+</tr>
+<tr>
+<td>Usuarios</td>
+<td>Gestión de auditores y condiciones experimentales</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="despliegue-local">Despliegue Local</h2>
+<pre><code class="language-bash"># Clonar el repositorio
+git clone https://github.com/ycozco/tesis_v1_md.git
+cd tesis_v1_md/sistema-web-agro
+
+# Construir e iniciar (primera vez: ~10 min)
+docker-compose up --build -d
+
+# Acceder a la aplicación
+# http://localhost:8050 — Frontend
+# http://localhost:5000 — API Backend
+</code></pre>
+<p><strong>Credenciales de prueba:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Username</th>
+<th>Contraseña</th>
+<th>Condición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auditor1</code></td>
+<td><code>correct</code></td>
+<td>Condición A — INTEGRADO (con IA explicable)</td>
+</tr>
+<tr>
+<td><code>auditor2</code></td>
+<td><code>correct</code></td>
+<td>Condición B — AISLADO (sin explicabilidad)</td>
+</tr>
+<tr>
+<td><code>admin</code></td>
+<td><code>correct</code></td>
+<td>Panel de administración completo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="codigo-fuente">Código Fuente</h2>
+<ul>
+<li><a href="https://github.com/ycozco/tesis_v1_md/blob/main/sistema-web-agro/backend/app.py"><code>sistema-web-agro/backend/app.py</code></a> — Pipeline de inferencia 4 capas</li>
+<li><a href="https://github.com/ycozco/tesis_v1_md/blob/main/sistema-web-agro/backend/models.py"><code>sistema-web-agro/backend/models.py</code></a> — Esquema de base de datos + pgvector</li>
+<li><a href="https://github.com/ycozco/tesis_v1_md/blob/main/sistema-web-agro/backend/init_db.py"><code>sistema-web-agro/backend/init_db.py</code></a> — Seed + entrenamiento automático de modelos</li>
+<li><a href="https://github.com/ycozco/tesis_v1_md/blob/main/sistema-web-agro/docker-compose.yml"><code>sistema-web-agro/docker-compose.yml</code></a> — Orquestación Docker</li>
+<li><a href="https://github.com/ycozco/tesis_v1_md/blob/main/sistema-web-agro/GUIA_DESPLIEGUE_LOCAL.md"><code>sistema-web-agro/GUIA_DESPLIEGUE_LOCAL.md</code></a> — Guía completa de despliegue</li>
+<li><a href="https://github.com/ycozco/tesis_v1_md/blob/main/sistema-web-agro/AVANCE_DETALLADO_TESIS.md"><code>sistema-web-agro/AVANCE_DETALLADO_TESIS.md</code></a> — Avance técnico completo</li>
 </ul>
             </article>
         </main>

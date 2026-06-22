@@ -1,0 +1,570 @@
+import React, { useState, useEffect, useRef } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useAuth } from '../App.jsx'
+
+export default function Detail() {
+  const { id_alerta } = useParams()
+  const navigate = useNavigate()
+  const { user, condicion } = useAuth()
+
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  // Form states
+  const [userDecision, setUserDecision] = useState(null)
+  const [justificationText, setJustificationText] = useState('')
+  const [likertComprehension, setLikertComprehension] = useState(0)
+  const [hoverLikert, setHoverLikert] = useState(0)
+  
+  // Modal states
+  const [showConfirmModal, setShowConfirmModal] = useState(false)
+  const [activeRagDoc, setActiveRagDoc] = useState(null)
+
+  // Timing states
+  const startTimeRef = useRef(null)
+
+  useEffect(() => {
+    // Record start time on mount
+    startTimeRef.current = performance.now()
+    
+    // Fetch details
+    fetch(`/api/alerts/${id_alerta}`)
+      .then(res => res.json())
+      .then(resData => {
+        setData(resData)
+        
+        // If already audited, pre-populate
+        if (resData.decision) {
+          setUserDecision(resData.decision.user_decision)
+          setJustificationText(resData.decision.justification_text)
+          setLikertComprehension(resData.decision.likert_comprehension)
+        }
+        setLoading(false)
+      })
+      .catch(err => {
+        console.error('Error fetching alert detail:', err)
+        setLoading(false)
+      })
+  }, [id_alerta])
+
+  if (loading || !data) {
+    return (
+      <div className="flex items-center justify-center h-[60vh]">
+        <span className="material-symbols-outlined text-primary text-5xl animate-spin">sync</span>
+        <span className="ml-3 text-lg font-medium text-primary">Cargando análisis de anomalía...</span>
+      </div>
+    )
+  }
+
+  const { alert, explanations = [], decision } = data
+  const isAudited = !!decision
+  const dev = alert.valor_fob_esperado > 0 ? (((alert.valor_fob_esperado - alert.valor_fob_declarado) / alert.valor_fob_esperado) * 100).toFixed(1) : '0.0'
+
+  // Map API vector documents to the local database keys
+  const fetchedRagDocs = {}
+  if (data.rag_documents) {
+    data.rag_documents.forEach(doc => {
+      const key = `${doc.categoria}-${doc.id_doc}`
+      fetchedRagDocs[key] = {
+        title: doc.titulo,
+        body: doc.contenido
+      }
+    })
+  }
+
+  // RAG Document Database
+  const RAG_DOCUMENTS = {
+    'FDA-2025-C1': {
+      title: 'FDA CFR Title 21 - Importación de Perecederos (Capítulo 1)',
+      body: 'Sección 21.341 de la FDA: Todos los despachos agroindustriales con una desviación en valor FOB superior al 15% o que muestren proxies de riesgo logístico deben ser retenidos para inspección física sensorial de temperatura y calidad del empaque. Se debe verificar el contrato y la factura comercial contra la DAM.'
+    },
+    'SENASA-Directiva-04': {
+      title: 'SENASA Directiva de Control Fitosanitario Agroexportador N° 04-2026',
+      body: 'Directiva SENASA: Estipula inspecciones aleatorias obligatorias en puerto de origen (ej. Paita, Callao) para productos de palta Hass y uva que sufran retrasos mayores a 48 horas en zona primaria de embarque. Esto previene la propagación de plagas por pérdida de cadena de frío.'
+    },
+    'LMY-IA-D115': {
+      title: 'Reglamento de la Ley de IA del Perú (D.S. N° 115-2025-PCM)',
+      body: 'El reglamento estipula la obligación de los sistemas de IA de alto riesgo que operan en aduanas peruanas de proveer interfaces explicables a los operadores humanos para evitar sesgos discriminatorios algorítmicos. Las explicaciones locales (SHAP) y resúmenes narrativos RAG son obligatorios para validar anomalías.'
+    },
+    ...fetchedRagDocs
+  }
+
+  const handleOpenRag = (docId) => {
+    if (RAG_DOCUMENTS[docId]) {
+      setActiveRagDoc(RAG_DOCUMENTS[docId])
+    }
+  }
+
+  const renderReportWithCitations = (text) => {
+    if (!text) return null
+    // Match patterns like [FDA-1] or [SENASA-2] or [LEY_IA-3] or [FDA-2025-C1]
+    const regex = /(\[[A-Z0-9_-]+\])/g
+    const parts = text.split(regex)
+    return parts.map((part, i) => {
+      const match = part.match(/^\[([A-Z0-9_-]+)\]$/)
+      if (match) {
+        const docId = match[1]
+        const doc = RAG_DOCUMENTS[docId]
+        if (doc) {
+          return (
+            <a
+              key={i}
+              href={`#${docId}`}
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveRagDoc(doc)
+              }}
+              className="text-primary hover:underline font-semibold font-mono-data cursor-pointer"
+            >
+              {part}
+            </a>
+          )
+        }
+      }
+      return part
+    })
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    if (userDecision === null) {
+      alert('Por favor seleccione una clasificación para la alerta.')
+      return
+    }
+    if (likertComprehension === 0) {
+      alert('Por favor califique su nivel de comprensión de la explicación de la IA.')
+      return
+    }
+    // Open Confirmation Modal
+    setShowConfirmModal(true)
+  }
+
+  const handleConfirmDecision = async () => {
+    const endTime = performance.now()
+    const elapsed = Math.round(endTime - startTimeRef.current)
+
+    try {
+      const response = await fetch(`/api/alerts/${id_alerta}/adjudicate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_decision: userDecision,
+          justification_text: justificationText,
+          likert_comprehension: likertComprehension,
+          time_to_decision_ms: elapsed,
+          username: user.username,
+          condicion: condicion || 'INTEGRADO'
+        })
+      })
+
+      if (response.ok) {
+        setShowConfirmModal(false)
+        navigate('/dashboard')
+      } else {
+        const errorData = await response.json()
+        alert('Error al guardar la decisión: ' + errorData.message)
+      }
+    } catch (err) {
+      console.error(err)
+      alert('Error de red al guardar la decisión.')
+    }
+  }
+
+  return (
+    <div className="flex-grow overflow-y-auto p-container-padding pb-24 md:pb-container-padding">
+      
+      {/* Operation Header */}
+      <div className="mb-gutter">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
+          <div>
+            <div className="flex items-center gap-3 mb-1">
+              <span className={`px-2 py-0.5 rounded text-[10px] font-mono-data tracking-wider uppercase ${condicion === 'INTEGRADO' ? 'bg-primary/20 text-primary border border-primary/30' : 'bg-secondary/20 text-secondary border border-secondary/30'}`}>
+                {condicion === 'INTEGRADO' ? 'Condición A (Explicable)' : 'Condición B (Aislada)'}
+              </span>
+              <span className="text-on-surface-variant font-mono-data text-[12px]">Estado de Alerta: <strong className="text-on-surface">{alert.estado}</strong></span>
+            </div>
+            <h2 className="font-headline-lg text-headline-lg text-on-surface flex items-center gap-3">
+              <span className="material-symbols-outlined text-primary text-[32px]">inventory_2</span>
+              DAM #{alert.numero_dam}
+            </h2>
+          </div>
+          <div className="flex gap-3">
+            <button className="glass-panel px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-white/10 transition-colors flex items-center gap-2" onClick={() => navigate('/history')}>
+              <span className="material-symbols-outlined text-[18px]">history</span>
+              Historial
+            </button>
+            <button className="glass-panel px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-white/10 transition-colors flex items-center gap-2" onClick={() => window.print()}>
+              <span className="material-symbols-outlined text-[18px]">download</span>
+              Exportar
+            </button>
+          </div>
+        </div>
+        
+        {/* Meta Badges */}
+        <div className="flex flex-wrap gap-2">
+          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
+            <span className="material-symbols-outlined text-[16px] text-on-surface-variant">corporate_fare</span>
+            <span className="font-mono-data text-mono-data text-on-surface-variant">RUC:</span>
+            <span className="font-mono-data text-mono-data text-on-surface">{alert.ruc_exportador}</span>
+          </div>
+          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
+            <span className="material-symbols-outlined text-[16px] text-on-surface-variant">storefront</span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant">Empresa:</span>
+            <span className="font-body-sm text-body-sm text-on-surface font-medium">{alert.razon_social}</span>
+          </div>
+          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-secondary/50">
+            <span className="material-symbols-outlined text-[16px] text-on-surface-variant">eco</span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant">Producto:</span>
+            <span className="font-body-sm text-body-sm text-on-surface font-medium">{alert.producto}</span>
+          </div>
+          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-tertiary/50">
+            <span className="material-symbols-outlined text-[16px] text-on-surface-variant">sailing</span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant">Destino:</span>
+            <span className="font-body-sm text-body-sm text-on-surface font-medium">Rotterdam (NLD)</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-card-gap">
+        
+        {/* Layer 1: GBDT Prediction (Col 1-6) */}
+        <div className="xl:col-span-6 glass-panel rounded-xl p-6 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-error/5 to-transparent opacity-50 pointer-events-none"></div>
+          <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-6">
+            <span className="material-symbols-outlined text-secondary">monitoring</span>
+            Capa 1: Predicción de Valor (GBDT)
+          </h3>
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1 w-full space-y-6">
+              <div>
+                <div className="flex justify-between font-label-md text-label-md mb-2">
+                  <span className="text-on-surface-variant">FOB Declarado</span>
+                  <span className="text-on-surface font-mono-data">${alert.valor_fob_declarado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+                </div>
+                <div className="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+                  <div className="h-full bg-surface-variant rounded-full relative" style={{ width: '60%' }}></div>
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between font-label-md text-label-md mb-2">
+                  <span className="text-primary flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[14px]">psychiatry</span> FOB Esperado (Modelo)
+                  </span>
+                  <span className="text-primary font-mono-data">${alert.valor_fob_esperado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+                </div>
+                <div className="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+                  <div className="h-full bg-primary/80 rounded-full relative shadow-[0_0_10px_rgba(118,219,143,0.5)]" style={{ width: '85%' }}>
+                    {/* Marker for declared value */}
+                    <div className="absolute top-0 bottom-0 left-[70%] w-1 bg-white/50 z-10"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Deviation Highlight */}
+            <div className="w-32 h-32 rounded-full border-4 border-error/20 flex flex-col items-center justify-center relative shrink-0">
+              <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+                <circle className="text-error/20" cx="50" cy="50" fill="none" r="46" stroke="currentColor" strokeWidth="4"></circle>
+                <circle className="text-error drop-shadow-[0_0_8px_rgba(255,180,171,0.6)]" cx="50" cy="50" fill="none" r="46" stroke="currentColor" strokeDasharray="289" strokeDashoffset={289 - (Math.min(parseFloat(dev), 100) / 100 * 289)} strokeWidth="4"></circle>
+              </svg>
+              <span className="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Desviación</span>
+              <span className="font-display-lg text-[32px] text-error font-bold leading-none mt-1">{parseFloat(dev) > 0 ? `+${dev}%` : `${dev}%`}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Layer 2: Ensemble Score (Col 7-12) */}
+        <div className="xl:col-span-6 glass-panel rounded-xl p-6 relative border-error/30">
+          <div className="absolute top-0 left-0 w-full h-1 bg-error animate-pulse"></div>
+          <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-2">
+            <span className="material-symbols-outlined text-error">gavel</span>
+            Capa 2: Severidad de Anomalía (Ensemble)
+          </h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Consenso ponderado de Isolation Forest, Local Outlier Factor y ECOD.</p>
+          <div className="flex items-center justify-center h-40 bg-error/5 border border-error/20 rounded-lg relative overflow-hidden group">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-error/10 via-transparent to-transparent animate-pulse opacity-50"></div>
+            <div className="flex flex-col items-center z-10">
+              <span className="material-symbols-outlined text-[48px] text-error mb-2 drop-shadow-[0_0_15px_rgba(255,180,171,0.5)]">
+                {alert.score_anomalia > 0.65 ? 'warning_amber' : 'check_circle'}
+              </span>
+              <h4 className="font-display-lg text-[36px] text-error tracking-tight drop-shadow-[0_0_10px_rgba(255,180,171,0.3)]">
+                {alert.score_anomalia > 0.8 ? 'RIESGO CRÍTICO' : alert.score_anomalia > 0.6 ? 'RIESGO ALTO' : 'RIESGO BAJO'}
+              </h4>
+              <div className="font-mono-data text-[12px] text-error/80 mt-2 bg-error/10 px-3 py-1 rounded-full border border-error/20">
+                Puntaje del Consenso: {alert.score_anomalia.toFixed(3)}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ----------------- CONDICIONALIDAD EXPERIMENTAL (SHAP Y RAG) ----------------- */}
+        {condicion === 'INTEGRADO' && (
+          <>
+            {/* Layer 3: SHAP Explicability (Full Width) */}
+            <div className="xl:col-span-12 glass-panel rounded-xl p-6">
+              <div className="flex justify-between items-end mb-6">
+                <div>
+                  <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+                    <span className="material-symbols-outlined text-tertiary">analytics</span>
+                    Capa 3: Variables de Influencia Local (Atribución SHAP)
+                  </h3>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Factores que impulsan el score (Rojo aumenta la probabilidad de anomalía; Azul reduce el riesgo).</p>
+                </div>
+                <button 
+                  className="text-primary text-label-md font-label-md flex items-center hover:underline"
+                  onClick={() => handleOpenRag('LMY-IA-D115')}
+                >
+                  Regulación Ley de IA <span className="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+                </button>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
+                {explanations.map((exp, index) => {
+                  const isPositive = exp.shap_value >= 0
+                  const absVal = Math.min(Math.abs(exp.shap_value) * 150, 95) // Scale for visualization
+                  
+                  return (
+                    <div key={exp.id_explicacion || index} className="flex items-center gap-4 group">
+                      <div className="w-1/3 text-right font-label-md text-label-md text-on-surface truncate group-hover:text-primary transition-colors">
+                        {exp.variable_nombre}
+                      </div>
+                      <div className={`w-2/3 flex items-center gap-2 ${isPositive ? '' : 'flex-row-reverse justify-end'}`}>
+                        <div 
+                          className={`h-4 rounded-sm transition-all duration-300 ${isPositive ? 'bg-error/85' : 'bg-tertiary/85'}`}
+                          style={{ width: `${absVal}%` }}
+                        ></div>
+                        <span className={`font-mono-data text-[12px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
+                          {isPositive ? `+${exp.shap_value.toFixed(2)}` : exp.shap_value.toFixed(2)}
+                        </span>
+                        <span className="text-[10px] text-on-surface-variant font-mono-data ml-2">({exp.variable_valor})</span>
+                      </div>
+                    </div>
+                  )
+                })}
+                {explanations.length === 0 && (
+                  <div className="col-span-2 text-center py-4 text-on-surface-variant">No se registraron explicaciones SHAP para esta operación.</div>
+                )}
+              </div>
+            </div>
+
+            {/* Layer 4: RAG Report (Col 1-7) */}
+            <div className="xl:col-span-7 glass-panel rounded-xl p-6 flex flex-col">
+              <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
+                <span className="material-symbols-outlined text-primary">description</span>
+                Capa 4: Narrativa Técnica de IA (Motor RAG)
+              </h3>
+              <div className="flex-1 glass-panel bg-surface-container-low/50 rounded-lg p-5 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[300px] whitespace-pre-wrap">
+                {renderReportWithCitations(data.rag_report)}
+              </div>
+              <div className="mt-3 flex justify-end gap-2 text-on-surface-variant font-label-md text-[10px] uppercase tracking-wider">
+                <span className="flex items-center gap-1">
+                  <span className="material-symbols-outlined text-[14px]">auto_awesome</span> Generado por RAG Core v2.5
+                </span>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Adjudication Panel (Col 8-12 / Col 1-5 if B) */}
+        <div className={`${condicion === 'INTEGRADO' ? 'xl:col-span-5' : 'xl:col-span-12'} glass-panel-elevated rounded-xl p-6 flex flex-col border-primary/20`}>
+          <h3 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2 mb-6">
+            <span className="material-symbols-outlined">rule</span>
+            Adjudicación de Operación
+          </h3>
+          
+          <form className="flex-1 flex flex-col space-y-6" onSubmit={handleFormSubmit}>
+            
+            {/* Radio Buttons */}
+            <div className="space-y-3">
+              <label className={`flex items-center gap-3 p-3 rounded-lg border border-outline/30 ${isAudited ? '' : 'cursor-pointer hover:bg-white/5'} transition-colors focus-within:border-primary focus-within:bg-primary/5 ${userDecision === 1 ? 'border-primary bg-primary/5' : ''}`}>
+                <input 
+                  className="w-4 h-4 text-primary bg-transparent border-outline focus:ring-primary focus:ring-offset-background" 
+                  name="adjudication" 
+                  type="radio" 
+                  value="1"
+                  checked={userDecision === 1}
+                  onChange={() => !isAudited && setUserDecision(1)}
+                  disabled={isAudited}
+                />
+                <span className="font-body-md text-on-surface font-semibold">Anomalía Confirmada (True Positive)</span>
+              </label>
+              <label className={`flex items-center gap-3 p-3 rounded-lg border border-outline/30 ${isAudited ? '' : 'cursor-pointer hover:bg-white/5'} transition-colors focus-within:border-secondary focus-within:bg-secondary/5 ${userDecision === 0 ? 'border-secondary bg-secondary/5' : ''}`}>
+                <input 
+                  className="w-4 h-4 text-secondary bg-transparent border-outline focus:ring-secondary focus:ring-offset-background" 
+                  name="adjudication" 
+                  type="radio" 
+                  value="0"
+                  checked={userDecision === 0}
+                  onChange={() => !isAudited && setUserDecision(0)}
+                  disabled={isAudited}
+                />
+                <span className="font-body-md text-on-surface font-semibold">Falsa Alarma (Deriva del Modelo)</span>
+              </label>
+              <label className={`flex items-center gap-3 p-3 rounded-lg border border-outline/30 ${isAudited ? '' : 'cursor-pointer hover:bg-white/5'} transition-colors focus-within:border-tertiary focus-within:bg-tertiary/5 ${userDecision === 2 ? 'border-tertiary bg-tertiary/5' : ''}`}>
+                <input 
+                  className="w-4 h-4 text-tertiary bg-transparent border-outline focus:ring-tertiary focus:ring-offset-background" 
+                  name="adjudication" 
+                  type="radio" 
+                  value="2"
+                  checked={userDecision === 2}
+                  onChange={() => !isAudited && setUserDecision(2)}
+                  disabled={isAudited}
+                />
+                <span className="font-body-md text-on-surface font-semibold">Dudoso / Requiere Inspección Física</span>
+              </label>
+            </div>
+
+            {/* Justification Text */}
+            <div className="space-y-2">
+              <div className="flex justify-between font-label-md text-label-md text-on-surface-variant">
+                <span>Nota de Justificación Técnica</span>
+                <span className="font-mono-data text-[10px]">{justificationText.length} / 250</span>
+              </div>
+              <textarea 
+                className="w-full bg-transparent border border-outline/50 rounded-lg p-3 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all resize-none disabled:opacity-75" 
+                placeholder="Ingrese el razonamiento técnico que sustente su clasificación..." 
+                rows="3"
+                value={justificationText}
+                onChange={(e) => !isAudited && setJustificationText(e.target.value.slice(0, 250))}
+                required
+                disabled={isAudited}
+              />
+            </div>
+
+            {/* Likert Scale */}
+            <div className="space-y-2">
+              <label className="font-label-md text-label-md text-on-surface-variant block">Calificación de Comprensión de Explicación de IA</label>
+              <div className="flex items-center gap-2">
+                {[1, 2, 3, 4, 5].map(starVal => (
+                  <button 
+                    key={starVal}
+                    className="transition-colors focus:outline-none"
+                    type="button"
+                    onClick={() => !isAudited && setLikertComprehension(starVal)}
+                    onMouseEnter={() => !isAudited && setHoverLikert(starVal)}
+                    onMouseLeave={() => !isAudited && setHoverLikert(0)}
+                    disabled={isAudited}
+                  >
+                    <span 
+                      className={`material-symbols-outlined text-[28px] ${
+                        starVal <= (hoverLikert || likertComprehension) ? 'text-primary' : 'text-on-surface-variant'
+                      }`}
+                      style={{ fontVariationSettings: starVal <= (hoverLikert || likertComprehension) ? "'FILL' 1" : "'FILL' 0" }}
+                    >
+                      star
+                    </span>
+                  </button>
+                ))}
+                <span className="text-[11px] font-mono-data text-on-surface-variant ml-2">
+                  {likertComprehension === 1 && 'Muy Incomprensible'}
+                  {likertComprehension === 2 && 'Dificultosa'}
+                  {likertComprehension === 3 && 'Aceptable'}
+                  {likertComprehension === 4 && 'Comprensible'}
+                  {likertComprehension === 5 && 'Altamente Explicable'}
+                </span>
+              </div>
+            </div>
+
+            {/* Submit Action */}
+            {!isAudited ? (
+              <button 
+                className="w-full mt-auto bg-primary text-on-primary font-label-md text-label-md py-3 px-4 rounded-lg hover:bg-primary-fixed transition-colors flex justify-center items-center gap-2 shadow-[0_0_15px_rgba(118,219,143,0.3)] hover:shadow-[0_0_25px_rgba(118,219,143,0.5)]" 
+                type="submit"
+              >
+                <span className="material-symbols-outlined text-[18px]">send</span>
+                Enviar Decisión a Telemetría
+              </button>
+            ) : (
+              <div className="p-4 bg-primary/10 border border-primary/20 text-primary rounded-lg text-center font-label-md text-label-md flex justify-center items-center gap-2">
+                <span className="material-symbols-outlined">lock</span>
+                DECISIÓN REGISTRADA EN EL HISTORIAL
+              </div>
+            )}
+          </form>
+        </div>
+
+      </div>
+
+      {/* ----------------- MODALES ----------------- */}
+
+      {/* Modal 1: Confirmación de Adjudicación */}
+      {showConfirmModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-modal max-w-md w-full rounded-xl p-6 relative overflow-hidden">
+            <h3 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2">
+              <span className="material-symbols-outlined">gavel</span>
+              Confirmar Adjudicación
+            </h3>
+            <p className="font-body-md text-body-md text-on-surface-variant mb-6">
+              ¿Está seguro de enviar esta decisión? Este registro se encriptará e inyectará en la base de datos de telemetría experimental para medir la eficiencia.
+            </p>
+            
+            <div className="space-y-3 font-mono-data text-xs text-on-surface bg-white/5 p-4 rounded-lg mb-6 border border-white/5">
+              <div className="flex justify-between">
+                <span className="text-on-surface-variant">Clasificación:</span>
+                <span className="font-bold text-primary">
+                  {userDecision === 1 && 'Anomalía Confirmada'}
+                  {userDecision === 0 && 'Falsa Alarma'}
+                  {userDecision === 2 && 'Requiere Inspección'}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-on-surface-variant">Calificación Explicabilidad:</span>
+                <span>{likertComprehension} de 5 estrellas</span>
+              </div>
+              <div className="border-t border-white/10 pt-2">
+                <span className="text-on-surface-variant block mb-1">Nota de Justificación:</span>
+                <p className="italic text-on-surface-variant leading-relaxed">"{justificationText}"</p>
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3">
+              <button 
+                className="px-4 py-2 bg-transparent text-on-surface font-label-md text-label-md hover:bg-white/5 rounded transition-colors"
+                onClick={() => setShowConfirmModal(false)}
+              >
+                Cancelar
+              </button>
+              <button 
+                className="px-6 py-2 bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-fixed rounded transition-colors shadow-[0_0_10px_rgba(118,219,143,0.3)] font-semibold"
+                onClick={handleConfirmDecision}
+              >
+                Confirmar y Registrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal 2: Citas Normativas RAG */}
+      {activeRagDoc && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-modal max-w-lg w-full rounded-xl p-6 relative border-t-4 border-t-primary">
+            <button 
+              className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface focus:outline-none"
+              onClick={() => setActiveRagDoc(null)}
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+            <h3 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2 pr-6">
+              <span className="material-symbols-outlined">menu_book</span>
+              {activeRagDoc.title}
+            </h3>
+            <div className="font-body-md text-body-md text-on-surface-variant leading-relaxed bg-white/5 p-4 rounded-lg border border-white/5 max-h-[300px] overflow-y-auto mb-6">
+              {activeRagDoc.body}
+            </div>
+            <div className="flex justify-end">
+              <button 
+                className="px-5 py-2 bg-primary/20 text-primary border border-primary/30 font-label-md text-label-md hover:bg-primary/30 rounded transition-colors"
+                onClick={() => setActiveRagDoc(null)}
+              >
+                Entendido
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
+  )
+}
