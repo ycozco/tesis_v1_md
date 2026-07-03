@@ -2,28 +2,28 @@
 ## Sistema Integrado de Supervisión con IA Explicable
 ### Tesis UNSA — Yoset Cozco Mauri (2026)
 
-Este documento detalla el plan de ordenamiento, la estructura de directorios y el funcionamiento del **Orquestador Maestro (`orchestrator.py`)**, diseñado para proveer **trazabilidad, explicabilidad e inmutabilidad** al pipeline completo de la tesis, vinculando el código de Python con los capítulos de resultados científicos.
+Este documento detalla el plan de ordenamiento completo, la estructura de directorios final y el funcionamiento del **Orquestador Maestro (`orchestrator.py`)**, diseñado para proveer **trazabilidad, explicabilidad e inmutabilidad** al pipeline completo de la tesis.
 
 ---
 
 ```mermaid
 flowchart TD
     subgraph Capa de Datos (ETL y Preparación)
-        A1[Ficheros DBF SUNAT] -->|etl_real_data.py| A2[dataset_real_v1.csv]
-        A2 -->|preprocess_data.py| A3[Parquet Limpios y Normalizados]
+        A1[Ficheros DBF SUNAT] -->|pipeline/etl/sunat_scraper.py| A2[dataset_real_v1.csv]
+        A2 -->|pipeline/preparation/preprocessing.py| A3[Parquet Limpios y Normalizados]
     end
 
     subgraph Capa de Modelamiento e IA (Capas 1-6)
-        A3 -->|Capa 1: Predicción| B1[module1_prediction.py]
-        B1 -->|Capa 2: Anomalías| B2[module2_anomaly.py]
-        B2 -->|Capa 3: TreeSHAP| B3[module3_shap.py]
-        B3 -->|Capa 4: RAG & Reportes| B4[module4_rag.py]
-        B4 -->|Capa 5: Validación Factual| B5[module5_validation.py]
-        B5 -->|Capa 6: Trazabilidad| B6[module6_traceability.py]
+        A3 -->|Capa 1: Predicción| B1[pipeline/core/layer1_predictive.py]
+        B1 -->|Capa 2: Anomalías| B2[pipeline/core/layer2_anomaly.py]
+        B2 -->|Capa 3: TreeSHAP| B3[pipeline/core/layer3_explainability.py]
+        B3 -->|Capa 4: RAG & Reportes| B4[pipeline/core/layer4_rag_reporting.py]
+        B4 -->|Capa 5: Validación Factual| B5[pipeline/core/layer5_validation.py]
+        B5 -->|Capa 6: Trazabilidad| B6[pipeline/core/layer6_traceability.py]
     end
 
     subgraph Orquestador y Reportabilidad
-        B6 -->|Generación de Metadatos| ORC[Orquestador Central]
+        B6 -->|Generación de Metadatos| ORC[Orquestador Central orchestrator.py]
         ORC -->|Salida Firmada| TRACE[pipeline_trace.json]
         ORC -->|Actualización Automática| CHAP4[Capítulo IV: Resultados]
     end
@@ -33,53 +33,61 @@ flowchart TD
 
 ## 1. Estructura y Ordenamiento del Código Python
 
-Para facilitar la trazabilidad y la lectura del jurado, los scripts de Python del proyecto se categorizan en cuatro bloques funcionales:
+Todos los scripts de Python del proyecto han sido migrados y organizados físicamente en las siguientes carpetas funcionales:
 
-### A. Extracción e Ingesta de Datos (ETL)
-*   **[etl_real_data.py](file:///d:/tesis_yoset/src/etl_real_data.py)**: Descarga programática de paquetes semanales ZIP de SUNAT, descompresión y lectura de archivos DBF, mapeo de aduanas y filtrado de partidas agroexportadoras.
-*   **[scrape_sunat_all.py](file:///d:/tesis_yoset/src/scrape_sunat_all.py)**: Web scraping de contingencia de datos aduaneros complementarios.
-*   **[parse_trademap.py](file:///d:/tesis_yoset/src/parse_trademap.py)**: Parseador de datos de comercio internacional de Trade Map para benchmark.
+### A. Extracción e Ingesta de Datos (`pipeline/etl/`)
+*   **[sunat_scraper.py](file:///d:/tesis_yoset/pipeline/etl/sunat_scraper.py)**: Descarga programática de paquetes semanales ZIP de SUNAT, descompresión de DBFs y consolidación de datos reales.
+*   **[scrape_sunat_all.py](file:///d:/tesis_yoset/pipeline/etl/scrape_sunat_all.py)**: Web scraping de contingencia de datos aduaneros complementarios.
+*   **[trademap_parser.py](file:///d:/tesis_yoset/pipeline/etl/trademap_parser.py)**: Parser de datos de Trade Map.
+*   **[data_builder.py](file:///d:/tesis_yoset/pipeline/etl/data_builder.py)**: Genera la estructura unificada del dataset real.
+*   **[build_dataset_final.py](file:///d:/tesis_yoset/pipeline/etl/build_dataset_final.py)**: Consolidación final del dataset multivariable.
+*   **[download_context_data.py](file:///d:/tesis_yoset/pipeline/etl/download_context_data.py)**: Descarga de variables exógenas (clima BCRP, etc.).
+*   **[download_sample.py](file:///d:/tesis_yoset/pipeline/etl/download_sample.py)**: Utilidad de descarga de muestras.
+*   **[integrate_proxies.py](file:///d:/tesis_yoset/pipeline/etl/integrate_proxies.py)**: Integración de variables climáticas y macroeconómicas como proxies.
+*   **[parse_details.py](file:///d:/tesis_yoset/pipeline/etl/parse_details.py)**, **[parse_dicts.py](file:///d:/tesis_yoset/pipeline/etl/parse_dicts.py)**, **[parse_exportemos.py](file:///d:/tesis_yoset/pipeline/etl/parse_exportemos.py)**, **[parse_sunat_dbf.py](file:///d:/tesis_yoset/pipeline/etl/parse_sunat_dbf.py)**: Parseadores especializados de formatos aduaneros.
+*   **[prepare_weekly_dataset.py](file:///d:/tesis_yoset/pipeline/etl/prepare_weekly_dataset.py)**: Agregación de transacciones a granularidad semanal.
+*   **[summarize_scraped_data.py](file:///d:/tesis_yoset/pipeline/etl/summarize_scraped_data.py)**: Reporte estadístico de variables recuperadas.
+*   **[test_dbf.py](file:///d:/tesis_yoset/pipeline/etl/test_dbf.py)**, **[test_extractors.py](file:///d:/tesis_yoset/pipeline/etl/test_extractors.py)**: Validadores unitarios del flujo ETL.
+*   **[generate_synthetic_dataset.py](file:///d:/tesis_yoset/pipeline/etl/generate_synthetic_dataset.py)**: Generador determinista del conjunto sintético de control.
 
-### B. Preparación y Calidad (Preprocessing)
-*   **[preprocess_data.py](file:///d:/tesis_yoset/limpieza_de_datos_y_normalizacion/preprocess_data.py)**: Imputación de nulos, escalamiento robusto, partición temporal estricta de series (Desarrollo/Prueba) para evitar fugas de información (*data leakage*).
-*   **[eda_calidad.py](file:///d:/tesis_yoset/src/eda_calidad.py)**: Auditoría de la calidad de datos y consistencia estadística de las variables.
-*   **[feature_engineering.py](file:///d:/tesis_yoset/src/feature_engineering.py)**: Creación de rezagos (*lags*), medias móviles, indicadores climáticos exógenos y ciclicidad temporal (seno/coseno).
+### B. Preparación y Calidad de Datos (`pipeline/preparation/`)
+*   **[preprocessing.py](file:///d:/tesis_yoset/pipeline/preparation/preprocessing.py)**: Limpieza, imputadores KNN, RobustScaler y SMOTE balanceado.
+*   **[quality_audit.py](file:///d:/tesis_yoset/pipeline/preparation/quality_audit.py)**: Auditoría y EDA de calidad de datos.
+*   **[feature_eng.py](file:///d:/tesis_yoset/pipeline/preparation/feature_eng.py)**: Construcción de lags, medias móviles e indicadores cíclicos.
+*   **[verify_integrity.py](file:///d:/tesis_yoset/pipeline/preparation/verify_integrity.py)**: Comprobación de consistencia y coherencia del dataset.
+*   **[segment_datasets.py](file:///d:/tesis_yoset/pipeline/preparation/segment_datasets.py)**: Segmentador de conjuntos de entrenamiento por producto.
 
-### C. Núcleo IA de 6 Capas (Core Pipeline)
-*   **[module1_prediction.py](file:///d:/tesis_yoset/src/module1_prediction.py)**: **Capa 1 (Predicción Tabular)**. Entrena XGBoost/LightGBM optimizados con Optuna para predecir precio FOB y volumen, inyectando los residuos robustos normalizados.
-*   **[module2_anomaly.py](file:///d:/tesis_yoset/src/module2_anomaly.py)**: **Capa 2 (Ensemble de Anomalías)**. Corre Isolation Forest, LOF y ECOD, y calcula el score de consenso unificado (Ensemble PyOD).
-*   **[module3_shap.py](file:///d:/tesis_yoset/src/module3_shap.py)**: **Capa 3 (Explicabilidad SHAP)**. Calcula atribuciones TreeSHAP sobre las anomalías detectadas para identificar factores causales (precio, volumen, clima, retraso logístico).
-*   **[module4_rag.py](file:///d:/tesis_yoset/src/module4_rag.py)**: **Capa 4 (RAG & Reportes)**. Integra el contexto SHAP y las bases normativas para generar reportes textuales estructurados y accionables mediante LLM.
-*   **[module5_validation.py](file:///d:/tesis_yoset/src/module5_validation.py)**: **Capa 5 (Validación Factual)**. Evalúa la completitud e integridad de los reportes generados contra la base de datos (con métricas de consistencia numérica y alucinación).
-*   **[module6_traceability.py](file:///d:/tesis_yoset/src/module6_traceability.py)**: **Capa 6 (Registro de Trazabilidad e Integridad)**. Genera hashes SHA-256 de todas las entradas/salidas, garantizando la inmutabilidad y auditoría de la cadena de inferencia.
+### C. Núcleo IA de 6 Capas (`pipeline/core/`)
+*   **[layer1_predictive.py](file:///d:/tesis_yoset/pipeline/core/layer1_predictive.py)**: Capa 1. Entrenamiento de modelos predictivos XGBoost y LightGBM.
+*   **[layer2_anomaly.py](file:///d:/tesis_yoset/pipeline/core/layer2_anomaly.py)**: Capa 2. Ensemble probabilístico unificado PyOD.
+*   **[layer3_explainability.py](file:///d:/tesis_yoset/pipeline/core/layer3_explainability.py)**: Capa 3. Explicabilidad mediante TreeSHAP local.
+*   **[layer4_rag_reporting.py](file:///d:/tesis_yoset/pipeline/core/layer4_rag_reporting.py)**: Capa 4. Generación de informes mediante RAG con LLM.
+*   **[layer5_validation.py](file:///d:/tesis_yoset/pipeline/core/layer5_validation.py)**: Capa 5. Auditoría factual cuantitativa de reportes.
+*   **[layer6_traceability.py](file:///d:/tesis_yoset/pipeline/core/layer6_traceability.py)**: Capa 6. Cómputo de hashes SHA-256 e inmutabilidad de la cadena de bloques operacional.
+*   **[benchmark_deep_anomaly.py](file:///d:/tesis_yoset/pipeline/core/benchmark_deep_anomaly.py)**: Comparativa de rendimiento con modelos Deep Learning.
+*   **[shap_explainability.py](file:///d:/tesis_yoset/pipeline/core/shap_explainability.py)**: Módulo de análisis SHAP experimental.
+*   **[train_models.py](file:///d:/tesis_yoset/pipeline/core/train_models.py)**: Script base de entrenamiento heredado.
 
-### D. Utilitarios de Soporte y Compilación
-*   **[compile_thesis.py](file:///d:/tesis_yoset/scripts/compile_thesis.py)**: Genera y compila los borradores `.md` de la tesis hacia formatos PDF/Word mediante Pandoc.
-*   **[auditar_referencias.py](file:///d:/tesis_yoset/scripts/auditar_referencias.py)**: Valida la consistencia cruzada de citas bibliográficas.
-*   **[app.py](file:///d:/tesis_yoset/src/app.py)**: Servidor Flask interactivo que levanta el "Tesis Hub".
+### D. Herramientas de Compilación y Soporte (`tools/`)
+*   **[compile_thesis.py](file:///d:/tesis_yoset/tools/compile_thesis.py)**: Compilación final del documento Word/PDF.
+*   **[compile_tesis.py](file:///d:/tesis_yoset/tools/compile_tesis.py)**: Script alternativo de compilación de tesis.
+*   **[generate_gantt.py](file:///d:/tesis_yoset/tools/generate_gantt.py)**: Generador del cronograma de actividades de la tesis en Gantt.
+*   **[auditar_referencias.py](file:///d:/tesis_yoset/tools/auditar_referencias.py)**: Consistencia de citas y refs.bib.
+*   **[expand_abbreviations.py](file:///d:/tesis_yoset/tools/expand_abbreviations.py)**: Expansión de abreviaturas del glosario.
+*   **[generate_update_guide.py](file:///d:/tesis_yoset/tools/generate_update_guide.py)**: Generador de guías de actualización.
+*   **[inject_content.py](file:///d:/tesis_yoset/tools/inject_content.py)**: Inyector de microdatos a tablas.
+*   **[limpia_duplicados.py](file:///d:/tesis_yoset/tools/limpia_duplicados.py)**: Purga de citas duplicadas en markdown.
+*   **[purga_referencias.py](file:///d:/tesis_yoset/tools/purga_referencias.py)**: Normalización de llaves de citación.
+*   **[read_pdf.py](file:///d:/tesis_yoset/tools/read_pdf.py)**, **[read_tesis_yoset.py](file:///d:/tesis_yoset/tools/read_tesis_yoset.py)**, **[read_docx.py](file:///d:/tesis_yoset/tools/read_docx.py)**: Lectores de fuentes académicas.
+*   **[rebuild_tesis_monolith.py](file:///d:/tesis_yoset/tools/rebuild_tesis_monolith.py)**: Unificador de capítulos en un solo archivo Markdown.
+*   **[run_experiments.py](file:///d:/tesis_yoset/tools/run_experiments.py)**: Ejecutor de baterías experimentales multisemilla.
+*   **[sync_individual_chapters.py](file:///d:/tesis_yoset/tools/sync_individual_chapters.py)**: Sincronización entre repositorio de desarrollo y de compilación.
+*   **[update_capitulo4_tables.py](file:///d:/tesis_yoset/tools/update_capitulo4_tables.py)**: Rellenado de tablas del borrador de resultados.
+*   **[inspect_html.py](file:///d:/tesis_yoset/tools/inspect_html.py)**, **[reformular_tesis.py](file:///d:/tesis_yoset/tools/reformular_tesis.py)**, **[run_all.py](file:///d:/tesis_yoset/tools/run_all.py)**, **[serve_thesis.py](file:///d:/tesis_yoset/tools/serve_thesis.py)**: Scripts de revisión e inspección.
+*   **[test_extractors_scripts.py](file:///d:/tesis_yoset/tools/test_extractors_scripts.py)**: Validador unitario de scripts de extracción.
 
----
-
-## 2. Mapa Detallado del Core Pipeline (Capas 1-6)
-
-A continuación se define la firma de ejecución y flujo de datos de las 6 capas integradas:
-
-| Capa | Script Python | Datos de Entrada | Datos de Salida | Métricas y Trazabilidad Registrada |
-| :--- | :--- | :--- | :--- | :--- |
-| **Capa 1** | `module1_prediction.py` | `data/gold/prediction_features.parquet` | `data/gold/anomaly_features.parquet` | Error Medio Absoluto (MAE), $R^2$, Hiperparámetros Optuna, Hash del modelo `.pkl` |
-| **Capa 2** | `module2_anomaly.py` | `data/gold/anomaly_features.parquet` | `data/gold/anomaly_metrics.json` | PR-AUC, ROC-AUC, F1, Recall por tipo de anomalía, Semillas probadas |
-| **Capa 3** | `module3_shap.py` | `data/gold/anomaly_features.parquet` | `data/gold/local_explanations.json` | Atribuciones base, Importancia global de características, JSON de explicaciones locales |
-| **Capa 4** | `module4_rag.py` | `data/gold/local_explanations.json` | `data/gold/generated_reports.json` | UUID por reporte, Prompts contextuales, Texto RAG final generado |
-| **Capa 5** | `module5_validation.py` | `data/gold/generated_reports.json` | `data/gold/validation_metrics.json` | Puntuación de fidelidad de datos (Fidelity), Completitud (Completeness), Coherencia |
-| **Capa 6** | `module6_traceability.py`| Todo el flujo anterior | `data/gold/traceability_log.json` | Hashes SHA-256 de base de datos, modelos, reportes y log de auditoría completo |
-
----
-
-## 3. Orquestador Maestro (`orchestrator.py`)
-
-El orquestador centraliza la ejecución del pipeline y proporciona metadatos interactivos de la tesis.
-
-### Interfaz CLI:
-*   `python orchestrator.py --list`: Muestra la explicación interactiva de cada módulo Python.
-*   `python orchestrator.py --check`: Valida la integridad física de los archivos y dependencias.
-*   `python orchestrator.py --run [capas/all]`: Ejecuta secuencialmente los módulos indicados, genera el log unificado de trazabilidad en JSON y actualiza automáticamente los borradores de tablas del Capítulo IV.
+### E. Visor Interactivo Tesis Hub (`src/`)
+*   **[app.py](file:///d:/tesis_yoset/src/app.py)**: Servidor web Flask del Hub de Tesis.
+*   **[helpers.py](file:///d:/tesis_yoset/src/helpers.py)**: Utilidades de conteo de palabras y referencias bibliográficas del Hub.
+*   **[constants.py](file:///d:/tesis_yoset/src/constants.py)**: Metadatos de orden de secciones.
+*   **[convert_md_to_html.py](file:///d:/tesis_yoset/src/convert_md_to_html.py)**: Convertidor de Markdown a vistas HTML dinámicas.
