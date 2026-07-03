@@ -1,0 +1,217 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Casos de Uso e Historias de Usuario">
+  <section class="relative rounded-2xl overflow-hidden p-8 mb-8 bg-gradient-to-br from-slate-900 via-[#0d1017] to-indigo-950/20 border border-slate-800">
+    <h1 class="font-headline font-extrabold text-3xl text-white tracking-tight leading-tight">
+      Casos de Uso e Historias de Usuario
+    </h1>
+    <p class="text-slate-400 text-sm mt-2 leading-relaxed max-w-2xl">
+      Modelado y especificación de procesos ágiles y requerimientos funcionales para el sistema de control de anomalías.
+    </p>
+  </section>
+
+  {/* Interactive Use Case Diagram (Tailwind CSS boxes) */}
+  <section class="mb-12">
+    <h2 class="font-headline font-bold text-xl text-white mb-6 flex items-center gap-2">
+      <span class="material-symbols-outlined text-emerald-400">schema</span>
+      Diagrama de Casos de Uso del Sistema
+    </h2>
+    
+    <div class="glass-panel p-6 sm:p-8 rounded-xl border border-slate-800 bg-[#0f111a]/40 relative overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        {/* Flank Left: Auditor Actor */}
+        <div class="lg:col-span-3 flex flex-col items-center justify-center bg-slate-900/50 border border-slate-800 p-6 rounded-2xl text-center relative z-10">
+          <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-emerald-400 text-3xl">support_agent</span>
+          </div>
+          <h3 class="font-headline font-bold text-base text-white">Auditor Aduanero</h3>
+          <p class="text-[10px] text-slate-500 mt-1 uppercase tracking-widest font-mono-data">Actor Principal</p>
+          <div class="mt-4 flex flex-col gap-2 w-full">
+            <span class="text-[11px] bg-emerald-500/10 text-emerald-400 py-1 px-2.5 rounded border border-emerald-500/20">Usuario Operativo</span>
+            <span class="text-[11px] bg-slate-800 text-slate-400 py-1 px-2.5 rounded">Adjudica Alertas</span>
+          </div>
+        </div>
+
+        {/* Center: System Boundary and Use Cases */}
+        <div class="lg:col-span-6 bg-slate-950/60 border border-slate-800/80 rounded-2xl p-6 relative">
+          <div class="absolute top-3 left-4 text-[10px] font-mono-data text-emerald-400 uppercase tracking-widest font-bold">Límite del Sistema (Oversight Portal)</div>
+          
+          <div class="flex flex-col gap-4 mt-6">
+            {/* UC 1 */}
+            <div class="flex items-center gap-3 bg-[#0c0d12] border border-slate-800 hover:border-emerald-500/30 p-3 rounded-xl transition-colors group">
+              <span class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs font-mono-data">CU1</span>
+              <div>
+                <span class="font-headline font-bold text-xs text-white block">Visualizar Buzón de Alertas Tabular</span>
+                <span class="text-[9px] text-slate-500 block">Listado de transacciones con alta probabilidad de subvaloración</span>
+              </div>
+            </div>
+            
+            {/* UC 2 */}
+            <div class="flex items-center gap-3 bg-[#0c0d12] border border-slate-800 hover:border-emerald-500/30 p-3 rounded-xl transition-colors group">
+              <span class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs font-mono-data">CU2</span>
+              <div>
+                <span class="font-headline font-bold text-xs text-white block">Auditar Alerta con Explicabilidad SHAP y RAG</span>
+                <span class="text-[9px] text-slate-500 block">Visualizar aportes de variables y normativas asociadas</span>
+              </div>
+            </div>
+
+            {/* UC 3 */}
+            <div class="flex items-center gap-3 bg-[#0c0d12] border border-slate-800 hover:border-emerald-500/30 p-3 rounded-xl transition-colors group">
+              <span class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs font-mono-data">CU3</span>
+              <div>
+                <span class="font-headline font-bold text-xs text-white block">Adjudicar Decisión de Cumplimiento (Confirmar Alerta)</span>
+                <span class="text-[9px] text-slate-500 block">Guardar telemetría de acción y justificación legal en BD</span>
+              </div>
+            </div>
+
+            {/* UC 4 */}
+            <div class="flex items-center gap-3 bg-[#0c0d12] border border-slate-800 hover:border-emerald-500/30 p-3 rounded-xl transition-colors group">
+              <span class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs font-mono-data">CU4</span>
+              <div>
+                <span class="font-headline font-bold text-xs text-white block">Configurar Parámetros del Algoritmo Ensemble</span>
+                <span class="text-[9px] text-slate-500 block">Ajuste de pesos de Isolation Forest, LOF y ECOD</span>
+              </div>
+            </div>
+
+            {/* UC 5 */}
+            <div class="flex items-center gap-3 bg-[#0c0d12] border border-slate-800 hover:border-emerald-500/30 p-3 rounded-xl transition-colors group">
+              <span class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs font-mono-data">CU5</span>
+              <div>
+                <span class="font-headline font-bold text-xs text-white block">Inyectar Anomalías Sintéticas de Stress</span>
+                <span class="text-[9px] text-slate-500 block">Simulación de fallas climáticas, de frío y precio FOB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Flank Right: Administrador Actor */}
+        <div class="lg:col-span-3 flex flex-col items-center justify-center bg-slate-900/50 border border-slate-800 p-6 rounded-2xl text-center relative z-10">
+          <div class="w-16 h-16 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-indigo-400 text-3xl">admin_panel_settings</span>
+          </div>
+          <h3 class="font-headline font-bold text-base text-white">Administrador</h3>
+          <p class="text-[10px] text-slate-500 mt-1 uppercase tracking-widest font-mono-data">Actor Soporte</p>
+          <div class="mt-4 flex flex-col gap-2 w-full">
+            <span class="text-[11px] bg-indigo-500/10 text-indigo-400 py-1 px-2.5 rounded border border-indigo-500/20">Super-usuario</span>
+            <span class="text-[11px] bg-slate-800 text-slate-400 py-1 px-2.5 rounded">Configura Modelos</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* User Stories Section */}
+  <section>
+    <h2 class="font-headline font-bold text-xl text-white mb-6 flex items-center gap-2">
+      <span class="material-symbols-outlined text-emerald-400">assignment</span>
+      Historias de Usuario del Proyecto
+    </h2>
+    
+    <div class="space-y-4">
+      {/* HU 1 */}
+      <div class="glass-panel p-6 rounded-xl border border-slate-800 relative overflow-hidden group">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3 mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="font-mono-data text-emerald-400 text-xs font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">HU-01</span>
+            <h3 class="font-headline font-bold text-sm sm:text-base text-white">Buzón de Alertas Priorizadas</h3>
+          </div>
+          <div class="flex items-center gap-2 text-[10px] font-mono-data text-slate-500 uppercase">
+            <span>Prioridad: <strong class="text-emerald-400">Alta</strong></span>
+            <span>·</span>
+            <span>Esfuerzo: <strong>3 SP</strong></span>
+          </div>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+          **Como** Auditor de Aduanas, **quiero** visualizar una lista priorizada de despachos catalogados como sospechosos por el modelo ensemble, **para** focalizar mi esfuerzo en transacciones críticas con alto desvío FOB.
+        </p>
+        <div class="bg-[#0b0c10]/80 p-3 rounded-lg border border-white/5">
+          <span class="text-[10px] uppercase font-mono-data text-slate-500 block mb-1">Criterios de Aceptación:</span>
+          <ul class="list-disc list-inside text-[11px] text-slate-400 space-y-1">
+            <li>La tabla debe mostrar columnas clave: RUC, Producto, FOB Declarado vs Esperado y Score.</li>
+            <li>El visor debe permitir filtrar dinámicamente por rango de desviación FOB en el cliente.</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* HU 2 */}
+      <div class="glass-panel p-6 rounded-xl border border-slate-800 relative overflow-hidden group">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3 mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="font-mono-data text-[#89c6ff] text-xs font-bold bg-[#89c6ff]/10 px-2 py-0.5 rounded border border-[#89c6ff]/20">HU-02</span>
+            <h3 class="font-headline font-bold text-sm sm:text-base text-white">Explicabilidad SHAP Tabular</h3>
+          </div>
+          <div class="flex items-center gap-2 text-[10px] font-mono-data text-slate-500 uppercase">
+            <span>Prioridad: <strong class="text-[#89c6ff]">Alta</strong></span>
+            <span>·</span>
+            <span>Esfuerzo: <strong>5 SP</strong></span>
+          </div>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+          **Como** Auditor Fitosanitario, **quiero** inspeccionar la contribución local de cada variable (SHAP values) sobre la alerta generada, **para** entender el motivo del desvío (ej. anomalía de frío o retraso físico).
+        </p>
+        <div class="bg-[#0b0c10]/80 p-3 rounded-lg border border-white/5">
+          <span class="text-[10px] uppercase font-mono-data text-slate-500 block mb-1">Criterios de Aceptación:</span>
+          <ul class="list-disc list-inside text-[11px] text-slate-400 space-y-1">
+            <li>Debe mostrarse un gráfico de barras horizontales coloreado según aporte positivo/negativo de SHAP.</li>
+            <li>Las variables deben expresarse en unidades legibles (ej: "+2.4°C" en lugar de "2.4").</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* HU 3 */}
+      <div class="glass-panel p-6 rounded-xl border border-slate-800 relative overflow-hidden group">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3 mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="font-mono-data text-error text-xs font-bold bg-error/10 px-2 py-0.5 rounded border border-error/20">HU-03</span>
+            <h3 class="font-headline font-bold text-sm sm:text-base text-white">Generación de Reportes Normativos RAG</h3>
+          </div>
+          <div class="flex items-center gap-2 text-[10px] font-mono-data text-slate-500 uppercase">
+            <span>Prioridad: <strong class="text-error">Alta</strong></span>
+            <span>·</span>
+            <span>Esfuerzo: <strong>8 SP</strong></span>
+          </div>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+          **Como** Operador Aduanero, **quiero** que el sistema asocie las anomalías con la directiva nacional/internacional vigente de forma automatizada, **para** justificar legalmente el inicio de una inspección.
+        </p>
+        <div class="bg-[#0b0c10]/80 p-3 rounded-lg border border-white/5">
+          <span class="text-[10px] uppercase font-mono-data text-slate-500 block mb-1">Criterios de Aceptación:</span>
+          <ul class="list-disc list-inside text-[11px] text-slate-400 space-y-1">
+            <li>La búsqueda vectorial en pgvector debe recuperar regulaciones de FDA, SENASA y Leyes de IA.</li>
+            <li>Gemini 1.5 Flash debe estructurar una síntesis ejecutiva transparente que cite explícitamente los IDs de documentos.</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* HU 4 */}
+      <div class="glass-panel p-6 rounded-xl border border-slate-800 relative overflow-hidden group">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3 mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="font-mono-data text-tertiary text-xs font-bold bg-tertiary/10 px-2 py-0.5 rounded border border-tertiary/20">HU-04</span>
+            <h3 class="font-headline font-bold text-sm sm:text-base text-white">Consola de Stress Testing Sintético</h3>
+          </div>
+          <div class="flex items-center gap-2 text-[10px] font-mono-data text-slate-500 uppercase">
+            <span>Prioridad: <strong class="text-tertiary">Media</strong></span>
+            <span>·</span>
+            <span>Esfuerzo: <strong>5 SP</strong></span>
+          </div>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+          **Como** Administrador del Pipeline de IA, **quiero** inyectar anomalías sintéticas controladas en caliente en la base de datos, **para** comprobar el flujo extremo de la aplicación y la resiliencia del ensemble.
+        </p>
+        <div class="bg-[#0b0c10]/80 p-3 rounded-lg border border-white/5">
+          <span class="text-[10px] uppercase font-mono-data text-slate-500 block mb-1">Criterios de Aceptación:</span>
+          <ul class="list-disc list-inside text-[11px] text-slate-400 space-y-1">
+            <li>Debe proveer botones para inyectar subvaloraciones FOB, fallas térmicas y retrasos logísticos.</li>
+            <li>La alerta inyectada debe persistir en la base de datos PostgreSQL de forma nominal.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>

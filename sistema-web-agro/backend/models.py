@@ -2,10 +2,19 @@ import os
 from sqlalchemy import create_engine, Column, Integer, String, Date, Numeric, Boolean, DateTime, ForeignKey, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from pgvector.sqlalchemy import Vector
+try:
+    from pgvector.sqlalchemy import Vector
+except ImportError:
+    Vector = None
 from datetime import datetime
 
 DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@db:5432/agro_audit')
+
+if DATABASE_URL.startswith("sqlite") or "sqlite" in DATABASE_URL or Vector is None:
+    from sqlalchemy import Text as SqliteText
+    embedding_type = SqliteText
+else:
+    embedding_type = Vector(384)
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -140,7 +149,7 @@ class DocumentoNormativo(Base):
     titulo = Column(String(150), nullable=False)
     categoria = Column(String(50), nullable=False) # 'FDA', 'SENASA', 'LEY_IA'
     contenido = Column(Text, nullable=False)
-    embedding = Column(Vector(384)) # 384 dimensions for BGE-small-en-v1.5
+    embedding = Column(embedding_type) # 384 dimensions for BGE-small-en-v1.5
     
     def to_dict(self):
         return {
@@ -148,6 +157,32 @@ class DocumentoNormativo(Base):
             'titulo': self.titulo,
             'categoria': self.categoria,
             'contenido': self.contenido
+        }
+
+class ConfiguracionPipeline(Base):
+    __tablename__ = 'configuraciones_pipeline'
+    
+    id_config = Column(Integer, primary_key=True, autoincrement=True)
+    active_model = Column(String(50), default='xgboost', nullable=False)
+    weight_if = Column(Numeric(5, 4), default=0.4500, nullable=False)
+    weight_lof = Column(Numeric(5, 4), default=0.3000, nullable=False)
+    weight_ecod = Column(Numeric(5, 4), default=0.2500, nullable=False)
+    global_threshold = Column(Numeric(5, 4), default=0.6500, nullable=False)
+    llm_engine = Column(String(50), default='Google Gemini 1.5 Flash', nullable=False)
+    llm_temperature = Column(Numeric(3, 2), default=0.10, nullable=False)
+    llm_similarity_threshold = Column(Numeric(3, 2), default=0.75, nullable=False)
+    
+    def to_dict(self):
+        return {
+            'id_config': self.id_config,
+            'active_model': self.active_model,
+            'weight_if': float(self.weight_if),
+            'weight_lof': float(self.weight_lof),
+            'weight_ecod': float(self.weight_ecod),
+            'global_threshold': float(self.global_threshold),
+            'llm_engine': self.llm_engine,
+            'llm_temperature': float(self.llm_temperature),
+            'llm_similarity_threshold': float(self.llm_similarity_threshold)
         }
 
 def init_tables():

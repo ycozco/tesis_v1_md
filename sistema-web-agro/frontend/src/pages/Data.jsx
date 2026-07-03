@@ -13,9 +13,29 @@ export default function Data() {
   const [loadingDocs, setLoadingDocs] = useState(false)
   const [savingDoc, setSavingDoc] = useState(false)
 
+  const [realData, setRealData] = useState([])
+  const [selectedDeviationFilter, setSelectedDeviationFilter] = useState('ALL')
+
   useEffect(() => {
     fetchDocs()
+    fetch('/api/data/preview')
+      .then(res => res.json())
+      .then(data => setRealData(data))
+      .catch(err => console.error('Error fetching preview data:', err))
   }, [])
+
+  // Filter rows by deviation range
+  const filteredData = realData.filter(row => {
+    if (selectedDeviationFilter === 'ALL') return true
+    const fob_dec = row.valor_fob_declarado
+    const fob_esp = row.valor_fob_esperado
+    const desv_pct = fob_esp > 0 ? (Math.abs(fob_dec - fob_esp) / fob_esp) * 100 : 0
+    if (selectedDeviationFilter === '0-5%') return desv_pct <= 5
+    if (selectedDeviationFilter === '5-10%') return desv_pct > 5 && desv_pct <= 10
+    if (selectedDeviationFilter === '10-15%') return desv_pct > 10 && desv_pct <= 15
+    if (selectedDeviationFilter === '>15%') return desv_pct > 15
+    return true
+  })
 
   const fetchDocs = () => {
     setLoadingDocs(true)
@@ -105,34 +125,33 @@ export default function Data() {
     }, 150)
   }
 
-  // Generate 20 rows of simulated Sunat data
-  const generateSimulatedData = () => {
-    const rows = []
-    const statuses = ['VERIFICADO', 'PENDIENTE', 'MARCADO']
+  // Render real database preview rows
+  const renderDataRows = () => {
     const statusColors = {
-      'VERIFICADO': 'text-primary',
       'PENDIENTE': 'text-tertiary',
-      'MARCADO': 'text-error animate-pulse'
+      'EN_REVISION': 'text-primary',
+      'CONFIRMADA': 'text-error animate-pulse',
+      'FALSA_ALARMA': 'text-primary-fixed-dim',
+      'REFIERE_INSPECCION': 'text-secondary'
     }
 
-    for (let i = 1; i <= 20; i++) {
-      const ruc = `20${Math.floor(100000000 + Math.random() * 900000000)}`
-      const fob = (Math.random() * 50000).toLocaleString('en-US', { minimumFractionDigits: 2 })
-      const vol = (Math.random() * 10000).toLocaleString('en-US', { minimumFractionDigits: 2 })
-      const currency = Math.random() > 0.5 ? 'S/' : '$'
-      const status = statuses[Math.floor(Math.random() * 3)]
-      
-      const d = new Date()
-      d.setDate(d.getDate() - Math.floor(Math.random() * 30))
-      const dateStr = d.toISOString().split('T')[0]
+    if (filteredData && filteredData.length > 0) {
+      return filteredData.map((row, i) => (
+        <tr key={row.id_alerta || i} className={`border-b border-white/5 hover:bg-white/5 transition-colors ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
+          <td className="px-4 py-2.5">{row.ruc_exportador}</td>
+          <td className="px-4 py-2.5">${row.valor_fob_declarado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+          <td className="px-4 py-2.5">{row.producto}</td>
+          <td className="px-4 py-2.5 text-on-surface-variant font-mono-data">{row.fecha_operacion}</td>
+          <td className={`px-4 py-2.5 ${statusColors[row.estado] || 'text-on-surface'} font-bold text-[12px]`}>{row.estado}</td>
+        </tr>
+      ))
+    }
 
+    const rows = []
+    for (let i = 1; i <= 5; i++) {
       rows.push(
-        <tr key={i} className={`border-b border-white/5 hover:bg-white/5 transition-colors ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
-          <td className="px-4 py-2.5">{ruc}</td>
-          <td className="px-4 py-2.5">{currency}{fob}</td>
-          <td className="px-4 py-2.5">{vol} kg</td>
-          <td className="px-4 py-2.5 text-on-surface-variant">{dateStr}</td>
-          <td className={`px-4 py-2.5 ${statusColors[status]} font-bold text-[12px]`}>{status}</td>
+        <tr key={i} className="border-b border-white/5 text-on-surface-variant">
+          <td colSpan="5" className="px-4 py-4 text-center">No hay alertas que coincidan con este rango de desviación.</td>
         </tr>
       )
     }
@@ -281,13 +300,39 @@ export default function Data() {
 
           {/* Right Column: Data Preview */}
           <div className="lg:col-span-2 glass-panel rounded-xl p-6 flex flex-col h-[700px]">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
               <div>
                 <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center font-semibold">
                   <span className="material-symbols-outlined text-primary mr-2">view_list</span>
                   Previsualización de Dataset Experimental
                 </h2>
-                <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Mostrando las primeras 20 filas de telemetría ingerida</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <p className="font-body-sm text-body-sm text-on-surface-variant">Mostrando las primeras 20 filas de telemetría ingerida</p>
+                  <span className="bg-primary/20 text-primary px-2 py-0.5 rounded-full text-[10px] font-bold font-mono-data">
+                    {filteredData.length} de {realData.length}
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <select
+                  value={selectedDeviationFilter}
+                  onChange={(e) => setSelectedDeviationFilter(e.target.value)}
+                  className="bg-surface-container-low border border-white/10 rounded-lg py-1 px-2.5 text-xs font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all"
+                >
+                  <option value="ALL">Todas las Desviaciones</option>
+                  <option value="0-5%">Riesgo Bajo (0-5%)</option>
+                  <option value="5-10%">Riesgo Moderado (5-10%)</option>
+                  <option value="10-15%">Riesgo Alto (10-15%)</option>
+                  <option value=">15%">Riesgo Crítico (&gt;15%)</option>
+                </select>
+                <a
+                  className="bg-primary text-on-primary py-1 px-3 rounded-lg flex items-center gap-1 hover:bg-primary-fixed transition-colors font-label-md text-xs uppercase tracking-wider font-semibold shadow-[0_0_10px_rgba(118,219,143,0.2)]"
+                  href="/api/alerts/export/csv"
+                  download
+                >
+                  <span className="material-symbols-outlined text-[16px]">file_download</span>
+                  CSV
+                </a>
               </div>
             </div>
             
@@ -304,7 +349,7 @@ export default function Data() {
                   </tr>
                 </thead>
                 <tbody className="font-mono-data text-mono-data text-on-surface" id="preview-table-body">
-                  {generateSimulatedData()}
+                  {renderDataRows()}
                 </tbody>
               </table>
             </div>

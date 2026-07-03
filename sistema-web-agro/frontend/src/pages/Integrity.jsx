@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'
 
 export default function Integrity() {
   const [stats, setStats] = useState(null)
   const [history, setHistory] = useState([])
+  const [fobByProduct, setFobByProduct] = useState([])
+  const [fobErrors, setFobErrors] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     // Fetch integrity statistics and history logs
     Promise.all([
       fetch('/api/integrity/stats').then(res => res.json()),
-      fetch('/api/history').then(res => res.json())
+      fetch('/api/history').then(res => res.json()),
+      fetch('/api/integrity/fob-by-product').then(res => res.json()),
+      fetch('/api/integrity/fob-errors').then(res => res.json())
     ])
-      .then(([statsData, historyData]) => {
+      .then(([statsData, historyData, fobData, errorData]) => {
         setStats(statsData)
         setHistory(historyData)
+        setFobByProduct(fobData)
+        setFobErrors(errorData)
         setLoading(false)
       })
       .catch(err => {
@@ -57,7 +64,7 @@ export default function Integrity() {
           </div>
         </div>
       </div>
-
+ 
       {/* Bento Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-card-gap">
         
@@ -102,7 +109,7 @@ export default function Integrity() {
             </div>
           </div>
         </div>
-
+ 
         {/* Metrics Grid */}
         <div className="md:col-span-12 xl:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-card-gap">
           {/* Global Disparate Impact */}
@@ -133,7 +140,7 @@ export default function Integrity() {
               </div>
             </div>
           </div>
-
+ 
           {/* Equal Opportunity Difference */}
           <div className="glass-panel rounded-xl p-6 relative overflow-hidden group">
             <div className="flex justify-between items-start relative z-10">
@@ -156,58 +163,59 @@ export default function Integrity() {
               <span className="text-primary">Dentro de Paridad</span>
             </div>
           </div>
-
-          {/* Bar Chart: FPR Parity by product */}
-          <div className="glass-panel rounded-xl p-6 md:col-span-2 flex flex-col">
-            <div className="flex justify-between items-center mb-6">
-              <div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface">Paridad FPR: Categoría de Producto</h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">Tasa de Falsos Positivos (FPR) por producto (Ideal: FPR estable entre cultivos)</p>
-              </div>
-              <div className="flex gap-4">
-                <span className="flex items-center gap-1 font-label-md text-[10px] text-on-surface-variant"><div className="w-2 h-2 rounded bg-primary"></div> Umbral (0.05)</span>
-                <span className="flex items-center gap-1 font-label-md text-[10px] text-on-surface-variant"><div className="w-2 h-2 rounded bg-error"></div> Exceso</span>
-              </div>
-            </div>
-            
-            {/* Custom Bar Graph */}
-            <div className="flex-grow relative pt-4 pb-6 min-h-[165px] flex items-end justify-around">
-              <div className="absolute left-0 top-0 h-full flex flex-col justify-between font-mono-data text-[10px] text-outline pb-6">
-                <span>0.15</span>
-                <span>0.10</span>
-                <span>0.05</span>
-                <span>0.00</span>
-              </div>
-              <div className="w-full flex justify-around pl-8 h-full items-end z-10 relative">
-                {/* Horizontal reference line for 0.05 */}
-                <div className="absolute w-full h-[1px] bg-primary/40 top-[66%] border-t border-dashed border-primary/50 z-0"></div>
-                
-                {Object.entries(fpr_by_product).map(([prod, fprVal]) => {
-                  // Max height representation mapping (0.15 is 100%)
-                  const heightPct = Math.min((fprVal / 0.15) * 100, 100)
-                  const isHigh = fprVal > 0.07
-                  return (
-                    <div key={prod} className="w-16 h-full flex items-end justify-center group relative cursor-pointer">
-                      <div 
-                        className={`w-10 rounded-t transition-all duration-300 ${isHigh ? 'bg-error/80 border-t border-error shadow-[0_0_15px_rgba(255,180,171,0.2)]' : 'bg-secondary/80 border-t border-secondary'} group-hover:opacity-100`}
-                        style={{ height: `${heightPct}%` }}
-                      ></div>
-                      <span className="absolute -bottom-6 font-mono-data text-[10px] text-on-surface">{prod.toUpperCase()}</span>
-                      <div className="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity glass-modal px-2 py-1 rounded text-[11px] font-mono-data text-primary whitespace-nowrap z-20 pointer-events-none">
-                        FPR: {fprVal.toFixed(3)}
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
+ 
+          {/* Custom Tooltip stats */}
+          {(() => {
+            window._StatsTooltip = ({ active, payload }) => {
+              if (active && payload && payload.length) {
+                const data = payload[0].payload;
+                return (
+                  <div className="bg-surface-container-high border border-white/10 p-3 rounded shadow-xl font-mono-data text-mono-data text-xs text-on-surface">
+                    <p className="text-primary font-bold">{data.producto}</p>
+                    <p>Muestras: {data.cantidad}</p>
+                    <p>Desviación Media: {data.media}%</p>
+                    <p>Desviación Mediana: {data.mediana}%</p>
+                    <p>Rango: {data.min}% - {data.max}%</p>
+                    <p>Desviación Estándar: {data.std}%</p>
+                  </div>
+                );
+              }
+              return null;
+            };
+          })()}
+ 
+          {/* Bar Chart: Crop stats */}
+          <div className="glass-panel rounded-xl p-6 md:col-span-2 flex flex-col h-80">
+            <h3 className="font-headline-sm text-headline-sm text-on-surface mb-2">Desviación FOB Promedio y Límites por Cultivo</h3>
+            <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Análisis de desvíos predictivos agregados por tipo de cultivo agroexportador</p>
+            <div className="flex-grow min-h-0">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={fobByProduct} margin={{ top: 10, right: 10, bottom: 20, left: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                  <XAxis dataKey="producto" stroke="#8e918f" />
+                  <YAxis stroke="#8e918f" unit="%" />
+                  <Tooltip content={<window._StatsTooltip />} />
+                  <Bar dataKey="media" radius={[4, 4, 0, 0]}>
+                    {fobByProduct.map((entry, index) => {
+                      const colors = {
+                        'Palta': '#4A7C59',
+                        'Uva': '#8B5A8C',
+                        'Arándano': '#3B5998',
+                        'Mango': '#C28C38'
+                      };
+                      return <Cell key={`cell-${index}`} fill={colors[entry.producto] || '#a8c7fa'} />;
+                    })}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </div>
-
+ 
       </div>
-
+ 
       {/* Secondary charts row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-card-gap">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-card-gap">
         
         {/* Recall per Export Group */}
         <div className="glass-panel rounded-xl p-6 flex flex-col h-[300px]">
@@ -228,6 +236,31 @@ export default function Integrity() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Prediction Error Histogram */}
+        <div className="glass-panel rounded-xl p-6 flex flex-col h-[300px]">
+          <h3 className="font-headline-sm text-headline-sm text-on-surface mb-1">Distribución de Errores de Predicción</h3>
+          <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Error absoluto (FOB Declarado - FOB Esperado) en USD</p>
+          <div className="flex-grow min-h-0">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={fobErrors} margin={{ top: 10, right: 10, bottom: 20, left: -20 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                <XAxis dataKey="rango" stroke="#8e918f" fontSize={10} />
+                <YAxis stroke="#8e918f" allowDecimals={false} fontSize={10} />
+                <Tooltip 
+                  contentStyle={{ backgroundColor: 'rgba(30,30,30,0.9)', borderColor: 'rgba(255,255,255,0.1)' }}
+                  labelStyle={{ color: '#fff' }}
+                />
+                <Bar dataKey="cantidad" radius={[4, 4, 0, 0]}>
+                  {fobErrors.map((entry, index) => {
+                    const color = entry.rango.includes('-') || entry.rango.includes('<') ? '#ffb4ab' : '#76db8f';
+                    return <Cell key={`cell-${index}`} fill={color} />;
+                  })}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
 

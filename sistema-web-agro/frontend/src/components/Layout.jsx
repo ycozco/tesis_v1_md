@@ -7,6 +7,15 @@ export default function Layout({ children }) {
   const location = useLocation()
   const navigate = useNavigate()
   
+  const [searchTerm, setSearchTerm] = React.useState('')
+  const [showNotifications, setShowNotifications] = React.useState(false)
+
+  const handleSearchKeyPress = (e) => {
+    if (e.key === 'Enter' && searchTerm.trim()) {
+      navigate(`/alerts?search=${encodeURIComponent(searchTerm.trim())}`)
+    }
+  }
+  
   const activePage = location.pathname.split('/')[1] || 'dashboard'
 
   const handleLogoutClick = (e) => {
@@ -29,8 +38,11 @@ export default function Layout({ children }) {
             <span className="material-symbols-outlined text-primary text-sm mr-2">search</span>
             <input 
               className="bg-transparent border-none text-body-sm text-on-surface focus:ring-0 w-48 placeholder:text-on-surface-variant/50 p-0" 
-              placeholder="Buscar parámetros, nodos..." 
+              placeholder="Buscar parámetros, dejas..." 
               type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={handleSearchKeyPress}
             />
           </div>
         </div>
@@ -47,10 +59,35 @@ export default function Layout({ children }) {
             </li>
           </ul>
           <div className="flex items-center gap-4 border-l border-white/10 pl-6">
-            <button aria-label="Notifications" className="text-on-surface-variant hover:text-primary transition-colors active:scale-95 relative">
-              <span className="material-symbols-outlined">notifications</span>
-              <span className="absolute top-0 right-0 w-2 h-2 bg-error rounded-full animate-pulse"></span>
-            </button>
+            <div className="relative">
+              <button 
+                onClick={() => setShowNotifications(!showNotifications)}
+                aria-label="Notifications" 
+                className="text-on-surface-variant hover:text-primary transition-colors active:scale-95 relative"
+              >
+                <span className="material-symbols-outlined">notifications</span>
+                <span className="absolute top-0 right-0 w-2 h-2 bg-error rounded-full animate-pulse"></span>
+              </button>
+              {showNotifications && (
+                <div className="absolute right-0 mt-2 w-80 glass-panel bg-surface-container-high rounded-lg shadow-2xl p-4 border border-white/10 z-50 font-body-sm text-body-sm text-on-surface">
+                  <div className="flex justify-between items-center border-b border-white/5 pb-2 mb-2 font-bold text-on-surface">
+                    <span>Notificaciones Aduaneras</span>
+                    <button className="text-xs text-primary hover:underline" onClick={() => setShowNotifications(false)}>Cerrar</button>
+                  </div>
+                  <ul className="space-y-2 max-h-48 overflow-y-auto">
+                    <li className="p-2 hover:bg-white/5 rounded transition-colors text-error border-l-2 border-l-error text-left">
+                      <strong>AL-2026-0012:</strong> Desviación del 11.1% detectada en Palta.
+                    </li>
+                    <li className="p-2 hover:bg-white/5 rounded transition-colors text-secondary border-l-2 border-l-secondary text-left">
+                      <strong>AL-2026-0014:</strong> Retraso logístico (+5 días) en Mango.
+                    </li>
+                    <li className="p-2 hover:bg-white/5 rounded transition-colors text-on-surface-variant text-left">
+                      Sistema de IA en línea. Modelos analíticos sincronizados.
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
             <button aria-label="Settings" className="text-on-surface-variant hover:text-primary transition-colors active:scale-95" onClick={() => navigate('/config')}>
               <span className="material-symbols-outlined">settings</span>
             </button>

@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Justificación Metodológica y Algorítmica">
+  <section class="relative rounded-2xl overflow-hidden p-8 mb-8 bg-gradient-to-br from-slate-900 via-[#0d1017] to-emerald-950/20 border border-slate-800">
+    <h1 class="font-headline font-extrabold text-3xl text-white tracking-tight leading-tight">
+      Justificación Metodológica y Algorítmica
+    </h1>
+    <p class="text-slate-400 text-sm mt-2 leading-relaxed max-w-2xl">
+      Soporte científico y técnico detrás del pipeline de cuatro capas. Justificación matemática del uso de cada algoritmo y biblioteca en la tesis.
+    </p>
+  </section>
+
+  {/* Bento Grid: Justifications */}
+  <section class="space-y-8">
+    
+    {/* Capa 1 */}
+    <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800 relative overflow-hidden group">
+      <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div class="space-y-4 max-w-3xl">
+          <div class="flex items-center gap-2">
+            <span class="font-mono-data text-emerald-400 text-xs font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">CAPA 1</span>
+            <h3 class="font-headline font-bold text-lg sm:text-xl text-white">XGBoost Regressor (Predicción de Valor FOB)</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Para la estimación del **Valor FOB Esperado**, se seleccionó **XGBoost (Extreme Gradient Boosting)** en lugar de regresiones lineales tradicionales o redes neuronales complejas. 
+          </p>
+          <div class="border-l-2 border-emerald-500/30 pl-4 py-1 text-xs text-slate-400 space-y-2">
+            <p>**¿Por qué?**</p>
+            <ul class="list-disc list-inside space-y-1">
+              <li>**Relaciones No Lineales:** El precio FOB de los cultivos no es lineal; depende de interacciones complejas entre el peso neto, la estacionalidad del cultivo y la logística del exportador.</li>
+              <li>**Resistencia a Outliers:** Al basarse en árboles de decisión, XGBoost no se ve sesgado de forma severa por los mismos valores atípicos que intentamos detectar.</li>
+              <li>**Eficiencia Tabular:** Múltiples benchmarks demuestran que los GBDT (Gradient Boosted Decision Trees) superan consistentemente a Deep Learning en datos tabulares estructurados medianos.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 w-full md:w-56 shrink-0 font-mono-data text-[10px] text-slate-400 space-y-2">
+          <div class="text-emerald-400 font-bold border-b border-white/5 pb-1 uppercase tracking-wider">Ficha Técnica</div>
+          <div>**Biblioteca:** xgboost</div>
+          <div>**Clase:** XGBRegressor</div>
+          <div>**Hiperparámetros:** 
+            <div class="pl-2 mt-0.5 text-slate-500">n_estimators=100<br/>max_depth=5<br/>learning_rate=0.08</div>
+          </div>
+          <div>**Evaluación:** MAE, RMSE, R²</div>
+        </div>
+      </div>
+    </div>
+
+    {/* Capa 2 */}
+    <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800 relative overflow-hidden group">
+      <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div class="space-y-4 max-w-3xl">
+          <div class="flex items-center gap-2">
+            <span class="font-mono-data text-blue-400 text-xs font-bold bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">CAPA 2</span>
+            <h3 class="font-headline font-bold text-lg sm:text-xl text-white">Ensemble Outlier Detector PyOD (Detección de Anomalías)</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            La detección de fraude e inconsistencias aduaneras es una tarea no supervisada (carencia de etiquetas oficiales fiables). Se implementó un **Ensemble Ponderado** de tres algoritmos para reducir falsos positivos:
+          </p>
+          <div class="border-l-2 border-blue-500/30 pl-4 py-1 text-xs text-slate-400 space-y-2">
+            <ul class="space-y-3">
+              <li>
+                <strong class="text-white block">1. Isolation Forest (Aislamiento Lineal):</strong>
+                Aísla anomalías de manera global particionando aleatoriamente el espacio de características. Los outliers requieren menos divisiones para ser aislados en las ramas del árbol.
+              </li>
+              <li>
+                <strong class="text-white block">2. LOF (Local Outlier Factor - Densidad):</strong>
+                Compara la densidad local de una transacción con la de sus vecinos más cercanos. Identifica anomalías locales de comportamiento que otros modelos globales omiten.
+              </li>
+              <li>
+                <strong class="text-white block">3. ECOD (Empirical Cumulative Outlier Detection):</strong>
+                Algoritmo estadístico no paramétrico basado en funciones de distribución acumulativa empíricas. Es extremadamente veloz, libre de hiperparámetros complejos y estima colas de distribución multivariadas de forma robusta.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 w-full md:w-56 shrink-0 font-mono-data text-[10px] text-slate-400 space-y-2">
+          <div class="text-blue-400 font-bold border-b border-white/5 pb-1 uppercase tracking-wider">Ficha Técnica</div>
+          <div>**Biblioteca:** pyod</div>
+          <div>**Algoritmos:** IF, LOF, ECOD</div>
+          <div>**Pesos del Ensemble:** 
+            <div class="pl-2 mt-0.5 text-slate-500">IForest (45%)<br/>LOF (30%)<br/>ECOD (25%)</div>
+          </div>
+          <div>**Evaluación:** PR-AUC, ROC-AUC</div>
+        </div>
+      </div>
+    </div>
+
+    {/* Capa 3 */}
+    <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800 relative overflow-hidden group">
+      <div class="absolute -right-20 -top-20 w-64 h-64 bg-error/5 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div class="space-y-4 max-w-3xl">
+          <div class="flex items-center gap-2">
+            <span class="font-mono-data text-error text-xs font-bold bg-error/10 px-2 py-0.5 rounded border border-error/20">CAPA 3</span>
+            <h3 class="font-headline font-bold text-lg sm:text-xl text-white">TreeSHAP (Explicabilidad Local)</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Para cumplir con las exigencias regulatorias (como el **D.S. N° 115-2025-PCM** sobre el uso ético e inteligible de algoritmos en el sector público), se integró **TreeSHAP (SHapley Additive exPlanations)**.
+          </p>
+          <div class="border-l-2 border-error/30 pl-4 py-1 text-xs text-slate-400 space-y-2">
+            <p>**Justificación Técnica:**</p>
+            <ul class="list-disc list-inside space-y-1">
+              <li>**Atribución Justa (Teoría de Juegos):** Garantiza tres axiomas teóricos: *Consistencia* (si una variable aporta más en cualquier modelo, su SHAP no baja), *Aditividad local* (la suma de atribuciones iguala la salida del modelo) y *Simetría*.</li>
+              <li>**Optimización de Árboles:** TreeSHAP calcula las atribuciones exactas en tiempo polinómico $O(TLD^2)$ en lugar de exponencial, haciendo viable la explicación en tiempo real en el servidor.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 w-full md:w-56 shrink-0 font-mono-data text-[10px] text-slate-400 space-y-2">
+          <div class="text-error font-bold border-b border-white/5 pb-1 uppercase tracking-wider">Ficha Técnica</div>
+          <div>**Biblioteca:** shap</div>
+          <div>**Algoritmo:** TreeExplainer</div>
+          <div>**Salida:** Gráficos de fuerza, Atribución local en USD y escalas normalizadas.</div>
+        </div>
+      </div>
+    </div>
+
+    {/* Capa 4 */}
+    <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800 relative overflow-hidden group">
+      <div class="absolute -right-20 -top-20 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div class="space-y-4 max-w-3xl">
+          <div class="flex items-center gap-2">
+            <span class="font-mono-data text-purple-400 text-xs font-bold bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">CAPA 4</span>
+            <h3 class="font-headline font-bold text-lg sm:text-xl text-white">pgvector + Gemini 1.5 Flash (Búsqueda Vectorial y RAG)</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            La última capa consolida la auditoría técnica traduciéndola a justificación jurídica mediante **Generación Aumentada por Recuperación (RAG)**:
+          </p>
+          <div class="border-l-2 border-purple-500/30 pl-4 py-1 text-xs text-slate-400 space-y-2">
+            <ul class="space-y-3">
+              <li>
+                <strong class="text-white block">PostgreSQL + pgvector (Almacenamiento e Indexación):</strong>
+                Evita la complejidad de añadir bases de datos vectoriales dedicadas (ej. Pinecone, Chroma) al unificar en la misma base de datos relacional de la tesis el almacenamiento de transacciones y los embeddings de la biblioteca fitosanitaria.
+              </li>
+              <li>
+                <strong class="text-white block">BAAI/bge-small-en-v1.5 (Embedding):</strong>
+                Modelo ligero (384 dimensiones) altamente optimizado para correr de forma ágil en infraestructura local, garantizando similitud de coseno precisa.
+              </li>
+              <li>
+                <strong class="text-white block">Google Gemini 1.5 Flash (Síntesis RAG):</strong>
+                LLM ultrarrápido con ventana de contexto nativa amplia. Permite estructurar un reporte formal en menos de un segundo al integrar las variables anómalas, SHAP y los artículos fitosanitarios recuperados por pgvector.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 w-full md:w-56 shrink-0 font-mono-data text-[10px] text-slate-400 space-y-2">
+          <div class="text-purple-400 font-bold border-b border-white/5 pb-1 uppercase tracking-wider">Ficha Técnica</div>
+          <div>**Vector DB:** pgvector (Postgres)</div>
+          <div>**Embedding:** BAAI/bge-small-en-v1.5</div>
+          <div>**LLM Engine:** Gemini 1.5 Flash</div>
+          <div>**Prompting:** Zero-shot estructurado con delimitadores XML.</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</Layout>

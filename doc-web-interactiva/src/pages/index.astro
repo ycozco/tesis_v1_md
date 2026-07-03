@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Documentación y Accesos Directos">
+  {/* Hero Banner */}
+  <section class="relative rounded-2xl overflow-hidden p-8 sm:p-12 mb-8 bg-gradient-to-br from-slate-900 via-[#0d1017] to-emerald-950/20 border border-slate-800">
+    <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    
+    <div class="relative z-10 max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+        Ecosistema Metodológico de Tesis
+      </div>
+      <h1 class="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+        Agro-Intelligence Oversight
+      </h1>
+      <h2 class="font-headline font-semibold text-lg sm:text-xl text-emerald-400 mt-2">
+        Detección Explicable de Anomalías en el Valor FOB de Agroexportaciones
+      </h2>
+      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed max-w-2xl">
+        Esta plataforma de documentación y control proporciona la justificación matemática de los modelos de Machine Learning (XGBoost + PyOD), el mapeo de procesos (Casos de Uso, Historias de Usuario) y la conexión interactiva a la aplicación web principal.
+      </p>
+    </div>
+  </section>
+
+  {/* Admin Shortcuts Panel */}
+  <section class="mb-12">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      <div>
+        <h3 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">admin_panel_settings</span>
+          Panel de Accesos Directos
+        </h3>
+        <p class="text-xs text-slate-500 mt-1">Configura el host local del sistema para enlazar de forma interactiva con todas sus vistas principales.</p>
+      </div>
+      
+      {/* Port Configurator */}
+      <div class="flex items-center gap-2 bg-[#090b0e] border border-slate-800 rounded-lg px-3 py-1.5 w-full sm:w-auto shrink-0 max-w-xs">
+        <span class="material-symbols-outlined text-slate-500 text-sm">settings_ethernet</span>
+        <span class="text-xs text-slate-400 font-mono-data">Host:</span>
+        <input 
+          type="text" 
+          id="hostConfig" 
+          value="http://localhost:5173" 
+          class="bg-transparent border-none text-xs font-mono-data text-emerald-400 focus:outline-none focus:ring-0 w-full"
+          placeholder="http://localhost:5173"
+        />
+      </div>
+    </div>
+
+    {/* Shortcuts Grid */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="shortcutsGrid">
+      
+      {/* Shortcut 1 */}
+      <a 
+        href="http://localhost:5173/" 
+        target="_blank"
+        data-route="/"
+        class="shortcut-card bg-[#0f111a]/60 hover:bg-slate-900/60 border border-slate-800/80 hover:border-emerald-500/30 p-5 rounded-xl flex flex-col justify-between h-40 transition-all hover:-translate-y-1 group active:scale-95"
+      >
+        <span class="material-symbols-outlined text-emerald-400 text-3xl group-hover:scale-110 transition-transform">dashboard</span>
+        <div>
+          <span class="font-headline font-bold text-sm text-white block">Dashboard Principal</span>
+          <span class="text-[10px] text-slate-500 mt-1 block">Métricas de negocio y resumen</span>
+        </div>
+      </a>
+
+      {/* Shortcut 2 */}
+      <a 
+        href="http://localhost:5173/data" 
+        target="_blank"
+        data-route="/data"
+        class="shortcut-card bg-[#0f111a]/60 hover:bg-slate-900/60 border border-slate-800/80 hover:border-primary-fixed-dim/30 p-5 rounded-xl flex flex-col justify-between h-40 transition-all hover:-translate-y-1 group active:scale-95"
+      >
+        <span class="material-symbols-outlined text-[#89c6ff] text-3xl group-hover:scale-110 transition-transform">dataset</span>
+        <div>
+          <span class="font-headline font-bold text-sm text-white block">Previsualización de Datos</span>
+          <span class="text-[10px] text-slate-500 mt-1 block">Inyección CSV e indexación RAG</span>
+        </div>
+      </a>
+
+      {/* Shortcut 3 */}
+      <a 
+        href="http://localhost:5173/alert/AL-2026-0012" 
+        target="_blank"
+        data-route="/alert/AL-2026-0012"
+        class="shortcut-card bg-[#0f111a]/60 hover:bg-slate-900/60 border border-slate-800/80 hover:border-error/30 p-5 rounded-xl flex flex-col justify-between h-40 transition-all hover:-translate-y-1 group active:scale-95"
+      >
+        <span class="material-symbols-outlined text-error text-3xl group-hover:scale-110 transition-transform">find_in_page</span>
+        <div>
+          <span class="font-headline font-bold text-sm text-white block">Detalle de Alerta</span>
+          <span class="text-[10px] text-slate-500 mt-1 block">Evaluación de las 4 Capas y SHAP</span>
+        </div>
+      </a>
+
+      {/* Shortcut 4 */}
+      <a 
+        href="http://localhost:5173/integrity" 
+        target="_blank"
+        data-route="/integrity"
+        class="shortcut-card bg-[#0f111a]/60 hover:bg-slate-900/60 border border-slate-800/80 hover:border-emerald-500/30 p-5 rounded-xl flex flex-col justify-between h-40 transition-all hover:-translate-y-1 group active:scale-95"
+      >
+        <span class="material-symbols-outlined text-emerald-400 text-3xl group-hover:scale-110 transition-transform">balance</span>
+        <div>
+          <span class="font-headline font-bold text-sm text-white block">Monitor de Integridad</span>
+          <span class="text-[10px] text-slate-500 mt-1 block">Impacto dispar y sesgo del cultivo</span>
+        </div>
+      </a>
+
+      {/* Shortcut 5 */}
+      <a 
+        href="http://localhost:5173/telemetry" 
+        target="_blank"
+        data-route="/telemetry"
+        class="shortcut-card bg-[#0f111a]/60 hover:bg-slate-900/60 border border-slate-800/80 hover:border-tertiary/30 p-5 rounded-xl flex flex-col justify-between h-40 transition-all hover:-translate-y-1 group active:scale-95"
+      >
+        <span class="material-symbols-outlined text-tertiary text-3xl group-hover:scale-110 transition-transform">science</span>
+        <div>
+          <span class="font-headline font-bold text-sm text-white block">Consola de Simulación</span>
+          <span class="text-[10px] text-slate-500 mt-1 block">Inyección de anomalías sintéticas</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  {/* Pipeline Architecture Guide */}
+  <section class="mb-8">
+    <h3 class="font-headline font-bold text-xl text-white mb-6 flex items-center gap-2">
+      <span class="material-symbols-outlined text-emerald-400">layers</span>
+      Arquitectura del Pipeline de IA Explicable (4 Capas)
+    </h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      {/* Capa 1 */}
+      <div class="glass-panel p-6 rounded-xl border border-slate-800 flex flex-col justify-between h-64 relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-20 h-20 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/10 transition-colors"></div>
+        <div>
+          <div class="font-mono-data text-emerald-400 text-xs font-bold uppercase tracking-widest mb-3">Capa 1</div>
+          <h4 class="font-headline font-bold text-lg text-white mb-2">Predicción de Valor (GBDT)</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Utiliza **XGBoost Regressor** para predecir el valor FOB esperado de una transacción agroexportadora en base a parámetros históricos oficiales de SUNAT.
+          </p>
+        </div>
+        <span class="text-[10px] text-emerald-400 font-mono-data border border-emerald-500/20 px-2 py-0.5 rounded bg-emerald-500/5 w-fit">
+          XGBoost Regressor
+        </span>
+      </div>
+
+      {/* Capa 2 */}
+      <div class="glass-panel p-6 rounded-xl border border-slate-800 flex flex-col justify-between h-64 relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-20 h-20 bg-[#89c6ff]/5 rounded-full blur-xl group-hover:bg-[#89c6ff]/10 transition-colors"></div>
+        <div>
+          <div class="font-mono-data text-[#89c6ff] text-xs font-bold uppercase tracking-widest mb-3">Capa 2</div>
+          <h4 class="font-headline font-bold text-lg text-white mb-2">Detección de Anomalías</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Consiste en un **Ensemble Outlier Detector** (Isolation Forest, LOF, ECOD) de la suite PyOD. Calcula la probabilidad multivariada de fraude y fallas.
+          </p>
+        </div>
+        <span class="text-[10px] text-[#89c6ff] font-mono-data border border-[#89c6ff]/20 px-2 py-0.5 rounded bg-[#89c6ff]/5 w-fit">
+          PyOD (IF + LOF + ECOD)
+        </span>
+      </div>
+
+      {/* Capa 3 */}
+      <div class="glass-panel p-6 rounded-xl border border-slate-800 flex flex-col justify-between h-64 relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-20 h-20 bg-error/5 rounded-full blur-xl group-hover:bg-error/10 transition-colors"></div>
+        <div>
+          <div class="font-mono-data text-error text-xs font-bold uppercase tracking-widest mb-3">Capa 3</div>
+          <h4 class="font-headline font-bold text-lg text-white mb-2">Explicabilidad Local (SHAP)</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Calcula las explicaciones matemáticas mediante **TreeSHAP**. Desglosa el aporte de variables críticas (precio, frío, demoras) en el score final.
+          </p>
+        </div>
+        <span class="text-[10px] text-error font-mono-data border border-error/20 px-2 py-0.5 rounded bg-error/5 w-fit">
+          TreeSHAP values
+        </span>
+      </div>
+
+      {/* Capa 4 */}
+      <div class="glass-panel p-6 rounded-xl border border-slate-800 flex flex-col justify-between h-64 relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-20 h-20 bg-tertiary/5 rounded-full blur-xl group-hover:bg-tertiary/10 transition-colors"></div>
+        <div>
+          <div class="font-mono-data text-tertiary text-xs font-bold uppercase tracking-widest mb-3">Capa 4</div>
+          <h4 class="font-headline font-bold text-lg text-white mb-2">Vinculación RAG (LLM)</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Busca y asocia la alerta con normativas FDA o fitosanitarias en **PostgreSQL (pgvector)**, y genera un reporte narrativo vía **Gemini 1.5 Flash**.
+          </p>
+        </div>
+        <span class="text-[10px] text-tertiary font-mono-data border border-tertiary/20 px-2 py-0.5 rounded bg-tertiary/5 w-fit">
+          Gemini + pgvector
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  {/* Client-side Script to update shortcut URLs dynamically */}
+  <script is:inline>
+    const hostInput = document.getElementById('hostConfig');
+    
+    function updateShortcuts() {
+      const currentHost = hostInput.value.trim();
+      if (!currentHost) return;
+      
+      const cards = document.querySelectorAll('.shortcut-card');
+      cards.forEach(card => {
+        const route = card.getAttribute('data-route');
+        card.setAttribute('href', currentHost + route);
+      });
+    }
+
+    // Load from local storage if saved previously
+    const savedHost = localStorage.getItem('agroDocHost');
+    if (savedHost) {
+      hostInput.value = savedHost;
+      updateShortcuts();
+    }
+
+    hostInput.addEventListener('input', (e) => {
+      updateShortcuts();
+      localStorage.setItem('agroDocHost', e.target.value.trim());
+    });
+  </script>
+</Layout>

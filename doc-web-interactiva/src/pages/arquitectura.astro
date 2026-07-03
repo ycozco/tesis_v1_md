@@ -1,0 +1,749 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Arquitectura y Especificación de Procesos">
+  {/* Header banner */}
+  <section class="relative rounded-2xl overflow-hidden p-8 mb-8 bg-gradient-to-br from-slate-900 via-[#0d1017] to-emerald-950/20 border border-slate-800">
+    <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <h1 class="font-headline font-extrabold text-3xl text-white tracking-tight leading-tight">
+      Arquitectura y Especificación de Procesos
+    </h1>
+    <p class="text-slate-400 text-sm mt-2 leading-relaxed max-w-3xl">
+      Modelado detallado de infraestructura, arquitectura de software, diagramas UML, esquemas de bases de datos y flujos procedimentales de la propuesta <strong>Agro-Intelligence Oversight</strong>.
+    </p>
+  </section>
+
+  {/* Quick Navigation Links */}
+  <div class="flex flex-wrap gap-2 mb-8">
+    <a href="#tecnologia" class="text-xs bg-slate-900 border border-slate-800 hover:border-emerald-500/30 text-slate-300 py-1.5 px-3 rounded-lg transition-colors">3.3.1. Infraestructura Tecnológica (Tabla 5 & Figuras 6 y 7)</a>
+    <a href="#uml" class="text-xs bg-slate-900 border border-slate-800 hover:border-emerald-500/30 text-slate-300 py-1.5 px-3 rounded-lg transition-colors">3.3.3. Arquitectura de Software (Figuras 10 y 11)</a>
+    <a href="#database" class="text-xs bg-slate-900 border border-slate-800 hover:border-emerald-500/30 text-slate-300 py-1.5 px-3 rounded-lg transition-colors">3.3.2. Estructuración de Información (Figuras 8 y 9)</a>
+    <a href="#procesos" class="text-xs bg-slate-900 border border-slate-800 hover:border-emerald-500/30 text-slate-300 py-1.5 px-3 rounded-lg transition-colors">3.5. Especificación de Procesos (Figuras 12, 13 y 14)</a>
+  </div>
+
+  <div class="space-y-12">
+    
+    {/* Section 1: Infraestructura Tecnológica */}
+    <section id="tecnologia" class="scroll-mt-20">
+      <div class="border-b border-slate-800 pb-4 mb-6">
+        <span class="text-emerald-400 font-mono-data text-xs font-bold uppercase tracking-widest block">Sección 3.3.1</span>
+        <h2 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">dns</span>
+          Infraestructura Tecnológica de la Propuesta
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Definición de hardware, entornos de red y catálogo de software del sistema de detección.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        {/* Figura 6 */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">cloud</span>
+            Figura 6: Propuesta de arquitectura tecnológica del entorno
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Estructura del ecosistema de servidores, contenedores y dependencias del pipeline analítico.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center">
+            <pre class="mermaid text-xs">
+{`graph LR
+    subgraph LocalHost [Servidor de Despliegue Local]
+        subgraph DockerContainer [Contenedores Docker]
+            ReactUI[React Frontend - Port 8050]
+            FlaskAPI[Flask Backend API - Port 5000]
+            PostgresDB[(PostgreSQL + pgvector - Port 5432)]
+        end
+    end
+
+    subgraph ExternalSources [Fuentes de Datos Externas]
+        SUNAT[SUNAT / ADUANET microdatos]
+        BCRP[BCRP Tipo Cambio]
+        MIDAGRI[MIDAGRI SISAP Precios]
+        NASA[NASA POWER Clima]
+        FDA[FDA / SENASA Alertas]
+    end
+
+    subgraph AIServices [Servicios de Inteligencia Artificial]
+        Gemini[Google Gemini 1.5 Flash API]
+    end
+
+    ExternalSources --> |Ingesta de Datos| FlaskAPI
+    FlaskAPI <--> |Persistencia y Búsqueda Vectorial| PostgresDB
+    FlaskAPI --> |Atribución y Explicabilidad| Gemini
+    ReactUI <--> |Consumo endpoints REST| FlaskAPI
+`}
+            </pre>
+          </div>
+        </div>
+
+        {/* Figura 7 */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">trending_flat</span>
+            Figura 7: Flujo de propuesta de arquitectura tecnológica (Pipeline de Datos)
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Lógica de transiciones secuenciales de la información desde su ingesta hasta el reporte explicable.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center">
+            <pre class="mermaid text-xs">
+{`graph TD
+    Data[Datos Ingestados] --> Prep[Preparación y Normalización]
+    Prep --> ML_FOB[Predicción FOB XGBoost]
+    Prep --> ML_Vol[Predicción Volumen LightGBM]
+    ML_FOB --> Residuals[Cálculo de Residuos FOB]
+    ML_Vol --> Residuals
+    Residuals --> PyOD[Detector Ensemble: IF + LOF + ECOD]
+    PyOD --> Severity{Score >= 0.95?}
+    
+    Severity --> |No| GREEN[Aprobado - Normal]
+    Severity --> |Sí| SHAP[Cálculo TreeSHAP]
+    
+    SHAP --> RAG[Búsqueda Semántica pgvector]
+    RAG --> Report[Síntesis LLM y Validación Factual]
+    Report --> Audit[Canal Alerta - Auditoría Humana]
+`}
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+        <h3 class="font-headline font-bold text-base text-white mb-4">Tabla 5: Especificación de las tecnologías empleadas</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 font-mono-data uppercase tracking-wider">
+                <th class="py-3 px-4 w-1/4">Tecnología</th>
+                <th class="py-3 px-4 w-1/4">Detalle / Biblioteca</th>
+                <th class="py-3 px-4">Propósito en la Investigación</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-900 text-slate-300 font-sans">
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">Python 3.11</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">Core Runtime</td>
+                <td class="py-3.5 px-4">Lenguaje principal para el pipeline de ingesta, cálculo matemático, modelado de Machine Learning y estructuración RAG.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">XGBoost & LightGBM</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">xgboost, lightgbm</td>
+                <td class="py-3.5 px-4">Modelado predictivo supervisado global para la estimación del valor unitario FOB esperado y el volumen de exportación de la semana $t+1$.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">Ensemble PyOD</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">pyod (IForest, LOF, ECOD)</td>
+                <td class="py-3.5 px-4">Suite no supervisada para la detección multivariada de anomalías basada en residuos de predicción y percentiles de calibración.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">TreeSHAP</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">shap (TreeExplainer)</td>
+                <td class="py-3.5 px-4">Atribución de características locales para justificar y explicar matemáticamente la alerta según la teoría de juegos cooperativos.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">PostgreSQL & pgvector</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">Base de Datos Híbrida</td>
+                <td class="py-3.5 px-4">Almacenamiento de transacciones históricas SUNAT y soporte de búsqueda semántica (vectorial) de la biblioteca fitosanitaria.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">BAAI/bge-small-en-v1.5</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">sentence-transformers</td>
+                <td class="py-3.5 px-4">Modelo codificador para convertir texto normativo de SENASA, FDA y reglamentos de IA en vectores densos de 384 dimensiones.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">Gemini 1.5 Flash</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">google-generativeai</td>
+                <td class="py-3.5 px-4">Orquestador de síntesis generativa RAG. Traduce las anomalías y artículos normativos a un informe de auditoría legible.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">Flask & React 18</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">Frontend / Backend API</td>
+                <td class="py-3.5 px-4">Flask expone los endpoints RESTful del modelo; React renderiza el Dashboard interactivo con gráficos HSL de SHAP y telemetría.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 transition-colors">
+                <td class="py-3.5 px-4 font-semibold text-white">Docker & Compose</td>
+                <td class="py-3.5 px-4 font-mono-data text-emerald-400">Contenedores de Servicio</td>
+                <td class="py-3.5 px-4">Garantiza portabilidad y reproducibilidad del stack completo (database, python backend, web frontend) mediante microservicios aislados.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    {/* Section 2: Estructuración de la información (Base de Datos) */}
+    <section id="database" class="scroll-mt-20">
+      <div class="border-b border-slate-800 pb-4 mb-6">
+        <span class="text-emerald-400 font-mono-data text-xs font-bold uppercase tracking-widest block">Sección 3.3.2</span>
+        <h2 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">storage</span>
+          Estructuración de la Información
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Estructuras relacionales y vectoriales definidas para el almacenamiento y la trazabilidad del sistema.</p>
+      </div>
+
+      <div class="space-y-8">
+        {/* Figura 8: ERD */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20 w-full">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">database</span>
+            Figura 8: Estructuración de la información a nivel de base de datos (ERD)
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Diagrama entidad-relación de las tablas en PostgreSQL + pgvector que sustentan la trazabilidad y la búsqueda semántica.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center">
+            <pre class="mermaid text-xs font-mono-data">
+{`erDiagram
+    usuarios {
+        int id_usuario PK
+        varchar username UK
+        varchar email UK
+        varchar password_hash
+        varchar rol
+        varchar nombre
+    }
+
+    operaciones_alertas {
+        varchar id_alerta PK
+        varchar numero_dam
+        date fecha_operacion
+        varchar ruc_exportador
+        varchar razon_social
+        varchar producto
+        numeric valor_fob_declarado
+        numeric valor_fob_esperado
+        numeric score_anomalia
+        boolean alertado
+        varchar estado
+    }
+
+    decisiones_auditoria {
+        int id_decision PK
+        varchar id_alerta FK
+        int id_usuario FK
+        varchar condicion_experimento
+        int user_decision
+        varchar justification_text
+        int likert_comprehension
+        int time_to_decision_ms
+        timestamp creado_en
+    }
+
+    explicaciones_shap {
+        int id_explicacion PK
+        varchar id_alerta FK
+        varchar variable_nombre
+        numeric shap_value
+        varchar variable_valor
+    }
+
+    documentos_normativos {
+        int id_doc PK
+        varchar titulo
+        varchar categoria
+        text contenido
+        vector embedding
+    }
+
+    security_logs {
+        int id_log PK
+        varchar usuario
+        varchar evento
+        varchar ip_address
+        timestamp fecha
+    }
+
+    usuarios ||--o{ decisiones_auditoria : "toma"
+    operaciones_alertas ||--o{ decisiones_auditoria : "recibe"
+    operaciones_alertas ||--o{ explicaciones_shap : "explica"
+`}
+            </pre>
+          </div>
+        </div>
+
+        {/* Figura 9: Flujo Superior */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">alt_route</span>
+            Figura 9: Estructuración de la información a un nivel superior (Flujo lógico de decisión)
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Mapeo conceptual de cómo fluyen los datos y decisiones aduaneras desde el ingreso de la DAM hasta la auditoría final.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center">
+            <pre class="mermaid text-xs">
+{`graph TD
+    sunat[DAM Ingresada - SUNAT] --> prediction[Predictores XGBoost/LightGBM]
+    prediction --> expectedFOB[Cálculo de FOB Esperado]
+    expectedFOB --> diff{Comparación FOB Real vs Esperado}
+    
+    diff --> |Desvío Leve| verde[Canal Verde: Despacho Aprobado]
+    diff --> |Desvío Alto| pyod[Evaluación multivariada PyOD]
+    
+    pyod --> score{Ensemble Score >= 0.95?}
+    score --> |No| verde
+    score --> |Sí| alert[Generación Alerta de Anomalía]
+    
+    alert --> shap[Atribución TreeSHAP]
+    alert --> rag[Búsqueda Semántica pgvector]
+    shap & rag --> report[Redacción Reporte RAG Gemini]
+    report --> auditor[Auditoría Humana: Confirmar / Falsa Alarma]
+`}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Section 3: Arquitectura de Software (UML) */}
+    <section id="uml" class="scroll-mt-20">
+      <div class="border-b border-slate-800 pb-4 mb-6">
+        <span class="text-emerald-400 font-mono-data text-xs font-bold uppercase tracking-widest block">Sección 3.3.3</span>
+        <h2 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">schema</span>
+          Arquitectura de Software y Clases UML
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Estructuración lógica de empaquetado y modelo de clases del prototipo.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Diagrama de Paquetes */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">folder_open</span>
+            Figura 10: Diagrama de paquetes de software
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Representación del aislamiento lógico y las dependencias de los módulos de software en Python.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center">
+            <pre class="mermaid text-xs">
+{`graph TD
+    subgraph CapaDatos [Capa de Datos]
+        DB[(PostgreSQL + pgvector)]
+        SUNAT_CSV[Historial SUNAT]
+    end
+
+    subgraph CapaIngesta [Módulo Ingesta]
+        Normalizer[Data Normalizer]
+        FeatureEng[Feature Engineering]
+    end
+
+    subgraph CapaModelado [Módulo ML & Anomalías]
+        Predictor[XGB/LGBM Predictor]
+        Outliers[PyOD Ensemble Detector]
+        SHAP_Explainer[TreeSHAP Explainer]
+    end
+
+    subgraph CapaSintesis [Capa RAG & Síntesis]
+        VectEngine[Embeddings Engine]
+        LLM[Gemini 1.5 Flash API]
+    end
+
+    subgraph CapaPresentacion [Capa Presentación]
+        React_UI[React Web App]
+        Flask_API[Flask REST API]
+    end
+
+    SUNAT_CSV --> Normalizer
+    DB <--> Normalizer
+    Normalizer --> FeatureEng
+    FeatureEng --> Predictor
+    Predictor --> Outliers
+    Outliers --> SHAP_Explainer
+    SHAP_Explainer --> VectEngine
+    VectEngine <--> DB
+    VectEngine --> LLM
+    LLM --> Flask_API
+    Flask_API <--> React_UI
+`}
+            </pre>
+          </div>
+        </div>
+
+        {/* Diagrama de Clases */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">code</span>
+            Figura 11: Diagrama de clases de persistencia (SQLAlchemy)
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Clases y relaciones del ORM SQLAlchemy mapeadas directamente en el backend de la tesis.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center font-mono-data text-[10px]">
+            <pre class="mermaid text-[10px]">
+{`classDiagram
+    class Usuario {
+        +Integer id_usuario
+        +String username
+        +String email
+        +String password_hash
+        +String rol
+        +String nombre
+        +to_dict() dict
+    }
+    class OperacionAlerta {
+        +String id_alerta
+        +String numero_dam
+        +Date fecha_operacion
+        +String ruc_exportador
+        +String razon_social
+        +String producto
+        +Numeric valor_fob_declarado
+        +Numeric valor_fob_esperado
+        +Numeric score_anomalia
+        +Boolean alertado
+        +String estado
+        +to_dict() dict
+    }
+    class DecisionAuditoria {
+        +Integer id_decision
+        +String id_alerta
+        +Integer id_usuario
+        +String condicion_experimento
+        +Integer user_decision
+        +String justification_text
+        +Integer likert_comprehension
+        +Integer time_to_decision_ms
+        +DateTime creado_en
+        +to_dict() dict
+    }
+    class ExplicacionSHAP {
+        +Integer id_explicacion
+        +String id_alerta
+        +String variable_nombre
+        +Numeric shap_value
+        +String variable_valor
+        +to_dict() dict
+    }
+    class DocumentoNormativo {
+        +Integer id_doc
+        +String titulo
+        +String categoria
+        +Text contenido
+        +Vector embedding
+        +to_dict() dict
+    }
+
+    Usuario "1" --> "*" DecisionAuditoria : registra
+    OperacionAlerta "1" --> "*" DecisionAuditoria : evalúa
+    OperacionAlerta "1" --> "*" ExplicacionSHAP : detalla
+`}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Section 4: Especificación de Procesos */}
+    <section id="procesos" class="scroll-mt-20">
+      <div class="border-b border-slate-800 pb-4 mb-6">
+        <span class="text-emerald-400 font-mono-data text-xs font-bold uppercase tracking-widest block">Sección 3.5</span>
+        <h2 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">timeline</span>
+          Especificación de Procesos y Vistas
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Diagramas de secuencia físicos, flujos transaccionales detallados e inventario de vistas y endpoints.</p>
+      </div>
+
+      <div class="space-y-8">
+        {/* Figura 12 */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">settings_applications</span>
+            Figura 12: Detalle de especificación de procesos (Vista Física)
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Interacción de componentes de hardware y roles de usuario durante la auditoría.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center">
+            <pre class="mermaid text-xs">
+{`graph TD
+    Client[Cliente / Exportador] --> |1. Registra DAM| SUNAT[Servidor Aduanas SUNAT]
+    SUNAT --> |2. Descarga microdatos CSV| Script[Script de Ingesta Local]
+    Script --> |3. Almacena en BD| DB[(PostgreSQL + pgvector)]
+    DB <--> |4. Consulta predictiva y SHAP| API[Backend REST API Flask]
+    API --> |5. Genera Reporte RAG| Gemini[Servicio LLM Google Gemini]
+    API <--> |6. Registra decisiones y telemetría| DB
+    API <--> |7. Envía datos y renderiza| Frontend[Portal Auditor React - Navegador Chrome]
+    Frontend --> |8. Interacción de Auditor| Auditor[Auditor Aduanero Humano]
+`}
+            </pre>
+          </div>
+        </div>
+
+        {/* Figura 13 */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">swap_horiz</span>
+            Figura 13: Diagrama de especificación de procesos (Secuencia detallada)
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Intercambio de mensajes detallados en el pipeline durante la inferencia en tiempo real.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center">
+            <pre class="mermaid text-xs">
+{`sequenceDiagram
+    autonumber
+    actor Auditor as Auditor Aduanero
+    participant Web as Portal Frontend (React)
+    participant API as Backend API (Flask)
+    participant DB as Postgres (pgvector)
+    participant ML as ML Engine (XGB/PyOD)
+    participant LLM as Gemini API
+
+    Auditor->>Web: Carga archivo de despacho / Inyecta datos
+    Web->>API: POST /api/predict-anomaly (payload)
+    API->>DB: Guarda registro crudo del despacho
+    API->>ML: Invoca modelos predictivos y de outliers
+    ML-->>API: Retorna FOB esperado y score de anomalía (IF+LOF+ECOD)
+    alt Es Anómalo (Score >= 0.65)
+        API->>ML: Invoca cálculo TreeSHAP
+        ML-->>API: Retorna SHAP local values
+        API->>DB: Busca artículos fitosanitarios/IA (Coseno Vectorial)
+        DB-->>API: Retorna textos normativos relevantes
+        API->>LLM: Envía variables + SHAP + Normativa para reporte RAG
+        LLM-->>API: Retorna reporte narrativo estructurado
+        API->>DB: Registra Alerta con UUID + SHA-256 + Reporte RAG
+    end
+    API-->>Web: Retorna JSON de respuesta de auditoría
+    Web-->>Auditor: Renderiza Dashboard con explicaciones y alertas
+`}
+            </pre>
+          </div>
+        </div>
+
+        {/* Figura 14 */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">flowsheet</span>
+            Figura 14: Diagrama de flujo detallado para el control fitosanitario y FOB
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Árbol de decisión aduanera ante la confirmación o descarte de anomalías de subvaloración.</p>
+          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-900 overflow-x-auto flex justify-center font-sans text-xs">
+            <pre class="mermaid text-xs">
+{`graph TD
+    Start([Inicio de despacho aduanero]) --> PredictFOB[Predicción Valor FOB con XGBoost]
+    PredictFOB --> CalculateRes[Cálculo de desvío FOB real vs predicho]
+    CalculateRes --> OutlierScore[Inferencia de percentiles de anomalía PyOD]
+    OutlierScore --> DecisionAnomaly{Score del Ensemble >= 0.65?}
+    
+    DecisionAnomaly -- No --> Approved[Canal Verde: Despacho Aprobado]
+    DecisionAnomaly -- Sí --> SHAPCalc[Cálculo de atribución local SHAP]
+    
+    SHAPCalc --> RetrieveRAG[Búsqueda vectorial fitosanitaria en pgvector]
+    RetrieveRAG --> GenReport[Generación RAG de reporte aduanero con Gemini]
+    GenReport --> AlertAuditor[Canal Naranja/Rojo: Alerta al Auditor con Reporte]
+    
+    AlertAuditor --> AuditorReview{Auditor confirma anomalía?}
+    AuditorReview -- Aprobado por Auditor --> Action[Retención de carga y revaloración]
+    AuditorReview -- Descartado por Auditor --> LogAction[Log de descarte y recalibración]
+    
+    Action --> End([Fin de Proceso])
+    LogAction --> Approved
+    Approved --> End
+`}
+            </pre>
+          </div>
+        </div>
+
+        {/* Tabla 6 */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20 w-full mt-8">
+          <h3 class="font-headline font-bold text-base text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-emerald-400">table_rows</span>
+            Tabla 6: Matriz de correspondencia entre Vistas y Endpoints del Prototipo
+          </h3>
+          <p class="text-[11px] text-slate-500 mb-6">Mapeo detallado de la interfaz de usuario en React y su contraparte de endpoints REST en Flask para auditoría y trazabilidad.</p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-[11px]">
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-400 font-mono-data uppercase tracking-wider">
+                  <th class="py-2.5 px-3">Vista (React Frontend)</th>
+                  <th class="py-2.5 px-3">Ruta Web</th>
+                  <th class="py-2.5 px-3">Endpoint API (Flask Backend)</th>
+                  <th class="py-2.5 px-3">Método</th>
+                  <th class="py-2.5 px-3">Función del Prototipo y Objetivo de Tesis</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-900 text-slate-300 font-sans">
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-semibold text-white">Login</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">/login</td>
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/auth/login</td>
+                  <td class="py-3 px-3 font-mono-data">POST</td>
+                  <td class="py-3 px-3">Autenticación de auditores aduaneros y administradores de sistema. Inicializa la sesión y asigna aleatoriamente la condición de experimento (Integrado vs Aislado).</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-semibold text-white" rowspan="3">Dashboard</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400" rowspan="3">/</td>
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/dashboard/stats</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                  <td class="py-3 px-3" rowspan="3">Visualización consolidada de alertas de subvaloración. Muestra tasas de inspección aduanera y distribuciones FOB por cultivo (Palta, Uva, Arándano) para cumplir el OE3 y OE4.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/dashboard/fob-scatter</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/dashboard/fob-distribution</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-semibold text-white" rowspan="4">Detalle de Alerta</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400" rowspan="4">/alert/:id</td>
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/alerts/&lt;id_alerta&gt;</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                  <td class="py-3 px-3" rowspan="4">Cierre operativo de auditoría. Presenta predicciones XGBoost (Capa 1), score de anomalía PyOD (Capa 2), gráficos de fuerza TreeSHAP (Capa 3) e informes jurídicos generados por RAG pgvector + Gemini (Capa 4) para el OE5 y OE6. Registra decisiones del auditor con telemetría de tiempos de respuesta.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/alerts/&lt;id_alerta&gt;/adjudicate</td>
+                  <td class="py-3 px-3 font-mono-data">POST</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/alerts/&lt;id_alerta&gt;/company-history</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/config/documents (RAG Context)</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-semibold text-white">Buzón Histórico</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">/history</td>
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/history</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                  <td class="py-3 px-3">Buzón de alertas resueltas con registro permanente de hashes de integridad SHA-256 para auditorías regulatorias del cumplimiento aduanero.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-semibold text-white">Explorador de Datos</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">/data</td>
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/data/preview</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                  <td class="py-3 px-3">Facilita la carga e inspección de microdatos SUNAT y la previsualización del dataset integrado antes de reentrenamientos.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-semibold text-white" rowspan="2">Telemetría Experim.</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400" rowspan="2">/telemetry</td>
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/telemetry/stats</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                  <td class="py-3 px-3" rowspan="2">Consola para analizar la usabilidad del sistema (OE8). Muestra diagramas de cajas (boxplots) de tiempos de decisión y coeficientes de correlación A/B. Permite inyectar anomalías sintéticas para stress tests.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/admin/inject-anomaly</td>
+                  <td class="py-3 px-3 font-mono-data">POST</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-semibold text-white" rowspan="3">Monitor de Sesgos</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400" rowspan="3">/integrity</td>
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/integrity/stats</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                  <td class="py-3 px-3" rowspan="3">Monitorea el impacto dispar y sesgo algorítmico por cultivo y región aduanera, dando cumplimiento a la gobernanza ética exigida por la SBS y PCM.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/integrity/fob-by-product</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/integrity/fob-errors</td>
+                  <td class="py-3 px-3 font-mono-data">GET</td>
+                </tr>
+                <tr class="hover:bg-slate-900/20">
+                  <td class="py-3 px-3 font-semibold text-white">Configuración</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">/config</td>
+                  <td class="py-3 px-3 font-mono-data text-[#89c6ff]">/api/config</td>
+                  <td class="py-3 px-3 font-mono-data">GET, POST</td>
+                  <td class="py-3 px-3">Gestión de hiperparámetros y pesos del modelo Ensemble (IForest, LOF, ECOD) e inserción de nuevos documentos regulatorios en base vectorial.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Section 5: Anexos Metodológicos */}
+    <section id="anexos" class="scroll-mt-20">
+      <div class="border-b border-slate-800 pb-4 mb-6">
+        <span class="text-emerald-400 font-mono-data text-xs font-bold uppercase tracking-widest block">Sección 3.5 - Anexos</span>
+        <h2 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">inventory_2</span>
+          Anexos Metodológicos de la Tesis
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Formatos de fichas e instrumentos metodológicos oficiales adaptados.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Anexo 1 */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20 space-y-4">
+          <div class="border-b border-white/5 pb-2">
+            <h3 class="font-headline font-bold text-base text-white">Anexo 1: Ficha de Registro de Rendimiento</h3>
+            <p class="text-[10px] text-slate-500">Instrumento de control empírico para el registro y validación del modelo predictor y clasificador.</p>
+          </div>
+          <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800/80 space-y-3 font-sans text-xs">
+            <div class="grid grid-cols-2 gap-2 border-b border-white/5 pb-2 text-[11px]">
+              <div><span class="text-slate-500">Tipo de evaluación:</span> <strong class="text-white">Post-test / Validación Cruzada</strong></div>
+              <div><span class="text-slate-500">Entidad de Aplicación:</span> <strong class="text-white">Aduanas SUNAT</strong></div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between border-b border-white/5 py-1.5">
+                <span class="text-slate-400">Predictor FOB (Baseline vs GBDT)</span>
+                <span class="font-mono-data text-emerald-400">MAE, RMSE, R²</span>
+              </div>
+              <div class="flex justify-between border-b border-white/5 py-1.5">
+                <span class="text-slate-400">Detector Anomalías (PyOD Ensemble)</span>
+                <span class="font-mono-data text-emerald-400">Recall, Precision, F1-Score, PR-AUC</span>
+              </div>
+              <div class="flex justify-between py-1.5">
+                <span class="text-slate-400">Consistencia Explicación (SHAP)</span>
+                <span class="font-mono-data text-emerald-400">Fidelidad de Atribución local</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Anexo 2 */}
+        <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20 space-y-4">
+          <div class="border-b border-white/5 pb-2">
+            <h3 class="font-headline font-bold text-base text-white">Anexo 2: Metodología CRISP-DM en la Tesis</h3>
+            <p class="text-[10px] text-slate-500">Implementación de las 6 fases de minería de datos aplicadas a la supervisión de agroexportación.</p>
+          </div>
+          <div class="space-y-2 text-xs font-sans text-slate-300">
+            <details class="border border-slate-800 bg-slate-900/30 rounded-lg p-2.5 cursor-pointer group">
+              <summary class="font-headline font-bold text-white flex justify-between items-center text-xs">
+                Fases 1 y 2: Negocio y Datos
+                <span class="material-symbols-outlined text-xs text-slate-500 group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+              </summary>
+              <p class="text-[11px] text-slate-400 mt-2 leading-relaxed">
+                Mapeo de la problemática de subvaloración FOB en SUNAT y recolección de microdatos de exportación del periodo 2018-2026.
+              </p>
+            </details>
+            <details class="border border-slate-800 bg-slate-900/30 rounded-lg p-2.5 cursor-pointer group">
+              <summary class="font-headline font-bold text-white flex justify-between items-center text-xs">
+                Fases 3 y 4: Preparación y Modelado
+                <span class="material-symbols-outlined text-xs text-slate-500 group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+              </summary>
+              <p class="text-[11px] text-slate-400 mt-2 leading-relaxed">
+                Agregación semanal de registros transaccionales, ingeniería de variables climáticas y de mercado, entrenamiento de XGBoost/LightGBM y calibración del ensemble PyOD.
+              </p>
+            </details>
+            <details class="border border-slate-800 bg-slate-900/30 rounded-lg p-2.5 cursor-pointer group">
+              <summary class="font-headline font-bold text-white flex justify-between items-center text-xs">
+                Fases 5 y 6: Evaluación e Implementación
+                <span class="material-symbols-outlined text-xs text-slate-500 group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+              </summary>
+              <p class="text-[11px] text-slate-400 mt-2 leading-relaxed">
+                Stress testing con inyección de anomalías sintéticas controladas, validación de fidelidad de explicaciones SHAP y despliegue del sistema localizado en Docker.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  {/* Client-side Script to initialize Mermaid inside Astro */}
+  <script is:inline src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script is:inline>
+    if (window.mermaid) {
+      window.mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        themeVariables: {
+          background: '#0c0d12',
+          primaryColor: '#10b981',
+          primaryTextColor: '#ffffff',
+          lineColor: '#334155',
+          fontFamily: 'Inter, sans-serif'
+        }
+      });
+    }
+  </script>
+</Layout>

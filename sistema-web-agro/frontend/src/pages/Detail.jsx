@@ -23,17 +23,15 @@ export default function Detail() {
   // Timing states
   const startTimeRef = useRef(null)
 
+  const [companyHistory, setCompanyHistory] = useState([])
+
   useEffect(() => {
-    // Record start time on mount
     startTimeRef.current = performance.now()
     
-    // Fetch details
     fetch(`/api/alerts/${id_alerta}`)
       .then(res => res.json())
       .then(resData => {
         setData(resData)
-        
-        // If already audited, pre-populate
         if (resData.decision) {
           setUserDecision(resData.decision.user_decision)
           setJustificationText(resData.decision.justification_text)
@@ -44,6 +42,15 @@ export default function Detail() {
       .catch(err => {
         console.error('Error fetching alert detail:', err)
         setLoading(false)
+      })
+
+    fetch(`/api/alerts/${id_alerta}/company-history`)
+      .then(res => res.json())
+      .then(histData => {
+        setCompanyHistory(histData)
+      })
+      .catch(err => {
+        console.error('Error fetching company history:', err)
       })
   }, [id_alerta])
 
@@ -262,15 +269,40 @@ export default function Detail() {
               </div>
             </div>
             
-            {/* Deviation Highlight */}
-            <div className="w-32 h-32 rounded-full border-4 border-error/20 flex flex-col items-center justify-center relative shrink-0">
-              <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
-                <circle className="text-error/20" cx="50" cy="50" fill="none" r="46" stroke="currentColor" strokeWidth="4"></circle>
-                <circle className="text-error drop-shadow-[0_0_8px_rgba(255,180,171,0.6)]" cx="50" cy="50" fill="none" r="46" stroke="currentColor" strokeDasharray="289" strokeDashoffset={289 - (Math.min(parseFloat(dev), 100) / 100 * 289)} strokeWidth="4"></circle>
-              </svg>
-              <span className="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Desviación</span>
-              <span className="font-display-lg text-[32px] text-error font-bold leading-none mt-1">{parseFloat(dev) > 0 ? `+${dev}%` : `${dev}%`}</span>
-            </div>
+            {/* Semicircular SVG Gauge (Task 2.3) */}
+            {(() => {
+              const cleanPct = Math.max(0, Math.min(parseFloat(dev) || 0, 30))
+              const angle = 180 - (cleanPct / 30 * 180) // 180deg (0% deviation) to 0deg (30% deviation)
+              const radian = (angle * Math.PI) / 180
+              const pointerX = 50 + 35 * Math.cos(radian)
+              const pointerY = 50 - 35 * Math.sin(radian)
+              return (
+                <div className="flex flex-col items-center justify-center shrink-0 w-36 h-28 bg-white/[0.02] border border-white/5 rounded-xl p-3">
+                  <svg className="w-full h-full overflow-visible" viewBox="0 0 100 60">
+                    {/* Background Arcs for green, orange, red zones */}
+                    {/* Zone 1: 0 - 5% (180deg to 150deg) */}
+                    <path d="M 10 50 A 40 40 0 0 1 15.36 30" fill="none" stroke="#76db8f" strokeWidth="8" strokeLinecap="round" />
+                    {/* Zone 2: 5 - 15% (150deg to 90deg) */}
+                    <path d="M 15.36 30 A 40 40 0 0 1 50 10" fill="none" stroke="#f97316" strokeWidth="8" />
+                    {/* Zone 3: 15 - 30% (90deg to 0deg) */}
+                    <path d="M 50 10 A 40 40 0 0 1 90 50" fill="none" stroke="#ef4444" strokeWidth="8" strokeLinecap="round" />
+
+                    {/* Center Pin */}
+                    <circle cx="50" cy="50" r="5" fill="#fff" className="shadow-lg" />
+                    {/* Pointer Hand */}
+                    <line x1="50" y1="50" x2={pointerX} y2={pointerY} stroke="#fff" strokeWidth="2.5" strokeLinecap="round" className="transition-all duration-500 ease-out" />
+                    
+                    {/* Numeric deviation inside */}
+                    <text x="50" y="44" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold" className="font-mono-data">
+                      {parseFloat(dev) > 0 ? `+${dev}%` : `${dev}%`}
+                    </text>
+                    <text x="50" y="54" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="4.5" fontWeight="bold" className="font-label-md uppercase tracking-wider">
+                      Desviación
+                    </text>
+                  </svg>
+                </div>
+              )
+            })()}
           </div>
         </div>
 
@@ -481,6 +513,57 @@ export default function Detail() {
               </div>
             )}
           </form>
+        </div>
+
+        {/* Historial de la Empresa Exportadora */}
+        <div className="xl:col-span-12 glass-panel rounded-xl p-6">
+          <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
+            <span className="material-symbols-outlined text-primary">history_edu</span>
+            Historial del Exportador (Comportamiento de Reincidencia)
+          </h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse font-mono-data text-xs">
+              <thead>
+                <tr className="bg-white/[0.02] border-b border-primary/20 font-label-md text-label-md text-on-surface-variant uppercase">
+                  <th className="py-2.5 px-4">ID ALERTA</th>
+                  <th className="py-2.5 px-4">DAM</th>
+                  <th className="py-2.5 px-4">FECHA OPERACIÓN</th>
+                  <th className="py-2.5 px-4">PRODUCTO</th>
+                  <th className="py-2.5 px-4 text-right">VALOR FOB DECLARADO</th>
+                  <th className="py-2.5 px-4 text-right">VALOR FOB ESPERADO</th>
+                  <th className="py-2.5 px-4 text-right">SCORE ANOMALÍA</th>
+                  <th className="py-2.5 px-4 text-right">ESTADO</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-on-surface">
+                {companyHistory.map(hist => (
+                  <tr key={hist.id_alerta} className="hover:bg-white/5 transition-colors">
+                    <td className="py-3.5 px-4 text-primary font-bold">{hist.id_alerta}</td>
+                    <td className="py-3.5 px-4">{hist.numero_dam}</td>
+                    <td className="py-3.5 px-4">{hist.fecha_operacion}</td>
+                    <td className="py-3.5 px-4">{hist.producto}</td>
+                    <td className="py-3.5 px-4 text-right">${hist.valor_fob_declarado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                    <td className="py-3.5 px-4 text-right">${hist.valor_fob_esperado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                    <td className="py-3.5 px-4 text-right font-bold text-secondary">{hist.score_anomalia.toFixed(4)}</td>
+                    <td className="py-3.5 px-4 text-right">
+                      <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold ${
+                        hist.estado === 'CONFIRMADA' ? 'bg-error/15 text-error border border-error/20' :
+                        hist.estado === 'PENDIENTE' ? 'bg-secondary/15 text-secondary border border-secondary/20' :
+                        'bg-surface-variant text-on-surface-variant border border-white/10'
+                      }`}>
+                        {hist.estado}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+                {companyHistory.length === 0 && (
+                  <tr>
+                    <td colSpan="8" className="py-6 text-center text-on-surface-variant font-body-sm">Sin otras alertas históricas para este exportador.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
 
       </div>

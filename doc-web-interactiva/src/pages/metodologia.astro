@@ -1,0 +1,252 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Matrices de Consistencia y Operacionalización">
+  {/* Header banner */}
+  <section class="relative rounded-2xl overflow-hidden p-8 mb-8 bg-gradient-to-br from-slate-900 via-[#0d1017] to-emerald-950/20 border border-slate-800">
+    <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <h1 class="font-headline font-extrabold text-3xl text-white tracking-tight leading-tight">
+      Matrices Metodológicas de la Tesis
+    </h1>
+    <p class="text-slate-400 text-sm mt-2 leading-relaxed max-w-3xl">
+      Estructura fundamental de la investigación bajo la regulación de la UNSA: consistencia de objetivos, hipótesis, variables e indicadores técnicos del sistema.
+    </p>
+  </section>
+
+  {/* Quick Navigation Links */}
+  <div class="flex flex-wrap gap-2 mb-8">
+    <a href="#consistencia" class="text-xs bg-slate-900 border border-slate-800 hover:border-emerald-500/30 text-slate-300 py-1.5 px-3 rounded-lg transition-colors">1. Matriz de Consistencia</a>
+    <a href="#operacionalizacion" class="text-xs bg-slate-900 border border-slate-800 hover:border-emerald-500/30 text-slate-300 py-1.5 px-3 rounded-lg transition-colors">2. Matriz de Operacionalización</a>
+    <a href="#caracteristicas" class="text-xs bg-slate-900 border border-slate-800 hover:border-emerald-500/30 text-slate-300 py-1.5 px-3 rounded-lg transition-colors">3. Variables Explanatorias (Features)</a>
+  </div>
+
+  <div class="space-y-12">
+    
+    {/* Section 1: Matriz de Consistencia */}
+    <section id="consistencia" class="scroll-mt-20">
+      <div class="border-b border-slate-800 pb-4 mb-6">
+        <h2 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">grid_on</span>
+          1. Matriz de Consistencia
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Garantiza el alineamiento lógico entre el problema general, objetivos, hipótesis y el diseño metodológico.</p>
+      </div>
+
+      <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-xs text-slate-300 leading-relaxed divide-y md:divide-y-0 lg:divide-x divide-slate-800/60">
+          
+          {/* Column 1: Problemas */}
+          <div class="space-y-4 pr-2">
+            <h3 class="font-headline font-bold text-sm text-emerald-400 uppercase tracking-wider pb-2 border-b border-white/5">Problema</h3>
+            <p><strong>Problema General:</strong></p>
+            <p class="text-[11px] text-slate-400">
+              ¿En qué medida la implementación de un sistema integrado de IA basado en la predicción semanal del valor unitario FOB y volumen exportado, la detección multivariable de anomalías, explicabilidad y la generación de reportes trazables mejora la efectividad de la supervisión aduanera respecto del uso de componentes aislados?
+            </p>
+          </div>
+
+          {/* Column 2: Objetivos */}
+          <div class="space-y-4 pt-4 md:pt-0 lg:pl-4 lg:pr-2">
+            <h3 class="font-headline font-bold text-sm text-emerald-400 uppercase tracking-wider pb-2 border-b border-white/5">Objetivos</h3>
+            <p><strong>Objetivo General:</strong></p>
+            <p class="text-[11px] text-slate-400">
+              Diseñar, implementar y evaluar un sistema integrado de IA explicable para predecir semanalmente el valor unitario FOB y volumen exportado, detectar anomalías, contextualizar las alertas y generar reportes trazables.
+            </p>
+            <p><strong>OE Clave:</strong></p>
+            <ul class="list-disc list-inside text-[11px] text-slate-500 space-y-1">
+              <li>Construir dataset semanal.</li>
+              <li>Optimizar XGBoost y LightGBM.</li>
+              <li>Desarrollar ensemble PyOD.</li>
+              <li>Implementar SHAP y RAG.</li>
+            </ul>
+          </div>
+
+          {/* Column 3: Hipótesis */}
+          <div class="space-y-4 pt-4 md:pt-0 lg:pl-4 lg:pr-2">
+            <h3 class="font-headline font-bold text-sm text-emerald-400 uppercase tracking-wider pb-2 border-b border-white/5">Hipótesis</h3>
+            <p><strong>Hipótesis General:</strong></p>
+            <p class="text-[11px] text-emerald-400/90 bg-emerald-500/5 border border-emerald-500/10 p-2 rounded">
+              El sistema integrado de predicción, detección, explicabilidad y reportes trazables mejora significativamente la efectividad de la supervisión de operaciones aduaneras frente a componentes aislados.
+            </p>
+          </div>
+
+          {/* Column 4: Variables */}
+          <div class="space-y-4 pt-4 md:pt-0 lg:pl-4 lg:pr-2">
+            <h3 class="font-headline font-bold text-sm text-emerald-400 uppercase tracking-wider pb-2 border-b border-white/5">Variables</h3>
+            <p><strong>Variable Independiente:</strong></p>
+            <p class="text-[11px] text-slate-400 font-semibold">Tipo de sistema de supervisión (Integrado vs Aislado).</p>
+            <p><strong>Variables Dependientes:</strong></p>
+            <ul class="list-disc list-inside text-[11px] text-slate-500 space-y-1">
+              <li>Rendimiento predictivo (MAE, RMSLE).</li>
+              <li>Recall y Precision (Ensemble).</li>
+              <li>Comprensión y tiempo de decisión.</li>
+              <li>Trazabilidad documental.</li>
+            </ul>
+          </div>
+
+          {/* Column 5: Metodología */}
+          <div class="space-y-4 pt-4 md:pt-0 lg:pl-4">
+            <h3 class="font-headline font-bold text-sm text-emerald-400 uppercase tracking-wider pb-2 border-b border-white/5">Metodología</h3>
+            <p><strong>Diseño de Estudio:</strong></p>
+            <ul class="list-disc list-inside text-[11px] text-slate-400 space-y-1">
+              <li><strong>Enfoque:</strong> Cuantitativo.</li>
+              <li><strong>Tipo:</strong> Aplicada y tecnológica.</li>
+              <li><strong>Diseño:</strong> Cuasiexperimental.</li>
+              <li><strong>Muestra:</strong> Registros SUNAT 2018-2026. Muestra humana (12 a 20 analistas).</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {/* Section 2: Matriz de Operacionalización */}
+    <section id="operacionalizacion" class="scroll-mt-20">
+      <div class="border-b border-slate-800 pb-4 mb-6">
+        <h2 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">rule</span>
+          2. Matriz de Operacionalización de Variables
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Mapea conceptual y operacionalmente las métricas e indicadores de evaluación de la tesis.</p>
+      </div>
+
+      <div class="space-y-6">
+        {/* Variable Independiente Card */}
+        <div class="glass-panel p-6 rounded-xl border border-slate-800 bg-[#0f111a]/20">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-[10px] font-mono-data text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">VI</span>
+            <h3 class="font-headline font-bold text-sm text-white">Variable Independiente: Configuración del Sistema</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-[11px] text-slate-400">
+            <div>
+              <span class="text-slate-500 block uppercase font-mono-data text-[9px] mb-1">Definición Operacional</span>
+              Variable categórica manipulada en la fase experimental comparando el pipeline integrado (Capas 1-4) frente a herramientas independientes.
+            </div>
+            <div>
+              <span class="text-slate-500 block uppercase font-mono-data text-[9px] mb-1">Dimensiones / Niveles</span>
+              <ul class="list-disc list-inside space-y-1 text-slate-300">
+                <li><strong>Sistema Integrado</strong> (Datos, SHAP y RAG unificados)</li>
+                <li><strong>Componentes Aislados</strong> (Salidas ad-hoc inconexas)</li>
+              </ul>
+            </div>
+            <div>
+              <span class="text-slate-500 block uppercase font-mono-data text-[9px] mb-1">Indicador y Escala</span>
+              Configuración lógica del pipeline en el backend. Escala Nominal.
+            </div>
+          </div>
+        </div>
+
+        {/* Variables Dependientes Table */}
+        <div class="glass-panel p-6 rounded-xl border border-slate-800 bg-[#0f111a]/20">
+          <h3 class="font-headline font-bold text-sm text-white mb-4">Variables Dependientes (VD1 a VD6)</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-500 font-mono-data uppercase tracking-wider">
+                  <th class="py-2.5 px-3">Variable</th>
+                  <th class="py-2.5 px-3 w-1/3">Definición Operacional</th>
+                  <th class="py-2.5 px-3">Indicador / Fórmula</th>
+                  <th class="py-2.5 px-3">Escala y Método</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-900 text-slate-300 font-sans">
+                <tr class="hover:bg-slate-900/10">
+                  <td class="py-3 px-3 font-semibold text-white">Rendimiento predictivo (VD1)</td>
+                  <td class="py-3 px-3 text-slate-400">Magnitud del error residual de los modelos XGBoost y LightGBM sobre el test set temporal.</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">MAE (FOB USD/kg)<br/>RMSLE (Volumen kg)</td>
+                  <td class="py-3 px-3">De Razón.<br/>Experimentación computacional.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/10">
+                  <td class="py-3 px-3 font-semibold text-white">Rendimiento de detección (VD2)</td>
+                  <td class="py-3 px-3 text-slate-400">Capacidad del ensemble PyOD para discriminar desviaciones anómalas reales o inyectadas.</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">F1-Score, PR-AUC, ROC-AUC</td>
+                  <td class="py-3 px-3">De Razón.<br/>Evaluación sintética controlada.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/10">
+                  <td class="py-3 px-3 font-semibold text-white">Comprensión operativa (VD3)</td>
+                  <td class="py-3 px-3 text-slate-400">Grado de claridad percibida por el auditor sobre los factores explicativos SHAP y RAG.</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">Puntuación Likert (1 a 5)</td>
+                  <td class="py-3 px-3">Ordinal.<br/>Encuestas y cuestionario.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/10">
+                  <td class="py-3 px-3 font-semibold text-white">Tiempo de decisión (VD4)</td>
+                  <td class="py-3 px-3 text-slate-400">Latencia transcurrida hasta que el evaluador registra su decisión fundamentada en el portal.</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">Segundos (s) por alerta</td>
+                  <td class="py-3 px-3">De Razón.<br/>Logs internos automáticos.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/10">
+                  <td class="py-3 px-3 font-semibold text-white">Consistencia de reporte (VD5)</td>
+                  <td class="py-3 px-3 text-slate-400">Porcentaje de coherencia numérica entre el informe textual LLM y la evidencia estructurada.</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">Fidelidad factual (%)</td>
+                  <td class="py-3 px-3">De Razón.<br/>Script validador factual.</td>
+                </tr>
+                <tr class="hover:bg-slate-900/10">
+                  <td class="py-3 px-3 font-semibold text-white">Trazabilidad y linaje (VD6)</td>
+                  <td class="py-3 px-3 text-slate-400">Proporción de alertas con hashes SHA-256 históricos y UUID de recursos completos en la base.</td>
+                  <td class="py-3 px-3 font-mono-data text-emerald-400">Tasa de trazabilidad (%)</td>
+                  <td class="py-3 px-3">De Razón.<br/>Auditoría digital.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Section 3: Variables Explanatorias */}
+    <section id="caracteristicas" class="scroll-mt-20">
+      <div class="border-b border-slate-800 pb-4 mb-6">
+        <h2 class="font-headline font-bold text-xl text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400">list_alt</span>
+          3. Variables Explanatorias (Features del Modelo)
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Diccionario y procedencia de las variables que nutren el pipeline predictivo de valor y volumen.</p>
+      </div>
+
+      <div class="glass-panel p-6 rounded-2xl border border-slate-800 bg-[#0f111a]/20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-[11px]">
+          
+          {/* Box 1: Insumos de Comercio y Economía */}
+          <div class="space-y-4">
+            <h4 class="font-headline font-bold text-sm text-white border-b border-white/5 pb-2">Comercio Exterior y Macroeconomía</h4>
+            <div class="space-y-3">
+              <div class="bg-[#0b0c10]/60 p-3 rounded-lg border border-slate-800/80">
+                <span class="font-mono-data text-emerald-400 font-semibold block">fob_unit_value_usd_kg</span>
+                <p class="text-slate-400 mt-1">Precio unitario en USD por kilogramo. Obtenido de microdatos de aduanas de SUNAT.</p>
+              </div>
+              <div class="bg-[#0b0c10]/60 p-3 rounded-lg border border-slate-800/80">
+                <span class="font-mono-data text-emerald-400 font-semibold block">total_net_weight_kg & shipment_count</span>
+                <p class="text-slate-400 mt-1">Volumen neto semanal exportado y número total de declaraciones (despachos).</p>
+              </div>
+              <div class="bg-[#0b0c10]/60 p-3 rounded-lg border border-slate-800/80">
+                <span class="font-mono-data text-emerald-400 font-semibold block">tipo_cambio_pen_usd</span>
+                <p class="text-slate-400 mt-1">Tipo de cambio promedio semanal de venta interbancario de la fuente oficial del BCRP.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Box 2: Proxies y Datos de Contexto */}
+          <div class="space-y-4">
+            <h4 class="font-headline font-bold text-sm text-white border-b border-white/5 pb-2">Proxies Exógenos y Fitosanitarios</h4>
+            <div class="space-y-3">
+              <div class="bg-[#0b0c10]/60 p-3 rounded-lg border border-slate-800/80">
+                <span class="font-mono-data text-emerald-400 font-semibold block">sisap_precio_prom</span>
+                <p class="text-slate-400 mt-1">Precios mayoristas del producto en mercados de Lima (Proxy de oferta interna de MIDAGRI).</p>
+              </div>
+              <div class="bg-[#0b0c10]/60 p-3 rounded-lg border border-slate-800/80">
+                <span class="font-mono-data text-emerald-400 font-semibold block">temperatura_media_c & precipitacion_mm</span>
+                <p class="text-slate-400 mt-1">Variables climáticas exógenas semanales agregadas para zonas productoras desde NASA POWER.</p>
+              </div>
+              <div class="bg-[#0b0c10]/60 p-3 rounded-lg border border-slate-800/80">
+                <span class="font-mono-data text-emerald-400 font-semibold block">cumplimiento_fitosanitario & dias_logisticos</span>
+                <p class="text-slate-400 mt-1">Registros de rechazos fitosanitarios de FDA/SENASA y tiempos estimados de despacho terrestre.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Layout>

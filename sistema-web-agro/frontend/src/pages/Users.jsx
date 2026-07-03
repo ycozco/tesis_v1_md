@@ -5,6 +5,14 @@ export default function Users() {
   const [logs, setLogs] = useState([])
   const [loading, setLoading] = useState(true)
 
+  // New user modal states
+  const [showCreateModal, setShowCreateModal] = useState(false)
+  const [newUsername, setNewUsername] = useState('')
+  const [newName, setNewName] = useState('')
+  const [newEmail, setNewEmail] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [newRol, setNewRol] = useState('AUDITOR')
+
   const fetchUsersAndLogs = () => {
     setLoading(true)
     Promise.all([
@@ -20,6 +28,60 @@ export default function Users() {
         console.error('Error fetching users/logs:', err)
         setLoading(false)
       })
+  }
+
+  const handleResetTelemetry = async (username) => {
+    if (!window.confirm(`¿Está seguro de reiniciar la telemetría de ${username}? Esto borrará todas sus decisiones.`)) {
+      return
+    }
+    
+    try {
+      const response = await fetch(`/api/users/${username}/reset-telemetry`, {
+        method: 'POST'
+      })
+      if (response.ok) {
+        alert(`Telemetría de ${username} reiniciada exitosamente.`)
+        fetchUsersAndLogs()
+      } else {
+        alert('Error al reiniciar la telemetría.')
+      }
+    } catch (err) {
+      console.error(err)
+      alert('Error de red al reiniciar la telemetría.')
+    }
+  }
+
+  const handleCreateUser = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await fetch('/api/users/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: newUsername,
+          email: newEmail,
+          nombre: newName,
+          password: newPassword,
+          rol: newRol
+        })
+      })
+      
+      if (response.ok) {
+        alert('Usuario creado exitosamente.')
+        setShowCreateModal(false)
+        setNewUsername('')
+        setNewName('')
+        setNewEmail('')
+        setNewPassword('')
+        fetchUsersAndLogs()
+      } else {
+        const err = await response.json()
+        alert('Error al crear usuario: ' + err.message)
+      }
+    } catch (err) {
+      console.error(err)
+      alert('Error de red al crear usuario.')
+    }
   }
 
   useEffect(() => {
@@ -69,7 +131,7 @@ export default function Users() {
           </div>
           <button 
             className="glass-panel hover:bg-white/5 px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface border border-outline/30 hover:border-primary transition-colors flex items-center gap-2"
-            onClick={() => alert('Función de agregar usuario simulada para prototipo.')}
+            onClick={() => setShowCreateModal(true)}
           >
             <span className="material-symbols-outlined text-[18px]">add</span>
             NUEVO OPERATIVO
@@ -147,7 +209,11 @@ export default function Users() {
                                 >
                                   <span className="material-symbols-outlined text-[18px]">swap_horiz</span>
                                 </button>
-                                <button className="p-1 text-on-surface-variant hover:text-error transition-colors" title="Reiniciar Sesión" onClick={() => alert('Sesión de telemetría reiniciada.')}>
+                                <button 
+                                  className="p-1 text-on-surface-variant hover:text-error transition-colors" 
+                                  title="Reiniciar Sesión" 
+                                  onClick={() => handleResetTelemetry(u.username)}
+                                >
                                   <span className="material-symbols-outlined text-[18px]">lock_reset</span>
                                 </button>
                               </div>
@@ -211,6 +277,91 @@ export default function Users() {
           </div>
         )}
       </div>
+
+      {/* Modal: Crear Nuevo Operativo */}
+      {showCreateModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-modal max-w-md w-full rounded-xl p-6 relative overflow-hidden">
+            <h3 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2">
+              <span className="material-symbols-outlined">person_add</span>
+              Registrar Nuevo Operativo
+            </h3>
+            <form onSubmit={handleCreateUser} className="space-y-4">
+              <div>
+                <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Nombre Completo</label>
+                <input 
+                  type="text"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  placeholder="Ej. Juan Pérez"
+                  className="w-full bg-transparent border border-outline/50 rounded-lg p-2.5 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all"
+                  required
+                />
+              </div>
+              <div>
+                <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Usuario (Username)</label>
+                <input 
+                  type="text"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                  placeholder="Ej. jperez"
+                  className="w-full bg-transparent border border-outline/50 rounded-lg p-2.5 text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all"
+                  required
+                />
+              </div>
+              <div>
+                <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Correo Electrónico</label>
+                <input 
+                  type="email"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                  placeholder="Ej. jperez@agro.gob.pe"
+                  className="w-full bg-transparent border border-outline/50 rounded-lg p-2.5 text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all"
+                  required
+                />
+              </div>
+              <div>
+                <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Contraseña</label>
+                <input 
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="Contraseña inicial"
+                  className="w-full bg-transparent border border-outline/50 rounded-lg p-2.5 text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all"
+                  required
+                />
+              </div>
+              <div>
+                <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Rol</label>
+                <select 
+                  value={newRol}
+                  onChange={(e) => setNewRol(e.target.value)}
+                  className="w-full bg-surface-container-low border border-outline/50 rounded-lg p-2.5 text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all"
+                >
+                  <option value="AUDITOR">AUDITOR (Acceso restrictivo)</option>
+                  <option value="ADMIN">ADMIN (Acceso total)</option>
+                </select>
+              </div>
+              
+              <div className="flex gap-3 pt-4">
+                <button 
+                  type="button"
+                  onClick={() => setShowCreateModal(false)}
+                  className="flex-1 glass-panel hover:bg-white/5 py-2.5 rounded-lg font-label-md text-label-md text-on-surface-variant text-center transition-colors"
+                >
+                  Cancelar
+                </button>
+                <button 
+                  type="submit"
+                  className="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md text-label-md text-center hover:bg-primary-fixed transition-colors shadow-[0_0_10px_rgba(118,219,143,0.3)]"
+                >
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -952,6 +952,28 @@
                             <p>Un LLM con arquitectura de Recuperación Aumentada (RAG) redacta borradores de informes trazables en lenguaje natural. El modelo se ancla estrictamente a los vectores SHAP y a una base de regulaciones (resoluciones de la SBS, SENASA y FDA) para evitar alucinaciones.</p>
                         </div>
                     </div>
+                    <!-- Tarjeta de Ingesta y Simulación de Datos -->
+                    <div class="card" style="margin-top:20px; background: rgba(99, 102, 241, 0.03); border-color: rgba(99, 102, 241, 0.2);">
+                        <h2 style="color: #a5b4fc; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                            <span>🗃️</span>
+                            Ingesta y Simulación de Datos
+                        </h2>
+                        <div style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.5;">
+                            <p style="margin-bottom: 8px;">
+                                <strong>🚢 Microdatos Reales (SUNAT):</strong> La base del sistema opera sobre registros reales filtrados por subpartida nacional para 4 cultivos (Palta, Uva, Arándano y Mango) cruzando datos de clima diario (SENAMHI) y cotizaciones del BCRP.
+                            </p>
+                            <p style="margin-bottom: 8px;">
+                                <strong>🧪 Simulación de Decisiones de Usabilidad (HCI):</strong> Para poblar los gráficos de telemetría y boxplots de latencia, se modela el comportamiento humano bajo una <strong>distribución Log-Normal</strong>:
+                                <ul style="margin-left: 16px; margin-top: 4px; margin-bottom: 4px; list-style-type: circle;">
+                                    <li><strong>Condición A (Explicable):</strong> Latencia rápida (\(\mu = 20\text{ s}\)) y homogénea.</li>
+                                    <li><strong>Condición B (Aislada):</strong> Latencia lenta (\(\mu = 45\text{ s}\)) y de alta dispersión.</li>
+                                </ul>
+                            </p>
+                            <p>
+                                <em>Este enfoque híbrido garantiza el rigor de los microdatos crudos y la viabilidad del piloto de usabilidad.</em>
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:24px;">

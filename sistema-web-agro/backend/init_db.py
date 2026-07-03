@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import text
-from models import SessionLocal, init_tables, Usuario, OperacionAlerta, DecisionAuditoria, ExplicacionSHAP, SecurityLog, DocumentoNormativo, engine
+from models import SessionLocal, init_tables, Usuario, OperacionAlerta, DecisionAuditoria, ExplicacionSHAP, SecurityLog, DocumentoNormativo, ConfiguracionPipeline, engine
 
 # Machine learning libraries for dynamic compilation
 import joblib
@@ -114,11 +114,17 @@ def seed_normatives(db):
         else:
             emb = [0.1] * 384
             
+        if engine.dialect.name == "sqlite":
+            import json
+            emb_val = json.dumps(emb)
+        else:
+            emb_val = emb
+            
         doc = DocumentoNormativo(
             titulo=norm['titulo'],
             categoria=norm['categoria'],
             contenido=norm['contenido'],
-            embedding=emb
+            embedding=emb_val
         )
         db.add(doc)
         
@@ -133,9 +139,10 @@ def seed_db():
         from models import Base
         Base.metadata.drop_all(bind=engine)
         
-        # Habilitar extensión pgvector
-        db.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
-        db.commit()
+        # Habilitar extensión pgvector si es PostgreSQL
+        if engine.dialect.name == "postgresql":
+            db.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
+            db.commit()
         
         init_tables()
         
@@ -236,6 +243,30 @@ def seed_db():
         
         # 7. Compilar y entrenar modelos analíticos
         compile_and_save_mock_models()
+        
+        # 8. Sembrar Configuración del Pipeline
+        print("Sembrando configuración inicial del pipeline...")
+        config_inicial = ConfiguracionPipeline(
+            active_model='xgboost',
+            weight_if=0.4500,
+            weight_lof=0.3000,
+            weight_ecod=0.2500,
+            global_threshold=0.6500,
+            llm_engine='Google Gemini 1.5 Flash',
+            llm_temperature=0.10,
+            llm_similarity_threshold=0.75
+        )
+        db.add(config_inicial)
+        db.commit()
+        print("Configuración sembrada exitosamente.")
+        
+        # Iniciar la migración e ingesta de datos reales y simulación de usabilidad
+        try:
+            import migrate_real_data
+            print("Iniciando migración de datos reales de SUNAT y simulación de telemetría...")
+            migrate_real_data.main()
+        except Exception as err_mig:
+            print(f"Advertencia: No se completó la migración de datos reales ({err_mig})")
         
     except Exception as e:
         db.rollback()
