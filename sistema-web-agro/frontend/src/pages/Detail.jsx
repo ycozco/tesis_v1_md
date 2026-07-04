@@ -220,33 +220,99 @@ export default function Detail() {
   }
 
   const renderReportWithCitations = (text) => {
-    if (!text) return null
-    // Match patterns like [FDA-1] or [SENASA-2] or [LEY_IA-3] or [FDA-2025-C1]
-    const regex = /(\[[A-Z0-9_-]+\])/g
-    const parts = text.split(regex)
-    return parts.map((part, i) => {
-      const match = part.match(/^\[([A-Z0-9_-]+)\]$/)
-      if (match) {
-        const docId = match[1]
-        const doc = RAG_DOCUMENTS[docId]
-        if (doc) {
-          return (
-            <a
-              key={i}
-              href={`#${docId}`}
-              onClick={(e) => {
-                e.preventDefault()
-                setActiveRagDoc(doc)
-              }}
-              className="text-primary hover:underline font-semibold font-mono-data cursor-pointer"
-            >
-              {part}
-            </a>
-          )
-        }
+    if (!text) return null;
+
+    // Procesar líneas del informe para compilar títulos, listas y citas
+    const lines = text.split('\n');
+    
+    return lines.map((line, lineIdx) => {
+      let trimmed = line.trim();
+      if (!trimmed) return <div key={lineIdx} className="h-2"></div>;
+
+      // 1. Títulos Principales (### o ####)
+      if (trimmed.startsWith('###')) {
+        const titleText = trimmed.replace(/^###\s+/, '');
+        return (
+          <h3 key={lineIdx} className="font-headline-sm text-[16px] text-primary border-b border-primary/20 pb-2 mt-4 mb-3 uppercase tracking-wider flex items-center gap-2">
+            <span className="material-symbols-outlined text-[18px]">bookmark</span> {titleText}
+          </h3>
+        );
       }
-      return part
-    })
+      if (trimmed.startsWith('####')) {
+        const titleText = trimmed.replace(/^####\s+/, '');
+        return (
+          <h4 key={lineIdx} className="font-headline-sm text-[13px] text-secondary mt-3 mb-2 uppercase tracking-wide flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-[15px]">label_important</span> {titleText}
+          </h4>
+        );
+      }
+
+      // 2. Líneas separadoras (---)
+      if (trimmed === '---') {
+        return <hr key={lineIdx} className="border-white/10 my-4" />;
+      }
+
+      // 3. Notas técnicas y advertencias (> ⚠️)
+      if (trimmed.startsWith('>') || trimmed.startsWith('> ⚠️')) {
+        const noteText = trimmed.replace(/^>\s*(⚠️)?\s*/, '');
+        return (
+          <div key={lineIdx} className="my-3 p-3 bg-error/10 border-l-4 border-error text-error rounded-r-lg font-body-sm text-[12px] flex items-start gap-2 leading-relaxed">
+            <span className="material-symbols-outlined text-[16px] shrink-0 mt-0.5">warning</span>
+            <div><strong>Nota de Riesgo:</strong> {noteText}</div>
+          </div>
+        );
+      }
+
+      // 4. Listas ordenadas o viñetas (- o *)
+      let isListItem = false;
+      if (trimmed.startsWith('-') || trimmed.startsWith('*')) {
+        isListItem = true;
+        trimmed = trimmed.replace(/^[-*]\s+/, '');
+      }
+
+      // 5. Compilar citas legislativas dentro del texto (ej. [FDA-1])
+      const regex = /(\[[A-Z0-9_-]+\])/g;
+      const parts = trimmed.split(regex);
+      const processedLine = parts.map((part, partIdx) => {
+        const match = part.match(/^\[([A-Z0-9_-]+)\]$/);
+        if (match) {
+          const docId = match[1];
+          const doc = RAG_DOCUMENTS[docId];
+          if (doc) {
+            return (
+              <a
+                key={partIdx}
+                href={`#${docId}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveRagDoc(doc);
+                }}
+                className="bg-primary/10 text-primary border border-primary/20 px-1.5 py-0.5 rounded text-[10px] font-mono-data cursor-pointer hover:bg-primary/25 transition-colors mx-1 inline-flex items-center gap-0.5"
+              >
+                <span className="material-symbols-outlined text-[11px]">menu_book</span>
+                {part}
+              </a>
+            );
+          }
+        }
+        return part;
+      });
+
+      if (isListItem) {
+        return (
+          <div key={lineIdx} className="flex items-start gap-2 pl-4 py-1 text-on-surface-variant font-body-md text-[13px]">
+            <span className="text-secondary select-none shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            <div className="flex-1 leading-relaxed">{processedLine}</div>
+          </div>
+        );
+      }
+
+      return (
+        <p key={lineIdx} className="text-on-surface-variant leading-relaxed font-body-md text-[13px] mb-2 pl-2">
+          {processedLine}
+        </p>
+      );
+    });
   }
 
   const handleFormSubmit = (e) => {
