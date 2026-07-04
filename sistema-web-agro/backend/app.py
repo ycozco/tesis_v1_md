@@ -409,6 +409,33 @@ def get_alert_detail(id_alerta):
         if not alert:
             return jsonify({'message': 'Alerta no encontrada.'}), 404
 
+        app_mode = os.getenv('APP_MODE', 'DEMO')
+        allow_mock = os.getenv('ALLOW_MOCK_MODE', 'true').lower() == 'true'
+
+        if app_mode == 'EXPERIMENT' or not allow_mock:
+            # === MODO EXPERIMENTAL REAL: Determinístico, Persistido y Sin Mutaciones en GET ===
+            # Cargar explicaciones SHAP persistidas de la base de datos
+            explanations = db.query(ExplicacionSHAP).filter_by(id_alerta=id_alerta).all()
+            
+            # Cargar decisión de auditoría si existe
+            decision = db.query(DecisionAuditoria).filter_by(id_alerta=id_alerta).first()
+            
+            # Cargar reporte RAG persistido
+            stored_report = db.query(GeneratedReport).filter_by(id_alerta=id_alerta).first()
+            rag_report = stored_report.report_text if stored_report else "Reporte experimental no generado aún para esta alerta."
+            
+            # Cargar normativas asociadas para el RAG
+            docs = db.query(DocumentoNormativo).limit(3).all()
+
+            return jsonify({
+                'alert': alert.to_dict(),
+                'explanations': [e.to_dict() for e in explanations],
+                'decision': decision.to_dict() if decision else None,
+                'rag_report': rag_report,
+                'rag_documents': [d.to_dict() for d in docs]
+            }), 200
+
+        # === MODO DEMOSTRACIÓN TRADICIONAL (DYNAMIC/MOCK) ===
         # Dynamic calculations in caliente (en tiempo real)
         load_ml_models() # Ensure models are loaded
         features = get_feature_vector(alert)

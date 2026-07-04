@@ -260,7 +260,8 @@ class OpenAIProvider(LLMProvider):
         self.api_key = api_key
         try:
             from openai import OpenAI
-            self.client = OpenAI(api_key=self.api_key)
+            base_url = os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1")
+            self.client = OpenAI(base_url=base_url, api_key=self.api_key)
         except ImportError:
             self.client = None
             log.error("Librería 'openai' no instalada. Fallback a TemplateProvider.")
@@ -306,8 +307,9 @@ DOCUMENTOS DE CONTEXTO RAG RECUPERADOS:
 {context_text}
 """
         try:
+            model_name = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
             response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
+                model=model_name,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
@@ -316,7 +318,7 @@ DOCUMENTOS DE CONTEXTO RAG RECUPERADOS:
             )
             return response.choices[0].message.content
         except Exception as e:
-            log.error("Fallo al llamar a la API de OpenAI: %s. Usando TemplateProvider como fallback.", e)
+            log.error("Fallo al llamar a la API de OpenAI/Nvidia: %s. Usando TemplateProvider como fallback.", e)
             return TemplateProvider().generate_report(alert_data, retrieved_context)
 
 class AnthropicProvider(LLMProvider):

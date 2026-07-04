@@ -1,0 +1,10 @@
+Funcionalidad,Estado Inicial,Observaciones
+Autenticacion,Funcional Parcial,Hardcodeado en backend sin persistencia JWT real
+Dashboard,Funcional Parcial,Graficos con tendencias simuladas
+Alertas,Funcional Parcial,Se generan alertas de prueba dinamicas
+Detalle de Alerta,Defectuoso/Simulado,Valores aleatorios al hacer GET
+Explicabilidad SHAP,Simulado,Valores recalculados al vuelo en la pagina
+Reportes RAG,Simulado,Plantillas preestablecidas sin corpus indexado
+Trazabilidad de Auditoria,No Implementado,Hashes y metadata de ejecucion no integrados
+Configuracion de Modelos,Simulado,Cambio de parametros sin conexion al pipeline real
+Telemetria UX,Simulado,Valores de ruido y usuarios en linea falsos

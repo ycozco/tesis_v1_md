@@ -55,6 +55,17 @@ class OperacionAlerta(Base):
     score_anomalia = Column(Numeric(5, 4), nullable=False)
     alertado = Column(Boolean, nullable=False)
     estado = Column(String(20), nullable=False) # 'PENDIENTE', 'EN_REVISION', 'CONFIRMADA', 'FALSA_ALARMA', 'REFIERE_INSPECCION'
+    
+    # Nuevos campos de variables persistidas del pipeline real
+    peso_neto = Column(Numeric(12, 2), nullable=True)
+    temperatura = Column(Numeric(5, 2), nullable=True)
+    retraso_dias = Column(Integer, nullable=True)
+    residuos_fob = Column(Numeric(12, 4), nullable=True)
+    residuos_volumen = Column(Numeric(12, 4), nullable=True)
+    run_id = Column(String(50), nullable=True)
+    if_score = Column(Numeric(5, 4), nullable=True)
+    lof_score = Column(Numeric(5, 4), nullable=True)
+    ecod_score = Column(Numeric(5, 4), nullable=True)
 
     decisiones = relationship("DecisionAuditoria", back_populates="alerta")
     explicaciones = relationship("ExplicacionSHAP", back_populates="alerta")
@@ -71,7 +82,16 @@ class OperacionAlerta(Base):
             'valor_fob_esperado': float(self.valor_fob_esperado),
             'score_anomalia': float(self.score_anomalia),
             'alertado': self.alertado,
-            'estado': self.estado
+            'estado': self.estado,
+            'peso_neto': float(self.peso_neto) if self.peso_neto is not None else 0.0,
+            'temperatura': float(self.temperatura) if self.temperatura is not None else 0.0,
+            'retraso_dias': int(self.retraso_dias) if self.retraso_dias is not None else 0,
+            'residuos_fob': float(self.residuos_fob) if self.residuos_fob is not None else 0.0,
+            'residuos_volumen': float(self.residuos_volumen) if self.residuos_volumen is not None else 0.0,
+            'run_id': self.run_id or '',
+            'if_score': float(self.if_score) if self.if_score is not None else 0.0,
+            'lof_score': float(self.lof_score) if self.lof_score is not None else 0.0,
+            'ecod_score': float(self.ecod_score) if self.ecod_score is not None else 0.0
         }
 
 class DecisionAuditoria(Base):
@@ -183,6 +203,78 @@ class ConfiguracionPipeline(Base):
             'llm_engine': self.llm_engine,
             'llm_temperature': float(self.llm_temperature),
             'llm_similarity_threshold': float(self.llm_similarity_threshold)
+        }
+
+# Nuevas Tablas de Consolidacion Cientifica y Trazabilidad
+
+class PipelineRun(Base):
+    __tablename__ = 'pipeline_runs'
+    
+    run_id = Column(String(50), primary_key=True)
+    execution_date = Column(DateTime, default=datetime.utcnow)
+    dataset_version = Column(String(50), nullable=False)
+    dataset_hash = Column(String(64), nullable=False)
+    model_xgb_price_hash = Column(String(64), nullable=True)
+    model_lgb_price_hash = Column(String(64), nullable=True)
+    model_if_hash = Column(String(64), nullable=True)
+    status = Column(String(20), nullable=False)
+
+    def to_dict(self):
+        return {
+            'run_id': self.run_id,
+            'execution_date': self.execution_date.isoformat() if self.execution_date else None,
+            'dataset_version': self.dataset_version,
+            'dataset_hash': self.dataset_hash,
+            'model_xgb_price_hash': self.model_xgb_price_hash,
+            'model_lgb_price_hash': self.model_lgb_price_hash,
+            'model_if_hash': self.model_if_hash,
+            'status': self.status
+        }
+
+class GeneratedReport(Base):
+    __tablename__ = 'generated_reports'
+    
+    id_alerta = Column(String(50), ForeignKey('operaciones_alertas.id_alerta'), primary_key=True)
+    report_text = Column(Text, nullable=False)
+    fidelity_score = Column(Numeric(5, 4), nullable=True)
+    completeness_score = Column(Numeric(5, 4), nullable=True)
+    validation_status = Column(String(20), nullable=False)
+    numeric_checks = Column(Integer, default=0)
+    unsupported_claims = Column(Integer, default=0)
+    report_hash = Column(String(64), nullable=False)
+    report_uuid = Column(String(50), nullable=False)
+
+    def to_dict(self):
+        return {
+            'id_alerta': self.id_alerta,
+            'report_text': self.report_text,
+            'fidelity_score': float(self.fidelity_score) if self.fidelity_score is not None else 0.0,
+            'completeness_score': float(self.completeness_score) if self.completeness_score is not None else 0.0,
+            'validation_status': self.validation_status,
+            'numeric_checks': self.numeric_checks,
+            'unsupported_claims': self.unsupported_claims,
+            'report_hash': self.report_hash,
+            'report_uuid': self.report_uuid
+        }
+
+class ArtifactLineage(Base):
+    __tablename__ = 'artifact_lineage'
+    
+    id_artifact = Column(Integer, primary_key=True, autoincrement=True)
+    run_id = Column(String(50), ForeignKey('pipeline_runs.run_id'), nullable=False)
+    name = Column(String(100), nullable=False)
+    filepath = Column(String(255), nullable=False)
+    hash = Column(String(64), nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            'id_artifact': self.id_artifact,
+            'run_id': self.run_id,
+            'name': self.name,
+            'filepath': self.filepath,
+            'hash': self.hash,
+            'created_at': self.created_at.isoformat() if self.created_at else None
         }
 
 def init_tables():
