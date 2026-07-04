@@ -533,7 +533,7 @@ export default function Detail() {
         )}
 
         {/* Adjudication Panel (Col 8-12 / Col 1-5 if B) */}
-        <div className={`${condicion === 'INTEGRADO' ? 'xl:col-span-5' : 'xl:col-span-12'} glass-panel-elevated rounded-xl p-6 flex flex-col border-primary/20`}>
+        <div className={`${(condicion === 'INTEGRADO' || condicion === 'ADMIN') ? 'xl:col-span-5' : 'xl:col-span-12'} glass-panel-elevated rounded-xl p-6 flex flex-col border-primary/20`}>
           <h3 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2 mb-6">
             <span className="material-symbols-outlined">rule</span>
             Adjudicación de Operación

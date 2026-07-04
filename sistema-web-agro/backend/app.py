@@ -76,37 +76,48 @@ def generate_offline_report(alert, features, docs, desvio_fob, desvio_fob_pct):
     temp = float(features[0][2])
     retraso = int(features[0][3])
     
-    report = f"### Informe de Auditoría y Explicabilidad RAG (Simulación Local)\n\n"
-    report += f"**Análisis de Desviación Financiera (Capa 1):**\n"
-    report += f"La exportación de **{alert.producto}** realizada por la empresa **{alert.razon_social}** presenta un valor FOB declarado de **${fob_dec:,.2f} USD** frente a un valor FOB esperado por el modelo XGBoost de **${fob_esp:,.2f} USD**. Esto representa una desviación de **${desvio_fob:,.2f} USD** ({desvio_fob_pct:.1f}%), calificando como un desvío financiero aduanero.\n\n"
+    report = "### 📋 INFORME DE AUDITORÍA Y EXPLICABILIDAD RAG (SISTEMA EXPERIMENTAL)\n\n"
+    report += "---\n\n"
     
-    report += f"**Evaluación Multivariada de Anomalía (Capa 2):**\n"
-    report += f"El modelo Ensemble (PyOD) calculó un score de anomalía dinámico de **{float(alert.score_anomalia):.4f}**. Las variables determinantes para este score incluyen una temperatura de contenedor de **{temp:.1f}°C** y un retraso logístico de **{retraso} días** en zona primaria de embarque.\n\n"
+    report += "#### 🔍 1. Análisis de Desviación Financiera (Capa 1)\n"
+    report += f"La exportación de **{alert.producto}** realizada por la empresa **{alert.razon_social}** (RUC: `{alert.ruc_exportador}`) presenta las siguientes métricas de valor:\n"
+    report += f"- **Valor FOB Declarado:** `${fob_dec:,.2f} USD`\n"
+    report += f"- **Valor FOB Esperado (XGBoost Regressor):** `${fob_esp:,.2f} USD`\n"
+    report += f"- **Desviación Neta:** `${desvio_fob:,.2f} USD` (una variación del **{desvio_fob_pct:.1f}%**).\n\n"
+    report += "> ⚠️ **Nota Técnica:** Se identifica un desvío financiero significativo que excede los umbrales de tolerancia paramétrica estándar.\n\n"
     
-    report += f"**Vinculación Normativa por Similitud Semántica (Capa 4 - pgvector):**\n"
-    report += f"Se recuperaron {len(docs)} documentos normativos relevantes desde la base de datos vectorial PostgreSQL utilizando la extensión pgvector:\n\n"
+    report += "#### 🚨 2. Evaluación Multivariada de Anomalía (Capa 2)\n"
+    report += f"El modelo Ensemble (PyOD) calculó un score de anomalía dinámico de **{float(alert.score_anomalia):.4f}**.\n"
+    report += "Métricas y variables determinantes analizadas en la cadena logística:\n"
+    report += f"- **Temperatura Promedio del Contenedor:** `{temp:.1f}°C`\n"
+    report += f"- **Retraso Logístico en Zona Primaria:** `{retraso} días`\n\n"
+    
+    report += "#### 📚 3. Vinculación Normativa por Similitud Semántica (Capa 4 - pgvector)\n"
+    report += f"Se recuperaron **{len(docs)} documentos normativos** relevantes desde la base de datos vectorial PostgreSQL utilizando la extensión pgvector:\n\n"
     
     for doc in docs:
         cit = f"{doc.categoria}-{doc.id_doc}"
-        report += f"*   **[{cit}]** *{doc.titulo}*:\n"
-        report += f"    > \"{doc.contenido}\"\n\n"
+        report += f"📌 **[{cit}]** *{doc.titulo}*\n"
+        report += f"```text\n{doc.contenido}\n```\n\n"
         
-    report += f"**Conclusión y Recomendación de Cumplimiento:**\n"
-    report += f"Con base en la normativa sectorial: "
+    report += "#### ⚖️ 4. Conclusión y Recomendación de Cumplimiento\n"
+    report += "Con base en la normativa aduanera e IA aplicable en la República del Perú:\n"
+    
     conclusiones = []
     for doc in docs:
         cit = f"{doc.categoria}-{doc.id_doc}"
         if doc.categoria == 'FDA':
-            conclusiones.append(f"se debe acatar la Sección 21.341 de la FDA (**[{cit}]**) para inspección física sensorial del lote por desviación de valor FOB")
+            conclusiones.append(f"Se debe acatar la Sección 21.341 de la FDA (**[{cit}]**) para la inspección física sensorial del lote por desviación de valor FOB")
         elif doc.categoria == 'SENASA' and retraso >= 2:
-            conclusiones.append(f"la directiva de SENASA (**[{cit}]**) exige control fitosanitario preventivo debido al retraso logístico de {retraso} días en puerto")
+            conclusiones.append(f"La directiva de SENASA (**[{cit}]**) exige control fitosanitario preventivo debido al retraso logístico de {retraso} días en puerto")
         elif doc.categoria == 'LEY_IA':
-            conclusiones.append(f"se da cumplimiento a la Ley de IA del Perú (**[{cit}]**) al proporcionar este desglose explicable y transparente de la alerta algorítmica")
+            conclusiones.append(f"Se da cumplimiento al marco regulatorio de la Ley de IA del Perú (**[{cit}]**) al proveer este desglose explicable y transparente para auditoría humana")
     
     if conclusiones:
-        report += ", ".join(conclusiones) + "."
+        for conc in conclusiones:
+            report += f"- {conc}.\n"
     else:
-        report += "No se registran contravenciones legales críticas."
+        report += "- No se registran contravenciones legales críticas.\n"
         
     return report
 
