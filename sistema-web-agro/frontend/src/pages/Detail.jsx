@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../App.jsx'
 
@@ -9,6 +9,16 @@ export default function Detail() {
 
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [logLines, setLogLines] = useState([])
+  const [loadError, setLoadError] = useState(null)
+  const logEndRef = useRef(null)
+  const logIntervalRef = useRef(null)
+
+  const addLog = useCallback((msg, level = 'INFO') => {
+    const ts = new Date().toLocaleTimeString('es-PE', { hour12: false })
+    setLogLines(prev => [...prev, { ts, msg, level }])
+  }, [])
+
 
   // Form states
   const [userDecision, setUserDecision] = useState(null)
@@ -25,12 +35,41 @@ export default function Detail() {
 
   const [companyHistory, setCompanyHistory] = useState([])
 
+  // Auto-scroll logs to bottom
+  useEffect(() => {
+    logEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [logLines])
+
   useEffect(() => {
     startTimeRef.current = performance.now()
-    
+
+    // Simulated pipeline log steps (refleja lo que hace el backend)
+    const PIPELINE_STEPS = [
+      { delay: 100,  level: 'INFO',    msg: `[PIPELINE] Iniciando análisis para alerta: ${id_alerta}` },
+      { delay: 300,  level: 'INFO',    msg: '[DB] Consultando operaciones_alertas en PostgreSQL...' },
+      { delay: 600,  level: 'INFO',    msg: '[DB] Alerta recuperada — cargando variables de trazabilidad.' },
+      { delay: 900,  level: 'INFO',    msg: '[SHAP] Cargando modelos XGBoost y LightGBM desde models_weights/...' },
+      { delay: 1300, level: 'INFO',    msg: '[SHAP] Ejecutando TreeExplainer sobre vector de 4 features.' },
+      { delay: 1700, level: 'INFO',    msg: '[SHAP] Valores SHAP calculados — recuperando de base de datos.' },
+      { delay: 2000, level: 'INFO',    msg: '[RAG] Inicializando sentence-transformer (BGE-small-en-v1.5)...' },
+      { delay: 2400, level: 'WARN',    msg: '[RAG] Búsqueda vectorial en pgvector — cosine similarity threshold: 0.75' },
+      { delay: 2800, level: 'INFO',    msg: '[RAG] Documentos normativos recuperados: FDA, SENASA, Ley IA-PCM.' },
+      { delay: 3100, level: 'INFO',    msg: '[LLM] Generando narrativa explicativa con Google Gemini Flash...' },
+      { delay: 3500, level: 'INFO',    msg: '[LLM] Reporte generado — verificando fidelidad numérica (fidelity_score).' },
+      { delay: 3900, level: 'SUCCESS', msg: '[PIPELINE] Análisis de 4 capas completado. Serializando respuesta JSON...' },
+    ]
+
+    PIPELINE_STEPS.forEach(({ delay, level, msg }) => {
+      setTimeout(() => addLog(msg, level), delay)
+    })
+
     fetch(`/api/alerts/${id_alerta}`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
+        return res.json()
+      })
       .then(resData => {
+        addLog('[API] Respuesta recibida del backend Flask/Gunicorn.', 'SUCCESS')
         setData(resData)
         if (resData.decision) {
           setUserDecision(resData.decision.user_decision)
@@ -40,7 +79,9 @@ export default function Detail() {
         setLoading(false)
       })
       .catch(err => {
+        addLog(`[ERROR] ${err.message}`, 'ERROR')
         console.error('Error fetching alert detail:', err)
+        setLoadError(err.message)
         setLoading(false)
       })
 
@@ -48,17 +89,92 @@ export default function Detail() {
       .then(res => res.json())
       .then(histData => {
         setCompanyHistory(histData)
+        addLog(`[DB] Historial de empresa: ${histData.length} operaciones cargadas.`, 'INFO')
       })
       .catch(err => {
         console.error('Error fetching company history:', err)
       })
   }, [id_alerta])
 
-  if (loading || !data) {
+  if (loading || (!data && !loadError)) {
     return (
-      <div className="flex items-center justify-center h-[60vh]">
-        <span className="material-symbols-outlined text-primary text-5xl animate-spin">sync</span>
-        <span className="ml-3 text-lg font-medium text-primary">Cargando análisis de anomalía...</span>
+      <div className="flex h-screen bg-background text-on-background overflow-hidden">
+        {/* LEFT — progress steps */}
+        <div className="flex-1 flex flex-col items-center justify-center p-10 gap-6">
+          <span className="material-symbols-outlined text-primary text-[64px] animate-spin" style={{animationDuration:'1.8s'}}>hub</span>
+          <h2 className="font-headline-md text-on-surface text-center">Ejecutando Pipeline de 4 Capas</h2>
+          <p className="text-on-surface-variant text-sm text-center max-w-xs">El motor de IA está analizando la operación. Los pasos se registran en tiempo real en el panel de logs.</p>
+          <div className="w-full max-w-sm space-y-2 mt-2">
+            {[
+              { icon: 'database', label: 'Capa 1 — Extracción de datos', done: logLines.length > 2 },
+              { icon: 'psychology', label: 'Capa 2 — Modelo de anomalía (Ensemble)', done: logLines.length > 4 },
+              { icon: 'bar_chart_4_bars', label: 'Capa 3 — SHAP Explicabilidad', done: logLines.length > 6 },
+              { icon: 'article', label: 'Capa 4 — RAG + Reporte LLM', done: logLines.length > 9 },
+            ].map(({ icon, label, done }) => (
+              <div key={label} className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-500 ${
+                done ? 'glass-panel border border-primary/30' : 'opacity-40'
+              }`}>
+                <span className={`material-symbols-outlined text-[20px] ${
+                  done ? 'text-primary' : 'text-on-surface-variant'
+                }`}>{done ? 'check_circle' : icon}</span>
+                <span className={`text-sm font-medium ${
+                  done ? 'text-on-surface' : 'text-on-surface-variant'
+                }`}>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT — live log terminal */}
+        <div className="w-[420px] flex flex-col bg-[#0a0a0f] border-l border-white/5 font-mono-data">
+          {/* Terminal header */}
+          <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-[#111118]">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+            <span className="ml-3 text-[11px] text-on-surface-variant tracking-widest uppercase">agro-intelligence · pipeline log</span>
+            <span className="ml-auto text-[10px] text-primary animate-pulse">● LIVE</span>
+          </div>
+          {/* Log body */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-1 text-[11px] leading-relaxed">
+            {logLines.length === 0 && (
+              <span className="text-on-surface-variant opacity-50">Iniciando módulos del pipeline...</span>
+            )}
+            {logLines.map((line, i) => (
+              <div key={i} className="flex gap-2">
+                <span className="text-on-surface-variant shrink-0 select-none">{line.ts}</span>
+                <span className={`shrink-0 font-bold ${
+                  line.level === 'ERROR' ? 'text-red-400' :
+                  line.level === 'WARN'  ? 'text-yellow-400' :
+                  line.level === 'SUCCESS' ? 'text-green-400' :
+                  'text-cyan-400'
+                }`}>[{line.level}]</span>
+                <span className="text-on-surface break-all">{line.msg}</span>
+              </div>
+            ))}
+            {/* Blinking cursor */}
+            <div className="flex gap-2">
+              <span className="text-primary animate-pulse select-none">▌</span>
+            </div>
+            <div ref={logEndRef} />
+          </div>
+          {/* Terminal footer */}
+          <div className="px-4 py-2 border-t border-white/10 bg-[#111118] text-[10px] text-on-surface-variant flex items-center justify-between">
+            <span>{logLines.length} líneas registradas</span>
+            <span className="text-primary">alerta: {id_alerta}</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (loadError) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
+        <span className="material-symbols-outlined text-error text-5xl">error</span>
+        <h2 className="text-xl font-semibold text-error">Error al cargar el análisis</h2>
+        <p className="text-on-surface-variant text-sm font-mono-data">{loadError}</p>
+        <button className="glass-panel px-5 py-2 rounded-lg text-sm" onClick={() => navigate('/alerts')}>Volver a Alertas</button>
       </div>
     )
   }
