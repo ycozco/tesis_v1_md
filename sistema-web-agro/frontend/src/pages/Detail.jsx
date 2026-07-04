@@ -11,6 +11,7 @@ export default function Detail() {
   const [loading, setLoading] = useState(true)
   const [logLines, setLogLines] = useState([])
   const [loadError, setLoadError] = useState(null)
+  const [logsMinimized, setLogsMinimized] = useState(true)
   const logEndRef = useRef(null)
   const logIntervalRef = useRef(null)
 
@@ -782,6 +783,44 @@ export default function Detail() {
           </div>
         </div>
       )}
+
+      {/* Dock de Logs del Pipeline Minimizable */}
+      <div className={`fixed bottom-0 right-4 z-40 w-[460px] bg-[#0a0a0f] border-t border-x border-white/10 rounded-t-xl shadow-2xl transition-all duration-300 font-mono-data ${
+        logsMinimized ? 'h-10' : 'h-[300px]'
+      }`}>
+        {/* Encabezado del Dock */}
+        <div 
+          className="flex items-center gap-2 px-4 py-2 border-b border-white/10 bg-[#111118] cursor-pointer hover:bg-[#181822] rounded-t-xl"
+          onClick={() => setLogsMinimized(!logsMinimized)}
+        >
+          <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+          <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Módulos de IA (Pipeline Logs)</span>
+          
+          <div className="ml-auto flex items-center gap-2">
+            <span className="text-[9px] bg-white/10 px-2 py-0.5 rounded text-on-surface-variant">{logLines.length} Msg</span>
+            <span className="material-symbols-outlined text-[16px] text-on-surface-variant transition-transform duration-300" style={{
+              transform: logsMinimized ? 'rotate(180deg)' : 'rotate(0deg)'
+            }}>keyboard_arrow_down</span>
+          </div>
+        </div>
+
+        {/* Cuerpo del Dock (Visible solo cuando no está minimizado) */}
+        <div className="h-[258px] overflow-y-auto p-3 space-y-1 text-[10px] leading-relaxed">
+          {logLines.map((line, i) => (
+            <div key={i} className="flex gap-2">
+              <span className="text-on-surface-variant shrink-0 select-none">{line.ts}</span>
+              <span className={`shrink-0 font-bold ${
+                line.level === 'ERROR' ? 'text-red-400' :
+                line.level === 'WARN'  ? 'text-yellow-400' :
+                line.level === 'SUCCESS' ? 'text-green-400' :
+                'text-cyan-400'
+              }`}>[{line.level}]</span>
+              <span className="text-on-surface break-all">{line.msg}</span>
+            </div>
+          ))}
+          <div ref={logEndRef} />
+        </div>
+      </div>
 
     </div>
   )
