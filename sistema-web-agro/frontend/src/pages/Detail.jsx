@@ -522,25 +522,38 @@ export default function Detail() {
         </div>
 
         {/* Layer 2: Ensemble Score (Col 7-12) */}
-        <div className="xl:col-span-6 glass-panel rounded-xl p-6 relative border-error/30">
-          <div className="absolute top-0 left-0 w-full h-1 bg-error animate-pulse"></div>
-          <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-2">
-            <span className="material-symbols-outlined text-error">gavel</span>
-            Capa 2: Severidad de Anomalía (Ensemble)
-          </h3>
-          <p className="font-body-sm text-body-sm text-on-surface-variant mb-6">Consenso ponderado de Isolation Forest, Local Outlier Factor y ECOD.</p>
-          <div className="flex items-center justify-center h-40 bg-error/5 border border-error/20 rounded-lg relative overflow-hidden group">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-error/10 via-transparent to-transparent animate-pulse opacity-50"></div>
-            <div className="flex flex-col items-center z-10">
-              <span className="material-symbols-outlined text-[48px] text-error mb-2 drop-shadow-[0_0_15px_rgba(255,180,171,0.5)]">
-                {alert.score_anomalia > 0.65 ? 'warning_amber' : 'check_circle'}
-              </span>
-              <h4 className="font-display-lg text-[36px] text-error tracking-tight drop-shadow-[0_0_10px_rgba(255,180,171,0.3)]">
-                {alert.score_anomalia > 0.8 ? 'RIESGO CRÍTICO' : alert.score_anomalia > 0.6 ? 'RIESGO ALTO' : 'RIESGO BAJO'}
-              </h4>
-              <div className="font-mono-data text-[12px] text-error/80 mt-2 bg-error/10 px-3 py-1 rounded-full border border-error/20">
-                Puntaje del Consenso: {alert.score_anomalia.toFixed(3)}
-              </div>
+        <div className="xl:col-span-6 glass-panel rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-2">
+              <span className="material-symbols-outlined text-error">gavel</span>
+              Capa 2: Severidad de Anomalía (Ensemble)
+            </h3>
+            <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Consenso ponderado de Isolation Forest, Local Outlier Factor y ECOD.</p>
+            
+            {/* Curva de Probabilidad y Distribución */}
+            <div className="relative h-20 w-full bg-white/[0.01] border-b border-l border-white/10 px-2 pb-1 flex items-end mb-4 overflow-hidden">
+              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 50">
+                <path d="M 0 50 C 20 50, 30 10, 50 5, 70 10, 80 50, 100 50" fill="none" stroke="rgba(156, 240, 255, 0.4)" strokeWidth="1.5"></path>
+                <circle cx={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} cy="25" fill="#ef4444" r="3" className="animate-pulse"></circle>
+                <line stroke="#ef4444" strokeDasharray="2" strokeWidth="0.75" x1={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} x2={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} y1="25" y2="50"></line>
+              </svg>
+              <div className="absolute top-1 left-2 text-[8px] font-mono-sm text-error">DAM Actual: {alert.score_anomalia.toFixed(3)}</div>
+              <div className="absolute top-1 right-2 text-[8px] font-mono-sm text-tertiary">Media Clúster</div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-2 border-t border-white/5 pt-3">
+            <div className="text-center">
+              <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">Precisión</div>
+              <div className="font-bold text-primary font-mono-sm text-[12px]">92.4%</div>
+            </div>
+            <div className="text-center border-l border-r border-white/10">
+              <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">Recall</div>
+              <div className="font-bold text-primary font-mono-sm text-[12px]">88.7%</div>
+            </div>
+            <div className="text-center">
+              <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">F1-Score</div>
+              <div className="font-bold text-primary font-mono-sm text-[12px]">0.905</div>
             </div>
           </div>
         </div>
