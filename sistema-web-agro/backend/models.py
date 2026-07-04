@@ -13,6 +13,16 @@ DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@db:5432
 if DATABASE_URL.startswith("sqlite") or "sqlite" in DATABASE_URL or Vector is None:
     from sqlalchemy import Text as SqliteText
     embedding_type = SqliteText
+    # Asegurar que la ruta de SQLite sea absoluta relativa a la raíz de la tesis
+    if DATABASE_URL.startswith("sqlite:///"):
+        rel_path = DATABASE_URL.replace("sqlite:///", "")
+        backend_dir = os.path.dirname(os.path.abspath(__file__))
+        root_dir = os.path.dirname(os.path.dirname(backend_dir))
+        # Quitar prefijo redundante si existe
+        if rel_path.startswith("sistema-web-agro/"):
+            rel_path = rel_path.replace("sistema-web-agro/", "")
+        abs_db_path = os.path.abspath(os.path.join(root_dir, "sistema-web-agro", rel_path))
+        DATABASE_URL = f"sqlite:///{abs_db_path}"
 else:
     embedding_type = Vector(384)
 
@@ -69,6 +79,7 @@ class OperacionAlerta(Base):
 
     decisiones = relationship("DecisionAuditoria", back_populates="alerta")
     explicaciones = relationship("ExplicacionSHAP", back_populates="alerta")
+    reporte = relationship("GeneratedReport", back_populates="alerta", uselist=False)
 
     def to_dict(self):
         return {
@@ -243,6 +254,8 @@ class GeneratedReport(Base):
     unsupported_claims = Column(Integer, default=0)
     report_hash = Column(String(64), nullable=False)
     report_uuid = Column(String(50), nullable=False)
+
+    alerta = relationship("OperacionAlerta", back_populates="reporte")
 
     def to_dict(self):
         return {
