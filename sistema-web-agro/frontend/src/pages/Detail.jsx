@@ -270,18 +270,18 @@ export default function Detail() {
         trimmed = trimmed.replace(/^[-*]\s+/, '');
       }
 
-      // 5. Compilar citas legislativas dentro del texto (ej. [FDA-1])
+      // 5. Compilar citas legislativas, negritas (**), y código en línea (`) dentro del texto
       const regex = /(\[[A-Z0-9_-]+\])/g;
       const parts = trimmed.split(regex);
-      const processedLine = parts.map((part, partIdx) => {
+      const processedLine = parts.flatMap((part, partIdx) => {
         const match = part.match(/^\[([A-Z0-9_-]+)\]$/);
         if (match) {
           const docId = match[1];
           const doc = RAG_DOCUMENTS[docId];
           if (doc) {
-            return (
+            return [
               <a
-                key={partIdx}
+                key={`cit-${partIdx}`}
                 href={`#${docId}`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -292,16 +292,29 @@ export default function Detail() {
                 <span className="material-symbols-outlined text-[11px]">menu_book</span>
                 {part}
               </a>
-            );
+            ];
           }
         }
-        return part;
+
+        // Parsear negritas (**bold**) y código (`code`) en el texto restante
+        const boldAndCodeRegex = /(\*\*[^*]+\*\*|`[^`]+`)/g;
+        const subParts = part.split(boldAndCodeRegex);
+        
+        return subParts.map((subPart, subIdx) => {
+          if (subPart.startsWith('**') && subPart.endsWith('**')) {
+            return <strong key={`b-${partIdx}-${subIdx}`} className="text-on-surface font-semibold">{subPart.slice(2, -2)}</strong>;
+          }
+          if (subPart.startsWith('`') && subPart.endsWith('`')) {
+            return <code key={`c-${partIdx}-${subIdx}`} className="bg-white/5 border border-white/10 rounded px-1.5 py-0.5 text-[11px] text-secondary font-mono-data">{subPart.slice(1, -1)}</code>;
+          }
+          return subPart;
+        });
       });
 
       if (isListItem) {
         return (
           <div key={lineIdx} className="flex items-start gap-2 pl-4 py-1 text-on-surface-variant font-body-md text-[13px]">
-            <span className="text-secondary select-none shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            <span className="text-secondary select-none shrink-0 mt-2.5 w-1.5 h-1.5 rounded-full bg-secondary"></span>
             <div className="flex-1 leading-relaxed">{processedLine}</div>
           </div>
         );
