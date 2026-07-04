@@ -57,6 +57,8 @@ def main():
         db.query(OperacionAlerta).delete()
         db.query(ArtifactLineage).delete()
         db.query(PipelineRun).delete()
+        db.query(Usuario).delete()
+        db.query(DocumentoNormativo).delete()
         db.commit()
         
         # 3. Registrar la corrida de entrenamiento PipelineRun
@@ -138,10 +140,10 @@ def main():
         }
         
         imported_count = 0
-        
         for idx, row in df_anoms.reset_index().iterrows():
-            # Crear clave de la alerta
-            alert_key = f"{row.product_code}_{row.market_aggregated}_{row.week_start}"
+            # Crear clave de la alerta (removiendo marcas de tiempo de la clave e ID)
+            clean_date = pd.to_datetime(row.week_start).strftime('%Y-%m-%d')
+            alert_key = f"{row.product_code}_{row.market_aggregated}_{clean_date}"
             
             # Si no existe explicación o reporte asociado, usar pseudo-generación coherente
             explanation = local_explanations.get(alert_key, {})
@@ -227,6 +229,60 @@ def main():
                 db.commit()
                 print(f"  - Importados {imported_count} alertas...")
                 
+        # 6. Sembrar Usuarios
+        print("Sembrando usuarios por defecto y de prueba...")
+        from werkzeug.security import generate_password_hash
+        users_to_seed = [
+            ("admin", "admin@agro.gob.pe", generate_password_hash("admin"), "ADMIN", "Administrador de Tesis"),
+            ("auditor", "auditor@agro.gob.pe", generate_password_hash("auditor"), "AUDITOR", "Auditor de Alertas"),
+            ("auditor1", "ycozco@unsa.edu.pe", generate_password_hash("correct"), "AUDITOR", "Yoset Cozco Mauri"),
+            ("auditor2", "auditor_fito@agro.gob.pe", generate_password_hash("correct"), "AUDITOR", "Ing. Carlos Mendoza")
+        ]
+        for username, email, pwd_hash, rol, nombre in users_to_seed:
+            user = db.query(Usuario).filter_by(username=username).first()
+            if not user:
+                user = Usuario(
+                    username=username,
+                    email=email,
+                    password_hash=pwd_hash,
+                    rol=rol,
+                    nombre=nombre
+                )
+                db.add(user)
+        
+        # 7. Sembrar Documentos Normativos
+        print("Sembrando base de conocimientos RAG...")
+        knowledge_dir = BASE_DIR / "knowledge_base"
+        if knowledge_dir.exists():
+            for filepath in knowledge_dir.glob("*.md"):
+                try:
+                    content = filepath.read_text(encoding="utf-8")
+                    titulo = filepath.stem.replace("_", " ").title()
+                    # Heurística de categoria
+                    if "criteria" in filepath.name or "dictionary" in filepath.name:
+                        categoria = "FDA"
+                    elif "limitations" in filepath.name:
+                        categoria = "SENASA"
+                    else:
+                        categoria = "LEY_IA"
+                    
+                    # Para SQLite, el tipo de dato SqliteText almacena string. Para pgvector, lista de floats.
+                    # Usamos un vector dummy de ceros de 384 dimensiones
+                    if "sqlite" in str(db.bind.url):
+                        dummy_emb = str([0.0] * 384)
+                    else:
+                        dummy_emb = [0.0] * 384
+                    
+                    doc = DocumentoNormativo(
+                        titulo=titulo,
+                        categoria=categoria,
+                        contenido=content,
+                        embedding=dummy_emb
+                    )
+                    db.add(doc)
+                except Exception as ex_doc:
+                    print(f"Advertencia sembrando documento {filepath.name}: {ex_doc}")
+
         db.commit()
         print(f"[OK] Importacion completada: {imported_count} alertas reales y trazadas cargadas en la BD.")
         

@@ -21,10 +21,14 @@ import requests
 import numpy as np
 from datetime import datetime
 
+import urllib.parse
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Configuración del endpoint de prueba
 BASE_URL = os.getenv('BACKEND_URL', 'http://localhost:5000')
-ALERT_ID = 'AL-2026-0011' # Alerta semilla por defecto
-TARGET_URL = f"{BASE_URL}/api/alerts/{ALERT_ID}"
+ALERT_ID = 'avocado_CHL_2019-07-01' # Alerta real persistida
+TARGET_URL = f"{BASE_URL}/api/alerts/{urllib.parse.quote(ALERT_ID)}"
 
 # Configuración del stress test
 NUM_CONCURRENT_USERS = 10

@@ -1,9 +1,9 @@
-import os
-import json
-import pytest
+import sys
 from pathlib import Path
-from src.module5_validation import validate_report
-from src.module4_rag import TemplateProvider
+sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
+
+from pipeline.core.layer5_validation import validate_report
+from pipeline.core.layer4_rag_reporting import TemplateProvider
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 GOLD_DIR = BASE_DIR / "data" / "gold"

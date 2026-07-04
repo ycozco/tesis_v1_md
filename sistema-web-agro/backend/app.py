@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, session, make_response
 from flask_cors import CORS
 from werkzeug.security import check_password_hash
 from sqlalchemy import func
-from models import SessionLocal, init_tables, Usuario, OperacionAlerta, DecisionAuditoria, ExplicacionSHAP, SecurityLog, DocumentoNormativo, ConfiguracionPipeline
+from models import SessionLocal, init_tables, Usuario, OperacionAlerta, DecisionAuditoria, ExplicacionSHAP, SecurityLog, DocumentoNormativo, ConfiguracionPipeline, GeneratedReport
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', 'agro-intelligence-secret-2026-key')

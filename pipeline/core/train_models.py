@@ -27,7 +27,7 @@ import pandas as pd
 from datetime import datetime
 
 HOY = datetime.now().strftime("%Y-%m-%d")
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MODELING_DIR = os.path.join(ROOT, "codex-revision", "data_processed", "modeling")
 MODELS_DIR = os.path.join(ROOT, "models")
 LOG_DIR = os.path.join(ROOT, "codex-revision", "logs")
@@ -37,6 +37,7 @@ REPORTE_FILE = os.path.join(ROOT, "codex-revision", "reporte-entrenamiento-model
 GATE_FILE = os.path.join(ROOT, "codex-revision", "gate-pre-entrenamiento.md")
 
 os.makedirs(MODELS_DIR, exist_ok=True)
+os.makedirs(LOG_DIR, exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,

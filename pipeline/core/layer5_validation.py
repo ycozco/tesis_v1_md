@@ -18,7 +18,7 @@ import logging
 import json
 import re
 from pathlib import Path
-from module4_rag import TemplateProvider
+from pipeline.core.layer4_rag_reporting import TemplateProvider
 
 # Configuración de codificación de salida para Windows
 if hasattr(sys.stdout, 'reconfigure'):

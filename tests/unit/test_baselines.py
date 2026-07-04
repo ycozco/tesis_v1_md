@@ -1,6 +1,10 @@
+import sys
 import pandas as pd
 import numpy as np
-from src.train_models import BaselineMeanHistorico
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
+
+from pipeline.core.train_models import BaselineMeanHistorico
 
 def test_baseline_mean_historico():
     """
@@ -23,8 +27,7 @@ def test_baseline_mean_historico():
     # Vamos a parchear TARGET en el import o simplemente pasarlo.
     # En train_models.py:
     # 163:         if "mes" in df_train.columns and TARGET in df_train.columns:
-    # Vamos a importar TARGET para saber cuál es.
-    import src.train_models as tm
+    import pipeline.core.train_models as tm
     original_target = getattr(tm, "TARGET", "precio_kg_usd")
     
     # Asegurar que el DataFrame tiene la columna TARGET adecuada
