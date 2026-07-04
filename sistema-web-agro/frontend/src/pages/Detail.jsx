@@ -532,17 +532,33 @@ export default function Detail() {
           </div>
         </div>
 
-        {/* ----------------- CONDICIONALIDAD EXPERIMENTAL (SHAP Y RAG) ----------------- */}
+        {/* ----------------- SECCIÓN EXCLUSIVA DE EXPLICABILIDAD CON IA ----------------- */}
         {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
-          <>
-            {/* Layer 3: SHAP Explicability (Full Width) */}
-            <div className="xl:col-span-12 glass-panel rounded-xl p-6">
+          <div className="xl:col-span-12 grid grid-cols-1 xl:grid-cols-12 gap-card-gap p-6 bg-gradient-to-b from-[#131320]/80 to-[#0a0a0f]/40 border border-primary/20 rounded-2xl relative overflow-hidden my-4">
+            {/* Glow Decorative Header line */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+            
+            {/* Header Section */}
+            <div className="xl:col-span-12 flex items-center gap-3 mb-2 border-b border-white/5 pb-4">
+              <span className="material-symbols-outlined text-primary text-[32px] animate-pulse">auto_awesome</span>
+              <div>
+                <h3 className="font-display-lg text-headline-sm text-on-surface font-bold tracking-wide uppercase">
+                  MÓDULO DE EXPLICABILIDAD EXPLICATIVA CON IA
+                </h3>
+                <p className="text-on-surface-variant font-body-sm text-body-sm">
+                  Evaluación transparente bajo conformidad del Decreto Supremo N.° 115-2025-PCM (Reglamento de la Ley de IA del Perú).
+                </p>
+              </div>
+            </div>
+
+            {/* Layer 3: SHAP Explicability (Full Width Inside Module) */}
+            <div className="xl:col-span-12 glass-panel rounded-xl p-6 bg-white/[0.01]">
               <div className="flex justify-between items-end mb-6">
                 <div>
-                  <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+                  <h4 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
                     <span className="material-symbols-outlined text-tertiary">analytics</span>
                     Capa 3: Variables de Influencia Local (Atribución SHAP)
-                  </h3>
+                  </h4>
                   <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Factores que impulsan el score (Rojo aumenta la probabilidad de anomalía; Azul reduce el riesgo).</p>
                 </div>
                 <button 
@@ -570,7 +586,7 @@ export default function Detail() {
                         <span className={`font-mono-data text-[12px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
                           {isPositive ? `+${exp.shap_value.toFixed(2)}` : exp.shap_value.toFixed(2)}
                         </span>
-                        <span className="text-[10px] text-on-surface-variant font-mono-data ml-2">({exp.variable_valor})</span>
+                        <span className="text-[10px] text-on-surface-variant font-mono-data ml-2">(val: {exp.variable_valor})</span>
                       </div>
                     </div>
                   )
@@ -581,13 +597,13 @@ export default function Detail() {
               </div>
             </div>
 
-            {/* Layer 4: RAG Report (Col 1-7) */}
-            <div className="xl:col-span-7 glass-panel rounded-xl p-6 flex flex-col">
-              <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
+            {/* Layer 4: RAG Report (Full Width Inside Module) */}
+            <div className="xl:col-span-12 glass-panel rounded-xl p-6 flex flex-col bg-white/[0.01]">
+              <h4 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
                 <span className="material-symbols-outlined text-primary">description</span>
                 Capa 4: Narrativa Técnica de IA (Motor RAG)
-              </h3>
-              <div className="flex-1 glass-panel bg-surface-container-low/50 rounded-lg p-5 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[300px] whitespace-pre-wrap">
+              </h4>
+              <div className="flex-1 glass-panel bg-surface-container-low/50 rounded-lg p-5 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[350px] whitespace-pre-wrap">
                 {renderReportWithCitations(data.rag_report)}
               </div>
               <div className="mt-3 flex justify-end gap-2 text-on-surface-variant font-label-md text-[10px] uppercase tracking-wider">
@@ -596,8 +612,9 @@ export default function Detail() {
                 </span>
               </div>
             </div>
-          </>
+          </div>
         )}
+
 
         {/* Adjudication Panel (Col 8-12 / Col 1-5 if B) */}
         <div className={`${(condicion === 'INTEGRADO' || condicion === 'ADMIN') ? 'xl:col-span-5' : 'xl:col-span-12'} glass-panel-elevated rounded-xl p-6 flex flex-col border-primary/20`}>
