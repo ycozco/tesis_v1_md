@@ -431,12 +431,20 @@ def get_alert_detail(id_alerta):
             # Cargar decisión de auditoría si existe
             decision = db.query(DecisionAuditoria).filter_by(id_alerta=id_alerta).first()
             
+            # Cargar normativas asociadas para el RAG primero para evitar UnboundLocalError
+            docs = db.query(DocumentoNormativo).limit(3).all()
+
             # Cargar reporte RAG persistido
             stored_report = db.query(GeneratedReport).filter_by(id_alerta=id_alerta).first()
-            rag_report = stored_report.report_text if stored_report else "Reporte experimental no generado aún para esta alerta."
-            
-            # Cargar normativas asociadas para el RAG
-            docs = db.query(DocumentoNormativo).limit(3).all()
+            if stored_report:
+                rag_report = stored_report.report_text
+            else:
+                # Generar reporte explicativo RAG dinámico si no está persistido
+                load_ml_models()
+                features = get_feature_vector(alert)
+                desvio_fob = float(alert.valor_fob_esperado) - float(alert.valor_fob_declarado)
+                desvio_fob_pct = (desvio_fob / float(alert.valor_fob_esperado) * 100) if float(alert.valor_fob_esperado) > 0 else 0
+                rag_report = generate_offline_report(alert, features, docs, desvio_fob, desvio_fob_pct)
 
             return jsonify({
                 'alert': alert.to_dict(),
