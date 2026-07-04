@@ -137,12 +137,16 @@ def seed_db():
         # Re-crear tablas (limpieza completa)
         print("Re-creando tablas de la base de datos...")
         from models import Base
-        Base.metadata.drop_all(bind=engine)
         
         # Habilitar extensión pgvector si es PostgreSQL
         if engine.dialect.name == "postgresql":
             db.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
             db.commit()
+            # Usar CASCADE para eliminar tablas con restricciones de clave foránea
+            db.execute(text("DROP SCHEMA public CASCADE; CREATE SCHEMA public; GRANT ALL ON SCHEMA public TO postgres; GRANT ALL ON SCHEMA public TO public;"))
+            db.commit()
+        else:
+            Base.metadata.drop_all(bind=engine)
         
         init_tables()
         
