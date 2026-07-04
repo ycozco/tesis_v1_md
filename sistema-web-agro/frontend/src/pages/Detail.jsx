@@ -348,6 +348,25 @@ export default function Detail() {
         </div>
       </div>
 
+      {/* Experimental Condition Banner */}
+      <div className={`mb-4 flex items-center gap-3 px-4 py-2 rounded-lg text-sm ${
+        condicion === 'INTEGRADO' ? 'bg-primary/10 border border-primary/30 text-primary' :
+        condicion === 'ADMIN'     ? 'bg-secondary/10 border border-secondary/30 text-secondary' :
+                                    'bg-surface-container border border-white/10 text-on-surface-variant'
+      }`}>
+        <span className="material-symbols-outlined text-[18px]">
+          {condicion === 'INTEGRADO' ? 'visibility' : condicion === 'ADMIN' ? 'admin_panel_settings' : 'visibility_off'}
+        </span>
+        <span className="font-medium">
+          {condicion === 'INTEGRADO'
+            ? '🟢 Condición A — INTEGRADO: Capas de explicabilidad IA visibles'
+            : condicion === 'ADMIN'
+            ? '🔵 Modo Supervisión — Acceso completo a todas las capas de análisis'
+            : '🟡 Condición B — AISLADO: Solo métricas de detección (sin SHAP/RAG)'}
+        </span>
+        <span className="ml-auto font-mono-data text-[11px] opacity-60">{condicion}</span>
+      </div>
+
       {/* Grid Layout */}
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-card-gap">
         
@@ -447,7 +466,7 @@ export default function Detail() {
         </div>
 
         {/* ----------------- CONDICIONALIDAD EXPERIMENTAL (SHAP Y RAG) ----------------- */}
-        {condicion === 'INTEGRADO' && (
+        {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
           <>
             {/* Layer 3: SHAP Explicability (Full Width) */}
             <div className="xl:col-span-12 glass-panel rounded-xl p-6">
