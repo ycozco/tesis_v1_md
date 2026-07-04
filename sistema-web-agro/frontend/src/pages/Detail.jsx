@@ -444,308 +444,319 @@ export default function Detail() {
             ? '🔵 Modo Supervisión — Acceso completo a todas las capas de análisis'
             : '🟡 Condición B — AISLADO: Solo métricas de detección (sin SHAP/RAG)'}
         </span>
-        <span className="ml-auto font-mono-data text-[11px] opacity-60">{condicion}</span>
-      </div>
-
-      {/* Grid Layout */}
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-card-gap">
+            {/* Grid Layout Principal según Imagen */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg mt-6">
         
-        {/* Layer 1: GBDT Prediction (Col 1-6) */}
-        <div className="xl:col-span-6 glass-panel rounded-xl p-6 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-br from-error/5 to-transparent opacity-50 pointer-events-none"></div>
-          <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-6">
-            <span className="material-symbols-outlined text-secondary">monitoring</span>
-            Capa 1: Predicción de Valor (GBDT)
-          </h3>
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1 w-full space-y-6">
-              <div>
-                <div className="flex justify-between font-label-md text-label-md mb-2">
-                  <span className="text-on-surface-variant">FOB Declarado</span>
-                  <span className="text-on-surface font-mono-data">${alert.valor_fob_declarado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+        {/* Columna Izquierda: Métricas de Riesgo y Capas Analíticas (lg:col-span-8) */}
+        <div className="lg:col-span-8 flex flex-col gap-stack-lg">
+          
+          {/* Fila 1: Ensemble Card y Distribución de Probabilidad */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+            
+            {/* Tarjeta de Severidad PyOD */}
+            <div className="glass-panel rounded-xl p-stack-lg flex flex-col justify-center items-center relative overflow-hidden min-h-[220px]">
+              <div className="z-10 text-center space-y-stack-sm">
+                <span className="material-symbols-outlined text-4xl text-error">warning</span>
+                <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
+                  Puntaje de Severidad PyOD
+                </h3>
+                <div className="text-[34px] font-bold tracking-tight uppercase anomaly-gradient leading-none my-1">
+                  {alert.score_anomalia > 0.8 ? 'RIESGO CRÍTICO' : alert.score_anomalia > 0.6 ? 'RIESGO ALTO' : 'RIESGO BAJO'}
                 </div>
-                <div className="h-3 w-full bg-surface-container rounded-full overflow-hidden">
-                  <div className="h-full bg-surface-variant rounded-full relative" style={{ width: '60%' }}></div>
+                <p className="font-mono-sm text-mono-sm text-on-surface-variant">
+                  Puntaje de Conjunto: <span className="text-white font-bold">{alert.score_anomalia.toFixed(4)}</span> / 1.000
+                </p>
+              </div>
+            </div>
+
+            {/* Distribución de Probabilidad y Métricas */}
+            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between">
+              <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-2 text-[11px]">
+                Distribución de Probabilidad
+              </h3>
+              <div className="relative h-20 w-full chart-grid flex items-end mb-4 border-b border-l border-white/10 px-2 pb-1 overflow-hidden">
+                <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 50">
+                  <path d="M 0 50 C 20 50, 30 10, 50 5, 70 10, 80 50, 100 50" fill="none" stroke="rgba(156, 240, 255, 0.4)" strokeWidth="1.5"></path>
+                  <circle cx={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} cy="25" fill="#ef4444" r="3" className="animate-pulse"></circle>
+                  <line stroke="#ef4444" strokeDasharray="2" strokeWidth="0.75" x1={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} x2={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} y1="25" y2="50"></line>
+                </svg>
+                <div className="absolute top-1 left-2 text-[8px] font-mono-sm text-error">DAM Actual</div>
+                <div className="absolute top-1 right-2 text-[8px] font-mono-sm text-tertiary">Media Clúster</div>
+              </div>
+              <div className="grid grid-cols-3 gap-2 border-t border-white/5 pt-3">
+                <div className="text-center">
+                  <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">Precisión</div>
+                  <div className="font-bold text-primary font-mono-sm text-[12px]">92.4%</div>
+                </div>
+                <div className="text-center border-l border-r border-white/10">
+                  <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">Recall</div>
+                  <div className="font-bold text-primary font-mono-sm text-[12px]">88.7%</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">F1-Score</div>
+                  <div className="font-bold text-primary font-mono-sm text-[12px]">0.905</div>
                 </div>
               </div>
-              <div>
-                <div className="flex justify-between font-label-md text-label-md mb-2">
-                  <span className="text-primary flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[14px]">psychiatry</span> FOB Esperado (Modelo)
-                  </span>
-                  <span className="text-primary font-mono-data">${alert.valor_fob_esperado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+            </div>
+
+          </div>
+
+          {/* GBDT Regressor & Atribución Variables SHAP Horizontal */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+            
+            {/* Análisis Regresor GBDT */}
+            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between min-h-[170px]">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-primary text-[16px]">analytics</span>
+                <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
+                  Análisis Regresor GBDT
+                </h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-stack-sm mb-3">
+                <div>
+                  <p className="text-on-surface-variant font-label-md text-[10px] uppercase">FOB Declarado</p>
+                  <p className="font-headline-md text-lg font-bold text-error">${alert.valor_fob_declarado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
                 </div>
-                <div className="h-3 w-full bg-surface-container rounded-full overflow-hidden">
-                  <div className="h-full bg-primary/80 rounded-full relative shadow-[0_0_10px_rgba(118,219,143,0.5)]" style={{ width: '85%' }}>
-                    {/* Marker for declared value */}
-                    <div className="absolute top-0 bottom-0 left-[70%] w-1 bg-white/50 z-10"></div>
+                <div>
+                  <p className="text-on-surface-variant font-label-md text-[10px] uppercase">Rango Esperado</p>
+                  <p className="font-headline-md text-lg font-bold text-primary">${alert.valor_fob_esperado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                {/* Price Deviation Gauge */}
+                <div className="relative w-16 h-10 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-full h-full transform" viewBox="0 0 100 60">
+                    <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="rgba(255,255,255,0.1)" strokeLinecap="round" strokeWidth="8"></path>
+                    <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#ec6a06" strokeDasharray="126" strokeDashoffset="30" strokeLinecap="round" strokeWidth="8"></path>
+                    <line stroke="white" strokeLinecap="round" strokeWidth="2.5" transform={`rotate(${180 - (Math.max(0, Math.min(parseFloat(dev) || 0, 30)) / 30 * 180)} 50 50)`} x1="50" x2="50" y1="50" y2="15"></line>
+                  </svg>
+                </div>
+                <p className="font-mono-sm text-[10px] text-secondary-fixed-dim bg-[#2c1a11]/45 p-2 rounded border border-secondary/15 flex-1">
+                  Desviación: <strong className="text-error">-{dev}%</strong> del centroide. Impacto fiscal est.: <strong className="text-white">-${Math.abs(alert.valor_fob_esperado - alert.valor_fob_declarado).toLocaleString('en-US', {maximumFractionDigits:0})}</strong>
+                </p>
+              </div>
+            </div>
+
+            {/* Atribución de Variables SHAP (Barras Horizontales) */}
+            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-tertiary text-[16px]">bar_chart</span>
+                <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
+                  Atribución de Variables (SHAP)
+                </h3>
+              </div>
+              <div className="space-y-2">
+                {explanations.slice(0, 4).map((exp, index) => {
+                  const isPositive = exp.shap_value >= 0
+                  const absVal = Math.min(Math.abs(exp.shap_value) * 150, 95)
+                  return (
+                    <div key={exp.id_explicacion || index} className="space-y-0.5">
+                      <div className="flex justify-between text-[9px] font-mono-sm uppercase">
+                        <span className="text-on-surface-variant">{exp.variable_nombre}</span>
+                        <span className={`font-bold ${isPositive ? 'text-error' : 'text-tertiary'}`}>
+                          {isPositive ? `+${exp.shap_value.toFixed(2)}` : exp.shap_value.toFixed(2)}
+                        </span>
+                      </div>
+                      <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden relative">
+                        <div 
+                          className={`h-full rounded-full ${isPositive ? 'bg-error' : 'bg-tertiary'}`}
+                          style={{ width: `${absVal}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+              <button 
+                className="mt-2 w-full py-1.5 border border-white/10 rounded-lg text-[10px] font-label-md text-on-surface-variant hover:bg-white/5 hover:text-white transition-colors flex items-center justify-center gap-2"
+                onClick={() => handleOpenRag('LMY-IA-D115')}
+              >
+                <span className="material-symbols-outlined text-[12px]">info</span>
+                Ver detalles RAG
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* Columna Derecha: Explicabilidad y Acción (lg:col-span-4) */}
+        <div className="lg:col-span-4 flex flex-col gap-stack-lg">
+          
+          {/* Variables de Atribución SHAP con Datos */}
+          <div className="glass-panel rounded-xl p-stack-md flex flex-col">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
+                Variables de Atribución SHAP
+              </h3>
+              <span className="material-symbols-outlined text-on-surface-variant text-sm">info</span>
+            </div>
+            
+            <ul className="space-y-2">
+              {explanations.map((exp, index) => {
+                const isPositive = exp.shap_value >= 0
+                const percent = Math.min(Math.abs(exp.shap_value) * 100, 100)
+                return (
+                  <li key={exp.id_explicacion || index} className="flex flex-col bg-white/5 p-2 rounded-lg border border-white/10">
+                    <div className="flex justify-between items-center mb-1">
+                      <div className="flex items-center gap-2">
+                        <span className={`material-symbols-outlined text-[14px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
+                          {isPositive ? 'trending_up' : 'trending_down'}
+                        </span>
+                        <span className="font-mono-sm text-[11px] text-on-surface-variant uppercase truncate max-w-[120px]">{exp.variable_nombre}</span>
+                      </div>
+                      <span className={`font-bold font-mono-sm text-[11px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
+                        {isPositive ? `+${exp.shap_value.toFixed(2)}` : exp.shap_value.toFixed(2)}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-[9px] font-mono-sm">
+                      <span className="text-white/50">Valor: {exp.variable_valor}</span>
+                      <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div className={`h-full ${isPositive ? 'bg-error' : 'bg-tertiary'}`} style={{ width: `${percent}%` }}></div>
+                      </div>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+            <div className="text-[9px] font-mono-sm text-on-surface-variant italic mt-3 pt-2 border-t border-white/5 flex justify-between">
+              <span>Base E[f(x)] = 0.51</span>
+              <span>Salida = {(0.51 + explanations.reduce((acc, cur) => acc + cur.shap_value, 0)).toFixed(2)}</span>
+            </div>
+          </div>
+
+          {/* Adjudicación Rápida (Formulario de Acción) */}
+          <div className="glass-panel rounded-xl p-stack-md flex flex-col flex-1 min-h-[220px] justify-between">
+            <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-3 text-[11px]">
+              Adjudicación Rápida
+            </h3>
+            
+            <form className="flex-1 flex flex-col justify-between" onSubmit={handleFormSubmit}>
+              <div className="space-y-3">
+                <div className="flex gap-2">
+                  <button 
+                    type="button"
+                    onClick={() => !isAudited && setUserDecision(1)}
+                    className={`flex-1 py-2 px-1 text-[10px] font-bold rounded border ${userDecision === 1 ? 'bg-error/20 border-error text-error' : 'border-white/10 text-on-surface-variant'} transition-colors`}
+                  >
+                    Anomalía (TP)
+                  </button>
+                  <button 
+                    type="button"
+                    onClick={() => !isAudited && setUserDecision(0)}
+                    className={`flex-1 py-2 px-1 text-[10px] font-bold rounded border ${userDecision === 0 ? 'bg-secondary/20 border-secondary text-secondary' : 'border-white/10 text-on-surface-variant'} transition-colors`}
+                  >
+                    Falsa Alarma
+                  </button>
+                  <button 
+                    type="button"
+                    onClick={() => !isAudited && setUserDecision(2)}
+                    className={`flex-1 py-2 px-1 text-[10px] font-bold rounded border ${userDecision === 2 ? 'bg-tertiary/20 border-tertiary text-tertiary' : 'border-white/10 text-on-surface-variant'} transition-colors`}
+                  >
+                    Inspección
+                  </button>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="font-label-md text-[10px] text-on-surface-variant uppercase">Justificación Técnica</label>
+                  <textarea 
+                    className="w-full bg-white/5 border border-white/10 rounded-lg p-2 font-mono-sm text-mono-sm focus:border-primary focus:ring-0 outline-none min-h-[60px] custom-scrollbar" 
+                    placeholder="Ingrese comentarios de auditoría..."
+                    value={justificationText}
+                    onChange={(e) => !isAudited && setJustificationText(e.target.value.slice(0, 250))}
+                    required
+                    disabled={isAudited}
+                  />
+                </div>
+
+                {/* Stars alignment */}
+                <div className="flex items-center justify-between py-1 border-t border-white/5 mt-1">
+                  <span className="text-[9px] text-on-surface-variant uppercase">Calificación IA:</span>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map(starVal => (
+                      <button 
+                        key={starVal}
+                        className="transition-colors focus:outline-none"
+                        type="button"
+                        onClick={() => !isAudited && setLikertComprehension(starVal)}
+                        onMouseEnter={() => !isAudited && setHoverLikert(starVal)}
+                        onMouseLeave={() => !isAudited && setHoverLikert(0)}
+                        disabled={isAudited}
+                      >
+                        <span 
+                          className={`material-symbols-outlined text-[16px] ${
+                            starVal <= (hoverLikert || likertComprehension) ? 'text-primary' : 'text-on-surface-variant'
+                          }`}
+                          style={{ fontVariationSettings: starVal <= (hoverLikert || likertComprehension) ? "'FILL' 1" : "'FILL' 0" }}
+                        >
+                          star
+                        </span>
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Semicircular SVG Gauge (Task 2.3) */}
-            {(() => {
-              const cleanPct = Math.max(0, Math.min(parseFloat(dev) || 0, 30))
-              const angle = 180 - (cleanPct / 30 * 180) // 180deg (0% deviation) to 0deg (30% deviation)
-              const radian = (angle * Math.PI) / 180
-              const pointerX = 50 + 35 * Math.cos(radian)
-              const pointerY = 50 - 35 * Math.sin(radian)
-              return (
-                <div className="flex flex-col items-center justify-center shrink-0 w-36 h-28 bg-white/[0.02] border border-white/5 rounded-xl p-3">
-                  <svg className="w-full h-full overflow-visible" viewBox="0 0 100 60">
-                    {/* Background Arcs for green, orange, red zones */}
-                    {/* Zone 1: 0 - 5% (180deg to 150deg) */}
-                    <path d="M 10 50 A 40 40 0 0 1 15.36 30" fill="none" stroke="#76db8f" strokeWidth="8" strokeLinecap="round" />
-                    {/* Zone 2: 5 - 15% (150deg to 90deg) */}
-                    <path d="M 15.36 30 A 40 40 0 0 1 50 10" fill="none" stroke="#f97316" strokeWidth="8" />
-                    {/* Zone 3: 15 - 30% (90deg to 0deg) */}
-                    <path d="M 50 10 A 40 40 0 0 1 90 50" fill="none" stroke="#ef4444" strokeWidth="8" strokeLinecap="round" />
 
-                    {/* Center Pin */}
-                    <circle cx="50" cy="50" r="5" fill="#fff" className="shadow-lg" />
-                    {/* Pointer Hand */}
-                    <line x1="50" y1="50" x2={pointerX} y2={pointerY} stroke="#fff" strokeWidth="2.5" strokeLinecap="round" className="transition-all duration-500 ease-out" />
-                    
-                    {/* Numeric deviation inside */}
-                    <text x="50" y="44" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold" className="font-mono-data">
-                      {parseFloat(dev) > 0 ? `+${dev}%` : `${dev}%`}
-                    </text>
-                    <text x="50" y="54" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="4.5" fontWeight="bold" className="font-label-md uppercase tracking-wider">
-                      Desviación
-                    </text>
-                  </svg>
-                </div>
-              )
-            })()}
-          </div>
-        </div>
-
-        {/* Layer 2: Ensemble Score (Col 7-12) */}
-        <div className="xl:col-span-6 glass-panel rounded-xl p-6 flex flex-col justify-between">
-          <div>
-            <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-2">
-              <span className="material-symbols-outlined text-error">gavel</span>
-              Capa 2: Severidad de Anomalía (Ensemble)
-            </h3>
-            <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Consenso ponderado de Isolation Forest, Local Outlier Factor y ECOD.</p>
-            
-            {/* Curva de Probabilidad y Distribución */}
-            <div className="relative h-20 w-full bg-white/[0.01] border-b border-l border-white/10 px-2 pb-1 flex items-end mb-4 overflow-hidden">
-              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 50">
-                <path d="M 0 50 C 20 50, 30 10, 50 5, 70 10, 80 50, 100 50" fill="none" stroke="rgba(156, 240, 255, 0.4)" strokeWidth="1.5"></path>
-                <circle cx={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} cy="25" fill="#ef4444" r="3" className="animate-pulse"></circle>
-                <line stroke="#ef4444" strokeDasharray="2" strokeWidth="0.75" x1={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} x2={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} y1="25" y2="50"></line>
-              </svg>
-              <div className="absolute top-1 left-2 text-[8px] font-mono-sm text-error">DAM Actual: {alert.score_anomalia.toFixed(3)}</div>
-              <div className="absolute top-1 right-2 text-[8px] font-mono-sm text-tertiary">Media Clúster</div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2 border-t border-white/5 pt-3">
-            <div className="text-center">
-              <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">Precisión</div>
-              <div className="font-bold text-primary font-mono-sm text-[12px]">92.4%</div>
-            </div>
-            <div className="text-center border-l border-r border-white/10">
-              <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">Recall</div>
-              <div className="font-bold text-primary font-mono-sm text-[12px]">88.7%</div>
-            </div>
-            <div className="text-center">
-              <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">F1-Score</div>
-              <div className="font-bold text-primary font-mono-sm text-[12px]">0.905</div>
-            </div>
-          </div>
-        </div>
-
-        {/* ----------------- SECCIÓN DE EXPLICABILIDAD E INTERPRETACIÓN DE IA ----------------- */}
-        {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
-          <>
-            {/* Capa 3: Atribución SHAP (xl:col-span-4) */}
-            <div className="xl:col-span-4 glass-panel rounded-xl p-6 flex flex-col justify-between">
-              <div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
-                  <span className="material-symbols-outlined text-tertiary">analytics</span>
-                  Atribución de Variables (SHAP)
-                </h3>
-                <p className="font-body-sm text-[12px] text-on-surface-variant mb-6">Influencia de variables locales (Rojo aumenta riesgo; Azul reduce).</p>
-                <div className="space-y-4">
-                  {explanations.map((exp, index) => {
-                    const isPositive = exp.shap_value >= 0
-                    const absVal = Math.min(Math.abs(exp.shap_value) * 150, 95) // Scale for visualization
-                    
-                    return (
-                      <div key={exp.id_explicacion || index} className="flex flex-col gap-1 group">
-                        <div className="flex justify-between font-label-md text-[11px] text-on-surface">
-                          <span className="truncate max-w-[120px]">{exp.variable_nombre}</span>
-                          <span className="text-on-surface-variant font-mono-data text-[10px]">(val: {exp.variable_valor})</span>
-                        </div>
-                        <div className={`w-full flex items-center gap-2 ${isPositive ? '' : 'flex-row-reverse justify-end'}`}>
-                          <div 
-                            className={`h-2.5 rounded-sm transition-all duration-300 ${isPositive ? 'bg-error/80' : 'bg-tertiary/80'}`}
-                            style={{ width: `${absVal}%` }}
-                          ></div>
-                          <span className={`font-mono-data text-[10px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
-                            {isPositive ? `+${exp.shap_value.toFixed(2)}` : exp.shap_value.toFixed(2)}
-                          </span>
-                        </div>
-                      </div>
-                    )
-                  })}
-                  {explanations.length === 0 && (
-                    <div className="text-center py-4 text-on-surface-variant">No se registraron explicaciones SHAP.</div>
-                  )}
-                </div>
-              </div>
-              <button 
-                className="mt-6 text-primary text-label-md font-label-md flex items-center gap-1 hover:underline text-[12px]"
-                onClick={() => handleOpenRag('LMY-IA-D115')}
-              >
-                Regulación Ley de IA <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-              </button>
-            </div>
-
-            {/* Capa 4: Narrativa RAG (xl:col-span-4) */}
-            <div className="xl:col-span-4 glass-panel rounded-xl p-6 flex flex-col justify-between">
-              <div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
-                  <span className="material-symbols-outlined text-primary">description</span>
-                  Narrativa Técnica de IA (RAG)
-                </h3>
-                <p className="font-body-sm text-[12px] text-on-surface-variant mb-4">Sustentación jurídica y logística contextualizada.</p>
-                <div className="glass-panel bg-surface-container-low/40 rounded-lg p-4 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[300px] whitespace-pre-wrap">
-                  {renderReportWithCitations(data.rag_report)}
-                </div>
-              </div>
-              <div className="mt-4 flex justify-between items-center text-[10px] text-on-surface-variant uppercase tracking-wider">
-                <span className="flex items-center gap-1 font-mono-data">
-                  <span className="material-symbols-outlined text-[12px] text-primary">auto_awesome</span> RAG Core v2.5
-                </span>
-              </div>
-            </div>
-          </>
-        )}
-
-        {/* Adjudication Panel (xl:col-span-4 / xl:col-span-12 if B) */}
-        <div className={`${(condicion === 'INTEGRADO' || condicion === 'ADMIN') ? 'xl:col-span-4' : 'xl:col-span-12'} glass-panel-elevated rounded-xl p-6 flex flex-col border-primary/20`}>
-          <h3 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2 mb-6">
-            <span className="material-symbols-outlined">rule</span>
-            Adjudicación de Operación
-          </h3>
-          
-          <form className="flex-1 flex flex-col space-y-6" onSubmit={handleFormSubmit}>
-            
-            {/* Radio Buttons */}
-            <div className="space-y-3">
-              <label className={`flex items-center gap-3 p-3 rounded-lg border border-outline/30 ${isAudited ? '' : 'cursor-pointer hover:bg-white/5'} transition-colors focus-within:border-primary focus-within:bg-primary/5 ${userDecision === 1 ? 'border-primary bg-primary/5' : ''}`}>
-                <input 
-                  className="w-4 h-4 text-primary bg-transparent border-outline focus:ring-primary focus:ring-offset-background" 
-                  name="adjudication" 
-                  type="radio" 
-                  value="1"
-                  checked={userDecision === 1}
-                  onChange={() => !isAudited && setUserDecision(1)}
-                  disabled={isAudited}
-                />
-                <span className="font-body-md text-on-surface font-semibold">Anomalía Confirmada (True Positive)</span>
-              </label>
-              <label className={`flex items-center gap-3 p-3 rounded-lg border border-outline/30 ${isAudited ? '' : 'cursor-pointer hover:bg-white/5'} transition-colors focus-within:border-secondary focus-within:bg-secondary/5 ${userDecision === 0 ? 'border-secondary bg-secondary/5' : ''}`}>
-                <input 
-                  className="w-4 h-4 text-secondary bg-transparent border-outline focus:ring-secondary focus:ring-offset-background" 
-                  name="adjudication" 
-                  type="radio" 
-                  value="0"
-                  checked={userDecision === 0}
-                  onChange={() => !isAudited && setUserDecision(0)}
-                  disabled={isAudited}
-                />
-                <span className="font-body-md text-on-surface font-semibold">Falsa Alarma (Deriva del Modelo)</span>
-              </label>
-              <label className={`flex items-center gap-3 p-3 rounded-lg border border-outline/30 ${isAudited ? '' : 'cursor-pointer hover:bg-white/5'} transition-colors focus-within:border-tertiary focus-within:bg-tertiary/5 ${userDecision === 2 ? 'border-tertiary bg-tertiary/5' : ''}`}>
-                <input 
-                  className="w-4 h-4 text-tertiary bg-transparent border-outline focus:ring-tertiary focus:ring-offset-background" 
-                  name="adjudication" 
-                  type="radio" 
-                  value="2"
-                  checked={userDecision === 2}
-                  onChange={() => !isAudited && setUserDecision(2)}
-                  disabled={isAudited}
-                />
-                <span className="font-body-md text-on-surface font-semibold">Dudoso / Requiere Inspección Física</span>
-              </label>
-            </div>
-
-            {/* Justification Text */}
-            <div className="space-y-2">
-              <div className="flex justify-between font-label-md text-label-md text-on-surface-variant">
-                <span>Nota de Justificación Técnica</span>
-                <span className="font-mono-data text-[10px]">{justificationText.length} / 250</span>
-              </div>
-              <textarea 
-                className="w-full bg-transparent border border-outline/50 rounded-lg p-3 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all resize-none disabled:opacity-75" 
-                placeholder="Ingrese el razonamiento técnico que sustente su clasificación..." 
-                rows="3"
-                value={justificationText}
-                onChange={(e) => !isAudited && setJustificationText(e.target.value.slice(0, 250))}
-                required
-                disabled={isAudited}
-              />
-            </div>
-
-            {/* Likert Scale */}
-            <div className="space-y-2">
-              <label className="font-label-md text-label-md text-on-surface-variant block">Calificación de Comprensión de Explicación de IA</label>
-              <div className="flex items-center gap-2">
-                {[1, 2, 3, 4, 5].map(starVal => (
+              {!isAudited ? (
+                <div className="grid grid-cols-2 gap-stack-sm pt-2">
                   <button 
-                    key={starVal}
-                    className="transition-colors focus:outline-none"
-                    type="button"
-                    onClick={() => !isAudited && setLikertComprehension(starVal)}
-                    onMouseEnter={() => !isAudited && setHoverLikert(starVal)}
-                    onMouseLeave={() => !isAudited && setHoverLikert(0)}
-                    disabled={isAudited}
+                    className="bg-primary text-on-primary font-label-md text-[11px] py-1.5 rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1 font-bold"
+                    type="submit"
                   >
-                    <span 
-                      className={`material-symbols-outlined text-[28px] ${
-                        starVal <= (hoverLikert || likertComprehension) ? 'text-primary' : 'text-on-surface-variant'
-                      }`}
-                      style={{ fontVariationSettings: starVal <= (hoverLikert || likertComprehension) ? "'FILL' 1" : "'FILL' 0" }}
-                    >
-                      star
-                    </span>
+                    <span className="material-symbols-outlined text-[14px]">gavel</span>
+                    Adjudicar
                   </button>
-                ))}
-                <span className="text-[11px] font-mono-data text-on-surface-variant ml-2">
-                  {likertComprehension === 1 && 'Muy Incomprensible'}
-                  {likertComprehension === 2 && 'Dificultosa'}
-                  {likertComprehension === 3 && 'Aceptable'}
-                  {likertComprehension === 4 && 'Comprensible'}
-                  {likertComprehension === 5 && 'Altamente Explicable'}
-                </span>
-              </div>
-            </div>
+                  <button 
+                    className="border border-white/10 text-white font-label-md text-[11px] py-1.5 rounded-lg hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-1"
+                    type="button"
+                    onClick={() => {
+                      if (!isAudited) {
+                        setUserDecision(2);
+                        setJustificationText("Operación escalada para revisión física manual.");
+                        setLikertComprehension(3);
+                      }
+                    }}
+                  >
+                    <span className="material-symbols-outlined text-[14px]">assignment_return</span>
+                    Escalar
+                  </button>
+                </div>
+              ) : (
+                <div className="p-2 bg-primary/10 border border-primary/20 text-primary rounded-lg text-center font-label-md text-[10px] flex justify-center items-center gap-1 mt-2">
+                  <span className="material-symbols-outlined text-[14px]">lock</span>
+                  DECISIÓN REGISTRADA
+                </div>
+              )}
+            </form>
+          </div>
 
-            {/* Submit Action */}
-            {!isAudited ? (
-              <button 
-                className="w-full mt-auto bg-primary text-on-primary font-label-md text-label-md py-3 px-4 rounded-lg hover:bg-primary-fixed transition-colors flex justify-center items-center gap-2 shadow-[0_0_15px_rgba(118,219,143,0.3)] hover:shadow-[0_0_25px_rgba(118,219,143,0.5)]" 
-                type="submit"
-              >
-                <span className="material-symbols-outlined text-[18px]">send</span>
-                Enviar Decisión a Telemetría
-              </button>
-            ) : (
-              <div className="p-4 bg-primary/10 border border-primary/20 text-primary rounded-lg text-center font-label-md text-label-md flex justify-center items-center gap-2">
-                <span className="material-symbols-outlined">lock</span>
-                DECISIÓN REGISTRADA EN EL HISTORIAL
-              </div>
-            )}
-          </form>
         </div>
 
-        {/* Historial de la Empresa Exportadora */}
-        <div className="xl:col-span-12 glass-panel rounded-xl p-6">
+      </div>
+
+      {/* ----------------- CAPA 4 NARRATIVA TÉCNICA RAG (Ancho Completo Abajo) ----------------- */}
+      {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
+        <div className="glass-panel rounded-xl p-6 mt-stack-lg flex flex-col bg-white/[0.01]">
+          <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
+            <span className="material-symbols-outlined text-primary">description</span>
+            Capa 4: Narrativa Técnica de IA (Motor RAG)
+          </h3>
+          <p className="font-body-sm text-[12px] text-on-surface-variant mb-4">Sustentación jurídica y logística contextualizada.</p>
+          <div className="glass-panel bg-surface-container-low/40 rounded-lg p-4 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[250px] whitespace-pre-wrap">
+            {renderReportWithCitations(data.rag_report)}
+          </div>
+          <div className="mt-3 flex justify-end gap-2 text-on-surface-variant font-label-md text-[9px] uppercase tracking-wider">
+            <span className="flex items-center gap-1 font-mono-data">
+              <span className="material-symbols-outlined text-[12px] text-primary">auto_awesome</span> Generado por RAG Core v2.5
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Historial de la Empresa Exportadora */}
+      <div className="xl:col-span-12 glass-panel rounded-xl p-6">
           <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
             <span className="material-symbols-outlined text-primary">history_edu</span>
             Historial del Exportador (Comportamiento de Reincidencia)

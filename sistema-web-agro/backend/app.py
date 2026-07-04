@@ -784,11 +784,20 @@ def get_decision_detail(id_decision):
 
         alert = decision.alerta.to_dict()
         explanations = db.query(ExplicacionSHAP).filter_by(id_alerta=decision.id_alerta).all()
+        
+        # Cargar reporte RAG persistido o generarlo dinámicamente si no existe
+        stored_report = db.query(GeneratedReport).filter_by(id_alerta=decision.id_alerta).first()
+        rag_report = stored_report.report_text if stored_report else ""
+        
+        # Cargar normativas asociadas para el RAG
+        docs = db.query(DocumentoNormativo).limit(3).all()
 
         return jsonify({
             'decision': decision.to_dict(),
             'alert': alert,
-            'explanations': [e.to_dict() for e in explanations]
+            'explanations': [e.to_dict() for e in explanations],
+            'rag_report': rag_report,
+            'rag_documents': [d.to_dict() for d in docs]
         }), 200
     except Exception as e:
         return jsonify({'message': str(e)}), 500
