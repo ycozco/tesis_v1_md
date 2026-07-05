@@ -100,9 +100,9 @@ export default function Alerts() {
   }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="z-10 relative space-y-card-gap">
       {/* Header */}
-      <header className="flex flex-col md:flex-row md:items-end justify-between mb-card-gap shrink-0 gap-4">
+      <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1 className="font-headline-lg text-headline-lg text-on-surface mb-1">Bandeja de Alertas de Telemetría</h1>
           <p className="font-body-md text-body-md text-on-surface-variant">Monitoreo de desviaciones en tiempo real en flujos de datos agroexportadores.</p>
@@ -121,7 +121,7 @@ export default function Alerts() {
       </header>
 
       {/* Advanced Filter Bar (Glass Panel) */}
-      <section className="glass-panel rounded-xl p-4 mb-card-gap shrink-0 flex flex-col lg:flex-row gap-4 items-center">
+      <section className="glass-panel rounded-xl p-4 flex flex-col lg:flex-row gap-4 items-center">
         {/* Search Input */}
         <div className="relative w-full lg:w-1/3">
           <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
@@ -188,15 +188,15 @@ export default function Alerts() {
       </section>
 
       {/* Data Table Container */}
-      <section className="glass-panel rounded-xl flex-1 flex flex-col overflow-hidden relative min-h-[400px]">
+      <section className="glass-panel rounded-xl flex flex-col overflow-hidden relative min-h-[400px]">
         {loading ? (
-          <div className="flex-grow flex items-center justify-center">
+          <div className="flex-grow flex items-center justify-center min-h-[300px]">
             <span className="material-symbols-outlined text-primary text-4xl animate-spin">sync</span>
             <span className="ml-3 text-on-surface font-medium">Buscando operaciones aduaneras...</span>
           </div>
         ) : (
           <>
-            <div className="table-container overflow-auto flex-1">
+            <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse audit-table whitespace-nowrap">
                 <thead className="sticky top-0 z-10 font-label-md text-label-md text-on-surface uppercase tracking-wider bg-surface-container-high/90 backdrop-blur-md">
                   <tr className="border-b border-white/10">

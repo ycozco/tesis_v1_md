@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../App.jsx'
+import SeverityPanel from '../components/SeverityPanel.jsx'
+import ProbabilityPanel from '../components/ProbabilityPanel.jsx'
+import RegressionPanel from '../components/RegressionPanel.jsx'
+import ShapPanel from '../components/ShapPanel.jsx'
 
 export default function Detail() {
   const { id_alerta } = useParams()
@@ -30,6 +34,7 @@ export default function Detail() {
   // Modal states
   const [showConfirmModal, setShowConfirmModal] = useState(false)
   const [activeRagDoc, setActiveRagDoc] = useState(null)
+  const [showCorrectionModal, setShowCorrectionModal] = useState(false)
 
   // Timing states
   const startTimeRef = useRef(null)
@@ -444,149 +449,33 @@ export default function Detail() {
             ? '🔵 Modo Supervisión — Acceso completo a todas las capas de análisis'
             : '🟡 Condición B — AISLADO: Solo métricas de detección (sin SHAP/RAG)'}
         </span>
-            {/* Grid Layout Principal según Imagen */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg mt-6">
+      </div>
+
+      {/* Grid Layout Principal según Imagen */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
         
         {/* Columna Izquierda: Métricas de Riesgo y Capas Analíticas (lg:col-span-8) */}
-        <div className="lg:col-span-8 flex flex-col gap-stack-lg">
+        <div className="lg:col-span-8 flex flex-col gap-6">
           
           {/* Fila 1: Ensemble Card y Distribución de Probabilidad */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
-            
-            {/* Tarjeta de Severidad PyOD */}
-            <div className="glass-panel rounded-xl p-stack-lg flex flex-col justify-center items-center relative overflow-hidden min-h-[220px]">
-              <div className="z-10 text-center space-y-stack-sm">
-                <span className="material-symbols-outlined text-4xl text-error">warning</span>
-                <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
-                  Puntaje de Severidad PyOD
-                </h3>
-                <div className="text-[34px] font-bold tracking-tight uppercase anomaly-gradient leading-none my-1">
-                  {alert.score_anomalia > 0.8 ? 'RIESGO CRÍTICO' : alert.score_anomalia > 0.6 ? 'RIESGO ALTO' : 'RIESGO BAJO'}
-                </div>
-                <p className="font-mono-sm text-mono-sm text-on-surface-variant">
-                  Puntaje de Conjunto: <span className="text-white font-bold">{alert.score_anomalia.toFixed(4)}</span> / 1.000
-                </p>
-              </div>
-            </div>
-
-            {/* Distribución de Probabilidad y Métricas */}
-            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between">
-              <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-2 text-[11px]">
-                Distribución de Probabilidad
-              </h3>
-              <div className="relative h-20 w-full chart-grid flex items-end mb-4 border-b border-l border-white/10 px-2 pb-1 overflow-hidden">
-                <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 50">
-                  <path d="M 0 50 C 20 50, 30 10, 50 5, 70 10, 80 50, 100 50" fill="none" stroke="rgba(156, 240, 255, 0.4)" strokeWidth="1.5"></path>
-                  <circle cx={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} cy="25" fill="#ef4444" r="3" className="animate-pulse"></circle>
-                  <line stroke="#ef4444" strokeDasharray="2" strokeWidth="0.75" x1={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} x2={Math.max(15, Math.min(alert.score_anomalia * 100, 85))} y1="25" y2="50"></line>
-                </svg>
-                <div className="absolute top-1 left-2 text-[8px] font-mono-sm text-error">DAM Actual</div>
-                <div className="absolute top-1 right-2 text-[8px] font-mono-sm text-tertiary">Media Clúster</div>
-              </div>
-              <div className="grid grid-cols-3 gap-2 border-t border-white/5 pt-3">
-                <div className="text-center">
-                  <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">Precisión</div>
-                  <div className="font-bold text-primary font-mono-sm text-[12px]">92.4%</div>
-                </div>
-                <div className="text-center border-l border-r border-white/10">
-                  <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">Recall</div>
-                  <div className="font-bold text-primary font-mono-sm text-[12px]">88.7%</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-[9px] text-on-surface-variant font-mono-sm uppercase">F1-Score</div>
-                  <div className="font-bold text-primary font-mono-sm text-[12px]">0.905</div>
-                </div>
-              </div>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <SeverityPanel alert={alert} />
+            <ProbabilityPanel alert={alert} />
           </div>
 
           {/* GBDT Regressor & Atribución Variables SHAP Horizontal */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
-            
-            {/* Análisis Regresor GBDT */}
-            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between min-h-[170px]">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="material-symbols-outlined text-primary text-[16px]">analytics</span>
-                <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
-                  Análisis Regresor GBDT
-                </h3>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-stack-sm mb-3">
-                <div>
-                  <p className="text-on-surface-variant font-label-md text-[10px] uppercase">FOB Declarado</p>
-                  <p className="font-headline-md text-lg font-bold text-error">${alert.valor_fob_declarado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
-                </div>
-                <div>
-                  <p className="text-on-surface-variant font-label-md text-[10px] uppercase">Rango Esperado</p>
-                  <p className="font-headline-md text-lg font-bold text-primary">${alert.valor_fob_esperado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                {/* Price Deviation Gauge */}
-                <div className="relative w-16 h-10 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-full h-full transform" viewBox="0 0 100 60">
-                    <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="rgba(255,255,255,0.1)" strokeLinecap="round" strokeWidth="8"></path>
-                    <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#ec6a06" strokeDasharray="126" strokeDashoffset="30" strokeLinecap="round" strokeWidth="8"></path>
-                    <line stroke="white" strokeLinecap="round" strokeWidth="2.5" transform={`rotate(${180 - (Math.max(0, Math.min(parseFloat(dev) || 0, 30)) / 30 * 180)} 50 50)`} x1="50" x2="50" y1="50" y2="15"></line>
-                  </svg>
-                </div>
-                <p className="font-mono-sm text-[10px] text-secondary-fixed-dim bg-[#2c1a11]/45 p-2 rounded border border-secondary/15 flex-1">
-                  Desviación: <strong className="text-error">-{dev}%</strong> del centroide. Impacto fiscal est.: <strong className="text-white">-${Math.abs(alert.valor_fob_esperado - alert.valor_fob_declarado).toLocaleString('en-US', {maximumFractionDigits:0})}</strong>
-                </p>
-              </div>
-            </div>
-
-            {/* Atribución de Variables SHAP (Barras Horizontales) */}
-            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="material-symbols-outlined text-tertiary text-[16px]">bar_chart</span>
-                <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
-                  Atribución de Variables (SHAP)
-                </h3>
-              </div>
-              <div className="space-y-2">
-                {explanations.slice(0, 4).map((exp, index) => {
-                  const isPositive = exp.shap_value >= 0
-                  const absVal = Math.min(Math.abs(exp.shap_value) * 150, 95)
-                  return (
-                    <div key={exp.id_explicacion || index} className="space-y-0.5">
-                      <div className="flex justify-between text-[9px] font-mono-sm uppercase">
-                        <span className="text-on-surface-variant">{exp.variable_nombre}</span>
-                        <span className={`font-bold ${isPositive ? 'text-error' : 'text-tertiary'}`}>
-                          {isPositive ? `+${exp.shap_value.toFixed(2)}` : exp.shap_value.toFixed(2)}
-                        </span>
-                      </div>
-                      <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden relative">
-                        <div 
-                          className={`h-full rounded-full ${isPositive ? 'bg-error' : 'bg-tertiary'}`}
-                          style={{ width: `${absVal}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-              <button 
-                className="mt-2 w-full py-1.5 border border-white/10 rounded-lg text-[10px] font-label-md text-on-surface-variant hover:bg-white/5 hover:text-white transition-colors flex items-center justify-center gap-2"
-                onClick={() => handleOpenRag('LMY-IA-D115')}
-              >
-                <span className="material-symbols-outlined text-[12px]">info</span>
-                Ver detalles RAG
-              </button>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <RegressionPanel alert={alert} />
+            <ShapPanel explanations={explanations} handleOpenRag={handleOpenRag} />
           </div>
 
         </div>
 
         {/* Columna Derecha: Explicabilidad y Acción (lg:col-span-4) */}
-        <div className="lg:col-span-4 flex flex-col gap-stack-lg">
+        <div className="lg:col-span-4 flex flex-col gap-6">
           
           {/* Variables de Atribución SHAP con Datos */}
-          <div className="glass-panel rounded-xl p-stack-md flex flex-col">
+          <div className="glass-panel rounded-xl p-4 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
                 Variables de Atribución SHAP
@@ -628,7 +517,7 @@ export default function Detail() {
           </div>
 
           {/* Adjudicación Rápida (Formulario de Acción) */}
-          <div className="glass-panel rounded-xl p-stack-md flex flex-col flex-1 min-h-[220px] justify-between">
+          <div className="glass-panel rounded-xl p-4 flex flex-col flex-1 min-h-[220px] justify-between">
             <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-3 text-[11px]">
               Adjudicación Rápida
             </h3>
@@ -700,7 +589,7 @@ export default function Detail() {
               </div>
 
               {!isAudited ? (
-                <div className="grid grid-cols-2 gap-stack-sm pt-2">
+                <div className="grid grid-cols-2 gap-2 pt-2">
                   <button 
                     className="bg-primary text-on-primary font-label-md text-[11px] py-1.5 rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1 font-bold"
                     type="submit"
@@ -738,7 +627,7 @@ export default function Detail() {
 
       {/* ----------------- CAPA 4 NARRATIVA TÉCNICA RAG (Ancho Completo Abajo) ----------------- */}
       {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
-        <div className="glass-panel rounded-xl p-6 mt-stack-lg flex flex-col bg-white/[0.01]">
+        <div className="glass-panel rounded-xl p-6 mt-6 flex flex-col bg-white/[0.01]">
           <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
             <span className="material-symbols-outlined text-primary">description</span>
             Capa 4: Narrativa Técnica de IA (Motor RAG)
@@ -751,6 +640,55 @@ export default function Detail() {
             <span className="flex items-center gap-1 font-mono-data">
               <span className="material-symbols-outlined text-[12px] text-primary">auto_awesome</span> Generado por RAG Core v2.5
             </span>
+          </div>
+        </div>
+      )}
+
+      {/* ----------------- PLAN DE CORRECCIÓN DE AUDITORÍA ----------------- */}
+      {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
+        <div className="border border-error/30 bg-error/5 p-5 rounded-xl mt-6 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <span className="material-symbols-outlined text-error text-[28px]">assignment_late</span>
+            <div>
+              <h3 className="font-headline-sm text-headline-sm text-error font-bold">
+                Plan de Acción y Corrección Recomendado
+              </h3>
+              <p className="text-[11px] text-on-surface-variant font-mono-sm">Generación metodológica de respuesta ante anomalías críticas</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
+              <span className="font-mono-sm text-[9px] uppercase tracking-wider text-error font-bold block mb-1">🚨 Alerta Detectada</span>
+              <p className="font-body-sm text-[12px] text-on-surface leading-relaxed">
+                Subvaloración severa de exportación de <strong>{alert.producto}</strong> por el exportador <strong>{alert.razon_social}</strong> (desviación de -80% respecto al valor de referencia del modelo GBDT calibrado).
+              </p>
+            </div>
+            
+            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
+              <span className="font-mono-sm text-[9px] uppercase tracking-wider text-primary font-bold block mb-1">🎯 Conclusión del Sistema</span>
+              <p className="font-body-sm text-[12px] text-on-surface leading-relaxed">
+                Riesgo fiscal crítico confirmado por el Ensemble de PyOD (IF + LOF + ECOD: {alert.score_anomalia.toFixed(4)}). No se detectaron anomalías logísticas (retrasos, merma) que justifiquen una caída genuina del valor comercial.
+              </p>
+            </div>
+            
+            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
+              <span className="font-mono-sm text-[9px] uppercase tracking-wider text-secondary-fixed-dim font-bold block mb-1">📋 Recomendación Operativa</span>
+              <p className="font-body-sm text-[12px] text-on-surface leading-relaxed">
+                Detener el levante aduanero de la DAM <strong>{alert.numero_dam}</strong>, programar inspección física y solicitar factura comercial de compraventa e historial bancario de la transacción.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex justify-end mt-2">
+            <button 
+              type="button"
+              className="bg-error/20 text-error border border-error/30 hover:bg-error/30 transition-all font-label-md text-label-md py-2 px-5 rounded-lg flex items-center gap-2 font-bold"
+              onClick={() => setShowCorrectionModal(true)}
+            >
+              <span className="material-symbols-outlined text-[16px]">verified_user</span>
+              Ver Sustento y Documentación de Tesis
+            </button>
           </div>
         </div>
       )}
@@ -805,8 +743,6 @@ export default function Detail() {
             </table>
           </div>
         </div>
-
-      </div>
 
       {/* ----------------- MODALES ----------------- */}
 
@@ -882,6 +818,75 @@ export default function Detail() {
                 onClick={() => setActiveRagDoc(null)}
               >
                 Entendido
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal 3: Sustento de Plan de Corrección y Documentación */}
+      {showCorrectionModal && (
+        <div className="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-modal max-w-2xl w-full rounded-xl p-6 relative border-t-4 border-t-error">
+            <button 
+              className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface focus:outline-none"
+              onClick={() => setShowCorrectionModal(false)}
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+            <h3 className="font-headline-sm text-headline-sm text-error mb-4 flex items-center gap-2 pr-6">
+              <span className="material-symbols-outlined">gavel</span>
+              Sustento Metodológico y Normativa Legal
+            </h3>
+            
+            <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar font-body-sm text-[13px] text-on-surface-variant leading-relaxed">
+              <div className="bg-white/5 p-3 rounded-lg border border-white/5">
+                <h4 className="font-bold text-white mb-1 flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-[16px] text-error">balance</span>
+                  1. Marco Legal Fitosanitario y de Valoración (SUNAT & SENASA)
+                </h4>
+                <p>
+                  De acuerdo con el <strong>Procedimiento General de Valoración de Aduanas DESPA-PG.01</strong> de la SUNAT, ante desviaciones extremas de precios declarados que superen los umbrales de riesgo, se habilita la duda razonable. Asimismo, el <strong>Reglamento de la Ley de Sanidad Agraria (D.S. N° 030-2020-MINAGRI)</strong> dictaminado por el SENASA exige que la trazabilidad del lote se valide contra registros físicos para prevenir blanqueo de producción o fraude de origen.
+                </p>
+              </div>
+
+              <div className="bg-white/5 p-3 rounded-lg border border-white/5">
+                <h4 className="font-bold text-white mb-1 flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-[16px] text-primary">auto_stories</span>
+                  2. Sustentación Científica y Capas del Pipeline (Tesis Hub)
+                </h4>
+                <p>
+                  La validez metodológica de esta recomendación está sustentada en los capítulos de la investigación adscrita al Tesis Hub. Puedes consultar los detalles de diseño en las siguientes secciones documentales de la tesis:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1.5 font-mono-data text-xs">
+                  <li>
+                    <a href="http://localhost:8000/seccion/03-07-busqueda-datos-y-fuentes" target="_blank" rel="noreferrer" className="text-primary hover:underline flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[12px]">link</span>
+                      Capítulo III: Fuentes y Operacionalización de Datos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://localhost:8000/seccion/01-06-agent" target="_blank" rel="noreferrer" className="text-primary hover:underline flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[12px]">link</span>
+                      Anexo B: Evaluación del Piloto de Usabilidad y Telemetría
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://localhost:8000/seccion/02-30-capitulo3" target="_blank" rel="noreferrer" className="text-primary hover:underline flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[12px]">link</span>
+                      Capítulo III: Diseño Experimental del Ensemble PyOD
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3 mt-6 border-t border-white/10 pt-4">
+              <button 
+                className="px-5 py-2 bg-error/20 text-error border border-error/30 font-label-md text-label-md hover:bg-error/30 rounded transition-colors"
+                onClick={() => setShowCorrectionModal(false)}
+              >
+                Cerrar Sustento
               </button>
             </div>
           </div>

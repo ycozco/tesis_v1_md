@@ -140,10 +140,10 @@ def seed_db():
         
         # Habilitar extensión pgvector si es PostgreSQL
         if engine.dialect.name == "postgresql":
-            db.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
-            db.commit()
             # Usar CASCADE para eliminar tablas con restricciones de clave foránea
             db.execute(text("DROP SCHEMA public CASCADE; CREATE SCHEMA public; GRANT ALL ON SCHEMA public TO postgres; GRANT ALL ON SCHEMA public TO public;"))
+            db.commit()
+            db.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
             db.commit()
         else:
             Base.metadata.drop_all(bind=engine)

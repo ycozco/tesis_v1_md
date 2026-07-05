@@ -165,6 +165,62 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Estilos de la Leyenda de Origen de Datos */
+        .data-origin-legend {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .legend-header {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 6px;
+        }
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .legend-category {
+            font-size: 0.8rem;
+        }
+        .legend-cat-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend-cat-title.real { color: #818cf8; }
+        .legend-cat-title.proxy { color: #34d399; }
+        .legend-cat-title.simulated { color: #fb7185; }
+        .legend-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+        .legend-item-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            padding: 1px 4px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            margin-right: 4px;
+        }
+
         <style>.supervisor-layout {
     display: grid;
     grid-template-columns: 450px 1fr;
@@ -799,6 +855,45 @@
                 <span class="empty-icon">🔍</span>
                 <h3>Seleccione una alerta de la lista</h3>
                 <p>Haga clic sobre cualquier alerta para cargar el análisis multivariable, las explicaciones SHAP y el reporte trazable.</p>
+        </div>
+    </div>
+
+    <!-- Leyenda de Origen de Datos y Valores Referenciales -->
+    <div class="data-origin-legend">
+        <div class="legend-header">
+            <span>📊</span> Leyenda de Clasificación de Datos y Valores Referenciales
+        </div>
+        <div class="legend-grid">
+            <div class="legend-category">
+                <div class="legend-cat-title real">🔵 Reales Observados (SUNAT / BCRP)</div>
+                <ul class="legend-list">
+                    <li><span class="legend-item-tag">fecha</span> Día del embarque aduanero real</li>
+                    <li><span class="legend-item-tag">producto</span> Arándano, Uva, Palta (frescos)</li>
+                    <li><span class="legend-item-tag">volumen_kg</span> Peso neto declarado en la DUA</li>
+                    <li><span class="legend-item-tag">precio_kg_usd</span> Precio FOB calculado (FOB/peso)</li>
+                    <li><span class="legend-item-tag">tipo_cambio_pen_usd</span> Cambio promedio mensual del BCRP</li>
+                    <li><span class="legend-item-tag">empresa_exportadora</span> Razón social real de aduanas</li>
+                </ul>
+            </div>
+            <div class="legend-category">
+                <div class="legend-cat-title proxy">🟢 Proxies Climatológicos y Geográficos</div>
+                <ul class="legend-list">
+                    <li><span class="legend-item-tag">zona</span> Aduana de salida/región productora</li>
+                    <li><span class="legend-item-tag">temperatura_max_c</span> Temp. máx. registrada por SENAMHI</li>
+                    <li><span class="legend-item-tag">temperatura_min_c</span> Temp. mín. registrada por SENAMHI</li>
+                    <li><span class="legend-item-tag">precipitacion_mm</span> Lluvia acumulada semanal regional</li>
+                    <li><span class="legend-item-tag">humedad_pct</span> Humedad relativa promedio de la zona</li>
+                </ul>
+            </div>
+            <div class="legend-category">
+                <div class="legend-cat-title simulated">🔴 Valores Simulados / Calibrados</div>
+                <ul class="legend-list">
+                    <li><span class="legend-item-tag">dias_logisticos</span> Tiempo de tránsito estimado por ruta</li>
+                    <li><span class="legend-item-tag">costo_logistico_usd_kg</span> Costo de flete unitario calibrado</li>
+                    <li><span class="legend-item-tag">cumplimiento_fitosanitario</span> Estado fitosanitario (SENASA)</li>
+                    <li><span class="legend-item-tag">merma_pct</span> Porcentaje de pérdida física estimada</li>
+                    <li><span class="legend-item-tag">etiqueta_anomalia</span> Flag de anomalía operativa inyectada</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -809,6 +904,22 @@
         </footer>
     </div>
     <script><script>
+    // Helper para formatear números de forma segura que prevé nulos/NaNs
+    function safeFixed(val, decimals = 2, prefix = "") {
+        if (val === null || val === undefined || isNaN(parseFloat(val))) {
+            return "N/A";
+        }
+        return prefix + parseFloat(val).toFixed(decimals);
+    }
+
+    function safeZScore(val) {
+        if (val === null || val === undefined || isNaN(parseFloat(val))) {
+            return "N/A";
+        }
+        const floatVal = parseFloat(val);
+        return (floatVal >= 0 ? '+' : '') + floatVal.toFixed(2);
+    }
+
     // Variables globales
     let allAlerts = {};
     let selectedAlertKey = null;
@@ -867,8 +978,8 @@
                 </div>
                 <div class="alert-item-body">
                     <span class="alert-date">📅 Semana: ${alert.week_start}</span>
-                    <span>Score: ${alert.ensemble_score.toFixed(4)}</span>
-                    <span>Obs. Precio: $${alert.observed_price.toFixed(2)}</span>
+                    <span>Score: ${safeFixed(alert.ensemble_score, 4)}</span>
+                    <span>Obs. Precio: ${safeFixed(alert.observed_price, 2, "$")}</span>
                 </div>
             `;
             container.appendChild(div);
@@ -935,20 +1046,20 @@
                                 <div class="stat-card-values">
                                     <div class="stat-val-group">
                                         <h4>Observado</h4>
-                                        <p>$${alert.observed_price.toFixed(2)} <span style="font-size:0.75rem;color:var(--text-dim)">USD/kg</span></p>
+                                        <p>${safeFixed(alert.observed_price, 2, "$")} <span style="font-size:0.75rem;color:var(--text-dim)">USD/kg</span></p>
                                     </div>
                                     <div class="stat-val-group">
                                         <h4>Predicho GBDT</h4>
-                                        <p>$${alert.pred_price.toFixed(2)} <span style="font-size:0.75rem;color:var(--text-dim)">USD/kg</span></p>
+                                        <p>${safeFixed(alert.pred_price, 2, "$")} <span style="font-size:0.75rem;color:var(--text-dim)">USD/kg</span></p>
                                     </div>
                                     <div class="stat-resid-card">
                                         <div class="resid-val">
                                             <h4>Residuo Bruto</h4>
-                                            <p>${alert.price_residual >= 0 ? '+' : ''}${alert.price_residual.toFixed(4)}</p>
+                                            <p>${alert.price_residual >= 0 ? '+' : ''}${safeFixed(alert.price_residual, 4)}</p>
                                         </div>
                                         <div class="resid-val">
                                             <h4>Robust Z-Score</h4>
-                                            <p class="z-score-glow ${getZScoreClass(alert.price_robust_z)}">${alert.price_robust_z >= 0 ? '+' : ''}${alert.price_robust_z.toFixed(2)}</p>
+                                            <p class="z-score-glow ${getZScoreClass(alert.price_robust_z)}">${safeZScore(alert.price_robust_z)}</p>
                                         </div>
                                         <div class="resid-val">
                                             <h4>Estado</h4>
@@ -975,7 +1086,7 @@
                                         </div>
                                         <div class="resid-val">
                                             <h4>Robust Z-Score</h4>
-                                            <p class="z-score-glow ${getZScoreClass(alert.volume_robust_z)}">${alert.volume_robust_z >= 0 ? '+' : ''}${alert.volume_robust_z.toFixed(2)}</p>
+                                            <p class="z-score-glow ${getZScoreClass(alert.volume_robust_z)}">${safeZScore(alert.volume_robust_z)}</p>
                                         </div>
                                         <div class="resid-val">
                                             <h4>Estado</h4>
@@ -989,7 +1100,7 @@
                                 <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
                                     <div style="text-align:center;flex-grow:1;border-right:1px solid var(--border)">
                                         <h4 style="font-size:0.8rem;color:var(--text-dim);margin-bottom:4px">Score Ensemble PyOD</h4>
-                                        <p style="font-size:1.8rem;font-weight:700;color:var(--primary-light)">${alert.ensemble_score.toFixed(4)}</p>
+                                        <p style="font-size:1.8rem;font-weight:700;color:var(--primary-light)">${safeFixed(alert.ensemble_score, 4)}</p>
                                     </div>
                                     <div style="text-align:center;flex-grow:1;border-right:1px solid var(--border)">
                                         <h4 style="font-size:0.8rem;color:var(--text-dim);margin-bottom:4px">Votos Coincidentes</h4>
@@ -997,7 +1108,7 @@
                                     </div>
                                     <div style="text-align:center;flex-grow:1">
                                         <h4 style="font-size:0.8rem;color:var(--text-dim);margin-bottom:4px">Confianza Detección</h4>
-                                        <p style="font-size:1.8rem;font-weight:700;color:var(--accent)">${(alert.ensemble_score * 100).toFixed(1)}%</p>
+                                        <p style="font-size:1.8rem;font-weight:700;color:var(--accent)">${safeFixed(alert.ensemble_score * 100, 1)}%</p>
                                     </div>
                                 </div>
                             </div>
@@ -1092,7 +1203,10 @@
     }
 
     function formatKg(v) {
-        return Math.round(v).toLocaleString("es-PE");
+        if (v === null || v === undefined || isNaN(parseFloat(v))) {
+            return "N/A";
+        }
+        return Math.round(parseFloat(v)).toLocaleString("es-PE");
     }
 
     function renderShapBars(shapList, type) {
@@ -1110,7 +1224,7 @@
             rowsHtml += `
                 <div class="shap-bar-row">
                     <span class="shap-feat-name" title="${item.feature}">${item.feature}</span>
-                    <span class="shap-feat-val">${item.value.toFixed(3)}</span>
+                    <span class="shap-feat-val">${safeFixed(item.value, 3)}</span>
                     <div class="shap-bar-container">
                         ${barFill}
                     </div>

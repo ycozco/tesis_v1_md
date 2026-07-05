@@ -164,6 +164,62 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Estilos de la Leyenda de Origen de Datos */
+        .data-origin-legend {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .legend-header {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 6px;
+        }
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .legend-category {
+            font-size: 0.8rem;
+        }
+        .legend-cat-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend-cat-title.real { color: #818cf8; }
+        .legend-cat-title.proxy { color: #34d399; }
+        .legend-cat-title.simulated { color: #fb7185; }
+        .legend-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+        .legend-item-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            padding: 1px 4px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            margin-right: 4px;
+        }
+
         {% block styles %}{% endblock %}
     </style>
 </head>

@@ -590,6 +590,46 @@
                 <!-- Loaded dynamically by JavaScript -->
             </div>
         </div>
+
+        <!-- Leyenda de Origen de Datos y Valores Referenciales -->
+        <div class="data-origin-legend">
+            <div class="legend-header">
+                <span>📊</span> Leyenda de Clasificación de Datos y Valores Referenciales
+            </div>
+            <div class="legend-grid">
+                <div class="legend-category">
+                    <div class="legend-cat-title real">🔵 Reales Observados (SUNAT / BCRP)</div>
+                    <ul class="legend-list">
+                        <li><span class="legend-item-tag">fecha</span> Día del embarque aduanero real</li>
+                        <li><span class="legend-item-tag">producto</span> Arándano, Uva, Palta (frescos)</li>
+                        <li><span class="legend-item-tag">volumen_kg</span> Peso neto declarado en la DUA</li>
+                        <li><span class="legend-item-tag">precio_kg_usd</span> Precio FOB calculado (FOB/peso)</li>
+                        <li><span class="legend-item-tag">tipo_cambio_pen_usd</span> Cambio promedio mensual del BCRP</li>
+                        <li><span class="legend-item-tag">empresa_exportadora</span> Razón social real de aduanas</li>
+                    </ul>
+                </div>
+                <div class="legend-category">
+                    <div class="legend-cat-title proxy">🟢 Proxies Climatológicos y Geográficos</div>
+                    <ul class="legend-list">
+                        <li><span class="legend-item-tag">zona</span> Aduana de salida/región productora</li>
+                        <li><span class="legend-item-tag">temperatura_max_c</span> Temp. máx. registrada por SENAMHI</li>
+                        <li><span class="legend-item-tag">temperatura_min_c</span> Temp. mín. registrada por SENAMHI</li>
+                        <li><span class="legend-item-tag">precipitacion_mm</span> Lluvia acumulada semanal regional</li>
+                        <li><span class="legend-item-tag">humedad_pct</span> Humedad relativa promedio de la zona</li>
+                    </ul>
+                </div>
+                <div class="legend-category">
+                    <div class="legend-cat-title simulated">🔴 Valores Simulados / Calibrados</div>
+                    <ul class="legend-list">
+                        <li><span class="legend-item-tag">dias_logisticos</span> Tiempo de tránsito estimado por ruta</li>
+                        <li><span class="legend-item-tag">costo_logistico_usd_kg</span> Costo de flete unitario calibrado</li>
+                        <li><span class="legend-item-tag">cumplimiento_fitosanitario</span> Estado fitosanitario (SENASA)</li>
+                        <li><span class="legend-item-tag">merma_pct</span> Porcentaje de pérdida física estimada</li>
+                        <li><span class="legend-item-tag">etiqueta_anomalia</span> Flag de anomalía operativa inyectada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 {% endblock %}
 
 {% block scripts %}

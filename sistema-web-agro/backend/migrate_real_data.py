@@ -22,14 +22,16 @@ from sqlalchemy import text
 from models import SessionLocal, Usuario, OperacionAlerta, DecisionAuditoria, ExplicacionSHAP, SecurityLog, DocumentoNormativo
 
 # Rutas de modelos analíticos
-SCALER_PATH = 'models_weights/scaler_fob.bin'
-XGB_PATH = 'models_weights/xgboost_fob_predictor.json'
-IFOREST_PATH = 'models_weights/iforest_model.pkl'
-LOF_PATH = 'models_weights/lof_model.pkl'
-ECOD_PATH = 'models_weights/ecod_model.pkl'
+BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+SCALER_PATH = os.path.join(BACKEND_DIR, 'models_weights/scaler_fob.bin')
+XGB_PATH = os.path.join(BACKEND_DIR, 'models_weights/xgboost_fob_predictor.json')
+IFOREST_PATH = os.path.join(BACKEND_DIR, 'models_weights/iforest_model.pkl')
+LOF_PATH = os.path.join(BACKEND_DIR, 'models_weights/lof_model.pkl')
+ECOD_PATH = os.path.join(BACKEND_DIR, 'models_weights/ecod_model.pkl')
 
 # Ruta de dataset de SUNAT real
-CSV_PATH = '../../data/dataset_real_v1.csv'
+BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+CSV_PATH = os.path.abspath(os.path.join(BACKEND_DIR, '../../data/dataset_real_v1.csv'))
 
 def load_models():
     """Carga los modelos analíticos y de preprocesamiento."""

@@ -240,17 +240,17 @@ export default function AuditDetail() {
       </div>
 
       {/* Grid Layout Principal */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg mt-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
         
         {/* Columna Izquierda: Métricas de Riesgo y Capas Analíticas (lg:col-span-8) */}
-        <div className="lg:col-span-8 flex flex-col gap-stack-lg">
+        <div className="lg:col-span-8 flex flex-col gap-6">
           
           {/* Fila 1: Ensemble Card y Distribución de Probabilidad */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Tarjeta de Severidad PyOD */}
-            <div className="glass-panel rounded-xl p-stack-lg flex flex-col justify-center items-center relative overflow-hidden min-h-[220px]">
-              <div className="z-10 text-center space-y-stack-sm">
+            <div className="glass-panel rounded-xl p-6 flex flex-col justify-center items-center relative overflow-hidden min-h-[220px]">
+              <div className="z-10 text-center space-y-2">
                 <span className="material-symbols-outlined text-4xl text-error">warning</span>
                 <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
                   Puntaje de Severidad PyOD
@@ -265,7 +265,7 @@ export default function AuditDetail() {
             </div>
 
             {/* Distribución de Probabilidad y Métricas */}
-            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between">
+            <div className="glass-panel rounded-xl p-4 flex flex-col justify-between">
               <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-2 text-[11px]">
                 Distribución de Probabilidad
               </h3>
@@ -297,10 +297,10 @@ export default function AuditDetail() {
           </div>
 
           {/* GBDT Regressor & Atribución Variables SHAP Horizontal */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Análisis Regresor GBDT */}
-            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between min-h-[170px]">
+            <div className="glass-panel rounded-xl p-4 flex flex-col justify-between min-h-[170px]">
               <div className="flex items-center gap-2 mb-3">
                 <span className="material-symbols-outlined text-primary text-[16px]">analytics</span>
                 <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
@@ -308,7 +308,7 @@ export default function AuditDetail() {
                 </h3>
               </div>
               
-              <div className="grid grid-cols-2 gap-stack-sm mb-3">
+              <div className="grid grid-cols-2 gap-2 mb-3">
                 <div>
                   <p className="text-on-surface-variant font-label-md text-[10px] uppercase">FOB Declarado</p>
                   <p className="font-headline-md text-lg font-bold text-error">${alert.valor_fob_declarado.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
@@ -334,7 +334,7 @@ export default function AuditDetail() {
             </div>
 
             {/* Atribución de Variables SHAP (Barras Horizontales) */}
-            <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between">
+            <div className="glass-panel rounded-xl p-4 flex flex-col justify-between">
               <div className="flex items-center gap-2 mb-3">
                 <span className="material-symbols-outlined text-tertiary text-[16px]">bar_chart</span>
                 <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
@@ -385,10 +385,10 @@ export default function AuditDetail() {
         </div>
 
         {/* Columna Derecha: Explicabilidad y Acción (lg:col-span-4) */}
-        <div className="lg:col-span-4 flex flex-col gap-stack-lg">
+        <div className="lg:col-span-4 flex flex-col gap-6">
           
           {/* Variables de Atribución SHAP con Datos */}
-          <div className="glass-panel rounded-xl p-stack-md flex flex-col">
+          <div className="glass-panel rounded-xl p-4 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
                 Variables de Atribución SHAP
@@ -438,7 +438,7 @@ export default function AuditDetail() {
           </div>
 
           {/* Adjudicación del Auditor (Métricas de Telemetría) */}
-          <div className="glass-panel rounded-xl p-stack-md flex flex-col justify-between border border-primary/20">
+          <div className="glass-panel rounded-xl p-4 flex flex-col justify-between border border-primary/20">
             <h3 className="font-label-md text-label-md uppercase tracking-widest text-primary mb-3 text-[11px]">
               Decisión Registrada (Trazabilidad)
             </h3>
@@ -487,7 +487,7 @@ export default function AuditDetail() {
 
       {/* ----------------- CAPA 4 NARRATIVA TÉCNICA RAG ----------------- */}
       {isIntegrated && (
-        <div className="glass-panel rounded-xl p-6 mt-stack-lg flex flex-col bg-white/[0.01]">
+        <div className="glass-panel rounded-xl p-6 mt-6 flex flex-col bg-white/[0.01]">
           <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
             <span className="material-symbols-outlined text-primary">description</span>
             Capa 4: Narrativa Técnica de IA (Motor RAG)

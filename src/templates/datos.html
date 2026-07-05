@@ -182,6 +182,62 @@
         .loading-overlay { text-align: center; padding: 60px; color: var(--muted); }
         .spinner { width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px; }
         @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Estilos de la Leyenda de Origen de Datos */
+        .data-origin-legend {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .legend-header {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 6px;
+        }
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .legend-category {
+            font-size: 0.8rem;
+        }
+        .legend-cat-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend-cat-title.real { color: #818cf8; }
+        .legend-cat-title.proxy { color: #34d399; }
+        .legend-cat-title.simulated { color: #fb7185; }
+        .legend-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+        .legend-item-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            padding: 1px 4px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            margin-right: 4px;
+        }
     </style>
 </head>
 <body>
@@ -278,6 +334,46 @@
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Leyenda de Origen de Datos y Valores Referenciales -->
+    <div class="data-origin-legend">
+        <div class="legend-header">
+            <span>📊</span> Leyenda de Clasificación de Datos y Valores Referenciales
+        </div>
+        <div class="legend-grid">
+            <div class="legend-category">
+                <div class="legend-cat-title real">🔵 Reales Observados (SUNAT / BCRP)</div>
+                <ul class="legend-list">
+                    <li><span class="legend-item-tag">fecha</span> Día del embarque aduanero real</li>
+                    <li><span class="legend-item-tag">producto</span> Arándano, Uva, Palta (frescos)</li>
+                    <li><span class="legend-item-tag">volumen_kg</span> Peso neto declarado en la DUA</li>
+                    <li><span class="legend-item-tag">precio_kg_usd</span> Precio FOB calculado (FOB/peso)</li>
+                    <li><span class="legend-item-tag">tipo_cambio_pen_usd</span> Cambio promedio mensual del BCRP</li>
+                    <li><span class="legend-item-tag">empresa_exportadora</span> Razón social real de aduanas</li>
+                </ul>
+            </div>
+            <div class="legend-category">
+                <div class="legend-cat-title proxy">🟢 Proxies Climatológicos y Geográficos</div>
+                <ul class="legend-list">
+                    <li><span class="legend-item-tag">zona</span> Aduana de salida/región productora</li>
+                    <li><span class="legend-item-tag">temperatura_max_c</span> Temp. máx. registrada por SENAMHI</li>
+                    <li><span class="legend-item-tag">temperatura_min_c</span> Temp. mín. registrada por SENAMHI</li>
+                    <li><span class="legend-item-tag">precipitacion_mm</span> Lluvia acumulada semanal regional</li>
+                    <li><span class="legend-item-tag">humedad_pct</span> Humedad relativa promedio de la zona</li>
+                </ul>
+            </div>
+            <div class="legend-category">
+                <div class="legend-cat-title simulated">🔴 Valores Simulados / Calibrados</div>
+                <ul class="legend-list">
+                    <li><span class="legend-item-tag">dias_logisticos</span> Tiempo de tránsito estimado por ruta</li>
+                    <li><span class="legend-item-tag">costo_logistico_usd_kg</span> Costo de flete unitario calibrado</li>
+                    <li><span class="legend-item-tag">cumplimiento_fitosanitario</span> Estado fitosanitario (SENASA)</li>
+                    <li><span class="legend-item-tag">merma_pct</span> Porcentaje de pérdida física estimada</li>
+                    <li><span class="legend-item-tag">etiqueta_anomalia</span> Flag de anomalía operativa inyectada</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

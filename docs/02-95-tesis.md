@@ -1128,6 +1128,135 @@ Las capturas de pantalla no deben sustituir evidencia funcional ni resultados ex
 
 En el estado actual, el prototipo respalda la arquitectura, las rutas funcionales, la telemetría y la experiencia de auditoría. La validación cuantitativa definitiva sigue condicionada al dataset semanal final, a las pruebas de fuga de información y a los experimentos formales.
 
+### 3.4.5 Modelo de Entidades y Diagrama de Clases del Prototipo
+
+Para garantizar la consistencia, persistencia y trazabilidad de los datos recolectados durante la validación del prototipo, se implementó un modelo relacional mapeado a través de SQLAlchemy. Este comprende el control de acceso, los metadatos de las operaciones, la telemetría del experimento de usabilidad y los reportes generados.
+
+```mermaid
+classDiagram
+    Usuario "1" --> "0..*" DecisionAuditoria : registra
+    OperacionAlerta "1" --> "0..*" DecisionAuditoria : genera
+    OperacionAlerta "1" --> "0..*" ExplicacionSHAP : tiene
+    OperacionAlerta "1" --> "0..1" GeneratedReport : documenta
+    PipelineRun "1" --> "0..*" ArtifactLineage : produce
+
+    class Usuario {
+        +Integer id_usuario
+        +String username
+        +String email
+        +String password_hash
+        +String rol
+        +String nombre
+        +to_dict() Map
+    }
+
+    class OperacionAlerta {
+        +String id_alerta
+        +String numero_dam
+        +Date fecha_operacion
+        +String ruc_exportador
+        +String razon_social
+        +String producto
+        +Decimal valor_fob_declarado
+        +Decimal valor_fob_esperado
+        +Decimal score_anomalia
+        +Boolean alertado
+        +String estado
+        +Decimal peso_neto
+        +Decimal temperatura
+        +Integer retraso_dias
+        +Decimal residuos_fob
+        +Decimal residuos_volumen
+        +String run_id
+        +Decimal if_score
+        +Decimal lof_score
+        +Decimal ecod_score
+        +to_dict() Map
+    }
+
+    class DecisionAuditoria {
+        +Integer id_decision
+        +String id_alerta
+        +Integer id_usuario
+        +String condicion_experimento
+        +Integer user_decision
+        +String justification_text
+        +Integer likert_comprehension
+        +Integer time_to_decision_ms
+        +DateTime creado_en
+        +to_dict() Map
+    }
+
+    class ExplicacionSHAP {
+        +Integer id_explicacion
+        +String id_alerta
+        +String variable_nombre
+        +Decimal shap_value
+        +String variable_valor
+        +to_dict() Map
+    }
+
+    class DocumentoNormativo {
+        +Integer id_doc
+        +String titulo
+        +String categoria
+        +Text contenido
+        +Vector embedding
+        +to_dict() Map
+    }
+
+    class ConfiguracionPipeline {
+        +Integer id_config
+        +String active_model
+        +Decimal weight_if
+        +Decimal weight_lof
+        +Decimal weight_ecod
+        +Decimal global_threshold
+        +String llm_engine
+        +Decimal llm_temperature
+        +Decimal llm_similarity_threshold
+        +to_dict() Map
+    }
+
+    class GeneratedReport {
+        +String id_alerta
+        +Text report_text
+        +Decimal fidelity_score
+        +Decimal completeness_score
+        +String validation_status
+        +Integer numeric_checks
+        +Integer unsupported_claims
+        +String report_hash
+        +String report_uuid
+        +to_dict() Map
+    }
+
+    class PipelineRun {
+        +String run_id
+        +DateTime execution_date
+        +String dataset_version
+        +String dataset_hash
+        +String model_xgb_price_hash
+        +String model_lgb_price_hash
+        +String model_if_hash
+        +String status
+        +to_dict() Map
+    }
+
+    class ArtifactLineage {
+        +Integer id_artifact
+        +String run_id
+        +String name
+        +String filepath
+        +String hash
+        +DateTime created_at
+        +to_dict() Map
+    }
+```
+
+**Figura 3.4 — Diagrama de clases y entidades relacionales de la base de datos del prototipo.**  
+**Fuente:** modelado relacional implementado en `sistema-web-agro/backend/models.py`.
+
 ## 3.5 Diseño Experimental y Validación
 
 La validación se plantea en cinco bloques: rendimiento predictivo y detección, explicabilidad, calidad de reportes, usabilidad y trazabilidad. Cada bloque debe producir evidencia reproducible antes de ser incorporado como resultado definitivo en el Capítulo IV.

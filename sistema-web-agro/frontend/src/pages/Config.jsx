@@ -266,8 +266,7 @@ export default function Config() {
                   <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
                 </div>
               </div>
-              
-              {/* Temperature */}
+                   {/* Temperature */}
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center">
                   <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Temperatura (Creatividad)</label>
@@ -282,10 +281,13 @@ export default function Config() {
                   value={llmTemp}
                   onChange={(e) => setLlmTemp(parseFloat(e.target.value))}
                 />
-                <div className="flex justify-between text-xs text-on-surface-variant/50">
-                  <span>Preciso</span>
-                  <span>Creativo</span>
+                <div className="flex justify-between text-[11px] text-on-surface-variant/50">
+                  <span>Preciso (0.0)</span>
+                  <span>Creativo (1.0)</span>
                 </div>
+                <p className="text-[11px] text-on-surface-variant/70 leading-relaxed mt-1">
+                  <strong>Leyenda:</strong> Controla el grado de aleatoriedad del LLM al generar reportes RAG. Valores bajos (0.0 a 0.2) producen narrativas consistentes y rigurosamente apegadas a las normativas aduaneras indexadas.
+                </p>
               </div>
               
               {/* Similarity Threshold */}
@@ -303,10 +305,13 @@ export default function Config() {
                   value={llmSimThresh}
                   onChange={(e) => setLlmSimThresh(parseFloat(e.target.value))}
                 />
+                <p className="text-[11px] text-on-surface-variant/70 leading-relaxed mt-1">
+                  <strong>Leyenda:</strong> Filtro de similitud de coseno para recuperar normativas de pgvector. Un valor más alto (0.75+) asegura que los documentos legales citados sean sumamente pertinentes a la alerta.
+                </p>
               </div>
             </div>
           </aside>
-
+ 
           {/* Ensemble Settings (Span 12) */}
           <section className="lg:col-span-12 glass-panel rounded-xl p-6 flex flex-col gap-6">
             <header className="flex justify-between items-end border-b border-white/5 pb-4">
@@ -317,7 +322,7 @@ export default function Config() {
                 </h2>
                 <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Ajustar contribución de los algoritmos de detección de valores atípicos.</p>
               </div>
-              <div className="flex flex-col items-end gap-1 bg-surface-container-low/50 px-4 py-2 rounded-lg border border-error/20">
+              <div className="flex flex-col items-end gap-1 bg-surface-container-low/50 px-4 py-3 rounded-lg border border-error/20 max-w-sm">
                 <label className="font-label-md text-label-md text-error uppercase tracking-wider">Umbral de Alerta Global</label>
                 <div className="flex items-center gap-2">
                   <span className="font-headline-sm text-headline-sm text-error">{globalThreshold}</span>
@@ -332,12 +337,15 @@ export default function Config() {
                   />
                   <span className="material-symbols-outlined text-error text-[16px]">warning</span>
                 </div>
+                <p className="text-[10px] text-error/80 text-right leading-relaxed mt-1">
+                  <strong>Leyenda:</strong> Puntaje mínimo del consenso de los detectores para alertar una DAM. Valores altos reducen el ruido y falsas alarmas, pero aumentan los falsos negativos.
+                </p>
               </div>
             </header>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Isolation Forest */}
-              <div className="flex flex-col gap-3 group">
+              <div className="flex flex-col gap-3 group bg-white/[0.02] p-4 rounded-lg border border-white/5">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-secondary"></div>
@@ -354,10 +362,13 @@ export default function Config() {
                   value={weightIF}
                   onChange={(e) => setWeightIF(parseFloat(e.target.value))}
                 />
+                <p className="text-[11px] text-on-surface-variant/70 leading-relaxed mt-1">
+                  <strong>Leyenda:</strong> Detecta valores atípicos globales aislando observaciones mediante árboles aleatorios. Muy efectivo para detectar anomalías extremas en volumen o FOB.
+                </p>
               </div>
               
               {/* Local Outlier Factor */}
-              <div className="flex flex-col gap-3 group">
+              <div className="flex flex-col gap-3 group bg-white/[0.02] p-4 rounded-lg border border-white/5">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-tertiary"></div>
@@ -374,10 +385,13 @@ export default function Config() {
                   value={weightLOF}
                   onChange={(e) => setWeightLOF(parseFloat(e.target.value))}
                 />
+                <p className="text-[11px] text-on-surface-variant/70 leading-relaxed mt-1">
+                  <strong>Leyenda:</strong> Compara la densidad local de cada punto con sus vecinos k-NN. Identifica anomalías locales (subvaluación sutil que parece normal globalmente).
+                </p>
               </div>
               
               {/* ECOD */}
-              <div className="flex flex-col gap-3 group">
+              <div className="flex flex-col gap-3 group bg-white/[0.02] p-4 rounded-lg border border-white/5">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-primary-fixed"></div>
@@ -394,6 +408,9 @@ export default function Config() {
                   value={weightECOD}
                   onChange={(e) => setWeightECOD(parseFloat(e.target.value))}
                 />
+                <p className="text-[11px] text-on-surface-variant/70 leading-relaxed mt-1">
+                  <strong>Leyenda:</strong> Basado en la distribución empírica acumulada para estimar la probabilidad conjunta. Es muy rápido y robusto a sesgos de escala o distribución.
+                </p>
               </div>
             </div>
 

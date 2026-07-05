@@ -11,11 +11,11 @@
   },
   "layer1_regression": {
     "pred_price": 1.1743687311044106,
-    "pred_volume": NaN,
+    "pred_volume": null,
     "price_residual": 0.02563126889558931,
-    "volume_residual": NaN,
+    "volume_residual": null,
     "price_robust_z": 0.0,
-    "volume_robust_z": NaN,
+    "volume_robust_z": null,
     "models_used": [
       {
         "model": "XGBoost Price",

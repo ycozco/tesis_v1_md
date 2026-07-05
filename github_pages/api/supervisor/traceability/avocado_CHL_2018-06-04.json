@@ -10,7 +10,7 @@
     "prediction_features_hash": "e343829f19fc26b1cd153e18fcb70808b9713c82c4b37ea86fe8395c8c607773"
   },
   "layer1_regression": {
-    "pred_price": NaN,
+    "pred_price": null,
     "pred_volume": 0.4787481042510076,
     "price_residual": 0.0,
     "volume_residual": -0.4787481042510076,

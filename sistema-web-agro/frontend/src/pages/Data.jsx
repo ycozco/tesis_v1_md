@@ -268,8 +268,18 @@ export default function Data() {
                   <div className="flex items-center">
                     <span className="material-symbols-outlined text-primary mr-3 text-[20px]">database</span>
                     <div>
-                      <div className="font-body-sm text-body-sm text-on-surface font-semibold">SUNAT Aduanas</div>
-                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">840K filas • Verificado</div>
+                      <div className="font-body-sm text-body-sm text-on-surface font-semibold">SUNAT Aduanet</div>
+                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">840K filas • Verificado (Núcleo)</div>
+                    </div>
+                  </div>
+                  <span className="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                </li>
+                <li className="p-3 rounded-lg border border-transparent cursor-pointer flex items-center justify-between group hover:bg-white/5">
+                  <div className="flex items-center">
+                    <span className="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">bar_chart</span>
+                    <div>
+                      <div className="font-body-sm text-body-sm text-on-surface">Trade Map</div>
+                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">15K filas • Activo (Benchmark)</div>
                     </div>
                   </div>
                   <span className="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
@@ -278,8 +288,18 @@ export default function Data() {
                   <div className="flex items-center">
                     <span className="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">grass</span>
                     <div>
-                      <div className="font-body-sm text-body-sm text-on-surface">Precios MIDAGRI</div>
-                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">120K filas • Pendiente</div>
+                      <div className="font-body-sm text-body-sm text-on-surface">SISAP / MIDAGRI</div>
+                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">120K filas • Sincronizado (Mercado Interno)</div>
+                    </div>
+                  </div>
+                  <span className="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                </li>
+                <li className="p-3 rounded-lg border border-transparent cursor-pointer flex items-center justify-between group hover:bg-white/5">
+                  <div className="flex items-center">
+                    <span className="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">monetization_on</span>
+                    <div>
+                      <div className="font-body-sm text-body-sm text-on-surface">BCRP Macro Control</div>
+                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">2.4K filas • Diario (Tipo Cambio)</div>
                     </div>
                   </div>
                   <span className="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
@@ -288,8 +308,38 @@ export default function Data() {
                   <div className="flex items-center">
                     <span className="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">partly_cloudy_day</span>
                     <div>
-                      <div className="font-body-sm text-body-sm text-on-surface">Histórico SENAMHI</div>
-                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">45K filas • Tiempo Real</div>
+                      <div className="font-body-sm text-body-sm text-on-surface">NASA Power / SENAMHI</div>
+                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">45K filas • Diario (Clima Proxy)</div>
+                    </div>
+                  </div>
+                  <span className="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                </li>
+                <li className="p-3 rounded-lg border border-transparent cursor-pointer flex items-center justify-between group hover:bg-white/5">
+                  <div className="flex items-center">
+                    <span className="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">local_shipping</span>
+                    <div>
+                      <div className="font-body-sm text-body-sm text-on-surface">APN / OSITRAN Logística</div>
+                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">12K filas • Mensual (Logístico Proxy)</div>
+                    </div>
+                  </div>
+                  <span className="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                </li>
+                <li className="p-3 rounded-lg border border-transparent cursor-pointer flex items-center justify-between group hover:bg-white/5">
+                  <div className="flex items-center">
+                    <span className="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">health_and_safety</span>
+                    <div>
+                      <div className="font-body-sm text-body-sm text-on-surface">FDA / SENASA Alertas</div>
+                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">8K filas • Semanal (Sanitario Proxy)</div>
+                    </div>
+                  </div>
+                  <span className="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                </li>
+                <li className="p-3 rounded-lg border border-transparent cursor-pointer flex items-center justify-between group hover:bg-white/5">
+                  <div className="flex items-center">
+                    <span className="material-symbols-outlined text-on-surface-variant mr-3 text-[20px]">science</span>
+                    <div>
+                      <div className="font-body-sm text-body-sm text-on-surface">Dataset Sintético Auxiliar</div>
+                      <div className="font-label-md text-label-md text-on-surface-variant mt-0.5">5K filas • Inactivo (Escenarios)</div>
                     </div>
                   </div>
                   <span className="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
