@@ -89,42 +89,74 @@ export default function ProbabilityPanel({ alert }) {
         </div>
 
         {/* Breakdown Consensus Cards */}
-        <div className="grid grid-cols-3 gap-3 mb-6">
-          <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex flex-col items-center">
-            <span className="text-[10px] font-mono-data text-on-surface-variant uppercase tracking-wider mb-1">Isolation Forest</span>
-            <span className={`text-sm font-bold font-mono-data ${ifScore >= 0.65 ? 'text-error' : 'text-[#a3e635]'}`}>
-              {ifScore.toFixed(4)}
-            </span>
-            <div className="w-full bg-white/5 h-1 rounded-full overflow-hidden mt-1.5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+          <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex flex-col justify-between">
+            <div className="text-center mb-1">
+              <span className="text-[10px] font-mono-data text-on-surface font-semibold uppercase tracking-wider block">Isolation Forest</span>
+              <span className="text-[9px] text-on-surface-variant block mt-0.5 leading-tight">Aísla anomalías usando árboles de decisión estructurados.</span>
+            </div>
+            <div className="flex justify-between items-center mt-2 text-[9px] font-mono-data text-on-surface-variant">
+              <span>Mín: 0.00</span>
+              <span className={`text-xs font-bold ${ifScore >= 0.65 ? 'text-error animate-pulse' : 'text-[#a3e635]'}`}>
+                {ifScore.toFixed(4)}
+              </span>
+              <span>Máx: 1.00</span>
+            </div>
+            <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mt-1.5">
               <div 
                 className={`h-full ${ifScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`} 
                 style={{ width: `${ifScore * 100}%` }}
               ></div>
             </div>
-          </div>
-          <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex flex-col items-center">
-            <span className="text-[10px] font-mono-data text-on-surface-variant uppercase tracking-wider mb-1">LOF (Densidad)</span>
-            <span className={`text-sm font-bold font-mono-data ${lofScore >= 0.65 ? 'text-error' : 'text-[#a3e635]'}`}>
-              {lofScore.toFixed(4)}
+            <span className="text-[8px] font-mono-data text-on-surface-variant text-center block mt-1.5">
+              Posición: {ifScore >= 0.65 ? 'Riesgo Crítico' : 'Normal'}
             </span>
-            <div className="w-full bg-white/5 h-1 rounded-full overflow-hidden mt-1.5">
+          </div>
+
+          <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex flex-col justify-between">
+            <div className="text-center mb-1">
+              <span className="text-[10px] font-mono-data text-on-surface font-semibold uppercase tracking-wider block">LOF (Densidad)</span>
+              <span className="text-[9px] text-on-surface-variant block mt-0.5 leading-tight">Mide desviación de densidad local frente a vecinos cercanos.</span>
+            </div>
+            <div className="flex justify-between items-center mt-2 text-[9px] font-mono-data text-on-surface-variant">
+              <span>Mín: 0.00</span>
+              <span className={`text-xs font-bold ${lofScore >= 0.65 ? 'text-error animate-pulse' : 'text-[#a3e635]'}`}>
+                {lofScore.toFixed(4)}
+              </span>
+              <span>Máx: 1.00</span>
+            </div>
+            <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mt-1.5">
               <div 
                 className={`h-full ${lofScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`} 
                 style={{ width: `${lofScore * 100}%` }}
               ></div>
             </div>
-          </div>
-          <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex flex-col items-center">
-            <span className="text-[10px] font-mono-data text-on-surface-variant uppercase tracking-wider mb-1">ECOD (Cópula)</span>
-            <span className={`text-sm font-bold font-mono-data ${ecodScore >= 0.65 ? 'text-error' : 'text-[#a3e635]'}`}>
-              {ecodScore.toFixed(4)}
+            <span className="text-[8px] font-mono-data text-on-surface-variant text-center block mt-1.5">
+              Posición: {lofScore >= 0.65 ? 'Riesgo Crítico' : 'Normal'}
             </span>
-            <div className="w-full bg-white/5 h-1 rounded-full overflow-hidden mt-1.5">
+          </div>
+
+          <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex flex-col justify-between">
+            <div className="text-center mb-1">
+              <span className="text-[10px] font-mono-data text-on-surface font-semibold uppercase tracking-wider block">ECOD (Cópula)</span>
+              <span className="text-[9px] text-on-surface-variant block mt-0.5 leading-tight">Estima probabilidad de cola mediante distribución empírica.</span>
+            </div>
+            <div className="flex justify-between items-center mt-2 text-[9px] font-mono-data text-on-surface-variant">
+              <span>Mín: 0.00</span>
+              <span className={`text-xs font-bold ${ecodScore >= 0.65 ? 'text-error animate-pulse' : 'text-[#a3e635]'}`}>
+                {ecodScore.toFixed(4)}
+              </span>
+              <span>Máx: 1.00</span>
+            </div>
+            <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mt-1.5">
               <div 
                 className={`h-full ${ecodScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`} 
                 style={{ width: `${ecodScore * 100}%` }}
               ></div>
             </div>
+            <span className="text-[8px] font-mono-data text-on-surface-variant text-center block mt-1.5">
+              Posición: {ecodScore >= 0.65 ? 'Riesgo Crítico' : 'Normal'}
+            </span>
           </div>
         </div>
       </div>
@@ -132,16 +164,19 @@ export default function ProbabilityPanel({ alert }) {
       {/* Ensemble stats summary */}
       <div className="grid grid-cols-3 gap-2 border-t border-white/10 pt-4 text-center">
         <div>
-          <div className="text-[10px] text-on-surface-variant font-mono-data uppercase tracking-wider mb-0.5">Sensibilidad</div>
+          <div className="text-[10px] text-on-surface font-semibold font-mono-data uppercase tracking-wider mb-0.5">Sensibilidad</div>
           <div className="font-bold text-[#a3e635] font-mono-data text-base">94.2%</div>
+          <p className="text-[8px] text-on-surface-variant leading-tight mt-1">Detección de anomalías reales (Recall).</p>
         </div>
         <div className="border-l border-r border-white/10 px-2">
-          <div className="text-[10px] text-on-surface-variant font-mono-data uppercase tracking-wider mb-0.5">Especif.</div>
+          <div className="text-[10px] text-on-surface font-semibold font-mono-data uppercase tracking-wider mb-0.5">Especif.</div>
           <div className="font-bold text-primary font-mono-data text-base">89.4%</div>
+          <p className="text-[8px] text-on-surface-variant leading-tight mt-1">Identificación de casos normales (TNR).</p>
         </div>
         <div>
-          <div className="text-[10px] text-on-surface-variant font-mono-data uppercase tracking-wider mb-0.5">F1-Score</div>
+          <div className="text-[10px] text-on-surface font-semibold font-mono-data uppercase tracking-wider mb-0.5">F1-Score</div>
           <div className="font-bold text-primary font-mono-data text-base">0.932</div>
+          <p className="text-[8px] text-on-surface-variant leading-tight mt-1">Balance robusto de precisión y recall.</p>
         </div>
       </div>
     </div>

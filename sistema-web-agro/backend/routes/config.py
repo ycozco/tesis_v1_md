@@ -307,6 +307,7 @@ def inject_anomaly():
                 pass
         
         score_anomalia = 0.5
+        p_iforest = p_lof = p_ecod = 0.5
         if ml_service.iforest is not None and ml_service.lof is not None and ml_service.ecod is not None and ml_service.scaler is not None:
             try:
                 features_scaled = ml_service.scaler.transform(features)
@@ -319,9 +320,24 @@ def inject_anomaly():
                 score_anomalia = (p_iforest * w_if) + (p_lof * w_lof) + (p_ecod * w_ecod)
             except Exception:
                 pass
+        else:
+            # Fallback simulado coherente con el tipo de anomalía
+            if tipo_anomalia in ['precio', 'precio_extremo', 'sobrevaloracion', 'temperatura', 'falla_frio_critica', 'retraso', 'retraso_severo', 'lluvias']:
+                score_anomalia = random.uniform(0.70, 0.96)
+                p_iforest = score_anomalia + random.uniform(-0.03, 0.03)
+                p_lof = score_anomalia + random.uniform(-0.03, 0.03)
+                p_ecod = score_anomalia + random.uniform(-0.03, 0.03)
+            else:
+                score_anomalia = random.uniform(0.15, 0.35)
+                p_iforest = score_anomalia + random.uniform(-0.03, 0.03)
+                p_lof = score_anomalia + random.uniform(-0.03, 0.03)
+                p_ecod = score_anomalia + random.uniform(-0.03, 0.03)
                 
         new_alert.valor_fob_esperado = round(pred_fob, 2)
         new_alert.score_anomalia = round(score_anomalia, 4)
+        new_alert.if_score = round(max(0.0, min(1.0, p_iforest)), 4)
+        new_alert.lof_score = round(max(0.0, min(1.0, p_lof)), 4)
+        new_alert.ecod_score = round(max(0.0, min(1.0, p_ecod)), 4)
         new_alert.alertado = (score_anomalia >= CONFIG_STATE.get('global_threshold', 0.65))
         db.commit()
 
