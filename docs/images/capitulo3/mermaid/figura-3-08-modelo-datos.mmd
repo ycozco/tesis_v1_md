@@ -1,0 +1,65 @@
+erDiagram
+    USUARIO ||--o{ DECISION_AUDITORIA : registra
+    PIPELINE_RUN ||--o{ OPERACION_ALERTA : produce
+    CONFIGURACION_PIPELINE ||--o{ PIPELINE_RUN : parametriza
+    OPERACION_ALERTA ||--|| EXPLICACION_SHAP : explica
+    OPERACION_ALERTA ||--|| GENERATED_REPORT : resume
+    OPERACION_ALERTA ||--o{ DECISION_AUDITORIA : recibe
+    GENERATED_REPORT }o--o{ DOCUMENTO_NORMATIVO : cita
+    PIPELINE_RUN ||--o{ ARTIFACT_LINEAGE : documenta
+    OPERACION_ALERTA ||--o{ ARTIFACT_LINEAGE : enlaza
+    USUARIO ||--o{ SECURITY_LOG : genera
+
+    USUARIO {
+        int id
+        string username
+        string rol
+    }
+    OPERACION_ALERTA {
+        string alert_id
+        string producto
+        string mercado
+        float score_ensemble
+        string severidad
+    }
+    DECISION_AUDITORIA {
+        int id
+        string decision
+        string condicion
+        float tiempo_segundos
+    }
+    EXPLICACION_SHAP {
+        int id
+        string top_features
+    }
+    DOCUMENTO_NORMATIVO {
+        int id
+        string titulo
+        string fuente
+    }
+    CONFIGURACION_PIPELINE {
+        int id
+        float peso_if
+        float peso_lof
+        float peso_ecod
+        float umbral
+    }
+    PIPELINE_RUN {
+        string run_id
+        string dataset_hash
+        string model_hash
+    }
+    GENERATED_REPORT {
+        int id
+        string estado_validacion
+    }
+    ARTIFACT_LINEAGE {
+        int id
+        string tipo
+        string hash
+    }
+    SECURITY_LOG {
+        int id
+        string accion
+        string created_at
+    }

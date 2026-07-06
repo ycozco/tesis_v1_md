@@ -1,0 +1,13 @@
+flowchart LR
+    entradas[Residuos y variables contextuales] --> scale[Escalado y normalizacion]
+    scale --> iforest[Isolation Forest]
+    scale --> lof[Local Outlier Factor]
+    scale --> ecod[ECOD]
+    iforest --> norm[Homologacion de scores]
+    lof --> norm
+    ecod --> norm
+    norm --> weights[Pesos IF 0.45 LOF 0.30 ECOD 0.25]
+    weights --> score[Score ensemble]
+    score --> threshold{Score >= umbral 0.65}
+    threshold -->|Si| alerta[Generar alerta y severidad]
+    threshold -->|No| normal[Operacion dentro de rango]

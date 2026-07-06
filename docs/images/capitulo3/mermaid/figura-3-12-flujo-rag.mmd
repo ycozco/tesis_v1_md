@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant A as Alerta
+    participant B as Backend
+    participant V as pgvector
+    participant R as Recuperador RAG
+    participant G as Generador
+    participant F as Validador factual
+    participant P as Persistencia
+
+    A->>B: Solicitar reporte contextual
+    B->>V: Buscar embeddings relevantes
+    V-->>B: Fragmentos candidatos
+    B->>R: Ranquear y filtrar evidencia
+    R-->>B: Evidencia priorizada
+    B->>G: Generar borrador con datos y evidencia
+    G-->>B: Reporte preliminar
+    B->>F: Verificar cifras y afirmaciones
+    F-->>B: Aprobado o correccion
+    B->>P: Guardar reporte validado
+    P-->>B: Identificador y trazabilidad

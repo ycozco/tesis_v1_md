@@ -1,0 +1,22 @@
+flowchart LR
+    admin[(Administrador)]
+    auditor[(Auditor)]
+
+    subgraph sistema[Prototipo funcional]
+        u1[Gestionar usuarios y roles]
+        u2[Configurar pesos y umbral]
+        u3[Administrar documentos RAG]
+        u4[Consultar dashboard y alertas]
+        u5[Revisar detalle analitico]
+        u6[Registrar decision y justificacion]
+        u7[Consultar telemetria e integridad]
+    end
+
+    admin --> u1
+    admin --> u2
+    admin --> u3
+    admin --> u7
+    auditor --> u4
+    auditor --> u5
+    auditor --> u6
+    auditor --> u7

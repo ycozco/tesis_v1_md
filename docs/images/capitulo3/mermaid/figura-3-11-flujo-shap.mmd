@@ -1,0 +1,8 @@
+flowchart LR
+    modelo[Modelo predictivo final] --> alerta[Operacion o alerta seleccionada]
+    alerta --> features[Vector de caracteristicas]
+    features --> treeshap[TreeSHAP]
+    treeshap --> contrib[Contribuciones positivas y negativas]
+    contrib --> resumen[Resumen global y explicacion local]
+    resumen --> ui[Vista de detalle del auditor]
+    ui --> decision[Apoyo a la decision humana]

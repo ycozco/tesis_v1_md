@@ -1,0 +1,15 @@
+flowchart LR
+        browser[Navegador del usuario] --> nginx[Nginx]
+        nginx --> react[Frontend React Vite]
+        nginx --> backend[Backend Python
+Flask y FastAPI]
+        backend --> postgres[(PostgreSQL)]
+        backend --> pgvector[(pgvector)]
+        backend --> models[(Modelos serializados)]
+        backend --> reports[(Reportes y artefactos)]
+        pipeline[Pipeline por lotes] --> postgres
+        pipeline --> pgvector
+        pipeline --> models
+        pipeline --> reports
+        pipeline --> data[(Datasets raw bronze silver gold)]
+        backend --> data

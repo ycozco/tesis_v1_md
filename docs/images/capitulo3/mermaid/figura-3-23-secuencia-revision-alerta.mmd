@@ -1,0 +1,22 @@
+sequenceDiagram
+    actor U as Auditor
+    participant F as Frontend
+    participant API as Backend API
+    participant DB as PostgreSQL
+    participant M as Modelos y SHAP
+    participant R as RAG
+
+    U->>F: Inicia sesion y abre una alerta
+    F->>API: Solicitar detalle(alert_id)
+    API->>DB: Recuperar operacion y configuracion
+    DB-->>API: Datos de alerta
+    API->>M: Obtener prediccion scores SHAP
+    M-->>API: Resultado analitico
+    API->>R: Recuperar evidencia y reporte
+    R-->>API: Fragmentos y reporte validado
+    API-->>F: Respuesta consolidada
+    U->>F: Registrar decision y justificacion
+    F->>API: Guardar decision
+    API->>DB: Persistir decision y telemetria
+    DB-->>API: Confirmacion y trazabilidad
+    API-->>F: Estado actualizado

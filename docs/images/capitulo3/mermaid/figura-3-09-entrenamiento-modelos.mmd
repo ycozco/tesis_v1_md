@@ -1,0 +1,13 @@
+flowchart LR
+    gold[Dataset gold] --> prep[Ingenieria de caracteristicas]
+    prep --> split[Split temporal train valid test]
+    split --> base[Modelos base]
+    split --> xgb[XGBoost]
+    split --> lgbm[LightGBM]
+    base --> compare[Comparacion de metricas]
+    xgb --> compare
+    lgbm --> compare
+    compare --> select[Seleccion de modelo final]
+    select --> serialize[Serializacion y versionado]
+    serialize --> infer[Prediccion fuera de muestra]
+    infer --> residuos[Calculo de residuos]

@@ -1,0 +1,35 @@
+flowchart LR
+    subgraph frontend[Frontend React]
+        login[Login]
+        dash[Dashboard]
+        inbox[Bandeja de alertas]
+        detail[Detalle de alerta]
+        telemetry[Telemetria e integridad]
+        admin[Datos configuracion usuarios]
+    end
+
+    subgraph backend[Servicios backend]
+        auth[Auth y sesiones]
+        alerts[Alertas]
+        explain[Prediccion anomalias SHAP RAG]
+        monitor[Telemetria e integridad]
+        config[Configuracion y usuarios]
+    end
+
+    db[(PostgreSQL)]
+    vectors[(pgvector)]
+    files[(Modelos y artefactos)]
+
+    login --> auth
+    dash --> alerts
+    inbox --> alerts
+    detail --> explain
+    telemetry --> monitor
+    admin --> config
+    auth --> db
+    alerts --> db
+    explain --> db
+    explain --> vectors
+    explain --> files
+    monitor --> db
+    config --> db

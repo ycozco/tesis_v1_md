@@ -1,0 +1,15 @@
+flowchart LR
+    run[run_id] --> dataset[Dataset hash]
+    run --> config[Configuracion versionada]
+    run --> model[Modelo hash]
+    dataset --> alert[alert_id]
+    config --> alert
+    model --> alert
+    alert --> shap[Explicacion SHAP]
+    alert --> evid[Evidencia RAG]
+    alert --> report[Reporte generado]
+    alert --> decision[Decision humana]
+    shap --> lineage[ArtifactLineage]
+    evid --> lineage
+    report --> lineage
+    decision --> lineage

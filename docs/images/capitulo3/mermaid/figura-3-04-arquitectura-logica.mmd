@@ -1,0 +1,50 @@
+flowchart TB
+    subgraph fuentes[Fuentes externas]
+        sunat[SUNAT o ADUANET]
+        bcrp[BCRP]
+        sisap[SISAP MIDAGRI]
+        nasa[NASA POWER]
+        normas[SENASA FDA normas]
+    end
+
+    subgraph datos[Capa de datos]
+        raw[raw]
+        bronze[bronze]
+        silver[silver]
+        gold[gold]
+        pred[prediction features]
+        anom[anomaly features]
+    end
+
+    subgraph analitica[Capa analitica]
+        modelos[XGBoost y LightGBM]
+        detectores[Isolation Forest LOF ECOD]
+        shap[Explicaciones SHAP]
+    end
+
+    subgraph conocimiento[Capa de conocimiento]
+        rag[RAG y validador factual]
+    end
+
+    subgraph servicios[Servicios backend]
+        api[Autenticacion alertas reportes telemetria integridad]
+    end
+
+    ui[Frontend React]
+    db[(PostgreSQL y pgvector)]
+    artefactos[(Parquet modelos y reportes)]
+
+    fuentes --> raw --> bronze --> silver --> gold
+    gold --> pred --> modelos
+    gold --> anom --> detectores
+    modelos --> shap
+    modelos --> api
+    detectores --> api
+    shap --> api
+    rag --> api
+    api --> ui
+    api --> db
+    gold --> artefactos
+    modelos --> artefactos
+    detectores --> artefactos
+    normas --> rag

@@ -1,0 +1,19 @@
+flowchart TB
+        raw[raw
+archivos originales] --> bronze[bronze
+conversion estructural]
+        bronze --> silver[silver
+limpieza homologacion anonimización]
+        silver --> gold[gold
+producto mercado semana]
+        gold --> feat1[prediction features]
+        gold --> feat2[anomaly features]
+        feat1 --> pred[Predicciones FOB y volumen]
+        pred --> residuos[Residuos]
+        feat2 --> detect[Scores IF LOF ECOD]
+        residuos --> detect
+        detect --> alertas[Alertas y severidad]
+        pred --> shap[Explicaciones SHAP]
+        alertas --> rag[Reporte RAG]
+        shap --> vista[Vista de detalle]
+        rag --> vista
