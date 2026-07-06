@@ -33,7 +33,7 @@ export default function Layout({ children }) {
       {/* TopNavBar (Web) */}
       <nav className="hidden md:flex justify-between items-center px-container-padding w-full h-16 bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl docked full-width top-0 border-b border-white/10 shadow-sm z-40 fixed">
         <div className="flex items-center gap-6">
-          <span className="font-headline-md text-headline-md font-bold text-primary tracking-tight">Agro-Intelligence Oversight</span>
+          <span className="font-headline-md text-headline-md font-bold text-primary tracking-tight">Supervisión de Inteligencia Aduanera</span>
           <div className="hidden lg:flex items-center gap-1 bg-surface-container-high rounded-full px-4 py-1.5 ml-4 border border-white/5">
             <span className="material-symbols-outlined text-primary text-sm mr-2">search</span>
             <input 
@@ -92,16 +92,12 @@ export default function Layout({ children }) {
               <span className="material-symbols-outlined">settings</span>
             </button>
             <div className="flex items-center gap-2 ml-2">
-              <span className="text-body-sm text-on-surface font-medium">{user?.nombre || 'Auditor'}</span>
+              <span className="text-body-sm text-on-surface font-medium">{user?.rol === 'ADMIN' ? 'Administrador 01' : (user?.nombre || 'Auditor')}</span>
               <div 
-                className="w-8 h-8 rounded-full bg-surface-container-high border border-primary/30 overflow-hidden cursor-pointer"
+                className="w-8 h-8 rounded-full bg-primary/20 border border-primary/50 text-primary flex items-center justify-center cursor-pointer hover:bg-primary/30 transition-colors"
                 onClick={() => navigate('/users')}
               >
-                <img 
-                  alt="Perfil" 
-                  className="w-full h-full object-cover" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxwvAsWimcF03V3njsUr4hg_f38wYuUsLCKv-xiu1PqPz3NR0-RIDqBBNh9BwgAvS4ns7FUNBXzxJ7wtir0npR8M3RPlm_whruKlOLHu7mBAhj9UF9FC6Ux9yZFTa-bKIkz5L2xU5CG3U1ETCNh4zAtHRLCE0utlfji8bJ1Tbf87aVkzvF-PF-2Slr3QZHlE-nDxHkXAMrMMDeWRV6ituElBxadSzZzBDRq378bk6lfFuG5I7oDw0ZHMmUPmTDlExpdWyT9v48Xv4"
-                />
+                <span className="material-symbols-outlined text-[18px]">person</span>
               </div>
             </div>
           </div>

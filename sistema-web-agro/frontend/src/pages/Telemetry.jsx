@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell } from 'recharts'
 
 export default function Telemetry() {
   const [stats, setStats] = useState(null)
   const [loading, setLoading] = useState(true)
   const [injecting, setInjecting] = useState(false)
-  const [injectedAlert, setInjectedAlert] = useState(null)
+  const [injectedAlerts, setInjectedAlerts] = useState([])
+  const [injectedAlertsPage, setInjectedAlertsPage] = useState(1)
+  const [injectedAlertsTotal, setInjectedAlertsTotal] = useState(0)
+  const [loadingAlerts, setLoadingAlerts] = useState(false)
   const [stressTesting, setStressTesting] = useState(false)
 
   const fetchStats = () => {
@@ -22,13 +26,37 @@ export default function Telemetry() {
       })
   }
 
+  const fetchInjectedAlerts = (page = 1, append = false) => {
+    setLoadingAlerts(true)
+    fetch(`/api/admin/injected-anomalies?page=${page}&limit=5`)
+      .then(res => res.json())
+      .then(data => {
+        if (append) {
+          setInjectedAlerts(prev => {
+            const existing = new Set(prev.map(a => a.id_alerta))
+            const filtered = data.alerts.filter(a => !existing.has(a.id_alerta))
+            return [...prev, ...filtered]
+          })
+        } else {
+          setInjectedAlerts(data.alerts)
+        }
+        setInjectedAlertsTotal(data.total)
+        setInjectedAlertsPage(data.page)
+        setLoadingAlerts(false)
+      })
+      .catch(err => {
+        console.error('Error fetching injected anomalies:', err)
+        setLoadingAlerts(false)
+      })
+  }
+
   useEffect(() => {
     fetchStats()
+    fetchInjectedAlerts(1, false)
   }, [])
 
   const handleInjectAnomaly = async (tipo) => {
     setInjecting(true)
-    setInjectedAlert(null)
     try {
       const res = await fetch('/api/admin/inject-anomaly', {
         method: 'POST',
@@ -37,15 +65,8 @@ export default function Telemetry() {
       })
       if (res.ok) {
         const data = await res.json()
-        setInjectedAlert({
-          tipo,
-          id: data.alerta.id_alerta,
-          ruc: data.alerta.ruc_exportador,
-          producto: data.alerta.producto,
-          declarado: data.alerta.valor_fob_declarado,
-          esperado: data.alerta.valor_fob_esperado,
-          score: data.alerta.score_anomalia
-        })
+        setInjectedAlerts(prev => [data.alerta, ...prev])
+        setInjectedAlertsTotal(t => t + 1)
       } else {
         alert('Error al inyectar anomalía sintética.')
       }
@@ -153,31 +174,66 @@ export default function Telemetry() {
           </div>
 
           {/* Injection Feedback */}
-          <div className="mt-6 flex-grow flex items-center justify-center border border-dashed border-white/10 rounded-xl p-4 bg-surface-container-low/30 min-h-[90px]">
-            {injecting ? (
-              <div className="flex items-center gap-2 text-tertiary">
-                <span className="material-symbols-outlined animate-spin">sync</span>
-                <span className="font-mono-data text-xs">Simulando alteración & corriendo pipeline XGBoost+PyOD...</span>
+          <div className="mt-6 flex-grow flex flex-col justify-start border border-dashed border-white/10 rounded-xl p-4 bg-surface-container-low/30 min-h-[140px]">
+            <h4 className="font-label-md text-xs text-on-surface-variant font-bold uppercase tracking-wider mb-2 flex justify-between">
+              <span>Log de Inyecciones de esta Sesión</span>
+              <span className="text-[10px] text-primary">{injectedAlertsTotal} total</span>
+            </h4>
+            
+            {injecting && (
+              <div className="flex items-center gap-2 text-tertiary justify-center py-2 bg-white/[0.02] border border-white/5 rounded-lg mb-2">
+                <span className="material-symbols-outlined animate-spin text-[16px]">sync</span>
+                <span className="font-mono-data text-[10px]">Generando nueva anomalía en tiempo real...</span>
               </div>
-            ) : injectedAlert ? (
-              <div className="w-full space-y-2">
-                <div className="flex justify-between items-center border-b border-white/5 pb-1">
-                  <span className="font-mono-data text-xs text-primary font-bold">¡INYECCIÓN EXITOSA!</span>
-                  <span className="font-mono-data text-[10px] text-on-surface-variant">{injectedAlert.id}</span>
-                </div>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-1 font-mono-data text-[11px] text-on-surface-variant">
-                  <div>RUC: <span className="text-on-surface">{injectedAlert.ruc}</span></div>
-                  <div>Cultivo: <span className="text-on-surface">{injectedAlert.producto}</span></div>
-                  <div>Declarado: <span className="text-error font-bold">${injectedAlert.declarado.toLocaleString()}</span></div>
-                  <div>Esperado: <span className="text-primary font-bold">${injectedAlert.esperado.toLocaleString()}</span></div>
-                  <div className="col-span-2 mt-1">
-                    Score Anomalia: <span className="text-tertiary font-bold">{injectedAlert.score.toFixed(4)}</span>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <span className="font-body-sm text-xs text-on-surface-variant">Ninguna anomalía inyectada en esta sesión.</span>
             )}
+
+            {injectedAlerts.length > 0 ? (
+              <div className="space-y-2 overflow-y-auto max-h-[220px] pr-1 flex-grow scrollbar-thin">
+                {injectedAlerts.map((alert, index) => (
+                  <div key={alert.id_alerta || index} className="p-3 bg-white/[0.02] hover:bg-white/[0.04] border border-white/5 rounded-lg transition-colors flex flex-col gap-1 font-mono-data text-[11px] relative group">
+                    <div className="flex justify-between items-center border-b border-white/5 pb-1">
+                      <span className="text-primary font-bold">{alert.id_alerta}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] text-on-surface-variant">{alert.fecha_operacion}</span>
+                        <Link
+                          to={`/alert/${alert.id_alerta}`}
+                          className="bg-primary/20 text-primary hover:bg-primary hover:text-on-primary text-[9px] font-bold px-2 py-0.5 rounded transition-all flex items-center gap-0.5"
+                        >
+                          Ver
+                          <span className="material-symbols-outlined text-[10px]">arrow_right_alt</span>
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 text-on-surface-variant mt-1">
+                      <div className="truncate">RUC: <span className="text-on-surface">{alert.ruc_exportador}</span></div>
+                      <div className="truncate">Exportador: <span className="text-on-surface">{alert.razon_social}</span></div>
+                      <div>Cultivo: <span className="text-on-surface font-semibold">{alert.producto}</span></div>
+                      <div>Estado: <span className="text-warning font-semibold capitalize">{alert.estado}</span></div>
+                      <div>FOB Dec: <span className="text-error font-bold">${Number(alert.valor_fob_declarado).toLocaleString()}</span></div>
+                      <div>FOB Esp: <span className="text-primary font-bold">${Number(alert.valor_fob_esperado).toLocaleString()}</span></div>
+                    </div>
+                    <div className="mt-1 text-[10px] text-on-surface-variant flex justify-between items-center">
+                      <span>Score Anomalía:</span>
+                      <span className="text-tertiary font-bold">{Number(alert.score_anomalia).toFixed(4)}</span>
+                    </div>
+                  </div>
+                ))}
+                
+                {injectedAlerts.length < injectedAlertsTotal && (
+                  <button
+                    onClick={() => fetchInjectedAlerts(injectedAlertsPage + 1, true)}
+                    disabled={loadingAlerts}
+                    className="w-full py-2 text-center text-xs text-primary hover:underline border border-dashed border-white/5 rounded-lg bg-white/[0.01] transition-all"
+                  >
+                    {loadingAlerts ? 'Cargando...' : 'Cargar más anomalías...'}
+                  </button>
+                )}
+              </div>
+            ) : !injecting ? (
+              <div className="flex-grow flex items-center justify-center">
+                <span className="font-body-sm text-xs text-on-surface-variant text-center">Ninguna anomalía inyectada en esta sesión.</span>
+              </div>
+            ) : null}
           </div>
         </div>
 

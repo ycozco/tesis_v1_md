@@ -125,7 +125,10 @@ export default function Dashboard() {
           <div className="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent opacity-50"></div>
           <div className="relative z-10 flex flex-col h-full justify-between gap-4">
             <div className="flex justify-between items-start">
-              <span className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">PUNTAJE F1 DEL MODELO</span>
+              <div>
+                <span className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block">PUNTAJE F1 DEL ENSEMBLE</span>
+                <span className="text-[10px] text-tertiary-fixed-dim/70 font-mono-sm block mt-0.5">Métrica armónica de precisión y exhaustividad</span>
+              </div>
               <div className="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center border border-tertiary/20">
                 <span className="material-symbols-outlined text-tertiary text-[18px]">model_training</span>
               </div>
@@ -133,7 +136,7 @@ export default function Dashboard() {
             <div>
               <div className="flex items-baseline gap-3">
                 <span className="font-display-lg text-display-lg text-tertiary">0.92</span>
-                <span className="font-body-sm text-body-sm text-tertiary/80 bg-tertiary/10 px-2 py-0.5 rounded border border-tertiary/20">alta conf</span>
+                <span className="font-body-sm text-body-sm text-tertiary/80 bg-tertiary/10 px-2 py-0.5 rounded border border-tertiary/20">Alta Robustez</span>
               </div>
             </div>
           </div>
@@ -144,17 +147,20 @@ export default function Dashboard() {
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-50"></div>
           <div className="relative z-10 flex flex-col h-full justify-between gap-4">
             <div className="flex justify-between items-start">
-              <span className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">EVALUACIONES DE STRESS</span>
+              <div>
+                <span className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block">PRUEBAS DE ESTRÉS (RAG)</span>
+                <span className="text-[10px] text-secondary-fixed-dim/70 font-mono-sm block mt-0.5">Evaluaciones de robustez del agente fiscal</span>
+              </div>
               <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20">
                 <span className="material-symbols-outlined text-secondary text-[18px]">psychology</span>
               </div>
             </div>
             <div>
               <div className="flex items-baseline gap-3">
-                <span className="font-display-lg text-display-lg text-on-surface">5 Runs</span>
+                <span className="font-display-lg text-display-lg text-on-surface">5 Simulaciones</span>
                 <span className="flex items-center font-mono-data text-mono-data text-secondary bg-secondary/10 px-1.5 py-0.5 rounded">
                   <span className="material-symbols-outlined text-[14px]">done_all</span>
-                  Robustez
+                  Verificado
                 </span>
               </div>
             </div>
@@ -189,11 +195,16 @@ export default function Dashboard() {
           {/* Charts Container */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Chart 1: FOB Scatter Plot */}
-            <div className="glass-card rounded-xl p-6 h-96 flex flex-col">
-              <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
-                <span className="material-symbols-outlined text-primary">scatter_plot</span>
-                FOB Declarado vs Esperado
-              </h2>
+            <div className="glass-card rounded-xl p-6 h-104 flex flex-col">
+              <div className="mb-4">
+                <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary">scatter_plot</span>
+                  FOB Declarado vs Esperado
+                </h2>
+                <p className="text-[11px] text-on-surface-variant mt-1 leading-relaxed">
+                  Identificación visual de subvaluación. Los puntos alejados de la diagonal representan exportaciones con precios declarados anormalmente inferiores al valor de mercado calculado por la IA.
+                </p>
+              </div>
               <div className="flex-1 min-h-0">
                 <ResponsiveContainer width="100%" height="100%">
                   <ScatterChart margin={{ top: 10, right: 10, bottom: 20, left: 10 }}>
@@ -232,11 +243,16 @@ export default function Dashboard() {
             </div>
 
             {/* Chart 2: Deviation Distribution */}
-            <div className="glass-card rounded-xl p-6 h-96 flex flex-col">
-              <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
-                <span className="material-symbols-outlined text-primary">bar_chart</span>
-                Distribución de Alertas por Desviación
-              </h2>
+            <div className="glass-card rounded-xl p-6 h-104 flex flex-col">
+              <div className="mb-4">
+                <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary">bar_chart</span>
+                  Distribución de Alertas por Desviación
+                </h2>
+                <p className="text-[11px] text-on-surface-variant mt-1 leading-relaxed">
+                  Histograma de severidad de riesgo. Clasifica los lotes exportados según el porcentaje de desviación financiera detectado respecto al valor normal de referencia.
+                </p>
+              </div>
               <div className="flex-1 min-h-0">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={distributionData} margin={{ top: 10, right: 10, bottom: 20, left: 0 }}>

@@ -34,6 +34,8 @@ services:
       - FLASK_DEBUG=0
       - PYTHONUNBUFFERED=1
       - APP_MODE=EXPERIMENT
+    volumes:
+      - ../data:/data
     depends_on:
       db:
         condition: service_healthy
@@ -48,6 +50,21 @@ services:
       - "8050:8050"
     depends_on:
       - backend
+
+  backend_fastapi:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.fastapi
+    container_name: agro_backend_fastapi
+    restart: always
+    ports:
+      - "8003:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/agro_audit
+      - APP_MODE=EXPERIMENT
+    depends_on:
+      db:
+        condition: service_healthy
 
 volumes:
   pgdata:

@@ -398,43 +398,57 @@ export default function AuditDetail() {
             
             <ul className="space-y-2">
               {isIntegrated ? (
-                explanations.map((exp, index) => {
-                  const isPositive = exp.shap_value >= 0
-                  const percent = Math.min(Math.abs(exp.shap_value) * 100, 100)
-                  return (
-                    <li key={exp.id_explicacion || index} className="flex flex-col bg-white/5 p-2 rounded-lg border border-white/10">
-                      <div className="flex justify-between items-center mb-1">
-                        <div className="flex items-center gap-2">
-                          <span className={`material-symbols-outlined text-[14px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
-                            {isPositive ? 'trending_up' : 'trending_down'}
+                (() => {
+                  const maxShap = Math.max(...explanations.map(e => Math.abs(e.shap_value)), 1);
+                  return explanations.map((exp, index) => {
+                    const isPositive = exp.shap_value >= 0
+                    const percent = (Math.abs(exp.shap_value) / maxShap) * 100
+                    return (
+                      <li key={exp.id_explicacion || index} className="flex flex-col bg-white/5 p-2 rounded-lg border border-white/10">
+                        <div className="flex justify-between items-center mb-1">
+                          <div className="flex items-center gap-2">
+                            <span className={`material-symbols-outlined text-[14px] ${isPositive ? 'text-primary' : 'text-error'}`}>
+                              {isPositive ? 'trending_up' : 'trending_down'}
+                            </span>
+                            <span className="font-mono-sm text-[11px] text-on-surface-variant uppercase truncate max-w-[120px]">{exp.variable_nombre}</span>
+                          </div>
+                          <span className={`font-bold font-mono-sm text-[11px] ${isPositive ? 'text-primary' : 'text-error'}`}>
+                            {isPositive ? `+$${exp.shap_value.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}` : `-$${Math.abs(exp.shap_value).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`}
                           </span>
-                          <span className="font-mono-sm text-[11px] text-on-surface-variant uppercase truncate max-w-[120px]">{exp.variable_nombre}</span>
                         </div>
-                        <span className={`font-bold font-mono-sm text-[11px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
-                          {isPositive ? `+${exp.shap_value.toFixed(2)}` : exp.shap_value.toFixed(2)}
-                        </span>
-                      </div>
-                      <div className="flex justify-between items-center text-[9px] font-mono-sm">
-                        <span className="text-white/50">Valor: {exp.variable_valor}</span>
-                        <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
-                          <div className={`h-full ${isPositive ? 'bg-error' : 'bg-tertiary'}`} style={{ width: `${percent}%` }}></div>
+                        <div className="flex justify-between items-center text-[9px] font-mono-sm">
+                          <span className="text-white/50">Valor: {exp.variable_valor}</span>
+                          <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
+                            <div className={`h-full ${isPositive ? 'bg-primary' : 'bg-error'}`} style={{ width: `${Math.max(percent, 5)}%` }}></div>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  )
-                })
+                      </li>
+                    )
+                  })
+                })()
               ) : (
                 <div className="text-[10px] text-on-surface-variant/40 italic py-4 text-center">
                   Explicaciones locales no disponibles para esta condición.
                 </div>
               )}
             </ul>
-            {isIntegrated && (
-              <div className="text-[9px] font-mono-sm text-on-surface-variant italic mt-3 pt-2 border-t border-white/5 flex justify-between">
-                <span>Base E[f(x)] = 0.51</span>
-                <span>Salida = {(0.51 + explanations.reduce((acc, cur) => acc + cur.shap_value, 0)).toFixed(2)}</span>
-              </div>
-            )}
+            {isIntegrated && (() => {
+              const expectedFob = audit.valor_fob_esperado || 0;
+              const shapSum = explanations.reduce((acc, cur) => acc + cur.shap_value, 0);
+              const baseValue = expectedFob - shapSum;
+              return (
+                <div className="text-[9px] font-mono-sm text-on-surface-variant italic mt-3 pt-2 border-t border-white/5 flex flex-col gap-1">
+                  <div className="flex justify-between">
+                    <span title="FOB promedio histórico del dataset de entrenamiento">Base E[f(x)] =</span>
+                    <span>${baseValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                  </div>
+                  <div className="flex justify-between font-bold text-on-surface">
+                    <span title="Predicción final del FOB (Base + SHAP Values)">Salida =</span>
+                    <span>${expectedFob.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                  </div>
+                </div>
+              )
+            })()}
           </div>
 
           {/* Adjudicación del Auditor (Métricas de Telemetría) */}

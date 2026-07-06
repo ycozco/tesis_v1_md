@@ -35,6 +35,7 @@ export default function Detail() {
   const [showConfirmModal, setShowConfirmModal] = useState(false)
   const [activeRagDoc, setActiveRagDoc] = useState(null)
   const [showCorrectionModal, setShowCorrectionModal] = useState(false)
+  const [showLegendModal, setShowLegendModal] = useState(false)
 
   // Timing states
   const startTimeRef = useRef(null)
@@ -431,6 +432,34 @@ export default function Detail() {
             <span className="font-body-sm text-body-sm text-on-surface font-medium">Rotterdam (NLD)</span>
           </div>
         </div>
+
+        {/* Feature Badges (Real Data) */}
+        <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-white/5">
+          <div className="flex items-center gap-2 px-1 mb-1 w-full">
+            <span className="material-symbols-outlined text-[14px] text-on-surface-variant">dataset</span>
+            <span className="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Datos Base (Features)</span>
+          </div>
+          <div className="bg-white/5 px-3 py-1.5 rounded-md flex items-center gap-2 border border-white/10">
+            <span className="material-symbols-outlined text-[16px] text-primary">attach_money</span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant">FOB Declarado:</span>
+            <span className="font-mono-data text-mono-data text-on-surface font-bold">${alert.valor_fob_declarado?.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+          </div>
+          <div className="bg-white/5 px-3 py-1.5 rounded-md flex items-center gap-2 border border-white/10">
+            <span className="material-symbols-outlined text-[16px] text-tertiary">weight</span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant">Peso Neto:</span>
+            <span className="font-mono-data text-mono-data text-on-surface font-bold">{alert.peso_neto?.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} kg</span>
+          </div>
+          <div className="bg-white/5 px-3 py-1.5 rounded-md flex items-center gap-2 border border-white/10">
+            <span className="material-symbols-outlined text-[16px] text-error">thermostat</span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant">Temperatura:</span>
+            <span className="font-mono-data text-mono-data text-on-surface font-bold">{alert.temperatura}°C</span>
+          </div>
+          <div className="bg-white/5 px-3 py-1.5 rounded-md flex items-center gap-2 border border-white/10">
+            <span className="material-symbols-outlined text-[16px] text-yellow-500">local_shipping</span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant">Retraso Logístico:</span>
+            <span className="font-mono-data text-mono-data text-on-surface font-bold">{alert.retraso_dias} días</span>
+          </div>
+        </div>
       </div>
 
       {/* Experimental Condition Banner */}
@@ -451,11 +480,11 @@ export default function Detail() {
         </span>
       </div>
 
-      {/* Grid Layout Principal según Imagen */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+      {/* Grid Layout Principal */}
+      <div className="flex flex-col gap-6 mt-6">
         
-        {/* Columna Izquierda: Métricas de Riesgo y Capas Analíticas (lg:col-span-8) */}
-        <div className="lg:col-span-8 flex flex-col gap-6">
+        {/* Sección Superior: Métricas de Riesgo y Capas Analíticas */}
+        <div className="w-full flex flex-col gap-6">
           
           {/* Fila 1: Ensemble Card y Distribución de Probabilidad */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -471,87 +500,112 @@ export default function Detail() {
 
         </div>
 
-        {/* Columna Derecha: Explicabilidad y Acción (lg:col-span-4) */}
-        <div className="lg:col-span-4 flex flex-col gap-6">
+        {/* Explicabilidad detallada y Acción */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6">
           
           {/* Variables de Atribución SHAP con Datos */}
-          <div className="glass-panel rounded-xl p-4 flex flex-col">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
+          <div className="glass-panel rounded-xl p-5 flex flex-col">
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="font-label-md uppercase tracking-widest text-on-surface-variant text-sm font-bold">
                 Variables de Atribución SHAP
               </h3>
-              <span className="material-symbols-outlined text-on-surface-variant text-sm">info</span>
+              <button onClick={() => setShowLegendModal(true)} className="hover:text-primary transition-colors focus:outline-none" title="Ver Leyenda">
+                <span className="material-symbols-outlined text-on-surface-variant text-sm hover:text-primary transition-colors">info</span>
+              </button>
             </div>
+            <p className="text-on-surface-variant text-xs mb-5 font-mono-sm leading-tight">
+              Resumen de impacto detallado de variables seleccionadas y su valor registrado.
+            </p>
             
             <ul className="space-y-2">
-              {explanations.map((exp, index) => {
-                const isPositive = exp.shap_value >= 0
-                const percent = Math.min(Math.abs(exp.shap_value) * 100, 100)
-                return (
-                  <li key={exp.id_explicacion || index} className="flex flex-col bg-white/5 p-2 rounded-lg border border-white/10">
-                    <div className="flex justify-between items-center mb-1">
-                      <div className="flex items-center gap-2">
-                        <span className={`material-symbols-outlined text-[14px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
-                          {isPositive ? 'trending_up' : 'trending_down'}
+              {(() => {
+                const maxShap = Math.max(...explanations.map(e => Math.abs(e.shap_value)), 1);
+                return explanations.map((exp, index) => {
+                  const isPositive = exp.shap_value >= 0
+                  const percent = (Math.abs(exp.shap_value) / maxShap) * 100
+                  return (
+                    <li key={exp.id_explicacion || index} className="flex flex-col bg-white/5 p-2 rounded-lg border border-white/10">
+                      <div className="flex justify-between items-center mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className={`material-symbols-outlined text-[14px] ${isPositive ? 'text-primary' : 'text-error'}`}>
+                            {isPositive ? 'trending_up' : 'trending_down'}
+                          </span>
+                          <span className="font-mono-sm text-sm text-on-surface-variant uppercase truncate max-w-[200px]">{exp.variable_nombre}</span>
+                        </div>
+                        <span className={`font-bold font-mono-sm text-sm ${isPositive ? 'text-primary' : 'text-error'}`}>
+                          {isPositive ? `+$${exp.shap_value.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}` : `-$${Math.abs(exp.shap_value).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`}
                         </span>
-                        <span className="font-mono-sm text-[11px] text-on-surface-variant uppercase truncate max-w-[120px]">{exp.variable_nombre}</span>
                       </div>
-                      <span className={`font-bold font-mono-sm text-[11px] ${isPositive ? 'text-error' : 'text-tertiary'}`}>
-                        {isPositive ? `+${exp.shap_value.toFixed(2)}` : exp.shap_value.toFixed(2)}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center text-[9px] font-mono-sm">
-                      <span className="text-white/50">Valor: {exp.variable_valor}</span>
-                      <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
-                        <div className={`h-full ${isPositive ? 'bg-error' : 'bg-tertiary'}`} style={{ width: `${percent}%` }}></div>
+                      <div className="flex justify-between items-center text-xs font-mono-sm mt-1">
+                        <span className="text-white/50">Valor registrado: {exp.variable_valor}</span>
+                        <div className="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                          <div className={`h-full ${isPositive ? 'bg-primary' : 'bg-error'}`} style={{ width: `${Math.max(percent, 5)}%` }}></div>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                )
-              })}
+                      <div className="text-sm font-body-sm text-on-surface-variant/90 mt-2 bg-black/20 p-2.5 rounded">
+                        Esta característica aportó <strong>{isPositive ? '+' : '-'} ${Math.abs(exp.shap_value).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong> a la estimación del FOB esperado.
+                      </div>
+                    </li>
+                  )
+                })
+              })()}
             </ul>
-            <div className="text-[9px] font-mono-sm text-on-surface-variant italic mt-3 pt-2 border-t border-white/5 flex justify-between">
-              <span>Base E[f(x)] = 0.51</span>
-              <span>Salida = {(0.51 + explanations.reduce((acc, cur) => acc + cur.shap_value, 0)).toFixed(2)}</span>
-            </div>
+            
+            {(() => {
+              const expectedFob = alert.valor_fob_esperado || 0;
+              const shapSum = explanations.reduce((acc, cur) => acc + cur.shap_value, 0);
+              const baseValue = expectedFob - shapSum;
+              return (
+                <div className="text-sm font-mono-sm text-on-surface-variant italic mt-4 pt-3 border-t border-white/5 flex flex-col gap-1.5">
+                  <div className="flex justify-between">
+                    <span title="FOB promedio histórico del dataset de entrenamiento">Base E[f(x)] =</span>
+                    <span className="font-bold">${baseValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                  </div>
+                  <div className="flex justify-between font-bold text-on-surface text-base">
+                    <span title="Predicción final del FOB (Base + SHAP Values)">Salida =</span>
+                    <span className="text-primary">${expectedFob.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
 
           {/* Adjudicación Rápida (Formulario de Acción) */}
-          <div className="glass-panel rounded-xl p-4 flex flex-col flex-1 min-h-[220px] justify-between">
-            <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-3 text-[11px]">
+          <div className="glass-panel rounded-xl p-5 flex flex-col flex-1 min-h-[220px] justify-between">
+            <h3 className="font-label-md uppercase tracking-widest text-on-surface-variant mb-4 text-sm font-bold">
               Adjudicación Rápida
             </h3>
             
             <form className="flex-1 flex flex-col justify-between" onSubmit={handleFormSubmit}>
-              <div className="space-y-3">
-                <div className="flex gap-2">
+              <div className="space-y-4">
+                <div className="flex gap-3">
                   <button 
                     type="button"
                     onClick={() => !isAudited && setUserDecision(1)}
-                    className={`flex-1 py-2 px-1 text-[10px] font-bold rounded border ${userDecision === 1 ? 'bg-error/20 border-error text-error' : 'border-white/10 text-on-surface-variant'} transition-colors`}
+                    className={`flex-1 py-3 px-2 text-sm font-bold rounded border ${userDecision === 1 ? 'bg-error/20 border-error text-error' : 'border-white/10 text-on-surface-variant'} transition-colors`}
                   >
                     Anomalía (TP)
                   </button>
                   <button 
                     type="button"
                     onClick={() => !isAudited && setUserDecision(0)}
-                    className={`flex-1 py-2 px-1 text-[10px] font-bold rounded border ${userDecision === 0 ? 'bg-secondary/20 border-secondary text-secondary' : 'border-white/10 text-on-surface-variant'} transition-colors`}
+                    className={`flex-1 py-3 px-2 text-sm font-bold rounded border ${userDecision === 0 ? 'bg-secondary/20 border-secondary text-secondary' : 'border-white/10 text-on-surface-variant'} transition-colors`}
                   >
                     Falsa Alarma
                   </button>
                   <button 
                     type="button"
                     onClick={() => !isAudited && setUserDecision(2)}
-                    className={`flex-1 py-2 px-1 text-[10px] font-bold rounded border ${userDecision === 2 ? 'bg-tertiary/20 border-tertiary text-tertiary' : 'border-white/10 text-on-surface-variant'} transition-colors`}
+                    className={`flex-1 py-3 px-2 text-sm font-bold rounded border ${userDecision === 2 ? 'bg-tertiary/20 border-tertiary text-tertiary' : 'border-white/10 text-on-surface-variant'} transition-colors`}
                   >
                     Inspección
                   </button>
                 </div>
 
-                <div className="space-y-1">
-                  <label className="font-label-md text-[10px] text-on-surface-variant uppercase">Justificación Técnica</label>
+                <div className="space-y-2 mt-3">
+                  <label className="font-label-md text-sm text-on-surface-variant uppercase font-bold">Justificación Técnica</label>
                   <textarea 
-                    className="w-full bg-white/5 border border-white/10 rounded-lg p-2 font-mono-sm text-mono-sm focus:border-primary focus:ring-0 outline-none min-h-[60px] custom-scrollbar" 
+                    className="w-full bg-white/5 border border-white/10 rounded-lg p-3 font-mono-sm text-base focus:border-primary focus:ring-0 outline-none min-h-[100px] custom-scrollbar" 
                     placeholder="Ingrese comentarios de auditoría..."
                     value={justificationText}
                     onChange={(e) => !isAudited && setJustificationText(e.target.value.slice(0, 250))}
@@ -561,9 +615,9 @@ export default function Detail() {
                 </div>
 
                 {/* Stars alignment */}
-                <div className="flex items-center justify-between py-1 border-t border-white/5 mt-1">
-                  <span className="text-[9px] text-on-surface-variant uppercase">Calificación IA:</span>
-                  <div className="flex gap-1">
+                <div className="flex items-center justify-between py-3 border-t border-white/5 mt-3">
+                  <span className="text-sm text-on-surface-variant uppercase font-bold">Calificación IA:</span>
+                  <div className="flex gap-2">
                     {[1, 2, 3, 4, 5].map(starVal => (
                       <button 
                         key={starVal}
@@ -575,7 +629,7 @@ export default function Detail() {
                         disabled={isAudited}
                       >
                         <span 
-                          className={`material-symbols-outlined text-[16px] ${
+                          className={`material-symbols-outlined text-[20px] ${
                             starVal <= (hoverLikert || likertComprehension) ? 'text-primary' : 'text-on-surface-variant'
                           }`}
                           style={{ fontVariationSettings: starVal <= (hoverLikert || likertComprehension) ? "'FILL' 1" : "'FILL' 0" }}
@@ -589,16 +643,16 @@ export default function Detail() {
               </div>
 
               {!isAudited ? (
-                <div className="grid grid-cols-2 gap-2 pt-2">
+                <div className="grid grid-cols-2 gap-3 pt-3">
                   <button 
-                    className="bg-primary text-on-primary font-label-md text-[11px] py-1.5 rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1 font-bold"
+                    className="bg-primary text-on-primary font-label-md text-xs py-2 rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 font-bold"
                     type="submit"
                   >
-                    <span className="material-symbols-outlined text-[14px]">gavel</span>
+                    <span className="material-symbols-outlined text-[16px]">gavel</span>
                     Adjudicar
                   </button>
                   <button 
-                    className="border border-white/10 text-white font-label-md text-[11px] py-1.5 rounded-lg hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-1"
+                    className="border border-white/10 text-white font-label-md text-xs py-2 rounded-lg hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-2"
                     type="button"
                     onClick={() => {
                       if (!isAudited) {
@@ -608,13 +662,13 @@ export default function Detail() {
                       }
                     }}
                   >
-                    <span className="material-symbols-outlined text-[14px]">assignment_return</span>
+                    <span className="material-symbols-outlined text-[16px]">assignment_return</span>
                     Escalar
                   </button>
                 </div>
               ) : (
-                <div className="p-2 bg-primary/10 border border-primary/20 text-primary rounded-lg text-center font-label-md text-[10px] flex justify-center items-center gap-1 mt-2">
-                  <span className="material-symbols-outlined text-[14px]">lock</span>
+                <div className="p-3 bg-primary/10 border border-primary/20 text-primary rounded-lg text-center font-label-md text-xs flex justify-center items-center gap-2 mt-3 font-bold">
+                  <span className="material-symbols-outlined text-[16px]">lock</span>
                   DECISIÓN REGISTRADA
                 </div>
               )}
@@ -625,57 +679,57 @@ export default function Detail() {
 
       </div>
 
-      {/* ----------------- CAPA 4 NARRATIVA TÉCNICA RAG (Ancho Completo Abajo) ----------------- */}
+      {/* ----------------- SECCIÓN INFERIOR 2: NARRATIVA RAG Y PLAN DE ACCIÓN ----------------- */}
       {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
-        <div className="glass-panel rounded-xl p-6 mt-6 flex flex-col bg-white/[0.01]">
-          <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
-            <span className="material-symbols-outlined text-primary">description</span>
-            Capa 4: Narrativa Técnica de IA (Motor RAG)
-          </h3>
-          <p className="font-body-sm text-[12px] text-on-surface-variant mb-4">Sustentación jurídica y logística contextualizada.</p>
-          <div className="glass-panel bg-surface-container-low/40 rounded-lg p-4 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[250px] whitespace-pre-wrap">
-            {renderReportWithCitations(data.rag_report)}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 w-full">
+          {/* Capa 4 RAG */}
+          <div className="glass-panel rounded-xl p-6 flex flex-col bg-white/[0.01] w-full">
+            <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
+              <span className="material-symbols-outlined text-primary">description</span>
+              Capa 4: Narrativa Técnica de IA (Motor RAG)
+            </h3>
+            <p className="font-body-sm text-[12px] text-on-surface-variant mb-4">Sustentación jurídica y logística contextualizada.</p>
+            <div className="glass-panel bg-surface-container-low/40 rounded-lg p-5 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[600px] whitespace-pre-wrap flex-1">
+              {renderReportWithCitations(data.rag_report)}
+            </div>
+            <div className="mt-3 flex justify-end gap-2 text-on-surface-variant font-label-md text-[9px] uppercase tracking-wider">
+              <span className="flex items-center gap-1 font-mono-data">
+                <span className="material-symbols-outlined text-[12px] text-primary">auto_awesome</span> Generado por RAG Core v2.5
+              </span>
+            </div>
           </div>
-          <div className="mt-3 flex justify-end gap-2 text-on-surface-variant font-label-md text-[9px] uppercase tracking-wider">
-            <span className="flex items-center gap-1 font-mono-data">
-              <span className="material-symbols-outlined text-[12px] text-primary">auto_awesome</span> Generado por RAG Core v2.5
-            </span>
-          </div>
-        </div>
-      )}
 
-      {/* ----------------- PLAN DE CORRECCIÓN DE AUDITORÍA ----------------- */}
-      {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
-        <div className="border border-error/30 bg-error/5 p-5 rounded-xl mt-6 flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-error text-[28px]">assignment_late</span>
+          {/* Plan de Acción y Corrección */}
+          <div className="border border-error/30 bg-error/5 p-6 rounded-xl flex flex-col gap-4 w-full">
+          <div className="flex items-center gap-4">
+            <span className="material-symbols-outlined text-error text-[36px]">assignment_late</span>
             <div>
-              <h3 className="font-headline-sm text-headline-sm text-error font-bold">
+              <h3 className="font-headline-lg text-[26px] text-error font-bold tracking-tight">
                 Plan de Acción y Corrección Recomendado
               </h3>
-              <p className="text-[11px] text-on-surface-variant font-mono-sm">Generación metodológica de respuesta ante anomalías críticas</p>
+              <p className="text-[13px] text-on-surface-variant font-mono-sm mt-1">Generación metodológica de respuesta ante anomalías críticas de subvaluación y riesgo logístico</p>
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
-              <span className="font-mono-sm text-[9px] uppercase tracking-wider text-error font-bold block mb-1">🚨 Alerta Detectada</span>
-              <p className="font-body-sm text-[12px] text-on-surface leading-relaxed">
-                Subvaloración severa de exportación de <strong>{alert.producto}</strong> por el exportador <strong>{alert.razon_social}</strong> (desviación de -80% respecto al valor de referencia del modelo GBDT calibrado).
+          <div className="flex flex-col gap-4 mt-4">
+            <div className="bg-white/5 p-5 rounded-lg border border-white/10">
+              <span className="font-mono-sm text-[12px] uppercase tracking-widest text-error font-bold block mb-2">🚨 Alerta Detectada en la DAM</span>
+              <p className="font-body-lg text-[15px] text-on-surface leading-relaxed">
+                El sistema ha identificado una <strong>subvaloración financiera crítica</strong> en la exportación de <strong>{alert.producto}</strong> registrada bajo el exportador <strong>{alert.razon_social}</strong>. El valor FOB declarado en esta aduana (${alert.valor_fob_declarado.toLocaleString('en-US')}) presenta una alarmante <strong>caída del {Math.abs(alert.valor_fob_esperado ? ((alert.valor_fob_esperado - alert.valor_fob_declarado)/alert.valor_fob_esperado)*100 : 0).toFixed(1)}%</strong> frente al precio normal que el mercado internacional pagaría por un volumen de {data?.alert?.peso_neto?.toLocaleString('en-US') ?? '-'} kg.
               </p>
             </div>
             
-            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
-              <span className="font-mono-sm text-[9px] uppercase tracking-wider text-primary font-bold block mb-1">🎯 Conclusión del Sistema</span>
-              <p className="font-body-sm text-[12px] text-on-surface leading-relaxed">
-                Riesgo fiscal crítico confirmado por el Ensemble de PyOD (IF + LOF + ECOD: {alert.score_anomalia.toFixed(4)}). No se detectaron anomalías logísticas (retrasos, merma) que justifiquen una caída genuina del valor comercial.
+            <div className="bg-white/5 p-5 rounded-lg border border-white/10">
+              <span className="font-mono-sm text-[12px] uppercase tracking-widest text-primary font-bold block mb-2">🎯 Conclusión del Análisis de IA</span>
+              <p className="font-body-lg text-[15px] text-on-surface leading-relaxed">
+                Se confirma un <strong>alto riesgo de fraude fiscal</strong> (Nivel de anomalía calculado: <strong>{alert.score_anomalia.toFixed(4)} / 1.0000</strong>). El motor de Inteligencia Artificial evaluó las condiciones físicas reales del envío y determinó que <strong>ni la temperatura de transporte ({data?.alert?.temperatura ?? '-'}°C) ni el posible retraso logístico en puerto ({data?.alert?.retraso_dias ?? '-'} días) justifican matemáticamente una pérdida de valor comercial tan pronunciada</strong>. La depreciación del precio declarado carece de sustento logístico.
               </p>
             </div>
             
-            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
-              <span className="font-mono-sm text-[9px] uppercase tracking-wider text-secondary-fixed-dim font-bold block mb-1">📋 Recomendación Operativa</span>
-              <p className="font-body-sm text-[12px] text-on-surface leading-relaxed">
-                Detener el levante aduanero de la DAM <strong>{alert.numero_dam}</strong>, programar inspección física y solicitar factura comercial de compraventa e historial bancario de la transacción.
+            <div className="bg-white/5 p-5 rounded-lg border border-white/10">
+              <span className="font-mono-sm text-[12px] uppercase tracking-widest text-secondary-fixed-dim font-bold block mb-2">📋 Recomendación Operativa Inmediata</span>
+              <p className="font-body-lg text-[15px] text-on-surface leading-relaxed">
+                Proceder con el bloqueo cautelar de la DAM <strong>{alert.numero_dam}</strong>. Se instruye al equipo auditor programar una <strong>inspección física de aforo exhaustiva</strong> en el terminal portuario, auditar los registros de temperatura (Data Loggers) y requerir imperativamente la <strong>factura comercial, el Bill of Lading (B/L) y las transferencias bancarias internacionales</strong> para descartar colusión con el comprador extranjero.
               </p>
             </div>
           </div>
@@ -687,12 +741,12 @@ export default function Detail() {
               onClick={() => setShowCorrectionModal(true)}
             >
               <span className="material-symbols-outlined text-[16px]">verified_user</span>
-              Ver Sustento y Documentación de Tesis
+              Ver Sustento Metodológico y Normativa Legal
             </button>
           </div>
         </div>
+        </div>
       )}
-
       {/* Historial de la Empresa Exportadora */}
       <div className="xl:col-span-12 glass-panel rounded-xl p-6">
           <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
@@ -853,10 +907,10 @@ export default function Detail() {
               <div className="bg-white/5 p-3 rounded-lg border border-white/5">
                 <h4 className="font-bold text-white mb-1 flex items-center gap-1.5">
                   <span className="material-symbols-outlined text-[16px] text-primary">auto_stories</span>
-                  2. Sustentación Científica y Capas del Pipeline (Tesis Hub)
+                  2. Sustentación Metodológica y Documentación Subida
                 </h4>
                 <p>
-                  La validez metodológica de esta recomendación está sustentada en los capítulos de la investigación adscrita al Tesis Hub. Puedes consultar los detalles de diseño en las siguientes secciones documentales de la tesis:
+                  La validez metodológica de esta recomendación está sustentada en la documentación interna del sistema. Puedes consultar los detalles de diseño en las siguientes secciones documentales:
                 </p>
                 <ul className="list-disc pl-5 mt-2 space-y-1.5 font-mono-data text-xs">
                   <li>
@@ -887,6 +941,41 @@ export default function Detail() {
                 onClick={() => setShowCorrectionModal(false)}
               >
                 Cerrar Sustento
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal 4: Leyenda de Variables */}
+      {showLegendModal && (
+        <div className="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-modal max-w-lg w-full rounded-xl p-6 relative border-t-4 border-t-tertiary">
+            <button 
+              className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface focus:outline-none"
+              onClick={() => setShowLegendModal(false)}
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+            <h3 className="font-headline-sm text-headline-sm text-tertiary mb-4 flex items-center gap-2 pr-6">
+              <span className="material-symbols-outlined">format_list_bulleted</span>
+              Leyenda de Variables
+            </h3>
+            <div className="font-body-md text-body-md text-on-surface-variant leading-relaxed bg-white/5 p-4 rounded-lg border border-white/5 max-h-[300px] overflow-y-auto mb-6">
+              <ul className="space-y-3 font-mono-sm text-xs">
+                <li><strong className="text-white">FOB_DECLARADO:</strong> Valor monetario total declarado por el exportador.</li>
+                <li><strong className="text-white">PESO_NETO:</strong> Peso total de la mercancía sin embalaje.</li>
+                <li><strong className="text-white">PRECIO_UNITARIO:</strong> Costo unitario derivado de FOB / PESO.</li>
+                <li><strong className="text-white">CANTIDAD_UNIDADES:</strong> Número de elementos físicos exportados.</li>
+                <li><strong className="text-white">TIPO_CAMBIO:</strong> Tasa de conversión monetaria aplicable.</li>
+              </ul>
+            </div>
+            <div className="flex justify-end">
+              <button 
+                className="px-5 py-2 bg-tertiary/20 text-tertiary border border-tertiary/30 font-label-md text-label-md hover:bg-tertiary/30 rounded transition-colors"
+                onClick={() => setShowLegendModal(false)}
+              >
+                Cerrar Leyenda
               </button>
             </div>
           </div>
