@@ -1,712 +1,323 @@
-# CAPÍTULO III: ELABORACIÓN DE LA PROPUESTA
-
-## 3.1 Generalidades
-
-### 3.1.1 Propósito
-El propósito del sistema inteligente de supervisión agroexportadora es proveer una plataforma unificada para detectar desviaciones operativas y aduaneras en exportaciones peruanas de palta, uva y arándano. El sistema apoya a los encargados de control y analistas en la toma de decisiones informadas mediante la estimación de valores esperados, detección de anomalías multivariables, explicaciones locales SHAP y generación automática de reportes técnicos trazables RAG.
-
-### 3.1.2 Usuarios del Sistema
-1.  **Analista de Control Operativo:** Revisa alertas, explora las variables incidentes mediante SHAP e inicia solicitudes de auditoría.
-2.  **Supervisor de Operaciones / Auditor Interno:** Encargado de la firma de conformidad de los reportes. Valida y autoriza acciones correctivas.
-3.  **Administrador de Datos / Ingeniero de ML:** Monitorea la calidad de datos, el linaje, el ajuste de los modelos y el reentrenamiento.
-4.  **Investigador / Usuario Académico:** Analiza patrones históricos de mermas, clima o comportamiento de mercado agregados.
-
-### 3.1.3 Entradas
-*   Registros transaccionales de aduanas parseados de SUNAT/ADUANET (formato DBF/CSV).
-*   Series de tiempo diarias y mensuales del tipo de cambio PEN/USD de la API o caches de BCRP.
-*   Series de tiempo mensuales de precios y volúmenes mayoristas nacionales de SISAP (MIDAGRI).
-*   Proxies climáticos semanales de temperatura, humedad y lluvias acumuladas de NASA POWER.
-*   Proxies de alertas fitosanitarias mensuales de SENASA y la FDA.
-*   Configuraciones en YAML para productos arancelarios, modelos e inyección de anomalías.
-
-### 3.1.4 Salidas
-*   Predicciones puntuales de valor unitario FOB y volumen exportado para la semana $t+1$.
-*   Scores consolidados de anomalías y alertas clasificadas por severidad (`BAJA`, `MEDIA`, `ALTA`).
-*   Visualizaciones y mapas de atribución locales SHAP (PNG/SVG) de las variables predictivas.
-*   Informes narrativos en markdown validados factual y numéricamente (con linaje SHA-256).
-*   Base de datos de auditoría de trazabilidad en JSON/DuckDB.
-*   Dashboard interactivo web de visualización en Streamlit/Flask.
-
-### 3.1.5 Requisitos Funcionales
-
-*   **RF-01 (Importar Datos):** Permitir la ingesta de archivos DBF, CSV y Parquet de las fuentes de origen.
-*   **RF-02 (Validar Datos):** Verificar tipos de datos, códigos arancelarios válidos a 10 dígitos y países normalizados ISO alfa-3.
-*   **RF-03 (Normalizar y Anonimizar):** Homologar escalas de peso (kg) y valor (USD), y anonimizar exportadores con hashes SHA-256 salteados.
-*   **RF-04 (Agregar Semanalmente):** Agrupar y consolidar transacciones por combinación `producto × mercado × semana ISO`.
-*   **RF-05 (Entrenar Modelos):** Ajustar de forma global algoritmos XGBoost y LightGBM con búsqueda de hiperparámetros en Optuna.
-*   **RF-06 (Predecir FOB y Volumen):** Generar las estimaciones puntuales de valor unitario FOB y volumen para la semana $t+1$.
-*   **RF-07 (Detectar Anomalías):** Calcular los percentiles de Isolation Forest, LOF y ECOD, y generar alertas si se cruzan los umbrales.
-*   **RF-08 (Explicar con SHAP):** Estimar las contribuciones locales TreeSHAP de las variables predictoras sobre la desviación de la alerta.
-*   **RF-09 (Recuperar Contexto):** Buscar y recuperar fragmentos semánticos en el corpus RAG mediante indexado híbrido (BM25 y embeddings).
-*   **RF-10 (Reportar con LLM):** Generar el reporte en markdown estructurado inyectando evidencias cuantitativas y textos recuperados.
-*   **RF-11 (Validar Reporte):** Analizar sintácticamente el texto del reporte y rechazarlo ante discrepancias numéricas superiores al 0.5%.
-*   **RF-12 (Consultar Trazabilidad):** Permitir la reconstrucción de la alerta ingresando su identificador UUID (`alert_id`).
-*   **RF-13 (Revisar Alertas):** Proveer filtros en la interfaz por producto, mercado, semana y nivel de severidad.
-*   **RF-14 (Exportar Resultados):** Permitir la descarga de reportes markdown firmados y tablas de métricas del pipeline.
-
-### 3.1.6 Requisitos No Funcionales
-*   **Reproducibilidad:** Fijación de semillas aleatorias globales (`42`) y secundarias en todos los modelos e inyección de datos.
-*   **Auditabilidad:** Inmutabilidad mediante hashes SHA-256 registrados para cada entrada de datos, configuraciones, modelos y salidas.
-*   **Rendimiento:** Tiempos de inferencia combinada por registro en la escala de milisegundos en CPU de uso general.
-*   **Modularidad:** Arquitectura modular monolítica desacoplada mediante scripts independientes para ingesta, modelamiento y reporte.
-*   **Usabilidad:** Interfaz interactiva fluida con directrices estéticas premium (vibrant dark mode y visualizaciones simplificadas).
-*   **Privacidad:** Anonimización irreversible de los identificadores comerciales de exportadores.
-
-### 3.1.7 Restricciones
-*   **Procesamiento por Lotes (Batch):** El sistema está acotado a ejecuciones programadas semanales, excluyendo telemetría en tiempo real.
-*   **Soporte Consultivo:** El sistema provee soporte a la decisión humana, no autoriza bloqueos automáticos en aduanas ni reemplaza firmas.
-*   **Variables Proxies:** Variables críticas como mermas, costos logísticos o riesgos sanitarios se declaran conceptualmente como estimaciones o proxies, no mediciones directas.
-
-### 3.1.8 Principios de Diseño
-1.  **Separación de Responsabilidades:** Desacoplamiento estricto del cálculo cuantitativo frente a la redacción narrativa del LLM.
-2.  **Evidencia Primero:** El prompt del modelo de lenguaje se restringe exclusivamente a las evidencias cuantitativas inyectadas.
-3.  **Human-in-the-Loop:** Cada alerta y reporte requiere revisión y firma del supervisor humano antes de su registro oficial.
-4.  **Trazabilidad:** Cada elemento del sistema hereda y propaga el linaje de identificadores y hashes.
-5.  **Control Factual:** Rechazo sistemático de reportes con discrepancias numéricas.
-6.  **Mínimo Privilegio:** Restricción de permisos y control de acceso local a los datos brutos de aduana.
-
-### 3.1.9 Tecnologías Implementadas
-*   *Lenguaje de programación:* Python (versión 3.11.x).
-*   *Análisis y manipulación de datos:* Pandas, Numpy, PyArrow (formato Parquet).
-*   *Algoritmos de ML y Anomalías:* XGBoost, LightGBM, PyOD (Isolation Forest, LOF, ECOD), Scikit-Learn, Optuna.
-*   *Explicabilidad:* SHAP (TreeSHAP).
-*   *RAG e Indexado:* Rank-BM25, Sentence-Transformers (`paraphrase-multilingual-MiniLM-L12-v2`).
-*   *Servicios y Dashboard:* Flask / Streamlit, Jinja2, HTML5/CSS3 (estilo premium).
-*   *Persistencia:* Parquet para almacenamiento analítico y archivos JSON para trazabilidad y configuraciones.
-
-### 3.1.10 Arquitectura de Componentes
-
-```mermaid
-graph TD
-    subgraph Capa_Datos [Capa de Datos y ETL]
-        A[SUNAT raw DBF] -->|parse_sunat_dbf.py| B[Bronze Parquet]
-        C[BCRP + SISAP CSV] -->|integrate_proxies.py| D[Silver Parquet]
-        B & D -->|prepare_weekly_dataset.py| E[Gold weekly_product_market.parquet]
-    end
-
-    subgraph Capa_Modelado [Capa Analítica y de Modelado]
-        E -->|feature_engineering.py| F[Prediction Features]
-        F -->|module1_prediction.py| G[GBDT Models: XGB/LGBM]
-        G -->|Cálculo de Residuos| H[Anomaly Features]
-        H -->|module2_anomaly.py| I[PyOD Ensemble: IF+LOF+ECOD]
-        I -->|module3_shap.py| J[TreeSHAP Explanations]
-    end
-
-    subgraph Capa_Servicios [Capa de Reportes y Servicios RAG]
-        I & J -->|Evidencia JSON| K[module4_rag.py: LLM RAG Generator]
-        L[Knowledge Base Markdown] -->|Búsqueda Híbrida BM25+Embeddings| K
-        K -->|Draft Report| M[module5_validation.py: Factual Validator]
-        M -->|Validación Factual| N[Final Report Markdown]
-        N -->|module6_traceability.py| O[Traceability Log JSON]
-    end
-
-    subgraph Interfaz_Usuario [Capa de Visualización y Dashboard]
-        O -->|Visualización de Alertas y Linaje| P[app.py: Flask Dashboard]
-    end
-```
-
-**Figura 3.1 — Arquitectura lógica del sistema integrado.**  
-**Estado:** placeholder de figura pendiente.  
-**Archivo esperado:** `docs/figures/figura_3_1_arquitectura_logica.svg` y copia PNG en `docs/figures/figura_3_1_arquitectura_logica.png`.  
-**Fuente de generación:** bloque Mermaid anterior o diagrama equivalente generado desde `src/module1_prediction.py` a `src/module6_traceability.py` y `sistema-web-agro/backend/app.py`.  
-**Contenido visual requerido:** cinco capas diferenciadas: datos/ETL, modelado predictivo, anomalías, explicabilidad/RAG-validación y dashboard/trazabilidad. Debe mostrar entradas, salidas, módulos y relación de linaje.  
-**Criterio de aceptación:** la figura debe renderizarse sin código Mermaid visible en el PDF final, tener título, fuente "Elaboración propia" y coincidir con las rutas reales del repositorio.
-
-## 3.2 Esquema de la Propuesta
-
-### 3.2.1 Flujo General de Datos
-
-```mermaid
-sequenceDiagram
-    autonumber
-    participant SUNAT as SUNAT aduanas
-    participant ETL as ETL & Agregación
-    participant Models as Predicción & Residuos
-    participant PyOD as Ensemble Outliers
-    participant SHAP as TreeSHAP
-    participant RAG as RAG & LLM
-    participant Val as Validador Factual
-    participant Log as Traceability Log
-
-    SUNAT->>ETL: Enviar registros transaccionales
-    ETL->>ETL: Agrupar por producto-mercado-semana ISO
-    ETL->>Models: Dataset gold e ingeniería de lags
-    Models->>Models: Entrenar XGBoost/LightGBM global
-    Models->>PyOD: Residuos robustos y características
-    PyOD->>PyOD: Calcular percentiles consolidados
-    PyOD->>SHAP: Gatillar alerta (score >= 0.95)
-    SHAP->>SHAP: Calcular contribución local de variables
-    SHAP->>RAG: Enviar evidencia (valores, SHAP, metadatos)
-    RAG->>RAG: Recuperar documentos contextuales
-    RAG->>RAG: Redactar reporte en markdown
-    RAG->>Val: Enviar reporte de revisión
-    alt Reporte válido (error <= 0.5%)
-        Val->>Log: Guardar reporte y registrar hash SHA-256
-    else Reporte inválido (error > 0.5%)
-        Val->>RAG: Solicitar corrección (máx 1 intento)
-        alt Corrección fallida
-            Val->>Log: Generar reporte determinista con TemplateProvider y registrar
-        end
-    end
-    Log->>Log: Retornar alert_id y confirmar trazabilidad
-```
-
-**Figura 3.2 — Flujo temporal de datos, predicción, alerta y reporte.**  
-**Estado:** placeholder de figura pendiente.  
-**Archivo esperado:** `docs/figures/figura_3_2_flujo_temporal.svg` y copia PNG en `docs/figures/figura_3_2_flujo_temporal.png`.  
-**Fuente de generación:** bloque Mermaid anterior, scripts `src/prepare_weekly_dataset.py`, `src/feature_engineering.py`, `src/module1_prediction.py`, `src/module2_anomaly.py`, `src/module4_rag.py` y `src/module6_traceability.py`.  
-**Contenido visual requerido:** secuencia desde registros SUNAT/ADUANET hasta dataset gold, predicción, residuo, score ensemble, explicación SHAP, reporte RAG, validación factual y log de trazabilidad.  
-**Criterio de aceptación:** debe distinguir explícitamente información disponible en semana `t` frente al objetivo `t+1`, para evidenciar prevención de fuga temporal.
-
-### 3.2.2 Esquema y Capas de Datos
-*   **Raw:** Datos crudos originales descargados sin procesar (formatos DBF de SUNAT y CSVs de SISAP/BCRP).
-*   **Bronze:** Transformación inicial uno-a-uno a formato estructurado de alto rendimiento (Parquet) sin alterar campos.
-*   **Silver:** Limpieza de nulos, homologación de códigos arancelarios a 10 dígitos, normalización de países ISO alfa-3, y anonimización de exportadores con hashes criptográficos. Exclusión sistemática de cacao.
-*   **Gold:** Cuadrícula temporal de agregación semanal de combinación única `product_code`, `market_aggregated`, `week_start`. Generación de lags, rolling statistics y características cíclicas calendario.
-
-### 3.2.3 Unidad de Análisis
-*   Definición metodológica única y obligatoria: la combinación de **producto × mercado de destino × semana ISO** iniciada en la fecha `week_start`.
-*   Unidad de registro en los archivos analíticos de entrada a los modelos: cada fila describe el comportamiento acumulado de una subpartida arancelaria para un mercado específico durante una semana ISO (lunes a domingo).
-
-### 3.2.4 Variables Objetivo
-*   **FOB Unitario Promedio Semanal ($t+1$):**
-    $$Y_{FOB}(t+1) = \frac{\sum \text{FOB\_USD}_{t+1}}{\sum \text{Net\_Weight\_kg}_{t+1}}$$
-*   **Volumen Neto Semanal ($t+1$):**
-    $$Y_{Vol}(t+1) = \sum \text{Net\_Weight\_kg}_{t+1}$$
-
-### 3.2.5 Integración de Fuentes Exógenas
-*   *Tipo de cambio (BCRP):* Mapeado semanalmente a través del mes de la fecha `week_start`.
-*   *Precios internos (SISAP):* Incorporados semanalmente mediante correspondencia de producto.
-*   *Clima regional (NASA):* Agregado semanalmente y desplazado en una semana (`lag1`) para representar la información disponible al cierre de la semana de predicción.
-
-### 3.2.6 Ingeniería de Características (Prevención de Data Leakage)
-Todas las variables de predicción correspondientes a estadísticas móviles (`rolling mean`, `rolling std`, `rolling mad`) y variaciones porcentuales se calculan desplazando los datos observados en una semana (`shift(1)`). Esto asegura que ninguna información correspondiente a la semana $t+1$ o posterior se filtre en el conjunto de entrenamiento de la semana $t$.
-
-### 3.2.7 Modelamiento Predictivo Global
-Se entrena un único modelo global de regresión multivariable (un modelo para valor unitario FOB y otro para volumen) para todos los productos y mercados seleccionados, incorporando las características categóricas codificadas mediante One-Hot Encoding. La optimización de hiperparámetros se realiza mediante Optuna sobre el split de validación temporal.
-
-### 3.2.8 Cálculo de Residuos Robustos
-Los detectores de anomalías se alimentan de los residuos de predicción fuera de muestra (predicciones OOF generadas mediante validación temporal cruzada). El residuo se escala mediante robust-z score móvil:
-$$\text{residual\_robust\_z} = \frac{\text{residuo}(t) - \text{mediana}(\text{residuos}_{t-13..t-1})}{\text{MAD}(\text{residuos}_{t-13..t-1})}$$
-
-### 3.2.9 Ensemble de Anomalías y Percentiles
-Las puntuaciones crudas de Isolation Forest, LOF y ECOD se calibran en la distribución del conjunto de entrenamiento para transformarlas a percentiles acotados en el rango $[0, 1]$. El ensemble consolida las puntuaciones promediándolas y gatilla la alerta si se supera el percentil 95.
-
-### 3.2.10 Explicabilidad SHAP y Atribución local
-TreeSHAP se aplica sobre los regresores globales de GBDT entrenados para calcular las contribuciones marginales locales de cada característica. El sistema extrae el top-5 de variables que empujaron positivamente la predicción esperada y el top-5 que la redujeron, inyectándolos en el prompt de la alerta.
-
-### 3.2.11 RAG con Validador Factual
-El motor RAG recupera información metodológica y limitaciones del corpus documental de `knowledge_base/`. El LLM recibe las evidencias de la alerta y redacta el reporte técnico. El validador determinista realiza un análisis numérico mediante expresiones regulares, comparando los números del reporte contra el JSON de entrada, cayendo en `TemplateProvider` ante discrepancias persistentes.
-
-### 3.2.12 Trazabilidad de Auditoría
-
-```mermaid
-classDiagram
-    class IngestionRun {
-        +String ingestion_run_id
-        +String dataset_version_id
-        +String sunat_source_hash
-        +DateTime timestamp
-    }
-    class ModelRun {
-        +String model_version_id
-        +String dataset_version_id
-        +String model_parameters_hash
-        +Float mae_fob_val
-        +Float rmsle_vol_val
-    }
-    class AlertLog {
-        +String alert_id
-        +String model_version_id
-        +String product_code
-        +String market_aggregated
-        +DateTime week_start
-        +Float ensemble_score
-        +String severity
-    }
-    class ExplanationLog {
-        +String explanation_id
-        +String alert_id
-        +List top_k_shap_variables
-        +String shap_plot_path
-    }
-    class ReportLog {
-        +String report_id
-        +String alert_id
-        +String explanation_id
-        +String report_text_hash
-        +Boolean is_factual_valid
-        +String template_used
-    }
-
-    IngestionRun --> ModelRun : "alimenta"
-    ModelRun --> AlertLog : "evalúa y detecta"
-    AlertLog --> ExplanationLog : "explica"
-    ExplanationLog --> ReportLog : "documenta"
-```
-
-**Figura 3.3 — Modelo lógico de trazabilidad de alerta, explicación y reporte.**  
-**Estado:** placeholder de figura pendiente.  
-**Archivo esperado:** `docs/figures/figura_3_3_trazabilidad.svg` y copia PNG en `docs/figures/figura_3_3_trazabilidad.png`.  
-**Fuente de generación:** bloque Mermaid anterior, `src/module6_traceability.py`, `data/gold/traceability_log.json` y modelos del prototipo en `sistema-web-agro/backend/models.py`.  
-**Contenido visual requerido:** entidades `IngestionRun`, `ModelRun`, `AlertLog`, `ExplanationLog` y `ReportLog`, con campos mínimos de ID, hash, fecha, dataset, modelo y artefacto.  
-**Criterio de aceptación:** debe permitir reconstruir visualmente qué hash conecta dataset, modelo, alerta, explicación y reporte.
-
-### 3.2.13 Seguridad y Privacidad
-El sistema opera localmente y no expone datos aduaneros crudos al exterior. Los identificadores fiscales (RUC) y nombres de las empresas exportadoras se anonimizan de manera irreversible mediante algoritmo criptográfico SHA-256 con sal fija:
-$$\text{exporter\_hash} = \text{SHA256}(\text{RUC} + \text{salt\_salt\_42})$$
-Las claves de API de los LLMs se cargan mediante variables de entorno estrictamente privadas en el archivo `.env`.
-
-### 3.2.14 Esquema de Despliegue Local
-
-```mermaid
-graph LR
-    subgraph Servidor_Local [Servidor Local / Entorno Virtual]
-        A[SQLite / DuckDB Metadata] <--> B[FastAPI Backend / App Logic]
-        C[Parquet/JSON Gold Store] <--> B
-        D[Model Binaries .joblib] --> B
-        B <--> E[Streamlit / Flask Dashboard]
-    end
-
-    subgraph Clientes [Clientes de Red Local]
-        E <--> F[Navegador Analista]
-        E <--> G[Navegador Supervisor]
-    end
-```
-
-## 3.3 Obtención y Preparación de Datos
-
-La preparación de datos se organiza como un flujo reproducible por capas. Esta estructura evita mezclar archivos crudos, datos intermedios, resultados experimentales y evidencias finales. La unidad de análisis se mantiene constante en todo el proceso: producto agroexportador, mercado de destino y semana ISO.
-
-### 3.3.1 Fuentes de datos y estado de uso
-
-| Fuente | Ruta o evidencia | Uso en la tesis | Estado |
-|---|---|---|---|
-| Dataset real local | `data/dataset_real_v1.csv` | Base experimental inicial de exportaciones y proxies | Disponible; requiere declarar composición real/proxy/sintética |
-| SUNAT/ADUANET | `data/sunat/raw_downloads/`, `data/sunat/x23290326.DBF` | Fuente primaria aduanera y validación de estructura | Parcial; descargas locales concentradas en 2026 |
-| Trade Map | `data-trademap/*.xls` | Contraste externo por producto y mercado | Disponible como benchmark agregado |
-| BCRP | `data/bcrp/exchange_rates_cache.json`, `data/downloads/bcrp_tipo_cambio.csv` | Tipo de cambio PEN/USD | Disponible |
-| SISAP/MIDAGRI | `codex-revision/metadata/sisap_*` | Contexto de precio/volumen mayorista interno | Disponible como dato agregado |
-| NASA POWER / clima | Variables climáticas integradas en silver/gold | Contexto climático regional | Disponible como proxy |
-| Dataset analítico gold | `data/gold/weekly_product_market.parquet` | Unidad producto-mercado-semana | Disponible, preliminar |
-| Prototipo funcional | `sistema-web-agro/backend/init_db.py` | Datos semilla para validar interfaz y telemetría | Implementado como prototipo |
-
-Los datos semilla del prototipo no sustituyen al dataset final de investigación. Se usan para demostrar integración funcional de backend, frontend, alertas, explicaciones, reportes y telemetría. Los resultados finales deberán provenir del dataset semanal reproducible y documentado.
-
-### 3.3.2 Inventario reproducible de archivos principales
-
-| Capa | Archivo | Filas x columnas | Hash SHA-256 | Uso |
-|---|---:|---:|---|---|
-| Raw local | `data/raw/exports_raw.csv` | 40,672 x 21 | `64a7dd130cbe2ba79cee04fe8e391d64a81d18cb6a0cbdb4d84e7d27fbd7bea3` | Base tabular inicial |
-| Dataset real v1 | `data/dataset_real_v1.csv` | 40,672 x 21 | `64a7dd130cbe2ba79cee04fe8e391d64a81d18cb6a0cbdb4d84e7d27fbd7bea3` | Base experimental local |
-| Bronze | `data/bronze/exports_raw.parquet` | 40,672 x 21 | `66c4464cd87a6d4238a793ccb693d5afe1be704e1556d49e3bad8540bb2b2c9c` | Conversión estructural |
-| Silver | `data/silver/exports_clean.parquet` | 40,293 x 24 | `ba98a37a9f3c9c7cf36baff8af8e1b61837cd237817b6e441d2bfb9f839e4eb3` | Limpieza y normalización |
-| Gold | `data/gold/weekly_product_market.parquet` | 8,340 x 27 | `4b9d0ea84880dc46192806125896707aec8274d51f5c05c8e5d1ebb5350edac3` | Agregación semanal |
-| Features predictivas | `data/gold/prediction_features.parquet` | 8,340 x 139 | `e343829f19fc26b1cd153e18fcb70808b9713c82c4b37ea86fe8395c8c607773` | Entrenamiento FOB/volumen |
-| Features anomalías | `data/gold/anomaly_features.parquet` | 8,340 x 170 | `f3fa9e7868e2432df240ad932daff0bfb99d54e825fc5967fce991b125412c26` | Detección IF/LOF/ECOD |
-
-**Comando de verificación:** `.\.venv\Scripts\python.exe -c "<script de lectura pandas y hash SHA-256>"`.  
-**Salida esperada:** dimensiones y hashes iguales a la tabla anterior. Si algún hash cambia, debe generarse nueva versión de dataset y actualizar los reportes.
-
-### 3.3.3 Capas de procesamiento
-
-| Capa | Descripción | Evidencia esperada |
-|---|---|---|
-| Raw | Archivos originales sin transformación metodológica | Hash de origen, fecha de descarga, ruta cruda |
-| Bronze | Conversión estructural a formatos tabulares/parquet | Script de extracción y conteo de registros |
-| Silver | Limpieza, normalización, homologación y anonimización | Diccionario de datos y reporte de calidad |
-| Gold | Agregación semanal por producto-mercado-semana | Dataset final, hash, versión y pruebas |
-| Features | Variables predictivas, rezagos y ventanas móviles | Matriz de entrenamiento y prueba de fuga |
-| Evidence | Métricas, residuos, alertas, explicaciones y reportes | Artefactos en `reports/tesis/` |
-
-### 3.3.4 Caracterización del dataset semanal gold
-
-| Indicador | Valor observado | Evidencia |
-|---|---:|---|
-| Filas gold | 8,340 | `data/gold/weekly_product_market.parquet` |
-| Columnas gold | 27 | `data/gold/weekly_product_market.parquet` |
-| Productos | 4 (`avocado`, `blueberry`, `esparrago`, `grape`) | Conteo pandas |
-| Mercados agregados | 10 | Conteo pandas |
-| Series producto-mercado | 20 | Conteo pandas |
-| Semanas ISO | 417 | `week_start` |
-| Periodo semanal | 2018-06-04 a 2026-05-25 | `week_start` |
-| Filas avocado | 2,502 | Conteo por `product_code` |
-| Filas blueberry | 2,502 | Conteo por `product_code` |
-| Filas grape | 2,502 | Conteo por `product_code` |
-| Filas esparrago | 834 | Conteo por `product_code` |
-
-**Criterio metodológico sobre espárrago:** aunque existe en la base gold, se mantiene como producto secundario o de sensibilidad. El núcleo experimental defendible se concentra en palta, uva y arándano; espárrago no debe mezclarse en conclusiones principales salvo que se declare explícitamente su cobertura menor.
-
-### 3.3.5 Calidad, registros eliminados y límites de datos
-
-El reporte `codex-revision/reporte-calidad-datos.md` registra 40,293 filas válidas post-validación y 4 filas rechazadas. También identifica 4,933 duplicados funcionales potenciales usando producto, fecha, exportador, destino, volumen y precio. Estos duplicados no deben eliminarse automáticamente sin revisar si representan múltiples operaciones similares o registros repetidos.
-
-| Control | Resultado actual | Acción documental |
-|---|---|---|
-| Cacao | Excluido | Mantener exclusión |
-| Palta, uva, arándano | Presentes | Núcleo del estudio |
-| Espárrago | Presente con menor cobertura | Mantener como secundario |
-| Rechazados | 4 filas | Documentar archivo de rechazados |
-| Duplicados exactos | 0 | Sin acción |
-| Duplicados funcionales | 4,933 | Revisar antes de cierre final |
-| `fob_unit_value_usd_kg` faltante en gold | 91.46% | No usar como métrica final sin imputación/criterio formal |
-
-### 3.3.6 Controles de calidad temporal
-
-Para prevenir fuga de información, las variables predictivas solo deben utilizar información disponible antes de la semana objetivo. Los rezagos, medias móviles y desviaciones móviles se calculan con desplazamiento explícito de una semana. Los escaladores, codificadores y selectores de características se ajustan únicamente con el conjunto de entrenamiento. La partición temporal se congela antes de entrenar los modelos definitivos.
-
-| Control | Regla de aceptación | Estado actual |
-|---|---|---|
-| Rezagos y ventanas | Toda ventana móvil usa `shift(1)` antes del objetivo | Parcial, requiere prueba automatizada final |
-| Escaladores/codificadores | Ajuste solo en entrenamiento | Pendiente de evidencia definitiva |
-| Selección de características | Sin acceso al conjunto de prueba | Pendiente |
-| Predicciones fuera de muestra | Residuos generados con validación temporal | Pendiente para dataset final |
-| Reporte de fuga | Guardar en `reports/tesis/data-quality/leakage-tests/` | Pendiente si no existe ejecución |
-
-**Comando de prueba esperado:** `.\.venv\Scripts\python.exe -m pytest tests/leakage/test_leakage.py`.  
-**Salida esperada:** pruebas aprobadas y reporte copiado a `reports/tesis/data-quality/leakage-tests/` con fecha, commit y hash. Si el reporte no existe, la evidencia queda pendiente.
-
-### 3.3.7 Registro de artefactos experimentales
-
-Cada corrida experimental debe registrar identificador único, commit, dataset, semilla, configuración, hiperparámetros, entorno, métricas globales, métricas por producto, predicciones, residuos y hashes de salida. Hasta que esos campos existan, el artefacto se clasifica como preliminar o pendiente, no como definitivo.
-
-## 3.4 Diseño e Implementación del Prototipo
-
-El prototipo funcional se encuentra en `sistema-web-agro/`. Su propósito es demostrar la integración de los componentes de supervisión aduanera con IA explicable, no cerrar por sí solo la validación estadística final de la tesis.
-
-### 3.4.1 Estructura técnica del prototipo
-
-| Componente | Ruta | Función | Estado |
-|---|---|---|---|
-| Backend Flask | `sistema-web-agro/backend/app.py` | API de alertas, configuración, telemetría y reportes | Implementado |
-| Modelos de datos | `sistema-web-agro/backend/models.py` | Entidades de alerta, decisión, usuario y documentos | Implementado |
-| Semilla de base | `sistema-web-agro/backend/init_db.py` | Carga de datos de prueba y configuración inicial | Implementado |
-| Frontend React | `sistema-web-agro/frontend/src/` | Interfaz de auditoría, detalle, telemetría e integridad | Implementado |
-| Despliegue local | `sistema-web-agro/docker-compose.yml`, `run.ps1` | Orquestación local del prototipo | Implementado |
-| Evidencia visual | `sistema-web-agro/*/screen.png` | Capturas de pantallas funcionales | Disponible |
-
-### 3.4.2 Vistas funcionales del prototipo
-
-El prototipo incluye vistas para autenticación, panel del auditor, gestión de alertas, detalle de operación con IA explicable, historial, telemetría, integridad, exploración de datos, configuración de modelo y control de usuarios. La vista de detalle de alerta concentra la integración de predicción, score de anomalía, explicación SHAP, reporte RAG y decisión humana.
-
-| Vista | Ruta esperada | Evidencia |
-|---|---|---|
-| Login | `/login` | `frontend/src/pages/Login.jsx` |
-| Dashboard | `/dashboard` | `frontend/src/pages/Dashboard.jsx` |
-| Alertas | `/alerts` | `frontend/src/pages/Alerts.jsx` |
-| Detalle de alerta | `/alerts/:id` | `frontend/src/pages/Detail.jsx`, `AuditDetail.jsx` |
-| Historial | `/history` | `frontend/src/pages/History.jsx` |
-| Telemetría | `/telemetry` | `frontend/src/pages/Telemetry.jsx` |
-| Integridad | `/integrity` | `frontend/src/pages/Integrity.jsx` |
-| Datos/RAG | `/data` | `frontend/src/pages/Data.jsx` |
-| Configuración | `/config` | `frontend/src/pages/Config.jsx` |
-| Usuarios | `/users` | `frontend/src/pages/Users.jsx` |
-
-### 3.4.3 Placeholders de capturas del prototipo
-
-Las capturas de pantalla no deben sustituir evidencia funcional ni resultados experimentales. Se usan para documentar la interfaz del prototipo. Cuando una captura todavía no esté incorporada al PDF final, se registra el placeholder siguiente:
-
-| Figura | Pantalla | Archivo esperado | Fuente actual | Contenido que debe mostrar | Estado |
-|---|---|---|---|---|---|
-| Figura 4.1 | Detalle de alerta IA explicable | `docs/figures/figura_4_1_detalle_alerta.png` | `sistema-web-agro/detalle_de_operaci_n_ia_explicable_esp/screen.png` | Datos DAM, FOB esperado, score, SHAP, reporte RAG y decisión humana | Pendiente de inserción formal |
-| Figura 4.2 | Consola de telemetría | `docs/figures/figura_4_2_telemetria.png` | `sistema-web-agro/experimental_telemetry_console/screen.png` o `monitor_de_telemetr_a_y_equidad_esp/screen.png` | Condiciones A/B, tiempo de decisión, comprensión y métricas agregadas | Pendiente de inserción formal |
-| Figura 4.3 | Bandeja de alertas | `docs/figures/figura_4_3_bandeja_alertas.png` | `sistema-web-agro/alerts_management_inbox/screen.png` | Lista filtrable de alertas, estados, severidad y producto | Pendiente de inserción formal |
-| Figura 4.4 | Configuración de modelo | `docs/figures/figura_4_4_configuracion_modelo.png` | `sistema-web-agro/model_configuration_terminal/screen.png` | Pesos IF/LOF/ECOD, umbral y parámetros editables | Pendiente de inserción formal |
-| Figura 4.5 | Explorador de datos y RAG | `docs/figures/figura_4_5_explorador_datos.png` | `sistema-web-agro/data_explorer_load_center/screen.png` | Carga o exploración de datos, biblioteca documental y estado de indexación | Pendiente de inserción formal |
-
-**Criterio de aceptación de capturas:** cada imagen debe tener resolución legible, título, fuente "captura del prototipo `sistema-web-agro`", fecha de generación y ruta del componente React correspondiente. Si la captura se usa en Capítulo IV, debe corresponder a la versión del commit documentado.
-
-### 3.4.4 Algoritmos propuestos e implementación vinculada
-
-| Módulo | Algoritmo o técnica | Función | Evidencia |
-|---|---|---|---|
-| Predicción | XGBoost/LightGBM, GBDT | Estimar FOB unitario y volumen esperado | `src/module1_prediction.py`, prototipo backend |
-| Detección de anomalías | Isolation Forest, LOF, ECOD | Calcular score anómalo individual y ensemble | `src/module2_anomaly.py`, `backend/app.py` |
-| Explicabilidad | TreeSHAP/SHAP | Atribuir variables que impulsan el riesgo | `src/module3_shap.py`, vista de detalle |
-| Reportes automáticos | RAG con recuperación documental y plantilla determinística | Generar narrativa técnica anclada a evidencia | `src/module4_rag.py`, `src/module5_validation.py` |
-| Validación factual | Reglas determinísticas y comparación numérica | Rechazar cifras no sustentadas | `src/module5_validation.py` |
-| Trazabilidad | Hashes, IDs, logs y relaciones alerta-decisión | Auditar evidencia de extremo a extremo | `src/module6_traceability.py`, modelos del backend |
-
-En el estado actual, el prototipo respalda la arquitectura, las rutas funcionales, la telemetría y la experiencia de auditoría. La validación cuantitativa definitiva sigue condicionada al dataset semanal final, a las pruebas de fuga de información y a los experimentos formales.
-
-### 3.4.5 Modelo de Entidades y Diagrama de Clases del Prototipo
-
-Para garantizar la consistencia, persistencia y trazabilidad de los datos recolectados durante la validación del prototipo, se implementó un modelo relacional mapeado a través de SQLAlchemy. Este comprende el control de acceso, los metadatos de las operaciones, la telemetría del experimento de usabilidad y los reportes generados.
-
-```mermaid
-classDiagram
-    Usuario "1" --> "0..*" DecisionAuditoria : registra
-    OperacionAlerta "1" --> "0..*" DecisionAuditoria : genera
-    OperacionAlerta "1" --> "0..*" ExplicacionSHAP : tiene
-    OperacionAlerta "1" --> "0..1" GeneratedReport : documenta
-    PipelineRun "1" --> "0..*" ArtifactLineage : produce
-
-    class Usuario {
-        +Integer id_usuario
-        +String username
-        +String email
-        +String password_hash
-        +String rol
-        +String nombre
-        +to_dict() Map
-    }
-
-    class OperacionAlerta {
-        +String id_alerta
-        +String numero_dam
-        +Date fecha_operacion
-        +String ruc_exportador
-        +String razon_social
-        +String producto
-        +Decimal valor_fob_declarado
-        +Decimal valor_fob_esperado
-        +Decimal score_anomalia
-        +Boolean alertado
-        +String estado
-        +Decimal peso_neto
-        +Decimal temperatura
-        +Integer retraso_dias
-        +Decimal residuos_fob
-        +Decimal residuos_volumen
-        +String run_id
-        +Decimal if_score
-        +Decimal lof_score
-        +Decimal ecod_score
-        +to_dict() Map
-    }
-
-    class DecisionAuditoria {
-        +Integer id_decision
-        +String id_alerta
-        +Integer id_usuario
-        +String condicion_experimento
-        +Integer user_decision
-        +String justification_text
-        +Integer likert_comprehension
-        +Integer time_to_decision_ms
-        +DateTime creado_en
-        +to_dict() Map
-    }
-
-    class ExplicacionSHAP {
-        +Integer id_explicacion
-        +String id_alerta
-        +String variable_nombre
-        +Decimal shap_value
-        +String variable_valor
-        +to_dict() Map
-    }
-
-    class DocumentoNormativo {
-        +Integer id_doc
-        +String titulo
-        +String categoria
-        +Text contenido
-        +Vector embedding
-        +to_dict() Map
-    }
-
-    class ConfiguracionPipeline {
-        +Integer id_config
-        +String active_model
-        +Decimal weight_if
-        +Decimal weight_lof
-        +Decimal weight_ecod
-        +Decimal global_threshold
-        +String llm_engine
-        +Decimal llm_temperature
-        +Decimal llm_similarity_threshold
-        +to_dict() Map
-    }
-
-    class GeneratedReport {
-        +String id_alerta
-        +Text report_text
-        +Decimal fidelity_score
-        +Decimal completeness_score
-        +String validation_status
-        +Integer numeric_checks
-        +Integer unsupported_claims
-        +String report_hash
-        +String report_uuid
-        +to_dict() Map
-    }
-
-    class PipelineRun {
-        +String run_id
-        +DateTime execution_date
-        +String dataset_version
-        +String dataset_hash
-        +String model_xgb_price_hash
-        +String model_lgb_price_hash
-        +String model_if_hash
-        +String status
-        +to_dict() Map
-    }
-
-    class ArtifactLineage {
-        +Integer id_artifact
-        +String run_id
-        +String name
-        +String filepath
-        +String hash
-        +DateTime created_at
-        +to_dict() Map
-    }
-```
-
-**Figura 3.4 — Diagrama de clases y entidades relacionales de la base de datos del prototipo.**  
-**Fuente:** modelado relacional implementado en `sistema-web-agro/backend/models.py`.
-
-## 3.5 Diseño Experimental y Validación
-
-La validación se plantea en cinco bloques: rendimiento predictivo y detección, explicabilidad, calidad de reportes, usabilidad y trazabilidad. Cada bloque debe producir evidencia reproducible antes de ser incorporado como resultado definitivo en el Capítulo IV.
-
-### 3.5.1 Validación de predicción y anomalías
-
-La comparación principal evalúa el ensemble IF + LOF + ECOD frente a detectores individuales y baselines. Las métricas previstas son Precision, Recall, F1, PR-AUC, ROC-AUC y Precision@k. Cuando se usen anomalías sintéticas, se debe registrar tipo, magnitud, proporción de inyección y etiqueta generada.
-
-#### 3.5.1.1 Partición temporal propuesta
-
-La partición se define por fecha y no por muestreo aleatorio, debido a la naturaleza longitudinal del problema.
-
-| Conjunto | Periodo propuesto | Uso | Regla |
-|---|---|---|---|
-| Entrenamiento | 2018-06-04 a 2024-12-30 | Ajustar modelos, codificadores y escaladores | Puede usarse para Optuna y calibración interna |
-| Validación | 2025-01-06 a 2025-12-29 | Selección de hiperparámetros y umbrales | No se mezcla con test |
-| Prueba | 2026-01-05 a 2026-05-25 | Evaluación final preliminar | Solo inferencia fuera de muestra |
-
-Si la distribución real por producto no permite sostener estas ventanas para todas las series, debe usarse una validación walk-forward por serie con ventanas mínimas documentadas. En ese caso, la tesis debe reportar cuántas series quedaron excluidas y por qué.
-
-#### 3.5.1.2 Estrategia walk-forward
-
-| Parámetro | Valor metodológico |
-|---|---|
-| Unidad de ventana | Semana ISO |
-| Horizonte | 1 semana (`t+1`) |
-| Ventana inicial mínima | 104 semanas por serie cuando exista cobertura |
-| Paso | 1 semana o bloque mensual, según costo computacional |
-| Salida | Predicción, residuo y error por semana fuera de muestra |
-| Evidencia | `reports/tesis/experiments/<run_id>/predictions_oos.parquet` |
-
-#### 3.5.1.3 Baselines predictivos
-
-| Objetivo | Baseline | Descripción | Métrica principal |
-|---|---|---|---|
-| FOB unitario | Último valor observado | `y_hat(t+1)=y(t)` | MAE |
-| FOB unitario | Mediana móvil 4 semanas | Mediana de semanas disponibles hasta `t` | MAE |
-| FOB unitario | Mediana móvil 13 semanas | Baseline robusto estacional corto | MAE |
-| FOB unitario | Elastic Net | Modelo lineal regularizado | MAE/RMSE |
-| Volumen | Último valor observado | Persistencia temporal | RMSLE |
-| Volumen | Mediana móvil 4/13 semanas | Baseline robusto | RMSLE |
-| Volumen | Baseline estacional | Misma semana del año anterior si existe | RMSLE |
-
-#### 3.5.1.4 Modelos propuestos e hiperparámetros
-
-| Modelo | Hiperparámetros a registrar | Selección |
-|---|---|---|
-| XGBoost | `n_estimators`, `max_depth`, `learning_rate`, `subsample`, `colsample_bytree`, `reg_lambda`, `reg_alpha` | Optuna o grid reducido sobre validación temporal |
-| LightGBM | `num_leaves`, `max_depth`, `learning_rate`, `feature_fraction`, `bagging_fraction`, `lambda_l1`, `lambda_l2` | Optuna o grid reducido sobre validación temporal |
-| Elastic Net | `alpha`, `l1_ratio` | Validación temporal |
-| IF/LOF/ECOD | `contamination`, vecinos LOF, semilla y umbral percentílico | Calibración en entrenamiento/validación |
-
-**Semilla base:** `42`. Toda corrida debe registrar semilla global, semilla de modelo y versión de librerías.
-
-#### 3.5.1.5 Métricas por objetivo
-
-| Bloque | Métricas | Nivel de reporte |
-|---|---|---|
-| FOB | MAE, RMSE, MAPE/SMAPE, R² | Global, producto y mercado principal |
-| Volumen | RMSLE, MAE, RMSE, SMAPE, R² | Global, producto y mercado principal |
-| Anomalías | Precision, Recall, F1, PR-AUC, ROC-AUC, Precision@k | Global, tipo de anomalía y producto |
-| Eficiencia | Tiempo de entrenamiento e inferencia | Por modelo |
-| Estabilidad | Intervalo de confianza por bootstrap temporal | Por métrica principal |
-
-#### 3.5.1.6 Protocolo de anomalías sintéticas
-
-| Tipo | Inyección | Magnitud sugerida | Etiqueta |
-|---|---|---|---|
-| Precio/FOB | Multiplicar FOB unitario o precio por factor atípico | ±20% a ±60% | `precio` |
-| Volumen | Alterar `total_net_weight_kg` o volumen semanal | ±30% a ±80% | `volumen` |
-| Clima/contexto | Perturbar temperatura o precipitación proxy | Percentiles 95-99 | `clima` |
-| Logística | Aumentar días logísticos proxy | Percentiles 95-99 | `logistica` |
-| Calidad/sanidad | Alterar merma o cumplimiento proxy | Regla documentada | `calidad` |
-
-La proporción de inyección no debe superar el 5% del conjunto evaluado sin justificarlo. Deben ejecutarse al menos tres repeticiones con semillas distintas si se quieren reportar intervalos de confianza.
-
-### 3.5.2 Validación de explicabilidad
-
-SHAP se evalúa por cobertura top-k, estabilidad de atribuciones, coherencia con variables disponibles y claridad para el auditor. Las atribuciones se interpretan como contribuciones del modelo, no como causalidad empresarial.
-
-| Indicador | Definición | Evidencia esperada |
-|---|---|---|
-| Cobertura top-k | Porcentaje de alertas con top-5 variables explicativas | `data/gold/local_explanations.json` |
-| Estabilidad | Variación del ranking SHAP entre corridas equivalentes | Reporte de estabilidad |
-| Coherencia | Variables explicativas existen en matriz de features | Validación de columnas |
-| Tiempo de cálculo | Milisegundos por explicación | Log de inferencia |
-| Visualización | Gráficos bar/beeswarm exportados | `src/static/images/shap_*.png` |
-
-**Placeholders de figuras SHAP.**
-
-| Figura | Archivo actual o esperado | Descripción |
-|---|---|---|
-| Figura 4.6 | `src/static/images/shap_price_bar.png` | Importancia global para predicción de precio/FOB |
-| Figura 4.7 | `src/static/images/shap_volume_bar.png` | Importancia global para predicción de volumen |
-| Figura 4.8 | `src/static/images/shap_price_beeswarm.png` | Distribución de efectos SHAP para precio/FOB |
-| Figura 4.9 | `src/static/images/shap_volume_beeswarm.png` | Distribución de efectos SHAP para volumen |
-
-### 3.5.3 Validación de reportes automáticos
-
-Los reportes se validan con una rúbrica de completitud, coherencia, fidelidad factual y consistencia numérica. Cada cifra citada en el reporte debe existir en evidencia estructurada. Si el reporte RAG no supera la validación, se registra rechazo y se genera una versión determinística.
-
-| Criterio | Métrica | Fuente |
-|---|---|---|
-| Completitud | Porcentaje de campos obligatorios presentes | `data/gold/validation_metrics.json` |
-| Fidelidad factual | Proporción de cifras coincidentes con evidencia | `data/gold/validation_metrics.json` |
-| Rechazo controlado | Reportes no aprobados por validador | `reports/audits/` |
-| Comparación determinística | RAG frente a plantilla | Reporte de validación |
-| Recuperación documental | Documentos usados por reporte | Log RAG |
-
-En el estado actual, `data/gold/validation_metrics.json` registra 5 reportes evaluados y 0 reportes válidos. Por tanto, el módulo queda documentado como funcional pero no aprobado para resultados definitivos hasta corregir las discrepancias numéricas.
-
-### 3.5.4 Evaluación controlada con usuarios
-
-El estudio de usabilidad compara una condición integrada, con SHAP y RAG visibles, frente a una condición aislada, sin explicaciones avanzadas. Las métricas son tiempo de análisis, decisión registrada, comprensión percibida y utilidad. Hasta contar con participantes reales y consentimiento documentado, esta sección permanece como diseño experimental y no como resultado concluyente.
-
-| Elemento | Diseño mínimo |
-|---|---|
-| Participantes | Definir perfil, experiencia y número mínimo antes de ejecutar |
-| Condiciones | A: integrado con SHAP/RAG; B: aislado sin SHAP/RAG |
-| Tareas | Casos equivalentes por producto y severidad |
-| Orden | Contrabalanceado para reducir aprendizaje |
-| Métricas | Tiempo, decisión correcta, Likert de comprensión, SUS, utilidad |
-| Prueba estadística | Mann-Whitney U o Welch según normalidad y tamaño muestral |
-| Evidencia | Consentimiento, datos anonimizados y script de análisis |
-
-**Placeholder de instrumento:** el formulario final de consentimiento y encuesta SUS debe guardarse como `reports/tesis/user-study/instrumento_usabilidad_v1.pdf` o `docs/tesis/anexos/instrumento_usabilidad.md`. Si no existe, la evaluación con usuarios permanece pendiente.
-
-### 3.5.5 Puertas de control
-
-| Puerta | Criterio | Estado actual |
-|---|---|---|
-| A. Datos | Dataset semanal reproducible, documentado, versionado y sin duplicidad de clave | Parcial |
-| B. Implementación | Cada módulo con ruta, entrada, salida, configuración, prueba y evidencia | Parcialmente aprobado por prototipo |
-| C. Experimento | Split temporal, métricas, semillas y criterios congelados | Pendiente |
-| D. Capítulo III | Arquitectura e implementación documentadas sin resultados finales | En desarrollo |
-| E. Capítulo IV preliminar | Resultados reproducibles y claramente marcados como preliminares o definitivos | Parcial |
-
-### 3.5.6 Checklist verificable de cierre del Capítulo III
-
-| ID | Actividad | Archivo fuente | Comando | Salida esperada | Estado |
-|---|---|---|---|---|---|
-| C3-DATA-01 | Verificar hashes de datasets | `data/raw`, `data/gold` | Script pandas + SHA-256 | Hashes iguales a Tabla 3.3.2 | Parcial |
-| C3-DATA-02 | Ejecutar pruebas de calidad | `tests/data_quality/test_quality.py` | `.\.venv\Scripts\python.exe -m pytest tests/data_quality/test_quality.py` | Tests aprobados | Pendiente de corrida final |
-| C3-LEAK-01 | Ejecutar prueba de fuga temporal | `tests/leakage/test_leakage.py` | `.\.venv\Scripts\python.exe -m pytest tests/leakage/test_leakage.py` | Tests aprobados y reporte en `reports/tesis/data-quality/leakage-tests/` | Pendiente |
-| C3-EXP-01 | Registrar experimento | `src/train_models.py` | `.\.venv\Scripts\python.exe src/train_models.py` | `run_id`, métricas, predicciones y residuos | Parcial |
-| C3-SHAP-01 | Generar explicabilidad | `src/module3_shap.py` | Script de SHAP | JSON + PNG/SVG | Parcial |
-| C3-RAG-01 | Validar reportes | `src/module5_validation.py` | Tests/report validation | Reportes válidos o rechazados documentados | Parcial, actualmente no aprobado |
-| C3-FIG-01 | Renderizar figuras Mermaid | `docs/02-30-capitulo3.md` | Mermaid CLI o equivalente | Figuras 3.1-3.3 PNG/SVG | Pendiente |
-| C3-UI-01 | Insertar capturas del prototipo | `sistema-web-agro/*/screen.png` | Copia a `docs/figures/` | Figuras 4.1-4.5 con título y fuente | Pendiente |
-
----
+# CAPÍTULO III: DESARROLLO E IMPLEMENTACIÓN DEL PROTOTIPO FUNCIONAL
 
+## 3.1 Generalidades del prototipo funcional
+
+### 3.1.1 Propósito del prototipo
+
+El prototipo funcional de supervisión agroexportadora fue desarrollado con el propósito de integrar en una sola plataforma el procesamiento de datos de exportación, la estimación semanal del valor unitario FOB y del volumen exportado, la detección multivariable de anomalías, la explicación de resultados mediante SHAP, la recuperación de evidencia documental mediante RAG y el registro trazable de las decisiones realizadas por los usuarios.
+
+El prototipo está orientado a operaciones de palta, uva fresca y arándano registradas en el Perú. La unidad de análisis corresponde a la combinación producto, mercado de destino y semana ISO. El sistema apoya la revisión de comportamientos inusuales, pero no sustituye la decisión del analista ni ejecuta acciones automáticas sobre operaciones reales.
+
+La implementación tiene carácter de prototipo funcional y experimental. Sus módulos principales pueden ejecutarse de manera integrada y permiten demostrar el flujo propuesto; sin embargo, la calibración definitiva de los modelos, la validación con usuarios y el endurecimiento para un entorno productivo permanecen fuera del estado actual del desarrollo.
+
+### 3.1.2 Alcance funcional
+
+El prototipo permite cargar y preparar fuentes agroexportadoras, validar registros, generar datasets por capas, agrupar operaciones semanalmente, construir variables predictivas, estimar valor unitario FOB y volumen, calcular residuos, detectar anomalías mediante Isolation Forest, Local Outlier Factor y ECOD, consolidar puntuaciones, explicar predicciones mediante SHAP, recuperar documentos relevantes mediante RAG, generar reportes, registrar decisiones, conservar trazabilidad y visualizar el proceso mediante una interfaz web.
+
+No forman parte del alcance actual la integración en tiempo real con SUNAT, sistemas ERP, sensores, plataformas empresariales ni decisiones automáticas de bloqueo o intervención.
+
+### 3.1.3 Usuarios y actores
+
+Los actores implementados en el prototipo son el Administrador y el Auditor. El Administrador gestiona usuarios, parámetros del ensemble, documentos RAG y elementos de configuración. El Auditor consulta alertas, revisa predicciones, puntuaciones, explicaciones SHAP, evidencia RAG y reportes, y registra una decisión con su justificación.
+
+Como interesados conceptuales se consideran el analista de datos, responsable de preparar fuentes y revisar calidad; el ingeniero de aprendizaje automático, encargado del entrenamiento y versionamiento de modelos; el supervisor, que revisa decisiones y reportes; y el investigador, que ejecuta y documenta los experimentos.
+
+### 3.1.4 Entradas del prototipo
+
+Las entradas principales son los registros de exportación provenientes de SUNAT o ADUANET, los tipos de cambio publicados por el BCRP, los precios mayoristas de SISAP o MIDAGRI, las variables climáticas de NASA POWER, los documentos normativos de SENASA, FDA y normativa peruana, y los parámetros de ejecución almacenados en archivos de configuración o base de datos.
+
+Estas fuentes presentan diferentes estructuras, formatos y granularidades. Para permitir su integración, los registros se normalizan y agregan a una frecuencia semanal. Las variables contextuales se incorporan únicamente cuando existe correspondencia temporal y metodológica documentada.
+
+### 3.1.5 Salidas del prototipo
+
+Las salidas principales son el dataset semanal producto-mercado-semana, las predicciones de valor unitario FOB y volumen, los scores individuales de Isolation Forest, LOF y ECOD, el score combinado del ensemble, la severidad de cada alerta, las explicaciones SHAP, los fragmentos recuperados mediante RAG, el reporte técnico, la decisión del auditor y el linaje de ejecución basado en identificadores, versiones y hashes.
+
+### 3.1.6 Restricciones
+
+El prototipo opera mediante procesamiento por lotes semanales y no consume telemetría en tiempo real. Algunas variables son proxies agregados y no mediciones directas. Los datos semilla se utilizan para validar visualmente e integrar módulos, pero no sustituyen al dataset experimental final. Flask permanece como componente heredado mientras FastAPI y Uvicorn se incorporan progresivamente. El prototipo no está preparado todavía para un despliegue productivo ni para la toma de decisiones automáticas.
+
+### 3.1.7 Principios de diseño
+
+El diseño se fundamenta en la separación de responsabilidades, la prioridad de la evidencia sobre la narrativa, la intervención humana, la trazabilidad, el control factual, el mínimo privilegio, la reproducibilidad y el desacoplamiento modular. Los cálculos cuantitativos se mantienen separados de la redacción generativa; toda alerta requiere revisión humana; y cada artefacto debe poder relacionarse con los datos, modelos y configuraciones que lo originaron.
+
+## 3.2 Auditoría inicial de datos y componentes
+
+### 3.2.1 Objetivo de la auditoría
+
+La auditoría inicial tuvo como finalidad determinar si los archivos disponibles, los scripts de procesamiento y los componentes del prototipo permitían construir una cadena reproducible desde las fuentes de origen hasta la generación de una alerta trazable.
+
+La revisión comprendió la estructura de los archivos, cobertura temporal, calidad, granularidad, valores nulos, duplicados, productos, mercados, rutas de ejecución, modelos serializados, persistencia, servicios backend, vistas del frontend y mecanismos de trazabilidad.
+
+### 3.2.2 Procedimiento de auditoría
+
+El procedimiento incluyó el inventario de archivos, la inspección de dimensiones y tipos, el análisis de nulos y duplicados, la validación de fechas, códigos arancelarios y unidades, la clasificación de datos como reales, agregados, proxies o sintéticos, el cálculo de hashes, la revisión de scripts y modelos, y la verificación del flujo entre frontend, backend y persistencia.
+
+**Figura 3.1. Flujo de auditoría inicial de datos y componentes del prototipo.**
+
+La figura representa las actividades realizadas para evaluar la disponibilidad, calidad, procedencia y trazabilidad de los datos, así como la correspondencia entre scripts analíticos, modelos, servicios backend y vistas del prototipo. El proceso comienza con el inventario de fuentes y finaliza con el registro de hallazgos y acciones correctivas.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_1_flujo_auditoria.mmd`.
+
+### 3.2.3 Resultados de la auditoría de datos
+
+El conjunto inicial contiene 40 672 registros y 21 columnas. Después de excluir 379 registros de cacao quedaron 40 293 registros evaluados. La validación clasificó 40 289 como válidos y 4 como rechazados. La agregación semanal preliminar produjo 8 340 filas en la capa gold, 139 variables en la matriz predictiva y 170 variables en la matriz utilizada por los detectores de anomalías.
+
+**Figura 3.2. Evolución de registros durante la preparación inicial.**
+
+La figura muestra la cantidad de registros conservados después de excluir productos fuera del alcance, aplicar las reglas de calidad y ejecutar la agregación semanal. Los valores corresponden al estado preliminar y deberán actualizarse cuando se congele el dataset gold definitivo.
+
+**Fuente:** elaboración propia a partir de los reportes de calidad. Diagrama Mermaid: `docs/diagrams/figura_3_2_evolucion_registros.mmd`.
+
+### 3.2.4 Hallazgos y decisiones metodológicas
+
+La auditoría identificó la presencia de cacao y espárrago fuera del núcleo experimental, cuatro registros rechazados, posibles duplicados funcionales, diferencias de granularidad y variables climáticas utilizadas como proxy regional. También evidenció la necesidad de congelar el dataset gold, completar las pruebas de fuga temporal y mantener una separación explícita entre datos reales, datos agregados, proxies y datos semilla.
+
+Como decisiones metodológicas se adoptó la frecuencia semanal, la unidad producto-mercado-semana, la exclusión de cacao, la separación del espárrago de las conclusiones principales, el uso de valor unitario FOB y volumen como objetivos y la organización del procesamiento en capas raw, bronze, silver, gold y features.
+
+## 3.3 Requisitos del prototipo funcional
+
+### 3.3.1 Requisitos funcionales
+
+Los requisitos funcionales comprenden la importación de fuentes, validación y normalización de registros, anonimización, agregación semanal, entrenamiento de modelos, generación de predicciones, detección de anomalías, explicación SHAP, recuperación de documentos, generación y validación de reportes, consulta de trazabilidad, revisión de alertas y exportación de resultados.
+
+Cada requisito se vincula con un actor, una entrada, una salida verificable y un módulo del prototipo. El cumplimiento funcional se evalúa mediante rutas ejecutables, persistencia, registros y evidencia visual.
+
+### 3.3.2 Requisitos no funcionales
+
+Los requisitos no funcionales considerados son reproducibilidad, auditabilidad, modularidad, seguridad, privacidad, usabilidad, portabilidad y disponibilidad experimental. El prototipo debe registrar semillas, versiones y hashes; mantener separados los módulos ETL, predicción, anomalías, SHAP, RAG y servicios; proteger credenciales mediante variables de entorno; anonimizar identificadores; y poder ejecutarse en un entorno local reproducible mediante Docker Compose.
+
+**Figura 3.3. Casos de uso principales del prototipo funcional.**
+
+La figura presenta las funciones disponibles para los actores Administrador y Auditor. El Administrador dispone de operaciones de configuración, usuarios y documentos, mientras que el Auditor concentra las tareas de consulta, análisis y registro de decisiones.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_3_casos_uso.mmd`.
+
+## 3.4 Arquitectura del prototipo funcional
+
+### 3.4.1 Enfoque arquitectónico
+
+El prototipo adopta una arquitectura modular por capas. La separación permite aislar la adquisición y preparación de datos, el procesamiento analítico, la persistencia, los servicios de aplicación y la interfaz de usuario.
+
+El flujo analítico se ejecuta principalmente por lotes, mientras que la aplicación web permite consultar resultados almacenados y registrar decisiones. La arquitectura representa una configuración reproducible para desarrollo, demostración y experimentación, no un despliegue productivo distribuido.
+
+### 3.4.2 Capas de la arquitectura
+
+La capa de fuentes reúne SUNAT o ADUANET, BCRP, SISAP, NASA POWER, SENASA, FDA y archivos de configuración. La capa de datos organiza la información en raw, bronze, silver, gold, prediction features y anomaly features. La capa analítica ejecuta XGBoost, LightGBM, StandardScaler, Isolation Forest, LOF, ECOD y SHAP.
+
+La capa de conocimiento administra documentos, fragmentos, embeddings, recuperación por similitud, generación narrativa y validación factual. La capa de servicios contiene autenticación, alertas, configuración, telemetría, reportes e integridad. La capa de presentación está construida con React y Vite. La persistencia combina PostgreSQL, pgvector, SQLAlchemy, archivos Parquet, modelos serializados y artefactos trazables.
+
+**Figura 3.4. Arquitectura lógica del prototipo funcional de supervisión agroexportadora.**
+
+La figura representa las capas principales de la solución. Las fuentes externas alimentan el proceso de preparación de datos por niveles raw, bronze, silver y gold. El dataset gold permite generar variables para los modelos predictivos y de anomalías. Las predicciones, puntuaciones, explicaciones SHAP y evidencias documentales recuperadas mediante RAG son expuestas por los servicios backend y consumidas desde la interfaz React.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_4_arquitectura_logica.mmd`.
+
+### 3.4.3 Arquitectura de despliegue
+
+Nginx atiende las solicitudes del navegador y sirve la interfaz React. El backend Python expone los servicios de aplicación y accede a PostgreSQL, pgvector, los modelos serializados y los artefactos analíticos. El pipeline procesa las fuentes y actualiza datasets, modelos y resultados.
+
+La coexistencia de Flask y FastAPI representa una transición tecnológica. Flask mantiene rutas funcionales existentes, mientras que FastAPI y Uvicorn se incorporan progresivamente como objetivo de consolidación del backend.
+
+**Figura 3.5. Arquitectura de despliegue del prototipo en entorno local.**
+
+La figura muestra la distribución de los componentes durante la ejecución del prototipo, incluyendo navegador, Nginx, frontend React, backend Python, PostgreSQL, pgvector, pipeline, modelos serializados y artefactos analíticos.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_5_arquitectura_despliegue.mmd`.
+
+### 3.4.4 Arquitectura de datos
+
+La capa raw conserva los archivos originales sin transformación metodológica. Bronze realiza una conversión estructural. Silver aplica reglas de limpieza, normalización, homologación y anonimización. Gold consolida la unidad producto-mercado-semana. A partir de gold se generan matrices especializadas para predicción y detección de anomalías.
+
+**Figura 3.6. Arquitectura de datos por capas.**
+
+La figura representa el proceso de transformación de los archivos desde su estado original hasta los conjuntos utilizados por los modelos. También muestra la derivación de prediction features, anomaly features, predicciones, residuos, scores, explicaciones y reportes.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_6_arquitectura_datos.mmd`.
+
+### 3.4.5 Arquitectura de componentes web
+
+Cada vista del frontend consume servicios especializados del backend. La autenticación se relaciona con el servicio de usuarios y sesiones; el dashboard y la bandeja consultan alertas; la vista de detalle integra predicción, anomalías, SHAP, RAG, reportes y decisión; y las vistas de telemetría, integridad, configuración y usuarios consumen sus servicios correspondientes.
+
+SQLAlchemy actúa como capa de acceso a PostgreSQL, mientras que pgvector almacena y recupera representaciones vectoriales utilizadas por el componente RAG.
+
+**Figura 3.7. Arquitectura de componentes de la aplicación web.**
+
+La figura muestra la correspondencia entre las vistas de la interfaz, los servicios backend y la persistencia. Permite identificar qué componente atiende cada interacción y qué almacenamiento utiliza.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_7_componentes_web.mmd`.
+
+## 3.5 Modelo de datos y persistencia
+
+### 3.5.1 Entidades principales
+
+El modelo relacional incluye Usuario, OperacionAlerta, DecisionAuditoria, ExplicacionSHAP, DocumentoNormativo, ConfiguracionPipeline, PipelineRun, GeneratedReport, ArtifactLineage y SecurityLog.
+
+Usuario almacena credenciales y roles. OperacionAlerta concentra los valores observados y esperados, residuos, puntuaciones y severidad. DecisionAuditoria registra la condición experimental, decisión, justificación, comprensión y tiempo empleado. ExplicacionSHAP almacena contribuciones locales. DocumentoNormativo conserva el corpus utilizado por RAG. GeneratedReport guarda el reporte y sus validaciones. PipelineRun y ArtifactLineage permiten reconstruir la ejecución y sus artefactos.
+
+### 3.5.2 Relaciones y trazabilidad
+
+Un usuario puede registrar varias decisiones. Una alerta puede disponer de una explicación SHAP y un reporte. Una ejecución del pipeline puede producir varias alertas y artefactos. La configuración utilizada se relaciona con la ejecución. Los documentos normativos aportan evidencia al reporte.
+
+**Figura 3.8. Modelo de datos del prototipo funcional.**
+
+La figura representa las principales entidades persistidas, sus relaciones y los campos necesarios para reconstruir datos, modelos, alertas, explicaciones, reportes y decisiones.
+
+**Fuente:** elaboración propia a partir del modelo SQLAlchemy. Diagrama Mermaid: `docs/diagrams/figura_3_8_modelo_datos.mmd`.
+
+## 3.6 Preparación e integración de datos
+
+### 3.6.1 Extracción y conservación de fuentes
+
+Los archivos de origen se conservan en la capa raw sin modificar. Los formatos DBF, CSV, XLS y JSON se transforman a estructuras tabulares, manteniendo fecha de descarga, ruta, dimensiones y hash.
+
+### 3.6.2 Limpieza y normalización
+
+La preparación incluye validación de fechas, tipos, códigos arancelarios, países, pesos y valores FOB. Se eliminan registros fuera del alcance cuando la regla está documentada, se aíslan registros rechazados y se mantienen los duplicados potenciales hasta confirmar si representan operaciones legítimas o repetidas.
+
+### 3.6.3 Agregación semanal
+
+Las operaciones se agrupan por producto, mercado de destino y semana ISO. El valor unitario FOB se calcula dividiendo el FOB total entre el peso neto, mientras que el volumen corresponde a la suma del peso neto semanal.
+
+### 3.6.4 Ingeniería de características y prevención de fuga
+
+Las variables temporales incluyen rezagos, medias móviles, desviaciones, variaciones y componentes cíclicos. Las ventanas se desplazan una semana mediante `shift(1)` para impedir el uso de información perteneciente al periodo objetivo.
+
+## 3.7 Desarrollo del modelamiento predictivo
+
+El prototipo contempla modelos separados para valor unitario FOB y volumen. El procedimiento incluye modelos base, XGBoost y LightGBM, división temporal de entrenamiento, validación y prueba, búsqueda de hiperparámetros, serialización y generación de predicciones fuera de muestra.
+
+Los residuos se calculan comparando el valor observado con el esperado. Estos residuos alimentan posteriormente el módulo de detección de anomalías.
+
+**Figura 3.9. Proceso de entrenamiento de los modelos predictivos.**
+
+La figura presenta el flujo desde el dataset gold y la ingeniería de características hasta la comparación de modelos, selección, predicción fuera de muestra y cálculo de residuos.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_9_entrenamiento_modelos.mmd`.
+
+## 3.8 Detección de anomalías
+
+El módulo utiliza residuos predictivos y variables contextuales como entrada. Isolation Forest, Local Outlier Factor y ECOD generan puntuaciones individuales. Estas puntuaciones se transforman a una escala comparable y se combinan mediante pesos configurables. Cuando el score consolidado supera el umbral, el sistema genera una alerta y asigna una severidad.
+
+Los pesos iniciales del prototipo son 0.45 para Isolation Forest, 0.30 para LOF y 0.25 para ECOD, con un umbral preliminar de 0.65. Estos valores deben calibrarse durante la evaluación experimental.
+
+**Figura 3.10. Flujo del ensemble de detección de anomalías.**
+
+La figura muestra cómo los residuos y variables son evaluados por tres detectores, normalizados, combinados y comparados con el umbral para producir una alerta.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_10_ensemble_anomalias.mmd`.
+
+## 3.9 Explicabilidad mediante SHAP
+
+TreeSHAP se utiliza para estimar la contribución de cada variable sobre las predicciones generadas por los modelos basados en árboles. El prototipo presenta variables que elevan o reducen el valor esperado y permite visualizar su magnitud.
+
+Las explicaciones SHAP complementan la interpretación de la predicción, pero no representan causalidad ni explican directamente todo el score del ensemble. Por ello, la vista de detalle combina SHAP con residuos, valores observados, valores esperados y puntuaciones individuales.
+
+## 3.10 Recuperación documental y reportes RAG
+
+Los documentos se preparan, fragmentan, convierten en embeddings y almacenan en PostgreSQL con pgvector. Ante una alerta, el recuperador selecciona fragmentos relevantes por similitud. La evidencia documental se combina con valores de la operación, predicciones, puntuaciones y explicaciones SHAP.
+
+El generador produce un reporte estructurado. Antes de persistirlo, el validador comprueba cifras y afirmaciones. Cuando el reporte no cumple los controles, se solicita corrección o se utiliza una plantilla determinista.
+
+**Figura 3.11. Secuencia de recuperación de evidencia y generación del reporte.**
+
+La figura presenta la interacción entre alerta, backend, base vectorial, recuperador RAG, generador narrativo, validador y persistencia.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_11_secuencia_rag.mmd`.
+
+## 3.11 Trazabilidad del prototipo
+
+Cada ejecución se identifica mediante un `run_id` y se relaciona con la versión y hash del dataset, hash del modelo y configuración utilizada. Cada alerta dispone de `alert_id`; los reportes y artefactos conservan identificadores y hashes propios.
+
+La trazabilidad conecta dataset, configuración, modelo, alerta, explicación SHAP, evidencia RAG, reporte y decisión humana. ArtifactLineage conserva rutas, tipos y hashes para facilitar la reconstrucción.
+
+**Figura 3.12. Cadena de trazabilidad de una alerta.**
+
+La figura muestra cómo una ejecución se relaciona con el dataset, modelo y configuración, y cómo la alerta resultante se enlaza con explicación, evidencia, reporte y decisión.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_12_trazabilidad_alerta.mmd`.
+
+## 3.12 Implementación de la interfaz web
+
+### 3.12.1 Inicio de sesión
+
+La pantalla de inicio de sesión valida credenciales, rol y condición experimental. Permite diferenciar usuarios Administrador y Auditor y asignar las condiciones INTEGRADO o AISLADO.
+
+**Figura 3.13. Pantalla de inicio de sesión del prototipo funcional.**
+
+La figura debe mostrar los campos de autenticación, la validación del usuario y el acceso según rol.
+
+**Fuente:** elaboración propia a partir del prototipo, versión y fecha por completar.
+
+### 3.12.2 Dashboard
+
+El dashboard presenta indicadores agregados, alertas prioritarias y accesos a los módulos principales.
+
+**Figura 3.14. Panel principal del prototipo funcional.**
+
+La figura debe mostrar los indicadores generales, distribución de alertas y navegación disponible.
+
+**Fuente:** elaboración propia a partir del prototipo, versión y fecha por completar.
+
+### 3.12.3 Bandeja de alertas
+
+La bandeja permite filtrar operaciones por producto, mercado, estado y severidad, y acceder al detalle analítico.
+
+**Figura 3.15. Bandeja de alertas del prototipo funcional.**
+
+La figura debe mostrar filtros, columnas, severidad, estado y acceso al detalle.
+
+**Fuente:** elaboración propia a partir del prototipo, versión y fecha por completar.
+
+### 3.12.4 Detalle de alerta
+
+La vista de detalle integra datos de la operación, valores observados y esperados, score combinado, puntuaciones individuales, curva de probabilidad, explicaciones SHAP, evidencia RAG, reporte, formulario de decisión y logs.
+
+**Figura 3.16. Vista de detalle de una alerta agroexportadora.**
+
+La figura debe demostrar la integración de resultados analíticos, explicación, evidencia documental y decisión humana.
+
+**Fuente:** elaboración propia a partir del prototipo, versión y fecha por completar.
+
+### 3.12.5 Historial, telemetría e integridad
+
+El historial permite consultar decisiones previas. La telemetría registra condición experimental, tiempo de decisión y comprensión. El módulo de integridad presenta identificadores, hashes y artefactos de trazabilidad.
+
+**Figura 3.17. Historial de decisiones y telemetría experimental.**
+
+**Figura 3.18. Módulo de integridad y trazabilidad del prototipo.**
+
+**Fuente:** elaboración propia a partir del prototipo, versión y fecha por completar.
+
+### 3.12.6 Datos, configuración y usuarios
+
+La vista de datos permite explorar registros y administrar documentos normativos. La configuración modifica pesos y umbral del ensemble. La gestión de usuarios permite administrar roles y estados.
+
+**Figura 3.19. Biblioteca documental y administración de datos RAG.**
+
+**Figura 3.20. Configuración de pesos y umbral del ensemble.**
+
+**Figura 3.21. Gestión de usuarios y roles.**
+
+**Fuente:** elaboración propia a partir del prototipo, versión y fecha por completar.
+
+## 3.13 Flujo funcional de revisión de una alerta
+
+El proceso comienza con la autenticación del auditor. Después de seleccionar una alerta, el frontend solicita el detalle al backend. El backend recupera la operación, configuración, predicciones, puntuaciones, explicación SHAP, evidencia RAG y reporte. El auditor revisa la información y registra una decisión, justificación y valoración de comprensión. La decisión y el tiempo se almacenan y se incorporan al linaje.
+
+**Figura 3.22. Secuencia funcional de revisión y decisión sobre una alerta.**
+
+La figura representa el proceso completo desde la autenticación hasta el registro de la decisión y confirmación de trazabilidad.
+
+**Fuente:** elaboración propia. Diagrama Mermaid: `docs/diagrams/figura_3_22_secuencia_revision_alerta.mmd`.
+
+## 3.14 Seguridad y privacidad
+
+El prototipo implementa roles, almacenamiento de contraseñas, variables de entorno, ejecución local y registros de actividad. La autorización granular, JWT, gestión centralizada de secretos, protección avanzada de endpoints y auditoría integral permanecen como componentes parciales.
+
+Para un entorno productivo serían necesarios HTTPS, rotación de secretos, limitación de solicitudes, respaldo, recuperación, monitoreo, pruebas de penetración y gestión centralizada de identidades.
+
+## 3.15 Pruebas funcionales del prototipo
+
+Las pruebas funcionales comprueban inicio de sesión, filtrado de alertas, consulta de detalle, visualización SHAP, recuperación RAG, generación de reportes, registro de decisiones, consulta de historial, modificación de configuración, revisión de integridad y gestión de usuarios.
+
+Para considerar un módulo funcional debe existir una ruta ejecutable, una entrada conocida, una salida verificable, persistencia o registro y evidencia visual. Las pruebas funcionales demuestran integración, pero no sustituyen la evaluación científica ni permiten aceptar las hipótesis sin métricas experimentales definitivas.
