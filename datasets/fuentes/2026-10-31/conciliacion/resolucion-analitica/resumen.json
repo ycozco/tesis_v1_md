@@ -1,0 +1,90 @@
+{
+  "version_regla": "seleccion-heuristica-observada-1.0",
+  "fecha": "2026-10-31",
+  "estado": "resolucion_operativa_heuristica_no_confirmacion_oficial",
+  "minimo_referencias": 20,
+  "ventanas_dias": [
+    90,
+    365
+  ],
+  "tolerancia_empate": 1e-12,
+  "hashes_entradas": {
+    "vista-conciliada.csv": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "cuarentena.csv": "99738793ceb829787edaccc44862e55aa7c35375f77e96951942257300e27a85",
+    "conflictos-detalle.json": "6e779688e69933fc226e7fd14ee640ab2604dc6bb9e81a6e55acac59e87a75a0"
+  },
+  "script_sha256": "456b2b48020f05d362f9affb1aa6bbe6ed22f591550453aa08436622d60f2792",
+  "filas_base": 93225,
+  "series_reincorporadas": 73,
+  "series_elegidas_heuristicamente": 28,
+  "series_sin_conflicto_directo_reincorporadas": 45,
+  "filas_vista_resuelta": 93298,
+  "reglas_aplicadas": {
+    "cercania_mediana_log_valor_unitario": 28
+  },
+  "referencias_aplicadas": {
+    "producto_destino_90_dias": 28
+  },
+  "por_producto": {
+    "uva": 27287,
+    "palta": 38579,
+    "arandano": 27432
+  },
+  "cuarentena_original_conservada": true,
+  "sensibilidad": [
+    {
+      "producto": "arandano",
+      "variable": "valor_fob_usd",
+      "base_conservadora": "2058670202.824",
+      "seleccion_heuristica": "2059628625.604",
+      "minimo_variantes_observadas": "2059463887.134",
+      "maximo_variantes_observadas": "2059655460.734",
+      "amplitud_relativa_porcentaje": "0.009301366159825038768562306510"
+    },
+    {
+      "producto": "arandano",
+      "variable": "peso_neto_kg",
+      "base_conservadora": "270274401.836",
+      "seleccion_heuristica": "270402774.276",
+      "minimo_variantes_observadas": "270396398.676",
+      "maximo_variantes_observadas": "270410797.836",
+      "amplitud_relativa_porcentaje": "0.005325078501340664255278596608"
+    },
+    {
+      "producto": "palta",
+      "variable": "valor_fob_usd",
+      "base_conservadora": "1166138648.933",
+      "seleccion_heuristica": "1166759801.164",
+      "minimo_variantes_observadas": "1166717682.123",
+      "maximo_variantes_observadas": "1166872838.364",
+      "amplitud_relativa_porcentaje": "0.01329804479424220465900699851"
+    },
+    {
+      "producto": "palta",
+      "variable": "peso_neto_kg",
+      "base_conservadora": "599227401.894",
+      "seleccion_heuristica": "599545261.194",
+      "minimo_variantes_observadas": "599525693.094",
+      "maximo_variantes_observadas": "599572505.094",
+      "amplitud_relativa_porcentaje": "0.007807917605215236593435844205"
+    },
+    {
+      "producto": "uva",
+      "variable": "valor_fob_usd",
+      "base_conservadora": "1078004793.609",
+      "seleccion_heuristica": "1078124356.416",
+      "minimo_variantes_observadas": "1078110186.786",
+      "maximo_variantes_observadas": "1078131492.895",
+      "amplitud_relativa_porcentaje": "0.001976219985496638280225809568"
+    },
+    {
+      "producto": "uva",
+      "variable": "peso_neto_kg",
+      "base_conservadora": "376261699.845",
+      "seleccion_heuristica": "376314118.845",
+      "minimo_variantes_observadas": "376307609.845",
+      "maximo_variantes_observadas": "376314118.845",
+      "amplitud_relativa_porcentaje": "0.001729672014427125872032998342"
+    }
+  ]
+}

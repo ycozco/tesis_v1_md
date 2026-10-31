@@ -48,3 +48,10 @@ La entrada de 110253 filas permanece intacta. Se generó [una vista conciliada d
 
     python -B tools/reconcile_sunat.py .
     python -B tools/verify_sunat_reconciliation.py .
+
+## Resolución operativa de los conflictos
+
+Se agregó una [vista analítica de 93298 series](conciliacion/resolucion-analitica/vista-resuelta-analitica.csv): 28 variantes elegidas por cercanía a una mediana contextual y 45 series vecinas reincorporadas. Son elecciones heurísticas documentadas, no confirmaciones oficiales. La [justificación por caso, documentos y sensibilidad](conciliacion/resolucion-analitica/informe-resolucion.md) acompaña cada decisión. Se conservan íntegros los originales, la vista conservadora de 93225 series y la cuarentena para comparar resultados.
+
+    python -B tools/resolve_sunat_conflicts.py .
+    python -B tools/verify_sunat_resolution.py .

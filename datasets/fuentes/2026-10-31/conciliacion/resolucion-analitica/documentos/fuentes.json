@@ -1,0 +1,29 @@
+[
+  {
+    "id": "w3c",
+    "url": "https://www.w3.org/TR/prov-dm/",
+    "archivo": "w3c.html",
+    "fecha_consulta": "2026-10-31",
+    "sha256": "5C925C21BC96C285B25017C3B90D82CF74251D07713B71FCB81CA60F873C9E88",
+    "bytes": 271572,
+    "estado": "descargado"
+  },
+  {
+    "id": "sunat",
+    "url": "https://www.sunat.gob.pe/legislacion/procedim/despacho/exportacion/exportac/procGeneral/despa-pg.02.htm",
+    "archivo": "sunat.html",
+    "fecha_consulta": "2026-10-31",
+    "sha256": "5A36266CCC8EA9BD69617C0E1EE06D4FD9A400E1FDD444FAEDA441FC72716BF7",
+    "bytes": 85129,
+    "estado": "descargado"
+  },
+  {
+    "id": "nist",
+    "url": "https://itl.nist.gov/div898/handbook/eda/section3/eda351.htm",
+    "archivo": "nist.html",
+    "fecha_consulta": "2026-10-31",
+    "sha256": "C315826F0D368C131902C15FCAF182A27CB13B42685EAD5DFE6F9D2EC5B8845A",
+    "bytes": 17173,
+    "estado": "descargado"
+  }
+]

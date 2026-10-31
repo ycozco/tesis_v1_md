@@ -35,6 +35,66 @@
     "sha256": "cbad8bce0465a90317bfdcf1585ca4cd328a819b2c18beb8166ec37570f837a8"
   },
   {
+    "archivo": "conciliacion/resolucion-analitica/alternativas.csv",
+    "bytes": 13747,
+    "sha256": "cd6947aeaeed0f99d9a06418a7079def6754d000094c1a5d13650ab45b13c216"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/decisiones-resolucion.csv",
+    "bytes": 13794,
+    "sha256": "ec86205397676f6d010ee8a0ca9c37b474a98848719667424ede9fecda669134"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/documentos/.gitattributes",
+    "bytes": 14,
+    "sha256": "a18e277b4d66ae255ac1b5d241e87daed2fc0512a174565e4e3a72676738a72d"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/documentos/fuentes.json",
+    "bytes": 931,
+    "sha256": "9a7dcd0dbe66d276bdb08643c273471ff9348ed1a2dbdb9d83877be2077b86e0"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/documentos/nist.html",
+    "bytes": 17173,
+    "sha256": "c315826f0d368c131902c15fcaf182a27cb13b42685ead5dfe6f9d2ec5b8845a"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/documentos/sunat.html",
+    "bytes": 85129,
+    "sha256": "5a36266ccc8ea9bd69617c0e1ee06d4fd9a400e1fdd444faeda441fc72716bf7"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/documentos/w3c.html",
+    "bytes": 271572,
+    "sha256": "5c925c21bc96c285b25017c3b90d82cf74251d07713b71fcb81ca60f873c9e88"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/informe-resolucion.md",
+    "bytes": 15241,
+    "sha256": "2ff02627e8525398cdcdeb4c213bee16b4fbf29bbacf6469cf1ec4570c460f94"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/referencias-por-caso.csv",
+    "bytes": 11500179,
+    "sha256": "c31961ee2d390f3fa5fd0923dc13dc4518816b1f8dbc7c2ec0867a977747241f"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/resumen.json",
+    "bytes": 3311,
+    "sha256": "7608fb30d064eb5f7d30e1bf3f824082994de88b62242e34c3311fcd35dd737d"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/sensibilidad.csv",
+    "bytes": 806,
+    "sha256": "843c87d06188fb907ccb5333de3903e01f3c5446faeb64091a6db96ff21bc634"
+  },
+  {
+    "archivo": "conciliacion/resolucion-analitica/vista-resuelta-analitica.csv",
+    "bytes": 39822607,
+    "sha256": "712f91656d6a7171112d4b63f614c9938d0e8db45ef0d6ecbc37f655fb50ee8c"
+  },
+  {
     "archivo": "conciliacion/resumen.json",
     "bytes": 7910,
     "sha256": "99c42262a79269c0a844615c0878969830d886daad7282a6741abb9b8c7021c2"
@@ -86,7 +146,7 @@
   },
   {
     "archivo": "README.md",
-    "bytes": 4876,
-    "sha256": "a62fac332c81330eba1749679187875c5590d1968dd7b6d3f504579a76c7821a"
+    "bytes": 5618,
+    "sha256": "225b6cc9066a59a03cbdda6d356f70b419f9db427a80ea87c0d38ce6d0b1a645"
   }
 ]
