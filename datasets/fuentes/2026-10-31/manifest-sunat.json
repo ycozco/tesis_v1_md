@@ -1,0 +1,207 @@
+{
+  "fecha_recopilacion": "2026-10-31",
+  "estado": "recopilacion_parcial_no_dataset_experimental",
+  "archivos": 13,
+  "filas_seleccionadas": 71810,
+  "claves_declaracion_serie": 61780,
+  "duplicados_exactos_entre_archivos": 6793,
+  "claves_con_versiones_distintas": 3185,
+  "filas_calidad_no_valida": 0,
+  "fuentes": [
+    {
+      "archivo": "x17230826.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x17230826.zip",
+      "bytes": 2618939,
+      "sha256": "CD67F620D25F5B48623963DF3906BAF60E7D27E61BE2520F60C07BB3CC8BC58A",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 44099,
+      "seleccionados": 5025,
+      "por_producto": {
+        "uva": 82,
+        "palta": 3646,
+        "arandano": 1297
+      }
+    },
+    {
+      "archivo": "x24300826.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x24300826.zip",
+      "bytes": 2639056,
+      "sha256": "D520A38265220063E843EA0744C11A13B99378DD019CE1ADA555FEA5A4A8E31F",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 46321,
+      "seleccionados": 5764,
+      "por_producto": {
+        "uva": 72,
+        "palta": 3835,
+        "arandano": 1857
+      }
+    },
+    {
+      "archivo": "x31060926.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x31060926.zip",
+      "bytes": 2209975,
+      "sha256": "DB9B286F1CE9FEE9CBCC25CB32DDD2BFE23023664AF3D4AF26A4B360613E8CC9",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 39772,
+      "seleccionados": 5638,
+      "por_producto": {
+        "palta": 3205,
+        "arandano": 2179,
+        "uva": 254
+      }
+    },
+    {
+      "archivo": "x07130926.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x07130926.zip",
+      "bytes": 2524811,
+      "sha256": "24D4B11A26EB83E44DF7A489477EF4265264BE6BA625D1C092FC022B0A3EE859",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 40937,
+      "seleccionados": 6185,
+      "por_producto": {
+        "uva": 94,
+        "palta": 4058,
+        "arandano": 2033
+      }
+    },
+    {
+      "archivo": "x14200926.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x14200926.zip",
+      "bytes": 2464295,
+      "sha256": "25693073954CF95B22706D42F8127BB666AB6B102FD0C70618D494F48E09B5D6",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 39260,
+      "seleccionados": 5261,
+      "por_producto": {
+        "uva": 259,
+        "palta": 2515,
+        "arandano": 2487
+      }
+    },
+    {
+      "archivo": "x21270926.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x21270926.zip",
+      "bytes": 2318074,
+      "sha256": "8BFA719CCFBA75912979FDCB8BB73EBF0DBE06E8A6C0545C39562203FAF59FA3",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 42969,
+      "seleccionados": 4941,
+      "por_producto": {
+        "palta": 2377,
+        "arandano": 2265,
+        "uva": 299
+      }
+    },
+    {
+      "archivo": "x28041026.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x28041026.zip",
+      "bytes": 2874410,
+      "sha256": "539ADE3EA6A6D58E01CA40342586A545F963BC803013085759E14A83000CE7FA",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 50125,
+      "seleccionados": 5347,
+      "por_producto": {
+        "uva": 1349,
+        "palta": 1802,
+        "arandano": 2196
+      }
+    },
+    {
+      "archivo": "x05111026.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x05111026.zip",
+      "bytes": 2471589,
+      "sha256": "A46FF28630CABE4601C4B6DE6510FF36645CB03B4E44931175FB728A9957E32D",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 43116,
+      "seleccionados": 5586,
+      "por_producto": {
+        "uva": 561,
+        "palta": 2249,
+        "arandano": 2776
+      }
+    },
+    {
+      "archivo": "x12181026.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x12181026.zip",
+      "bytes": 2803837,
+      "sha256": "14133F3DD50A8DEA418B1DEDEF0E28050ED5D6D2D7D3261CD163F4E84298FD15",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 48385,
+      "seleccionados": 7772,
+      "por_producto": {
+        "uva": 1623,
+        "palta": 3301,
+        "arandano": 2848
+      }
+    },
+    {
+      "archivo": "x19251026.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x19251026.zip",
+      "bytes": 2484377,
+      "sha256": "2997B2653DAC43FBE16586A0F37E4E6BE76B08406A1D26261E53CA182B1F0525",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 44406,
+      "seleccionados": 5725,
+      "por_producto": {
+        "palta": 1247,
+        "arandano": 2475,
+        "uva": 2003
+      }
+    },
+    {
+      "archivo": "x25310526.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x25310526.zip",
+      "bytes": 2737865,
+      "sha256": "FC890529578DF809BBAAE71F047562CED6DDC0212E3A5F0D53EACF5B718602B2",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 42581,
+      "seleccionados": 3981,
+      "por_producto": {
+        "arandano": 168,
+        "uva": 1056,
+        "palta": 2757
+      }
+    },
+    {
+      "archivo": "x06120125.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x06120125.zip",
+      "bytes": 2652125,
+      "sha256": "25EF8AD43448FE3BECBCD9A755598DC1EB8208C653CDBD1E03173D7DDF3CDF4A",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 44863,
+      "seleccionados": 6859,
+      "por_producto": {
+        "uva": 3860,
+        "palta": 74,
+        "arandano": 2925
+      }
+    },
+    {
+      "archivo": "x01070124.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x01070124.zip",
+      "bytes": 1642193,
+      "sha256": "3142C19651A04A430224D1DF1B0A22AB5F6E937F546AE7527E148385D624FAA6",
+      "estado": "descargado",
+      "fecha_descarga": "2026-10-31",
+      "registros_dbf": 25792,
+      "seleccionados": 3726,
+      "por_producto": {
+        "uva": 2129,
+        "palta": 150,
+        "arandano": 1447
+      }
+    }
+  ]
+}

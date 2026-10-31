@@ -1,0 +1,47 @@
+[
+  {
+    "archivo": ".gitattributes",
+    "bytes": 29,
+    "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+  },
+  {
+    "archivo": "cobertura-observada.json",
+    "bytes": 19594,
+    "sha256": "936bd1662d11896cfb4437ed73ff2074f65ee9fe9b2a924713fb37fb305f51ec"
+  },
+  {
+    "archivo": "informe-fuentes.md",
+    "bytes": 6175,
+    "sha256": "294f06df1f8f6b9fff79d5cfa25dad6a4f551477df1a6400839add29993fe1d9"
+  },
+  {
+    "archivo": "manifest-sunat.json",
+    "bytes": 6239,
+    "sha256": "4671c13dffbbd248e39453b92a77e09f08a6c26c0dcce9ca9f33e1121cc1002f"
+  },
+  {
+    "archivo": "muestras-contextuales/comtrade-muestra.json",
+    "bytes": 970,
+    "sha256": "f39a8170aacbf0ba47e7292572753c180211ff277bcdd683b304551e6b27710d"
+  },
+  {
+    "archivo": "muestras-contextuales/nasa-muestra.json",
+    "bytes": 1186,
+    "sha256": "daab401715e3ada1b92652d783582fd681b5a7162872a38a8414d60142f464c5"
+  },
+  {
+    "archivo": "muestras-contextuales/sisap-palta-prueba.html",
+    "bytes": 1598,
+    "sha256": "2f927046568d55b11b648994ccda4ff46cb766bd93e80cc8eb09e7e1ade16770"
+  },
+  {
+    "archivo": "observaciones-sunat.csv",
+    "bytes": 15247334,
+    "sha256": "1b174b141ded8a5581014975d1b2c1d41cdc6399e264e0f0633874504460f18b"
+  },
+  {
+    "archivo": "README.md",
+    "bytes": 3832,
+    "sha256": "14c1ab4ada28ab83f179b62666fe70fa88110818203570b96558486316d8601c"
+  }
+]
