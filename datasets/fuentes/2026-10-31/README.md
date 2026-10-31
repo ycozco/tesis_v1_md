@@ -1,6 +1,6 @@
 # Recopilación verificada de fuentes — 31 de octubre de 2026
 
-Esta entrega contiene 71810 filas de palta, uva fresca y arándano extraídas de 13 paquetes oficiales de SUNAT. Es una recopilación parcial y multiversión, NO el dataset experimental final ni una serie semanal completa.
+Esta entrega contiene 110253 filas de palta, uva fresca y arándano extraídas de 22 paquetes oficiales de SUNAT. Es una recopilación parcial y multiversión, NO el dataset experimental final ni una serie semanal completa.
 
 ## Contenido
 
@@ -10,14 +10,15 @@ Esta entrega contiene 71810 filas de palta, uva fresca y arándano extraídas de
 - muestras-contextuales/: respuestas de NASA POWER, SISAP y UN Comtrade verificadas previamente. Son muestras técnicas separadas, no covariables integradas.
 - informe-fuentes.md: búsqueda y factibilidad de acceso.
 - hashes.json: hashes de los archivos de esta entrega.
+- incorporacion-respaldo.json: conciliación de las colecciones y paquetes recuperados.
 
 ## Resultado y limitaciones
 
-Se identificaron 61780 claves de declaración-serie. Hay 6793 repeticiones exactas de los campos extraídos y 3185 claves con versiones distintas; se preservaron todas las filas para no resolver revisiones arbitrariamente. No sumar este CSV directamente: primero definir selección de versiones, deduplicación y fecha analítica. La llave candidata se forma con CADU, FANO, NDCL y NSER; su suficiencia debe validarse contra el diccionario SUNAT. Las fechas se conservan como cadenas originales; su semántica debe confirmarse antes de modelar.
+Se identificaron 93298 claves de declaración-serie. Hay 9811 repeticiones exactas de los campos extraídos y 7019 claves con versiones distintas; se preservaron todas las filas para no resolver revisiones arbitrariamente. No sumar este CSV directamente: primero definir selección de versiones, deduplicación y fecha analítica. La llave candidata se forma con CADU, FANO, NDCL y NSER; su suficiencia debe validarse contra el diccionario SUNAT. Las fechas se conservan como cadenas originales; su semántica debe confirmarse antes de modelar.
 
-Los 13 paquetes incluyen diez publicados en el índice actual (agosto–octubre de 2026) y tres muestras históricas de enero de 2024, enero de 2025 y mayo de 2026. No representan todas las semanas 2018–2026. Fechas de embarque antiguas dentro de un paquete no demuestran continuidad histórica. Todos los registros seleccionados tienen valores numéricos FOB no negativos y peso positivo; este control físico no certifica calidad integral.
+Los 22 paquetes incluyen diez de marzo–mayo de 2026 recuperados del respaldo anterior, diez de agosto–octubre de 2026 y dos muestras de enero de 2024 y enero de 2025. El paquete de mayo presente en ambas colecciones se incorporó una sola vez y coincide por SHA-256. No representan todas las semanas 2018–2026. Fechas de embarque antiguas dentro de un paquete no demuestran continuidad histórica. Todos los registros seleccionados tienen valores numéricos FOB no negativos y peso positivo; este control físico no certifica calidad integral.
 
-BCRP quedó pendiente: la consulta devolvió HTML de protección anti-bot en lugar de JSON. No se incluyó como dato válido. NASA utiliza un punto ilustrativo de Arequipa: no está enlazado al origen productivo. SISAP corresponde a precios internos; Comtrade a datos mensuales. No convertir esos datos en exportaciones semanales artificiales.
+La consulta nueva de BCRP devolvió HTML anti-bot y no se incluyó como dato válido. La revisión posterior encontró una caché anterior con 101 meses numéricos (enero de 2018–mayo de 2026) en D:/tesis_yoset/data/bcrp/exchange_rates_cache.json: queda pendiente validar e incorporar esa caché; no falta todo el histórico. NASA utiliza un punto ilustrativo de Arequipa: no está enlazado al origen productivo. SISAP corresponde a precios internos; Comtrade a datos mensuales. No convertir esos datos en exportaciones semanales artificiales.
 
 ## Fuentes
 

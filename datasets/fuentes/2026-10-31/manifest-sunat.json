@@ -1,11 +1,11 @@
 {
   "fecha_recopilacion": "2026-10-31",
   "estado": "recopilacion_parcial_no_dataset_experimental",
-  "archivos": 13,
-  "filas_seleccionadas": 71810,
-  "claves_declaracion_serie": 61780,
-  "duplicados_exactos_entre_archivos": 6793,
-  "claves_con_versiones_distintas": 3185,
+  "archivos": 22,
+  "filas_seleccionadas": 110253,
+  "claves_declaracion_serie": 93298,
+  "duplicados_exactos_entre_archivos": 9811,
+  "claves_con_versiones_distintas": 7019,
   "filas_calidad_no_valida": 0,
   "fuentes": [
     {
@@ -201,6 +201,168 @@
         "uva": 2129,
         "palta": 150,
         "arandano": 1447
+      }
+    },
+    {
+      "archivo": "x04100526.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x04100526.zip",
+      "bytes": 2490341,
+      "sha256": "98C70A39131B7D058538AC441E226AE8764CFCD646EF7A1EA7249F57918635B1",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x04100526.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 41566,
+      "seleccionados": 4714,
+      "por_producto": {
+        "uva": 1806,
+        "palta": 2611,
+        "arandano": 297
+      }
+    },
+    {
+      "archivo": "x06120426.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x06120426.zip",
+      "bytes": 2804819,
+      "sha256": "120672D9265733045CC5B7F71E86602725A56B12DE62705949AF5A12BC9C62EA",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x06120426.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 46843,
+      "seleccionados": 5349,
+      "por_producto": {
+        "uva": 2513,
+        "palta": 1686,
+        "arandano": 1150
+      }
+    },
+    {
+      "archivo": "x11170526.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x11170526.zip",
+      "bytes": 2375551,
+      "sha256": "E25A97C4624A29D6D9D26B19C245D911EB31643134CDB2A3A0D83524823C036E",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x11170526.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 40642,
+      "seleccionados": 4374,
+      "por_producto": {
+        "uva": 1401,
+        "palta": 2632,
+        "arandano": 341
+      }
+    },
+    {
+      "archivo": "x13190426.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x13190426.zip",
+      "bytes": 2376183,
+      "sha256": "D151626A541FC00DD53BEC321D123D11DFB5B4528A81B00E67C1C62B54E87DC5",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x13190426.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 38596,
+      "seleccionados": 4796,
+      "por_producto": {
+        "uva": 2313,
+        "palta": 1774,
+        "arandano": 709
+      }
+    },
+    {
+      "archivo": "x18240526.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x18240526.zip",
+      "bytes": 2437777,
+      "sha256": "A0E834507CF494E4A32AD5C2B527BE049153073AED90241CD7A161DD8DE3C674",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x18240526.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 39381,
+      "seleccionados": 4498,
+      "por_producto": {
+        "uva": 1183,
+        "palta": 3015,
+        "arandano": 300
+      }
+    },
+    {
+      "archivo": "x20260426.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x20260426.zip",
+      "bytes": 2290098,
+      "sha256": "4C93FFBF4D3E2FB79568A5037100E9D28217B6559CCED65DFA240D4FA907CAAF",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x20260426.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 38036,
+      "seleccionados": 3972,
+      "por_producto": {
+        "uva": 1829,
+        "palta": 1814,
+        "arandano": 329
+      }
+    },
+    {
+      "archivo": "x23290326.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x23290326.zip",
+      "bytes": 2035604,
+      "sha256": "F517D61CFB245C52E1FB875EF76BDC28D71F48EF4C211DB6C3AE7DD7490AB211",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x23290326.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 31168,
+      "seleccionados": 4186,
+      "por_producto": {
+        "uva": 2091,
+        "palta": 1236,
+        "arandano": 859
+      }
+    },
+    {
+      "archivo": "x27030526.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x27030526.zip",
+      "bytes": 1845238,
+      "sha256": "3C87082DA5CFB78D7B29544BAC758668A99E6670FFA74E2DDE95FFD9BA0AED8C",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x27030526.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 34422,
+      "seleccionados": 3829,
+      "por_producto": {
+        "uva": 1540,
+        "palta": 1862,
+        "arandano": 427
+      }
+    },
+    {
+      "archivo": "x30050426.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x30050426.zip",
+      "bytes": 1525565,
+      "sha256": "7336A2B43448C9827D10FB0E55B38E567FFBD590FDC7BB444EB02850E906D9A0",
+      "estado": "descargado",
+      "origen_incorporacion": "respaldo_local_anterior",
+      "ruta_respaldo": "D:/tesis_yoset/data/sunat/raw_downloads/x30050426.zip",
+      "fecha_incorporacion": "2026-10-31",
+      "fecha_descarga_documentada": "2026-06-07",
+      "registros_dbf": 26686,
+      "seleccionados": 2725,
+      "por_producto": {
+        "uva": 1344,
+        "arandano": 527,
+        "palta": 854
       }
     }
   ]

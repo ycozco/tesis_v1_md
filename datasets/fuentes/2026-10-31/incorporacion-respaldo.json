@@ -1,0 +1,120 @@
+{
+  "fecha": "2026-10-31",
+  "accion": "incorporacion_de_originales_existentes_sin_modificar_respaldo",
+  "coleccion_previa": {
+    "paquetes": 13,
+    "filas": 71810,
+    "claves": 61780
+  },
+  "respaldo": {
+    "paquetes": 10,
+    "filas_tres_productos": 42424,
+    "claves": 37784
+  },
+  "paquete_comun": {
+    "archivo": "x25310526.zip",
+    "filas": 3981,
+    "hash_identico": true
+  },
+  "resultado": {
+    "paquetes": 22,
+    "filas": 110253,
+    "claves": 93298,
+    "repeticiones_exactas": 9811,
+    "claves_multiversion": 7019,
+    "filas_calidad_no_valida": 0
+  },
+  "recuperados": [
+    {
+      "archivo": "x04100526.zip",
+      "sha256": "98C70A39131B7D058538AC441E226AE8764CFCD646EF7A1EA7249F57918635B1",
+      "filas": 4714,
+      "por_producto": {
+        "uva": 1806,
+        "palta": 2611,
+        "arandano": 297
+      }
+    },
+    {
+      "archivo": "x06120426.zip",
+      "sha256": "120672D9265733045CC5B7F71E86602725A56B12DE62705949AF5A12BC9C62EA",
+      "filas": 5349,
+      "por_producto": {
+        "uva": 2513,
+        "palta": 1686,
+        "arandano": 1150
+      }
+    },
+    {
+      "archivo": "x11170526.zip",
+      "sha256": "E25A97C4624A29D6D9D26B19C245D911EB31643134CDB2A3A0D83524823C036E",
+      "filas": 4374,
+      "por_producto": {
+        "uva": 1401,
+        "palta": 2632,
+        "arandano": 341
+      }
+    },
+    {
+      "archivo": "x13190426.zip",
+      "sha256": "D151626A541FC00DD53BEC321D123D11DFB5B4528A81B00E67C1C62B54E87DC5",
+      "filas": 4796,
+      "por_producto": {
+        "uva": 2313,
+        "palta": 1774,
+        "arandano": 709
+      }
+    },
+    {
+      "archivo": "x18240526.zip",
+      "sha256": "A0E834507CF494E4A32AD5C2B527BE049153073AED90241CD7A161DD8DE3C674",
+      "filas": 4498,
+      "por_producto": {
+        "uva": 1183,
+        "palta": 3015,
+        "arandano": 300
+      }
+    },
+    {
+      "archivo": "x20260426.zip",
+      "sha256": "4C93FFBF4D3E2FB79568A5037100E9D28217B6559CCED65DFA240D4FA907CAAF",
+      "filas": 3972,
+      "por_producto": {
+        "uva": 1829,
+        "palta": 1814,
+        "arandano": 329
+      }
+    },
+    {
+      "archivo": "x23290326.zip",
+      "sha256": "F517D61CFB245C52E1FB875EF76BDC28D71F48EF4C211DB6C3AE7DD7490AB211",
+      "filas": 4186,
+      "por_producto": {
+        "uva": 2091,
+        "palta": 1236,
+        "arandano": 859
+      }
+    },
+    {
+      "archivo": "x27030526.zip",
+      "sha256": "3C87082DA5CFB78D7B29544BAC758668A99E6670FFA74E2DDE95FFD9BA0AED8C",
+      "filas": 3829,
+      "por_producto": {
+        "uva": 1540,
+        "palta": 1862,
+        "arandano": 427
+      }
+    },
+    {
+      "archivo": "x30050426.zip",
+      "sha256": "7336A2B43448C9827D10FB0E55B38E567FFBD590FDC7BB444EB02850E906D9A0",
+      "filas": 2725,
+      "por_producto": {
+        "uva": 1344,
+        "arandano": 527,
+        "palta": 854
+      }
+    }
+  ],
+  "limite": "Sin deduplicación ni selección arbitraria de versiones. No acredita cobertura semanal completa."
+}

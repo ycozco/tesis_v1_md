@@ -6,8 +6,13 @@
   },
   {
     "archivo": "cobertura-observada.json",
-    "bytes": 19594,
-    "sha256": "936bd1662d11896cfb4437ed73ff2074f65ee9fe9b2a924713fb37fb305f51ec"
+    "bytes": 20693,
+    "sha256": "a16ca3e98c1386172c48dbd168351bf92a62891815c5e55de4e607a39d7050f4"
+  },
+  {
+    "archivo": "incorporacion-respaldo.json",
+    "bytes": 2980,
+    "sha256": "b79b78e0af3e3c953a4bc91cacec37c0be5b755eef040cba253654774c6ff43a"
   },
   {
     "archivo": "informe-fuentes.md",
@@ -16,8 +21,8 @@
   },
   {
     "archivo": "manifest-sunat.json",
-    "bytes": 6239,
-    "sha256": "4671c13dffbbd248e39453b92a77e09f08a6c26c0dcce9ca9f33e1121cc1002f"
+    "bytes": 12063,
+    "sha256": "710f4f0458ba0a282c50231ceced5788b03f6a54655700fbefed424c99c29d58"
   },
   {
     "archivo": "muestras-contextuales/comtrade-muestra.json",
@@ -36,12 +41,12 @@
   },
   {
     "archivo": "observaciones-sunat.csv",
-    "bytes": 15247334,
-    "sha256": "1b174b141ded8a5581014975d1b2c1d41cdc6399e264e0f0633874504460f18b"
+    "bytes": 23340563,
+    "sha256": "63b7fb27162d43b155648fa3af92c24fcfb073b597e7bd12eb80fa5b77b4ea3d"
   },
   {
     "archivo": "README.md",
-    "bytes": 3832,
-    "sha256": "14c1ab4ada28ab83f179b62666fe70fa88110818203570b96558486316d8601c"
+    "bytes": 4229,
+    "sha256": "878b7190cdb39717bd9ae059282a9fcec80f02901c25ee25be3d352e349b813b"
   }
 ]

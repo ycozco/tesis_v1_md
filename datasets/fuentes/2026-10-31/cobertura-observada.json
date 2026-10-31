@@ -2,82 +2,82 @@
   {
     "producto": "uva",
     "destino": "CO",
-    "filas": 453,
+    "filas": 536,
     "min": "20230318",
     "max": "20261020",
-    "fechas_embarque_distintas": 90
+    "fechas_embarque_distintas": 121
   },
   {
     "producto": "uva",
     "destino": "CR",
-    "filas": 91,
+    "filas": 113,
     "min": "20231013",
     "max": "20261016",
-    "fechas_embarque_distintas": 48
+    "fechas_embarque_distintas": 63
   },
   {
     "producto": "uva",
     "destino": "EC",
-    "filas": 33,
+    "filas": 37,
     "min": "20241211",
     "max": "20261019",
-    "fechas_embarque_distintas": 16
+    "fechas_embarque_distintas": 20
   },
   {
     "producto": "uva",
     "destino": "DO",
-    "filas": 41,
-    "min": "20231009",
+    "filas": 51,
+    "min": "20220927",
     "max": "20261014",
-    "fechas_embarque_distintas": 23
-  },
-  {
-    "producto": "uva",
-    "destino": "GT",
-    "filas": 103,
-    "min": "20231123",
-    "max": "20261019",
-    "fechas_embarque_distintas": 51
-  },
-  {
-    "producto": "uva",
-    "destino": "US",
-    "filas": 6708,
-    "min": "20220108",
-    "max": "20261020",
-    "fechas_embarque_distintas": 261
-  },
-  {
-    "producto": "uva",
-    "destino": "SV",
-    "filas": 57,
-    "min": "20231208",
-    "max": "20261016",
     "fechas_embarque_distintas": 32
   },
   {
     "producto": "uva",
+    "destino": "GT",
+    "filas": 136,
+    "min": "20231123",
+    "max": "20261019",
+    "fechas_embarque_distintas": 68
+  },
+  {
+    "producto": "uva",
+    "destino": "US",
+    "filas": 15875,
+    "min": "20220108",
+    "max": "20261020",
+    "fechas_embarque_distintas": 321
+  },
+  {
+    "producto": "uva",
+    "destino": "SV",
+    "filas": 62,
+    "min": "20231208",
+    "max": "20261016",
+    "fechas_embarque_distintas": 37
+  },
+  {
+    "producto": "uva",
     "destino": "CA",
-    "filas": 390,
+    "filas": 730,
     "min": "20231006",
     "max": "20261017",
-    "fechas_embarque_distintas": 80
+    "fechas_embarque_distintas": 150
   },
   {
     "producto": "uva",
     "destino": "BR",
-    "filas": 41,
+    "filas": 42,
     "min": "20241114",
     "max": "20261013",
-    "fechas_embarque_distintas": 18
+    "fechas_embarque_distintas": 19
   },
   {
     "producto": "uva",
     "destino": "VE",
-    "filas": 57,
-    "min": "20231113",
+    "filas": 62,
+    "min": "20221231",
     "max": "20261017",
-    "fechas_embarque_distintas": 24
+    "fechas_embarque_distintas": 29
   },
   {
     "producto": "uva",
@@ -90,346 +90,346 @@
   {
     "producto": "uva",
     "destino": "NZ",
-    "filas": 32,
+    "filas": 59,
     "min": "20231208",
     "max": "20261016",
-    "fechas_embarque_distintas": 12
+    "fechas_embarque_distintas": 24
   },
   {
     "producto": "uva",
     "destino": "PA",
-    "filas": 56,
+    "filas": 91,
     "min": "20231208",
     "max": "20261017",
-    "fechas_embarque_distintas": 27
+    "fechas_embarque_distintas": 47
   },
   {
     "producto": "uva",
     "destino": "MX",
-    "filas": 929,
-    "min": "20230925",
+    "filas": 2444,
+    "min": "20221105",
     "max": "20261020",
-    "fechas_embarque_distintas": 118
+    "fechas_embarque_distintas": 200
   },
   {
     "producto": "uva",
     "destino": "NL",
-    "filas": 2577,
-    "min": "20220115",
+    "filas": 4916,
+    "min": "20210109",
     "max": "20261022",
-    "fechas_embarque_distintas": 209
+    "fechas_embarque_distintas": 302
   },
   {
     "producto": "uva",
     "destino": "TW",
-    "filas": 87,
+    "filas": 385,
     "min": "20231210",
     "max": "20261015",
-    "fechas_embarque_distintas": 28
+    "fechas_embarque_distintas": 62
   },
   {
     "producto": "palta",
     "destino": "ES",
-    "filas": 5748,
+    "filas": 8658,
     "min": "20220321",
     "max": "20261020",
-    "fechas_embarque_distintas": 168
+    "fechas_embarque_distintas": 198
   },
   {
     "producto": "palta",
     "destino": "NL",
-    "filas": 11149,
+    "filas": 18781,
     "min": "20220209",
     "max": "20261017",
-    "fechas_embarque_distintas": 274
+    "fechas_embarque_distintas": 308
   },
   {
     "producto": "palta",
     "destino": "US",
-    "filas": 6233,
-    "min": "20220315",
+    "filas": 6423,
+    "min": "20210904",
     "max": "20261013",
-    "fechas_embarque_distintas": 167
+    "fechas_embarque_distintas": 197
   },
   {
     "producto": "palta",
     "destino": "IT",
-    "filas": 810,
-    "min": "20260228",
+    "filas": 1285,
+    "min": "20260207",
     "max": "20260912",
-    "fechas_embarque_distintas": 80
+    "fechas_embarque_distintas": 104
   },
   {
     "producto": "palta",
     "destino": "JP",
-    "filas": 446,
+    "filas": 892,
     "min": "20220424",
     "max": "20260902",
-    "fechas_embarque_distintas": 47
+    "fechas_embarque_distintas": 64
   },
   {
     "producto": "palta",
     "destino": "CL",
-    "filas": 1965,
-    "min": "20190709",
+    "filas": 3384,
+    "min": "20180626",
     "max": "20261021",
-    "fechas_embarque_distintas": 212
+    "fechas_embarque_distintas": 267
   },
   {
     "producto": "palta",
     "destino": "GB",
-    "filas": 2072,
+    "filas": 3334,
     "min": "20220504",
     "max": "20261004",
-    "fechas_embarque_distintas": 160
+    "fechas_embarque_distintas": 191
   },
   {
     "producto": "palta",
     "destino": "AR",
-    "filas": 22,
-    "min": "20260501",
+    "filas": 32,
+    "min": "20260411",
     "max": "20261004",
-    "fechas_embarque_distintas": 13
+    "fechas_embarque_distintas": 17
   },
   {
     "producto": "palta",
     "destino": "PA",
-    "filas": 10,
-    "min": "20260509",
+    "filas": 25,
+    "min": "20260228",
     "max": "20260811",
-    "fechas_embarque_distintas": 6
+    "fechas_embarque_distintas": 15
   },
   {
     "producto": "palta",
     "destino": "CN",
-    "filas": 1055,
+    "filas": 2689,
     "min": "20220511",
     "max": "20261021",
-    "fechas_embarque_distintas": 74
+    "fechas_embarque_distintas": 109
   },
   {
     "producto": "palta",
     "destino": "CA",
-    "filas": 56,
-    "min": "20260504",
+    "filas": 81,
+    "min": "20260329",
     "max": "20261006",
-    "fechas_embarque_distintas": 28
+    "fechas_embarque_distintas": 46
   },
   {
     "producto": "palta",
     "destino": "HK",
-    "filas": 116,
-    "min": "20220511",
+    "filas": 284,
+    "min": "20220330",
     "max": "20261008",
-    "fechas_embarque_distintas": 26
+    "fechas_embarque_distintas": 36
   },
   {
     "producto": "palta",
     "destino": "FR",
-    "filas": 180,
-    "min": "20260429",
+    "filas": 188,
+    "min": "20260414",
     "max": "20260904",
-    "fechas_embarque_distintas": 25
+    "fechas_embarque_distintas": 26
   },
   {
     "producto": "palta",
     "destino": "SE",
-    "filas": 14,
-    "min": "20260522",
+    "filas": 16,
+    "min": "20260508",
     "max": "20260807",
-    "fechas_embarque_distintas": 7
+    "fechas_embarque_distintas": 9
   },
   {
     "producto": "palta",
     "destino": "MA",
-    "filas": 65,
+    "filas": 148,
     "min": "20260314",
     "max": "20260905",
-    "fechas_embarque_distintas": 20
+    "fechas_embarque_distintas": 25
   },
   {
     "producto": "palta",
     "destino": "GR",
-    "filas": 35,
-    "min": "20260418",
+    "filas": 39,
+    "min": "20260307",
     "max": "20260921",
-    "fechas_embarque_distintas": 19
-  },
-  {
-    "producto": "palta",
-    "destino": "CR",
-    "filas": 32,
-    "min": "20260424",
-    "max": "20260912",
     "fechas_embarque_distintas": 21
   },
   {
     "producto": "palta",
+    "destino": "CR",
+    "filas": 70,
+    "min": "20260228",
+    "max": "20260912",
+    "fechas_embarque_distintas": 39
+  },
+  {
+    "producto": "palta",
     "destino": "KR",
-    "filas": 786,
+    "filas": 1333,
     "min": "20220411",
     "max": "20260923",
-    "fechas_embarque_distintas": 61
+    "fechas_embarque_distintas": 83
   },
   {
     "producto": "palta",
     "destino": "TR",
-    "filas": 11,
-    "min": "20260411",
+    "filas": 83,
+    "min": "20260307",
     "max": "20260902",
-    "fechas_embarque_distintas": 6
+    "fechas_embarque_distintas": 18
   },
   {
     "producto": "palta",
     "destino": "RU",
-    "filas": 261,
+    "filas": 596,
     "min": "20220108",
     "max": "20261003",
-    "fechas_embarque_distintas": 91
+    "fechas_embarque_distintas": 121
   },
   {
     "producto": "arandano",
     "destino": "IL",
-    "filas": 280,
+    "filas": 293,
     "min": "20250101",
+    "max": "20261019",
+    "fechas_embarque_distintas": 94
+  },
+  {
+    "producto": "arandano",
+    "destino": "CN",
+    "filas": 1899,
+    "min": "20220711",
+    "max": "20261021",
+    "fechas_embarque_distintas": 142
+  },
+  {
+    "producto": "arandano",
+    "destino": "US",
+    "filas": 17571,
+    "min": "20210911",
+    "max": "20261021",
+    "fechas_embarque_distintas": 602
+  },
+  {
+    "producto": "arandano",
+    "destino": "NL",
+    "filas": 5530,
+    "min": "20220827",
+    "max": "20261021",
+    "fechas_embarque_distintas": 467
+  },
+  {
+    "producto": "arandano",
+    "destino": "GB",
+    "filas": 1266,
+    "min": "20210923",
+    "max": "20261020",
+    "fechas_embarque_distintas": 212
+  },
+  {
+    "producto": "arandano",
+    "destino": "PA",
+    "filas": 105,
+    "min": "20231219",
+    "max": "20261016",
+    "fechas_embarque_distintas": 64
+  },
+  {
+    "producto": "arandano",
+    "destino": "IN",
+    "filas": 337,
+    "min": "20221227",
+    "max": "20261019",
+    "fechas_embarque_distintas": 144
+  },
+  {
+    "producto": "arandano",
+    "destino": "CO",
+    "filas": 277,
+    "min": "20231219",
+    "max": "20261021",
+    "fechas_embarque_distintas": 94
+  },
+  {
+    "producto": "arandano",
+    "destino": "BR",
+    "filas": 389,
+    "min": "20230516",
+    "max": "20261017",
+    "fechas_embarque_distintas": 137
+  },
+  {
+    "producto": "arandano",
+    "destino": "SV",
+    "filas": 72,
+    "min": "20231226",
+    "max": "20261018",
+    "fechas_embarque_distintas": 48
+  },
+  {
+    "producto": "arandano",
+    "destino": "CR",
+    "filas": 144,
+    "min": "20231007",
     "max": "20261019",
     "fechas_embarque_distintas": 83
   },
   {
     "producto": "arandano",
-    "destino": "CN",
-    "filas": 1693,
-    "min": "20220711",
-    "max": "20261021",
-    "fechas_embarque_distintas": 127
-  },
-  {
-    "producto": "arandano",
-    "destino": "US",
-    "filas": 14626,
-    "min": "20210911",
-    "max": "20261021",
-    "fechas_embarque_distintas": 531
-  },
-  {
-    "producto": "arandano",
-    "destino": "NL",
-    "filas": 4773,
-    "min": "20230110",
-    "max": "20261021",
-    "fechas_embarque_distintas": 309
-  },
-  {
-    "producto": "arandano",
-    "destino": "GB",
-    "filas": 1116,
-    "min": "20210923",
-    "max": "20261020",
-    "fechas_embarque_distintas": 165
-  },
-  {
-    "producto": "arandano",
-    "destino": "PA",
-    "filas": 67,
-    "min": "20231219",
-    "max": "20261016",
-    "fechas_embarque_distintas": 39
-  },
-  {
-    "producto": "arandano",
-    "destino": "IN",
-    "filas": 288,
-    "min": "20221227",
-    "max": "20261019",
-    "fechas_embarque_distintas": 119
-  },
-  {
-    "producto": "arandano",
-    "destino": "CO",
-    "filas": 204,
-    "min": "20231219",
-    "max": "20261021",
-    "fechas_embarque_distintas": 63
-  },
-  {
-    "producto": "arandano",
-    "destino": "BR",
-    "filas": 198,
-    "min": "20230516",
-    "max": "20261017",
-    "fechas_embarque_distintas": 77
-  },
-  {
-    "producto": "arandano",
-    "destino": "SV",
-    "filas": 43,
-    "min": "20231226",
-    "max": "20261018",
-    "fechas_embarque_distintas": 28
-  },
-  {
-    "producto": "arandano",
-    "destino": "CR",
-    "filas": 89,
-    "min": "20231007",
-    "max": "20261019",
-    "fechas_embarque_distintas": 48
-  },
-  {
-    "producto": "arandano",
     "destino": "TH",
-    "filas": 245,
+    "filas": 307,
     "min": "20231206",
     "max": "20261019",
-    "fechas_embarque_distintas": 86
-  },
-  {
-    "producto": "arandano",
-    "destino": "ES",
-    "filas": 575,
-    "min": "20230913",
-    "max": "20261019",
-    "fechas_embarque_distintas": 126
-  },
-  {
-    "producto": "arandano",
-    "destino": "SG",
-    "filas": 311,
-    "min": "20230703",
-    "max": "20261017",
-    "fechas_embarque_distintas": 100
-  },
-  {
-    "producto": "arandano",
-    "destino": "SA",
-    "filas": 136,
-    "min": "20231223",
-    "max": "20261016",
-    "fechas_embarque_distintas": 29
-  },
-  {
-    "producto": "arandano",
-    "destino": "AE",
-    "filas": 35,
-    "min": "20220803",
-    "max": "20261011",
-    "fechas_embarque_distintas": 29
-  },
-  {
-    "producto": "arandano",
-    "destino": "HK",
-    "filas": 1148,
-    "min": "20210804",
-    "max": "20261015",
     "fechas_embarque_distintas": 125
   },
   {
     "producto": "arandano",
-    "destino": "TW",
-    "filas": 339,
-    "min": "20230803",
+    "destino": "ES",
+    "filas": 594,
+    "min": "20230913",
+    "max": "20261019",
+    "fechas_embarque_distintas": 141
+  },
+  {
+    "producto": "arandano",
+    "destino": "SG",
+    "filas": 352,
+    "min": "20230703",
     "max": "20261017",
-    "fechas_embarque_distintas": 66
+    "fechas_embarque_distintas": 127
+  },
+  {
+    "producto": "arandano",
+    "destino": "SA",
+    "filas": 169,
+    "min": "20231223",
+    "max": "20261016",
+    "fechas_embarque_distintas": 41
+  },
+  {
+    "producto": "arandano",
+    "destino": "AE",
+    "filas": 41,
+    "min": "20220803",
+    "max": "20261011",
+    "fechas_embarque_distintas": 34
+  },
+  {
+    "producto": "arandano",
+    "destino": "HK",
+    "filas": 1199,
+    "min": "20210804",
+    "max": "20261015",
+    "fechas_embarque_distintas": 149
+  },
+  {
+    "producto": "arandano",
+    "destino": "TW",
+    "filas": 374,
+    "min": "20220906",
+    "max": "20261017",
+    "fechas_embarque_distintas": 81
   },
   {
     "producto": "arandano",
@@ -442,119 +442,119 @@
   {
     "producto": "arandano",
     "destino": "CA",
-    "filas": 439,
+    "filas": 525,
     "min": "20210821",
     "max": "20261020",
-    "fechas_embarque_distintas": 81
+    "fechas_embarque_distintas": 135
   },
   {
     "producto": "arandano",
     "destino": "KW",
-    "filas": 1,
-    "min": "20260714",
+    "filas": 7,
+    "min": "20260222",
     "max": "20260714",
-    "fechas_embarque_distintas": 1
+    "fechas_embarque_distintas": 4
   },
   {
     "producto": "arandano",
     "destino": "UY",
-    "filas": 7,
-    "min": "20260726",
+    "filas": 38,
+    "min": "20260304",
     "max": "20260804",
-    "fechas_embarque_distintas": 3
+    "fechas_embarque_distintas": 18
   },
   {
     "producto": "arandano",
     "destino": "RU",
-    "filas": 59,
+    "filas": 67,
     "min": "20241211",
     "max": "20261010",
-    "fechas_embarque_distintas": 23
+    "fechas_embarque_distintas": 31
   },
   {
     "producto": "arandano",
     "destino": "OM",
-    "filas": 4,
-    "min": "20260807",
+    "filas": 5,
+    "min": "20260222",
     "max": "20260923",
-    "fechas_embarque_distintas": 2
+    "fechas_embarque_distintas": 3
   },
   {
     "producto": "arandano",
     "destino": "MY",
-    "filas": 69,
+    "filas": 80,
     "min": "20231225",
     "max": "20261019",
-    "fechas_embarque_distintas": 24
+    "fechas_embarque_distintas": 32
   },
   {
     "producto": "arandano",
     "destino": "QA",
-    "filas": 2,
-    "min": "20260714",
+    "filas": 3,
+    "min": "20260206",
     "max": "20260830",
-    "fechas_embarque_distintas": 2
+    "fechas_embarque_distintas": 3
   },
   {
     "producto": "uva",
     "destino": "HN",
-    "filas": 37,
+    "filas": 52,
     "min": "20231223",
     "max": "20261017",
-    "fechas_embarque_distintas": 23
+    "fechas_embarque_distintas": 36
   },
   {
     "producto": "uva",
     "destino": "NI",
-    "filas": 6,
-    "min": "20260822",
+    "filas": 9,
+    "min": "20251111",
     "max": "20261010",
-    "fechas_embarque_distintas": 6
+    "fechas_embarque_distintas": 9
   },
   {
     "producto": "uva",
     "destino": "GB",
-    "filas": 698,
+    "filas": 960,
     "min": "20231016",
     "max": "20261021",
-    "fechas_embarque_distintas": 84
+    "fechas_embarque_distintas": 139
   },
   {
     "producto": "uva",
     "destino": "ES",
-    "filas": 418,
-    "min": "20231016",
+    "filas": 1222,
+    "min": "20210114",
     "max": "20261021",
-    "fechas_embarque_distintas": 75
+    "fechas_embarque_distintas": 132
   },
   {
     "producto": "uva",
     "destino": "IL",
-    "filas": 91,
-    "min": "20260221",
+    "filas": 133,
+    "min": "20251017",
     "max": "20261017",
-    "fechas_embarque_distintas": 16
+    "fechas_embarque_distintas": 37
   },
   {
     "producto": "palta",
     "destino": "EC",
-    "filas": 10,
+    "filas": 18,
     "min": "20260227",
     "max": "20260610",
-    "fechas_embarque_distintas": 9
+    "fechas_embarque_distintas": 11
   },
   {
     "producto": "palta",
     "destino": "TH",
-    "filas": 43,
+    "filas": 122,
     "min": "20220328",
     "max": "20260619",
-    "fechas_embarque_distintas": 16
+    "fechas_embarque_distintas": 46
   },
   {
     "producto": "palta",
     "destino": "PT",
-    "filas": 65,
+    "filas": 71,
     "min": "20260418",
     "max": "20260919",
     "fechas_embarque_distintas": 15
@@ -562,18 +562,18 @@
   {
     "producto": "palta",
     "destino": "AW",
-    "filas": 3,
+    "filas": 4,
     "min": "20241221",
     "max": "20260830",
-    "fechas_embarque_distintas": 3
+    "fechas_embarque_distintas": 4
   },
   {
     "producto": "arandano",
     "destino": "GT",
-    "filas": 27,
+    "filas": 36,
     "min": "20231218",
     "max": "20261019",
-    "fechas_embarque_distintas": 24
+    "fechas_embarque_distintas": 32
   },
   {
     "producto": "arandano",
@@ -586,18 +586,18 @@
   {
     "producto": "arandano",
     "destino": "DO",
-    "filas": 13,
-    "min": "20260526",
+    "filas": 17,
+    "min": "20251108",
     "max": "20260929",
-    "fechas_embarque_distintas": 5
+    "fechas_embarque_distintas": 6
   },
   {
     "producto": "arandano",
     "destino": "CL",
-    "filas": 30,
+    "filas": 46,
     "min": "20230801",
     "max": "20261019",
-    "fechas_embarque_distintas": 25
+    "fechas_embarque_distintas": 35
   },
   {
     "producto": "arandano",
@@ -610,10 +610,10 @@
   {
     "producto": "arandano",
     "destino": "DE",
-    "filas": 21,
+    "filas": 22,
     "min": "20240929",
     "max": "20260930",
-    "fechas_embarque_distintas": 12
+    "fechas_embarque_distintas": 13
   },
   {
     "producto": "arandano",
@@ -626,10 +626,10 @@
   {
     "producto": "uva",
     "destino": "PT",
-    "filas": 28,
-    "min": "20231222",
+    "filas": 77,
+    "min": "20221029",
     "max": "20261017",
-    "fechas_embarque_distintas": 15
+    "fechas_embarque_distintas": 28
   },
   {
     "producto": "uva",
@@ -650,26 +650,26 @@
   {
     "producto": "uva",
     "destino": "JP",
-    "filas": 88,
+    "filas": 130,
     "min": "20231222",
     "max": "20261014",
-    "fechas_embarque_distintas": 19
+    "fechas_embarque_distintas": 36
   },
   {
     "producto": "uva",
     "destino": "TH",
-    "filas": 16,
+    "filas": 29,
     "min": "20231206",
     "max": "20260213",
-    "fechas_embarque_distintas": 11
+    "fechas_embarque_distintas": 16
   },
   {
     "producto": "arandano",
     "destino": "EC",
-    "filas": 2,
-    "min": "20260115",
+    "filas": 7,
+    "min": "20250814",
     "max": "20260115",
-    "fechas_embarque_distintas": 1
+    "fechas_embarque_distintas": 5
   },
   {
     "producto": "arandano",
@@ -690,18 +690,18 @@
   {
     "producto": "palta",
     "destino": "IE",
-    "filas": 1,
-    "min": "20260624",
+    "filas": 3,
+    "min": "20260420",
     "max": "20260624",
-    "fechas_embarque_distintas": 1
+    "fechas_embarque_distintas": 3
   },
   {
     "producto": "palta",
     "destino": "UY",
-    "filas": 10,
-    "min": "20260510",
+    "filas": 41,
+    "min": "20260318",
     "max": "20260523",
-    "fechas_embarque_distintas": 2
+    "fechas_embarque_distintas": 12
   },
   {
     "producto": "arandano",
@@ -730,10 +730,10 @@
   {
     "producto": "arandano",
     "destino": "AW",
-    "filas": 2,
+    "filas": 3,
     "min": "20241221",
     "max": "20260909",
-    "fechas_embarque_distintas": 2
+    "fechas_embarque_distintas": 3
   },
   {
     "producto": "uva",
@@ -746,23 +746,23 @@
   {
     "producto": "uva",
     "destino": "RU",
-    "filas": 38,
+    "filas": 48,
     "min": "20220108",
     "max": "20261002",
-    "fechas_embarque_distintas": 17
+    "fechas_embarque_distintas": 23
   },
   {
     "producto": "uva",
     "destino": "KR",
-    "filas": 42,
+    "filas": 133,
     "min": "20220108",
     "max": "20260225",
-    "fechas_embarque_distintas": 18
+    "fechas_embarque_distintas": 32
   },
   {
     "producto": "palta",
     "destino": "LT",
-    "filas": 4,
+    "filas": 8,
     "min": "20260325",
     "max": "20260505",
     "fechas_embarque_distintas": 4
@@ -810,10 +810,10 @@
   {
     "producto": "arandano",
     "destino": "HN",
-    "filas": 4,
-    "min": "20260526",
+    "filas": 7,
+    "min": "20260401",
     "max": "20260929",
-    "fechas_embarque_distintas": 3
+    "fechas_embarque_distintas": 6
   },
   {
     "producto": "arandano",
@@ -826,31 +826,31 @@
   {
     "producto": "uva",
     "destino": "SA",
-    "filas": 25,
-    "min": "20251219",
+    "filas": 35,
+    "min": "20251101",
     "max": "20251230",
-    "fechas_embarque_distintas": 3
+    "fechas_embarque_distintas": 8
   },
   {
     "producto": "uva",
     "destino": "SG",
-    "filas": 20,
+    "filas": 73,
     "min": "20241215",
     "max": "20261019",
-    "fechas_embarque_distintas": 11
+    "fechas_embarque_distintas": 30
   },
   {
     "producto": "uva",
     "destino": "PR",
-    "filas": 22,
+    "filas": 46,
     "min": "20231219",
     "max": "20261016",
-    "fechas_embarque_distintas": 13
+    "fechas_embarque_distintas": 21
   },
   {
     "producto": "uva",
     "destino": "ID",
-    "filas": 44,
+    "filas": 45,
     "min": "20231221",
     "max": "20261008",
     "fechas_embarque_distintas": 13
@@ -882,10 +882,10 @@
   {
     "producto": "uva",
     "destino": "LT",
-    "filas": 3,
+    "filas": 11,
     "min": "20231215",
     "max": "20260929",
-    "fechas_embarque_distintas": 2
+    "fechas_embarque_distintas": 7
   },
   {
     "producto": "palta",
@@ -906,18 +906,18 @@
   {
     "producto": "uva",
     "destino": "VN",
-    "filas": 15,
+    "filas": 46,
     "min": "20220105",
     "max": "20261008",
-    "fechas_embarque_distintas": 10
+    "fechas_embarque_distintas": 25
   },
   {
     "producto": "uva",
     "destino": "IT",
-    "filas": 15,
+    "filas": 202,
     "min": "20231219",
     "max": "20261014",
-    "fechas_embarque_distintas": 10
+    "fechas_embarque_distintas": 47
   },
   {
     "producto": "arandano",
@@ -930,26 +930,26 @@
   {
     "producto": "uva",
     "destino": "NO",
-    "filas": 30,
+    "filas": 32,
     "min": "20231031",
     "max": "20260930",
-    "fechas_embarque_distintas": 13
+    "fechas_embarque_distintas": 14
   },
   {
     "producto": "uva",
     "destino": "CN",
-    "filas": 121,
+    "filas": 374,
     "min": "20231126",
-    "max": "20260217",
-    "fechas_embarque_distintas": 21
+    "max": "20260321",
+    "fechas_embarque_distintas": 34
   },
   {
     "producto": "uva",
     "destino": "HK",
-    "filas": 151,
+    "filas": 372,
     "min": "20211222",
-    "max": "20260402",
-    "fechas_embarque_distintas": 29
+    "max": "20260419",
+    "fechas_embarque_distintas": 54
   },
   {
     "producto": "uva",
@@ -962,10 +962,10 @@
   {
     "producto": "uva",
     "destino": "MY",
-    "filas": 3,
+    "filas": 6,
     "min": "20241222",
-    "max": "20250106",
-    "fechas_embarque_distintas": 3
+    "max": "20260322",
+    "fechas_embarque_distintas": 6
   },
   {
     "producto": "uva",
@@ -978,10 +978,10 @@
   {
     "producto": "uva",
     "destino": "MQ",
-    "filas": 1,
+    "filas": 2,
     "min": "20241217",
-    "max": "20241217",
-    "fechas_embarque_distintas": 1
+    "max": "20251224",
+    "fechas_embarque_distintas": 2
   },
   {
     "producto": "palta",
@@ -1002,10 +1002,10 @@
   {
     "producto": "arandano",
     "destino": "IE",
-    "filas": 16,
+    "filas": 18,
     "min": "20210901",
-    "max": "20211124",
-    "fechas_embarque_distintas": 9
+    "max": "20251110",
+    "fechas_embarque_distintas": 11
   },
   {
     "producto": "arandano",
@@ -1013,6 +1013,62 @@
     "filas": 1,
     "min": "20231115",
     "max": "20231115",
+    "fechas_embarque_distintas": 1
+  },
+  {
+    "producto": "uva",
+    "destino": "PG",
+    "filas": 3,
+    "min": "20251205",
+    "max": "20251205",
+    "fechas_embarque_distintas": 1
+  },
+  {
+    "producto": "palta",
+    "destino": "CO",
+    "filas": 53,
+    "min": "20260303",
+    "max": "20260517",
+    "fechas_embarque_distintas": 34
+  },
+  {
+    "producto": "palta",
+    "destino": "MX",
+    "filas": 20,
+    "min": "20260412",
+    "max": "20260510",
+    "fechas_embarque_distintas": 5
+  },
+  {
+    "producto": "uva",
+    "destino": "SE",
+    "filas": 8,
+    "min": "20251102",
+    "max": "20251202",
+    "fechas_embarque_distintas": 4
+  },
+  {
+    "producto": "palta",
+    "destino": "GT",
+    "filas": 4,
+    "min": "20260314",
+    "max": "20260506",
+    "fechas_embarque_distintas": 3
+  },
+  {
+    "producto": "palta",
+    "destino": "1B",
+    "filas": 1,
+    "min": "20260505",
+    "max": "20260505",
+    "fechas_embarque_distintas": 1
+  },
+  {
+    "producto": "arandano",
+    "destino": "BH",
+    "filas": 1,
+    "min": "20260222",
+    "max": "20260222",
     "fechas_embarque_distintas": 1
   }
 ]
