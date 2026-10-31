@@ -41,3 +41,10 @@ Con Node.js, desde la raíz del repositorio y después de recuperar los ZIP y ex
 La extracción no entrena modelos, no completa ceros, no imputa variables ni genera datos sintéticos. La verificación comprueba estructura, hashes originales y conteos; no certifica pertinencia científica ni cobertura histórica.
 
 Drive: https://drive.google.com/drive/folders/14H1M-gkaHlfzT-mgy9Pt2bECEBwoPKVC
+
+## Conciliación ejecutada
+
+La entrada de 110253 filas permanece intacta. Se generó [una vista conciliada de 93225 series](conciliacion/vista-conciliada.csv), con 108 filas (73 series de 25 declaraciones) en cuarentena. Las reglas oficiales de reemplazo por declaración se aplicaron al último paquete disponible. Véanse [protocolo](conciliacion/protocolo.md), [informe](conciliacion/informe.md) y [decisiones](conciliacion/decisiones.csv). No es todavía un dataset experimental ni una reconstrucción acreditada de disponibilidad en tiempo real.
+
+    python -B tools/reconcile_sunat.py .
+    python -B tools/verify_sunat_reconciliation.py .

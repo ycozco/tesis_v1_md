@@ -10,6 +10,46 @@
     "sha256": "a16ca3e98c1386172c48dbd168351bf92a62891815c5e55de4e607a39d7050f4"
   },
   {
+    "archivo": "conciliacion/conflictos-detalle.json",
+    "bytes": 15079,
+    "sha256": "6e779688e69933fc226e7fd14ee640ab2604dc6bb9e81a6e55acac59e87a75a0"
+  },
+  {
+    "archivo": "conciliacion/cuarentena.csv",
+    "bytes": 40621,
+    "sha256": "99738793ceb829787edaccc44862e55aa7c35375f77e96951942257300e27a85"
+  },
+  {
+    "archivo": "conciliacion/decisiones.csv",
+    "bytes": 29256514,
+    "sha256": "173ee652f7c8c5548a06c6bef4107199c2f7eca2e7867101e32f75c7e8241f0d"
+  },
+  {
+    "archivo": "conciliacion/informe.md",
+    "bytes": 2810,
+    "sha256": "6117e5ee551211d5f2acbf976d6a8ee54e94dcd8f6d94715ae425e5c7afe97b1"
+  },
+  {
+    "archivo": "conciliacion/protocolo.md",
+    "bytes": 5870,
+    "sha256": "cbad8bce0465a90317bfdcf1585ca4cd328a819b2c18beb8166ec37570f837a8"
+  },
+  {
+    "archivo": "conciliacion/resumen.json",
+    "bytes": 7910,
+    "sha256": "99c42262a79269c0a844615c0878969830d886daad7282a6741abb9b8c7021c2"
+  },
+  {
+    "archivo": "conciliacion/series_ausentes_snapshot_posterior.csv",
+    "bytes": 28,
+    "sha256": "f3356b2b37f1f356c56730ff136840bdb23481cee90468662d897be64d85447d"
+  },
+  {
+    "archivo": "conciliacion/vista-conciliada.csv",
+    "bytes": 32704296,
+    "sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66"
+  },
+  {
     "archivo": "incorporacion-respaldo.json",
     "bytes": 2980,
     "sha256": "b79b78e0af3e3c953a4bc91cacec37c0be5b755eef040cba253654774c6ff43a"
@@ -46,7 +86,7 @@
   },
   {
     "archivo": "README.md",
-    "bytes": 4229,
-    "sha256": "878b7190cdb39717bd9ae059282a9fcec80f02901c25ee25be3d352e349b813b"
+    "bytes": 4876,
+    "sha256": "a62fac332c81330eba1749679187875c5590d1968dd7b6d3f504579a76c7821a"
   }
 ]
