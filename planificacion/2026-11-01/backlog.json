@@ -1,0 +1,397 @@
+{
+  "date": "2026-11-01",
+  "baseline_commit": "cb23e35836d38cc397639ed66414df16c3a794a9",
+  "effort_note": "Estimaciones de trabajo, no promesas; varias actividades pueden avanzar por frentes independientes. Los bloqueos externos no se convierten en ejecución.",
+  "tasks": [
+    {
+      "id": "P00",
+      "title": "Fijar documento rector y matriz documental",
+      "objectives": [
+        "OE1",
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T01",
+        "T02",
+        "T03"
+      ],
+      "depends_on": [],
+      "priority": "P0",
+      "effort_person_days": "1–2",
+      "owner": "Tesista y desarrollo",
+      "deliverable": "Versión de protocolo, divergencias locales y matriz antecedente–hallazgo–adaptación–requisito–prueba.",
+      "acceptance": "Cada requisito tiene fuente, alcance, prueba y estado; no se mezclan H1a–H1e antiguos con H1–H4 vigentes.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P01",
+      "title": "Cerrar credenciales y cuentas de prueba",
+      "objectives": [
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T09"
+      ],
+      "depends_on": [],
+      "priority": "P0",
+      "effort_person_days": "0,5–1",
+      "owner": "Titular de credenciales y desarrollo",
+      "deliverable": "Credencial antigua rotada por el titular; ejemplos sin secretos; cuentas QA aisladas y roles.",
+      "acceptance": "La credencial revocada deja de autorizar; secretos ausentes en entrega; copia .env privada conservada. No se reescribe historial sin decisión explícita.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P02",
+      "title": "Conciliar expansión histórica y registrar fuentes",
+      "objectives": [
+        "OE1"
+      ],
+      "thesis_refs": [
+        "T01",
+        "T03"
+      ],
+      "depends_on": [
+        "P00"
+      ],
+      "priority": "P0",
+      "effort_person_days": "2–4",
+      "owner": "Desarrollo",
+      "deliverable": "Incorporación versionada de 8.579 candidatos contra todos los snapshots, decisiones y cuarentena.",
+      "acceptance": "Contabilidad completa; ninguna duplicación o revisión se resuelve silenciosamente; originales inmutables.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P03",
+      "title": "Cerrar cobertura, disponibilidad, elegibilidad y exposición",
+      "objectives": [
+        "OE1",
+        "OE2"
+      ],
+      "thesis_refs": [
+        "T03",
+        "T05",
+        "T09"
+      ],
+      "depends_on": [
+        "P02"
+      ],
+      "priority": "P0",
+      "effort_person_days": "2–3",
+      "owner": "Tesista y desarrollo",
+      "deliverable": "Panel con cuatro estados de observabilidad; manifiesto de series, calendario, disponibilidad y accesos previos al test.",
+      "acceptance": "No se confunde faltante con cero; todo join es as-of verificable o se declara retrospectivo; test congelado antes de evaluar errores.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P04",
+      "title": "Construir entorno portable y ejecutor reproducible",
+      "objectives": [
+        "OE1",
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T03",
+        "T09"
+      ],
+      "depends_on": [
+        "P00"
+      ],
+      "priority": "P0",
+      "effort_person_days": "2–3",
+      "owner": "Desarrollo",
+      "deliverable": "Dependencias resueltas en instalación limpia, rutas relativas, configuración y comando único de reproducción.",
+      "acceptance": "Ejecuta desde otra carpeta sin depender de D:; recupera datos por hash o falla explícitamente; no lee secretos de un tercero.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P05",
+      "title": "Completar H1 y selección en desarrollo",
+      "objectives": [
+        "OE2"
+      ],
+      "thesis_refs": [
+        "T04",
+        "T05"
+      ],
+      "depends_on": [
+        "P03",
+        "P04"
+      ],
+      "priority": "P0",
+      "effort_person_days": "3–5",
+      "owner": "Desarrollo",
+      "deliverable": "Cuatro baselines, ocho configuraciones GBDT por objetivo, selección, predicciones OOS y métricas.",
+      "acceptance": "Grilla y desempate exactos, origen común y reajuste semanal; MAE macro primario en ambos objetivos; MASE y fallos documentados; test no modifica selección.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P06",
+      "title": "Corregir incertidumbre y sensibilidad temporal",
+      "objectives": [
+        "OE2"
+      ],
+      "thesis_refs": [
+        "T05",
+        "T06"
+      ],
+      "depends_on": [
+        "P05"
+      ],
+      "priority": "P0",
+      "effort_person_days": "1–2",
+      "owner": "Desarrollo",
+      "deliverable": "Intervalos 90/95 expansivos y últimos 52; L=0/4/8 con configuración fija elegida en L=0.",
+      "acceptance": "Orden ceil((n+1)*(1-alpha)), mínimo 40 y no emisión si excede n; embargo también en baselines, etiquetas y calibración; casos emparejados.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P07",
+      "title": "Resolver elegibilidad y ablación H2",
+      "objectives": [
+        "OE2"
+      ],
+      "thesis_refs": [
+        "T02",
+        "T05"
+      ],
+      "depends_on": [
+        "P03",
+        "P05"
+      ],
+      "priority": "P1",
+      "effort_person_days": "1–3",
+      "owner": "Tesista y desarrollo",
+      "deliverable": "Registro fuente–unidad–publicación y comparación historial vs contexto.",
+      "acceptance": "Mismo algoritmo, parámetros, series y calendario; sin fechas compatibles, H2 se declara no evaluable con evidencia; no se simulan covariables.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P08",
+      "title": "Alinear H3 con calibración previa y referencia estacional",
+      "objectives": [
+        "OE3"
+      ],
+      "thesis_refs": [
+        "T02",
+        "T12"
+      ],
+      "depends_on": [
+        "P05",
+        "P06"
+      ],
+      "priority": "P0",
+      "effort_person_days": "2–3",
+      "owner": "Desarrollo",
+      "deliverable": "Scores OOS, percentiles del entrenamiento, ensemble de pesos iguales, top K y caracterización.",
+      "acceptance": "Percentiles calculados en entrenamiento previo, no en el lote puntuado; K por producto en universo común y desempate por fecha/destino; w+1/w+2 solo para rúbrica retrospectiva; q/r/u, solapamiento y sensibilidad documentados.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P09",
+      "title": "Verificar SHAP sobre artefactos finales",
+      "objectives": [
+        "OE4"
+      ],
+      "thesis_refs": [
+        "T01",
+        "T08"
+      ],
+      "depends_on": [
+        "P05"
+      ],
+      "priority": "P1",
+      "effort_person_days": "1–2",
+      "owner": "Desarrollo",
+      "deliverable": "Explicaciones globales/locales ligadas a dataset, modelo, características y escala.",
+      "acceptance": "Reconstrucción aditiva dentro de tolerancia fijada; diferencia entre salida cruda/log/truncada; ninguna atribución se interpreta como detector o causa.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P10",
+      "title": "Completar corpus, PostgreSQL/pgvector y RAG",
+      "objectives": [
+        "OE5",
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T07",
+        "T08",
+        "T09"
+      ],
+      "depends_on": [
+        "P00",
+        "P04"
+      ],
+      "priority": "P0",
+      "effort_person_days": "3–5",
+      "owner": "Desarrollo",
+      "deliverable": "Base con migraciones, corpus y fragmentos versionados, embeddings multilingües y recuperación temporal.",
+      "acceptance": "Reconstrucción y recuperación reales desde cero; cada cita resuelve documento/fragmento/hash/fecha; casos sin respaldo producen abstención registrada.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P11",
+      "title": "Rehacer catálogo H4 y claves antes de generación",
+      "objectives": [
+        "OE5"
+      ],
+      "thesis_refs": [
+        "T07"
+      ],
+      "depends_on": [
+        "P00"
+      ],
+      "priority": "P0",
+      "effort_person_days": "2–3",
+      "owner": "Tesista y desarrollo",
+      "deliverable": "Diez esquemas por cada producto, 30 casos completos y de fallo con clave común y guía ciega.",
+      "acceptance": "Todos los diez tipos exigidos están representados por producto; los 30 agregados actuales no se etiquetan como catálogo H4 definitivo.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P12",
+      "title": "Ejecutar y calificar H4 sin confundir borradores",
+      "objectives": [
+        "OE5"
+      ],
+      "thesis_refs": [
+        "T02",
+        "T07"
+      ],
+      "depends_on": [
+        "P10",
+        "P11"
+      ],
+      "priority": "P0",
+      "effort_person_days": "3–5 más 7 días de espera si corresponde",
+      "owner": "Tesista; revisor independiente si disponible",
+      "deliverable": "180 salidas emparejadas, salida inicial/corrección/final/plantilla, calificación numérica/factual y concordancia.",
+      "acceptance": "Mismo generador y parámetros; tolerancia media unidad decimal +1e-9; tasas separadas y no definidas si denominador cero; 45 revisiones independientes o repetidas ciegas tras 7 días.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P13",
+      "title": "Completar perfil, permisos y consultas con datos",
+      "objectives": [
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T01",
+        "T03",
+        "T08",
+        "T09"
+      ],
+      "depends_on": [
+        "P04"
+      ],
+      "priority": "P1",
+      "effort_person_days": "2–3",
+      "owner": "Desarrollo",
+      "deliverable": "ADMIN y revisor/analista, acceso a versiones aprobadas, preferencias e historial de consultas/borradores propios.",
+      "acceptance": "Dos cuentas prueban acceso y denegación; consulta guardada reproduce filtros/corte; no se exige información personal de productores ni estudios de uso.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P14",
+      "title": "Integrar UI científica, detalle de resultados y progreso real",
+      "objectives": [
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T03",
+        "T08"
+      ],
+      "depends_on": [
+        "P05",
+        "P08",
+        "P09",
+        "P10",
+        "P13"
+      ],
+      "priority": "P1",
+      "effort_person_days": "3–5",
+      "owner": "Desarrollo",
+      "deliverable": "Consultas API, detalle pronóstico–señal–SHAP–evidencia, exportación y trabajos con estados reales; decisión por cada ruta heredada.",
+      "acceptance": "Una ruta por función comprometida, errores y estados vacíos; permisos en servidor; ningún progreso o métrica ficticios; legado fuera de alcance retirado o separado.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P15",
+      "title": "Ejecutar E1, E2 y E3 de extremo a extremo",
+      "objectives": [
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T08",
+        "T11"
+      ],
+      "depends_on": [
+        "P14"
+      ],
+      "priority": "P0",
+      "effort_person_days": "1–2",
+      "owner": "Desarrollo y tesista",
+      "deliverable": "Matriz requisito–función–prueba–evidencia con entradas, esperado, obtenido, versión y captura.",
+      "acceptance": "E1 arroja 800/300 y cambio 12,5%; E2 controla cero/unidades/cobertura; E3 respeta emisión/antigüedad/objetivo, reconstruye y detecta alteración.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P16",
+      "title": "Reconstruir la entrega y verificar reproducibilidad",
+      "objectives": [
+        "OE1",
+        "OE2",
+        "OE3",
+        "OE4",
+        "OE5",
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T08",
+        "T09"
+      ],
+      "depends_on": [
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P12",
+        "P15"
+      ],
+      "priority": "P0",
+      "effort_person_days": "2–3",
+      "owner": "Desarrollo y tesista",
+      "deliverable": "Reejecución limpia, manifiesto de ejecución y paquete de datos/modelos/salidas/documentos sin secretos.",
+      "acceptance": "Particiones e identidades de fuente coinciden; tolerancias fijadas antes de repetir; métricas de H4 se recalculan desde salidas archivadas; discrepancias quedan registradas.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    },
+    {
+      "id": "P17",
+      "title": "Cerrar capítulo IV, anexos y conclusiones verificables",
+      "objectives": [
+        "OE1",
+        "OE2",
+        "OE3",
+        "OE4",
+        "OE5",
+        "OE6"
+      ],
+      "thesis_refs": [
+        "T01",
+        "T02",
+        "T08",
+        "T09",
+        "T10"
+      ],
+      "depends_on": [
+        "P16"
+      ],
+      "priority": "P0",
+      "effort_person_days": "2–3",
+      "owner": "Tesista con apoyo técnico",
+      "deliverable": "Tablas, figuras, limitaciones y conclusión por objetivo/contraste, vinculados a ejecuciones.",
+      "acceptance": "Se distinguen respaldado/no respaldado/no concluyente/no evaluable/no ejecutado; no se exige una mejora favorable para terminar ni se declaran objetivos cumplidos sin evidencia.",
+      "status": "planificado_no_ejecutado_en_esta_entrega"
+    }
+  ]
+}

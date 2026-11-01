@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-01",
+  "source": {
+    "title": "TESIS - COZCO MAURI YOSET",
+    "url": "https://docs.google.com/document/d/13cJUk1_AMrI-jsZj0s6a5XuTmE7wXZLFL-SNlPGxt8g/edit",
+    "modified_time_utc": "2026-10-23T13:27:20.453Z",
+    "retrieved_readable_text_characters": 240011,
+    "version_note": "Metadatos y contenido consultados; se conservan extractos, no una exportación completa ni revisión inmutable de Drive."
+  },
+  "implementation_baseline_commit": "cb23e35836d38cc397639ed66414df16c3a794a9",
+  "anchors": [
+    {
+      "id": "T01",
+      "section": "1.3.2 Objetivos específicos",
+      "offset_start": 22867,
+      "excerpt": "1.3.2 Objetivos específicos\r\n1. Derivar requisitos de consulta, comparación y explicación a partir de antecedentes empíricos y técnicos; auditar, normalizar e integrar las fuentes de los tres productos en un conjunto analítico documentado. Los productos serán la matriz antecedente–hallazgo–adaptación–prueba, el manifiesto y el reporte de cobertura y calidad.\r\n2. Implementar y comparar referencias simples, XGBoost y LightGBM para pronosticar valor unitario FOB y volumen, mediante evaluación temporal e intervalos al 90 % y 95 %. El horizonte principal propuesto será una semana desde la emisión. La elegibilidad y el calendario se cerrarán con la auditoría antes del test; la ablación incluirá solo covariables compatibles y temporalmente verificables.\r\n3. Implementar y caracterizar señales históricas de desviación mediante una referencia, Isolation Forest, Local Outlier Factor, ECOD y su combinación, con variables disponibles, puntuación fuera del ajuste y presupuesto común. Se documentarán coincidencias, diferencias y persistencia observada sin interpretar la rúbrica interna como verdad "
+    },
+    {
+      "id": "T02",
+      "section": "1.4.3 Hipótesis y análisis exploratorio",
+      "offset_start": 25888,
+      "excerpt": "1.4.3 Hipótesis y análisis exploratorio de validación técnica\r\nH1 — Pronóstico. El candidato seleccionado en desarrollo obtiene menor MAE macro que la referencia elegida en ese mismo desarrollo, por separado para valor unitario FOB y volumen, sobre casos comunes del bloque final. Se presentarán diferencias por producto y destino, proporción de series con mejora y cobertura de emisión. El resultado será descriptivo y no establecerá superioridad poblacional.\r\nH2 — Aporte contextual. Bajo el mismo calendario y reglas de ajuste, la configuración con variables contextuales disponibles en el origen del pronóstico obtiene menor error que la configuración basada solo en el historial de exportaciones. Si no existen variables compatibles o su disponibilidad temporal no puede verificarse, se documentará que la hipótesis no pudo evaluarse.\r\nH3 — Análisis exploratorio de señales. Se caracterizarán coincidencias, diferencias y persistencia de los casos seleccionados por cada método bajo igual presupuesto. La rúbrica comparte una referencia estacional con el baseline y por ello no constituye un pat"
+    },
+    {
+      "id": "T03",
+      "section": "3.3.1–3.3.3 Requisitos, reproducibilidad y faltantes",
+      "offset_start": 135756,
+      "excerpt": "3.3.1 Preparación temporal y requisitos funcionales\r\nLos requisitos funcionales comprenden la importación de fuentes, validación y normalización de registros, anonimización, agregación semanal, entrenamiento de modelos, generación de predicciones, detección de anomalías, explicación SHAP, recuperación de documentos, generación y validación de reportes, consulta de trazabilidad, revisión de alertas y exportación de resultados.\r\nCada requisito se vincula con un actor, una entrada, una salida verificable y un módulo del prototipo. El cumplimiento funcional se evalúa mediante rutas ejecutables, persistencia, registros y evidencia visual.\r\n3.3.2 Requisitos no funcionales y de reproducibilidad\r\nLos requisitos no funcionales verificables serán reproducibilidad, integridad del linaje, modularidad, protección de credenciales, portabilidad y disponibilidad en el entorno de prueba. La claridad de presentación orientará el diseño, pero no se acreditará usabilidad mediante pruebas funcionales. La ejecución conservará código, dependencias, semillas y configuración.\r\n  \r\n\r\nFigura 3.3. Casos de uso "
+    },
+    {
+      "id": "T04",
+      "section": "3.5.2 Referencias y candidatos",
+      "offset_start": 152773,
+      "excerpt": "3.5.2 Modelos de referencia y candidatos\r\nLos baselines comunes serán persistencia del último valor disponible, media de las últimas cuatro observaciones válidas, mediana de las últimas trece y referencia estacional de rezago fijo de 52 semanas, cuando fuese observable. No se sustituirá un faltante con información futura. El rezago de 52 semanas no equivale siempre a la misma semana ISO del año anterior. XGBoost y LightGBM se ajustarán como modelos conjuntos por objetivo, con producto y destino como atributos. Referencia y candidato se elegirán por MAE macro de desarrollo.\r\nLas referencias simples ofrecen comparaciones de menor complejidad. Se informarán sus fallos de emisión y la cobertura común con el candidato. Superarlas en el test representará una mejora descriptiva en error absoluto bajo el protocolo, no utilidad comercial demostrada.\r\nXGBoost y LightGBM fueron seleccionados porque se adaptan a datos tabulares (Chen y Guestrin, 2016; Ke et al., 2017), permiten modelar relaciones no lineales, admiten interacciones entre variables y ofrecen mecanismos de regularización. Además, s"
+    },
+    {
+      "id": "T05",
+      "section": "3.5.3 Selección, métricas, ablación y disponibilidad",
+      "offset_start": 154300,
+      "excerpt": "renar se registrarán semanas completas, historia utilizable, ventanas sucesivas de desarrollo y bloque final posterior. Si la cobertura no permite un contraste semanal, se deberá recuperar historia o reformular frecuencia y calendario antes de consultar el test. En cada origen se excluirán objetivos no publicados; se declarará cualquier exposición previa al periodo final.\r\nEl reajuste será semanal. XGBoost comparará profundidad 3 o 6 y 200 o 500 árboles; LightGBM, 15 o 31 hojas y 200 o 500 árboles: cuatro configuraciones por algoritmo, con tasa de aprendizaje 0,05 y semilla 42. Los demás parámetros deberán explicitarse en la configuración versionada. Cada combinación utilizará los mismos cortes y preprocesamiento. Son decisiones de diseño, no valores universalmente óptimos. La compatibilidad y los recursos se comprobarán en desarrollo; todo cambio previo al test requerirá repetir la selección completa y registrar su versión.\r\n3.5.3.1 Métrica primaria y regla de selección\r\nLa métrica primaria de H1 será el MAE macro por serie, separado para valor unitario FOB y volumen. Se calcula el "
+    },
+    {
+      "id": "T06",
+      "section": "3.5.6 Incertidumbre",
+      "offset_start": 162742,
+      "excerpt": "3.5.6 Incertidumbre y verificación de intervalos\r\nLos intervalos al 90 % y 95 % se compararán sobre la misma predicción puntual. La referencia utilizará todos los errores absolutos fuera de muestra ya publicados de la serie; la alternativa temporal, los últimos 52 errores válidos. Ambas requieren al menos 40 errores, sin agrupar productos o destinos. Con n errores y nivel 1−α se usará el estadístico ordenado de posición ceil[(n+1)(1−α)]; si excede n no se emitirá intervalo. La banda será predicción ± cuantil, truncando su límite inferior en cero. Solo se actualizará después de publicarse el objetivo. Son bandas empíricas temporales, no una reproducción de AgACI ni de Gibbs y Candès.\r\nSe reportarán cobertura empírica, amplitud y emisiones sin intervalo por objetivo, producto, destino y semana. La comparación usará casos comunes e informará la fracción excluida. No se cambiarán ventanas o mínimos por el resultado del test. Zaffran et al. (2022) y Gibbs y Candès (2024) fundamentan examinar dependencia temporal y adaptación; sus garantías no se atribuyen automáticamente a este procedimie"
+    },
+    {
+      "id": "T07",
+      "section": "3.9.5.1 Protocolo H4",
+      "offset_start": 181621,
+      "excerpt": "3.9.5.1 Protocolo de comparación para H4\r\nH4 utilizará treinta casos controlados: diez esquemas por producto. Serán datos completos; cobertura incompleta; indicador de nivel comercial incompatible; unidades incompatibles; dato no publicado; versión documental contradictoria; denominador cero; afirmación sin evidencia; solicitud causal sin respaldo; y diferencia entre periodos. Cada caso tendrá entradas, campos requeridos, clave numérica y documental y salidas aceptables fijados antes de generar. Los casos artificiales se separarán del histórico de pronóstico.\r\nAmbas configuraciones recibirán los mismos datos estructurados y solicitud; la candidata incorporará recuperación y verificación. Se mantendrán modelo, versión y parámetros, con tres ejecuciones por caso y configuración. La clave común se fijará antes de recuperar documentos y se aplicará a ambas salidas. El contraste evalúa el paquete, sin aislar un efecto exclusivo de RAG. Corpus, fragmentación, embeddings, número de fragmentos, umbrales, filtros temporales, prompt e intentos se versionarán antes del test (Min et al., 2023).\r\nLa tolerancia numérica será la mitad de la última unidad decimal requerida más 10⁻⁹: 0,005 para una cifra con dos decimales en su unidad original. Las conversiones conservarán regla y tasa. Error numérico = cifras erróneas/cifras emitidas verificables; error factual = afirmaciones sin respaldo/afirmaciones factuales emitidas. Con denominador cero, la tasa será no definida. Cobertura = elementos requeridos respondidos correctamente/elementos aplicables de la clave común. Omisiones, abstenciones y fallos se informarán aparte. H4 tendrá respaldo descriptivo si ambas tasas disminuyen y la cobertura cae como máximo cinco puntos porcentuales. Sin tasas comparables será no concluyente. El margen es una decisión técnica previa al test, no una tole"
+    },
+    {
+      "id": "T08",
+      "section": "3.12 Evaluación y pruebas",
+      "offset_start": 199284,
+      "excerpt": "3.12 Evaluación técnica y pruebas funcionales\r\nLas pruebas abarcarán autenticación, consulta y comparación de indicadores, pronósticos, señales, explicaciones, evidencia, reportes, configuración e integridad. Cada función comprometida deberá tener una ruta ejecutable y evidencia; si falta, se registrará como no cubierta. Se conservarán requisito, entrada, salidas esperada y obtenida, fecha y versión.\r\nPara considerar funcional un módulo debe existir una ruta ejecutable, una entrada conocida, una salida verificable, persistencia o registro y evidencia visual. Cada prueba debe documentar identificador, precondición, entrada, pasos, resultado esperado, resultado obtenido, fecha y versión del prototipo.\r\nLas pruebas funcionales comprobarán la respuesta de los componentes y su integración conforme a los casos definidos. Sus resultados se informarán por requisito, con evidencia de aprobación o fallo. La verificación funcional complementará la evaluación experimental, sin sustituir las métricas necesarias para examinar las hipótesis.\r\n3.12.1 Correspondencia entre objetivos y evaluación\r\nLa "
+    },
+    {
+      "id": "T09",
+      "section": "3.13 Reproducibilidad y privacidad",
+      "offset_start": 204414,
+      "excerpt": "3.13 Reproducibilidad, privacidad y limitaciones operativas\r\nLa reproducibilidad exige conservar la versión del código, parámetros, fuentes, hashes, dataset utilizado, cortes temporales, modelos y artefactos de cada ejecución. Los resultados del Capítulo IV solo se considerarán definitivos cuando puedan vincularse con una ejecución reproducible del protocolo descrito; las métricas de experimentos preliminares se identificarán como tales y no sustituirán la evaluación final.\r\nLas reglas experimentales, los criterios de decisión, las versiones de datos y código y los parámetros completos se registrarán antes de ejecutar la evaluación final. Se documentará cualquier acceso anterior al bloque de prueba. Toda modificación posterior deberá indicar versión, fecha, motivo y resultados conocidos en ese momento. La huella de un archivo identifica su contenido, pero no acredita por sí sola su fecha ni la ausencia de consulta previa del test.\r\nLa privacidad comprende credenciales y registros de actividad del prototipo. Se emplearán cuentas y datos de prueba sin información personal innecesaria; "
+    },
+    {
+      "id": "T10",
+      "section": "1.14 Cronograma",
+      "offset_start": 58341,
+      "excerpt": "1.14 Cronograma\r\nTabla 5\r\nCronograma de actividades\r\n\r\n\r\nFase\r\n\tPeriodo\r\n\tActividad\r\n\tProducto verificable\r\n\tEstado\r\n\tCorte 2026\r\n\tPlan B / condición\r\n\tF1\r\n\tjun.–oct.\r\n\tDocumentos y requisitos\r\n\tMatriz y protocolo\r\n\tFormulado\r\n\t15 oct.\r\n\tDeclarar accesos previos al test\r\n\tF2\r\n\toct.\r\n\tAuditar y congelar datos\r\n\tDataset, hashes y exclusiones\r\n\tProgramado\r\n\t22 oct.\r\n\tExcluir con criterio; conservar manifiesto\r\n\tF3\r\n\toct.\r\n\tVerificar calidad y fuga\r\n\tReporte reproducible\r\n\tProgramado\r\n\t27 oct.\r\n\tFuga crítica: bloquear resultado afectado\r\n\tF4\r\n\toct.–nov.\r\n\tPronósticos e intervalos\r\n\tPredicciones y residuos\r\n\tProgramado\r\n\t10 nov.\r\n\tH2 no evaluable sin covariables admisibles\r\n\tF5\r\n\tnov.\r\n\tCaracterizar H3\r\n\tK, q, r, u; sensibilidad\r\n\tProgramado\r\n\t17 nov.\r\n\tSintéticas secundarias pueden no ejecutarse\r\n\tF6\r\n\tnov.\r\n\tCalificar H4\r\n\t30 casos; 180 salidas\r\n\tProgramado\r\n\t24 nov.\r\n\tRevisión técnica o alternativa intraevaluador\r\n\tF7\r\n\tnov.\r\n\tVerificar prototipo inicial\r\n\tPruebas y evidencias\r\n\tEn desarrollo\r\n\t21 nov.\r\n\tDeclarar recorridos aún no verificados\r\n\tF8\r\n\tnov.\r\n\tEjecutar E1–E3\r\n\tCadena de tr"
+    },
+    {
+      "id": "T11",
+      "section": "3.8.5 Casos E1–E3",
+      "offset_start": 174964,
+      "excerpt": "3.8.5 Casos controlados y clave de verificación\r\nE1 comprobará agregación y cambio temporal. En una primera semana, dos registros con FOB de US$200 y US$600 y pesos de 100 y 200 kg producen US$800/300 kg = US$2,666666… por kg. Una segunda semana con US$900 y 300 kg produce US$3 por kg. La diferencia es US$0,333333… por kg y el cambio relativo es 12,5 %. Los datos son exclusivamente una clave artificial de cálculo, no operaciones observadas.\r\nE2 comprobará límites: peso cero implica valor unitario no aplicable; cobertura incompleta exige advertencia y no se equipara a exportación nula. No se compararán un FOB agregado y un precio en chacra como si fueran la misma magnitud. La tolerancia de cifras mostradas seguirá el redondeo fijado en 3.9.5.1; los cálculos conservarán precisión interna.\r\nE3 comprobará temporalidad y linaje: emisión en semana 20 con última observación 17 y objetivo 21 representa horizonte de una semana y antigüedad de tres; el residuo de semana 21 no existe aún. La salida deberá recuperar filtros, datos, modelo y evidencia de su versión y detectar una alteración de un"
+    },
+    {
+      "id": "T12",
+      "section": "3.6.2–3.6.4 Detectores y calibración",
+      "offset_start": 165577,
+      "excerpt": "3.6.2 Detectores de referencia y candidatos\r\nIsolation Forest identifica observaciones anómalas mediante particiones aleatorias (Liu, Ting y Zhou, 2008). Las observaciones que pueden aislarse con menos divisiones reciben una puntuación de anomalía mayor. Este método es apropiado para detectar desviaciones globales en espacios multivariables.\r\nLocal Outlier Factor compara densidades locales (Breunig et al., 2000). Para puntuar casos nuevos se documentará la implementación utilizada y su modo de evaluación fuera del ajuste, evitando reutilizar puntuaciones de entrenamiento como si fueran nuevas. Ventana, vecinos, escalamiento y lista de variables se cerrarán en desarrollo.\r\nECOD utiliza distribuciones acumuladas empíricas para caracterizar observaciones extremas (Li, Zhao, et al., 2023). Complementa los métodos de aislamiento y densidad con una referencia basada en las colas de la distribución. La evaluación conservará la ventana de ajuste, la orientación de las puntuaciones y las condiciones de cálculo para que la comparación sea reproducible.\r\n3.6.3 Normalización, calibración y combinación de puntuaciones\r\nLas puntuaciones se transformarán mediante percentiles de la distribución de entrenamiento. El escalado se ajustará antes de puntuar el caso w; el detector no se entrenará con ese caso. Sus características utilizarán observaciones hasta w, una vez disponibles. Las observaciones w+1 y w+2 se reservan para la etiqueta retrospectiva de persistencia y nunca para generar la puntuación evaluada.\r\nLa combinación candidata será la media simple de los percentiles de Isolation Forest, LOF y ECOD. Se comparará con los tres detectores individuales y con la referencia histórica bajo"
+    }
+  ]
+}
