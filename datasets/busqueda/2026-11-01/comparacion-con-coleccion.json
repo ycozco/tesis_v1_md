@@ -1,0 +1,15 @@
+{
+  "rows": 8579,
+  "candidate_keys": 8334,
+  "keys_not_in_previous_collection": 8321,
+  "keys_in_previous_collection": 13,
+  "duplicate_candidate_keys": 243,
+  "by_product": {
+    "uva": 5422,
+    "arandano": 2239,
+    "palta": 918
+  },
+  "shipment_date_min": "20191218",
+  "shipment_date_max": "20230104",
+  "status": "overlap_inventory_not_revision_reconciliation"
+}

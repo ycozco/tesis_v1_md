@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-01",
+  "build": "passed: Vite 5.4.21",
+  "build_warning": "main bundle 776 kB > 500 kB; legacy routes not code-split",
+  "snapshot_verification": "passed: 14683 weekly cells, 3268 observed, 11415 unknown; 12 paired metrics; 4 source hashes",
+  "browser": {
+    "session": "isolated UI login fixture, no real DB/credentials",
+    "desktop_viewport": [
+      1360,
+      900
+    ],
+    "desktop_document_width": 1354,
+    "narrow_viewport_width": 500,
+    "narrow_document_width": 494,
+    "sections_checked": [
+      "series",
+      "pronosticos",
+      "senales",
+      "reportes",
+      "fuentes"
+    ],
+    "interactions": [
+      "product change",
+      "objective change",
+      "invalid date range shows error",
+      "date restored",
+      "null values remain gaps"
+    ],
+    "console_errors_observed": 0
+  },
+  "not_checked": [
+    "production backend login/roles",
+    "PostgreSQL/pgvector",
+    "legacy route workflows",
+    "automated screen-reader audit"
+  ]
+}

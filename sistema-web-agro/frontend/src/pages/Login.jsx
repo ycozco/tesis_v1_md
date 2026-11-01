@@ -63,8 +63,8 @@ export default function Login() {
           <h1 className="font-display-lg text-display-lg text-primary flex items-center justify-center gap-2 mb-2">
             <span className="material-symbols-outlined" style={{ fontSize: '48px', fontVariationSettings: "'FILL' 1" }}>eco</span>
           </h1>
-          <h2 className="font-headline-md text-headline-md text-on-surface tracking-tight">Agro-Intelligence Oversight</h2>
-          <p className="font-body-sm text-body-sm text-on-surface-variant mt-2">Nivel de Vigilancia: Alto · Terminal Seguro</p>
+          <h2 className="font-headline-md text-headline-md text-on-surface tracking-tight">Exportaciones peruanas</h2>
+          <p className="font-body-sm text-body-sm text-on-surface-variant mt-2">Palta, uva fresca y arándano · Análisis comparativo y pronóstico</p>
         </div>
         
         {/* Glassmorphism Card */}
@@ -74,8 +74,8 @@ export default function Login() {
           
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <h3 className="font-headline-sm text-headline-sm text-on-surface">Autenticación del Operador</h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Ingrese sus credenciales para acceder al sistema de supervisión de telemetría.</p>
+              <h3 className="font-headline-sm text-headline-sm text-on-surface">Acceso al sistema</h3>
+              <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Consulte series semanales, resultados de desarrollo y evidencia documental.</p>
               
               {errorMsg && (
                 <div className="bg-error/20 border border-error/50 p-4 rounded-lg text-error text-body-sm mt-4 flex items-center gap-2">
@@ -87,7 +87,7 @@ export default function Login() {
             
             {/* Username/Email Field */}
             <div className="space-y-2 relative group">
-              <label className="font-label-md text-label-md text-on-surface-variant block" htmlFor="identifier">ID de Auditor / Correo</label>
+              <label className="font-label-md text-label-md text-on-surface-variant block" htmlFor="identifier">Usuario o correo</label>
               <div className="relative">
                 <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">person</span>
                 <input 
@@ -106,8 +106,7 @@ export default function Login() {
             {/* Password Field */}
             <div className="space-y-2 relative group">
               <label className="font-label-md text-label-md text-on-surface-variant block flex justify-between" htmlFor="password">
-                <span>Código de Acceso</span>
-                <a className="text-primary hover:text-primary-fixed transition-colors" href="#forgot" onClick={(e) => e.preventDefault()}>¿Olvidó su código?</a>
+                <span>Contraseña</span>
               </label>
               <div className="relative">
                 <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">lock</span>
@@ -124,6 +123,7 @@ export default function Login() {
                 <button 
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors focus:outline-none" 
                   id="togglePassword" 
+                  aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                 >
@@ -140,14 +140,14 @@ export default function Login() {
               type="submit"
               disabled={loading}
             >
-              <span>{loading ? 'Autorizando...' : 'Autorizar Acceso'}</span>
+              <span>{loading ? 'Ingresando...' : 'Ingresar'}</span>
               <span className="material-symbols-outlined">login</span>
             </button>
             
             {/* System Status */}
             <div className="flex items-center justify-center gap-2 mt-6 pt-6 border-t border-white/10">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#76db8f]"></span>
-              <span className="font-mono-data text-mono-data text-on-surface-variant tracking-wider uppercase">Cifrado de grado militar activo</span>
+              <span className="font-body-sm text-body-sm text-on-surface-variant">Entorno de investigación · evaluación técnica</span>
             </div>
           </form>
         </div>

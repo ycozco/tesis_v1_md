@@ -1,0 +1,87 @@
+{
+  "status": "bounded_availability_search_NOT_full_historical_coverage",
+  "archives": [
+    {
+      "file": "x01070118.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x01070118.zip",
+      "retrieved_at_utc": "2026-11-01T12:26:08.780274+00:00",
+      "http_status": 404,
+      "status": "unavailable_or_invalid",
+      "error_type": "HTTPError"
+    },
+    {
+      "file": "x31060119.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x31060119.zip",
+      "retrieved_at_utc": "2026-11-01T12:26:08.780624+00:00",
+      "http_status": 404,
+      "status": "unavailable_or_invalid",
+      "error_type": "HTTPError"
+    },
+    {
+      "file": "x30050120.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x30050120.zip",
+      "retrieved_at_utc": "2026-11-01T12:26:08.780819+00:00",
+      "http_status": 404,
+      "status": "unavailable_or_invalid",
+      "error_type": "HTTPError"
+    },
+    {
+      "file": "x28030121.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x28030121.zip",
+      "retrieved_at_utc": "2026-11-01T12:26:08.842316+00:00",
+      "http_status": 404,
+      "status": "unavailable_or_invalid",
+      "error_type": "HTTPError"
+    },
+    {
+      "file": "x03090122.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x03090122.zip",
+      "retrieved_at_utc": "2026-11-01T12:26:08.858119+00:00",
+      "http_status": 200,
+      "bytes": 2051958,
+      "sha256": "0f3d5ef058ff313920a70ea2e1b518b4fc9aa05c0fa850de4f36bb919e327342",
+      "status": "valid_zip_dbf",
+      "three_product_rows": 3750
+    },
+    {
+      "file": "x02080123.zip",
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/x02080123.zip",
+      "retrieved_at_utc": "2026-11-01T12:26:08.907232+00:00",
+      "http_status": 200,
+      "bytes": 1872197,
+      "sha256": "04f2c7d9026cba86334220ec4b32c3799e2b1b76df1ba5befdb7fda4f3da8688",
+      "status": "valid_zip_dbf",
+      "three_product_rows": 4829
+    }
+  ],
+  "candidate_rows": 8579,
+  "official_fields_verified": false,
+  "note": "Raw archives remain local; no identity fields published. No new rows integrated or weeks filled.",
+  "index_document_links": [
+    "http://www.aduanet.gob.pe/aduanas/informae/totales_2011.xls",
+    "http://www.aduanet.gob.pe/aduanas/informae/estructura_bases.xls",
+    "http://www.aduanet.gob.pe/aduanas/informae/procedimiento.doc"
+  ],
+  "documents": [
+    {
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/totales_2011.xls",
+      "http_status": 200,
+      "file": "totales_2011.xls",
+      "bytes": 988160,
+      "sha256": "66236e1bfb97e6a50f4f3f2363a929bd66e4fd5056bd20c7c089de67234ffac5",
+      "storage": "local_raw_only"
+    },
+    {
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/estructura_bases.xls",
+      "http_status": 404
+    },
+    {
+      "url": "http://www.aduanet.gob.pe/aduanas/informae/procedimiento.doc",
+      "http_status": 200,
+      "file": "procedimiento.doc",
+      "bytes": 20992,
+      "sha256": "53e9f1c9a7989099c79d3f98170f0caf031c0891d82cce7580a3ecd198bb065d",
+      "storage": "filtered_delivery"
+    }
+  ]
+}
