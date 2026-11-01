@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Motion indicates an interaction, never simulated pipeline execution. */
+.research-enter { animation: research-reveal 180ms ease-out both; }
+@keyframes research-reveal { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.research-stage, .research-button { transition: border-color 140ms ease, background-color 140ms ease, transform 140ms ease; }
+.research-stage:hover, .research-button:hover:not(:disabled) { transform: translateY(-2px); }
+:where(button, a, input, select):focus-visible { outline: 2px solid #89ceff; outline-offset: 3px; }
+.research-skip { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: 0.75rem 1rem; background: #205331; color: #dee4da; border-radius: 0.5rem; }
+.research-skip:focus { top: 1rem; }
+select option { background: #171d17; color: #dee4da; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .research-stage:hover, .research-button:hover { transform: none; }
+}
+
 /* Glassmorphism utility classes based on Style Guidance */
 .glass-card {
     background-color: rgba(255, 255, 255, 0.05);

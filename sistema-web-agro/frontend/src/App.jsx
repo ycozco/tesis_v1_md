@@ -1,17 +1,17 @@
-import React, { useState, useEffect, createContext, useContext } from 'react'
+import React, { useState, lazy, Suspense, createContext, useContext } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 import Layout from './components/ResearchLayout.jsx'
 import Login from './pages/Login.jsx'
 import Dashboard from './pages/ResearchDashboard.jsx'
-import Alerts from './pages/Alerts.jsx'
-import Detail from './pages/Detail.jsx'
-import History from './pages/History.jsx'
-import AuditDetail from './pages/AuditDetail.jsx'
-import Config from './pages/Config.jsx'
-import Integrity from './pages/Integrity.jsx'
-import Users from './pages/Users.jsx'
-import Telemetry from './pages/Telemetry.jsx'
-import Data from './pages/Data.jsx'
+const Alerts = lazy(() => import('./pages/Alerts.jsx'))
+const Detail = lazy(() => import('./pages/Detail.jsx'))
+const History = lazy(() => import('./pages/History.jsx'))
+const AuditDetail = lazy(() => import('./pages/AuditDetail.jsx'))
+const Config = lazy(() => import('./pages/Config.jsx'))
+const Integrity = lazy(() => import('./pages/Integrity.jsx'))
+const Users = lazy(() => import('./pages/Users.jsx'))
+const Telemetry = lazy(() => import('./pages/Telemetry.jsx'))
+const Data = lazy(() => import('./pages/Data.jsx'))
 
 // Create Auth Context
 const AuthContext = createContext(null)
@@ -29,7 +29,7 @@ const ProtectedRoute = ({ children }) => {
 const AppContent = () => {
   const { user, login, logout, condicion } = useAuth()
   return (
-    <Routes>
+    <Suspense fallback={<p role="status" className="p-8 text-primary">Cargando sección…</p>}><Routes>
       <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
       
       <Route path="/dashboard" element={
@@ -93,14 +93,14 @@ const AppContent = () => {
       } />
 
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
-    </Routes>
+    </Routes></Suspense>
   )
 }
 
 export default function App() {
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('agro_user')
-    return saved ? JSON.parse(saved) : null
+    try { return saved ? JSON.parse(saved) : null } catch { return null }
   })
   
   const [token, setToken] = useState(() => {
@@ -126,7 +126,7 @@ export default function App() {
     // Call logout endpoint
     fetch('/api/auth/logout', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
       body: JSON.stringify({ username })
     }).catch(err => console.log('Error during logout api call:', err))
 

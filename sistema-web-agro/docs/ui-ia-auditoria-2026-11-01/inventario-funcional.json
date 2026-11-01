@@ -1,0 +1,374 @@
+{
+  "date": "2026-11-01",
+  "fastapi": [
+    {
+      "path": "/api/auth/login",
+      "methods": [
+        "POST"
+      ],
+      "requires_bearer_auth": false,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/api/auth/logout",
+      "methods": [
+        "POST"
+      ],
+      "requires_bearer_auth": true,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/api/dashboard/stats",
+      "methods": [
+        "GET"
+      ],
+      "requires_bearer_auth": true,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/api/research/audit",
+      "methods": [
+        "GET"
+      ],
+      "requires_bearer_auth": true,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/api/research/providers",
+      "methods": [
+        "GET"
+      ],
+      "requires_bearer_auth": true,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/api/research/cases",
+      "methods": [
+        "GET"
+      ],
+      "requires_bearer_auth": true,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/api/research/reports",
+      "methods": [
+        "POST"
+      ],
+      "requires_bearer_auth": true,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/api/research/reports/{report_id}/file",
+      "methods": [
+        "GET"
+      ],
+      "requires_bearer_auth": true,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/health",
+      "methods": [
+        "GET"
+      ],
+      "requires_bearer_auth": false,
+      "runtime_registered": true,
+      "execution_tested": true
+    },
+    {
+      "path": "/api/migration/status",
+      "methods": [
+        "GET"
+      ],
+      "requires_bearer_auth": false,
+      "runtime_registered": true,
+      "execution_tested": true
+    }
+  ],
+  "legacy_flask": [
+    {
+      "path": "/api/alerts",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_alerts",
+      "file": "sistema-web-agro/backend/routes/alerts.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/alerts/<id_alerta>",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_alert_detail",
+      "file": "sistema-web-agro/backend/routes/alerts.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/alerts/<id_alerta>/adjudicate",
+      "methods": [
+        "POST"
+      ],
+      "function": "adjudicate_alert",
+      "file": "sistema-web-agro/backend/routes/alerts.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/alerts/<id_alerta>/company-history",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_company_history",
+      "file": "sistema-web-agro/backend/routes/alerts.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/alerts/export/csv",
+      "methods": [
+        "GET"
+      ],
+      "function": "export_alerts_csv",
+      "file": "sistema-web-agro/backend/routes/alerts.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/auth/login",
+      "methods": [
+        "POST"
+      ],
+      "function": "login",
+      "file": "sistema-web-agro/backend/routes/auth.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/auth/logout",
+      "methods": [
+        "POST"
+      ],
+      "function": "logout",
+      "file": "sistema-web-agro/backend/routes/auth.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/users/list",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_users_list",
+      "file": "sistema-web-agro/backend/routes/auth.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/users/update-condition",
+      "methods": [
+        "POST"
+      ],
+      "function": "update_user_condition",
+      "file": "sistema-web-agro/backend/routes/auth.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/users/logs",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_security_logs",
+      "file": "sistema-web-agro/backend/routes/auth.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/users/create",
+      "methods": [
+        "POST"
+      ],
+      "function": "create_user",
+      "file": "sistema-web-agro/backend/routes/auth.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/users/<username>/reset-telemetry",
+      "methods": [
+        "POST"
+      ],
+      "function": "reset_user_telemetry",
+      "file": "sistema-web-agro/backend/routes/auth.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/config",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "function": "model_config",
+      "file": "sistema-web-agro/backend/routes/config.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/config/documents",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_rag_documents",
+      "file": "sistema-web-agro/backend/routes/config.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/config/documents",
+      "methods": [
+        "POST"
+      ],
+      "function": "add_rag_document",
+      "file": "sistema-web-agro/backend/routes/config.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/admin/inject-anomaly",
+      "methods": [
+        "POST"
+      ],
+      "function": "inject_anomaly",
+      "file": "sistema-web-agro/backend/routes/config.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/admin/injected-anomalies",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_injected_anomalies",
+      "file": "sistema-web-agro/backend/routes/config.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/dashboard/stats",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_dashboard_stats",
+      "file": "sistema-web-agro/backend/routes/dashboard.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/dashboard/fob-scatter",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_fob_scatter",
+      "file": "sistema-web-agro/backend/routes/dashboard.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/dashboard/fob-distribution",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_fob_distribution",
+      "file": "sistema-web-agro/backend/routes/dashboard.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/telemetry/stats",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_telemetry_stats",
+      "file": "sistema-web-agro/backend/routes/telemetry.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/integrity/stats",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_integrity_stats",
+      "file": "sistema-web-agro/backend/routes/telemetry.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/integrity/fob-by-product",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_fob_by_product",
+      "file": "sistema-web-agro/backend/routes/telemetry.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/integrity/fob-errors",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_fob_errors",
+      "file": "sistema-web-agro/backend/routes/telemetry.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/telemetry/fob-correlation",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_fob_correlation",
+      "file": "sistema-web-agro/backend/routes/telemetry.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/data/preview",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_data_preview",
+      "file": "sistema-web-agro/backend/routes/telemetry.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/history",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_history",
+      "file": "sistema-web-agro/backend/routes/telemetry.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    },
+    {
+      "path": "/api/decisiones/<id_decision>",
+      "methods": [
+        "GET"
+      ],
+      "function": "get_decision_detail",
+      "file": "sistema-web-agro/backend/routes/telemetry.py",
+      "status": "legacy_source_inventory_not_execution_verified"
+    }
+  ],
+  "spa_paths": [
+    "/login",
+    "/dashboard",
+    "/alerts",
+    "/alert/:id_alerta",
+    "/history",
+    "/decision/:id_decision",
+    "/config",
+    "/integrity",
+    "/users",
+    "/telemetry",
+    "/data",
+    "*"
+  ],
+  "research_views": [
+    "series",
+    "pronosticos",
+    "senales",
+    "reportes",
+    "fuentes",
+    "proceso",
+    "ia"
+  ],
+  "warning": "Registration or static inventory does not prove a workflow works. Historical Flask mutations were not invoked."
+}

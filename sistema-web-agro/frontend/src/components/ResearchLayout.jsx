@@ -8,6 +8,8 @@ const sections = [
   ['senales', 'radar', 'Señales exploratorias'],
   ['reportes', 'description', 'Reportes y evidencia'],
   ['fuentes', 'database', 'Fuentes y cobertura'],
+  ['proceso', 'account_tree', 'Proceso y auditoría'],
+  ['ia', 'neurology', 'IA y reportes'],
 ]
 
 export default function ResearchLayout({ children }) {
@@ -19,6 +21,7 @@ export default function ResearchLayout({ children }) {
   function leave() { logout(); navigate('/login') }
   return (
     <div className="min-h-screen bg-background text-on-surface font-body-md">
+      <a href="#research-main" className="research-skip">Saltar al contenido</a>
       <header className="glass-panel border-b border-white/10 px-4 md:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
         <Link to="/dashboard" className="flex items-center gap-3 min-w-0">
           <span className="material-symbols-outlined text-primary text-3xl" aria-hidden="true">eco</span>
@@ -46,7 +49,7 @@ export default function ResearchLayout({ children }) {
             Piloto retrospectivo de desarrollo. Cobertura parcial y prueba final pendiente.
           </div>
         </aside>
-        <main className="min-w-0 flex-1 p-4 md:p-8">
+        <main id="research-main" tabIndex={-1} className="min-w-0 flex-1 p-4 md:p-8">
           {legacy && <div role="status" className="glass-panel border border-error/30 rounded-xl p-4 mb-6 text-sm text-error">
             Pantalla del prototipo anterior. Sus métricas y acciones no pertenecen a la evaluación actual de la tesis.
             <Link to="/dashboard" className="underline ml-2">Volver al análisis actual</Link>

@@ -52,12 +52,19 @@ def migration_status() -> dict[str, object]:
             "GET /api/migration/status",
             "POST /api/auth/login",
             "POST /api/auth/logout",
-            "GET /api/dashboard/stats"
+            "GET /api/dashboard/stats",
+            "GET /api/research/audit",
+            "GET /api/research/providers",
+            "GET /api/research/cases",
+            "POST /api/research/reports",
+            "GET /api/research/reports/{report_id}/file"
         ],
         "pending_groups": [
-            "alerts",
-            "reports",
-            "telemetry",
-            "configuration",
+            "legacy_alerts",
+            "legacy_reports",
+            "legacy_telemetry",
+            "legacy_configuration",
+            "postgres_pgvector_integration",
+            "H4_evaluation",
         ],
     }

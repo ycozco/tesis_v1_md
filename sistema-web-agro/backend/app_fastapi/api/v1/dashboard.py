@@ -1,4 +1,3 @@
-import random
 from datetime import datetime, timedelta
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -13,8 +12,7 @@ router = APIRouter()
 @router.get("/stats", response_model=DashboardStatsResponse)
 def get_dashboard_stats(
     db: Session = Depends(get_db),
-    # Descomentar para asegurar que el endpoint esté protegido
-    # current_user: Usuario = Depends(get_current_user)
+    current_user: Usuario = Depends(get_current_user)
 ):
     # Alertas activas (PENDIENTE / EN_REVISION)
     active_count = db.query(OperacionAlerta).filter(
@@ -39,14 +37,16 @@ def get_dashboard_stats(
     logs = db.query(SecurityLog).order_by(SecurityLog.fecha.desc()).limit(8).all()
     logs_list = [l.to_dict() for l in logs]
 
-    # Simular serie de tendencias de alertas (últimos 14 días)
+    # Count actual records in this database; never fabricate operational trends.
     trends = []
-    today = datetime.now()
-    for i in range(14, -1, -1):
-        date_str = (today - timedelta(days=i)).strftime('%Y-%m-%d')
-        random.seed(date_str)
-        count = random.randint(3, 18)
-        trends.append({'fecha': date_str, 'cantidad': count})
+    today = datetime.now().date()
+    first = today - timedelta(days=13)
+    observed = dict(db.query(OperacionAlerta.fecha_operacion, func.count(OperacionAlerta.id_alerta))
+                    .filter(OperacionAlerta.fecha_operacion >= first, OperacionAlerta.fecha_operacion <= today)
+                    .group_by(OperacionAlerta.fecha_operacion).all())
+    for i in range(13, -1, -1):
+        day = today - timedelta(days=i)
+        trends.append({'fecha': day.isoformat(), 'cantidad': observed.get(day, 0)})
 
     return {
         'active_alerts_count': active_count,

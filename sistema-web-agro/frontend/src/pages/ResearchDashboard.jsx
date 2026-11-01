@@ -1,16 +1,22 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import ResearchProcess from '../components/ResearchProcess.jsx'
+import ResearchAI from '../components/ResearchAI.jsx'
+import useReducedMotion from '../lib/useReducedMotion.js'
+import { comparisonCsv } from '../lib/comparisonCsv.js'
 
 const products = { palta: 'Palta', uva: 'Uva fresca', arandano: 'Arándano' }
 const number = (v, decimals = 2) => v == null ? 'Sin dato' : Number(v).toLocaleString('es-PE', { maximumFractionDigits: decimals })
-const titles = { series: 'Series y comparación', pronosticos: 'Pronóstico semanal', senales: 'Señales exploratorias', reportes: 'Reportes y evidencia', fuentes: 'Fuentes y cobertura' }
+const titles = { series: 'Series y comparación', pronosticos: 'Pronóstico semanal', senales: 'Señales exploratorias', reportes: 'Reportes y evidencia', fuentes: 'Fuentes y cobertura', proceso: 'Proceso y auditoría', ia: 'IA y reportes' }
 const descriptions = {
   series: 'Compara el valor unitario FOB y el volumen por producto, destino y semana ISO.',
   pronosticos: 'Contraste retrospectivo de modelos y referencias simples, solo en desarrollo.',
   senales: 'Observaciones seleccionadas por detectores con un presupuesto común. Requieren interpretación.',
   reportes: 'Estado de la evaluación documental y comprobación de afirmaciones.',
   fuentes: 'Procedencia, recuperación y límites de los datos utilizados.',
+  proceso: 'Siga las etapas, compruebe archivos y consulte sus pendientes.',
+  ia: 'Borradores basados en hechos verificados, con generación local o API de pago.',
 }
 function Card({ label, value, detail }) {
   return <article className="glass-card rounded-xl p-5"><p className="text-xs uppercase tracking-wider text-on-surface-variant">{label}</p><p className="font-headline-lg text-3xl text-primary mt-3 mb-2 break-words">{value}</p><p className="text-xs text-on-surface-variant leading-relaxed">{detail}</p></article>
@@ -21,6 +27,7 @@ function Table({ headings, children }) {
 }
 
 export default function ResearchDashboard() {
+  const reducedMotion = useReducedMotion()
   const [params] = useSearchParams()
   const view = titles[params.get('view')] ? params.get('view') : 'series'
   const [data, setData] = useState(null)
@@ -69,11 +76,19 @@ export default function ResearchDashboard() {
   const metrics = data.paired_metrics.filter(r => r.target === target)
   const signals = data.signals.filter(r => r.producto === product && r.destino === selectedDestination && r.target === target && r.emission.slice(0, 10) >= start && r.emission.slice(0, 10) <= end)
   const unit = target === 'unit_fob' ? 'USD/kg' : 'kg'
-  return <div className="space-y-6">
+  function exportComparison() {
+    const csv = comparisonCsv(series, product, selectedDestination, selectedCompare, unit, summary.input_sha256)
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }))
+    const link = document.createElement('a'); link.href = url; link.download = `comparacion-${product}-${selectedDestination}-${target}.csv`
+    link.click(); URL.revokeObjectURL(url)
+  }
+  return <div className="space-y-6 research-enter">
     <header><p className="text-xs text-primary uppercase tracking-widest mb-2">Sistema de información y pronóstico</p>
       <div className="flex flex-wrap justify-between gap-3 items-start"><h1 className="font-headline-lg text-3xl md:text-4xl">{titles[view]}</h1><span className="glass-panel rounded-full px-3 py-2 text-xs text-primary border border-primary/20">Corte · 01 nov 2026</span></div>
       <p className="text-on-surface-variant mt-3 text-sm leading-relaxed">{descriptions[view]}</p></header>
     <div role="status" className="glass-panel rounded-xl px-4 py-3 text-sm text-on-surface-variant border-l-2 border-primary"><strong className="text-on-surface">Piloto de desarrollo · cobertura parcial.</strong> Las semanas sin registros permanecen desconocidas. La prueba final no se ha ejecutado.</div>
+    {view === 'proceso' && <ResearchProcess data={data} />}
+    {view === 'ia' && <ResearchAI />}
     {['series', 'senales'].includes(view) && <section aria-label="Filtros de series" className="glass-card rounded-xl p-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
       <label className="text-xs text-on-surface-variant">Producto<select className="glass-input rounded-lg p-2.5 mt-2 w-full text-on-surface" value={product} onChange={e => setProduct(e.target.value)}>{Object.entries(products).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select></label>
       <label className="text-xs text-on-surface-variant">Destino (código de origen)<select className="glass-input rounded-lg p-2.5 mt-2 w-full text-on-surface" value={selectedDestination || ''} onChange={e => setDestination(e.target.value)}>{markets.map(m => <option key={m}>{m}</option>)}</select></label>
@@ -90,13 +105,14 @@ export default function ResearchDashboard() {
         <div className="h-80 w-full"><ResponsiveContainer width="100%" height="100%"><LineChart data={series} margin={{ left: 8, right: 16, top: 8, bottom: 8 }}>
           <CartesianGrid stroke="#3f4a3f" strokeDasharray="3 3" vertical={false} /><XAxis dataKey="week" tick={{ fill: '#becabc', fontSize: 11 }} minTickGap={45} /><YAxis width={78} tick={{ fill: '#becabc', fontSize: 11 }} tickFormatter={v => number(v, 0)} />
           <Tooltip contentStyle={{ background: '#171d17', border: '1px solid #3f4a3f', borderRadius: 8 }} formatter={(v, name) => [`${number(v)} ${unit}`, name]} />
-          <Line type="linear" dataKey="main" name={selectedDestination} stroke="#76db8f" strokeWidth={2} dot={false} connectNulls={false} />
-          {selectedCompare && <Line type="linear" dataKey="comparison" name={selectedCompare} stroke="#89ceff" strokeWidth={2} dot={false} connectNulls={false} />}
+          <Line type="linear" dataKey="main" name={selectedDestination} stroke="#76db8f" strokeWidth={2} dot={false} connectNulls={false} isAnimationActive={!reducedMotion} animationDuration={180} />
+          {selectedCompare && <Line type="linear" dataKey="comparison" name={selectedCompare} stroke="#89ceff" strokeWidth={2} dot={false} connectNulls={false} isAnimationActive={!reducedMotion} animationDuration={180} />}
         </LineChart></ResponsiveContainer></div>
         <p className="text-xs text-on-surface-variant mt-4">{selectedDestination}: verde{selectedCompare ? ` · ${selectedCompare}: azul` : ''}. Los cortes de línea representan semanas desconocidas. FOB/kg = suma FOB / suma peso neto.</p>
       </section> : <Empty>No hay semanas recuperadas para estos filtros.</Empty>}
       <Table headings={['Semana ISO', `${selectedDestination} · ${unit}`, ...(selectedCompare ? [`${selectedCompare} · ${unit}`] : [])]}>{series.slice(-12).reverse().map(row => <tr key={row.week}><td className="p-4">{row.week}</td><td className="p-4 font-mono">{number(row.main)}</td>{selectedCompare && <td className="p-4 font-mono">{number(row.comparison)}</td>}</tr>)}</Table>
       <p className="text-xs text-on-surface-variant">Tabla: hasta las 12 semanas más recientes del rango seleccionado. Códigos de destino conservados tal como aparecen en la fuente.</p>
+      <button onClick={exportComparison} disabled={!series.length} className="glass-input rounded-lg px-4 py-3 text-sm text-primary disabled:opacity-40">Exportar comparación completa CSV</button>
     </>}
     {view === 'pronosticos' && <>
       <section className="grid sm:grid-cols-3 gap-4"><Card label="Horizonte" value="1 semana" detail="Reajuste por fecha común de emisión" /><Card label="Intervalos 90 / 95 %" value="No evaluables" detail="Faltan 40 errores previos por serie para calibrar" /><Card label="Prueba final" value="Reservada" detail="Sin predicciones ni métricas del test" /></section>

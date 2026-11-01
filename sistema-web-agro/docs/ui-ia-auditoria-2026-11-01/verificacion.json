@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-01",
+  "python_tests_passed": 20,
+  "api_integration_tests": 11,
+  "protocol_and_reporting_tests": 9,
+  "source_integrity_files": 44,
+  "source_integrity_all_match": true,
+  "snapshot_verifier": "passed",
+  "csv_formatter_verifier": {
+    "status": "passed",
+    "rows": 53,
+    "unknown": 23,
+    "observed_zero_preserved": true,
+    "browser_download_materialization_claimed": false
+  },
+  "build": {
+    "passed": true,
+    "main_bundle_kB": 592.5,
+    "warning": "chunk exceeds 500 kB"
+  },
+  "browser": {
+    "real_fastapi_sqlite_login": true,
+    "template_generation": true,
+    "report_download_sha256_verified_on_disk": true,
+    "ollama_real_inference": false,
+    "deepseek_paid_call": false,
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_document_width": 384,
+    "os_motion_setting_changed": false
+  },
+  "skills": {
+    "catalog": "openai/skills .curated",
+    "related": [
+      "playwright",
+      "playwright-interactive",
+      "figma-implement-design",
+      "security-best-practices"
+    ],
+    "new_skills_installed": false,
+    "project_design_rules_applied": true
+  },
+  "credential_incident": {
+    "local_env_preserved": true,
+    "env_untracked": true,
+    "history_rewritten": false,
+    "rotation_pending_with_owner": true
+  }
+}

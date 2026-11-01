@@ -9,7 +9,7 @@ export default defineConfig({
     port: 8050,
     proxy: {
       '/api': {
-        target: 'http://localhost:5001',
+        target: process.env.AGRO_API_TARGET || 'http://localhost:5001',
         changeOrigin: true,
         secure: false,
       }

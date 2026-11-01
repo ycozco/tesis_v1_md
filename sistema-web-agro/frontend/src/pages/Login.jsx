@@ -32,7 +32,7 @@ export default function Login() {
         login(data.user, data.token, data.condicion)
         navigate('/dashboard')
       } else {
-        setErrorMsg(data.message || 'Credenciales inválidas. Acceso denegado.')
+        setErrorMsg(data.message || (typeof data.detail === 'string' ? data.detail : 'Credenciales inválidas. Acceso denegado.'))
         setShake(true)
         setTimeout(() => setShake(false), 500)
       }

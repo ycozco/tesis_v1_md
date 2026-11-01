@@ -1,3 +1,12 @@
+# Sistema de información y pronóstico de exportaciones
+
+La entrada actual corresponde a palta, uva fresca y arándano. Incluye series comparativas, métricas de desarrollo, fuentes, proceso visual y borradores con evidencia. El backend de investigación es FastAPI; las funciones históricas no equivalen a resultados de la tesis vigente.
+
+- [Arranque local y configuración de IA](docs/arranque-investigacion-ia.md)
+- [Verificación funcional y pendientes](docs/verificacion-funcional-ia-diseno-2026-11-01.md)
+
+Lo que sigue es la especificación histórica de junio de 2026, conservada como antecedente.
+
 # Especificación Funcional, de Diseño y Arquitectura del Prototipo Web
 ## Proyecto: Sistema Integrado de Supervisión Operativa con IA Explicable para Empresas Agroexportadoras Peruanas
 **Repositorio Relacionado:** `sistema-web-agro`  
