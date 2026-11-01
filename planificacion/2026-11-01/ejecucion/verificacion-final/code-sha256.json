@@ -1,0 +1,13 @@
+{
+  "convention": "UTF-8 universal newlines normalized to LF",
+  "files": {
+    "tools/run_final_verification.py": "7bf157ad3fd71ff8bc8e832f27366d96cdd83f831f4eb5d165b5197de736089a",
+    "tools/verify_clean_research_environment.py": "d9ed14e8703cc4e011d0a44d1246356d2ff8516c3a2b8a61c3ef765d004025b4",
+    "tests/conftest.py": "6efec6577e7b7330af3159362a090fadc5d5b87691ac9a3c1a5dc87592ca6430",
+    "tests/end_to_end/test_current_research.py": "97dcab5b71550c2df40cd464aa8a35bb4845cf52dacb242f3566898460ff4cd3",
+    "sistema-web-agro/backend/tests/integration/conftest.py": "35badb7067ce35bc9127ff8bea2f829c10299ea437f46f095018e78620889cf4",
+    "sistema-web-agro/backend/tests/integration/test_auth.py": "e7ad05afea5b8bcab25334d43672f52ba0c8938416fdb00fd3dd21be8b3b16cc",
+    "sistema-web-agro/backend/tests/integration/test_dashboard.py": "e9c49a423597c5d6bd3e8e37a31f4c4de1bf4be3c3a6bd7304b676a9d18295e5",
+    "sistema-web-agro/backend/tests/research/test_ai_api.py": "a3950edb3759b9ae9eb41f0c24209398d00ffc3da03aa2d03002700eae58f8bd"
+  }
+}

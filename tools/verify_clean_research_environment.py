@@ -1,4 +1,5 @@
 """Synthetic compatibility checks only. No historical training or final test."""
+import argparse
 import hashlib
 import importlib.metadata as metadata
 import json
@@ -14,6 +15,12 @@ sys.path.insert(0, str(ROOT))
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', default='planificacion/2026-11-01/ejecucion')
+    arguments = parser.parse_args()
+    out = (ROOT/arguments.output_dir).resolve()
+    if not out.is_relative_to(ROOT):
+        raise ValueError('Output directory must stay in repository')
     cache = ROOT/'data/runtime-research-clean/matplotlib-cache'
     cache.mkdir(parents=True, exist_ok=True)
     os.environ['MPLCONFIGDIR'] = str(cache)
@@ -59,7 +66,6 @@ def main():
         checks.append({'kind': 'out_of_fit_detector_scoring', 'detector': name,
                        'training_rows': 128, 'new_rows': 32,
                        'passed': bool(len(scores) == 32 and np.isfinite(scores).all())})
-    out = ROOT/'planificacion/2026-11-01/ejecucion'
     out.mkdir(parents=True, exist_ok=True)
     check = subprocess.run([sys.executable, '-B', '-m', 'pip', 'check'], capture_output=True, text=True)
     packages = {d.metadata['Name']: d.version for d in metadata.distributions() if d.metadata['Name']}

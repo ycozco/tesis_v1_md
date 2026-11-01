@@ -8,8 +8,7 @@ from types import SimpleNamespace
 import pytest
 
 ROOT=Path(__file__).resolve().parents[4]
-sys.path.insert(0,str(ROOT/'data/runtime-api'))
-sys.path.insert(1,str(ROOT/'sistema-web-agro/backend'))
+sys.path.insert(0,str(ROOT/'sistema-web-agro/backend'))
 os.environ['DATABASE_URL']='sqlite+pysqlite:///:memory:'
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine

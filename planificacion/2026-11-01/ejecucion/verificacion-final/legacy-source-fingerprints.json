@@ -1,0 +1,14 @@
+{
+  "D:\\tesis_yoset\\data\\gold\\weekly_product_market.parquet": {
+    "bytes": 122632,
+    "sha256": "4b9d0ea84880dc46192806125896707aec8274d51f5c05c8e5d1ebb5350edac3"
+  },
+  "D:\\tesis_yoset\\data\\gold\\prediction_features.parquet": {
+    "bytes": 691437,
+    "sha256": "e343829f19fc26b1cd153e18fcb70808b9713c82c4b37ea86fe8395c8c607773"
+  },
+  "D:\\tesis_yoset\\data\\gold\\traceability_log.json": {
+    "bytes": 16523,
+    "sha256": "0f60895b5b8b1585f26c80dae55becd3403a7b63b435a95b7363581785760c24"
+  }
+}

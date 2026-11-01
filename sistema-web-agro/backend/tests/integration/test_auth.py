@@ -1,66 +1,23 @@
-import pytest
-from fastapi.testclient import TestClient
+"""Authentication checks against an isolated database, never a real user."""
 
-from app_fastapi.main import app
-from app_fastapi.core.security import get_password_hash
-from models import SessionLocal, Usuario
 
-client = TestClient(app)
-
-@pytest.fixture(scope="module")
-def setup_test_user():
-    db = SessionLocal()
-    # Ensure test user exists
-    user = db.query(Usuario).filter(Usuario.username == "test_auditor").first()
-    if not user:
-        user = Usuario(
-            username="test_auditor",
-            password_hash=get_password_hash("test_password"),
-            email="test@agro.com",
-            nombre="Test Auditor",
-            rol="AUDITOR"
-        )
-        db.add(user)
-        db.commit()
-    
-    yield user
-    
-    # Cleanup
-    db.delete(user)
-    db.commit()
-    db.close()
-
-def test_login_success(setup_test_user):
-    response = client.post(
-        "/api/auth/login",
-        json={"identifier": "test_auditor", "password": "test_password"}
-    )
+def test_login_success(api_client):
+    response = api_client.post('/api/auth/login', json={'identifier': 'test-auditor', 'password': 'OnlyIsolatedTests2026!'})
     assert response.status_code == 200
     data = response.json()
-    assert "token" in data
-    assert "user" in data
-    assert "condicion" in data
-    assert data["user"]["username"] == "test_auditor"
+    assert data['token'] and data['user']['username'] == 'test-auditor'
+    assert data['user']['rol'] == 'AUDITOR'
 
-def test_login_failure():
-    response = client.post(
-        "/api/auth/login",
-        json={"identifier": "test_auditor", "password": "wrong_password"}
-    )
+
+def test_login_failure(api_client):
+    response = api_client.post('/api/auth/login', json={'identifier': 'test-auditor', 'password': 'wrong'})
     assert response.status_code == 401
-    
-def test_logout(setup_test_user):
-    # First login to get a token
-    response_login = client.post(
-        "/api/auth/login",
-        json={"identifier": "test_auditor", "password": "test_password"}
-    )
-    token = response_login.json()["token"]
-    
-    # Then logout
-    response = client.post(
-        "/api/auth/logout",
-        headers={"Authorization": f"Bearer {token}"}
-    )
+
+
+def test_logout_requires_authentication(api_client):
+    assert api_client.post('/api/auth/logout').status_code == 401
+    login = api_client.post('/api/auth/login', json={'identifier': 'test-auditor', 'password': 'OnlyIsolatedTests2026!'})
+    response = api_client.post('/api/auth/logout', headers={'Authorization': 'Bearer '+login.json()['token']})
     assert response.status_code == 200
-    assert response.json()["message"] == "Sesión cerrada."
+    assert response.json()['message'] == 'Sesión cerrada.'
+    # Persistent JWT revocation remains a separate gap.

@@ -1,0 +1,24 @@
+{
+  "initial_root_suite": {
+    "passed": 28,
+    "failed": 3,
+    "reason": "Legacy gold artifacts absent in this checkout"
+  },
+  "initial_api_collection": {
+    "errors": 1,
+    "reason": "SQLAlchemy absent from the new isolated environment"
+  },
+  "resolution": "Install pinned API dependencies in isolated environment; opt-in read-only legacy directory; preserve missing-artifact failures when legacy data is not supplied",
+  "final_root_suite_with_explicit_legacy": {
+    "passed": 34,
+    "failed": 0
+  },
+  "final_api_suite": {
+    "passed": 16,
+    "failed": 0,
+    "warnings": 36
+  },
+  "current_tests_only": 47,
+  "legacy_checks_separate": 3,
+  "historical_reserved_test_run": false
+}

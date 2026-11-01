@@ -1,0 +1,33 @@
+{
+  "status": "not_evaluable_with_current_release",
+  "thesis_reference": "3.5.3; H2; planificacion/2026-11-01/fundamento-tesis.json T05",
+  "scope": "Available source release only; reopen if compatible historical publication evidence is recovered",
+  "context_sources": {
+    "BCRP": {
+      "eligible_historical_asof": false,
+      "reason": "No certified publication vintages"
+    },
+    "SISAP": {
+      "eligible_historical_asof": false,
+      "reason": "Commercial level and units not certified compatible"
+    },
+    "NASA_POWER": {
+      "eligible_historical_asof": false,
+      "reason": "Single Arequipa point is not certified production origin"
+    },
+    "Comtrade": {
+      "eligible_historical_asof": false,
+      "reason": "One sample is not a continuous contextual series"
+    }
+  },
+  "eligible_context_families": 0,
+  "paired_ablation_executed": false,
+  "reason": "No contextual source has both compatible measurement level/coverage and verified historical availability for the proposed common weekly comparison. No constants, synthetic replacements or present-day publication dates imputed.",
+  "interpretation": "No claim of no effect, superiority or hypothesis confirmation",
+  "source_evidence_sha256": {
+    "datasets/tratamiento/2026-11-01/bcrp-mensual-conciliado.csv": "bc020972a7adc97580b3d359934fe24f417cfa059e4f28a482952e818a1af39e",
+    "datasets/tratamiento/2026-11-01/contexto/manifest-recuperacion.json": "5b300783c558ece2a233831a11767147387c2d4380a224215bff782831bd443e",
+    "datasets/busqueda/2026-11-01/manifest-busqueda.json": "1e0c593f4a7977c3ad50b7f53a284619c38895e3a7d1b6c4456759d037a8c1df"
+  },
+  "audit_sha256": "ed6875d348e138c223d5f3c21246e305a851c8c85556fe790d80e5c2da780cf3"
+}
