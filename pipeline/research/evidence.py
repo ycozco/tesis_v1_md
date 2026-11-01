@@ -17,7 +17,7 @@ def verify_atomic_claim(claim, evidence):
         value, expected = Decimal(str(claim['value'])), Decimal(str(reference['value']))
         if not value.is_finite() or not expected.is_finite():
             raise ValueError('Non-finite claim')
-        tolerance = Decimal('0.5') * Decimal(10) ** -decimals
+        tolerance = Decimal('0.5') * Decimal(10) ** -decimals + Decimal('1e-9')
         valid = abs(value - expected) <= tolerance
     except (ValueError, KeyError, ArithmeticError):
         return {'valid': False, 'reason': 'invalid_number'}

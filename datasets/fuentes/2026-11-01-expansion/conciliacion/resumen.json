@@ -1,0 +1,206 @@
+{
+  "version_reglas": "sunat-conciliacion-1.1",
+  "fecha_corte_coleccion": "2026-11-01",
+  "ejecutado_en_utc": "2026-11-01T17:41:56.503589+00:00",
+  "estado": "vista_conciliada_de_paquetes_disponibles_no_dataset_experimental",
+  "entrada_sha256": "acf07335b7e26142d84ab2b4602a8948b45f60bd16a3f0ab161d885a4207c7f4",
+  "script_sha256": "4989e43bd0c16da12f03712ca03e9138eea32ad59314af2e717619b050b590c9",
+  "filas_entrada": 118832,
+  "claves_serie_entrada": 101619,
+  "decisiones": {
+    "incluida_vista_conciliada": 101546,
+    "sustituida_por_paquete_posterior_declaracion": 9349,
+    "duplicado_analitico_del_snapshot_vigente": 7829,
+    "cuarentena_declaracion_con_versiones_simultaneas": 108
+  },
+  "filas_conciliadas": 101546,
+  "filas_cuarentena": 108,
+  "series_cuarentena": 73,
+  "declaraciones_cuarentena_conflicto": 25,
+  "declaraciones_cuarentena_calidad": 0,
+  "series_conflicto_ultimo_paquete": 28,
+  "series_ausentes_snapshot_posterior": 0,
+  "por_producto": {
+    "uva": 32639,
+    "palta": 39288,
+    "arandano": 29619
+  },
+  "comprobaciones": {
+    "originales_sha256": true,
+    "campos_contra_dbf": true,
+    "una_decision_por_entrada": true,
+    "clave_serie_unica": true,
+    "sin_declaraciones_bloqueadas": true,
+    "observaciones_sin_modificar": true
+  },
+  "fuentes": [
+    {
+      "archivo": "x17230826.zip",
+      "periodo_paquete_fin": "2026-08-23",
+      "zip_sha256": "cd67f620d25f5b48623963df3906baf60e7d27e61be2520f60c07bb3cc8bc58a",
+      "dbf_sha256": "4dc37c236b625e2f6dd143a550c08682ce1e394ab08821da640a725a59b4ac05",
+      "registros_dbf": 44099
+    },
+    {
+      "archivo": "x24300826.zip",
+      "periodo_paquete_fin": "2026-08-30",
+      "zip_sha256": "d520a38265220063e843ea0744c11a13b99378dd019ce1ada555fea5a4a8e31f",
+      "dbf_sha256": "c111a56f2bef8e2f279a2acb2f65f0c23e7562dddc7924f2892b1046b92e0a51",
+      "registros_dbf": 46321
+    },
+    {
+      "archivo": "x31060926.zip",
+      "periodo_paquete_fin": "2026-09-06",
+      "zip_sha256": "db9b286f1ce9fee9cbcc25cb32ddd2bfe23023664af3d4af26a4b360613e8cc9",
+      "dbf_sha256": "3baf7c4ab69a8d712efca909198b92e851de527770fb538e2bca9cf3bc9b6cf0",
+      "registros_dbf": 39772
+    },
+    {
+      "archivo": "x07130926.zip",
+      "periodo_paquete_fin": "2026-09-13",
+      "zip_sha256": "24d4b11a26eb83e44df7a489477ef4265264be6ba625d1c092fc022b0a3ee859",
+      "dbf_sha256": "a48c7c7458efdea08c6892799a2f3ec0232de78b401a27229c7df8f7c2382714",
+      "registros_dbf": 40937
+    },
+    {
+      "archivo": "x14200926.zip",
+      "periodo_paquete_fin": "2026-09-20",
+      "zip_sha256": "25693073954cf95b22706d42f8127bb666ab6b102fd0c70618d494f48e09b5d6",
+      "dbf_sha256": "91b784e9b9038eb81034b9b4f30f764037cb4ad20e5abf1e4c4464e3f2256d73",
+      "registros_dbf": 39260
+    },
+    {
+      "archivo": "x21270926.zip",
+      "periodo_paquete_fin": "2026-09-27",
+      "zip_sha256": "8bfa719ccfba75912979fdcb8bb73ebf0dbe06e8a6c0545c39562203faf59fa3",
+      "dbf_sha256": "7dd4359203fa0234c8c84b546040a104c0d9db272ce23c7b970d734664b8c8e6",
+      "registros_dbf": 42969
+    },
+    {
+      "archivo": "x28041026.zip",
+      "periodo_paquete_fin": "2026-10-04",
+      "zip_sha256": "539ade3ea6a6d58e01ca40342586a545f963bc803013085759e14a83000ce7fa",
+      "dbf_sha256": "cf2a8e1c581cb99fb31ecfe474b210c3db69a33f06faeabaa93e702d172775f4",
+      "registros_dbf": 50125
+    },
+    {
+      "archivo": "x05111026.zip",
+      "periodo_paquete_fin": "2026-10-11",
+      "zip_sha256": "a46ff28630cabe4601c4b6de6510ff36645cb03b4e44931175fb728a9957e32d",
+      "dbf_sha256": "712826b6bf23be31711878c0bd7465e565daf59b82efedd9e0f7f83edc7f3632",
+      "registros_dbf": 43116
+    },
+    {
+      "archivo": "x12181026.zip",
+      "periodo_paquete_fin": "2026-10-18",
+      "zip_sha256": "14133f3dd50a8dea418b1dedef0e28050ed5d6d2d7d3261cd163f4e84298fd15",
+      "dbf_sha256": "7531f912aefd7969b278c4dfe2c1d64b84ccca97873a24e0a6d66e2c46113336",
+      "registros_dbf": 48385
+    },
+    {
+      "archivo": "x19251026.zip",
+      "periodo_paquete_fin": "2026-10-25",
+      "zip_sha256": "2997b2653dac43fbe16586a0f37e4e6be76b08406a1d26261e53ca182b1f0525",
+      "dbf_sha256": "3762d592dd9ea7ea00d30c6ee8eae9a840fe5b385217ee4c5fb83ca57fc034e5",
+      "registros_dbf": 44406
+    },
+    {
+      "archivo": "x25310526.zip",
+      "periodo_paquete_fin": "2026-05-31",
+      "zip_sha256": "fc890529578df809bbaae71f047562ced6ddc0212e3a5f0d53eacf5b718602b2",
+      "dbf_sha256": "cff5869441186615bedc5210fa4a4e38980f82f033e473d210a1405c13df3660",
+      "registros_dbf": 42581
+    },
+    {
+      "archivo": "x06120125.zip",
+      "periodo_paquete_fin": "2025-01-12",
+      "zip_sha256": "25ef8ad43448fe3becbcd9a755598dc1eb8208c653cdbd1e03173d7ddf3cdf4a",
+      "dbf_sha256": "978e1fe3cef7204482ebf143609a332fc67a6b6f9633c8832b39838432ab0690",
+      "registros_dbf": 44863
+    },
+    {
+      "archivo": "x01070124.zip",
+      "periodo_paquete_fin": "2024-01-07",
+      "zip_sha256": "3142c19651a04a430224d1df1b0a22ab5f6e937f546ae7527e148385d624faa6",
+      "dbf_sha256": "452b8d62b04092f9e786cb47bd881e4a2354d09a60b5aed9619865570a6ea219",
+      "registros_dbf": 25792
+    },
+    {
+      "archivo": "x04100526.zip",
+      "periodo_paquete_fin": "2026-05-10",
+      "zip_sha256": "98c70a39131b7d058538ac441e226ae8764cfcd646ef7a1ea7249f57918635b1",
+      "dbf_sha256": "805c258d60e0eaa1936f1c1faa45c8db9306e04a1c77873c9c79d24ddca98ecb",
+      "registros_dbf": 41566
+    },
+    {
+      "archivo": "x06120426.zip",
+      "periodo_paquete_fin": "2026-04-12",
+      "zip_sha256": "120672d9265733045cc5b7f71e86602725a56b12de62705949af5a12bc9c62ea",
+      "dbf_sha256": "002f1e5d7b6a5c3cc62978df461fbc318e505d3a541a2f6ac5ad87903d449ec7",
+      "registros_dbf": 46843
+    },
+    {
+      "archivo": "x11170526.zip",
+      "periodo_paquete_fin": "2026-05-17",
+      "zip_sha256": "e25a97c4624a29d6d9d26b19c245d911eb31643134cdb2a3a0d83524823c036e",
+      "dbf_sha256": "ad5b325be87889d6c36989f6dd91be179547a71842f1be92893509ede3df0fe9",
+      "registros_dbf": 40642
+    },
+    {
+      "archivo": "x13190426.zip",
+      "periodo_paquete_fin": "2026-04-19",
+      "zip_sha256": "d151626a541fc00dd53bec321d123d11dfb5b4528a81b00e67c1c62b54e87dc5",
+      "dbf_sha256": "3357ef7c1bf8cc1fd27b2a3076f960ce3715b6c597c637d9a5cec1a5c8cc03f6",
+      "registros_dbf": 38596
+    },
+    {
+      "archivo": "x18240526.zip",
+      "periodo_paquete_fin": "2026-05-24",
+      "zip_sha256": "a0e834507cf494e4a32ad5c2b527be049153073aed90241cd7a161dd8de3c674",
+      "dbf_sha256": "3b247846390125a8e7121eb9364483459b665132df523f8061a18fca8169aef5",
+      "registros_dbf": 39381
+    },
+    {
+      "archivo": "x20260426.zip",
+      "periodo_paquete_fin": "2026-04-26",
+      "zip_sha256": "4c93ffbf4d3e2fb79568a5037100e9d28217b6559cced65dfa240d4fa907caaf",
+      "dbf_sha256": "54909db5153be8f7989234dd77ead3c962b74aaa0b7a3f5159c965c7d5b6a4bf",
+      "registros_dbf": 38036
+    },
+    {
+      "archivo": "x23290326.zip",
+      "periodo_paquete_fin": "2026-03-29",
+      "zip_sha256": "f517d61cfb245c52e1fb875ef76bdc28d71f48ef4c211db6c3ae7dd7490ab211",
+      "dbf_sha256": "b6d873c8cbdeb99676eef2597fd2fda7c4936e98b43a0d1f5714ba63aee164b1",
+      "registros_dbf": 31168
+    },
+    {
+      "archivo": "x27030526.zip",
+      "periodo_paquete_fin": "2026-05-03",
+      "zip_sha256": "3c87082da5cfb78d7b29544bac758668a99e6670ffa74e2dde95ffd9ba0aed8c",
+      "dbf_sha256": "854782737bb61ce2d773e03b3ed64cd7cb3ef54bf79b17df99e5a97afb042d15",
+      "registros_dbf": 34422
+    },
+    {
+      "archivo": "x30050426.zip",
+      "periodo_paquete_fin": "2026-04-05",
+      "zip_sha256": "7336a2b43448c9827d10fb0e55b38e567ffbd590fdc7bb444eb02850e906d9a0",
+      "dbf_sha256": "ab5f8dc6355870a71de5dcda0147113ca27388c06d1134d38c0570bf0e9baf35",
+      "registros_dbf": 26686
+    },
+    {
+      "archivo": "x03090122.zip",
+      "periodo_paquete_fin": "2022-01-09",
+      "zip_sha256": "0f3d5ef058ff313920a70ea2e1b518b4fc9aa05c0fa850de4f36bb919e327342",
+      "dbf_sha256": "4edc6c03b9ceefc6dd04310caa4bf4534e1918c7422693502b555b4c15650e1c",
+      "registros_dbf": 34729
+    },
+    {
+      "archivo": "x02080123.zip",
+      "periodo_paquete_fin": "2023-01-08",
+      "zip_sha256": "04f2c7d9026cba86334220ec4b32c3799e2b1b76df1ba5befdb7fda4f3da8688",
+      "dbf_sha256": "0dc84433ec17dfba678ed8cecafcf81975c701fffea9a9f7702026a390640f5e",
+      "registros_dbf": 30871
+    }
+  ]
+}

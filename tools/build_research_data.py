@@ -8,7 +8,6 @@ import importlib.metadata as metadata
 import json
 from pathlib import Path
 import platform
-import shutil
 import sys
 import pandas as pd
 
@@ -61,9 +60,8 @@ def main():
     (out / 'environment-observed.json').write_text(json.dumps({'python': platform.python_version(),
         'packages': dict(sorted(installed.items())), 'lock_status': 'observed_not_clean_install_verified'}, indent=2), encoding='utf-8')
     # Preserve the exact old source before parsing; its values are not eligible as-of features yet.
-    cache = Path('D:/tesis_yoset/data/bcrp/exchange_rates_cache.json')
+    cache = out / 'bcrp-cache-recuperada.json'
     if cache.exists():
-        shutil.copyfile(cache, out / 'bcrp-cache-recuperada.json')
         raw = json.loads(cache.read_text(encoding='utf-8-sig'))
         months = {'Ene':1, 'Feb':2, 'Mar':3, 'Abr':4, 'May':5, 'Jun':6,
                   'Jul':7, 'Ago':8, 'Sep':9, 'Oct':10, 'Nov':11, 'Dic':12}

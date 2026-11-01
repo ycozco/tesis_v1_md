@@ -33,6 +33,8 @@ def test_quantiles_and_minimum_calibration():
     assert residual_interval(10, list(range(39))) is None
     assert residual_interval(10, [2]*40, .95) == (8, 12)
     assert residual_interval(10, [100]*50 + [2]*52, .9, 52) == (8, 12)
+    assert residual_interval(100, list(range(41)), .95) == (61, 139)
+    assert residual_interval(-5, [2]*40, .95) == (0, 2)
 
 
 def test_macro_is_equal_series_weight():
@@ -48,6 +50,10 @@ def test_numeric_claim_links_unit_and_absolute_tolerance():
     assert not verify_atomic_claim(claim, evidence)['valid']
     claim['value'] = 1000.005
     assert verify_atomic_claim(claim, evidence)['valid']
+    claim['value'] = 1000.005000001
+    assert verify_atomic_claim(claim, evidence)['valid']
+    claim['value'] = 1000.005000002
+    assert not verify_atomic_claim(claim, evidence)['valid']
     claim['unit'] = 'kg'
     assert not verify_atomic_claim(claim, evidence)['valid']
 

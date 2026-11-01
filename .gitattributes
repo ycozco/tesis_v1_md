@@ -1,0 +1,3 @@
+# Preserve exact bytes for scripts whose SHA-256 appears in source manifests.
+/tools/expand_sunat_collection.py -text
+/tools/reconcile_sunat.py -text

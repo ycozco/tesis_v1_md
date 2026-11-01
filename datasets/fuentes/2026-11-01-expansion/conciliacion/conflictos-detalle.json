@@ -1,0 +1,550 @@
+{
+  "claves_multiversion_iniciales": 7059,
+  "multiversion_resueltas_en_vista": 7021,
+  "multiversion_en_cuarentena": 38,
+  "cuarentena_series_colaterales_sin_conflicto_propio": 45,
+  "campos_cambiantes_cuarentena": {
+    "valor_fob_usd": 28,
+    "peso_neto_kg": 18
+  },
+  "casos": [
+    {
+      "id_declaracion_serie_sha256": "06db9414d1d493c19319c8721e41c24d6aa74ddda53ed93ce02d472ab9a436d8",
+      "id_declaracion_sha256": "57a883d542a0b942a8fc03ac183ade0a0014bb9b95558eaebbdc6fb59c557008",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "30000.000",
+          "6696.000"
+        ],
+        "peso_neto_kg": [
+          "2400.000",
+          "3600.000"
+        ]
+      },
+      "fuentes": [
+        "x20260426.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "1111f99a3fce04de88094b628de0c852ff89752424c154c14b91af1d3b7e3da9",
+      "id_declaracion_sha256": "c1fe331a56be3dee62a0ecc653d011e1b4cd74da2e7b9b8684f11a341bad0ecc",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "20000.000",
+          "4176.000"
+        ]
+      },
+      "fuentes": [
+        "x27030526.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "14b16f902f2f4ac6e0078cedad14043afa1ad570f3f45a7ea34dffb17d0d0680",
+      "id_declaracion_sha256": "7575ad26e2b2dc0235e4ac3a4b31281e48ca684a60b53aaf5b1b04e93fad4a59",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "30000.000",
+          "33000.000"
+        ]
+      },
+      "fuentes": [
+        "x27030526.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "1f96e79b1920e23820a4927f915200722fdc61667d906d85f937c1944d290d91",
+      "id_declaracion_sha256": "e947aebc0203aef7d97de9667d8d6b0d16ca882b55ea72f5e01ef2d77aa19cd9",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10547.200",
+          "4875.600"
+        ],
+        "peso_neto_kg": [
+          "2891.700",
+          "7257.600"
+        ]
+      },
+      "fuentes": [
+        "x24300826.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "2466d9d028a8b8e8a8a1d16d598f817acbd40656186363f1d15c460060036f00",
+      "id_declaracion_sha256": "9c2fd775d34c3e598151ac0c730c5493c421fadcd9ad61cd9d90d7bfef284339",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "5000.000",
+          "8689.070"
+        ],
+        "peso_neto_kg": [
+          "1423.920",
+          "3488.400"
+        ]
+      },
+      "fuentes": [
+        "x13190426.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "2530b891ab2d6b85e930f1c4a03d37ed7b6c4e7851d51f0d0028061e6b0516bd",
+      "id_declaracion_sha256": "099f122addababa06a6a94d2b990e6afa8d5cc787de2a4730ed86699bd618b58",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10000.000",
+          "31872.620"
+        ]
+      },
+      "fuentes": [
+        "x19251026.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "2badb9d18dca1887ed7ab0c59b03ff4e4cea151eae9aa4d60a429a91dfaedccd",
+      "id_declaracion_sha256": "06edd269f3958e769a50340e38b79105e17ea618f872a966ac7ba30435350873",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "40657.500",
+          "44216.420"
+        ]
+      },
+      "fuentes": [
+        "x01070124.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "344a544a150dec4ddfd9492462b627bbc24432ea55cd4eec8524190ab1d6dd62",
+      "id_declaracion_sha256": "b1b9db3774358e81a6bcb17ccb8152a20cade37e0d2bf89cc753ca3ca995af9e",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "38040.450",
+          "70000.000"
+        ],
+        "peso_neto_kg": [
+          "10208.160",
+          "11444.400"
+        ]
+      },
+      "fuentes": [
+        "x06120125.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "53fc10a38db4c20edadd8ea8423c3d06c8d4cd605265281343e822664e3968fb",
+      "id_declaracion_sha256": "c1c3f766c129363c8faeb417ab33ba8ac1a25859319238d44b2b3d53d630ec39",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "7106.779",
+          "9634.000"
+        ]
+      },
+      "fuentes": [
+        "x07130926.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "7a8e0a4ca7d08b131664b3310e8d3d71243d4eb575d6a44526d0636be38ea6f8",
+      "id_declaracion_sha256": "035f8c397b2864c63d46014ca5563ffa29f59c2bd93c9ba7fb90e6ee0534b3f9",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10000.000",
+          "60679.090"
+        ],
+        "peso_neto_kg": [
+          "5006.640",
+          "6816.720"
+        ]
+      },
+      "fuentes": [
+        "x07130926.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "8222990808202dbc8743c029504b2332c1dee6a93064e2bab17e9f6648baffc9",
+      "id_declaracion_sha256": "74f93ffb0fe15a9fcab76ce55ce0a73ac858210c83589902728c91a1186f1a90",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "15000.000",
+          "25740.000"
+        ],
+        "peso_neto_kg": [
+          "1755.000",
+          "4680.000"
+        ]
+      },
+      "fuentes": [
+        "x01070124.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "8473bb12229a796af7f0250b734e29e62749703b473e0da192ff63fba6306a60",
+      "id_declaracion_sha256": "6e1a3c1a76a181320337c63deff945ee50f94dc52ab26fb1ffdc5b1a304cef01",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10000.000",
+          "12120.000"
+        ],
+        "peso_neto_kg": [
+          "11500.000",
+          "4840.000"
+        ]
+      },
+      "fuentes": [
+        "x06120426.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "90e3039a4f3f1a460a84fbaab2fcebd1bb88553541c558bed12f7a2433de93ff",
+      "id_declaracion_sha256": "de988cde85d1c8dbae15afd747d19e46e88732407560fd495e83fb7eeac51572",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "15000.000",
+          "830.370"
+        ],
+        "peso_neto_kg": [
+          "600.000",
+          "7000.000"
+        ]
+      },
+      "fuentes": [
+        "x13190426.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "9bc259aa90f484a19094b9bcf781f513f72fc39368c2f7ed06b503cf63ded359",
+      "id_declaracion_sha256": "035f8c397b2864c63d46014ca5563ffa29f59c2bd93c9ba7fb90e6ee0534b3f9",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10000.000",
+          "50937.650"
+        ],
+        "peso_neto_kg": [
+          "5696.640",
+          "7506.720"
+        ]
+      },
+      "fuentes": [
+        "x07130926.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "a4b3380d6a3877a10dbf1857809ddb1dd03033e1be21beb074f36e2264da87ab",
+      "id_declaracion_sha256": "13036237835dd150ed6fc1761fb46098ba2b00a21744a11e01246073a8546d88",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "21750.070",
+          "32166.000"
+        ],
+        "peso_neto_kg": [
+          "2448.000",
+          "3672.000"
+        ]
+      },
+      "fuentes": [
+        "x01070124.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "a53f3c0eec537d60d436b47dab9dad7c688b7c01ecb706d08ed55387e2d97295",
+      "id_declaracion_sha256": "51738106c606d031bab332e2fc50f0298336267ef20f6c08fcaced0e4041cb21",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "20000.000",
+          "25080.000"
+        ],
+        "peso_neto_kg": [
+          "8322.000",
+          "8364.000"
+        ]
+      },
+      "fuentes": [
+        "x01070124.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "aa3041d26f3eb94519b6587dd739bc9db68a6130e93c605d6ae56df9dc9a107c",
+      "id_declaracion_sha256": "f88dafef9decce18722563e8a977c785041034a69f117f77a28074f47755c562",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "30000.000",
+          "6762.000"
+        ]
+      },
+      "fuentes": [
+        "x06120426.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "aa9589dfc1880a19c92ff5118d15d36f58bc615bab21bc386d898d88ed29dc2f",
+      "id_declaracion_sha256": "cdb87e5f3c873daf73d9c0f9137b9a075258fecfa3092cf99de435b39d3b307b",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10547.200",
+          "5297.400"
+        ],
+        "peso_neto_kg": [
+          "3717.900",
+          "7344.000"
+        ]
+      },
+      "fuentes": [
+        "x24300826.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "b0f016641c99bba5c4898334ee5fa5586a67870fada8d71d0e1e4382da151a10",
+      "id_declaracion_sha256": "bbbfbcafa9dd665458f7bd3b5633fe0040b28ead9316effae54e8c5b0675d1bb",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10547.200",
+          "21195.760"
+        ],
+        "peso_neto_kg": [
+          "13460.580",
+          "7257.600"
+        ]
+      },
+      "fuentes": [
+        "x12181026.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "b23cb448c2f155a46537d1d39aebf1378460aa3f039d048dce511009304d2708",
+      "id_declaracion_sha256": "0465f65386963614e69b8cfae704caeb97ff065526349bd735dedd78c34267f1",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10942.000",
+          "30000.000"
+        ]
+      },
+      "fuentes": [
+        "x30050426.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "c0928cc3b262b7342073d00701541757a601c30a32d347fb7f6c7d18824b1021",
+      "id_declaracion_sha256": "767955606d0c6017a6ff8ff30b60b530cc49911f9493efa15b678281ffb059e7",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "15000.000",
+          "20808.000"
+        ],
+        "peso_neto_kg": [
+          "4161.600",
+          "832.320"
+        ]
+      },
+      "fuentes": [
+        "x06120125.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "d0fb41a56c697488ddb4c2546e8a0d4a27f00c0feaeb7a0f0943084d96d6682c",
+      "id_declaracion_sha256": "621e8116eb0ff5a13597e803df49e9189e6a65003cfc9e717fcc8315e1c17d8e",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "14320.800",
+          "20000.000"
+        ]
+      },
+      "fuentes": [
+        "x05111026.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "d10055762f2e315cf6a34ddfd5b6c526f26ec7ee3ccebecb787766e8c3d050b6",
+      "id_declaracion_sha256": "aa61ecc74fce0b9b7f5d48aeba1ce13e095f56fae67064b4cfb582db7b238e3f",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10547.200",
+          "25222.600"
+        ],
+        "peso_neto_kg": [
+          "17702.100",
+          "7344.000"
+        ]
+      },
+      "fuentes": [
+        "x24300826.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "dc3eab855eedc454839d38d6a472a41f57ab552c984c5b77e89557b115f32332",
+      "id_declaracion_sha256": "800aca2415e5a5ad45b4337be46e2c512a37c79c46b7346e6dec501cbca02b44",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "12943.521",
+          "15000.000"
+        ],
+        "peso_neto_kg": [
+          "5333.000",
+          "5400.000"
+        ]
+      },
+      "fuentes": [
+        "x20260426.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "dedb44e8fb39a23cec08da31081498fd089b1f87d80bb4230410c3660a676e6d",
+      "id_declaracion_sha256": "be462cb758c78d857dbb5c6dc92e113f49eec20cd21ace6fb65ae687a05ee94a",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10547.200",
+          "18813.400"
+        ],
+        "peso_neto_kg": [
+          "13203.900",
+          "7344.000"
+        ]
+      },
+      "fuentes": [
+        "x24300826.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "e0f09d44de81b4e698dcfa34e7a92c790d77ea7c6e26ff533db0db3c4232c4ef",
+      "id_declaracion_sha256": "06edd269f3958e769a50340e38b79105e17ea618f872a966ac7ba30435350873",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "28818.000",
+          "31550.770"
+        ]
+      },
+      "fuentes": [
+        "x01070124.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "e702d12ba7226ac3223353e0c0e5e8ff91077df4cc49901a82ea27f715c61240",
+      "id_declaracion_sha256": "7b795f4eebcd7224eb9f46cddfe08007a07c48cf0f715dde0329c487d44c3140",
+      "campos_en_conflicto": [
+        "valor_fob_usd",
+        "peso_neto_kg"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "10547.200",
+          "32120.660"
+        ],
+        "peso_neto_kg": [
+          "15796.620",
+          "7257.600"
+        ]
+      },
+      "fuentes": [
+        "x12181026.zip"
+      ]
+    },
+    {
+      "id_declaracion_serie_sha256": "f7e4bd2682d6cdcda16d9f5973a0c4521469ecff6604b6dcbfd5485d8b1ed553",
+      "id_declaracion_sha256": "621e8116eb0ff5a13597e803df49e9189e6a65003cfc9e717fcc8315e1c17d8e",
+      "campos_en_conflicto": [
+        "valor_fob_usd"
+      ],
+      "valores": {
+        "valor_fob_usd": [
+          "20000.000",
+          "23500.800"
+        ]
+      },
+      "fuentes": [
+        "x05111026.zip"
+      ]
+    }
+  ]
+}

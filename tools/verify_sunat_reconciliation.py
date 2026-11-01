@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 
 root = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
-base = root / "datasets/fuentes/2026-10-31"
+base = root / (sys.argv[2] if len(sys.argv) > 2 else "datasets/fuentes/2026-10-31")
 out = base / "conciliacion"
 
 

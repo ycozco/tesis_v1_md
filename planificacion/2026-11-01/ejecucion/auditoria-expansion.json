@@ -1,0 +1,46 @@
+{
+  "source_sha256": "b33b132c4d67fb79f5e27a7fa2e51ac8077664b06b73326b7a72933139d755fc",
+  "source_rows": 101546,
+  "previous_rows": 93225,
+  "net_additional_rows": 8321,
+  "quarantine_rows": 108,
+  "series": 136,
+  "observed_week_cells": 3845,
+  "complete_week_certificates": 0,
+  "publication_vintage_certificates": 0,
+  "final_test_authorized": false,
+  "models_run": false,
+  "coverage_states": {
+    "observed_partial": "operation recovered, completeness unknown",
+    "certified_no_operations": "requires explicit coverage certificate; none recovered",
+    "missing_incomplete": "NA; never inferred zero",
+    "not_yet_observable": "requires evidenced publication date; unknown is not eligible"
+  },
+  "prior_exposure": [
+    "Actual targets have been plotted in UI",
+    "Pilot H4 examples include proposed reserved weeks"
+  ],
+  "final_gate": [
+    "Certify coverage or document a methodological reformulation",
+    "Establish availability policy and historical limitations",
+    "Freeze calendar, common universe, parameters and exposure declaration before test errors"
+  ],
+  "context_features": {
+    "BCRP": {
+      "eligible_historical_asof": false,
+      "reason": "No certified publication vintages"
+    },
+    "SISAP": {
+      "eligible_historical_asof": false,
+      "reason": "Commercial level and units not certified compatible"
+    },
+    "NASA_POWER": {
+      "eligible_historical_asof": false,
+      "reason": "Single Arequipa point is not certified production origin"
+    },
+    "Comtrade": {
+      "eligible_historical_asof": false,
+      "reason": "One sample is not a continuous contextual series"
+    }
+  }
+}

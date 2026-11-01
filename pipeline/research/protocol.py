@@ -83,7 +83,11 @@ def residual_interval(prediction, past_errors, coverage=0.9, window=None):
         errors = errors[-window:]
     if len(errors) < 40:
         return None
-    width = float(np.quantile(np.abs(errors), coverage, method='higher'))
+    rank = math.ceil((len(errors) + 1) * coverage)
+    if rank > len(errors):
+        return None
+    width = float(np.sort(np.abs(errors))[rank - 1])
+    prediction = max(0., float(prediction))
     return max(0., prediction - width), prediction + width
 
 

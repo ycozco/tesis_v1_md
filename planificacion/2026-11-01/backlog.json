@@ -21,7 +21,9 @@
       "owner": "Tesista y desarrollo",
       "deliverable": "Versión de protocolo, divergencias locales y matriz antecedente–hallazgo–adaptación–requisito–prueba.",
       "acceptance": "Cada requisito tiene fuente, alcance, prueba y estado; no se mezclan H1a–H1e antiguos con H1–H4 vigentes.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Fuente rectora reconfirmada y matriz de divergencias; falta matriz de antecedentes primarios.",
+      "execution_evidence": "ejecucion/avance.md"
     },
     {
       "id": "P01",
@@ -38,7 +40,9 @@
       "owner": "Titular de credenciales y desarrollo",
       "deliverable": "Credencial antigua rotada por el titular; ejemplos sin secretos; cuentas QA aisladas y roles.",
       "acceptance": "La credencial revocada deja de autorizar; secretos ausentes en entrega; copia .env privada conservada. No se reescribe historial sin decisión explícita.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "pendiente_accion_titular",
+      "execution_note": "Aislamiento previo conservado; rotacion historica pendiente del titular.",
+      "execution_evidence": "ejecucion/avance.md"
     },
     {
       "id": "P02",
@@ -58,7 +62,9 @@
       "owner": "Desarrollo",
       "deliverable": "Incorporación versionada de 8.579 candidatos contra todos los snapshots, decisiones y cuarentena.",
       "acceptance": "Contabilidad completa; ninguna duplicación o revisión se resuelve silenciosamente; originales inmutables.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Expansion conciliada y verificada: 118832 entradas, 101546 unicas; cuarentena108 preservada.",
+      "execution_evidence": "ejecucion/avance.md"
     },
     {
       "id": "P03",
@@ -80,7 +86,9 @@
       "owner": "Tesista y desarrollo",
       "deliverable": "Panel con cuatro estados de observabilidad; manifiesto de series, calendario, disponibilidad y accesos previos al test.",
       "acceptance": "No se confunde faltante con cero; todo join es as-of verificable o se declara retrospectivo; test congelado antes de evaluar errores.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Auditoria de cobertura y disponibilidad emitida; faltan certificados y congelamiento.",
+      "execution_evidence": "ejecucion/avance.md"
     },
     {
       "id": "P04",
@@ -101,7 +109,9 @@
       "owner": "Desarrollo",
       "deliverable": "Dependencias resueltas en instalación limpia, rutas relativas, configuración y comando único de reproducción.",
       "acceptance": "Ejecuta desde otra carpeta sin depender de D:; recupera datos por hash o falla explícitamente; no lee secretos de un tercero.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Auditoria reproducida en venv limpio sin dependencias; eliminado acceso D en constructor; falta entorno cientifico limpio.",
+      "execution_evidence": "ejecucion/avance.md"
     },
     {
       "id": "P05",
@@ -122,7 +132,9 @@
       "owner": "Desarrollo",
       "deliverable": "Cuatro baselines, ocho configuraciones GBDT por objetivo, selección, predicciones OOS y métricas.",
       "acceptance": "Grilla y desempate exactos, origen común y reajuste semanal; MAE macro primario en ambos objetivos; MASE y fallos documentados; test no modifica selección.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Reglas de referencias, MASE, SMAPE y grilla implementadas; falta integracion y seleccion.",
+      "execution_evidence": "ejecucion/avance.md"
     },
     {
       "id": "P06",
@@ -142,7 +154,9 @@
       "owner": "Desarrollo",
       "deliverable": "Intervalos 90/95 expansivos y últimos 52; L=0/4/8 con configuración fija elegida en L=0.",
       "acceptance": "Orden ceil((n+1)*(1-alpha)), mínimo 40 y no emisión si excede n; embargo también en baselines, etiquetas y calibración; casos emparejados.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Orden de calibracion corregido y probado; falta ledger temporal de errores por serie.",
+      "execution_evidence": "ejecucion/avance.md"
     },
     {
       "id": "P07",
@@ -246,7 +260,9 @@
       "owner": "Tesista y desarrollo",
       "deliverable": "Diez esquemas por cada producto, 30 casos completos y de fallo con clave común y guía ciega.",
       "acceptance": "Todos los diez tipos exigidos están representados por producto; los 30 agregados actuales no se etiquetan como catálogo H4 definitivo.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Tolerancia corregida y probada; faltan catalogo final y ensayos.",
+      "execution_evidence": "ejecucion/avance.md"
     },
     {
       "id": "P12",
@@ -393,5 +409,6 @@
       "acceptance": "Se distinguen respaldado/no respaldado/no concluyente/no evaluable/no ejecutado; no se exige una mejora favorable para terminar ni se declaran objetivos cumplidos sin evidencia.",
       "status": "planificado_no_ejecutado_en_esta_entrega"
     }
-  ]
+  ],
+  "execution_date": "2026-11-01"
 }

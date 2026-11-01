@@ -14,14 +14,23 @@ import struct
 import sys
 
 ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
-BASE = ROOT / "datasets/fuentes/2026-10-31"
-RAW = ROOT / "data/fuentes_2026-10-31/sunat"
+BASE = (ROOT / (sys.argv[2] if len(sys.argv) > 2 else "datasets/fuentes/2026-10-31")).resolve()
+if not BASE.is_relative_to(ROOT):
+    raise ValueError('Collection must be inside repository')
+RAW_ROOTS = [ROOT / "data/fuentes_2026-10-31/sunat", ROOT / "data/busqueda_2026-11-01"]
 OUT = BASE / "conciliacion"
 OUT.mkdir(parents=True, exist_ok=True)
 
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def raw_file(name):
+    for folder in RAW_ROOTS:
+        for candidate in [folder/name, folder/name.replace('.DBF', '.zip.DBF')]:
+            if candidate.is_file(): return candidate
+    raise FileNotFoundError('Missing exact source: ' + name)
 
 
 def packet_end(name):
@@ -61,9 +70,9 @@ source_checks = []
 for source in manifest["fuentes"]:
     name = source["archivo"]
     end = packet_end(name)
-    zipped = (RAW / name).read_bytes()
+    zipped = raw_file(name).read_bytes()
     assert sha(zipped).upper() == source["sha256"].upper(), name
-    dbf_path = RAW / name.replace(".zip", ".DBF")
+    dbf_path = raw_file(name.replace(".zip", ".DBF"))
     data = dbf_path.read_bytes()
     count = struct.unpack_from("<I", data, 4)[0]
     header, record_length = struct.unpack_from("<HH", data, 8)
@@ -222,7 +231,8 @@ write_csv("series_ausentes_snapshot_posterior.csv", ["id_declaracion_serie_sha25
 outcomes = Counter(r["decision"] for r in ledger)
 assert sum(outcomes.values()) == len(rows)
 summary = {
-    "version_reglas": "sunat-conciliacion-1.0", "fecha_ejecucion": "2026-10-31",
+    "version_reglas": "sunat-conciliacion-1.1", "fecha_corte_coleccion": manifest.get('fecha_recopilacion'),
+    "ejecutado_en_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
     "estado": "vista_conciliada_de_paquetes_disponibles_no_dataset_experimental",
     "entrada_sha256": sha(input_bytes), "script_sha256": sha(Path(__file__).read_bytes()),
     "filas_entrada": len(rows), "claves_serie_entrada": len(old_keys),

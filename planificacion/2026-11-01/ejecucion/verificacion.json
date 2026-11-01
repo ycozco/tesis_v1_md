@@ -1,0 +1,23 @@
+{
+  "rules_reporting_tests": {
+    "passed": 12,
+    "command": "python -B -m pytest tests/unit/test_methodology.py tests/unit/test_research_protocol.py tests/reporting/test_reports.py -q"
+  },
+  "api_tests": {
+    "passed": 11,
+    "warnings": 28,
+    "note": "Deprecaciones existentes; ver registros de consola. Entorno mixto observado, no instalacion cientifica limpia."
+  },
+  "stdlib_audit_clean_venv": {
+    "passed": true,
+    "python": "3.14.2",
+    "created_without_pip": true
+  },
+  "reconciliation_independent_verifier": {
+    "passed": true,
+    "entries": 118832,
+    "accepted": 101546,
+    "quarantine": 108
+  },
+  "final_experiment_executed": false
+}
