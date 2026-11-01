@@ -1,0 +1,12 @@
+{
+  "protocol_tests_clean_environment": 27,
+  "artificial_compatibility_checks": 19,
+  "pip_check_passed": true,
+  "all_3845_observed_cells_checked_against_source_decimal_aggregation": true,
+  "preparation_launched_from_parent_folder": true,
+  "expected_preflight_exit": 2,
+  "scientific_blockers": 7,
+  "final_test_executed": false,
+  "paid_ai_calls": 0,
+  "code_hashes_verified_after_run": true
+}

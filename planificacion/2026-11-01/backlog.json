@@ -62,9 +62,9 @@
       "owner": "Desarrollo",
       "deliverable": "Incorporación versionada de 8.579 candidatos contra todos los snapshots, decisiones y cuarentena.",
       "acceptance": "Contabilidad completa; ninguna duplicación o revisión se resuelve silenciosamente; originales inmutables.",
-      "status": "en_curso",
-      "execution_note": "Expansion conciliada y verificada: 118832 entradas, 101546 unicas; cuarentena108 preservada.",
-      "execution_evidence": "ejecucion/avance.md"
+      "status": "completado",
+      "execution_note": "Incorporacion de candidatos conciliada con contabilidad completa y fuentes inmutables; cuarentena preservada. Esto no certifica elegibilidad experimental.",
+      "execution_evidence": "ejecucion/preparacion-experimento.md"
     },
     {
       "id": "P03",
@@ -87,8 +87,8 @@
       "deliverable": "Panel con cuatro estados de observabilidad; manifiesto de series, calendario, disponibilidad y accesos previos al test.",
       "acceptance": "No se confunde faltante con cero; todo join es as-of verificable o se declara retrospectivo; test congelado antes de evaluar errores.",
       "status": "en_curso",
-      "execution_note": "Auditoria de cobertura y disponibilidad emitida; faltan certificados y congelamiento.",
-      "execution_evidence": "ejecucion/avance.md"
+      "execution_note": "Panel ampliado reconstruido y contrastado con fuente; cero filas as-of certificadas. Cobertura, disponibilidad y congelamiento pendientes.",
+      "execution_evidence": "ejecucion/preparacion-experimento.md"
     },
     {
       "id": "P04",
@@ -110,8 +110,8 @@
       "deliverable": "Dependencias resueltas en instalación limpia, rutas relativas, configuración y comando único de reproducción.",
       "acceptance": "Ejecuta desde otra carpeta sin depender de D:; recupera datos por hash o falla explícitamente; no lee secretos de un tercero.",
       "status": "en_curso",
-      "execution_note": "Auditoria reproducida en venv limpio sin dependencias; eliminado acceso D en constructor; falta entorno cientifico limpio.",
-      "execution_evidence": "ejecucion/avance.md"
+      "execution_note": "Nucleo cientifico instalado desde cero, pip check, 19 comprobaciones, 27 pruebas y comando de preparacion desde otra carpeta. Falta runner cientifico integrado y pila API/RAG completa.",
+      "execution_evidence": "ejecucion/preparacion-experimento.md"
     },
     {
       "id": "P05",
@@ -155,8 +155,8 @@
       "deliverable": "Intervalos 90/95 expansivos y últimos 52; L=0/4/8 con configuración fija elegida en L=0.",
       "acceptance": "Orden ceil((n+1)*(1-alpha)), mínimo 40 y no emisión si excede n; embargo también en baselines, etiquetas y calibración; casos emparejados.",
       "status": "en_curso",
-      "execution_note": "Orden de calibracion corregido y probado; falta ledger temporal de errores por serie.",
-      "execution_evidence": "ejecucion/avance.md"
+      "execution_note": "Ledger OOS persistente por configuracion, serie, objetivo y L, corte por publicacion y deteccion de alteraciones probado. Falta conectarlo al runner final.",
+      "execution_evidence": "ejecucion/preparacion-experimento.md"
     },
     {
       "id": "P07",

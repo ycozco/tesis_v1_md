@@ -1,0 +1,88 @@
+{
+  "status": "preparation_passed_final_blocked",
+  "final_test_executed": false,
+  "paid_ai_calls": 0,
+  "code_hash_convention": "SHA-256 of UTF-8 text with universal newlines normalized to LF",
+  "executed_code_sha256": {
+    "tools/prepare_final_experiment.py": "3d7b00291f4128b8d83b33901078f35566532083fab68ca39f37055e1c294305",
+    "tools/verify_clean_research_environment.py": "5f142ce9d63fef3dc61c2afa170c5eb897c083ee7cc4c1880fd7603e98d8fb00",
+    "tools/build_expanded_research_data.py": "b85722b162b4598de0a7ac6103db402c37ad71238bb8263363ae5fabd431c963",
+    "tools/verify_expanded_research_data.py": "9ae281fbee7f41d4ba8354c4ba10ec571d3f4040df34c903af46efb2964cf3d1",
+    "tools/check_final_experiment.py": "0f9420e6396c396d9f57a61f536e066cbb8817aadd5957874315702a8c226022",
+    "pipeline/research/evidence.py": "6e45b72f1eb098a5a365b5229b8581e95df00f2e110f3d87243558b27de9e024",
+    "pipeline/research/h3_rules.py": "7a9ff4099449192644b41d05972d61b353c5ec6e4c60775aad320a8c7c292fd1",
+    "pipeline/research/h4_design.py": "2fef4a15233d5cc08467b6c6bae27f8e9d861bc2c113a6bc12460f49264521b4",
+    "pipeline/research/methodology.py": "8c1c5f13a75a56cfc73909a2aca99900015f36560a4ea7a4a9c94f3d2d3d828a",
+    "pipeline/research/protocol.py": "9526e4b16ee4081cd0e7e6a8cbeb49e885ef3b95140b9098ed84c7b2ed2b245b",
+    "pipeline/research/temporal_ledger.py": "571cd4f03b15e1abcd4025b374fe4ed242cdb6e49f5f44565c1061b8fea1254a",
+    "pipeline/research/__init__.py": "ad47dea42681e11288a1ec46f8e637f5f31c1d7a15304a80c6ea95556c146272",
+    "tests/unit/test_temporal_ledger.py": "db14c9e6f1349881988f48d8b6f1ad54672ab21960516ff54e8d98699bfd3ffc",
+    "tests/unit/test_final_preflight.py": "8cf9c6bfb916bde50c935fbaa3b3eebacfe143f5d3505a553bbcb18c3a84b14c",
+    "tests/unit/test_h3_rules.py": "8ce2d5f745fe85e3a84af949964b9c9bbeb095ff949c468057ee95850d30802c",
+    "tests/unit/test_h4_design.py": "9ebdec93f0bc31e65cc19be9753b5629f6880caf050327b4be41fda9ab62cc96",
+    "tests/unit/test_methodology.py": "cc1626b49d2cb195e7ab3b6b763186d8c9cebba93f892605d4a0c955e76928b5",
+    "tests/unit/test_research_protocol.py": "fb781cb8ccefa186f5a91c674e7f14d78af2dfc2c06ada4862a0c4af21cdfc9f",
+    "tests/reporting/test_reports.py": "fe101f6cf4329f3c182964333873d12029207deb762563695f2a926c1d86bcb6"
+  },
+  "steps": [
+    {
+      "step": "clean_environment",
+      "arguments": [
+        "tools/verify_clean_research_environment.py"
+      ],
+      "exit_code": 0,
+      "technical_execution_passed": true,
+      "stdout": "{\"python\": \"3.14.2\", \"scope\": \"Windows scientific core, not API/PostgreSQL/RAG/generator stack\", \"external_site_packages_enabled\": false, \"pip_check_passed\": true, \"smoke_all_passed\": true}\n{\"checks\": 19, \"passed\": 19}",
+      "stderr": ""
+    },
+    {
+      "step": "expanded_features",
+      "arguments": [
+        "tools/build_expanded_research_data.py"
+      ],
+      "exit_code": 0,
+      "technical_execution_passed": true,
+      "stdout": "{\"status\": \"expanded_retrospective_preprocessing_only_not_model_ready\", \"views\": {\"conservadora\": {\"input_sha256\": \"b33b132c4d67fb79f5e27a7fa2e51ac8077664b06b73326b7a72933139d755fc\", \"rows\": 101546, \"series\": 136, \"observed_cells\": 3845, \"grid_cells\": 20154, \"unknown_cells\": 16309}}, \"publication_policy\": \"unknown_not_imputed\", \"eligible_final_rows\": 0, \"model_fitting_executed\": false, \"final_test_executed\": false, \"calendar\": {\"copied_from\": \"datasets/tratamiento/2026-11-01/calendario-provisional.csv\", \"sha256\": \"5480a71b9ba9e9998f471f5b28424dfa4a6add9e0a4802433142a2de6febaf5f\", \"requires_pretest_protocol_freeze\": true, \"calendar_changed\": false}, \"feature_rules\": \"Legacy pilot lag features; final baseline rules and availability filtering must be integrated in final runner.\", \"sensitivity\": \"Not mixed with the previous release; expanded heuristic sensitivity has not been reconstructed.\", \"outputs_sha256\": {\"panel-conservadora.parquet\": \"450daf64f9369159784d4e554c5e68fb26444d47a433b7adb1646af30260dbdc\", \"features-conservadora-L0.parquet\": \"36ab9f07a40d4692ab88d94012892770138b76931e9abb259e29f3e9ee175853\", \"features-conservadora-L4.parquet\": \"9d2b81bb13abd8a41b33815353c7823788f28e549641c6a36a1d9e40752f6c01\", \"features-conservadora-L8.parquet\": \"75e324053c30c9da87040fba92fd14fa3d3769c8d09b08e547bb9b83f06c8725\", \"calendario-provisional.csv\": \"5480a71b9ba9e9998f471f5b28424dfa4a6add9e0a4802433142a2de6febaf5f\"}}",
+      "stderr": ""
+    },
+    {
+      "step": "independent_data_check",
+      "arguments": [
+        "tools/verify_expanded_research_data.py"
+      ],
+      "exit_code": 0,
+      "technical_execution_passed": true,
+      "stdout": "{\"status\": \"passed\", \"source_rows\": 101546, \"observed_cells_checked_against_decimal_source_totals\": 3845, \"unknown_cells_preserved\": 16309, \"publication_dates_not_imputed\": true, \"eligible_final_rows\": 0, \"all_output_hashes_verified\": true, \"calendar_identical\": true, \"model_fitting_executed\": false}",
+      "stderr": ""
+    },
+    {
+      "step": "protocol_tests",
+      "arguments": [
+        "-m",
+        "pytest",
+        "tests/unit/test_temporal_ledger.py",
+        "tests/unit/test_final_preflight.py",
+        "tests/unit/test_h3_rules.py",
+        "tests/unit/test_h4_design.py",
+        "tests/unit/test_methodology.py",
+        "tests/unit/test_research_protocol.py",
+        "tests/reporting/test_reports.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "technical_execution_passed": true,
+      "stdout": "...........................                                              [100%]\n27 passed in 1.00s",
+      "stderr": ""
+    },
+    {
+      "step": "scientific_preflight",
+      "arguments": [
+        "tools/check_final_experiment.py"
+      ],
+      "exit_code": 2,
+      "technical_execution_passed": true,
+      "stdout": "{\"status\": \"not_ready\", \"diagnostic_only_not_execution_authorization\": true, \"final_test_executed_by_this_command\": false, \"source_sha256\": \"b33b132c4d67fb79f5e27a7fa2e51ac8077664b06b73326b7a72933139d755fc\", \"blockers\": [{\"code\": \"no_complete_week_certificates\", \"component\": \"H1_H2_H3\"}, {\"code\": \"no_historical_publication_certificates\", \"component\": \"H1_H2_H3\"}, {\"code\": \"calendar_and_protocol_not_frozen\", \"component\": \"H1_H2_H3\"}, {\"code\": \"no_verified_asof_eligible_final_rows\", \"component\": \"H1_H2_H3\"}, {\"code\": \"no_final_grid_development_selection\", \"component\": \"H1_H2_H3\"}, {\"code\": \"h4_keys_not_human_reviewed\", \"reviewed\": 0, \"required\": 30, \"component\": \"H4\"}, {\"code\": \"h4_generator_and_retrieval_not_frozen\", \"component\": \"H4\"}], \"evidence_sha256\": {\"planificacion/2026-11-01/ejecucion/auditoria-expansion.json\": \"ed6875d348e138c223d5f3c21246e305a851c8c85556fe790d80e5c2da780cf3\", \"datasets/tratamiento/2026-11-01-expansion/manifest.json\": \"e65fac97e96b0dc08abda2b5d6f45ba70f70082892bb73573a985cd23d6baf2a\", \"datasets/experimentos/h4-controlado-v1/manifest.json\": \"da79cf39063757c0687456cc3ab6c04f15c70884244b26d146aa7b390a5456d2\", \"datasets/experimentos/h4-controlado-v1/keys.json\": \"198f3a391195bd9f410ac9d978a44f7e6fb863dde5f642673cc7510dfbd0f6f9\", \"planificacion/2026-11-01/ejecucion/environment-clean.json\": \"e33e5a2dc4abf87082764c5f1b5069d96a3f6dd20fcd97e1ec7fb5a15a1f976c\"}, \"note\": \"Artifact presence does not certify scientific validity. No final runner is invoked.\"}",
+      "stderr": ""
+    }
+  ]
+}

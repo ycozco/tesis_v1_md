@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "source_rows": 101546,
+  "observed_cells_checked_against_decimal_source_totals": 3845,
+  "unknown_cells_preserved": 16309,
+  "publication_dates_not_imputed": true,
+  "eligible_final_rows": 0,
+  "all_output_hashes_verified": true,
+  "calendar_identical": true,
+  "model_fitting_executed": false
+}

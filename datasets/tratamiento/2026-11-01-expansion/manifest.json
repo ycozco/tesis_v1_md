@@ -1,0 +1,32 @@
+{
+  "status": "expanded_retrospective_preprocessing_only_not_model_ready",
+  "views": {
+    "conservadora": {
+      "input_sha256": "b33b132c4d67fb79f5e27a7fa2e51ac8077664b06b73326b7a72933139d755fc",
+      "rows": 101546,
+      "series": 136,
+      "observed_cells": 3845,
+      "grid_cells": 20154,
+      "unknown_cells": 16309
+    }
+  },
+  "publication_policy": "unknown_not_imputed",
+  "eligible_final_rows": 0,
+  "model_fitting_executed": false,
+  "final_test_executed": false,
+  "calendar": {
+    "copied_from": "datasets/tratamiento/2026-11-01/calendario-provisional.csv",
+    "sha256": "5480a71b9ba9e9998f471f5b28424dfa4a6add9e0a4802433142a2de6febaf5f",
+    "requires_pretest_protocol_freeze": true,
+    "calendar_changed": false
+  },
+  "feature_rules": "Legacy pilot lag features; final baseline rules and availability filtering must be integrated in final runner.",
+  "sensitivity": "Not mixed with the previous release; expanded heuristic sensitivity has not been reconstructed.",
+  "outputs_sha256": {
+    "panel-conservadora.parquet": "450daf64f9369159784d4e554c5e68fb26444d47a433b7adb1646af30260dbdc",
+    "features-conservadora-L0.parquet": "36ab9f07a40d4692ab88d94012892770138b76931e9abb259e29f3e9ee175853",
+    "features-conservadora-L4.parquet": "9d2b81bb13abd8a41b33815353c7823788f28e549641c6a36a1d9e40752f6c01",
+    "features-conservadora-L8.parquet": "75e324053c30c9da87040fba92fd14fa3d3769c8d09b08e547bb9b83f06c8725",
+    "calendario-provisional.csv": "5480a71b9ba9e9998f471f5b28424dfa4a6add9e0a4802433142a2de6febaf5f"
+  }
+}
