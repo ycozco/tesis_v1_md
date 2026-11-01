@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-01",
+  "pytest": {
+    "passed": 9,
+    "failed": 0,
+    "command": "python -B -m pytest tests/unit/test_research_protocol.py tests/reporting/test_reports.py -q -p no:cacheprovider"
+  },
+  "ast_parsed_changed_python_files": 15,
+  "git_diff_check": "passed",
+  "pilot": "piloto-resumen.json",
+  "artifact_verification": "verificacion-entrega.json",
+  "api_warning": "Starlette httpx TestClient emits deprecation warning; routes passed. Network Uvicorn not tested.",
+  "fresh_environment_install_verified": false
+}

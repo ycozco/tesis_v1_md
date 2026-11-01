@@ -1,0 +1,132 @@
+[
+  {
+    "name": "bcrp-online",
+    "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01207PM/json/2018-1/2026-10/esp",
+    "params": null,
+    "post_data": null,
+    "retrieved_at_utc": "2026-11-01T11:44:27.976873+00:00",
+    "eligible_asof": false,
+    "http_status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 5996,
+    "status": "access_control_not_bypassed"
+  },
+  {
+    "name": "nasa-arequipa-contexto-2018-2026",
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point",
+    "params": {
+      "parameters": "T2M_MAX,T2M_MIN,PRECTOTCORR,RH2M",
+      "community": "AG",
+      "longitude": -71.54,
+      "latitude": -16.4,
+      "start": "20180101",
+      "end": "20261022",
+      "format": "JSON"
+    },
+    "post_data": null,
+    "retrieved_at_utc": "2026-11-01T11:44:27.977369+00:00",
+    "eligible_asof": false,
+    "http_status": 200,
+    "content_type": "application/json",
+    "bytes": 210184,
+    "status": "context_point_recovered_NOT_production_origin",
+    "observations_per_parameter": {
+      "T2M_MAX": 3217,
+      "T2M_MIN": 3217,
+      "PRECTOTCORR": 3217,
+      "RH2M": 3217
+    },
+    "file": "nasa-arequipa-contexto-2018-2026.json",
+    "sha256": "2b021316bee178c83f139718ecf1fc92a3a7c6fe9e57d588b912e9057af0227f"
+  },
+  {
+    "name": "sisap-palta-2018-2026",
+    "url": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/filtrar",
+    "params": null,
+    "post_data": {
+      "__ajax_carga_final": "consulta",
+      "periodicidad": "mensual",
+      "mercado": "15011502",
+      "anios[]": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "meses[]": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12"
+      ],
+      "productos[]": "0626",
+      "variables[]": "precio_prom"
+    },
+    "retrieved_at_utc": "2026-11-01T11:44:27.977630+00:00",
+    "eligible_asof": false,
+    "http_status": 200,
+    "content_type": "text/html; charset=iso-8859-1",
+    "bytes": 33521,
+    "status": "table_received_needs_cell_validation",
+    "file": "sisap-palta-2018-2026.html",
+    "sha256": "81d54071d0069650b0ffef4dcb8bcae1ce51072e368040be13fc7a9803dbe5c9"
+  },
+  {
+    "name": "sisap-uva-2018-2026",
+    "url": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/filtrar",
+    "params": null,
+    "post_data": {
+      "__ajax_carga_final": "consulta",
+      "periodicidad": "mensual",
+      "mercado": "15011502",
+      "anios[]": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "meses[]": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12"
+      ],
+      "productos[]": "0637",
+      "variables[]": "precio_prom"
+    },
+    "retrieved_at_utc": "2026-11-01T11:44:28.390511+00:00",
+    "eligible_asof": false,
+    "http_status": 200,
+    "content_type": "text/html; charset=iso-8859-1",
+    "bytes": 58980,
+    "status": "table_received_needs_cell_validation",
+    "file": "sisap-uva-2018-2026.html",
+    "sha256": "f8a12106b171372475c8ff363690622901ed29a7cd8a38cf04c75c97f03e5d60"
+  }
+]

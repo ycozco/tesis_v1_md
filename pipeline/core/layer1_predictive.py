@@ -16,6 +16,9 @@ Tesis UNSA - Yoset Cozco Mauri (2026).
 """
 
 import sys
+if __name__ == '__main__' and '--legacy-prototype' not in sys.argv:
+    raise SystemExit('Pipeline histórico bloqueado por defecto: use tools/run_research_pilot.py '
+                     'para desarrollo retrospectivo. --legacy-prototype conserva únicamente el prototipo antiguo.')
 import logging
 import warnings
 import pickle

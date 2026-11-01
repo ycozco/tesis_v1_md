@@ -5,7 +5,7 @@ src/module5_validation.py
 Implementa la Capa 5 (Validador Factual y Consistencia Numérica):
 1. Carga los reportes generados en Capa 4 y su evidencia original en local_explanations.json.
 2. Parsea el texto Markdown buscando cantidades numéricas clave (precios, volúmenes, scores).
-3. Valida la coincidencia numérica contra el objeto JSON de evidencia con una tolerancia del 0.5%.
+3. Comprueba presencia numérica con tolerancia absoluta 0.005 (dos decimales).
 4. Si se detecta una inconsistencia o alucinación, cae en el reporte descriptivo de TemplateProvider.
 5. Calcula métricas cuantitativas de fidelidad factual y completitud.
 6. Guarda los reportes validados y sus métricas de consistencia en data/gold/validation_metrics.json.
@@ -18,7 +18,8 @@ import logging
 import json
 import re
 from pathlib import Path
-from pipeline.core.layer4_rag_reporting import TemplateProvider
+from decimal import Decimal
+import math
 
 # Configuración de codificación de salida para Windows
 if hasattr(sys.stdout, 'reconfigure'):
@@ -41,21 +42,17 @@ def extract_numbers_from_text(text: str) -> list[float]:
     """Extrae todos los números decimales y enteros de un texto."""
     # Eliminar comas de miles para parsear correctamente (ej: 1,500.50 -> 1500.50)
     clean_text = text.replace(",", "")
-    pattern = r"[-+]?\d*\.\d+|\d+"
+    pattern = r"[-+]?(?:\d+(?:\.\d+)?|\.\d+)"
     matches = re.findall(pattern, clean_text)
     return [float(m) for m in matches]
 
 def check_value_in_text(expected_val: float, text_numbers: list[float], tolerance: float = 0.005) -> bool:
-    """Verifica si un número esperado existe en la lista de números del texto dentro de la tolerancia."""
-    if expected_val == 0.0:
-        return any(abs(n) < 1e-4 for n in text_numbers)
-        
-    for num in text_numbers:
-        # Calcular error relativo
-        error = abs(num - expected_val) / abs(expected_val)
-        if error <= tolerance:
-            return True
-    return False
+    """Absolute decimal tolerance. Presence alone does not establish factual support."""
+    if not math.isfinite(expected_val) or tolerance < 0:
+        return False
+    expected = Decimal(str(expected_val))
+    bound = Decimal(str(tolerance))
+    return any(math.isfinite(n) and abs(Decimal(str(n)) - expected) <= bound for n in text_numbers)
 
 def validate_report(report_content: str, alert_data: dict) -> dict:
     """Valida la consistencia factual del reporte contra los datos de alerta originales."""
@@ -98,6 +95,7 @@ def validate_report(report_content: str, alert_data: dict) -> dict:
     is_valid = fidelity_score == 1.0
     
     return {
+        "validation_scope": "numeric_presence_only_not_atomic_factual_validation",
         "is_valid": is_valid,
         "fidelity_score": fidelity_score,
         "completeness_score": completeness_score,
@@ -107,6 +105,7 @@ def validate_report(report_content: str, alert_data: dict) -> dict:
     }
 
 def main():
+    from pipeline.core.layer4_rag_reporting import TemplateProvider
     # Cargar los reportes generados
     reports_path = GOLD_DIR / "generated_reports.json"
     local_exp_path = GOLD_DIR / "local_explanations.json"
@@ -160,10 +159,11 @@ def main():
         }
         
     # Calcular métricas globales del sistema
-    avg_fidelity = sum_fidelity / total_reports if total_reports > 0 else 1.0
-    avg_completeness = sum_completeness / total_reports if total_reports > 0 else 1.0
+    avg_fidelity = sum_fidelity / total_reports if total_reports > 0 else None
+    avg_completeness = sum_completeness / total_reports if total_reports > 0 else None
     
     system_metrics = {
+        "evaluation_status": "evaluated" if total_reports else "not_evaluable_no_reports",
         "total_reports_evaluated": total_reports,
         "valid_reports_count": valid_reports_count,
         "average_fidelity_score": avg_fidelity,
@@ -177,7 +177,7 @@ def main():
         json.dump(system_metrics, f, indent=4)
         
     log.info("Capa 5 completada: Evaluados %d reportes. Fidelidad promedio = %.2f%%, Completitud = %.2f%%.",
-             total_reports, avg_fidelity * 100, avg_completeness * 100)
+             total_reports, (avg_fidelity or 0) * 100, (avg_completeness or 0) * 100)
     log.info("Métricas de validación guardadas en: %s", metrics_path)
 
 if __name__ == "__main__":

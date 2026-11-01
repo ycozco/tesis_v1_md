@@ -11,7 +11,7 @@ GOLD_DIR = BASE_DIR / "data" / "gold"
 def test_template_provider_and_factual_validation():
     """
     Prueba que el TemplateProvider genere reportes consistentes y que el validador
-    factual admita desviaciones menores por redondeo (<= 0.5%) y rechace
+    numérico admita redondeo absoluto de 0.005 (dos decimales) y rechace
     alucinaciones numéricas mayores.
     """
     # 1. Crear evidencia ficticia de una alerta
@@ -65,8 +65,7 @@ def test_template_provider_and_factual_validation():
     assert not res_bad["is_valid"], "El validador debió rechazar el reporte con precio alucinado (9.9)"
     assert "pred_price" in res_bad["failed_facts"] or "expected_price" in res_bad["failed_facts"]
     
-    # 5. Probar tolerancia de redondeo menor (dentro del 0.5%)
-    # Si el valor real es 120000.0 y el texto dice 120100.0 (desviación de 0.08%), debe ser aceptado
+    # 5. Una diferencia pequeña en porcentaje sigue siendo un error numérico absoluto.
     tolerable_report = report.replace("120,000.00", "120,100.00")
     res_tol = validate_report(tolerable_report, evidence)
-    assert res_tol["is_valid"], f"El validador debió aceptar desviación menor por redondeo. Errores: {res_tol['failed_facts']}"
+    assert not res_tol["is_valid"], 'La diferencia absoluta de 100 kg debe rechazarse.'

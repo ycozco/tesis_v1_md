@@ -417,6 +417,13 @@ def build_gold_layer():
     log.info("Gold Layer (weekly aggregated) construida con %d registros.", len(df_gold))
 
 def main():
+    # The current thesis uses audited customs views, never synthetic fallbacks.
+    # Keep the prototype available only via an explicit historical flag.
+    import sys
+    if '--legacy-prototype' not in sys.argv:
+        import runpy
+        runpy.run_path(str(Path(__file__).resolve().parents[2] / 'tools/build_research_data.py'), run_name='__main__')
+        return
     log.info("Iniciando preparación del dataset semanal por capas...")
     ingest_raw_data()
     build_silver_layer()

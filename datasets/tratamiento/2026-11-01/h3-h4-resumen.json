@@ -1,0 +1,22 @@
+{
+  "h3_scored_cases": 450,
+  "h3_overlap_rows": 300,
+  "h3_limitations": [
+    "minimum 8 prior errors is pilot-only",
+    "development model selection bias",
+    "seasonal baseline and persistence characterization remain pending",
+    "current revised values cannot certify operational as-of signals",
+    "no anomaly ground truth"
+  ],
+  "h4_cases_prepared": 30,
+  "h4_slots_prepared": 180,
+  "h4_outputs_generated": 0,
+  "retrieval": "BM25 local corpus query exercised; no dense embeddings/pgvector test",
+  "h4_pending": [
+    "review factual keys and case difficulty",
+    "freeze generator/model/prompt/corpus",
+    "execute 180 paired outputs",
+    "blind factual evaluation",
+    "separate errors/abstention/coverage"
+  ]
+}

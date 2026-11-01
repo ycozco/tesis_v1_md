@@ -1,0 +1,812 @@
+[
+  {
+    "case_id": "arandano-01",
+    "producto": "arandano",
+    "destino": "HK",
+    "week": "2021-08-02",
+    "evidence": {
+      "arandano-01.unit_fob": {
+        "value": 8.989357753357753,
+        "unit": "USD/kg",
+        "source_id": "arandano|HK|2021-08-02"
+      },
+      "arandano-01.volume_kg": {
+        "value": 12285.0,
+        "unit": "kg",
+        "source_id": "arandano|HK|2021-08-02"
+      },
+      "arandano-01.fob_usd": {
+        "value": 110434.26,
+        "unit": "USD",
+        "source_id": "arandano|HK|2021-08-02"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-02",
+    "producto": "arandano",
+    "destino": "GB",
+    "week": "2023-10-09",
+    "evidence": {
+      "arandano-02.unit_fob": {
+        "value": 6.953926311431782,
+        "unit": "USD/kg",
+        "source_id": "arandano|GB|2023-10-09"
+      },
+      "arandano-02.volume_kg": {
+        "value": 33818.0,
+        "unit": "kg",
+        "source_id": "arandano|GB|2023-10-09"
+      },
+      "arandano-02.fob_usd": {
+        "value": 235167.88,
+        "unit": "USD",
+        "source_id": "arandano|GB|2023-10-09"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-03",
+    "producto": "arandano",
+    "destino": "GB",
+    "week": "2024-10-14",
+    "evidence": {
+      "arandano-03.unit_fob": {
+        "value": 6.0372379807692305,
+        "unit": "USD/kg",
+        "source_id": "arandano|GB|2024-10-14"
+      },
+      "arandano-03.volume_kg": {
+        "value": 37440.0,
+        "unit": "kg",
+        "source_id": "arandano|GB|2024-10-14"
+      },
+      "arandano-03.fob_usd": {
+        "value": 226034.19,
+        "unit": "USD",
+        "source_id": "arandano|GB|2024-10-14"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-04",
+    "producto": "arandano",
+    "destino": "CN",
+    "week": "2025-09-08",
+    "evidence": {
+      "arandano-04.unit_fob": {
+        "value": 8.399090598290599,
+        "unit": "USD/kg",
+        "source_id": "arandano|CN|2025-09-08"
+      },
+      "arandano-04.volume_kg": {
+        "value": 23400.0,
+        "unit": "kg",
+        "source_id": "arandano|CN|2025-09-08"
+      },
+      "arandano-04.fob_usd": {
+        "value": 196538.72,
+        "unit": "USD",
+        "source_id": "arandano|CN|2025-09-08"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-05",
+    "producto": "arandano",
+    "destino": "SA",
+    "week": "2025-12-29",
+    "evidence": {
+      "arandano-05.unit_fob": {
+        "value": 7.965188034188034,
+        "unit": "USD/kg",
+        "source_id": "arandano|SA|2025-12-29"
+      },
+      "arandano-05.volume_kg": {
+        "value": 58500.0,
+        "unit": "kg",
+        "source_id": "arandano|SA|2025-12-29"
+      },
+      "arandano-05.fob_usd": {
+        "value": 465963.5,
+        "unit": "USD",
+        "source_id": "arandano|SA|2025-12-29"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-06",
+    "producto": "arandano",
+    "destino": "BR",
+    "week": "2026-03-30",
+    "evidence": {
+      "arandano-06.unit_fob": {
+        "value": 6.538354185071445,
+        "unit": "USD/kg",
+        "source_id": "arandano|BR|2026-03-30"
+      },
+      "arandano-06.volume_kg": {
+        "value": 35656.5,
+        "unit": "kg",
+        "source_id": "arandano|BR|2026-03-30"
+      },
+      "arandano-06.fob_usd": {
+        "value": 233134.826,
+        "unit": "USD",
+        "source_id": "arandano|BR|2026-03-30"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-07",
+    "producto": "arandano",
+    "destino": "NL",
+    "week": "2026-06-01",
+    "evidence": {
+      "arandano-07.unit_fob": {
+        "value": 6.285806672447629,
+        "unit": "USD/kg",
+        "source_id": "arandano|NL|2026-06-01"
+      },
+      "arandano-07.volume_kg": {
+        "value": 43822.0,
+        "unit": "kg",
+        "source_id": "arandano|NL|2026-06-01"
+      },
+      "arandano-07.fob_usd": {
+        "value": 275456.62,
+        "unit": "USD",
+        "source_id": "arandano|NL|2026-06-01"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-08",
+    "producto": "arandano",
+    "destino": "AE",
+    "week": "2026-08-10",
+    "evidence": {
+      "arandano-08.unit_fob": {
+        "value": 8.672222222222222,
+        "unit": "USD/kg",
+        "source_id": "arandano|AE|2026-08-10"
+      },
+      "arandano-08.volume_kg": {
+        "value": 2520.0,
+        "unit": "kg",
+        "source_id": "arandano|AE|2026-08-10"
+      },
+      "arandano-08.fob_usd": {
+        "value": 21854.0,
+        "unit": "USD",
+        "source_id": "arandano|AE|2026-08-10"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-09",
+    "producto": "arandano",
+    "destino": "CN",
+    "week": "2026-09-14",
+    "evidence": {
+      "arandano-09.unit_fob": {
+        "value": 7.21731464339909,
+        "unit": "USD/kg",
+        "source_id": "arandano|CN|2026-09-14"
+      },
+      "arandano-09.volume_kg": {
+        "value": 395400.0,
+        "unit": "kg",
+        "source_id": "arandano|CN|2026-09-14"
+      },
+      "arandano-09.fob_usd": {
+        "value": 2853726.21,
+        "unit": "USD",
+        "source_id": "arandano|CN|2026-09-14"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "arandano-10",
+    "producto": "arandano",
+    "destino": "US",
+    "week": "2026-10-19",
+    "evidence": {
+      "arandano-10.unit_fob": {
+        "value": 7.708269714131058,
+        "unit": "USD/kg",
+        "source_id": "arandano|US|2026-10-19"
+      },
+      "arandano-10.volume_kg": {
+        "value": 457448.364,
+        "unit": "kg",
+        "source_id": "arandano|US|2026-10-19"
+      },
+      "arandano-10.fob_usd": {
+        "value": 3526135.37,
+        "unit": "USD",
+        "source_id": "arandano|US|2026-10-19"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-01",
+    "producto": "palta",
+    "destino": "CL",
+    "week": "2018-06-25",
+    "evidence": {
+      "palta-01.unit_fob": {
+        "value": 1.5,
+        "unit": "USD/kg",
+        "source_id": "palta|CL|2018-06-25"
+      },
+      "palta-01.volume_kg": {
+        "value": 16900.0,
+        "unit": "kg",
+        "source_id": "palta|CL|2018-06-25"
+      },
+      "palta-01.fob_usd": {
+        "value": 25350.0,
+        "unit": "USD",
+        "source_id": "palta|CL|2018-06-25"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-02",
+    "producto": "palta",
+    "destino": "CL",
+    "week": "2022-09-12",
+    "evidence": {
+      "palta-02.unit_fob": {
+        "value": 1.2413461538461539,
+        "unit": "USD/kg",
+        "source_id": "palta|CL|2022-09-12"
+      },
+      "palta-02.volume_kg": {
+        "value": 74880.0,
+        "unit": "kg",
+        "source_id": "palta|CL|2022-09-12"
+      },
+      "palta-02.fob_usd": {
+        "value": 92952.0,
+        "unit": "USD",
+        "source_id": "palta|CL|2022-09-12"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-03",
+    "producto": "palta",
+    "destino": "RU",
+    "week": "2024-12-16",
+    "evidence": {
+      "palta-03.unit_fob": {
+        "value": 2.112215909090909,
+        "unit": "USD/kg",
+        "source_id": "palta|RU|2024-12-16"
+      },
+      "palta-03.volume_kg": {
+        "value": 84480.0,
+        "unit": "kg",
+        "source_id": "palta|RU|2024-12-16"
+      },
+      "palta-03.fob_usd": {
+        "value": 178440.0,
+        "unit": "USD",
+        "source_id": "palta|RU|2024-12-16"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-04",
+    "producto": "palta",
+    "destino": "GB",
+    "week": "2026-02-16",
+    "evidence": {
+      "palta-04.unit_fob": {
+        "value": 2.3395316530159733,
+        "unit": "USD/kg",
+        "source_id": "palta|GB|2026-02-16"
+      },
+      "palta-04.volume_kg": {
+        "value": 44198.0,
+        "unit": "kg",
+        "source_id": "palta|GB|2026-02-16"
+      },
+      "palta-04.fob_usd": {
+        "value": 103402.62,
+        "unit": "USD",
+        "source_id": "palta|GB|2026-02-16"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-05",
+    "producto": "palta",
+    "destino": "JP",
+    "week": "2026-03-30",
+    "evidence": {
+      "palta-05.unit_fob": {
+        "value": 2.4218178330140065,
+        "unit": "USD/kg",
+        "source_id": "palta|JP|2026-03-30"
+      },
+      "palta-05.volume_kg": {
+        "value": 584646.88,
+        "unit": "kg",
+        "source_id": "palta|JP|2026-03-30"
+      },
+      "palta-05.fob_usd": {
+        "value": 1415908.24,
+        "unit": "USD",
+        "source_id": "palta|JP|2026-03-30"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-06",
+    "producto": "palta",
+    "destino": "MX",
+    "week": "2026-04-27",
+    "evidence": {
+      "palta-06.unit_fob": {
+        "value": 1.4087894069664904,
+        "unit": "USD/kg",
+        "source_id": "palta|MX|2026-04-27"
+      },
+      "palta-06.volume_kg": {
+        "value": 130636.79999999999,
+        "unit": "kg",
+        "source_id": "palta|MX|2026-04-27"
+      },
+      "palta-06.fob_usd": {
+        "value": 184039.74,
+        "unit": "USD",
+        "source_id": "palta|MX|2026-04-27"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-07",
+    "producto": "palta",
+    "destino": "MA",
+    "week": "2026-05-25",
+    "evidence": {
+      "palta-07.unit_fob": {
+        "value": 1.86575,
+        "unit": "USD/kg",
+        "source_id": "palta|MA|2026-05-25"
+      },
+      "palta-07.volume_kg": {
+        "value": 24000.0,
+        "unit": "kg",
+        "source_id": "palta|MA|2026-05-25"
+      },
+      "palta-07.fob_usd": {
+        "value": 44778.0,
+        "unit": "USD",
+        "source_id": "palta|MA|2026-05-25"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-08",
+    "producto": "palta",
+    "destino": "NL",
+    "week": "2026-07-06",
+    "evidence": {
+      "palta-08.unit_fob": {
+        "value": 2.032894932790891,
+        "unit": "USD/kg",
+        "source_id": "palta|NL|2026-07-06"
+      },
+      "palta-08.volume_kg": {
+        "value": 5719539.608,
+        "unit": "kg",
+        "source_id": "palta|NL|2026-07-06"
+      },
+      "palta-08.fob_usd": {
+        "value": 11627223.087,
+        "unit": "USD",
+        "source_id": "palta|NL|2026-07-06"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-09",
+    "producto": "palta",
+    "destino": "GR",
+    "week": "2026-08-17",
+    "evidence": {
+      "palta-09.unit_fob": {
+        "value": 2.306,
+        "unit": "USD/kg",
+        "source_id": "palta|GR|2026-08-17"
+      },
+      "palta-09.volume_kg": {
+        "value": 42240.0,
+        "unit": "kg",
+        "source_id": "palta|GR|2026-08-17"
+      },
+      "palta-09.fob_usd": {
+        "value": 97405.44,
+        "unit": "USD",
+        "source_id": "palta|GR|2026-08-17"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "palta-10",
+    "producto": "palta",
+    "destino": "ES",
+    "week": "2026-10-19",
+    "evidence": {
+      "palta-10.unit_fob": {
+        "value": 1.8507247540867595,
+        "unit": "USD/kg",
+        "source_id": "palta|ES|2026-10-19"
+      },
+      "palta-10.volume_kg": {
+        "value": 141310.0,
+        "unit": "kg",
+        "source_id": "palta|ES|2026-10-19"
+      },
+      "palta-10.fob_usd": {
+        "value": 261525.91499999998,
+        "unit": "USD",
+        "source_id": "palta|ES|2026-10-19"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-01",
+    "producto": "uva",
+    "destino": "NL",
+    "week": "2021-01-04",
+    "evidence": {
+      "uva-01.unit_fob": {
+        "value": 1.563890671801455,
+        "unit": "USD/kg",
+        "source_id": "uva|NL|2021-01-04"
+      },
+      "uva-01.volume_kg": {
+        "value": 18696.0,
+        "unit": "kg",
+        "source_id": "uva|NL|2021-01-04"
+      },
+      "uva-01.fob_usd": {
+        "value": 29238.5,
+        "unit": "USD",
+        "source_id": "uva|NL|2021-01-04"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-02",
+    "producto": "uva",
+    "destino": "KR",
+    "week": "2023-12-11",
+    "evidence": {
+      "uva-02.unit_fob": {
+        "value": 4.024390243902439,
+        "unit": "USD/kg",
+        "source_id": "uva|KR|2023-12-11"
+      },
+      "uva-02.volume_kg": {
+        "value": 15350.4,
+        "unit": "kg",
+        "source_id": "uva|KR|2023-12-11"
+      },
+      "uva-02.fob_usd": {
+        "value": 61776.0,
+        "unit": "USD",
+        "source_id": "uva|KR|2023-12-11"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-03",
+    "producto": "uva",
+    "destino": "KR",
+    "week": "2024-12-09",
+    "evidence": {
+      "uva-03.unit_fob": {
+        "value": 4.135914732865623,
+        "unit": "USD/kg",
+        "source_id": "uva|KR|2024-12-09"
+      },
+      "uva-03.volume_kg": {
+        "value": 44472.0,
+        "unit": "kg",
+        "source_id": "uva|KR|2024-12-09"
+      },
+      "uva-03.fob_usd": {
+        "value": 183932.4,
+        "unit": "USD",
+        "source_id": "uva|KR|2024-12-09"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-04",
+    "producto": "uva",
+    "destino": "IL",
+    "week": "2025-10-20",
+    "evidence": {
+      "uva-04.unit_fob": {
+        "value": 3.1266976893453142,
+        "unit": "USD/kg",
+        "source_id": "uva|IL|2025-10-20"
+      },
+      "uva-04.volume_kg": {
+        "value": 37392.0,
+        "unit": "kg",
+        "source_id": "uva|IL|2025-10-20"
+      },
+      "uva-04.fob_usd": {
+        "value": 116913.48,
+        "unit": "USD",
+        "source_id": "uva|IL|2025-10-20"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-05",
+    "producto": "uva",
+    "destino": "SE",
+    "week": "2025-12-01",
+    "evidence": {
+      "uva-05.unit_fob": {
+        "value": 2.602068695652174,
+        "unit": "USD/kg",
+        "source_id": "uva|SE|2025-12-01"
+      },
+      "uva-05.volume_kg": {
+        "value": 11500.0,
+        "unit": "kg",
+        "source_id": "uva|SE|2025-12-01"
+      },
+      "uva-05.fob_usd": {
+        "value": 29923.79,
+        "unit": "USD",
+        "source_id": "uva|SE|2025-12-01"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-06",
+    "producto": "uva",
+    "destino": "GT",
+    "week": "2026-01-12",
+    "evidence": {
+      "uva-06.unit_fob": {
+        "value": 2.5521446593776282,
+        "unit": "USD/kg",
+        "source_id": "uva|GT|2026-01-12"
+      },
+      "uva-06.volume_kg": {
+        "value": 33292.0,
+        "unit": "kg",
+        "source_id": "uva|GT|2026-01-12"
+      },
+      "uva-06.fob_usd": {
+        "value": 84966.0,
+        "unit": "USD",
+        "source_id": "uva|GT|2026-01-12"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-07",
+    "producto": "uva",
+    "destino": "ES",
+    "week": "2026-03-02",
+    "evidence": {
+      "uva-07.unit_fob": {
+        "value": 2.6792807979699456,
+        "unit": "USD/kg",
+        "source_id": "uva|ES|2026-03-02"
+      },
+      "uva-07.volume_kg": {
+        "value": 241964.0,
+        "unit": "kg",
+        "source_id": "uva|ES|2026-03-02"
+      },
+      "uva-07.fob_usd": {
+        "value": 648289.499,
+        "unit": "USD",
+        "source_id": "uva|ES|2026-03-02"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-08",
+    "producto": "uva",
+    "destino": "NL",
+    "week": "2026-05-04",
+    "evidence": {
+      "uva-08.unit_fob": {
+        "value": 3.001512914644013,
+        "unit": "USD/kg",
+        "source_id": "uva|NL|2026-05-04"
+      },
+      "uva-08.volume_kg": {
+        "value": 98880.0,
+        "unit": "kg",
+        "source_id": "uva|NL|2026-05-04"
+      },
+      "uva-08.fob_usd": {
+        "value": 296789.597,
+        "unit": "USD",
+        "source_id": "uva|NL|2026-05-04"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-09",
+    "producto": "uva",
+    "destino": "GB",
+    "week": "2026-09-14",
+    "evidence": {
+      "uva-09.unit_fob": {
+        "value": 2.744021988036265,
+        "unit": "USD/kg",
+        "source_id": "uva|GB|2026-09-14"
+      },
+      "uva-09.volume_kg": {
+        "value": 171184.0,
+        "unit": "kg",
+        "source_id": "uva|GB|2026-09-14"
+      },
+      "uva-09.fob_usd": {
+        "value": 469732.66,
+        "unit": "USD",
+        "source_id": "uva|GB|2026-09-14"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  },
+  {
+    "case_id": "uva-10",
+    "producto": "uva",
+    "destino": "US",
+    "week": "2026-10-19",
+    "evidence": {
+      "uva-10.unit_fob": {
+        "value": 3.4332785014676745,
+        "unit": "USD/kg",
+        "source_id": "uva|US|2026-10-19"
+      },
+      "uva-10.volume_kg": {
+        "value": 372289.6,
+        "unit": "kg",
+        "source_id": "uva|US|2026-10-19"
+      },
+      "uva-10.fob_usd": {
+        "value": 1278173.88,
+        "unit": "USD",
+        "source_id": "uva|US|2026-10-19"
+      }
+    },
+    "source_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+    "evaluation_status": "prepared_not_executed",
+    "numeric_decimals": 2,
+    "manual_reference_status": "awaiting_blinded_factual_key_review"
+  }
+]

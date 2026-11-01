@@ -1,0 +1,1622 @@
+[
+  {
+    "case_id": "arandano-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "arandano-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "palta-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-01",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-02",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-03",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-04",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-05",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-06",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-07",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-08",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-09",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 1,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 2,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  },
+  {
+    "case_id": "uva-10",
+    "configuration": "full_RAG_and_validation",
+    "run": 3,
+    "status": "not_executed",
+    "output": null,
+    "numeric_error": null,
+    "factual_error": null
+  }
+]

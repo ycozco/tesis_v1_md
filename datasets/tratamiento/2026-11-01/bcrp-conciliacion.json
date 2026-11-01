@@ -1,0 +1,29 @@
+{
+  "shared_months_matching": [
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05"
+  ],
+  "added_from_csv": [
+    "2026-06"
+  ],
+  "total_months": 102,
+  "csv_sha256": "b0497dcf99a19c4b3e335680b437adbab76d9a0d4202b419c8aed5008e82c1e1",
+  "status": "local_backup_reconciliation_not_fresh_remote_verification",
+  "publication_dates": "unknown",
+  "eligible_asof": false
+}

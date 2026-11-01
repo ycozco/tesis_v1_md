@@ -1,0 +1,20 @@
+[
+  {
+    "source": "datasets\\fuentes\\2026-10-31\\conciliacion\\resolucion-analitica\\informe-resolucion.md",
+    "text": "- Base conservadora: 93225 series.\n- Conflictos resueltos operativamente: 28 series de 25 declaraciones.\n- Series vecinas sin conflicto propio reincorporadas: 45.\n- Vista analítica resultante: 93298 series (palta 38579; uva 27287; arándano 27432).\n- Todos los casos utilizaron el mismo producto y destino con referencias de los últimos 90 días. No se aplicaron desempates por hash ni falta de referencias.\n- El verificador independiente confirmó selección, referencias, valores de origen y sensibilidad.",
+    "sha256": "9d62c53a94bfe970148b3f0cef9b2e6f9177f8c2880f94ce75f0a8dae8ee40cd",
+    "score": 3.3549661245068743
+  },
+  {
+    "source": "datasets\\fuentes\\2026-10-31\\README.md",
+    "text": "- observaciones-sunat.csv: FOB USD, peso neto kg, FOB/kg, destino, fechas originales y procedencia por archivo/fila. No incluye nombres, RUC ni direcciones. El identificador de declaración-serie se conserva mediante SHA-256.\n- manifest-sunat.json: URLs originales, tamaños, hashes, resultados por paquete y controles.\n- cobertura-observada.json: recuentos y fechas de embarque observadas por producto/destino; no acredita cobertura completa ni disponibilidad en tiempo real.\n- muestras-contextuales/: respuestas de NASA POWER, SISAP y UN Comtrade verificadas previamente. Son muestras técnicas separadas, no covariables integradas.\n- informe-fuentes.md: búsqueda y factibilidad de acceso.\n- hashes.json: hashes de los archivos de esta entrega.\n- incorporacion-respaldo.json: conciliación de las colecciones y paquetes recuperados.",
+    "sha256": "3d07976c209ad89f7421e1f10621bff5c33c01e47a5e721f5fab11730f93ed30",
+    "score": 2.3791872269212275
+  },
+  {
+    "source": "datasets\\fuentes\\2026-10-31\\conciliacion\\informe.md",
+    "text": "| Decisión | Filas |\n|---|---:|\n| Incluidas en vista conciliada | 93225 |\n| Sustituidas por paquete posterior de su declaración | 9307 |\n| Duplicados analíticos del snapshot vigente | 7613 |\n| Cuarentena por contradicción simultánea | 108 |\n| Total | 110253 |",
+    "sha256": "b0b4585cbe4603dccb4a71375a48fa1d55a41e8f259237ac03cfe00825495dbf",
+    "score": 2.2846602791855197
+  }
+]

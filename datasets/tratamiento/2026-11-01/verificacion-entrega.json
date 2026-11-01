@@ -1,0 +1,28 @@
+{
+  "conservadora": {
+    "ratio_of_sums_verified": true,
+    "unknown_not_zero": true,
+    "unique_cells": true
+  },
+  "sensibilidad": {
+    "ratio_of_sums_verified": true,
+    "unknown_not_zero": true,
+    "unique_cells": true
+  },
+  "reserved_test_not_predicted": true,
+  "no_intervals_under_40_errors": true,
+  "h4_30_cases_180_unique_unexecuted_slots": true,
+  "api": {
+    "status": "passed",
+    "endpoints": [
+      "GET /health",
+      "GET /api/migration/status"
+    ],
+    "database": "isolated SQLite in memory; NOT PostgreSQL or pgvector validation",
+    "not_checked": [
+      "authentication",
+      "dashboard database data",
+      "Uvicorn network server"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-01",
+  "status": "retrospective_provisional_not_final_experiment",
+  "shipment_date": "FEMB; Monday ISO week; incomplete collection",
+  "views": {
+    "conservadora": {
+      "input_sha256": "6331dd925eddf4420618f10bf39617fdef519b35af1efbc75929a882ec810d66",
+      "rows": 93225,
+      "observed_cells": 3268,
+      "grid_cells": 14683,
+      "unknown_cells": 11415,
+      "price_review_rows": 205,
+      "series": 133
+    },
+    "sensibilidad": {
+      "input_sha256": "712f91656d6a7171112d4b63f614c9938d0e8db45ef0d6ecbc37f655fb50ee8c",
+      "rows": 93298,
+      "observed_cells": 3268,
+      "grid_cells": 14683,
+      "unknown_cells": 11415,
+      "price_review_rows": 205,
+      "series": 133
+    }
+  },
+  "calendar": {
+    "development_start": "2025-10-27",
+    "test_start": "2026-04-27",
+    "last_target": "2026-10-19",
+    "test_executed": false,
+    "requires_pretest_protocol_freeze": true,
+    "warning": "Packet end dates are NOT publication dates. No certified as-of reconstruction."
+  },
+  "bcrp": {
+    "months": 101,
+    "source_sha256": "f9cbb755cb5259a5839ca9c1a0708faddd6ed7f84969a41ec57eb815e6539d61",
+    "description": {
+      "title": "Tipo de cambio - promedio del periodo (S/ por US$)",
+      "series": [
+        {
+          "name": "Tipo de cambio - promedio del periodo (S/ por US$) - Interbancario - Promedio",
+          "dec": "3"
+        }
+      ]
+    },
+    "publication_dates": "unknown_not_imputed",
+    "note": "Not joined to weekly features; cache lacks certified publication/vintage history."
+  }
+}
