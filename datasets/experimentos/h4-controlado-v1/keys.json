@@ -1,0 +1,758 @@
+[
+  {
+    "case_id": "h4-controlled-palta-01",
+    "scenario": "complete_data",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-palta-01.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-02",
+    "scenario": "incomplete_coverage",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "partial_recovered_operations_only",
+      "definition": "h4-controlled-palta-02.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [
+      "must_not_claim_complete_period"
+    ],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-03",
+    "scenario": "incompatible_commercial_level",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "incompatible_commercial_level",
+      "definition": "h4-controlled-palta-03.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-04",
+    "scenario": "incompatible_units",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "incompatible_units",
+      "definition": "h4-controlled-palta-04.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-05",
+    "scenario": "unpublished_data",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "unpublished_at_origin",
+      "definition": "h4-controlled-palta-05.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-06",
+    "scenario": "contradictory_document_version",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-palta-06.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [
+      "reject_superseded_definition_v1"
+    ],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-07",
+    "scenario": "zero_denominator",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "undefined_zero_denominator",
+      "definition": "h4-controlled-palta-07.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-08",
+    "scenario": "unsupported_claim",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "profitability_claim"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-palta-08.definition.v2"
+    },
+    "required_abstentions": [
+      "profitability_claim"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-09",
+    "scenario": "unsupported_causal_request",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "causal_claim"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-palta-09.definition.v2"
+    },
+    "required_abstentions": [
+      "causal_claim"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-palta-10",
+    "scenario": "period_difference",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "next_unit_fob",
+      "absolute_difference",
+      "relative_difference"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "next_unit_fob": {
+        "value": "3",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "absolute_difference": {
+        "value": "0.333333333333333333333333333",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "relative_difference": {
+        "value": "12.50000000000000000000000000",
+        "unit": "%",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-palta-10.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-01",
+    "scenario": "complete_data",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-uva-01.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-02",
+    "scenario": "incomplete_coverage",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "partial_recovered_operations_only",
+      "definition": "h4-controlled-uva-02.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [
+      "must_not_claim_complete_period"
+    ],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-03",
+    "scenario": "incompatible_commercial_level",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "incompatible_commercial_level",
+      "definition": "h4-controlled-uva-03.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-04",
+    "scenario": "incompatible_units",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "incompatible_units",
+      "definition": "h4-controlled-uva-04.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-05",
+    "scenario": "unpublished_data",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "unpublished_at_origin",
+      "definition": "h4-controlled-uva-05.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-06",
+    "scenario": "contradictory_document_version",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-uva-06.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [
+      "reject_superseded_definition_v1"
+    ],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-07",
+    "scenario": "zero_denominator",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "undefined_zero_denominator",
+      "definition": "h4-controlled-uva-07.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-08",
+    "scenario": "unsupported_claim",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "profitability_claim"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-uva-08.definition.v2"
+    },
+    "required_abstentions": [
+      "profitability_claim"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-09",
+    "scenario": "unsupported_causal_request",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "causal_claim"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-uva-09.definition.v2"
+    },
+    "required_abstentions": [
+      "causal_claim"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-uva-10",
+    "scenario": "period_difference",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "next_unit_fob",
+      "absolute_difference",
+      "relative_difference"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "next_unit_fob": {
+        "value": "3",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "absolute_difference": {
+        "value": "0.333333333333333333333333333",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "relative_difference": {
+        "value": "12.50000000000000000000000000",
+        "unit": "%",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-uva-10.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-01",
+    "scenario": "complete_data",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-arandano-01.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-02",
+    "scenario": "incomplete_coverage",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "partial_recovered_operations_only",
+      "definition": "h4-controlled-arandano-02.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [
+      "must_not_claim_complete_period"
+    ],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-03",
+    "scenario": "incompatible_commercial_level",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "incompatible_commercial_level",
+      "definition": "h4-controlled-arandano-03.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-04",
+    "scenario": "incompatible_units",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "incompatible_units",
+      "definition": "h4-controlled-arandano-04.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-05",
+    "scenario": "unpublished_data",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "unpublished_at_origin",
+      "definition": "h4-controlled-arandano-05.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-06",
+    "scenario": "contradictory_document_version",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-arandano-06.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [
+      "reject_superseded_definition_v1"
+    ],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-07",
+    "scenario": "zero_denominator",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition"
+    ],
+    "numeric": {},
+    "factual": {
+      "scope": "undefined_zero_denominator",
+      "definition": "h4-controlled-arandano-07.definition.v2"
+    },
+    "required_abstentions": [
+      "unit_fob"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-08",
+    "scenario": "unsupported_claim",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "profitability_claim"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-arandano-08.definition.v2"
+    },
+    "required_abstentions": [
+      "profitability_claim"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-09",
+    "scenario": "unsupported_causal_request",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "causal_claim"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-arandano-09.definition.v2"
+    },
+    "required_abstentions": [
+      "causal_claim"
+    ],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  },
+  {
+    "case_id": "h4-controlled-arandano-10",
+    "scenario": "period_difference",
+    "required_elements": [
+      "unit_fob",
+      "scope",
+      "definition",
+      "next_unit_fob",
+      "absolute_difference",
+      "relative_difference"
+    ],
+    "numeric": {
+      "unit_fob": {
+        "value": "2.666666666666666666666666667",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "next_unit_fob": {
+        "value": "3",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "absolute_difference": {
+        "value": "0.333333333333333333333333333",
+        "unit": "USD/kg",
+        "decimals": 2
+      },
+      "relative_difference": {
+        "value": "12.50000000000000000000000000",
+        "unit": "%",
+        "decimals": 2
+      }
+    },
+    "factual": {
+      "scope": "complete_fixture_customs_export",
+      "definition": "h4-controlled-arandano-10.definition.v2"
+    },
+    "required_abstentions": [],
+    "warnings": [],
+    "review_status": "awaiting_human_review",
+    "abstention_coverage_policy": "A correct explicit abstention satisfies its required element; omission does not."
+  }
+]

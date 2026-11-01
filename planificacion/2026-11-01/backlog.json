@@ -198,7 +198,9 @@
       "owner": "Desarrollo",
       "deliverable": "Scores OOS, percentiles del entrenamiento, ensemble de pesos iguales, top K y caracterización.",
       "acceptance": "Percentiles calculados en entrenamiento previo, no en el lote puntuado; K por producto en universo común y desempate por fecha/destino; w+1/w+2 solo para rúbrica retrospectiva; q/r/u, solapamiento y sensibilidad documentados.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Reglas CDF de entrenamiento, presupuesto por producto y rubrica 3 semanas implementadas y probadas; falta integracion de detectores y ejecucion historica elegible.",
+      "execution_evidence": "ejecucion/continuacion.md"
     },
     {
       "id": "P09",
@@ -261,8 +263,8 @@
       "deliverable": "Diez esquemas por cada producto, 30 casos completos y de fallo con clave común y guía ciega.",
       "acceptance": "Todos los diez tipos exigidos están representados por producto; los 30 agregados actuales no se etiquetan como catálogo H4 definitivo.",
       "status": "en_curso",
-      "execution_note": "Tolerancia corregida y probada; faltan catalogo final y ensayos.",
-      "execution_evidence": "ejecucion/avance.md"
+      "execution_note": "30 casos artificiales de los diez escenarios, claves separadas, 180 turnos sin ejecutar y guard de congelamiento. Faltan revision humana, runner y evaluacion.",
+      "execution_evidence": "ejecucion/continuacion.md"
     },
     {
       "id": "P12",

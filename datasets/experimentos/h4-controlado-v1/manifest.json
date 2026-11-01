@@ -1,0 +1,18 @@
+{
+  "status": "prepared_not_executed_not_human_reviewed",
+  "thesis_reference": "3.9.5.1; planificacion/2026-11-01/fundamento-tesis.json T07",
+  "data_kind": "artificial_controlled_cases_not_forecast_history",
+  "cases": 30,
+  "slots": 180,
+  "outputs_generated": 0,
+  "design_sha256": "d36a773204b5359716cabdf64b775aeda8e31eea8459d7f75875955aef74f4a7",
+  "generator_frozen": false,
+  "calls_to_local_or_paid_providers": 0,
+  "pilot_catalogue_superseded_for_final_H4": "datasets/tratamiento/2026-11-01/h4-casos-30.json",
+  "pending": [
+    "Human review of factual keys and abstention coverage policy",
+    "Freeze generator, prompt, corpus, retrieval and correction settings",
+    "Implement and verify paired runner and blind grading",
+    "Execute 180 paired outputs and aggregate repetitions within case first"
+  ]
+}

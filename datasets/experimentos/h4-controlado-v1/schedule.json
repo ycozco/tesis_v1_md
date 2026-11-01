@@ -1,0 +1,1622 @@
+[
+  {
+    "case_id": "h4-controlled-palta-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "f4b4e21ef7794a5d2bf7f0e0383f42751db3976dde4073756208ff14aef82e9a",
+    "key_sha256": "fa91bc1870c3ff9cc47835e338773aa9f644d87790f2c1bde5ce28dd1d66e88b",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "f4b4e21ef7794a5d2bf7f0e0383f42751db3976dde4073756208ff14aef82e9a",
+    "key_sha256": "fa91bc1870c3ff9cc47835e338773aa9f644d87790f2c1bde5ce28dd1d66e88b",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "f4b4e21ef7794a5d2bf7f0e0383f42751db3976dde4073756208ff14aef82e9a",
+    "key_sha256": "fa91bc1870c3ff9cc47835e338773aa9f644d87790f2c1bde5ce28dd1d66e88b",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "f4b4e21ef7794a5d2bf7f0e0383f42751db3976dde4073756208ff14aef82e9a",
+    "key_sha256": "fa91bc1870c3ff9cc47835e338773aa9f644d87790f2c1bde5ce28dd1d66e88b",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "f4b4e21ef7794a5d2bf7f0e0383f42751db3976dde4073756208ff14aef82e9a",
+    "key_sha256": "fa91bc1870c3ff9cc47835e338773aa9f644d87790f2c1bde5ce28dd1d66e88b",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "f4b4e21ef7794a5d2bf7f0e0383f42751db3976dde4073756208ff14aef82e9a",
+    "key_sha256": "fa91bc1870c3ff9cc47835e338773aa9f644d87790f2c1bde5ce28dd1d66e88b",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "4fd7dada285e7ab28f3c385908b02d96d1e0b14a9a7baeba3d00501fe8affc86",
+    "key_sha256": "091e5c7ece34691f0bc8fff5ab1993472e923a23b8e9b2b9cce129f5de261e46",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "4fd7dada285e7ab28f3c385908b02d96d1e0b14a9a7baeba3d00501fe8affc86",
+    "key_sha256": "091e5c7ece34691f0bc8fff5ab1993472e923a23b8e9b2b9cce129f5de261e46",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "4fd7dada285e7ab28f3c385908b02d96d1e0b14a9a7baeba3d00501fe8affc86",
+    "key_sha256": "091e5c7ece34691f0bc8fff5ab1993472e923a23b8e9b2b9cce129f5de261e46",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "4fd7dada285e7ab28f3c385908b02d96d1e0b14a9a7baeba3d00501fe8affc86",
+    "key_sha256": "091e5c7ece34691f0bc8fff5ab1993472e923a23b8e9b2b9cce129f5de261e46",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "4fd7dada285e7ab28f3c385908b02d96d1e0b14a9a7baeba3d00501fe8affc86",
+    "key_sha256": "091e5c7ece34691f0bc8fff5ab1993472e923a23b8e9b2b9cce129f5de261e46",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "4fd7dada285e7ab28f3c385908b02d96d1e0b14a9a7baeba3d00501fe8affc86",
+    "key_sha256": "091e5c7ece34691f0bc8fff5ab1993472e923a23b8e9b2b9cce129f5de261e46",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "df110abb1e5bcc6b92ec02c23deed4c531724c6aba02bafad48908ad70d80b0a",
+    "key_sha256": "88e2e6faec2bef1358346f7d7ef205f053497c150088789f1cb10aa0f31db5cf",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "df110abb1e5bcc6b92ec02c23deed4c531724c6aba02bafad48908ad70d80b0a",
+    "key_sha256": "88e2e6faec2bef1358346f7d7ef205f053497c150088789f1cb10aa0f31db5cf",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "df110abb1e5bcc6b92ec02c23deed4c531724c6aba02bafad48908ad70d80b0a",
+    "key_sha256": "88e2e6faec2bef1358346f7d7ef205f053497c150088789f1cb10aa0f31db5cf",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "df110abb1e5bcc6b92ec02c23deed4c531724c6aba02bafad48908ad70d80b0a",
+    "key_sha256": "88e2e6faec2bef1358346f7d7ef205f053497c150088789f1cb10aa0f31db5cf",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "df110abb1e5bcc6b92ec02c23deed4c531724c6aba02bafad48908ad70d80b0a",
+    "key_sha256": "88e2e6faec2bef1358346f7d7ef205f053497c150088789f1cb10aa0f31db5cf",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "df110abb1e5bcc6b92ec02c23deed4c531724c6aba02bafad48908ad70d80b0a",
+    "key_sha256": "88e2e6faec2bef1358346f7d7ef205f053497c150088789f1cb10aa0f31db5cf",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "298e4ebdaf3be3e17112f87c1ccc7dd107e260580abfe84549f6307b5955056b",
+    "key_sha256": "64234b137dbc39701277b5908eaad05e9c3326da6733f198b2444ba29c3022e0",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "298e4ebdaf3be3e17112f87c1ccc7dd107e260580abfe84549f6307b5955056b",
+    "key_sha256": "64234b137dbc39701277b5908eaad05e9c3326da6733f198b2444ba29c3022e0",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "298e4ebdaf3be3e17112f87c1ccc7dd107e260580abfe84549f6307b5955056b",
+    "key_sha256": "64234b137dbc39701277b5908eaad05e9c3326da6733f198b2444ba29c3022e0",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "298e4ebdaf3be3e17112f87c1ccc7dd107e260580abfe84549f6307b5955056b",
+    "key_sha256": "64234b137dbc39701277b5908eaad05e9c3326da6733f198b2444ba29c3022e0",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "298e4ebdaf3be3e17112f87c1ccc7dd107e260580abfe84549f6307b5955056b",
+    "key_sha256": "64234b137dbc39701277b5908eaad05e9c3326da6733f198b2444ba29c3022e0",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "298e4ebdaf3be3e17112f87c1ccc7dd107e260580abfe84549f6307b5955056b",
+    "key_sha256": "64234b137dbc39701277b5908eaad05e9c3326da6733f198b2444ba29c3022e0",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "fe3ee19d9e294c5f9e147ebb0fa4b27721c565a8087a12e9cfe106c84ba86a5f",
+    "key_sha256": "62c697e6c7d2ffd57ec799441a2b76e91384e3ce82e5f759ed83cefed7cd11f7",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "fe3ee19d9e294c5f9e147ebb0fa4b27721c565a8087a12e9cfe106c84ba86a5f",
+    "key_sha256": "62c697e6c7d2ffd57ec799441a2b76e91384e3ce82e5f759ed83cefed7cd11f7",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "fe3ee19d9e294c5f9e147ebb0fa4b27721c565a8087a12e9cfe106c84ba86a5f",
+    "key_sha256": "62c697e6c7d2ffd57ec799441a2b76e91384e3ce82e5f759ed83cefed7cd11f7",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "fe3ee19d9e294c5f9e147ebb0fa4b27721c565a8087a12e9cfe106c84ba86a5f",
+    "key_sha256": "62c697e6c7d2ffd57ec799441a2b76e91384e3ce82e5f759ed83cefed7cd11f7",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "fe3ee19d9e294c5f9e147ebb0fa4b27721c565a8087a12e9cfe106c84ba86a5f",
+    "key_sha256": "62c697e6c7d2ffd57ec799441a2b76e91384e3ce82e5f759ed83cefed7cd11f7",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "fe3ee19d9e294c5f9e147ebb0fa4b27721c565a8087a12e9cfe106c84ba86a5f",
+    "key_sha256": "62c697e6c7d2ffd57ec799441a2b76e91384e3ce82e5f759ed83cefed7cd11f7",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "5c0b7705ebb3067ee738dfa9a5a67c4868caff1edf85b4991b69df5767599bbb",
+    "key_sha256": "49943c36d73b254d816200ba8b4d2bb5b1ed05b1ebe991c9ef20d941820fcba2",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "5c0b7705ebb3067ee738dfa9a5a67c4868caff1edf85b4991b69df5767599bbb",
+    "key_sha256": "49943c36d73b254d816200ba8b4d2bb5b1ed05b1ebe991c9ef20d941820fcba2",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "5c0b7705ebb3067ee738dfa9a5a67c4868caff1edf85b4991b69df5767599bbb",
+    "key_sha256": "49943c36d73b254d816200ba8b4d2bb5b1ed05b1ebe991c9ef20d941820fcba2",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "5c0b7705ebb3067ee738dfa9a5a67c4868caff1edf85b4991b69df5767599bbb",
+    "key_sha256": "49943c36d73b254d816200ba8b4d2bb5b1ed05b1ebe991c9ef20d941820fcba2",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "5c0b7705ebb3067ee738dfa9a5a67c4868caff1edf85b4991b69df5767599bbb",
+    "key_sha256": "49943c36d73b254d816200ba8b4d2bb5b1ed05b1ebe991c9ef20d941820fcba2",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "5c0b7705ebb3067ee738dfa9a5a67c4868caff1edf85b4991b69df5767599bbb",
+    "key_sha256": "49943c36d73b254d816200ba8b4d2bb5b1ed05b1ebe991c9ef20d941820fcba2",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "91329c7a7037de89276baf60ce86f163e55ede3aa7cddb96ffc27fcfe2d3ebc2",
+    "key_sha256": "134575ec745cb5db715882ff2adcff11969c58bb13f1e0b1fa1cfe1add2cf031",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "91329c7a7037de89276baf60ce86f163e55ede3aa7cddb96ffc27fcfe2d3ebc2",
+    "key_sha256": "134575ec745cb5db715882ff2adcff11969c58bb13f1e0b1fa1cfe1add2cf031",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "91329c7a7037de89276baf60ce86f163e55ede3aa7cddb96ffc27fcfe2d3ebc2",
+    "key_sha256": "134575ec745cb5db715882ff2adcff11969c58bb13f1e0b1fa1cfe1add2cf031",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "91329c7a7037de89276baf60ce86f163e55ede3aa7cddb96ffc27fcfe2d3ebc2",
+    "key_sha256": "134575ec745cb5db715882ff2adcff11969c58bb13f1e0b1fa1cfe1add2cf031",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "91329c7a7037de89276baf60ce86f163e55ede3aa7cddb96ffc27fcfe2d3ebc2",
+    "key_sha256": "134575ec745cb5db715882ff2adcff11969c58bb13f1e0b1fa1cfe1add2cf031",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "91329c7a7037de89276baf60ce86f163e55ede3aa7cddb96ffc27fcfe2d3ebc2",
+    "key_sha256": "134575ec745cb5db715882ff2adcff11969c58bb13f1e0b1fa1cfe1add2cf031",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "f1ead62a9c0ce147b2d0267e4d6dad3364f9a2e78d88541a3af49f13791e8551",
+    "key_sha256": "b58f0e70d3d2aefc1fc0fbac0be64ce4b97ef7dcfc2a71f796990fbc5f1a8c42",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "f1ead62a9c0ce147b2d0267e4d6dad3364f9a2e78d88541a3af49f13791e8551",
+    "key_sha256": "b58f0e70d3d2aefc1fc0fbac0be64ce4b97ef7dcfc2a71f796990fbc5f1a8c42",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "f1ead62a9c0ce147b2d0267e4d6dad3364f9a2e78d88541a3af49f13791e8551",
+    "key_sha256": "b58f0e70d3d2aefc1fc0fbac0be64ce4b97ef7dcfc2a71f796990fbc5f1a8c42",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "f1ead62a9c0ce147b2d0267e4d6dad3364f9a2e78d88541a3af49f13791e8551",
+    "key_sha256": "b58f0e70d3d2aefc1fc0fbac0be64ce4b97ef7dcfc2a71f796990fbc5f1a8c42",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "f1ead62a9c0ce147b2d0267e4d6dad3364f9a2e78d88541a3af49f13791e8551",
+    "key_sha256": "b58f0e70d3d2aefc1fc0fbac0be64ce4b97ef7dcfc2a71f796990fbc5f1a8c42",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "f1ead62a9c0ce147b2d0267e4d6dad3364f9a2e78d88541a3af49f13791e8551",
+    "key_sha256": "b58f0e70d3d2aefc1fc0fbac0be64ce4b97ef7dcfc2a71f796990fbc5f1a8c42",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "5d58f1617a0a05d335d667174d4fd408a408cd2550b84aeeac713b8d269d3216",
+    "key_sha256": "2eefa32cebd58b9316413865e0b751b4600247508c87e3f39f8b4397be3ac0e6",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "5d58f1617a0a05d335d667174d4fd408a408cd2550b84aeeac713b8d269d3216",
+    "key_sha256": "2eefa32cebd58b9316413865e0b751b4600247508c87e3f39f8b4397be3ac0e6",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "5d58f1617a0a05d335d667174d4fd408a408cd2550b84aeeac713b8d269d3216",
+    "key_sha256": "2eefa32cebd58b9316413865e0b751b4600247508c87e3f39f8b4397be3ac0e6",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "5d58f1617a0a05d335d667174d4fd408a408cd2550b84aeeac713b8d269d3216",
+    "key_sha256": "2eefa32cebd58b9316413865e0b751b4600247508c87e3f39f8b4397be3ac0e6",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "5d58f1617a0a05d335d667174d4fd408a408cd2550b84aeeac713b8d269d3216",
+    "key_sha256": "2eefa32cebd58b9316413865e0b751b4600247508c87e3f39f8b4397be3ac0e6",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "5d58f1617a0a05d335d667174d4fd408a408cd2550b84aeeac713b8d269d3216",
+    "key_sha256": "2eefa32cebd58b9316413865e0b751b4600247508c87e3f39f8b4397be3ac0e6",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "cb71079778669657a1649b577bc216233f4a606b22208b8d5820902904d29027",
+    "key_sha256": "3ebc29c09a282ea63d136acfb13bcb639fab30d64ebaf6fa71ec7f584bb06674",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "cb71079778669657a1649b577bc216233f4a606b22208b8d5820902904d29027",
+    "key_sha256": "3ebc29c09a282ea63d136acfb13bcb639fab30d64ebaf6fa71ec7f584bb06674",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "cb71079778669657a1649b577bc216233f4a606b22208b8d5820902904d29027",
+    "key_sha256": "3ebc29c09a282ea63d136acfb13bcb639fab30d64ebaf6fa71ec7f584bb06674",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "cb71079778669657a1649b577bc216233f4a606b22208b8d5820902904d29027",
+    "key_sha256": "3ebc29c09a282ea63d136acfb13bcb639fab30d64ebaf6fa71ec7f584bb06674",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "cb71079778669657a1649b577bc216233f4a606b22208b8d5820902904d29027",
+    "key_sha256": "3ebc29c09a282ea63d136acfb13bcb639fab30d64ebaf6fa71ec7f584bb06674",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-palta-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "cb71079778669657a1649b577bc216233f4a606b22208b8d5820902904d29027",
+    "key_sha256": "3ebc29c09a282ea63d136acfb13bcb639fab30d64ebaf6fa71ec7f584bb06674",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "77cb28dfae9a879b00c8441293ce11c8744db72aa69e44424812d34e77467fa0",
+    "key_sha256": "8743ee3aa3202ea149a0fd1d49ee377a898b3c291649b7ee05d2f4753a60a65d",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "77cb28dfae9a879b00c8441293ce11c8744db72aa69e44424812d34e77467fa0",
+    "key_sha256": "8743ee3aa3202ea149a0fd1d49ee377a898b3c291649b7ee05d2f4753a60a65d",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "77cb28dfae9a879b00c8441293ce11c8744db72aa69e44424812d34e77467fa0",
+    "key_sha256": "8743ee3aa3202ea149a0fd1d49ee377a898b3c291649b7ee05d2f4753a60a65d",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "77cb28dfae9a879b00c8441293ce11c8744db72aa69e44424812d34e77467fa0",
+    "key_sha256": "8743ee3aa3202ea149a0fd1d49ee377a898b3c291649b7ee05d2f4753a60a65d",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "77cb28dfae9a879b00c8441293ce11c8744db72aa69e44424812d34e77467fa0",
+    "key_sha256": "8743ee3aa3202ea149a0fd1d49ee377a898b3c291649b7ee05d2f4753a60a65d",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "77cb28dfae9a879b00c8441293ce11c8744db72aa69e44424812d34e77467fa0",
+    "key_sha256": "8743ee3aa3202ea149a0fd1d49ee377a898b3c291649b7ee05d2f4753a60a65d",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "9db437f2e7b6e7af6803ef25134e567ab992f93819b45055d2405fce33729567",
+    "key_sha256": "e432f9a7350e2d6c184f1ad96b5dc5ad0655d5a7dcc735add6991d5652b9b999",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "9db437f2e7b6e7af6803ef25134e567ab992f93819b45055d2405fce33729567",
+    "key_sha256": "e432f9a7350e2d6c184f1ad96b5dc5ad0655d5a7dcc735add6991d5652b9b999",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "9db437f2e7b6e7af6803ef25134e567ab992f93819b45055d2405fce33729567",
+    "key_sha256": "e432f9a7350e2d6c184f1ad96b5dc5ad0655d5a7dcc735add6991d5652b9b999",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "9db437f2e7b6e7af6803ef25134e567ab992f93819b45055d2405fce33729567",
+    "key_sha256": "e432f9a7350e2d6c184f1ad96b5dc5ad0655d5a7dcc735add6991d5652b9b999",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "9db437f2e7b6e7af6803ef25134e567ab992f93819b45055d2405fce33729567",
+    "key_sha256": "e432f9a7350e2d6c184f1ad96b5dc5ad0655d5a7dcc735add6991d5652b9b999",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "9db437f2e7b6e7af6803ef25134e567ab992f93819b45055d2405fce33729567",
+    "key_sha256": "e432f9a7350e2d6c184f1ad96b5dc5ad0655d5a7dcc735add6991d5652b9b999",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "a775a4245b17e9ea6bcd8dc83d4f5193fad848cd5dd4484d6d5ee6929832a42e",
+    "key_sha256": "3ac0edb579b9a63df94acfc666b00d27b915c8192cb6857f171d26647e211088",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "a775a4245b17e9ea6bcd8dc83d4f5193fad848cd5dd4484d6d5ee6929832a42e",
+    "key_sha256": "3ac0edb579b9a63df94acfc666b00d27b915c8192cb6857f171d26647e211088",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "a775a4245b17e9ea6bcd8dc83d4f5193fad848cd5dd4484d6d5ee6929832a42e",
+    "key_sha256": "3ac0edb579b9a63df94acfc666b00d27b915c8192cb6857f171d26647e211088",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "a775a4245b17e9ea6bcd8dc83d4f5193fad848cd5dd4484d6d5ee6929832a42e",
+    "key_sha256": "3ac0edb579b9a63df94acfc666b00d27b915c8192cb6857f171d26647e211088",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "a775a4245b17e9ea6bcd8dc83d4f5193fad848cd5dd4484d6d5ee6929832a42e",
+    "key_sha256": "3ac0edb579b9a63df94acfc666b00d27b915c8192cb6857f171d26647e211088",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "a775a4245b17e9ea6bcd8dc83d4f5193fad848cd5dd4484d6d5ee6929832a42e",
+    "key_sha256": "3ac0edb579b9a63df94acfc666b00d27b915c8192cb6857f171d26647e211088",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "571ef5b42b98ebc5a6b3dcaa79c22416b214e8680dbc19b168ec257b8e43d68e",
+    "key_sha256": "6af6fd0b9600cba3f672c04599247f3ee44df85c482d9d48f0d92da312d9ea0e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "571ef5b42b98ebc5a6b3dcaa79c22416b214e8680dbc19b168ec257b8e43d68e",
+    "key_sha256": "6af6fd0b9600cba3f672c04599247f3ee44df85c482d9d48f0d92da312d9ea0e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "571ef5b42b98ebc5a6b3dcaa79c22416b214e8680dbc19b168ec257b8e43d68e",
+    "key_sha256": "6af6fd0b9600cba3f672c04599247f3ee44df85c482d9d48f0d92da312d9ea0e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "571ef5b42b98ebc5a6b3dcaa79c22416b214e8680dbc19b168ec257b8e43d68e",
+    "key_sha256": "6af6fd0b9600cba3f672c04599247f3ee44df85c482d9d48f0d92da312d9ea0e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "571ef5b42b98ebc5a6b3dcaa79c22416b214e8680dbc19b168ec257b8e43d68e",
+    "key_sha256": "6af6fd0b9600cba3f672c04599247f3ee44df85c482d9d48f0d92da312d9ea0e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "571ef5b42b98ebc5a6b3dcaa79c22416b214e8680dbc19b168ec257b8e43d68e",
+    "key_sha256": "6af6fd0b9600cba3f672c04599247f3ee44df85c482d9d48f0d92da312d9ea0e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "c179fbe1cb79822a34a1724c8589a3e62ff52381a8859a52addb29f446be10c9",
+    "key_sha256": "76e11ccb29821397d4725e8dca0d92e9712c7b2656044cd244fdd30cb335fed1",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "c179fbe1cb79822a34a1724c8589a3e62ff52381a8859a52addb29f446be10c9",
+    "key_sha256": "76e11ccb29821397d4725e8dca0d92e9712c7b2656044cd244fdd30cb335fed1",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "c179fbe1cb79822a34a1724c8589a3e62ff52381a8859a52addb29f446be10c9",
+    "key_sha256": "76e11ccb29821397d4725e8dca0d92e9712c7b2656044cd244fdd30cb335fed1",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "c179fbe1cb79822a34a1724c8589a3e62ff52381a8859a52addb29f446be10c9",
+    "key_sha256": "76e11ccb29821397d4725e8dca0d92e9712c7b2656044cd244fdd30cb335fed1",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "c179fbe1cb79822a34a1724c8589a3e62ff52381a8859a52addb29f446be10c9",
+    "key_sha256": "76e11ccb29821397d4725e8dca0d92e9712c7b2656044cd244fdd30cb335fed1",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "c179fbe1cb79822a34a1724c8589a3e62ff52381a8859a52addb29f446be10c9",
+    "key_sha256": "76e11ccb29821397d4725e8dca0d92e9712c7b2656044cd244fdd30cb335fed1",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "efa8ed526bfbeedc6762d6b5630b59f52c0e8bc8f852ca1f1f794f2b4578a9bd",
+    "key_sha256": "f461d5e502eda549216af22ecdde612b3802d7e18a8d97d67d4597a96cf3835c",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "efa8ed526bfbeedc6762d6b5630b59f52c0e8bc8f852ca1f1f794f2b4578a9bd",
+    "key_sha256": "f461d5e502eda549216af22ecdde612b3802d7e18a8d97d67d4597a96cf3835c",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "efa8ed526bfbeedc6762d6b5630b59f52c0e8bc8f852ca1f1f794f2b4578a9bd",
+    "key_sha256": "f461d5e502eda549216af22ecdde612b3802d7e18a8d97d67d4597a96cf3835c",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "efa8ed526bfbeedc6762d6b5630b59f52c0e8bc8f852ca1f1f794f2b4578a9bd",
+    "key_sha256": "f461d5e502eda549216af22ecdde612b3802d7e18a8d97d67d4597a96cf3835c",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "efa8ed526bfbeedc6762d6b5630b59f52c0e8bc8f852ca1f1f794f2b4578a9bd",
+    "key_sha256": "f461d5e502eda549216af22ecdde612b3802d7e18a8d97d67d4597a96cf3835c",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "efa8ed526bfbeedc6762d6b5630b59f52c0e8bc8f852ca1f1f794f2b4578a9bd",
+    "key_sha256": "f461d5e502eda549216af22ecdde612b3802d7e18a8d97d67d4597a96cf3835c",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "eed6c1c7f951175c32253ea61755725dc96da67befaa986df6215a41a898b1fe",
+    "key_sha256": "3bdb06e93089d28d38f3536d2d012ced85fc495736681b9b591cbf6956444200",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "eed6c1c7f951175c32253ea61755725dc96da67befaa986df6215a41a898b1fe",
+    "key_sha256": "3bdb06e93089d28d38f3536d2d012ced85fc495736681b9b591cbf6956444200",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "eed6c1c7f951175c32253ea61755725dc96da67befaa986df6215a41a898b1fe",
+    "key_sha256": "3bdb06e93089d28d38f3536d2d012ced85fc495736681b9b591cbf6956444200",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "eed6c1c7f951175c32253ea61755725dc96da67befaa986df6215a41a898b1fe",
+    "key_sha256": "3bdb06e93089d28d38f3536d2d012ced85fc495736681b9b591cbf6956444200",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "eed6c1c7f951175c32253ea61755725dc96da67befaa986df6215a41a898b1fe",
+    "key_sha256": "3bdb06e93089d28d38f3536d2d012ced85fc495736681b9b591cbf6956444200",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "eed6c1c7f951175c32253ea61755725dc96da67befaa986df6215a41a898b1fe",
+    "key_sha256": "3bdb06e93089d28d38f3536d2d012ced85fc495736681b9b591cbf6956444200",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "055c3e9bd8eb835d00cc33d894c9a0ef15833b7c112fc968d8506216647440e1",
+    "key_sha256": "89668568f46d1e352dfc05d4d27256bca8ee2592921d01e7a19bc171fff7a9f4",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "055c3e9bd8eb835d00cc33d894c9a0ef15833b7c112fc968d8506216647440e1",
+    "key_sha256": "89668568f46d1e352dfc05d4d27256bca8ee2592921d01e7a19bc171fff7a9f4",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "055c3e9bd8eb835d00cc33d894c9a0ef15833b7c112fc968d8506216647440e1",
+    "key_sha256": "89668568f46d1e352dfc05d4d27256bca8ee2592921d01e7a19bc171fff7a9f4",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "055c3e9bd8eb835d00cc33d894c9a0ef15833b7c112fc968d8506216647440e1",
+    "key_sha256": "89668568f46d1e352dfc05d4d27256bca8ee2592921d01e7a19bc171fff7a9f4",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "055c3e9bd8eb835d00cc33d894c9a0ef15833b7c112fc968d8506216647440e1",
+    "key_sha256": "89668568f46d1e352dfc05d4d27256bca8ee2592921d01e7a19bc171fff7a9f4",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "055c3e9bd8eb835d00cc33d894c9a0ef15833b7c112fc968d8506216647440e1",
+    "key_sha256": "89668568f46d1e352dfc05d4d27256bca8ee2592921d01e7a19bc171fff7a9f4",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "32c96025de9d6b3f492665dc062d807cbffd92cb51ec37d532a1ea2263b3a18d",
+    "key_sha256": "38322e045f8e0b13e96fd8932241a566c772b78d2af4304a4c85289b5cdd4133",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "32c96025de9d6b3f492665dc062d807cbffd92cb51ec37d532a1ea2263b3a18d",
+    "key_sha256": "38322e045f8e0b13e96fd8932241a566c772b78d2af4304a4c85289b5cdd4133",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "32c96025de9d6b3f492665dc062d807cbffd92cb51ec37d532a1ea2263b3a18d",
+    "key_sha256": "38322e045f8e0b13e96fd8932241a566c772b78d2af4304a4c85289b5cdd4133",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "32c96025de9d6b3f492665dc062d807cbffd92cb51ec37d532a1ea2263b3a18d",
+    "key_sha256": "38322e045f8e0b13e96fd8932241a566c772b78d2af4304a4c85289b5cdd4133",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "32c96025de9d6b3f492665dc062d807cbffd92cb51ec37d532a1ea2263b3a18d",
+    "key_sha256": "38322e045f8e0b13e96fd8932241a566c772b78d2af4304a4c85289b5cdd4133",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "32c96025de9d6b3f492665dc062d807cbffd92cb51ec37d532a1ea2263b3a18d",
+    "key_sha256": "38322e045f8e0b13e96fd8932241a566c772b78d2af4304a4c85289b5cdd4133",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "50e9640286146fdc3e04cac189a003fe61aa65a137409d07b5bf2a680b8e9a9e",
+    "key_sha256": "9485a216a81bab90e7f4f365d9ec95c8f10d1a4b2df77bac7d16feaafb8cd939",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "50e9640286146fdc3e04cac189a003fe61aa65a137409d07b5bf2a680b8e9a9e",
+    "key_sha256": "9485a216a81bab90e7f4f365d9ec95c8f10d1a4b2df77bac7d16feaafb8cd939",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "50e9640286146fdc3e04cac189a003fe61aa65a137409d07b5bf2a680b8e9a9e",
+    "key_sha256": "9485a216a81bab90e7f4f365d9ec95c8f10d1a4b2df77bac7d16feaafb8cd939",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "50e9640286146fdc3e04cac189a003fe61aa65a137409d07b5bf2a680b8e9a9e",
+    "key_sha256": "9485a216a81bab90e7f4f365d9ec95c8f10d1a4b2df77bac7d16feaafb8cd939",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "50e9640286146fdc3e04cac189a003fe61aa65a137409d07b5bf2a680b8e9a9e",
+    "key_sha256": "9485a216a81bab90e7f4f365d9ec95c8f10d1a4b2df77bac7d16feaafb8cd939",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-uva-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "50e9640286146fdc3e04cac189a003fe61aa65a137409d07b5bf2a680b8e9a9e",
+    "key_sha256": "9485a216a81bab90e7f4f365d9ec95c8f10d1a4b2df77bac7d16feaafb8cd939",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "e38e595904deb94435b63925239a738f56127bc489b8d1b2c04251550e406c4b",
+    "key_sha256": "427f11a30cecbe3d92cfa2c68821d038224a8770e39e9ebda40ef54fdff3e21a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "e38e595904deb94435b63925239a738f56127bc489b8d1b2c04251550e406c4b",
+    "key_sha256": "427f11a30cecbe3d92cfa2c68821d038224a8770e39e9ebda40ef54fdff3e21a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-01",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "e38e595904deb94435b63925239a738f56127bc489b8d1b2c04251550e406c4b",
+    "key_sha256": "427f11a30cecbe3d92cfa2c68821d038224a8770e39e9ebda40ef54fdff3e21a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "e38e595904deb94435b63925239a738f56127bc489b8d1b2c04251550e406c4b",
+    "key_sha256": "427f11a30cecbe3d92cfa2c68821d038224a8770e39e9ebda40ef54fdff3e21a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "e38e595904deb94435b63925239a738f56127bc489b8d1b2c04251550e406c4b",
+    "key_sha256": "427f11a30cecbe3d92cfa2c68821d038224a8770e39e9ebda40ef54fdff3e21a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-01",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "e38e595904deb94435b63925239a738f56127bc489b8d1b2c04251550e406c4b",
+    "key_sha256": "427f11a30cecbe3d92cfa2c68821d038224a8770e39e9ebda40ef54fdff3e21a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "f1138200ceb6685e908add7ade13f5fc613e70b47d22eee4b1f7f5d55a4cfa2e",
+    "key_sha256": "04786aa006e0df9eb70b715e09eb54e169e7795a1282432cd4694e1d52212891",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "f1138200ceb6685e908add7ade13f5fc613e70b47d22eee4b1f7f5d55a4cfa2e",
+    "key_sha256": "04786aa006e0df9eb70b715e09eb54e169e7795a1282432cd4694e1d52212891",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-02",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "f1138200ceb6685e908add7ade13f5fc613e70b47d22eee4b1f7f5d55a4cfa2e",
+    "key_sha256": "04786aa006e0df9eb70b715e09eb54e169e7795a1282432cd4694e1d52212891",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "f1138200ceb6685e908add7ade13f5fc613e70b47d22eee4b1f7f5d55a4cfa2e",
+    "key_sha256": "04786aa006e0df9eb70b715e09eb54e169e7795a1282432cd4694e1d52212891",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "f1138200ceb6685e908add7ade13f5fc613e70b47d22eee4b1f7f5d55a4cfa2e",
+    "key_sha256": "04786aa006e0df9eb70b715e09eb54e169e7795a1282432cd4694e1d52212891",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-02",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "f1138200ceb6685e908add7ade13f5fc613e70b47d22eee4b1f7f5d55a4cfa2e",
+    "key_sha256": "04786aa006e0df9eb70b715e09eb54e169e7795a1282432cd4694e1d52212891",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "c4b4c53011053192982034d1ff470b129748662f8db60f5e12b324bad7b085fd",
+    "key_sha256": "f27914ec851d1553827c1f4d35bfbece294d5a386b4887eb43c659a5279d176a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "c4b4c53011053192982034d1ff470b129748662f8db60f5e12b324bad7b085fd",
+    "key_sha256": "f27914ec851d1553827c1f4d35bfbece294d5a386b4887eb43c659a5279d176a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-03",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "c4b4c53011053192982034d1ff470b129748662f8db60f5e12b324bad7b085fd",
+    "key_sha256": "f27914ec851d1553827c1f4d35bfbece294d5a386b4887eb43c659a5279d176a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "c4b4c53011053192982034d1ff470b129748662f8db60f5e12b324bad7b085fd",
+    "key_sha256": "f27914ec851d1553827c1f4d35bfbece294d5a386b4887eb43c659a5279d176a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "c4b4c53011053192982034d1ff470b129748662f8db60f5e12b324bad7b085fd",
+    "key_sha256": "f27914ec851d1553827c1f4d35bfbece294d5a386b4887eb43c659a5279d176a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-03",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "c4b4c53011053192982034d1ff470b129748662f8db60f5e12b324bad7b085fd",
+    "key_sha256": "f27914ec851d1553827c1f4d35bfbece294d5a386b4887eb43c659a5279d176a",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "f8d7e39e6ec974b6daddbcc959985e1ceb74d9c8be8ea9070bc2c453e04e0ef8",
+    "key_sha256": "ad364b925f0556ce8f164ca573a2ea74d3a521d0508237398f08352e5a58cc07",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "f8d7e39e6ec974b6daddbcc959985e1ceb74d9c8be8ea9070bc2c453e04e0ef8",
+    "key_sha256": "ad364b925f0556ce8f164ca573a2ea74d3a521d0508237398f08352e5a58cc07",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-04",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "f8d7e39e6ec974b6daddbcc959985e1ceb74d9c8be8ea9070bc2c453e04e0ef8",
+    "key_sha256": "ad364b925f0556ce8f164ca573a2ea74d3a521d0508237398f08352e5a58cc07",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "f8d7e39e6ec974b6daddbcc959985e1ceb74d9c8be8ea9070bc2c453e04e0ef8",
+    "key_sha256": "ad364b925f0556ce8f164ca573a2ea74d3a521d0508237398f08352e5a58cc07",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "f8d7e39e6ec974b6daddbcc959985e1ceb74d9c8be8ea9070bc2c453e04e0ef8",
+    "key_sha256": "ad364b925f0556ce8f164ca573a2ea74d3a521d0508237398f08352e5a58cc07",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-04",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "f8d7e39e6ec974b6daddbcc959985e1ceb74d9c8be8ea9070bc2c453e04e0ef8",
+    "key_sha256": "ad364b925f0556ce8f164ca573a2ea74d3a521d0508237398f08352e5a58cc07",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "1dc82a07ea66ab8656e622661474c07dfd657709b868601279006a6b16709eee",
+    "key_sha256": "07bdaf613ddb7efbfe539b21e579a41fe4d57ef8f8803665298a5f2d70ea0498",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "1dc82a07ea66ab8656e622661474c07dfd657709b868601279006a6b16709eee",
+    "key_sha256": "07bdaf613ddb7efbfe539b21e579a41fe4d57ef8f8803665298a5f2d70ea0498",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-05",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "1dc82a07ea66ab8656e622661474c07dfd657709b868601279006a6b16709eee",
+    "key_sha256": "07bdaf613ddb7efbfe539b21e579a41fe4d57ef8f8803665298a5f2d70ea0498",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "1dc82a07ea66ab8656e622661474c07dfd657709b868601279006a6b16709eee",
+    "key_sha256": "07bdaf613ddb7efbfe539b21e579a41fe4d57ef8f8803665298a5f2d70ea0498",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "1dc82a07ea66ab8656e622661474c07dfd657709b868601279006a6b16709eee",
+    "key_sha256": "07bdaf613ddb7efbfe539b21e579a41fe4d57ef8f8803665298a5f2d70ea0498",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-05",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "1dc82a07ea66ab8656e622661474c07dfd657709b868601279006a6b16709eee",
+    "key_sha256": "07bdaf613ddb7efbfe539b21e579a41fe4d57ef8f8803665298a5f2d70ea0498",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "c6eb5b07850e6e5099e6046291e4897f8fd789cbf02dd48068b8b779e92ab176",
+    "key_sha256": "3651b20d689853ae341484b1a904c519ba7ee806c6a72b7da0ffe16b4545aa4e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "c6eb5b07850e6e5099e6046291e4897f8fd789cbf02dd48068b8b779e92ab176",
+    "key_sha256": "3651b20d689853ae341484b1a904c519ba7ee806c6a72b7da0ffe16b4545aa4e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-06",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "c6eb5b07850e6e5099e6046291e4897f8fd789cbf02dd48068b8b779e92ab176",
+    "key_sha256": "3651b20d689853ae341484b1a904c519ba7ee806c6a72b7da0ffe16b4545aa4e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "c6eb5b07850e6e5099e6046291e4897f8fd789cbf02dd48068b8b779e92ab176",
+    "key_sha256": "3651b20d689853ae341484b1a904c519ba7ee806c6a72b7da0ffe16b4545aa4e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "c6eb5b07850e6e5099e6046291e4897f8fd789cbf02dd48068b8b779e92ab176",
+    "key_sha256": "3651b20d689853ae341484b1a904c519ba7ee806c6a72b7da0ffe16b4545aa4e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-06",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "c6eb5b07850e6e5099e6046291e4897f8fd789cbf02dd48068b8b779e92ab176",
+    "key_sha256": "3651b20d689853ae341484b1a904c519ba7ee806c6a72b7da0ffe16b4545aa4e",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "9274a892f3c8171610501fd33f91b52ac39557891aadeb39979ec595d5567e06",
+    "key_sha256": "c0960530d5fc919f6221fbe808d85a69f90652e66a1baac51d34fb0f627ce289",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "9274a892f3c8171610501fd33f91b52ac39557891aadeb39979ec595d5567e06",
+    "key_sha256": "c0960530d5fc919f6221fbe808d85a69f90652e66a1baac51d34fb0f627ce289",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-07",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "9274a892f3c8171610501fd33f91b52ac39557891aadeb39979ec595d5567e06",
+    "key_sha256": "c0960530d5fc919f6221fbe808d85a69f90652e66a1baac51d34fb0f627ce289",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "9274a892f3c8171610501fd33f91b52ac39557891aadeb39979ec595d5567e06",
+    "key_sha256": "c0960530d5fc919f6221fbe808d85a69f90652e66a1baac51d34fb0f627ce289",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "9274a892f3c8171610501fd33f91b52ac39557891aadeb39979ec595d5567e06",
+    "key_sha256": "c0960530d5fc919f6221fbe808d85a69f90652e66a1baac51d34fb0f627ce289",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-07",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "9274a892f3c8171610501fd33f91b52ac39557891aadeb39979ec595d5567e06",
+    "key_sha256": "c0960530d5fc919f6221fbe808d85a69f90652e66a1baac51d34fb0f627ce289",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "3d0e84a3314b0f06f07289c4af7fa8fd1f7defa1196f722aa2065cab9e572362",
+    "key_sha256": "c92a9a2e418694c1b435e71f48d4b112e6c9b9d707cc4da4b5595189ce3dfdde",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "3d0e84a3314b0f06f07289c4af7fa8fd1f7defa1196f722aa2065cab9e572362",
+    "key_sha256": "c92a9a2e418694c1b435e71f48d4b112e6c9b9d707cc4da4b5595189ce3dfdde",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-08",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "3d0e84a3314b0f06f07289c4af7fa8fd1f7defa1196f722aa2065cab9e572362",
+    "key_sha256": "c92a9a2e418694c1b435e71f48d4b112e6c9b9d707cc4da4b5595189ce3dfdde",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "3d0e84a3314b0f06f07289c4af7fa8fd1f7defa1196f722aa2065cab9e572362",
+    "key_sha256": "c92a9a2e418694c1b435e71f48d4b112e6c9b9d707cc4da4b5595189ce3dfdde",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "3d0e84a3314b0f06f07289c4af7fa8fd1f7defa1196f722aa2065cab9e572362",
+    "key_sha256": "c92a9a2e418694c1b435e71f48d4b112e6c9b9d707cc4da4b5595189ce3dfdde",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-08",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "3d0e84a3314b0f06f07289c4af7fa8fd1f7defa1196f722aa2065cab9e572362",
+    "key_sha256": "c92a9a2e418694c1b435e71f48d4b112e6c9b9d707cc4da4b5595189ce3dfdde",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "96769b299140577d61c5701aaa6a592d96ea9389c76ff13063d2f5684d5faf93",
+    "key_sha256": "a69a94f15bfac8636e61f7c07a5f23e23bc282596a06271874451c7167a1e180",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "96769b299140577d61c5701aaa6a592d96ea9389c76ff13063d2f5684d5faf93",
+    "key_sha256": "a69a94f15bfac8636e61f7c07a5f23e23bc282596a06271874451c7167a1e180",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-09",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "96769b299140577d61c5701aaa6a592d96ea9389c76ff13063d2f5684d5faf93",
+    "key_sha256": "a69a94f15bfac8636e61f7c07a5f23e23bc282596a06271874451c7167a1e180",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "96769b299140577d61c5701aaa6a592d96ea9389c76ff13063d2f5684d5faf93",
+    "key_sha256": "a69a94f15bfac8636e61f7c07a5f23e23bc282596a06271874451c7167a1e180",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "96769b299140577d61c5701aaa6a592d96ea9389c76ff13063d2f5684d5faf93",
+    "key_sha256": "a69a94f15bfac8636e61f7c07a5f23e23bc282596a06271874451c7167a1e180",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-09",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "96769b299140577d61c5701aaa6a592d96ea9389c76ff13063d2f5684d5faf93",
+    "key_sha256": "a69a94f15bfac8636e61f7c07a5f23e23bc282596a06271874451c7167a1e180",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 1,
+    "payload_sha256": "06369162d6316d4d71dff59d9d2564808ce0c5755ab466bf8a30f12369212c36",
+    "key_sha256": "48a36bb991d3bd1394a8219a36a59af3e12888c023f9a74c02ea2086179b9b26",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 2,
+    "payload_sha256": "06369162d6316d4d71dff59d9d2564808ce0c5755ab466bf8a30f12369212c36",
+    "key_sha256": "48a36bb991d3bd1394a8219a36a59af3e12888c023f9a74c02ea2086179b9b26",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-10",
+    "configuration": "reference_no_retrieval_no_validation",
+    "repetition": 3,
+    "payload_sha256": "06369162d6316d4d71dff59d9d2564808ce0c5755ab466bf8a30f12369212c36",
+    "key_sha256": "48a36bb991d3bd1394a8219a36a59af3e12888c023f9a74c02ea2086179b9b26",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 1,
+    "payload_sha256": "06369162d6316d4d71dff59d9d2564808ce0c5755ab466bf8a30f12369212c36",
+    "key_sha256": "48a36bb991d3bd1394a8219a36a59af3e12888c023f9a74c02ea2086179b9b26",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 2,
+    "payload_sha256": "06369162d6316d4d71dff59d9d2564808ce0c5755ab466bf8a30f12369212c36",
+    "key_sha256": "48a36bb991d3bd1394a8219a36a59af3e12888c023f9a74c02ea2086179b9b26",
+    "status": "not_executed",
+    "output": null
+  },
+  {
+    "case_id": "h4-controlled-arandano-10",
+    "configuration": "full_RAG_and_validation",
+    "repetition": 3,
+    "payload_sha256": "06369162d6316d4d71dff59d9d2564808ce0c5755ab466bf8a30f12369212c36",
+    "key_sha256": "48a36bb991d3bd1394a8219a36a59af3e12888c023f9a74c02ea2086179b9b26",
+    "status": "not_executed",
+    "output": null
+  }
+]

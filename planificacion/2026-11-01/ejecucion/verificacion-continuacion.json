@@ -1,0 +1,17 @@
+{
+  "tests_current_rules_reporting": 20,
+  "command": "python -B -m pytest tests/unit/test_h3_rules.py tests/unit/test_h4_design.py tests/unit/test_methodology.py tests/unit/test_research_protocol.py tests/reporting/test_reports.py -q",
+  "h4_builder_clean_stdlib_venv": true,
+  "h4_case_count": 30,
+  "h4_run_slots": 180,
+  "h4_outputs_generated": 0,
+  "paid_ai_calls": 0,
+  "h1_final_test_executed": false,
+  "prior_delivery": {
+    "commit": "ed103bc",
+    "github_push_confirmed": true,
+    "drive_file_id": "1IiJFMPBHuq4svBmh0KB5wv3DCETA6FHp",
+    "remote_size": 31069486,
+    "remote_sha256_verified": false
+  }
+}

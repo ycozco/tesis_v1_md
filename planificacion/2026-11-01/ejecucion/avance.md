@@ -18,8 +18,8 @@ Documento rector: [tesis vigente, modificación 23 de octubre](https://docs.goog
 | T01–T03 | Seis objetivos; cuatro hipótesis; evaluación técnica documental | Plan y fuente rectora versionados | `docs/02-10-capitulo1.md` conserva H1a–H1e y evaluación de usuarios antigua: requiere alineación editorial; no usar como protocolo rector |
 | T04–T05 | Cuatro referencias, grilla exacta, MAE macro por ambos objetivos | `methodology.py`, pruebas de huecos y disponibilidad; `grid-candidatos.json` | Integración del runner, desempates, selección completa en desarrollo |
 | T05–T06 | Disponibilidad histórica y calibración previa por serie | Auditoría, intervalos corregidos, pruebas de regresión | Certificados, universo común y residual ledger temporal; calendario congelado |
-| T07–T08 | H3 exploratorio y SHAP sin interpretación causal | Pilotos anteriores conservados como pilotos | Percentiles de entrenamiento, presupuesto por producto y rúbrica estacional final |
-| T09–T12 | Evidencia verificable, informes y reproducibilidad | Validador corregido; conciliación verificable y auditoría portable | Corpus/pgvector real, casos controlados H4, 180 ejecuciones, revisión ciega y E1–E3 |
+| T12 y sección 3.7 | H3 exploratorio y SHAP sin interpretación causal | Pilotos anteriores conservados como pilotos | Percentiles de entrenamiento, presupuesto por producto y rúbrica estacional final |
+| T07–T09 y T11 | Evidencia verificable, informes y reproducibilidad | Validador corregido; conciliación verificable y auditoría portable | Corpus/pgvector real, casos controlados H4, 180 ejecuciones, revisión ciega y E1–E3 |
 
 La matriz rastrea requisitos de la propuesta, pero no sustituye la matriz antecedente–hallazgo–adaptación: la verificación de los artículos primarios de cada antecedente sigue pendiente en P00.
 
