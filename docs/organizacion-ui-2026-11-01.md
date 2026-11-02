@@ -34,3 +34,6 @@ Esta entrega organiza la interfaz y corrige contenido puntual; no declara resuel
 ## Corrección aplicada posteriormente
 
 Navegación móvil en grilla de dos columnas (cuatro en ancho intermedio), evitando depender de una tira horizontal para descubrir secciones. Selector de objetivo adaptable a ancho móvil; tablas desplazables enfocables por teclado y etiquetadas. País de destino aclara que conserva el código de la fuente. Protocolo H4 actualizado y enlace directo a la tesis. Build aprobado; diff sin errores de espacios. La recuperación de la pestaña volvió a fallar con browser.user is unavailable: validación visual pendiente, sin nueva captura.
+
+## Rediseño visual visible
+Se incorporó portada de dos columnas, jerarquía tipográfica Outfit, acción principal, fondo con gradiente verde, tarjetas numeradas con aparición escalonada y navegación activa destacada. El navegador se recuperó al reiniciar su sesión de control; resumen verificado visualmente en escritorio y captura conservada en resumen-rediseno-2026-11-01.png. Build aprobado. Revisión móvil de este último cambio y medición de accesibilidad pendientes.

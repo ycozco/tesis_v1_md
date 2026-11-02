@@ -84,21 +84,26 @@ export default function ResearchDashboard() {
     link.click(); URL.revokeObjectURL(url)
   }
   return <div key={view} className="space-y-6 research-enter">
-    <header><p className="text-xs text-primary uppercase tracking-widest mb-2">Sistema de información y pronóstico</p>
+    <header className="research-page-heading"><p className="text-xs text-primary uppercase tracking-widest mb-2">Sistema de información y pronóstico</p>
       <div className="flex flex-wrap justify-between gap-3 items-start"><h1 className="font-headline-lg text-3xl md:text-4xl">{titles[view]}</h1><span className="glass-panel rounded-full px-3 py-2 text-xs text-primary border border-primary/20">Corte · 01 nov 2026</span></div>
       <p className="text-on-surface-variant mt-3 text-sm leading-relaxed">{descriptions[view]}</p></header>
     <div role="status" className="glass-panel rounded-xl px-4 py-3 text-sm text-on-surface-variant border-l-2 border-primary"><strong className="text-on-surface">Piloto de desarrollo · cobertura parcial.</strong> Las semanas sin registros permanecen desconocidas. La prueba final no se ha ejecutado.</div>
     {view === 'resumen' && <>
+      <section className="glass-card research-hero">
+        <div><span className="research-eyebrow">OBSERVAR · COMPARAR · VERIFICAR</span><h2>Los datos primero.<br /><span>La evidencia siempre.</span></h2><p>Explora palta, uva fresca y arándano por destino. Sigue cada resultado hasta su fuente y distingue lo observado de lo que todavía debemos probar.</p><Link className="research-primary-action" to="/dashboard?view=series">Explorar las series <span aria-hidden="true">→</span></Link></div>
+        <div className="research-hero-aside"><span className="material-symbols-outlined" aria-hidden="true">travel_explore</span><p>Perú → destinos de exportación</p><div className="research-product-tags"><span>Palta</span><span>Uva fresca</span><span>Arándano</span></div><small>Histórico parcial · análisis retrospectivo</small></div>
+      </section>
+
       <section className="grid sm:grid-cols-3 gap-4" aria-label="Alcance del conjunto mostrado"><Card label="Registros del piloto gráfico" value={number(summary.rows, 0)} detail="Históricos recuperados; no representan cobertura completa del mercado" /><Card label="Series producto–destino" value={summary.series} detail="La disponibilidad varía entre países y periodos" /><Card label="Estado experimental" value="En desarrollo" detail="Sin resultados finales H1/H3/H4; H2 no evaluable para la colección actual" /></section>
       <section className="glass-panel rounded-xl p-5"><h2 className="font-headline-md text-xl mb-2">¿Qué quieres consultar?</h2><p className="text-sm text-on-surface-variant">Empieza por los datos observados. Cada vista identifica su alcance y sus límites.</p></section>
-      <section className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">{[
+      <section className="research-destinations grid sm:grid-cols-2 xl:grid-cols-3 gap-4">{[
         ['series', 'Comparar destinos', 'Consulta series de FOB/kg y volumen por producto, país de destino y periodo.'],
         ['fuentes', 'Revisar las fuentes', 'Accede a la procedencia, cobertura y enlaces de los datos.'],
         ['pronosticos', 'Examinar modelos piloto', 'Consulta evaluación retrospectiva. Todavía no se emiten proyecciones finales.'],
         ['senales', 'Explorar señales piloto', 'Revisa selecciones históricas; no constituyen alertas comerciales.'],
         ['ia', 'Consultar reportes', 'Distingue respuestas artificiales archivadas de nuevas generaciones.'],
         ['proceso', 'Auditar el avance', 'Contrasta la colección ampliada, sus archivos y pendientes.'],
-      ].map(([id, title, text]) => <Link key={id} to={`/dashboard?view=${id}`} className="glass-card research-stage rounded-xl p-5 border border-white/10 hover:border-primary/40"><h2 className="font-headline-md text-lg text-primary mb-2">{title} <span aria-hidden="true">↗</span></h2><p className="text-sm text-on-surface-variant leading-relaxed">{text}</p></Link>)}</section>
+      ].map(([id, title, text], index) => <Link style={{ animationDelay: `${index * 55}ms` }} key={id} to={`/dashboard?view=${id}`} className="glass-card research-stage research-destination rounded-xl p-5 border border-white/10 hover:border-primary/40"><span className="research-card-index" aria-hidden="true">0{index + 1}</span><h2 className="font-headline-md text-lg text-primary mb-2">{title} <span aria-hidden="true">↗</span></h2><p className="text-sm text-on-surface-variant leading-relaxed">{text}</p></Link>)}</section>
       <p className="text-sm text-on-surface-variant">Los gráficos conservan el piloto de 93.225 registros. La colección ampliada de 101.546 se documenta en Proceso y auditoría. Comparar países no simula efectos ni identifica regiones de origen productivo.</p>
     </>}
     {view === 'proceso' && <ResearchProcess data={data} />}

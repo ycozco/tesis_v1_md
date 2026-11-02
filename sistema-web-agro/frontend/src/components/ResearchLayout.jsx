@@ -21,9 +21,9 @@ export default function ResearchLayout({ children }) {
   const legacy = location.pathname !== '/dashboard'
   function leave() { logout(); navigate('/login') }
   return (
-    <div className="min-h-screen bg-background text-on-surface font-body-md">
+    <div className="research-shell min-h-screen bg-background text-on-surface font-body-md">
       <a href="#research-main" className="research-skip">Saltar al contenido</a>
-      <header className="glass-panel border-b border-white/10 px-4 md:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
+      <header className="research-topbar glass-panel border-b border-white/10 px-4 md:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
         <Link to="/dashboard" className="flex items-center gap-3 min-w-0">
           <span className="material-symbols-outlined text-primary text-3xl" aria-hidden="true">eco</span>
           <div><p className="font-headline-md font-semibold text-primary text-xl">Exportaciones peruanas</p>
@@ -35,7 +35,7 @@ export default function ResearchLayout({ children }) {
         </div>
       </header>
       <div className="max-w-[1600px] mx-auto md:flex">
-        <aside className="md:w-60 md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 p-3 md:p-5">
+        <aside className="research-sidebar md:w-60 md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 p-3 md:p-5">
           <p className="hidden md:block text-xs tracking-widest uppercase text-on-surface-variant mb-5">Análisis comparativo</p>
           <nav aria-label="Navegación principal" className="grid grid-cols-2 sm:grid-cols-4 md:flex md:flex-col gap-2 pb-1">
             {sections.map(([id, icon, label]) => (
