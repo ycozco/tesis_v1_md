@@ -87,8 +87,8 @@ export default function ResearchDashboard() {
   return <div key={view} className="space-y-6 research-enter">
     <header className="research-page-heading"><p className="text-xs text-primary uppercase tracking-widest mb-2">Sistema de información y pronóstico</p>
       <div className="flex flex-wrap justify-between gap-3 items-start"><h1 className="font-headline-lg text-3xl md:text-4xl">{titles[view]}</h1><span className="glass-panel rounded-full px-3 py-2 text-xs text-primary border border-primary/20">Corte · 01 nov 2026</span></div>
-      <p className="text-on-surface-variant mt-3 text-sm leading-relaxed">{descriptions[view]}</p></header>
-    <div role="status" className="glass-panel rounded-xl px-4 py-3 text-sm text-on-surface-variant border-l-2 border-primary"><strong className="text-on-surface">Piloto de desarrollo · cobertura parcial.</strong> Las semanas sin registros permanecen desconocidas. La prueba final no se ha ejecutado.</div>
+      {view !== 'resumen' && <p className="text-on-surface-variant mt-3 text-sm leading-relaxed">{descriptions[view]}</p>}</header>
+    <div role="status" className="glass-panel rounded-xl px-4 py-3 text-sm text-on-surface-variant border-l-2 border-primary"><strong className="text-on-surface">Piloto · cobertura parcial</strong><details className="mt-1 text-xs"><summary className="cursor-pointer text-primary">Información</summary><p className="mt-2">Las semanas sin registros permanecen desconocidas. La prueba final no se ha ejecutado.</p></details></div>
     {view === 'resumen' && <ResearchOverview data={data} />}
     {view === 'proceso' && <ResearchProcess data={data} />}
     {view === 'ia' && <ResearchAI />}
