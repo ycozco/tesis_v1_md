@@ -16,7 +16,7 @@ const descriptions = {
   reportes: 'Estado de la evaluación documental y comprobación de afirmaciones.',
   fuentes: 'Procedencia, recuperación y límites de los datos utilizados.',
   proceso: 'Siga las etapas, compruebe archivos y consulte sus pendientes.',
-  ia: 'Borradores basados en hechos verificados, con generación local o API de pago.',
+  ia: 'Respuestas de Codex archivadas, borradores y procedencia de los proveedores.',
 }
 function Card({ label, value, detail }) {
   return <article className="glass-card rounded-xl p-5"><p className="text-xs uppercase tracking-wider text-on-surface-variant">{label}</p><p className="font-headline-lg text-3xl text-primary mt-3 mb-2 break-words">{value}</p><p className="text-xs text-on-surface-variant leading-relaxed">{detail}</p></article>

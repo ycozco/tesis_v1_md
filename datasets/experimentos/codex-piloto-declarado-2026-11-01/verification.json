@@ -1,0 +1,18 @@
+{
+  "current_tests": 82,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "numeric_passed": 2,
+  "numeric_not_applicable": 1,
+  "factual_review": "pending_human_review",
+  "model_identifier_source": "user_declaration",
+  "api_model_identifier_verified": false,
+  "paid_provider_calls": 0,
+  "h4_final_outputs": 0,
+  "browser_cases_checked": 3,
+  "mobile_width": 390,
+  "mobile_horizontal_overflow": false,
+  "progress_artifacts_checked": 7,
+  "download_sha256": "e448f1d8fcdab9f61e6fee2204d95cd65de3c25eabcae23715efa220a65adac4"
+}

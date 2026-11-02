@@ -1,0 +1,61 @@
+{
+  "source_date": "2026-11-01",
+  "stages": [
+    {
+      "name": "Fuentes",
+      "state": "Colección ampliada",
+      "icon": "database",
+      "number": "24 paquetes",
+      "text": "Los dos paquetes históricos ya estan incorporados en la colección ampliada. Los originales permanecen separados de los datos publicados.",
+      "evidence": "datasets/fuentes/2026-11-01-expansion/manifest-sunat.json",
+      "pending": "Cobertura continua, diccionario oficial y publicación histórica verificable."
+    },
+    {
+      "name": "Conciliación",
+      "state": "Expansión conciliada",
+      "icon": "difference",
+      "number": "101.546 registros",
+      "text": "Vista conservadora ampliada; 8.321 registros únicos adicionales y 108 registros en cuarentena. La sensibilidad antigua no se mezcla con esta versión.",
+      "evidence": "datasets/fuentes/2026-11-01-expansion/conciliacion/resumen.json",
+      "pending": "La conciliación de archivos no certifica semanas completas."
+    },
+    {
+      "name": "Panel semanal",
+      "state": "Versión ampliada preparada",
+      "icon": "calendar_view_week",
+      "number": "3.845 celdas observadas",
+      "text": "20.154 posiciones, 16.309 desconocidas. Ninguna fila tiene elegibilidad histórica as-of certificada. Los gráficos de series conservan el piloto anterior.",
+      "evidence": "datasets/tratamiento/2026-11-01-expansion/manifest.json",
+      "pending": "Cerrar cobertura, publicación y calendario antes del experimento final."
+    },
+    {
+      "name": "Modelos y señales",
+      "state": "H2 cerrada; H3 técnico",
+      "icon": "query_stats",
+      "number": "H2 no evaluable",
+      "text": "H2 se cerró para esta colección sin respaldo ni refutacion. H3 tiene motor integrado y 189 casos artificiales; no son puntajes históricos finales.",
+      "evidence": "datasets/experimentos/h2-cierre-2026-11-01/decision.json",
+      "pending": "Pronosticos H1 elegibles, revisión de ECOD adaptado e integracion histórica H3."
+    },
+    {
+      "name": "Reportes",
+      "state": "Piloto Codex expuesto",
+      "icon": "description",
+      "number": "3 respuestas Codex",
+      "text": "GPT 6.1 Sol Light es un identificador declarado por el usuario, no verificado. Son respuestas archivadas de este chat, no llamadas a DeepSeek ni nuevas inferencias al abrirlas.",
+      "evidence": "datasets/experimentos/codex-piloto-declarado-2026-11-01/manifest.json",
+      "pending": "Revisión humana, política NA, recuperación y generador antes de 180 salidas finales H4."
+    }
+  ],
+  "series_view_release": "Original pilot: 93.225 registros; current expanded preprocessing is a separate release",
+  "note": "Estado actual del proyecto; los gráficos conservan el piloto anterior. Abrir respuestas Codex no suma generaciones H4.",
+  "evidence_sha256": {
+    "datasets/fuentes/2026-11-01-expansion/manifest-sunat.json": "65eb79a5cf1d1edd79814308dc41e94d235413b64dc4afaf4a72836b60f15099",
+    "datasets/fuentes/2026-11-01-expansion/conciliacion/resumen.json": "ba471336a521896b541a99346010d8fea20995b8389a82d99e78a7f210528ef0",
+    "datasets/tratamiento/2026-11-01-expansion/manifest.json": "e65fac97e96b0dc08abda2b5d6f45ba70f70082892bb73573a985cd23d6baf2a",
+    "datasets/experimentos/h2-cierre-2026-11-01/decision.json": "64c90b58cd5630ed3af9ae5290d08694e51a54ca4199bc1dbf2204623935c04f",
+    "datasets/experimentos/h3-h4-integracion-2026-11-01/summary.json": "ca9aea442aa83dda4bfac6d807e4423740c0b6bc52594faef533c1c308e62f75",
+    "datasets/experimentos/h4-deepseek-preparacion-2026-11-01/provider-contract.json": "6bfe1bb52055a27e93d4b0af1c196258cf81d96662057da64c9f59e271aa8295",
+    "datasets/experimentos/codex-piloto-declarado-2026-11-01/manifest.json": "94c47fe8ea758142c650a1813ce7d6db68517b6ee693ee25342e0ec775ec9dc2"
+  }
+}

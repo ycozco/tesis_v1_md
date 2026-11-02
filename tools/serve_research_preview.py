@@ -9,10 +9,11 @@ import sys
 import secrets
 
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'data/runtime-api'))
-sys.path.insert(1,str(ROOT/'sistema-web-agro/backend'))
+sys.path.insert(0,str(ROOT/'sistema-web-agro/backend'))
+sys.path.insert(1,str(ROOT))
 folder=ROOT/'data/research_preview'
 folder.mkdir(parents=True,exist_ok=True)
+os.chdir(folder)  # QA preview never reads the user's root .env.
 os.environ['DATABASE_URL']='sqlite+pysqlite:///'+str(folder/'preview.sqlite').replace('\\','/')
 os.environ['SECRET_KEY']=secrets.token_urlsafe(48)
 os.environ['RESEARCH_ALLOW_LOCAL_AI']='false'

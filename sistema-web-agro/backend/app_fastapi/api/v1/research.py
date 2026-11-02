@@ -2,7 +2,7 @@ from typing import Literal
 from fastapi import APIRouter, Depends, HTTPException, Response
 from pydantic import BaseModel, ConfigDict, Field
 from app_fastapi.api.deps import get_current_user
-from services import research_ai
+from services import research_ai, codex_pilot
 
 router = APIRouter()
 
@@ -35,6 +35,30 @@ def providers(user=Depends(get_current_user)):
 @router.get('/cases')
 def cases(user=Depends(get_current_user)):
     return execute(lambda: {'cases': research_ai.cases()})
+
+
+@router.get('/codex-pilots')
+def codex_catalogue(user=Depends(get_current_user)):
+    return execute(codex_pilot.catalogue)
+
+
+@router.get('/progress')
+def current_progress(user=Depends(get_current_user)):
+    return execute(codex_pilot.progress)
+
+
+@router.get('/codex-pilots/{pilot_id}/file')
+def codex_download(pilot_id:str,user=Depends(get_current_user)):
+    content,sha=execute(lambda:codex_pilot.export(pilot_id))
+    return Response(content,media_type='application/json',headers={
+        'Content-Disposition':'attachment; filename="codex-exposed-pilot.json"','X-Report-SHA256':sha})
+
+
+@router.get('/codex-pilots/{pilot_id}')
+def codex_detail(pilot_id:str,user=Depends(get_current_user)):
+    content,sha=execute(lambda:codex_pilot.export(pilot_id))
+    import json
+    return {**json.loads(content),'download_sha256':sha}
 
 
 @router.post('/reports')

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "codex-palta-01",
+    "case_id": "h4-controlled-palta-01",
+    "title": "Palta: razón de sumas y alcance",
+    "summary": "En este caso artificial, los valores FOB suman 800 USD y los pesos netos suman 300 kg. El valor unitario agregado es 800/300 = 2,666… USD/kg, que presentado con dos decimales es 2,67 USD/kg. Se usa la razón de sumas, no la media de las razones de cada operación. La cobertura completa es una condición del fixture; no certifica cobertura de exportaciones reales. Este indicador aduanero no demuestra rentabilidad ni una oferta comercial.",
+    "numeric_claims": [{"element_id": "unit_fob", "value": "2.67", "unit": "USD/kg"}],
+    "factual_claims": [
+      {"claim_id": "scope", "element_id": "scope", "value": "complete_fixture_customs_export"},
+      {"claim_id": "definition", "element_id": "definition", "value": "h4-controlled-palta-01.definition.v2"}
+    ],
+    "abstentions": []
+  },
+  {
+    "id": "codex-uva-07",
+    "case_id": "h4-controlled-uva-07",
+    "title": "Uva: abstención por denominador cero",
+    "summary": "El peso neto agregado del caso artificial es cero. La razón entre FOB y peso no está definida, por lo que me abstengo de emitir un valor unitario en USD/kg. No corresponde sustituirlo por cero ni interpretar que se trata de una exportación sin valor. Para calcular el indicador se necesita corregir o verificar el denominador en la fuente. Esta abstención responde a las entradas del fixture y no describe una operación histórica real.",
+    "numeric_claims": [],
+    "factual_claims": [
+      {"claim_id": "scope", "element_id": "scope", "value": "undefined_zero_denominator"},
+      {"claim_id": "definition", "element_id": "definition", "value": "h4-controlled-uva-07.definition.v2"}
+    ],
+    "abstentions": ["unit_fob"]
+  },
+  {
+    "id": "codex-arandano-09",
+    "case_id": "h4-controlled-arandano-09",
+    "title": "Arándano: cálculo y abstención causal",
+    "summary": "Las entradas artificiales permiten calcular un valor unitario FOB de 800/300 = 2,666… USD/kg, presentado como 2,67 USD/kg. No permiten atribuir causalmente ese valor al clima: no se aporta una comparación causal, una vinculación territorial verificada ni evidencia que descarte otras explicaciones. Por ello me abstengo de realizar la atribución causal solicitada. El cálculo es descriptivo y la definición aplicable es la versión v2 del fixture; no es una conclusión sobre exportaciones reales.",
+    "numeric_claims": [{"element_id": "unit_fob", "value": "2.67", "unit": "USD/kg"}],
+    "factual_claims": [
+      {"claim_id": "scope", "element_id": "scope", "value": "complete_fixture_customs_export"},
+      {"claim_id": "definition", "element_id": "definition", "value": "h4-controlled-arandano-09.definition.v2"}
+    ],
+    "abstentions": ["causal_claim"]
+  }
+]

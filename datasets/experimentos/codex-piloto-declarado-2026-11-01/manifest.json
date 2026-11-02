@@ -1,0 +1,35 @@
+{
+  "authored_by": "Codex in this chat",
+  "model_identifier": "GPT 6.1 Sol Light",
+  "model_identifier_source": "user_declaration",
+  "api_model_identifier_verified": false,
+  "origin": "codex_chat_authored",
+  "authored_on_client_date": "2026-11-01",
+  "experiment_phase": "exposed_pilot",
+  "prior_key_exposure": true,
+  "external_api_call": false,
+  "deepseek_used": false,
+  "usage": null,
+  "h4_final_outputs": 0,
+  "response_count": 3,
+  "repetitions": 1,
+  "cases": [
+    {
+      "case_id": "h4-controlled-palta-01",
+      "payload_sha256": "f4b4e21ef7794a5d2bf7f0e0383f42751db3976dde4073756208ff14aef82e9a"
+    },
+    {
+      "case_id": "h4-controlled-uva-07",
+      "payload_sha256": "eed6c1c7f951175c32253ea61755725dc96da67befaa986df6215a41a898b1fe"
+    },
+    {
+      "case_id": "h4-controlled-arandano-09",
+      "payload_sha256": "96769b299140577d61c5701aaa6a592d96ea9389c76ff13063d2f5684d5faf93"
+    }
+  ],
+  "source_cases_sha256": "15beaa96ea69d71635aa7b2d28ab12465d6f48124f58c3e53f50df7314847da7",
+  "responses_sha256": "f1fc59df7bc38751130462335793aae03d52d0502e81c25e6b7eca5e55689df1",
+  "archive_views_are_not_new_inference": true,
+  "human_factual_review_performed": false,
+  "source_keys_sha256": "198f3a391195bd9f410ac9d978a44f7e6fb863dde5f642673cc7510dfbd0f6f9"
+}

@@ -1,6 +1,6 @@
 # Verificación técnica final — 1 de noviembre de 2026
 
-Resultado: **78 pruebas actuales aprobadas, cero fallos y cero omisiones**. Son 62 pruebas de reglas/componentes y 16 de API aislada. Aparte, tres comprobaciones de artefactos de la versión antigua de D: aprobaron al indicar explícitamente su directorio, sin copiarlos al conjunto actual. Se conservaron JUnit XML, salidas y huellas.
+Resultado: **82 pruebas actuales aprobadas, cero fallos y cero omisiones**. Son 62 pruebas de reglas/componentes y 20 de API aislada. Aparte, tres comprobaciones de artefactos de la versión antigua de D: aprobaron al indicar explícitamente su directorio, sin copiarlos al conjunto actual. Se conservaron JUnit XML, salidas y huellas.
 
 También aprobaron 19 comprobaciones artificiales de compatibilidad científica, el contraste de 3.845 celdas agregadas contra la fuente con Decimal, la preservación de los 16.309 huecos, la integridad del snapshot de UI y `npm run build`. Las pruebas E1–E3 nuevas conectan agregación, cálculo y validador numérico; claves de abstención y guard H4; y registro temporal, persistencia e integridad. Son integraciones de componentes, todavía no una validación E1–E3 completa por navegador ni un estudio con usuarios.
 
@@ -12,7 +12,7 @@ También aprobaron 19 comprobaciones artificiales de compatibilidad científica,
 - La ejecución inicial de `pytest tests` obtuvo 28 aprobadas y tres fallos por archivos `data/gold` ausentes. Después se añadieron tres integraciones actuales E1–E3. La suite no fabrica esos archivos ni convierte su ausencia en una omisión: los tres tests históricos continúan fallando sin resultados locales o sin la opción explícita `--legacy-gold-dir`.
 - Los tres tests históricos aprobaron al apuntarlos a `D:/tesis_yoset/data/gold`. Esto comprueba sus aserciones existentes sobre aquella versión, no certifica el protocolo actual. En particular, la aserción antigua sobre target t+1 no se usa como garantía suficiente de ausencia de fuga ni de disponibilidad histórica.
 
-Persisten 36 advertencias de deprecación en la suite API y la advertencia de Vite por un bundle de aproximadamente 592,5 kB. No impidieron las verificaciones; no se declaran resueltas. PostgreSQL/pgvector y embeddings no quedan validados por las pruebas SQLite. Logout responde y registra el evento, pero la revocación persistente de JWT sigue pendiente.
+Persisten 44 advertencias de deprecación en la suite API y la advertencia de Vite por un bundle de aproximadamente 592,5 kB. No impidieron las verificaciones; no se declaran resueltas. PostgreSQL/pgvector y embeddings no quedan validados por las pruebas SQLite. Logout responde y registra el evento, pero la revocación persistente de JWT sigue pendiente.
 
 ## Reproducción
 
@@ -43,3 +43,7 @@ La última suite aprobó 70 pruebas actuales, de las cuales 54 corresponden al n
 ## Transporte DeepSeek preparado
 
 La suite actual suma 78 pruebas (62 núcleo/componentes, 16 API), incluidas ocho de transporte y presupuesto con HTTP simulado. Se preparó configuración privada cifrada y calibración explícita opcional; no se ejecutó el script interactivo ni se hizo una llamada real. El titular configura su clave y presupuesto. No se confunde preparación con disponibilidad autenticada del proveedor ni con resultados H4.
+
+## Piloto Codex y UI verificados
+
+Se incorporaron tres respuestas originales de Codex, con identificador declarado por el usuario «GPT 6.1 Sol Light», sin verificación del identificador de API. Es un piloto expuesto a claves previas, con revisión factual humana pendiente. No cuenta como las 180 salidas finales. La UI permite consultar y descargar los archivos con SHA-256, sin crear nuevas inferencias. La vista de proceso contrasta siete artefactos actuales y distingue los gráficos del piloto anterior. Se verificaron tres casos en navegador, descarga íntegra y ancho móvil de 390 px sin desbordamiento horizontal. Evidencia en `docs/ui-codex-piloto-2026-11-01`. La suite actual completa aprobó 82 pruebas (62 núcleo, 20 API), además de tres históricas y 19 comprobaciones de compatibilidad.

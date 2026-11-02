@@ -100,9 +100,14 @@ def local_models():
 
 
 def providers():
+    from services import codex_pilot
+    pilot=codex_pilot.catalogue()
     local, remote = config('ollama'), config('deepseek')
     models = local_models()
     return {'providers': [
+        {'id':'codex_archive','label':'Codex · piloto archivado','ready':True,'paid':False,
+         'model':pilot['provenance']['model_identifier'],'archive_only':True,'count':len(pilot['pilots']),
+         'model_verified':False,'reason':'Modelo declarado por el usuario. Respuestas de este chat con exposición previa; abrir no genera otra respuesta.'},
         {'id': 'template', 'label': 'Plantilla sin IA', 'ready': True, 'paid': False,
          'model': 'deterministic-template-v1', 'reason': 'No realiza llamadas a modelos.'},
         {'id': 'ollama', 'label': 'Ollama local', 'ready': local.enabled and local.model in models,

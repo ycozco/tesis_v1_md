@@ -85,7 +85,7 @@ def test_template_archival_hash_and_owner_access(client):
 def test_provider_disabled_and_paid_role_gate(client):
     admin=auth(client)
     providers=client.get('/api/research/providers',headers=admin).json()['providers']
-    assert {p['id']:p['ready'] for p in providers}=={'template':True,'ollama':False,'deepseek':False}
+    assert {p['id']:p['ready'] for p in providers}=={'codex_archive':True,'template':True,'ollama':False,'deepseek':False}
     response=client.post('/api/research/reports',headers=admin,json={'case_id':'palta-01','provider':'deepseek','paid_consent':True})
     assert response.status_code==503
     reader=auth(client,'qa-reader')
@@ -185,3 +185,56 @@ def test_provider_failure_is_redacted_and_never_silently_falls_back(client,monke
     assert not list(service.REPORTS.glob('*.json'))
     monkeypatch.setattr(service.requests,'post',lambda *args,**kwargs:SimpleNamespace(status_code=200,json=lambda:{'choices':[{'message':{'content':None}}]}))
     assert client.post('/api/research/reports',headers=auth(client),json={'case_id':'palta-01','provider':'deepseek','paid_consent':True}).status_code==502
+
+
+def test_codex_pilot_is_read_only_declared_and_never_calls_provider(client,monkeypatch):
+    def forbidden(*args,**kwargs):raise AssertionError('Archived views must not call providers')
+    monkeypatch.setattr(service.requests,'post',forbidden)
+    assert client.get('/api/research/codex-pilots').status_code==401
+    headers=auth(client)
+    catalogue=client.get('/api/research/codex-pilots',headers=headers).json()
+    assert len(catalogue['pilots'])==3
+    assert catalogue['provenance']['model_identifier']=='GPT 6.1 Sol Light'
+    assert catalogue['provenance']['api_model_identifier_verified'] is False
+    assert catalogue['provenance']['prior_key_exposure'] is True
+    first=client.get('/api/research/codex-pilots/codex-palta-01',headers=headers).json()
+    again=client.get('/api/research/codex-pilots/codex-palta-01',headers=headers).json()
+    assert first==again and first['new_inference'] is False and first['h4_final_output'] is False
+    assert first['numeric_validation']['status']=='passed'
+    zero=client.get('/api/research/codex-pilots/codex-uva-07',headers=headers).json()
+    assert zero['numeric_validation']['status']=='not_applicable'
+    assert client.post('/api/research/reports',headers=headers,json={'case_id':'palta-01','provider':'codex_archive'}).status_code==422
+
+
+def test_codex_export_matches_displayed_hash(client):
+    headers=auth(client)
+    body=client.get('/api/research/codex-pilots/codex-arandano-09',headers=headers).json()
+    exported=client.get('/api/research/codex-pilots/codex-arandano-09/file',headers=headers)
+    assert hashlib.sha256(exported.content).hexdigest()==body['download_sha256']==exported.headers['X-Report-SHA256']
+    assert exported.json()['provenance']['external_api_call'] is False
+    assert client.get('/api/research/codex-pilots/not-a-pilot',headers=headers).status_code==404
+
+
+def test_current_progress_is_separate_from_legacy_chart_release(client):
+    assert client.get('/api/research/progress').status_code==401
+    response=client.get('/api/research/progress',headers=auth(client))
+    assert response.status_code==200
+    data=response.json()
+    assert data['integrity_ok'] and data['verified_files']==7
+    source_manifest=json.loads((ROOT/'datasets/fuentes/2026-11-01-expansion/manifest-sunat.json').read_text(encoding='utf-8'))
+    reconciled=json.loads((ROOT/'datasets/fuentes/2026-11-01-expansion/conciliacion/resumen.json').read_text(encoding='utf-8'))
+    assert data['stages'][0]['number']==str(source_manifest['archivos'])+' paquetes'
+    assert data['stages'][1]['number']==format(reconciled['filas_conciliadas'],',').replace(',','.')+' registros'
+    assert 'piloto anterior' in data['note']
+
+
+def test_codex_archive_rejects_unregistered_content_changes(client,monkeypatch,tmp_path):
+    from services import codex_pilot
+    import shutil
+    copied=tmp_path/'archive'
+    shutil.copytree(codex_pilot.BASE,copied)
+    monkeypatch.setattr(codex_pilot,'BASE',copied)
+    with (copied/'responses.json').open('a',encoding='utf-8') as stream:stream.write('\n')
+    response=client.get('/api/research/codex-pilots',headers=auth(client))
+    assert response.status_code==409
+    assert response.json()['detail']['code']=='codex_pilot_integrity'

@@ -3,7 +3,7 @@
   "python": "3.14.2",
   "scope": "Current component/API checks, compatibility, build and data integrity. Not a browser usability study or final historical experiment.",
   "current_tests": {
-    "tests": 78,
+    "tests": 82,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -49,7 +49,7 @@
       "name": "current_protocol_and_components",
       "exit_code": 0,
       "passed": true,
-      "stdout": "..............................................................           [100%]\n62 passed in 3.62s",
+      "stdout": "..............................................................           [100%]\n62 passed in 3.75s",
       "stderr": "",
       "tests": {
         "tests": 62,
@@ -62,10 +62,10 @@
       "name": "isolated_api",
       "exit_code": 0,
       "passed": true,
-      "stdout": "................                                                         [100%]\n============================== warnings summary ===============================\n..\\runtime-research-clean\\Lib\\site-packages\\fastapi\\testclient.py:1\n  E:\\tesis-yoset\\github\\data\\runtime-research-clean\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n..\\..\\sistema-web-agro\\backend\\models.py:31\n  E:\\tesis-yoset\\github\\sistema-web-agro\\backend\\models.py:31: MovedIn20Warning: The ``declarative_base()`` function is now available as sqlalchemy.orm.declarative_base(). (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)\n    Base = declarative_base()\n\nsistema-web-agro/backend/tests/integration/test_auth.py: 4 warnings\nsistema-web-agro/backend/tests/integration/test_dashboard.py: 1 warning\nsistema-web-agro/backend/tests/research/test_ai_api.py: 14 warnings\n  E:\\tesis-yoset\\github\\data\\runtime-research-clean\\Lib\\site-packages\\sqlalchemy\\sql\\schema.py:3623: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore\n\nsistema-web-agro/backend/tests/integration/test_auth.py: 2 warnings\nsistema-web-agro/backend/tests/integration/test_dashboard.py: 1 warning\nsistema-web-agro/backend/tests/research/test_ai_api.py: 12 warnings\n  E:\\tesis-yoset\\github\\sistema-web-agro\\backend\\app_fastapi\\core\\security.py:19: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n    expire = datetime.utcnow() + timedelta(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n16 passed, 36 warnings in 6.07s",
+      "stdout": "....................                                                     [100%]\n============================== warnings summary ===============================\n..\\runtime-research-clean\\Lib\\site-packages\\fastapi\\testclient.py:1\n  E:\\tesis-yoset\\github\\data\\runtime-research-clean\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n..\\..\\sistema-web-agro\\backend\\models.py:31\n  E:\\tesis-yoset\\github\\sistema-web-agro\\backend\\models.py:31: MovedIn20Warning: The ``declarative_base()`` function is now available as sqlalchemy.orm.declarative_base(). (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)\n    Base = declarative_base()\n\nsistema-web-agro/backend/tests/integration/test_auth.py: 4 warnings\nsistema-web-agro/backend/tests/integration/test_dashboard.py: 1 warning\nsistema-web-agro/backend/tests/research/test_ai_api.py: 18 warnings\n  E:\\tesis-yoset\\github\\data\\runtime-research-clean\\Lib\\site-packages\\sqlalchemy\\sql\\schema.py:3623: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore\n\nsistema-web-agro/backend/tests/integration/test_auth.py: 2 warnings\nsistema-web-agro/backend/tests/integration/test_dashboard.py: 1 warning\nsistema-web-agro/backend/tests/research/test_ai_api.py: 16 warnings\n  E:\\tesis-yoset\\github\\sistema-web-agro\\backend\\app_fastapi\\core\\security.py:19: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n    expire = datetime.utcnow() + timedelta(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n20 passed, 44 warnings in 7.58s",
       "stderr": "",
       "tests": {
-        "tests": 16,
+        "tests": 20,
         "failures": 0,
         "errors": 0,
         "skipped": 0
@@ -96,14 +96,14 @@
       "name": "frontend_build",
       "exit_code": 0,
       "passed": true,
-      "stdout": "> agro-intelligence-oversight-frontend@1.0.0 build\n> vite build\n\nvite v5.4.21 building for production...\ntransforming...\n✓ 854 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                        0.90 kB │ gzip:   0.53 kB\ndist/assets/index-IjJbherQ.css        51.08 kB │ gzip:   9.31 kB\ndist/assets/BarChart-BqRj-71U.js       0.30 kB │ gzip:   0.22 kB\ndist/assets/History-FGzCCOhR.js        7.03 kB │ gzip:   1.96 kB\ndist/assets/Alerts-P67fEqN9.js        11.77 kB │ gzip:   2.99 kB\ndist/assets/Users-CxmR-0S3.js         12.52 kB │ gzip:   3.38 kB\ndist/assets/Integrity-ui7buZXx.js     16.04 kB │ gzip:   4.11 kB\ndist/assets/Telemetry-BWkDRAxN.js     16.83 kB │ gzip:   4.47 kB\ndist/assets/Config-CP-tHdcy.js        19.74 kB │ gzip:   4.59 kB\ndist/assets/Data-xJ-uST_e.js          22.88 kB │ gzip:   4.98 kB\ndist/assets/AuditDetail-D3CFStfb.js   22.88 kB │ gzip:   6.03 kB\ndist/assets/Detail-R7e6D-EY.js        72.05 kB │ gzip:  18.64 kB\ndist/assets/index-BJ2imHiu.js        592.50 kB │ gzip: 173.08 kB\n✓ built in 4.33s",
+      "stdout": "> agro-intelligence-oversight-frontend@1.0.0 build\n> vite build\n\nvite v5.4.21 building for production...\ntransforming...\n✓ 854 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                        0.90 kB │ gzip:   0.53 kB\ndist/assets/index-BTir0KNI.css        51.14 kB │ gzip:   9.31 kB\ndist/assets/BarChart-DRl_Wvzp.js       0.30 kB │ gzip:   0.22 kB\ndist/assets/History-2aSfMeNM.js        7.03 kB │ gzip:   1.96 kB\ndist/assets/Alerts-F6_1q515.js        11.77 kB │ gzip:   2.99 kB\ndist/assets/Users-CGvVfJDA.js         12.52 kB │ gzip:   3.38 kB\ndist/assets/Integrity-DqNuP4wL.js     16.04 kB │ gzip:   4.11 kB\ndist/assets/Telemetry-CQvTZlqU.js     16.83 kB │ gzip:   4.47 kB\ndist/assets/Config-CK2giKoc.js        19.74 kB │ gzip:   4.59 kB\ndist/assets/Data-DZkVZ0co.js          22.88 kB │ gzip:   4.98 kB\ndist/assets/AuditDetail-YH8KYigg.js   22.88 kB │ gzip:   6.03 kB\ndist/assets/Detail-CIGWky9V.js        72.05 kB │ gzip:  18.64 kB\ndist/assets/index-B7gHGaO5.js        595.25 kB │ gzip: 173.38 kB\n✓ built in 4.95s",
       "stderr": "(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\nnpm notice\nnpm notice New major version of npm available! 11.13.0 -> 12.2.1\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1\nnpm notice To update run: npm install -g npm@12.2.1\nnpm notice"
     },
     {
       "name": "legacy_artifacts_read_only",
       "exit_code": 0,
       "passed": true,
-      "stdout": "...                                                                      [100%]\n3 passed in 0.91s",
+      "stdout": "...                                                                      [100%]\n3 passed in 1.48s",
       "stderr": "",
       "tests": {
         "tests": 3,
