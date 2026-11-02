@@ -75,7 +75,31 @@ def inspect(root):
         env = read(str(environment.relative_to(root)).replace('\\', '/'))
         if not env or not env.get('smoke_all_passed') or not env.get('pip_check_passed'):
             blockers.append({'code': 'scientific_clean_environment_checks_failed', 'component': 'environment'})
+    h2_status='not_closed_in_current_checkout'
+    closure_path=root/'datasets/experimentos/h2-cierre-2026-11-01/decision.json'
+    if closure_path.is_file():
+        closure=read(str(closure_path.relative_to(root)).replace('\\','/'))
+        source_hashes=closure.get('evidence_sha256',{}) if closure else {}
+        required={
+            'datasets/tratamiento/2026-11-01/bcrp-mensual-conciliado.csv',
+            'datasets/tratamiento/2026-11-01/contexto/sisap-mensual-normalizado.csv',
+            'datasets/tratamiento/2026-11-01/contexto/nasa-arequipa-contexto-2018-2026.json',
+            'datasets/fuentes/2026-10-31/muestras-contextuales/comtrade-muestra.json',
+            'datasets/tratamiento/2026-11-01-expansion/panel-conservadora.parquet'}
+        current=required.issubset(source_hashes)
+        for name,expected in source_hashes.items():
+            artifact=(root/name).resolve()
+            if not artifact.is_relative_to(root.resolve()) or not artifact.is_file() or hashlib.sha256(artifact.read_bytes()).hexdigest()!=expected:
+                current=False
+        if current and closure.get('status')=='closed_not_evaluable_current_release' and closure.get('eligible_context_families')==0:
+            h2_status='closed_not_evaluable_current_release'
+            for blocker in blockers:
+                if blocker.get('component')=='H1_H2_H3':blocker['component']='H1_H3'
+        else:
+            h2_status='closure_stale_or_incomplete_reaudit_required'
+            blockers.append({'code':'h2_closure_stale_or_incomplete','component':'H2'})
     return {'status': 'not_ready' if blockers else 'requires_full_protocol_review',
+            'h2_status':h2_status,
             'diagnostic_only_not_execution_authorization': True,
             'final_test_executed_by_this_command': False,
             'source_sha256': source_hash, 'blockers': blockers, 'evidence_sha256': evidence,

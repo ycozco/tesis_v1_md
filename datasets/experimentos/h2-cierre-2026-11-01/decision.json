@@ -1,0 +1,51 @@
+{
+  "status": "closed_not_evaluable_current_release",
+  "reasons": [
+    "no_verified_compatible_context_available_at_origins",
+    "no_coverage_and_availability_verified_target_rows",
+    "empty_eligible_paired_comparison_universe"
+  ],
+  "eligible_context_families": 0,
+  "metrics": null,
+  "supports_h2": null,
+  "refutes_h2": null,
+  "ablation_executed": false,
+  "scope": "exact_source_release_identified_by_evidence_sha256",
+  "thesis_source": {
+    "title": "TESIS - COZCO MAURI YOSET",
+    "url": "https://docs.google.com/document/d/13cJUk1_AMrI-jsZj0s6a5XuTmE7wXZLFL-SNlPGxt8g/edit",
+    "modified_time_utc": "2026-10-23T13:27:20.453Z",
+    "retrieved_readable_text_characters": 240011,
+    "version_note": "Metadatos y contenido consultados; se conservan extractos, no una exportación completa ni revisión inmutable de Drive."
+  },
+  "thesis_anchor": "T02 / 1.4.3 H2",
+  "closed_analysis_not_confirmed_hypothesis": true,
+  "source_families_audited": 4,
+  "calendar_origins": 52,
+  "availability_sensitivities": [
+    0,
+    4,
+    8
+  ],
+  "targets": [
+    "unit_fob",
+    "volume_kg"
+  ],
+  "origin_source_target_L_checks": 1248,
+  "target_panel_cells_audited": 20154,
+  "evidence_sha256": {
+    "planificacion/2026-11-01/fundamento-tesis.json": "ad528f3a5a4638f9a6332e91d488ea31a93a82cbd361e92e7c7c86a8f1880867",
+    "datasets/tratamiento/2026-11-01/bcrp-mensual-conciliado.csv": "bc020972a7adc97580b3d359934fe24f417cfa059e4f28a482952e818a1af39e",
+    "datasets/contexto/h2-bcrp-2026-11-01/documentary-candidates.json": "099419e95737ef4fa5670243aeb160b6225699b89e181e490d071bf7b2cbbfcb",
+    "datasets/contexto/h2-bcrp-2026-11-01/independent-audit.json": "2e97525898bc6c18762323a5bf914464701abb70b110f4eddc6e2daf418ab47f",
+    "datasets/tratamiento/2026-11-01/contexto/sisap-mensual-normalizado.csv": "65aac110fcb968f44eb9a843c62965118124d7a1e8530925a54cb8c307541855",
+    "datasets/tratamiento/2026-11-01/contexto/nasa-arequipa-contexto-2018-2026.json": "2b021316bee178c83f139718ecf1fc92a3a7c6fe9e57d588b912e9057af0227f",
+    "datasets/tratamiento/2026-11-01/contexto/manifest-recuperacion.json": "5b300783c558ece2a233831a11767147387c2d4380a224215bff782831bd443e",
+    "datasets/fuentes/2026-10-31/muestras-contextuales/comtrade-muestra.json": "f39a8170aacbf0ba47e7292572753c180211ff277bcdd683b304551e6b27710d",
+    "datasets/tratamiento/2026-11-01-expansion/panel-conservadora.parquet": "450daf64f9369159784d4e554c5e68fb26444d47a433b7adb1646af30260dbdc",
+    "datasets/tratamiento/2026-11-01-expansion/calendario-provisional.csv": "5480a71b9ba9e9998f471f5b28424dfa4a6add9e0a4802433142a2de6febaf5f"
+  },
+  "final_test_predictions_generated": 0,
+  "models_fitted": 0,
+  "reopen_only_if": "New source evidence or a reviewed protocol amendment changes eligibility; regenerate this audit before any outcome evaluation."
+}

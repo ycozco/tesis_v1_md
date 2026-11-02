@@ -38,3 +38,7 @@ La primera orden reproduce la conciliación de las transcripciones contra la cop
 Se corrigió un hueco potencial del selector: una fila marcada como verificada podía declarar una disponibilidad anterior a su propio documento. Ahora exige fecha documental y rechaza esa contradicción. No se detectó un caso así habilitado en esta colección, pues todos los candidatos permanecían excluidos. Cuatro pruebas del módulo aprobaron, incluida la regresión de este caso. Una marca de verificación sigue requiriendo evidencia externa y revisión, no constituye por sí sola certificación.
 
 No se amplió el conjunto elegible ni se ejecutó H2. Los datos concuerdan al redondeo publicado; la disponibilidad histórica sigue sin demostrarse. `independent-audit.json` conserva el resultado del verificador.
+
+## Dictamen H2 consolidado
+
+El análisis de elegibilidad ya tiene [cierre documentado para esta colección](../../experimentos/h2-cierre-2026-11-01/README.md): H2 no pudo evaluarse. Las limitaciones anteriores explican ese dictamen; no implican mantener indefinidamente abierto el análisis ni afirmar una mejora predictiva. Solo nuevas evidencias o un cambio metodológico revisado justifican reabrirlo.

@@ -1,0 +1,57 @@
+[
+  {
+    "source": "BCRP",
+    "role": "monthly_macro_covariate_not_a_FOB_replacement",
+    "observations": 102,
+    "documentary_candidates": 32,
+    "verified_eligible_rows": 0,
+    "reasons": [
+      "publication_vintages_not_verified",
+      "dated_index_transcriptions_not_original_PDFs"
+    ],
+    "not_a_reason_for_exclusion": "Monthly frequency can be aligned as-of with evidenced release dates and age."
+  },
+  {
+    "source": "SISAP",
+    "role": "domestic_wholesale_proxy_requiring_explicit_interpretation",
+    "observations": 3074,
+    "numeric_observations": 1890,
+    "verified_eligible_rows": 0,
+    "reasons": [
+      "specific_price_units_unverified",
+      "historical_publication_dates_missing",
+      "proxy_interpretation_not_validated"
+    ],
+    "not_a_reason_for_exclusion": "A domestic price need not equal FOB to be a contextual covariate."
+  },
+  {
+    "source": "NASA_POWER",
+    "role": "climate_context_requiring_origin_mapping_or_justified_proxy",
+    "observations_per_parameter": {
+      "T2M_MAX": 3217,
+      "T2M_MIN": 3217,
+      "PRECTOTCORR": 3217,
+      "RH2M": 3217
+    },
+    "coordinates": [
+      -71.54,
+      -16.4,
+      3330.29
+    ],
+    "verified_eligible_rows": 0,
+    "reasons": [
+      "production_origin_or_proxy_mapping_not_verified",
+      "historical_publication_vintages_missing"
+    ]
+  },
+  {
+    "source": "Comtrade",
+    "role": "international_trade_covariate_requiring_series_and_release_history",
+    "observations": 1,
+    "verified_eligible_rows": 0,
+    "reasons": [
+      "single_sample_not_continuous_context_series",
+      "historical_publication_versions_missing"
+    ]
+  }
+]

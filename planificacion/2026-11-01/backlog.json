@@ -177,9 +177,9 @@
       "owner": "Tesista y desarrollo",
       "deliverable": "Registro fuente–unidad–publicación y comparación historial vs contexto.",
       "acceptance": "Mismo algoritmo, parámetros, series y calendario; sin fechas compatibles, H2 se declara no evaluable con evidencia; no se simulan covariables.",
-      "status": "resuelto_no_evaluable_con_fuentes_actuales",
-      "execution_note": "Conciliacion BCRP documental: 32 cotejos de 16 meses coinciden a precision publicada. API/PDF entregan HTML; originales y disponibilidad historica siguen no verificados. H2 no evaluable; se conserva copia local intacta.",
-      "execution_evidence": "../../datasets/contexto/h2-bcrp-2026-11-01/README.md"
+      "status": "completado_no_evaluable_coleccion_actual",
+      "execution_note": "Cierre H2 conforme a T02: cuatro fuentes auditadas, 52 origenes, 1248 comprobaciones y cero casos pareados elegibles. No confirma ni refuta H2. Fuentes y conclusion verificadas; reabrir solo si cambia la evidencia o el protocolo.",
+      "execution_evidence": "../../datasets/experimentos/h2-cierre-2026-11-01/README.md"
     },
     {
       "id": "P08",

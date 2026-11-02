@@ -1,0 +1,64 @@
+{
+  "status": "closed_not_evaluable_current_release",
+  "scope": "Exact audited release. Hypothesis neither supported nor refuted.",
+  "final_reserved_predictions_generated": 0,
+  "paid_provider_calls": 0,
+  "steps": [
+    {
+      "command": [
+        "tools/verify_h2_bcrp.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed_with_original_document_verification_pending\", \"artifact_hash_failures\": [], \"local_months\": 102, \"candidate_comparisons\": 32, \"independent_months\": 16, \"document_count\": 2, \"max_absolute_difference\": \"0.00049\", \"retrieved_response_bodies_verified\": 5, \"retrieved_response_count\": 5, \"original_pdfs_verified\": 0, \"eligible_context_rows\": 0, \"evidence_limitation\": \"Two manual indexed transcriptions; not independent original-PDF extraction or complete historical publication evidence\", \"source_backup_sha256\": \"bc020972a7adc97580b3d359934fe24f417cfa059e4f28a482952e818a1af39e\"}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "tools/close_h2.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"closed_not_evaluable_current_release\", \"eligible_context_families\": 0, \"calendar_origins\": 52, \"origin_source_target_L_checks\": 1248, \"models_fitted\": 0, \"supports_h2\": null, \"refutes_h2\": null}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "tools/verify_h2_closure.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"source_families_audited\": 4, \"calendar_origins\": 52, \"matrix_cells_verified\": 1248, \"evidence_files_verified\": 10, \"eligible_paired_cases\": 0, \"hypothesis_result\": \"not_evaluable_not_supported_or_refuted\", \"final_test_predictions_generated\": 0, \"review_scope\": \"exact current release, not a claim that all possible public sources are unavailable\"}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "tests/unit/test_final_preflight.py",
+        "tests/unit/test_h2_bcrp.py",
+        "tests/unit/test_h2_closure.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout": "............                                                             [100%]\n12 passed in 0.13s",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "tools/run_final_verification.py",
+        "--legacy-gold-dir",
+        "D:/tesis_yoset/data/gold"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"name\": \"current_protocol_and_components\", \"passed\": true, \"exit_code\": 0, \"tests\": {\"tests\": 41, \"failures\": 0, \"errors\": 0, \"skipped\": 0}}\n{\"name\": \"isolated_api\", \"passed\": true, \"exit_code\": 0, \"tests\": {\"tests\": 16, \"failures\": 0, \"errors\": 0, \"skipped\": 0}}\n{\"name\": \"scientific_compatibility\", \"passed\": true, \"exit_code\": 0, \"tests\": null}\n{\"name\": \"expanded_data_integrity\", \"passed\": true, \"exit_code\": 0, \"tests\": null}\n{\"name\": \"ui_snapshot_integrity\", \"passed\": true, \"exit_code\": 0, \"tests\": null}\n{\"name\": \"frontend_build\", \"passed\": true, \"exit_code\": 0, \"tests\": null}\n{\"name\": \"legacy_artifacts_read_only\", \"passed\": true, \"exit_code\": 0, \"tests\": {\"tests\": 3, \"failures\": 0, \"errors\": 0, \"skipped\": 0}}\n{\"name\": \"experimental_preflight\", \"passed\": true, \"exit_code\": 2, \"tests\": null}\n{\"status\": \"technical_verification_passed_experiment_not_ready\", \"current_tests\": {\"tests\": 57, \"failures\": 0, \"errors\": 0, \"skipped\": 0}, \"final_historical_test_executed\": false}",
+      "stderr": ""
+    }
+  ],
+  "code_hash_convention": "UTF-8 text with universal newlines normalized to LF",
+  "code_sha256": {
+    "tools/finish_h2.py": "3c30befff19a00ebb8b5c713a068edb2bb4559ac013aa91eddd07c549ad137da",
+    "tools/close_h2.py": "26856cdf49d7665815a60da94da48d09424640170f8b0c451d29a425560fd33b",
+    "tools/verify_h2_closure.py": "9c10af2c27d83fafd6c3cfb7a331ee05c42eb37d4b1ce6a570cc57b90adfa198",
+    "tools/verify_h2_bcrp.py": "5691feaeb3b940a79367ce286f1563ad41ce604b133cd0f081398812632fea99",
+    "pipeline/research/h2.py": "7054d003fd4a3b5bcc43e10e6a3b017b90bc532793c9a4910bb34f95769ae10b",
+    "tools/check_final_experiment.py": "2441b6f134ad1d27437eeaec699c405ed40c821735b18a18a68010bbbe949d9f"
+  }
+}

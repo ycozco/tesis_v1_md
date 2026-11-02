@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "source_families_audited": 4,
+  "calendar_origins": 52,
+  "matrix_cells_verified": 1248,
+  "evidence_files_verified": 10,
+  "eligible_paired_cases": 0,
+  "hypothesis_result": "not_evaluable_not_supported_or_refuted",
+  "final_test_predictions_generated": 0,
+  "review_scope": "exact current release, not a claim that all possible public sources are unavailable"
+}

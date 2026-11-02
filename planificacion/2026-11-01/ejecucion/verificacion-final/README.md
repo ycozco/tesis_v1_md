@@ -1,6 +1,6 @@
 # Verificación técnica final — 1 de noviembre de 2026
 
-Resultado: **47 pruebas actuales aprobadas, cero fallos y cero omisiones**. Son 31 pruebas de reglas/componentes y 16 de API aislada. Aparte, tres comprobaciones de artefactos de la versión antigua de D: aprobaron al indicar explícitamente su directorio, sin copiarlos al conjunto actual. Se conservaron JUnit XML, salidas y huellas.
+Resultado: **57 pruebas actuales aprobadas, cero fallos y cero omisiones**. Son 41 pruebas de reglas/componentes y 16 de API aislada. Aparte, tres comprobaciones de artefactos de la versión antigua de D: aprobaron al indicar explícitamente su directorio, sin copiarlos al conjunto actual. Se conservaron JUnit XML, salidas y huellas.
 
 También aprobaron 19 comprobaciones artificiales de compatibilidad científica, el contraste de 3.845 celdas agregadas contra la fuente con Decimal, la preservación de los 16.309 huecos, la integridad del snapshot de UI y `npm run build`. Las pruebas E1–E3 nuevas conectan agregación, cálculo y validador numérico; claves de abstención y guard H4; y registro temporal, persistencia e integridad. Son integraciones de componentes, todavía no una validación E1–E3 completa por navegador ni un estudio con usuarios.
 
@@ -31,3 +31,7 @@ La ruta D: solo identifica la versión histórica optativa. Puede omitirse el ar
 **No se ejecutó el test histórico reservado ni se generaron las 180 salidas H4.** `preflight-final.json` mantiene los siete pendientes documentados: cobertura, publicación histórica, cierre de calendario/protocolo, elegibilidad as-of, selección de desarrollo, revisión humana de claves y cierre de generador/recuperación. El código 2 del diagnóstico se registra como detección esperada de pendientes, no como experimento aprobado.
 
 El nuevo diagnóstico H2 concluye no evaluable con las fuentes actuales y documenta por qué; no demuestra ausencia de efecto del contexto. Los tests técnicos aprobados no sustituyen las decisiones de diseño ni los resultados empíricos de H1–H4.
+
+## Cierre H2 integrado
+
+La ejecución continua de `tools/finish_h2.py` cerró el análisis de H2 como no evaluable para la colección actual. La suite actual de 57 pruebas incluye regresiones de H2 y la invalidación del cierre si cambia su evidencia. Las tres comprobaciones históricas y las 19 de compatibilidad se contabilizan aparte. El dictamen y la matriz de 1.248 combinaciones se conservan en `datasets/experimentos/h2-cierre-2026-11-01`. Los pendientes compartidos de cobertura/modelos del diagnóstico actual corresponden a H1/H3; H4 mantiene los suyos. No se generaron resultados experimentales para una hipótesis no evaluable.
