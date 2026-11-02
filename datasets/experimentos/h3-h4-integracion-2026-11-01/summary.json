@@ -1,0 +1,15 @@
+{
+  "H3_historical_status": "not_executed_missing_eligible_final_forecasts_and_coverage",
+  "H3_artificial_cases_scored": 189,
+  "H3_training_origins": 9,
+  "H3_methods": 5,
+  "H3_ECOD": "inductive frozen-training adaptation, not unchanged PyOD transductive scoring",
+  "H4_status": "not_executed_as_LLM_experiment",
+  "H4_technical_fixture_traces": 180,
+  "H4_deterministic_transport_calls": 180,
+  "H4_LLM_outputs_generated": 0,
+  "H4_final_human_fact_reviews": 0,
+  "H4_second_review_sample_prepared": 45,
+  "historical_final_test_executed": false,
+  "paid_provider_calls": 0
+}

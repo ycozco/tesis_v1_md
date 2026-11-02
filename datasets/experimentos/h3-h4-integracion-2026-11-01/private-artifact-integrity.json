@@ -1,0 +1,13 @@
+{
+  "note": "Private mapping and trace bodies are not included in public delivery; fixture only.",
+  "files": {
+    "data/h4-technical-fixture/private-blind-mapping.json": {
+      "bytes": 39230,
+      "sha256": "9c0c18e78d89ab94e8cf55207736f7716c45d3148d3c7e939cfa17eab530feec"
+    },
+    "data/h4-technical-fixture/technical-traces.jsonl": {
+      "bytes": 314718,
+      "sha256": "c7f35d38ebdfe5c27f58bbf93e903e44f33db24bd0d356f94d946beae3bfdbdf"
+    }
+  }
+}

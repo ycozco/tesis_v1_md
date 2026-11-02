@@ -1,0 +1,14 @@
+{
+  "convention": "UTF-8 text with universal newlines normalized to LF",
+  "files": {
+    "pipeline/research/h3_engine.py": "3de496070907854eb93f1dba48b7ce2fb6f65b9cf75f68beab2e163b7ac36d76",
+    "pipeline/research/h4_runner.py": "bf4d8eb65663c753a9457205f3d990f5c3afc5ebaae3fb538180b5ee172e339c",
+    "pipeline/research/h4_evaluation.py": "35018e8c86e99164b98da7d26f33e5af52b068f54cb8f47d7eac6d1471c029eb",
+    "pipeline/research/h4_blind.py": "963ec205287a8a8570a7ffa458628470c7a29c745fb6fed7a64b736654508fe9",
+    "tools/advance_h3_h4.py": "4371db6536ba435eaa6748ce1e1de46e5f6abf5e1b0ac7bdfad0c1560c4aefc6",
+    "tools/verify_h3_h4.py": "24a8c1a64b8362dbcb3369c43e3527ef7644755bb4af4b475cacd518cfe512df",
+    "tools/run_final_verification.py": "6ab102444d53fc6024f922df21e95f0012f2fdc5ae1d8c846b3af9b46133ff4b",
+    "tests/unit/test_h3_engine.py": "e4f744821b28e489d1dd816b46e3b30de9432a1e5190ab1220e6ff1f673cccb7",
+    "tests/unit/test_h4_execution.py": "7b108545f54979abe9adc48f10313ed506737b74a0316b969913e51042621126"
+  }
+}

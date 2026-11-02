@@ -1,0 +1,7 @@
+{
+  "installed_package_version": "3.6.0",
+  "source_file_sha256": "eb1a1213cf09b6c957d86ba2128fda12fd11f34bef6c389af535e4b1f649eff7",
+  "appends_training_and_new_batch": true,
+  "official_source_url": "https://pyod.readthedocs.io/en/latest/_modules/pyod/models/ecod.html",
+  "historical_protocol_review_of_inductive_adaptation_required": true
+}

@@ -25,6 +25,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     runtime.mkdir(parents=True, exist_ok=True)
     env = dict(os.environ, PYTHONPATH=str(ROOT), PYTHONIOENCODING='utf-8',
+               MPLCONFIGDIR=str(ROOT/'data/runtime-research-clean/matplotlib-cache'),
                DATABASE_URL='sqlite+pysqlite:///:memory:',
                SECRET_KEY='ArtificialFinalVerificationSigningKey2026Only',
                RESEARCH_ALLOW_PAID_AI='false', RESEARCH_ALLOW_LOCAL_AI='false',

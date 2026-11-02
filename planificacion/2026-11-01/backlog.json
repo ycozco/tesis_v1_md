@@ -201,8 +201,8 @@
       "deliverable": "Scores OOS, percentiles del entrenamiento, ensemble de pesos iguales, top K y caracterización.",
       "acceptance": "Percentiles calculados en entrenamiento previo, no en el lote puntuado; K por producto en universo común y desempate por fecha/destino; w+1/w+2 solo para rúbrica retrospectiva; q/r/u, solapamiento y sensibilidad documentados.",
       "status": "en_curso",
-      "execution_note": "Reglas CDF de entrenamiento, presupuesto por producto y rubrica 3 semanas implementadas y probadas; falta integracion de detectores y ejecucion historica elegible.",
-      "execution_evidence": "ejecucion/continuacion.md"
+      "execution_note": "Integrados escala/IF/LOF novelty/ECOD adaptado fijo, CDF previa, cinco metodos, K por producto y rubrica. 189 casos artificiales, nueve ajustes, contraste independiente. Falta H1 y datos historicos elegibles, revision del protocolo y rutas UI.",
+      "execution_evidence": "../../datasets/experimentos/h3-h4-integracion-2026-11-01/README.md"
     },
     {
       "id": "P09",
@@ -245,7 +245,9 @@
       "owner": "Desarrollo",
       "deliverable": "Base con migraciones, corpus y fragmentos versionados, embeddings multilingües y recuperación temporal.",
       "acceptance": "Reconstrucción y recuperación reales desde cero; cada cita resuelve documento/fragmento/hash/fecha; casos sin respaldo producen abstención registrada.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Docker Desktop intentado en segundo plano; daemon no disponible. Ollama sin modelo/servicio. Fixture usa consulta por ID; PostgreSQL/pgvector/embeddings y recuperacion real siguen pendientes.",
+      "execution_evidence": "../../datasets/experimentos/h3-h4-integracion-2026-11-01/README.md"
     },
     {
       "id": "P11",
@@ -265,8 +267,8 @@
       "deliverable": "Diez esquemas por cada producto, 30 casos completos y de fallo con clave común y guía ciega.",
       "acceptance": "Todos los diez tipos exigidos están representados por producto; los 30 agregados actuales no se etiquetan como catálogo H4 definitivo.",
       "status": "en_curso",
-      "execution_note": "30 casos artificiales de los diez escenarios, claves separadas, 180 turnos sin ejecutar y guard de congelamiento. Faltan revision humana, runner y evaluacion.",
-      "execution_evidence": "ejecucion/continuacion.md"
+      "execution_note": "Catalogo conservado; guia y herramientas de revision/rehash; claves sin marcar revision humana. Politica de NA requiere resolver ambiguedad antes de generar.",
+      "execution_evidence": "../../datasets/experimentos/h3-h4-integracion-2026-11-01/README.md"
     },
     {
       "id": "P12",
@@ -287,7 +289,9 @@
       "owner": "Tesista; revisor independiente si disponible",
       "deliverable": "180 salidas emparejadas, salida inicial/corrección/final/plantilla, calificación numérica/factual y concordancia.",
       "acceptance": "Mismo generador y parámetros; tolerancia media unidad decimal +1e-9; tasas separadas y no definidas si denominador cero; 45 revisiones independientes o repetidas ciegas tras 7 días.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "Ejecutor pareado, checkpoints, correcciones/fallback verificado, calificacion numerica y atomizacion externa, agregacion por caso, muestra ciega45/acuerdo implementados. 180 recorridos solo con transporte determinista; cero LLM reales o revisiones humanas.",
+      "execution_evidence": "../../datasets/experimentos/h3-h4-integracion-2026-11-01/README.md"
     },
     {
       "id": "P13",
