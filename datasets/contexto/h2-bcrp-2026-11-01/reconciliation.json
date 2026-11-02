@@ -1,0 +1,258 @@
+[
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-01",
+    "local_value": "3.74692272727273",
+    "printed_value": "3.747",
+    "absolute_difference": "0.00007727272727",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-02",
+    "local_value": "3.69685",
+    "printed_value": "3.697",
+    "absolute_difference": "0.00015",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-03",
+    "local_value": "3.65248571428571",
+    "printed_value": "3.652",
+    "absolute_difference": "0.00048571428571",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-04",
+    "local_value": "3.70003",
+    "printed_value": "3.700",
+    "absolute_difference": "0.00003",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-05",
+    "local_value": "3.65991428571429",
+    "printed_value": "3.660",
+    "absolute_difference": "0.00008571428571",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-06",
+    "local_value": "3.60219523809524",
+    "printed_value": "3.602",
+    "absolute_difference": "0.00019523809524",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-07",
+    "local_value": "3.556945",
+    "printed_value": "3.557",
+    "absolute_difference": "0.000055",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-08",
+    "local_value": "3.542385",
+    "printed_value": "3.542",
+    "absolute_difference": "0.000385",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-09",
+    "local_value": "3.50180454545455",
+    "printed_value": "3.502",
+    "absolute_difference": "0.00019545454545",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-10",
+    "local_value": "3.41322727272727",
+    "printed_value": "3.413",
+    "absolute_difference": "0.00022727272727",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-11",
+    "local_value": "3.37263",
+    "printed_value": "3.373",
+    "absolute_difference": "0.00037",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2025-12",
+    "local_value": "3.36686315789474",
+    "printed_value": "3.367",
+    "absolute_difference": "0.00013684210526",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2026-01",
+    "local_value": "3.356115",
+    "printed_value": "3.356",
+    "absolute_difference": "0.000115",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2026-02",
+    "local_value": "3.35664",
+    "printed_value": "3.357",
+    "absolute_difference": "0.00036",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2026-03",
+    "local_value": "3.44835909090909",
+    "printed_value": "3.448",
+    "absolute_difference": "0.00035909090909",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns18-2026-table36",
+    "month": "2026-04",
+    "local_value": "3.44349",
+    "printed_value": "3.443",
+    "absolute_difference": "0.00049",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-01",
+    "local_value": "3.74692272727273",
+    "printed_value": "3.747",
+    "absolute_difference": "0.00007727272727",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-02",
+    "local_value": "3.69685",
+    "printed_value": "3.697",
+    "absolute_difference": "0.00015",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-03",
+    "local_value": "3.65248571428571",
+    "printed_value": "3.652",
+    "absolute_difference": "0.00048571428571",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-04",
+    "local_value": "3.70003",
+    "printed_value": "3.700",
+    "absolute_difference": "0.00003",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-05",
+    "local_value": "3.65991428571429",
+    "printed_value": "3.660",
+    "absolute_difference": "0.00008571428571",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-06",
+    "local_value": "3.60219523809524",
+    "printed_value": "3.602",
+    "absolute_difference": "0.00019523809524",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-07",
+    "local_value": "3.556945",
+    "printed_value": "3.557",
+    "absolute_difference": "0.000055",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-08",
+    "local_value": "3.542385",
+    "printed_value": "3.542",
+    "absolute_difference": "0.000385",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-09",
+    "local_value": "3.50180454545455",
+    "printed_value": "3.502",
+    "absolute_difference": "0.00019545454545",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-10",
+    "local_value": "3.41322727272727",
+    "printed_value": "3.413",
+    "absolute_difference": "0.00022727272727",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-11",
+    "local_value": "3.37263",
+    "printed_value": "3.373",
+    "absolute_difference": "0.00037",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2025-12",
+    "local_value": "3.36686315789474",
+    "printed_value": "3.367",
+    "absolute_difference": "0.00013684210526",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2026-01",
+    "local_value": "3.356115",
+    "printed_value": "3.356",
+    "absolute_difference": "0.000115",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2026-02",
+    "local_value": "3.35664",
+    "printed_value": "3.357",
+    "absolute_difference": "0.00036",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2026-03",
+    "local_value": "3.44835909090909",
+    "printed_value": "3.448",
+    "absolute_difference": "0.00035909090909",
+    "status": "matches_printed_precision"
+  },
+  {
+    "document_id": "bcrp-ns19-2026-table36",
+    "month": "2026-04",
+    "local_value": "3.44349",
+    "printed_value": "3.443",
+    "absolute_difference": "0.00049",
+    "status": "matches_printed_precision"
+  }
+]

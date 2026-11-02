@@ -1,0 +1,10 @@
+{
+  "tests_passed": 3,
+  "tests_command": "python -B -m pytest tests/unit/test_h2_bcrp.py -q",
+  "documentary_comparisons": 32,
+  "distinct_months": 16,
+  "conflicts": 0,
+  "original_local_series_sha256_unchanged": true,
+  "eligible_asof_rows_added": 0,
+  "ablation_executed": false
+}

@@ -1,0 +1,19 @@
+{
+  "date_local": "2026-11-01",
+  "local_series_months": 102,
+  "local_source_sha256": "bc020972a7adc97580b3d359934fe24f417cfa059e4f28a482952e818a1af39e",
+  "documentary_candidate_rows": 32,
+  "distinct_months_compared": 16,
+  "matches_printed_precision": 32,
+  "conflicts": 0,
+  "candidate_eligible_asof_rows": 0,
+  "source_backup_modified": false,
+  "h2_ablation_executed": false,
+  "decision": "H2 remains not evaluable; documentary reconciliation advanced but originals and availability not verified",
+  "pending": [
+    "Obtain valid original dated PDFs and verify table/column identity",
+    "Recover dated vintages before and throughout development, not only May 2026",
+    "Set conservative evidenced availability timestamps and review conceptual mapping",
+    "Verify target coverage, freeze common calendar and execute paired ablation"
+  ]
+}

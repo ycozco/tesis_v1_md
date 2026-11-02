@@ -178,8 +178,8 @@
       "deliverable": "Registro fuente–unidad–publicación y comparación historial vs contexto.",
       "acceptance": "Mismo algoritmo, parámetros, series y calendario; sin fechas compatibles, H2 se declara no evaluable con evidencia; no se simulan covariables.",
       "status": "resuelto_no_evaluable_con_fuentes_actuales",
-      "execution_note": "Cero familias contextuales elegibles para ablacion as-of; decision sustentada por hashes y limitaciones de BCRP, SISAP, NASA y Comtrade. Reabrir si se recupera evidencia nueva.",
-      "execution_evidence": "ejecucion/verificacion-final/h2-eligibility-decision.json"
+      "execution_note": "Conciliacion BCRP documental: 32 cotejos de 16 meses coinciden a precision publicada. API/PDF entregan HTML; originales y disponibilidad historica siguen no verificados. H2 no evaluable; se conserva copia local intacta.",
+      "execution_evidence": "../../datasets/contexto/h2-bcrp-2026-11-01/README.md"
     },
     {
       "id": "P08",

@@ -1,0 +1,59 @@
+[
+  {
+    "name": "api-mensual",
+    "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01207PM/json/2018-1/2026-10/esp",
+    "retrieved_at_utc": "2026-11-02T00:17:54.798301+00:00",
+    "http_status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 5996,
+    "sha256": "02e6e3121c64c541e6537d7a59c542ebeb21c9c615c3a1887c2ff13916c2bfc7",
+    "file": "data/h2-bcrp-retrieval/api-mensual.html",
+    "kind": "html"
+  },
+  {
+    "name": "cuadros-17-2023",
+    "url": "https://www.bcrp.gob.pe/docs/Estadisticas/Cuadros-Estadisticos/2023/cuadros-estadisticos-17-2023.pdf",
+    "retrieved_at_utc": "2026-11-02T00:17:55.131164+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 1157,
+    "sha256": "70f91fd699db1885f84536b0730e136fdefa5c364e8f332574a22cfb28d5af0e",
+    "file": "data/h2-bcrp-retrieval/cuadros-17-2023.html",
+    "kind": "html"
+  },
+  {
+    "name": "calendario-2026",
+    "url": "https://www.bcrp.gob.pe/docs/Estadisticas/Calendario-Estadisticas.pdf",
+    "retrieved_at_utc": "2026-11-02T00:17:55.635176+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 1155,
+    "sha256": "694295be803937e568c63ddac03c794d7e56deaff7352cd7446ce4bdf1a2d088",
+    "file": "data/h2-bcrp-retrieval/calendario-2026.html",
+    "kind": "html"
+  },
+  {
+    "name": "bcrp-ns18-2026-table36",
+    "url": "https://www.bcrp.gob.pe/docs/Publicaciones/Nota-Semanal/2026/ns-18-2026.pdf",
+    "retrieved_at_utc": "2026-11-02T00:20:39.555512+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 1046,
+    "sha256": "d5616c02fd1cf053a3e06cd1eaa5fdebca5eb93fecbf0358b0fc0930929654bb",
+    "file": "data/h2-bcrp-retrieval/bcrp-ns18-2026-table36.html",
+    "kind": "not_pdf",
+    "original_verified": false
+  },
+  {
+    "name": "bcrp-ns19-2026-table36",
+    "url": "https://www.bcrp.gob.pe/docs/Publicaciones/Nota-Semanal/2026/ns-19-2026.pdf",
+    "retrieved_at_utc": "2026-11-02T00:20:39.842035+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 1049,
+    "sha256": "4ba8750625fd46740b740061f6933f577974d72de6332f85a5f43937566dfc31",
+    "file": "data/h2-bcrp-retrieval/bcrp-ns19-2026-table36.html",
+    "kind": "not_pdf",
+    "original_verified": false
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://www.bcrp.gob.pe/docs/Publicaciones/Nota-Semanal/2025/ns-32-2025.pdf",
+    "document_date_candidate": "2025-09-11",
+    "evidence": "Official indexed text includes a note update dated 11 September 2025; table 36 has not been extracted or verified from original.",
+    "priority": "Before proposed development start 2025-10-27",
+    "numeric_observations_extracted": 0,
+    "original_verified": false
+  },
+  {
+    "url": "https://www.bcrp.gob.pe/docs/Publicaciones/Nota-Semanal/2026/ns-01-2026.pdf",
+    "document_date_candidate": "2026-01-08",
+    "evidence": "Official indexed text includes a note update dated 8 January 2026; table 36 has not been extracted or verified from original.",
+    "priority": "Within proposed development period",
+    "numeric_observations_extracted": 0,
+    "original_verified": false
+  }
+]
