@@ -40,3 +40,5 @@ Se incorporó portada de dos columnas, jerarquía tipográfica Outfit, acción p
 
 ## Resumen orientado a resultados
 Se sustituyó la portada por filtros producto/destino/fechas, sumas FOB y kg, razón de sumas USD/kg, conteo de celdas observadas/desconocidas y evolución semanal sin unir huecos. Se incluye alcance y estado H1–H4. Los indicadores usan exclusivamente el snapshot gráfico identificado, no la colección ampliada. Comprobación independiente con Decimal para palta/todos los destinos, build y revisión visual de escritorio aprobados; móvil y campaña completa de filtros pendientes. Captura: resumen-resultados-2026-11-01.png.
+
+Resumen gráfico: cinco visualizaciones (FOB, volumen, destinos, disponibilidad y USD/kg), con referencia SUNAT/ADUANET y descarga del snapshot junto a cada gráfico. El enlace institucional se conserva del manifiesto; no se comprobó en esta entrega su disponibilidad externa. Build y representación de escritorio verificados. Totales numéricos reducidos a una franja de apoyo.
