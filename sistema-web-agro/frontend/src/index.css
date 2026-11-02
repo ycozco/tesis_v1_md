@@ -146,3 +146,18 @@ select option { background: #171d17; color: #dee4da; }
 .research-plot:hover { border-color: #76db8f55; box-shadow: 0 4px 24px #0002; }
 .research-info[open] > div { animation: research-reveal 180ms ease-out; }
 @media (prefers-reduced-motion: reduce) { .research-info[open] > div { animation: none; } }
+
+/* Consistent icon badges and semantic series colors from DESIGN.md. */
+.research-shell { --data-fob: #76db8f; --data-volume: #89ceff; --data-unit: #9dd3a7; --data-unknown: #889487; }
+.research-chart-title { display: flex; align-items: center; gap: 12px; }
+.research-icon-badge { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: .5rem; border: 1px solid currentColor; }
+.tone-green { color: #76db8f; background: #76db8f12; border-color: #76db8f30; }
+.tone-blue { color: #89ceff; background: #89ceff12; border-color: #89ceff30; }
+.tone-sage { color: #9dd3a7; background: #9dd3a712; border-color: #9dd3a730; }
+.research-info > summary { display: flex; align-items: center; gap: 7px; list-style: none; }
+.research-info > summary::-webkit-details-marker { display: none; }
+.research-info > summary svg { width: 15px; height: 15px; }
+.research-info > summary::after { content: '+'; margin-left: auto; font-size: 16px; }
+.research-info[open] > summary::after { content: '−'; }
+.research-sidebar nav a > .material-symbols-outlined { display: grid; place-items: center; min-width: 32px; height: 32px; border-radius: .5rem; background: #ffffff05; color: #9dd3a7; }
+.research-sidebar nav a[aria-current="page"] > .material-symbols-outlined { color: #76db8f; background: #76db8f18; }
