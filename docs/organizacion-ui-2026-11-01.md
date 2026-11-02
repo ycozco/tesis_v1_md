@@ -37,3 +37,6 @@ Navegación móvil en grilla de dos columnas (cuatro en ancho intermedio), evita
 
 ## Rediseño visual visible
 Se incorporó portada de dos columnas, jerarquía tipográfica Outfit, acción principal, fondo con gradiente verde, tarjetas numeradas con aparición escalonada y navegación activa destacada. El navegador se recuperó al reiniciar su sesión de control; resumen verificado visualmente en escritorio y captura conservada en resumen-rediseno-2026-11-01.png. Build aprobado. Revisión móvil de este último cambio y medición de accesibilidad pendientes.
+
+## Resumen orientado a resultados
+Se sustituyó la portada por filtros producto/destino/fechas, sumas FOB y kg, razón de sumas USD/kg, conteo de celdas observadas/desconocidas y evolución semanal sin unir huecos. Se incluye alcance y estado H1–H4. Los indicadores usan exclusivamente el snapshot gráfico identificado, no la colección ampliada. Comprobación independiente con Decimal para palta/todos los destinos, build y revisión visual de escritorio aprobados; móvil y campaña completa de filtros pendientes. Captura: resumen-resultados-2026-11-01.png.
