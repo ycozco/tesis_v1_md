@@ -48,6 +48,9 @@ def eligible_context(candidates, origin):
         available = datetime.fromisoformat(published.replace('Z','+00:00'))
         if available.tzinfo is None:
             raise ValueError('Verified availability needs timezone')
+        document_date=row.get('document_date')
+        if not document_date or date.fromisoformat(document_date)>available.date():
+            continue
         if available <= origin and completed_before(row['month'], available.date().isoformat()):
             valid.append(row)
     return sorted(valid,key=lambda row:(row['month'],row['verified_available_at']))

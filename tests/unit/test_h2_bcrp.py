@@ -27,3 +27,11 @@ def test_incomplete_month_and_naive_timestamps_are_rejected():
     assert MODULE.eligible_context([candidate],'2026-05-20T00:00:00Z') == []
     with pytest.raises(ValueError,match='Timezone'):
         MODULE.eligible_context([],'2026-05-20T00:00:00')
+
+
+def test_publication_cannot_precede_the_document_that_supports_it():
+    candidate={'month':'2025-01','document_date':'2026-05-14',
+               'evidence_status':'original_verified','verified_available_at':'2025-02-01T00:00:00Z'}
+    assert MODULE.eligible_context([candidate],'2026-06-01T00:00:00Z') == []
+    candidate.pop('document_date')
+    assert MODULE.eligible_context([candidate],'2026-06-01T00:00:00Z') == []

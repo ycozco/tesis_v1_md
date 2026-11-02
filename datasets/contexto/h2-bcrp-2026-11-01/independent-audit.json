@@ -1,0 +1,15 @@
+{
+  "status": "passed_with_original_document_verification_pending",
+  "artifact_hash_failures": [],
+  "local_months": 102,
+  "candidate_comparisons": 32,
+  "independent_months": 16,
+  "document_count": 2,
+  "max_absolute_difference": "0.00049",
+  "retrieved_response_bodies_verified": 5,
+  "retrieved_response_count": 5,
+  "original_pdfs_verified": 0,
+  "eligible_context_rows": 0,
+  "evidence_limitation": "Two manual indexed transcriptions; not independent original-PDF extraction or complete historical publication evidence",
+  "source_backup_sha256": "bc020972a7adc97580b3d359934fe24f417cfa059e4f28a482952e818a1af39e"
+}

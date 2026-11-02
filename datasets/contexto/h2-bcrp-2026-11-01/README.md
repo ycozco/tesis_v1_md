@@ -30,3 +30,11 @@ python -B -m pytest tests/unit/test_h2_bcrp.py -q
 ```
 
 La primera orden reproduce la conciliación de las transcripciones contra la copia local. La segunda realiza nuevas solicitudes normales y requiere `requests`; no asegura que el servidor entregue PDFs. La transcripción documental debe verificarse contra originales antes de habilitar el uso experimental.
+
+## Verificación y contraste independiente posterior
+
+`python -B tools/verify_h2_bcrp.py` recalcula desde los archivos guardados sin importar el productor de la conciliación: claves únicas, 16 meses por cada documento, diferencias Decimal, coherencia de fechas/estados, fuente local inmutable y huellas de los cinco cuerpos descargados. Resultado: 32 coincidencias, diferencia máxima 0,00049 PEN/USD, cero fallos de integridad, cero originales PDF verificados y cero filas elegibles. Son 16 meses repetidos en dos notas, no 32 meses independientes ni 32 PDFs revisados. La consulta web posterior volvió a localizar el cuadro 36 indexado de ambas notas; la evidencia sigue siendo transcripción indexada.
+
+Se corrigió un hueco potencial del selector: una fila marcada como verificada podía declarar una disponibilidad anterior a su propio documento. Ahora exige fecha documental y rechaza esa contradicción. No se detectó un caso así habilitado en esta colección, pues todos los candidatos permanecían excluidos. Cuatro pruebas del módulo aprobaron, incluida la regresión de este caso. Una marca de verificación sigue requiriendo evidencia externa y revisión, no constituye por sí sola certificación.
+
+No se amplió el conjunto elegible ni se ejecutó H2. Los datos concuerdan al redondeo publicado; la disponibilidad histórica sigue sin demostrarse. `independent-audit.json` conserva el resultado del verificador.
