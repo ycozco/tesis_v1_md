@@ -3,20 +3,21 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../App.jsx'
 
 const sections = [
-  ['series', 'monitoring', 'Series y comparación'],
-  ['pronosticos', 'query_stats', 'Pronóstico'],
+  ['resumen', 'space_dashboard', 'Resumen'],
+  ['series', 'monitoring', 'Series y destinos'],
+  ['pronosticos', 'query_stats', 'Modelos piloto'],
   ['senales', 'radar', 'Señales exploratorias'],
-  ['reportes', 'description', 'Reportes y evidencia'],
+  ['reportes', 'description', 'Protocolo de reportes'],
   ['fuentes', 'database', 'Fuentes y cobertura'],
   ['proceso', 'account_tree', 'Proceso y auditoría'],
-  ['ia', 'neurology', 'IA y reportes'],
+  ['ia', 'neurology', 'Reportes e IA'],
 ]
 
 export default function ResearchLayout({ children }) {
   const { user, logout } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
-  const active = new URLSearchParams(location.search).get('view') || 'series'
+  const active = new URLSearchParams(location.search).get('view') || 'resumen'
   const legacy = location.pathname !== '/dashboard'
   function leave() { logout(); navigate('/login') }
   return (
@@ -34,12 +35,12 @@ export default function ResearchLayout({ children }) {
         </div>
       </header>
       <div className="max-w-[1600px] mx-auto md:flex">
-        <aside className="md:w-64 md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 p-3 md:p-5">
+        <aside className="md:w-60 md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 p-3 md:p-5">
           <p className="hidden md:block text-xs tracking-widest uppercase text-on-surface-variant mb-5">Análisis comparativo</p>
-          <nav aria-label="Navegación principal" className="flex md:flex-col gap-2 overflow-x-auto pb-1">
+          <nav aria-label="Navegación principal" className="grid grid-cols-2 sm:grid-cols-4 md:flex md:flex-col gap-2 pb-1">
             {sections.map(([id, icon, label]) => (
               <Link key={id} to={`/dashboard?view=${id}`} aria-current={!legacy && active === id ? 'page' : undefined}
-                className={`flex items-center gap-3 p-3 rounded-lg whitespace-nowrap text-sm transition-colors ${!legacy && active === id ? 'bg-primary/15 text-primary border border-primary/25' : 'text-on-surface-variant hover:bg-white/5 border border-transparent'}`}>
+                className={`flex items-center gap-3 p-3 rounded-lg min-w-0 text-sm transition-colors ${!legacy && active === id ? 'bg-primary/15 text-primary border border-primary/25' : 'text-on-surface-variant hover:bg-white/5 border border-transparent'}`}>
                 <span className="material-symbols-outlined text-xl" aria-hidden="true">{icon}</span>{label}
               </Link>
             ))}

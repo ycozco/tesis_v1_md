@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import ResearchProcess from '../components/ResearchProcess.jsx'
 import ResearchAI from '../components/ResearchAI.jsx'
@@ -8,8 +8,9 @@ import { comparisonCsv } from '../lib/comparisonCsv.js'
 
 const products = { palta: 'Palta', uva: 'Uva fresca', arandano: 'Arándano' }
 const number = (v, decimals = 2) => v == null ? 'Sin dato' : Number(v).toLocaleString('es-PE', { maximumFractionDigits: decimals })
-const titles = { series: 'Series y comparación', pronosticos: 'Pronóstico semanal', senales: 'Señales exploratorias', reportes: 'Reportes y evidencia', fuentes: 'Fuentes y cobertura', proceso: 'Proceso y auditoría', ia: 'IA y reportes' }
+const titles = { resumen: 'Resumen del prototipo', series: 'Series y comparación', pronosticos: 'Modelos y evaluación piloto', senales: 'Señales exploratorias', reportes: 'Reportes y evidencia', fuentes: 'Fuentes y cobertura', proceso: 'Proceso y auditoría', ia: 'IA y reportes' }
 const descriptions = {
+  resumen: 'Explora las exportaciones disponibles y distingue resultados piloto, fuentes y pruebas pendientes.',
   series: 'Compara el valor unitario FOB y el volumen por producto, destino y semana ISO.',
   pronosticos: 'Contraste retrospectivo de modelos y referencias simples, solo en desarrollo.',
   senales: 'Observaciones seleccionadas por detectores con un presupuesto común. Requieren interpretación.',
@@ -23,13 +24,13 @@ function Card({ label, value, detail }) {
 }
 function Empty({ children }) { return <div role="status" className="glass-panel rounded-xl p-8 text-on-surface-variant text-sm">{children}</div> }
 function Table({ headings, children }) {
-  return <div className="glass-panel rounded-xl overflow-x-auto"><table className="w-full text-sm text-left"><thead className="text-xs text-on-surface-variant border-b border-white/10"><tr>{headings.map(h => <th key={h} scope="col" className="p-4 font-medium whitespace-nowrap">{h}</th>)}</tr></thead><tbody className="divide-y divide-white/5">{children}</tbody></table></div>
+  return <div className="glass-panel rounded-xl overflow-x-auto" tabIndex={0} role="region" aria-label={headings.join(", ")}><table className="w-full text-sm text-left"><thead className="text-xs text-on-surface-variant border-b border-white/10"><tr>{headings.map(h => <th key={h} scope="col" className="p-4 font-medium whitespace-nowrap">{h}</th>)}</tr></thead><tbody className="divide-y divide-white/5">{children}</tbody></table></div>
 }
 
 export default function ResearchDashboard() {
   const reducedMotion = useReducedMotion()
   const [params] = useSearchParams()
-  const view = titles[params.get('view')] ? params.get('view') : 'series'
+  const view = titles[params.get('view')] ? params.get('view') : 'resumen'
   const [data, setData] = useState(null)
   const [error, setError] = useState(false)
   const [attempt, setAttempt] = useState(0)
@@ -82,16 +83,29 @@ export default function ResearchDashboard() {
     const link = document.createElement('a'); link.href = url; link.download = `comparacion-${product}-${selectedDestination}-${target}.csv`
     link.click(); URL.revokeObjectURL(url)
   }
-  return <div className="space-y-6 research-enter">
+  return <div key={view} className="space-y-6 research-enter">
     <header><p className="text-xs text-primary uppercase tracking-widest mb-2">Sistema de información y pronóstico</p>
       <div className="flex flex-wrap justify-between gap-3 items-start"><h1 className="font-headline-lg text-3xl md:text-4xl">{titles[view]}</h1><span className="glass-panel rounded-full px-3 py-2 text-xs text-primary border border-primary/20">Corte · 01 nov 2026</span></div>
       <p className="text-on-surface-variant mt-3 text-sm leading-relaxed">{descriptions[view]}</p></header>
     <div role="status" className="glass-panel rounded-xl px-4 py-3 text-sm text-on-surface-variant border-l-2 border-primary"><strong className="text-on-surface">Piloto de desarrollo · cobertura parcial.</strong> Las semanas sin registros permanecen desconocidas. La prueba final no se ha ejecutado.</div>
+    {view === 'resumen' && <>
+      <section className="grid sm:grid-cols-3 gap-4" aria-label="Alcance del conjunto mostrado"><Card label="Registros del piloto gráfico" value={number(summary.rows, 0)} detail="Históricos recuperados; no representan cobertura completa del mercado" /><Card label="Series producto–destino" value={summary.series} detail="La disponibilidad varía entre países y periodos" /><Card label="Estado experimental" value="En desarrollo" detail="Sin resultados finales H1/H3/H4; H2 no evaluable para la colección actual" /></section>
+      <section className="glass-panel rounded-xl p-5"><h2 className="font-headline-md text-xl mb-2">¿Qué quieres consultar?</h2><p className="text-sm text-on-surface-variant">Empieza por los datos observados. Cada vista identifica su alcance y sus límites.</p></section>
+      <section className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">{[
+        ['series', 'Comparar destinos', 'Consulta series de FOB/kg y volumen por producto, país de destino y periodo.'],
+        ['fuentes', 'Revisar las fuentes', 'Accede a la procedencia, cobertura y enlaces de los datos.'],
+        ['pronosticos', 'Examinar modelos piloto', 'Consulta evaluación retrospectiva. Todavía no se emiten proyecciones finales.'],
+        ['senales', 'Explorar señales piloto', 'Revisa selecciones históricas; no constituyen alertas comerciales.'],
+        ['ia', 'Consultar reportes', 'Distingue respuestas artificiales archivadas de nuevas generaciones.'],
+        ['proceso', 'Auditar el avance', 'Contrasta la colección ampliada, sus archivos y pendientes.'],
+      ].map(([id, title, text]) => <Link key={id} to={`/dashboard?view=${id}`} className="glass-card research-stage rounded-xl p-5 border border-white/10 hover:border-primary/40"><h2 className="font-headline-md text-lg text-primary mb-2">{title} <span aria-hidden="true">↗</span></h2><p className="text-sm text-on-surface-variant leading-relaxed">{text}</p></Link>)}</section>
+      <p className="text-sm text-on-surface-variant">Los gráficos conservan el piloto de 93.225 registros. La colección ampliada de 101.546 se documenta en Proceso y auditoría. Comparar países no simula efectos ni identifica regiones de origen productivo.</p>
+    </>}
     {view === 'proceso' && <ResearchProcess data={data} />}
     {view === 'ia' && <ResearchAI />}
     {['series', 'senales'].includes(view) && <section aria-label="Filtros de series" className="glass-card rounded-xl p-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
       <label className="text-xs text-on-surface-variant">Producto<select className="glass-input rounded-lg p-2.5 mt-2 w-full text-on-surface" value={product} onChange={e => setProduct(e.target.value)}>{Object.entries(products).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select></label>
-      <label className="text-xs text-on-surface-variant">Destino (código de origen)<select className="glass-input rounded-lg p-2.5 mt-2 w-full text-on-surface" value={selectedDestination || ''} onChange={e => setDestination(e.target.value)}>{markets.map(m => <option key={m}>{m}</option>)}</select></label>
+      <label className="text-xs text-on-surface-variant">País de destino (código de la fuente)<select className="glass-input rounded-lg p-2.5 mt-2 w-full text-on-surface" value={selectedDestination || ''} onChange={e => setDestination(e.target.value)}>{markets.map(m => <option key={m}>{m}</option>)}</select></label>
       {view === 'series' && <label className="text-xs text-on-surface-variant">Comparar con<select className="glass-input rounded-lg p-2.5 mt-2 w-full text-on-surface" value={selectedCompare} onChange={e => setCompare(e.target.value)}><option value="">Sin comparación</option>{markets.filter(m => m !== selectedDestination).map(m => <option key={m}>{m}</option>)}</select></label>}
       <label className="text-xs text-on-surface-variant">Variable<select className="glass-input rounded-lg p-2.5 mt-2 w-full text-on-surface" value={target} onChange={e => setTarget(e.target.value)}><option value="unit_fob">Valor unitario FOB · USD/kg</option><option value="volume_kg">Volumen · kg</option></select></label>
       <label className="text-xs text-on-surface-variant">Desde<input className="glass-input rounded-lg p-2.5 mt-2 w-full text-on-surface" type="date" value={start} onInput={e => setStart(e.currentTarget.value)} onChange={e => setStart(e.target.value)} /></label>
@@ -115,8 +129,8 @@ export default function ResearchDashboard() {
       <button onClick={exportComparison} disabled={!series.length} className="glass-input rounded-lg px-4 py-3 text-sm text-primary disabled:opacity-40">Exportar comparación completa CSV</button>
     </>}
     {view === 'pronosticos' && <>
-      <section className="grid sm:grid-cols-3 gap-4"><Card label="Horizonte" value="1 semana" detail="Reajuste por fecha común de emisión" /><Card label="Intervalos 90 / 95 %" value="No evaluables" detail="Faltan 40 errores previos por serie para calibrar" /><Card label="Prueba final" value="Reservada" detail="Sin predicciones ni métricas del test" /></section>
-      <label className="block text-sm">Objetivo del contraste<select value={target} onChange={e => setTarget(e.target.value)} className="glass-input rounded-lg p-3 ml-3"><option value="unit_fob">Valor unitario FOB · USD/kg</option><option value="volume_kg">Volumen · kg</option></select></label>
+      <section className="grid sm:grid-cols-3 gap-4"><Card label="Horizonte" value="1 semana" detail="Reajuste por fecha común de emisión" /><Card label="Intervalos 90 / 95 %" value="No evaluables" detail="Faltan 40 errores previos por serie para calibrar" /><Card label="Prueba final" value="No ejecutada" detail="No se ha ejecutado el test final; elegibilidad pendiente" /></section>
+      <label className="glass-panel rounded-xl p-4 flex flex-wrap items-center gap-3 text-sm">Objetivo del contraste<select value={target} onChange={e => setTarget(e.target.value)} className="glass-input rounded-lg p-3 w-full sm:w-auto"><option value="unit_fob">Valor unitario FOB · USD/kg</option><option value="volume_kg">Volumen · kg</option></select></label>
       <p className="text-sm text-on-surface-variant">MAE macro por serie en desarrollo. Cada fila compara el modelo y la referencia sobre los mismos casos disponibles. Vista conservadora, L=0; una configuración piloto por biblioteca.</p>
       <Table headings={['Modelo', 'Referencia', 'Casos emparejados', `MAE modelo · ${unit}`, `MAE referencia · ${unit}`]}>{metrics.map(r => <tr key={`${r.model}-${r.reference}`}><td className="p-4">{r.model === 'xgb' ? 'XGBoost' : 'LightGBM'}</td><td className="p-4">{{ naive: 'Último valor', mean4: 'Media de 4 semanas', seasonal52: 'Estacional 52' }[r.reference]}</td><td className="p-4">{number(r.n_paired, 0)}</td><td className="p-4 font-mono">{number(r.model_macro_mae)}</td><td className="p-4 font-mono">{number(r.reference_macro_mae)}</td></tr>)}</Table>
       <Empty>Estos resultados prueban el funcionamiento del flujo. La selección y evaluación final requieren cobertura, grilla y calendario definitivos. SHAP explica el pronóstico supervisado; no demuestra causalidad.</Empty>
@@ -127,8 +141,8 @@ export default function ResearchDashboard() {
       <p className="text-xs text-on-surface-variant">Pendiente: referencia estacional, persistencia e informe de casos indeterminados. Sin etiquetas reales no se presentan precisión ni F1.</p>
     </>}
     {view === 'reportes' && <>
-      <section className="grid sm:grid-cols-3 gap-4"><Card label="Casos preparados" value={data.h4.h4_cases_prepared} detail="Diez por producto, con hechos de agregados reales" /><Card label="Ejecuciones planificadas" value={data.h4.h4_slots_prepared} detail="Dos configuraciones × tres repeticiones × 30 casos" /><Card label="Reportes generados" value={data.h4.h4_outputs_generated} detail="La evaluación H4 todavía no se ha ejecutado" /></section>
-      <section className="glass-card rounded-xl p-6 space-y-4"><h2 className="font-headline-md text-xl">Qué debe respaldar cada afirmación</h2><p className="text-sm text-on-surface-variant">Hecho identificado, fuente, semana, producto, destino y unidad. Para dos decimales se admite una diferencia absoluta máxima de 0,005; encontrar una cifra en un texto no acredita su significado.</p><p className="text-sm text-on-surface-variant">Recuperación léxica BM25 probada con documentos locales. Recuperación densa, persistencia pgvector, generación emparejada y evaluación factual a ciegas pendientes.</p></section>
+      <section className="grid sm:grid-cols-3 gap-4"><Card label="Diseño controlado" value="30 casos" detail="Diez esquemas artificiales por producto; revisión humana de claves pendiente" /><Card label="Salidas finales previstas" value="180" detail="30 casos × dos configuraciones × tres repeticiones" /><Card label="Evaluación final" value="Pendiente" detail="El archivo Codex es un piloto expuesto y se consulta por separado" /></section>
+      <section className="glass-card rounded-xl p-6 space-y-4"><h2 className="font-headline-md text-xl">De la afirmación a su evidencia</h2><p className="text-sm text-on-surface-variant">Cada afirmación debe enlazar hecho, documento, versión, semana, producto, destino y unidad. La tolerancia es media unidad del último decimal más 10⁻⁹. Una cifra coincidente no acredita su significado.</p><ol className="grid sm:grid-cols-3 gap-4 text-sm list-none"><li className="glass-panel rounded-lg p-4">1. Fijar las entradas y revisar las claves.</li><li className="glass-panel rounded-lg p-4">2. Congelar generador, corpus y recuperación.</li><li className="glass-panel rounded-lg p-4">3. Generar, contrastar y revisar las salidas.</li></ol><p className="text-sm text-on-surface-variant">La recuperación documental real, persistencia pgvector y evaluación factual continúan pendientes. Los recorridos técnicos y respuestas archivadas no sustituyen H4.</p><div className="flex flex-wrap gap-3"><Link className="glass-input research-button rounded-lg px-4 py-3 text-primary text-sm" to="/dashboard?view=ia">Consultar piloto Codex</Link><a className="glass-input research-button rounded-lg px-4 py-3 text-primary text-sm" href="https://docs.google.com/document/d/13cJUk1_AMrI-jsZj0s6a5XuTmE7wXZLFL-SNlPGxt8g/edit" target="_blank" rel="noreferrer">Tesis · §3.9.5.1 ↗</a></div></section>
     </>}
     {view === 'fuentes' && <>
       <section className="grid sm:grid-cols-3 gap-4"><Card label="Registros conciliados" value={number(summary.rows, 0)} detail="Vista conservadora; registros aduaneros, no series temporales" /><Card label="Combinaciones" value={summary.series} detail="Producto–destino en el panel recuperado" /><Card label="Celdas desconocidas" value={number(summary.unknown_cells, 0)} detail="No imputadas como exportaciones cero" /></section>
@@ -138,7 +152,7 @@ export default function ResearchDashboard() {
         <tr><td className="p-4">SISAP</td><td className="p-4">{number(data.sisap.numeric_prices, 0)} precios</td><td className="p-4">Palta y uva; unidades específicas por verificar</td></tr>
         <tr><td className="p-4">NASA POWER</td><td className="p-4">3.217 días · cuatro parámetros</td><td className="p-4">Punto de Arequipa; origen productivo sin justificar</td></tr>
       </Table>
-      <section className="glass-card rounded-xl p-6"><h2 className="font-headline-md text-xl mb-3">Nueva recuperación histórica</h2><p className="text-sm text-on-surface-variant leading-relaxed">Dos paquetes adicionales, de 2022 y 2023: {number(data.pending_search.candidate_rows, 0)} filas candidatas. Aún no se integran en series ni métricas; requieren conciliación y auditoría de cobertura. Cuatro enlaces exploratorios anteriores devolvieron 404.</p></section>
+      <section className="glass-card rounded-xl p-6"><h2 className="font-headline-md text-xl mb-3">Nueva recuperación histórica</h2><p className="text-sm text-on-surface-variant leading-relaxed">Los dos paquetes históricos adicionales ya se conciliaron en una versión ampliada: 24 paquetes y 101.546 registros. Los gráficos de esta vista mantienen el piloto anterior de 22 paquetes. Consulte Proceso y auditoría para verificar los siete artefactos actuales; cobertura y publicación histórica siguen pendientes.</p></section>
       <section className="glass-panel rounded-xl p-6"><h2 className="font-headline-md text-lg mb-3">Consultar procedencia</h2><ul className="flex flex-wrap gap-4 text-sm text-primary">{data.sources.map(s => <li key={s.name}><a href={s.url} target="_blank" rel="noreferrer" className="underline underline-offset-4">{s.name} ↗</a></li>)}</ul><a href={`${import.meta.env.BASE_URL}research/snapshot.json`} download="corte-investigacion.json" className="inline-block glass-input rounded-lg px-4 py-2 mt-5 text-sm">Descargar corte y referencias</a></section>
     </>}
   </div>

@@ -27,13 +27,24 @@ Versión examinada: commit 7f1b103476b2451fd66d6f23ae481ec2a3d3d885. Documento r
 
 Se contrastaron nuevamente 18 huellas de los manifiestos de progreso, salidas del panel ampliado y preflight: 18 coinciden, cero discrepancias. Los hashes acreditan identidad de bytes, no verdad factual, fecha de publicación ni ausencia de exposición previa. No se repitió toda la suite porque el código no cambió: se revisó results.json de la última ejecución completa, con 82 pruebas, cero fallos/errores/omisiones, 62 núcleo y 20 API. Los tres checks históricos y 19 de compatibilidad se contabilizan aparte. Persisten 44 advertencias API y aviso de tamaño de bundle. La evidencia visual existente es de QA local con SQLite; no prueba PostgreSQL ni usabilidad.
 
-Referencias locales:
-- ejecucion/verificacion-final/results.json y preflight-final.json.
-- ../../datasets/tratamiento/2026-11-01-expansion/manifest.json.
-- ../../datasets/experimentos/h2-cierre-2026-11-01/decision.json.
-- ../../datasets/experimentos/h3-h4-integracion-2026-11-01/summary.json.
-- ../../datasets/experimentos/codex-piloto-declarado-2026-11-01/verification.json.
-- ../../docs/ui-codex-piloto-2026-11-01/README.md.
+Referencias con enlaces directos:
+
+- [Tesis rectora, §3.8.5 E1–E3 y §3.12 pruebas](https://docs.google.com/document/d/13cJUk1_AMrI-jsZj0s6a5XuTmE7wXZLFL-SNlPGxt8g/edit). Las secciones se indican por número; no se inventan anclas de encabezado.
+- [Pruebas E1–E3 de componentes](../../tests/end_to_end/test_current_research.py).
+- [Resultados de 82 pruebas](ejecucion/verificacion-final/results.json) y [diagnóstico de pendientes](ejecucion/verificacion-final/preflight-final.json).
+- [Manifiesto del panel ampliado](../../datasets/tratamiento/2026-11-01-expansion/manifest.json).
+- [Dictamen H2](../../datasets/experimentos/h2-cierre-2026-11-01/decision.json).
+- [Integración técnica H3/H4](../../datasets/experimentos/h3-h4-integracion-2026-11-01/summary.json).
+- [Verificación del piloto Codex](../../datasets/experimentos/codex-piloto-declarado-2026-11-01/verification.json).
+- [Evidencia visual UI](../../docs/ui-codex-piloto-2026-11-01/README.md).
+
+## Precisión sobre cálculos pendientes E1–E3
+
+E1 ya prueba suma FOB/peso, razón de sumas, diferencia absoluta y 12,5 % relativo. Falta acreditar el recorrido de esos valores desde entrada hasta UI/exportación, conservando precisión interna y redondeo.
+
+E2 ya verifica claves de abstención por cero, incompatibilidad y falta de publicación, y rechazo de una afirmación con unidad distinta. Falta contrastar el comportamiento ejecutable de UI/API en todos esos casos y cobertura incompleta, con advertencia y ausencia de ceros o comparaciones improcedentes. Una clave de abstención no prueba por sí misma ese recorrido.
+
+E3 verifica antigüedad de tres semanas, exclusión del residuo aún no publicado, persistencia y detección de alteración. La prueba actual usa la misma fecha para emisión y objetivo en ledger.predict; su comentario distingue semana 20 completada y fecha de inicio de semana 21. Por ello NO acredita explícitamente un horizonte de una semana entre emisión y objetivo. Debe alinearse la convención con el protocolo y añadir esa aserción, además de demostrar en UI la reconstrucción de filtros/datos/modelo/evidencia. No se considera fallo probado del motor, sino una brecha de la prueba existente.
 
 ## Campaña de pruebas que ya puede comenzar
 
