@@ -110,8 +110,8 @@
       "deliverable": "Dependencias resueltas en instalación limpia, rutas relativas, configuración y comando único de reproducción.",
       "acceptance": "Ejecuta desde otra carpeta sin depender de D:; recupera datos por hash o falla explícitamente; no lee secretos de un tercero.",
       "status": "en_curso",
-      "execution_note": "Nucleo cientifico y dependencias API instalados en entorno nuevo; 47 tests actuales y 19 comprobaciones aprobaron. Falta validar PostgreSQL/pgvector/embeddings y completar runner cientifico.",
-      "execution_evidence": "ejecucion/verificacion-final/README.md"
+      "execution_note": "Entorno aislado: 82 pruebas actuales (62 nucleo, 20 API), 19 comprobaciones y build aprobados. Falta reconstruccion integral PostgreSQL/pgvector/embeddings y runner final.",
+      "execution_evidence": "dictamen-prototipo.md"
     },
     {
       "id": "P05",
@@ -290,8 +290,8 @@
       "deliverable": "180 salidas emparejadas, salida inicial/corrección/final/plantilla, calificación numérica/factual y concordancia.",
       "acceptance": "Mismo generador y parámetros; tolerancia media unidad decimal +1e-9; tasas separadas y no definidas si denominador cero; 45 revisiones independientes o repetidas ciegas tras 7 días.",
       "status": "en_curso",
-      "execution_note": "DeepSeek seleccionado por titular. Adaptador H4 y presupuesto persistente listos; clave/cap por configurar por titular, cero llamadas reales. Ocho tests de transporte simulado; suite78. Mantiene revision humana, politica NA, recuperacion y congelamiento pendientes.",
-      "execution_evidence": "../../docs/h4-deepseek-configuracion.md"
+      "execution_note": "Tres respuestas Codex archivadas en piloto expuesto; identificador GPT 6.1 Sol Light declarado y no verificado. No son 180 salidas finales. DeepSeek preparado, cero llamadas reales; claves humanas, NA, recuperacion y congelamiento pendientes.",
+      "execution_evidence": "dictamen-prototipo.md"
     },
     {
       "id": "P13",
@@ -337,7 +337,9 @@
       "owner": "Desarrollo",
       "deliverable": "Consultas API, detalle pronóstico–señal–SHAP–evidencia, exportación y trabajos con estados reales; decisión por cada ruta heredada.",
       "acceptance": "Una ruta por función comprometida, errores y estados vacíos; permisos en servidor; ningún progreso o métrica ficticios; legado fuera de alcance retirado o separado.",
-      "status": "planificado_no_ejecutado_en_esta_entrega"
+      "status": "en_curso",
+      "execution_note": "UI/API de archivo Codex, exportacion SHA-256 y proceso con siete artefactos implementados y verificados en escritorio/movil. Graficos conservan piloto anterior. Falta detalle integrado pronostico-senal-SHAP-evidencia y permisos completos.",
+      "execution_evidence": "dictamen-prototipo.md"
     },
     {
       "id": "P15",
@@ -358,8 +360,8 @@
       "deliverable": "Matriz requisito–función–prueba–evidencia con entradas, esperado, obtenido, versión y captura.",
       "acceptance": "E1 arroja 800/300 y cambio 12,5%; E2 controla cero/unidades/cobertura; E3 respeta emisión/antigüedad/objetivo, reconstruye y detecta alteración.",
       "status": "en_curso",
-      "execution_note": "E1-E3 de componentes aprobados; 16 tests API aislados y compilacion/snapshot UI aprobados. Falta recorrido E1-E3 completo por navegador y linaje de modelos finales.",
-      "execution_evidence": "ejecucion/verificacion-final/README.md"
+      "execution_note": "E1-E3 de componentes y 20 pruebas API aprobados; navegador verificado para archivo Codex y proceso. Falta recorrido E1-E3 completo por navegador y linaje de modelos finales.",
+      "execution_evidence": "dictamen-prototipo.md"
     },
     {
       "id": "P16",
