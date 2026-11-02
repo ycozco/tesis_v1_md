@@ -141,3 +141,8 @@ select option { background: #171d17; color: #dee4da; }
 .research-destination h2 span { float: right; color: #76db8f; }
 @media (max-width: 767px) { .research-hero { grid-template-columns: 1fr; gap: 24px; } .research-hero-aside { border-left: 0; border-top: 1px solid #76db8f30; padding-top: 24px; } .research-hero-aside > .material-symbols-outlined { font-size: 56px; } .research-destination { min-height: auto; } }
 @media (prefers-reduced-motion: reduce) { .research-destination { animation: none; } .research-primary-action:hover { transform: none; } }
+
+.research-plot { transition: border-color 180ms ease, box-shadow 180ms ease; }
+.research-plot:hover { border-color: #76db8f55; box-shadow: 0 4px 24px #0002; }
+.research-info[open] > div { animation: research-reveal 180ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .research-info[open] > div { animation: none; } }
