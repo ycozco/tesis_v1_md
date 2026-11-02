@@ -290,8 +290,8 @@
       "deliverable": "180 salidas emparejadas, salida inicial/corrección/final/plantilla, calificación numérica/factual y concordancia.",
       "acceptance": "Mismo generador y parámetros; tolerancia media unidad decimal +1e-9; tasas separadas y no definidas si denominador cero; 45 revisiones independientes o repetidas ciegas tras 7 días.",
       "status": "en_curso",
-      "execution_note": "Ejecutor pareado, checkpoints, correcciones/fallback verificado, calificacion numerica y atomizacion externa, agregacion por caso, muestra ciega45/acuerdo implementados. 180 recorridos solo con transporte determinista; cero LLM reales o revisiones humanas.",
-      "execution_evidence": "../../datasets/experimentos/h3-h4-integracion-2026-11-01/README.md"
+      "execution_note": "DeepSeek seleccionado por titular. Adaptador H4 y presupuesto persistente listos; clave/cap por configurar por titular, cero llamadas reales. Ocho tests de transporte simulado; suite78. Mantiene revision humana, politica NA, recuperacion y congelamiento pendientes.",
+      "execution_evidence": "../../docs/h4-deepseek-configuracion.md"
     },
     {
       "id": "P13",

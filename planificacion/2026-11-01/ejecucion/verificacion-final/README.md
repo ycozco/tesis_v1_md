@@ -1,6 +1,6 @@
 # Verificación técnica final — 1 de noviembre de 2026
 
-Resultado: **70 pruebas actuales aprobadas, cero fallos y cero omisiones**. Son 54 pruebas de reglas/componentes y 16 de API aislada. Aparte, tres comprobaciones de artefactos de la versión antigua de D: aprobaron al indicar explícitamente su directorio, sin copiarlos al conjunto actual. Se conservaron JUnit XML, salidas y huellas.
+Resultado: **78 pruebas actuales aprobadas, cero fallos y cero omisiones**. Son 62 pruebas de reglas/componentes y 16 de API aislada. Aparte, tres comprobaciones de artefactos de la versión antigua de D: aprobaron al indicar explícitamente su directorio, sin copiarlos al conjunto actual. Se conservaron JUnit XML, salidas y huellas.
 
 También aprobaron 19 comprobaciones artificiales de compatibilidad científica, el contraste de 3.845 celdas agregadas contra la fuente con Decimal, la preservación de los 16.309 huecos, la integridad del snapshot de UI y `npm run build`. Las pruebas E1–E3 nuevas conectan agregación, cálculo y validador numérico; claves de abstención y guard H4; y registro temporal, persistencia e integridad. Son integraciones de componentes, todavía no una validación E1–E3 completa por navegador ni un estudio con usuarios.
 
@@ -34,8 +34,12 @@ El nuevo diagnóstico H2 concluye no evaluable con las fuentes actuales y docume
 
 ## Cierre H2 integrado
 
-La ejecución continua de `tools/finish_h2.py` cerró el análisis de H2 como no evaluable para la colección actual. La suite actual de 70 pruebas incluye regresiones de H2 y la invalidación del cierre si cambia su evidencia. Las tres comprobaciones históricas y las 19 de compatibilidad se contabilizan aparte. El dictamen y la matriz de 1.248 combinaciones se conservan en `datasets/experimentos/h2-cierre-2026-11-01`. Los pendientes compartidos de cobertura/modelos del diagnóstico actual corresponden a H1/H3; H4 mantiene los suyos. No se generaron resultados experimentales para una hipótesis no evaluable.
+La ejecución continua de `tools/finish_h2.py` cerró el análisis de H2 como no evaluable para la colección actual. La suite actual de 78 pruebas incluye regresiones de H2 y la invalidación del cierre si cambia su evidencia. Las tres comprobaciones históricas y las 19 de compatibilidad se contabilizan aparte. El dictamen y la matriz de 1.248 combinaciones se conservan en `datasets/experimentos/h2-cierre-2026-11-01`. Los pendientes compartidos de cobertura/modelos del diagnóstico actual corresponden a H1/H3; H4 mantiene los suyos. No se generaron resultados experimentales para una hipótesis no evaluable.
 
 ## Integración H3/H4
 
 La última suite aprobó 70 pruebas actuales, de las cuales 54 corresponden al núcleo/componentes y 16 a API. Se añadieron motores H3/H4 y regresiones de CDF fija, separación temporal, entradas pareadas, revisión factual completa, denominadores indefinidos y asignación ciega privada. Los 189 casos H3 y 180 recorridos H4 de la nueva carpeta son artificiales y están contrastados aparte; no son resultados de las hipótesis históricas ni generaciones LLM. Véase `datasets/experimentos/h3-h4-integracion-2026-11-01/README.md`.
+
+## Transporte DeepSeek preparado
+
+La suite actual suma 78 pruebas (62 núcleo/componentes, 16 API), incluidas ocho de transporte y presupuesto con HTTP simulado. Se preparó configuración privada cifrada y calibración explícita opcional; no se ejecutó el script interactivo ni se hizo una llamada real. El titular configura su clave y presupuesto. No se confunde preparación con disponibilidad autenticada del proveedor ni con resultados H4.

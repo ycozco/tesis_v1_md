@@ -1,0 +1,10 @@
+{
+  "convention": "UTF-8 text, universal newlines normalized to LF",
+  "files": {
+    "pipeline/research/deepseek_h4.py": "a32461ea67d2c940d05e00076d3b337851ea37cbee57826558466cdb60e464e5",
+    "tools/h4_deepseek.py": "253b0741a2a6650e37738b59e715ed0109f07dd11fe9640fec6c92759b38b906",
+    "tools/configure_h4_deepseek.ps1": "e584f5bc85004a2964a1362898eebe92521919cb3c7adaaa10c70af7a62dce09",
+    "tests/unit/test_deepseek_h4.py": "629cc5fdef8818aa6a6bc1ec9b8019e9e8f28993377f5e49d13df8df3b93f85a",
+    "config/h4-deepseek.example.json": "580a9a29c2d2f0dc4793f156ccc34b9c6d336f6e2ad06786764fb1909aa6b20b"
+  }
+}

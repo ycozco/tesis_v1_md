@@ -1,0 +1,14 @@
+{
+  "provider_selected_by_user": "deepseek",
+  "specific_transport_tests_passed": 8,
+  "current_suite_passed": 78,
+  "legacy_checks_separate": 3,
+  "compatibility_checks": 19,
+  "powershell_syntax_passed": true,
+  "powershell_interactive_key_setup_executed_by_agent": false,
+  "real_DeepSeek_requests_sent_by_preparation": 0,
+  "real_DeepSeek_cost_incurred_by_preparation_usd": "0",
+  "H4_real_experiment_executed": false,
+  "private_key_or_budget_exported": false,
+  "mocks_only_for_transport_tests": true
+}
