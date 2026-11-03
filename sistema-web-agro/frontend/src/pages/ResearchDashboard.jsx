@@ -5,6 +5,7 @@ import ResearchProcess from '../components/ResearchProcess.jsx'
 import ResearchAI from '../components/ResearchAI.jsx'
 import ResearchOverview from '../components/ResearchOverview.jsx'
 import useReducedMotion from '../lib/useReducedMotion.js'
+import { loadResearchSnapshot } from '../lib/loadResearchSnapshot.js'
 import { comparisonCsv } from '../lib/comparisonCsv.js'
 
 const products = { palta: 'Palta', uva: 'Uva fresca', arandano: 'Arándano' }
@@ -33,7 +34,7 @@ export default function ResearchDashboard() {
   const [params] = useSearchParams()
   const view = titles[params.get('view')] ? params.get('view') : 'resumen'
   const [data, setData] = useState(null)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState('')
   const [attempt, setAttempt] = useState(0)
   const [product, setProduct] = useState('palta')
   const [destination, setDestination] = useState('US')
@@ -43,11 +44,10 @@ export default function ResearchDashboard() {
   const [end, setEnd] = useState('2026-10-19')
   useEffect(() => {
     const abort = new AbortController()
-    setError(false)
-    fetch(`${import.meta.env.BASE_URL}research/snapshot.json`, { signal: abort.signal })
-      .then(r => { if (!r.ok) throw new Error('unavailable'); return r.json() })
-      .then(snapshot => { if (snapshot.schema_version !== 1 || !Array.isArray(snapshot.weekly_rows)) throw new Error('schema'); setData(snapshot) })
-      .catch(e => { if (e.name !== 'AbortError') setError(true) })
+    setError('')
+    loadResearchSnapshot(`${import.meta.env.BASE_URL}research/snapshot.json`, abort.signal)
+      .then(snapshot => { if (!abort.signal.aborted) setData(snapshot) })
+      .catch(e => { if (!abort.signal.aborted) setError(e.message) })
     return () => abort.abort()
   }, [attempt])
   const markets = useMemo(() => data ? [...new Set(data.weekly_rows.filter(r => r[0] === product).map(r => r[1]))].sort() : [], [data, product])
@@ -71,7 +71,7 @@ export default function ResearchDashboard() {
     }
     return [...weeks.values()].sort((a, b) => a.week.localeCompare(b.week))
   }, [data, product, selectedDestination, selectedCompare, target, start, end])
-  if (error) return <Empty>No se pudo cargar el corte documentado. No se muestran cifras de reemplazo.<button className="block mt-4 text-primary underline" onClick={() => setAttempt(a => a + 1)}>Reintentar</button></Empty>
+  if (error) return <Empty>No se pudo cargar el corte documentado.<p className="mt-2">{error}</p><a className="inline-block mt-3 text-primary underline" href={`${import.meta.env.BASE_URL}research/snapshot.json`} target="_blank" rel="noreferrer">Comprobar archivo de datos ↗</a><button className="block mt-4 text-primary underline" onClick={() => setAttempt(a => a + 1)}>Reintentar</button></Empty>
   if (!data) return <Empty>Cargando el corte documentado…</Empty>
   const summary = data.manifest.views.conservadora
   const observed = series.filter(r => r.main != null).length
