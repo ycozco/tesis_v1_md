@@ -1,0 +1,9 @@
+{
+  "ollama": {
+    "available": false,
+    "models": []
+  },
+  "docker_daemon_available": false,
+  "PostgreSQL_pgvector_validated": false,
+  "paid_provider_called": false
+}

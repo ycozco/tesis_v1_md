@@ -18,6 +18,10 @@ os.environ['MPLCONFIGDIR']=str(ROOT/'data/runtime-research-clean/matplotlib-cach
 
 
 def main():
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--run-date', default='2026-11-01', choices=['2026-11-01','2026-11-02'])
+    args=parser.parse_args()
     import numpy as np
     import pandas as pd
     import requests
@@ -26,9 +30,9 @@ def main():
     from pipeline.research.h4_design import digest
     from pipeline.research.h4_runner import run_pairs
     from pipeline.research.h4_blind import blind_packet
-    out=ROOT/'datasets/experimentos/h3-h4-integracion-2026-11-01'
+    out=ROOT/f'datasets/experimentos/h3-h4-integracion-{args.run_date}'
     out.mkdir(parents=True,exist_ok=True)
-    private=ROOT/'data/h4-technical-fixture';private.mkdir(parents=True,exist_ok=True)
+    private=ROOT/('data/h4-technical-fixture' if args.run_date=='2026-11-01' else f'data/h4-technical-fixture-{args.run_date}');private.mkdir(parents=True,exist_ok=True)
     def save(name,value):
         (out/name).write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     import inspect

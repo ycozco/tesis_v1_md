@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "H3_artificial_scores_verified": 189,
+  "H3_budget": 4,
+  "H3_methods": 5,
+  "H3_sensitivities_verified": 3,
+  "H4_technical_packet_rows": 180,
+  "H4_second_review_sample": 45,
+  "actual_LLM_outputs": 0,
+  "historical_final_H3_scores": 0,
+  "human_reviews_performed": 0
+}

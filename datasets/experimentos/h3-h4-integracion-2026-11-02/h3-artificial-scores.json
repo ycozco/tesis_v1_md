@@ -1,0 +1,3404 @@
+[
+  {
+    "id": "artificial-palta-100-0",
+    "product": "palta",
+    "destination": "TEST-00",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.15254999087654886,
+      "LOF": 13.838026782268695,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-100-1",
+    "product": "palta",
+    "destination": "TEST-01",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.15254999087654886,
+      "LOF": 14.550846463111498,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-100-2",
+    "product": "palta",
+    "destination": "TEST-02",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.15254999087654886,
+      "LOF": 13.861225075078035,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-100-3",
+    "product": "palta",
+    "destination": "TEST-03",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.15254999087654886,
+      "LOF": 13.824140397094471,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-100-4",
+    "product": "palta",
+    "destination": "TEST-04",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.15254999087654886,
+      "LOF": 14.347135030279295,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-100-5",
+    "product": "palta",
+    "destination": "TEST-05",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.010985097278512601,
+      "LOF": 1.2595563098953635,
+      "ECOD": 11.269592848065814
+    },
+    "percentiles": {
+      "IF": 0.9222222222222223,
+      "LOF": 0.9722222222222222,
+      "ECOD": 0.9722222222222222
+    },
+    "ensemble": 0.9555555555555556,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-6",
+    "product": "palta",
+    "destination": "TEST-06",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.035262153960372467,
+      "LOF": 1.0731311865223487,
+      "ECOD": 9.966186146751694
+    },
+    "percentiles": {
+      "IF": 0.7388888888888889,
+      "LOF": 0.8055555555555556,
+      "ECOD": 0.9555555555555556
+    },
+    "ensemble": 0.8333333333333334,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-7",
+    "product": "palta",
+    "destination": "TEST-07",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.009424028150624708,
+      "LOF": 1.2414201204515949,
+      "ECOD": 11.745675523387932
+    },
+    "percentiles": {
+      "IF": 0.9222222222222223,
+      "LOF": 0.9666666666666667,
+      "ECOD": 0.9833333333333333
+    },
+    "ensemble": 0.9574074074074074,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-8",
+    "product": "palta",
+    "destination": "TEST-08",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.05969284741682457,
+      "LOF": 0.998384861692081,
+      "ECOD": 8.787214644631174
+    },
+    "percentiles": {
+      "IF": 0.5722222222222222,
+      "LOF": 0.3333333333333333,
+      "ECOD": 0.8777777777777778
+    },
+    "ensemble": 0.5944444444444444,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-9",
+    "product": "palta",
+    "destination": "TEST-09",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.0857177434069713,
+      "LOF": 0.9794000971894417,
+      "ECOD": 7.744570116291313
+    },
+    "percentiles": {
+      "IF": 0.25,
+      "LOF": 0.16666666666666666,
+      "ECOD": 0.7777777777777778
+    },
+    "ensemble": 0.39814814814814814,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-10",
+    "product": "palta",
+    "destination": "TEST-10",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.0787099042776665,
+      "LOF": 0.9779460503798095,
+      "ECOD": 8.152268863925416
+    },
+    "percentiles": {
+      "IF": 0.3,
+      "LOF": 0.16111111111111112,
+      "ECOD": 0.8222222222222222
+    },
+    "ensemble": 0.42777777777777776,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-11",
+    "product": "palta",
+    "destination": "TEST-11",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.051996756647189835,
+      "LOF": 1.0159368769970993,
+      "ECOD": 9.156628614347337
+    },
+    "percentiles": {
+      "IF": 0.6333333333333333,
+      "LOF": 0.5,
+      "ECOD": 0.8944444444444445
+    },
+    "ensemble": 0.6759259259259259,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-12",
+    "product": "palta",
+    "destination": "TEST-12",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.07566372923696713,
+      "LOF": 0.9934172993510219,
+      "ECOD": 8.584015502815664
+    },
+    "percentiles": {
+      "IF": 0.3388888888888889,
+      "LOF": 0.2777777777777778,
+      "ECOD": 0.8611111111111112
+    },
+    "ensemble": 0.49259259259259264,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-13",
+    "product": "palta",
+    "destination": "TEST-13",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.03446883077681706,
+      "LOF": 1.2443997347053979,
+      "ECOD": 12.338352173584244
+    },
+    "percentiles": {
+      "IF": 0.9555555555555556,
+      "LOF": 0.9666666666666667,
+      "ECOD": 0.9888888888888889
+    },
+    "ensemble": 0.9703703703703704,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-14",
+    "product": "palta",
+    "destination": "TEST-14",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.08294082803301545,
+      "LOF": 0.9805659895085157,
+      "ECOD": 7.626572252537894
+    },
+    "percentiles": {
+      "IF": 0.2777777777777778,
+      "LOF": 0.17777777777777778,
+      "ECOD": 0.7777777777777778
+    },
+    "ensemble": 0.41111111111111115,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-15",
+    "product": "palta",
+    "destination": "TEST-15",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.08386951764462752,
+      "LOF": 0.9871695429110205,
+      "ECOD": 8.256586393569004
+    },
+    "percentiles": {
+      "IF": 0.26666666666666666,
+      "LOF": 0.18888888888888888,
+      "ECOD": 0.8277777777777777
+    },
+    "ensemble": 0.42777777777777776,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-16",
+    "product": "palta",
+    "destination": "TEST-16",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.05258904600529368,
+      "LOF": 1.0106375364399676,
+      "ECOD": 9.072368270729596
+    },
+    "percentiles": {
+      "IF": 0.6333333333333333,
+      "LOF": 0.46111111111111114,
+      "ECOD": 0.8944444444444445
+    },
+    "ensemble": 0.662962962962963,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-17",
+    "product": "palta",
+    "destination": "TEST-17",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.01767657814100665,
+      "LOF": 1.288911866687283,
+      "ECOD": 11.721577971808873
+    },
+    "percentiles": {
+      "IF": 0.9333333333333333,
+      "LOF": 0.9833333333333333,
+      "ECOD": 0.9833333333333333
+    },
+    "ensemble": 0.9666666666666667,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-18",
+    "product": "palta",
+    "destination": "TEST-18",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.016027670760949686,
+      "LOF": 1.2712454544249565,
+      "ECOD": 11.476455513775887
+    },
+    "percentiles": {
+      "IF": 0.9333333333333333,
+      "LOF": 0.9722222222222222,
+      "ECOD": 0.9777777777777777
+    },
+    "ensemble": 0.9611111111111111,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-19",
+    "product": "palta",
+    "destination": "TEST-19",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.08532050781598433,
+      "LOF": 0.9807033082826132,
+      "ECOD": 7.626175768028636
+    },
+    "percentiles": {
+      "IF": 0.25,
+      "LOF": 0.18333333333333332,
+      "ECOD": 0.7777777777777778
+    },
+    "ensemble": 0.4037037037037037,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-100-20",
+    "product": "palta",
+    "destination": "TEST-20",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.049156355642202665,
+      "LOF": 1.0671392487965032,
+      "ECOD": 9.812623529275989
+    },
+    "percentiles": {
+      "IF": 0.6444444444444445,
+      "LOF": 0.7888888888888889,
+      "ECOD": 0.9555555555555556
+    },
+    "ensemble": 0.7962962962962963,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-0",
+    "product": "uva",
+    "destination": "TEST-00",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.14359433542448696,
+      "LOF": 14.001377025928468,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-100-1",
+    "product": "uva",
+    "destination": "TEST-01",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.14359433542448696,
+      "LOF": 14.111528621241746,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-100-2",
+    "product": "uva",
+    "destination": "TEST-02",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.14359433542448696,
+      "LOF": 13.89068837820894,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-100-3",
+    "product": "uva",
+    "destination": "TEST-03",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.14359433542448696,
+      "LOF": 14.032761774443083,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-100-4",
+    "product": "uva",
+    "destination": "TEST-04",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.14359433542448696,
+      "LOF": 13.314380649388937,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-100-5",
+    "product": "uva",
+    "destination": "TEST-05",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.05261631547447526,
+      "LOF": 0.9911106237119958,
+      "ECOD": 8.769745877130122
+    },
+    "percentiles": {
+      "IF": 0.6833333333333333,
+      "LOF": 0.22777777777777777,
+      "ECOD": 0.85
+    },
+    "ensemble": 0.587037037037037,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-6",
+    "product": "uva",
+    "destination": "TEST-06",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.02951363086082559,
+      "LOF": 1.1661500276117278,
+      "ECOD": 11.137845577234794
+    },
+    "percentiles": {
+      "IF": 0.9611111111111111,
+      "LOF": 0.9,
+      "ECOD": 0.9888888888888889
+    },
+    "ensemble": 0.9500000000000001,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-7",
+    "product": "uva",
+    "destination": "TEST-07",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.045906062420582094,
+      "LOF": 1.0122687940979052,
+      "ECOD": 9.107780308952853
+    },
+    "percentiles": {
+      "IF": 0.7388888888888889,
+      "LOF": 0.48333333333333334,
+      "ECOD": 0.8666666666666667
+    },
+    "ensemble": 0.6962962962962963,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-8",
+    "product": "uva",
+    "destination": "TEST-08",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.03228712336718775,
+      "LOF": 1.1707825556780929,
+      "ECOD": 12.11867483024652
+    },
+    "percentiles": {
+      "IF": 0.9611111111111111,
+      "LOF": 0.9055555555555556,
+      "ECOD": 1.0
+    },
+    "ensemble": 0.9555555555555556,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-9",
+    "product": "uva",
+    "destination": "TEST-09",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.030682358138831023,
+      "LOF": 1.0413832821808477,
+      "ECOD": 9.266043400333203
+    },
+    "percentiles": {
+      "IF": 0.7944444444444444,
+      "LOF": 0.6555555555555556,
+      "ECOD": 0.8777777777777778
+    },
+    "ensemble": 0.7759259259259258,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-10",
+    "product": "uva",
+    "destination": "TEST-10",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.06027937684387069,
+      "LOF": 0.9951361358213349,
+      "ECOD": 8.134589594562062
+    },
+    "percentiles": {
+      "IF": 0.6611111111111111,
+      "LOF": 0.2611111111111111,
+      "ECOD": 0.7888888888888889
+    },
+    "ensemble": 0.5703703703703703,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-11",
+    "product": "uva",
+    "destination": "TEST-11",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.0018285956104310275,
+      "LOF": 1.1959962012870933,
+      "ECOD": 10.160930223544204
+    },
+    "percentiles": {
+      "IF": 0.9,
+      "LOF": 0.9111111111111111,
+      "ECOD": 0.9444444444444444
+    },
+    "ensemble": 0.9185185185185185,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-12",
+    "product": "uva",
+    "destination": "TEST-12",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.022608447350006222,
+      "LOF": 1.0457160990565153,
+      "ECOD": 9.63376818045852
+    },
+    "percentiles": {
+      "IF": 0.8333333333333334,
+      "LOF": 0.6611111111111111,
+      "ECOD": 0.9
+    },
+    "ensemble": 0.7981481481481482,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-13",
+    "product": "uva",
+    "destination": "TEST-13",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.049644679633783606,
+      "LOF": 1.443245043612476,
+      "ECOD": 12.817362191182083
+    },
+    "percentiles": {
+      "IF": 0.9833333333333333,
+      "LOF": 0.9777777777777777,
+      "ECOD": 1.0
+    },
+    "ensemble": 0.987037037037037,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-14",
+    "product": "uva",
+    "destination": "TEST-14",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.03465828050346531,
+      "LOF": 1.0607304441495367,
+      "ECOD": 8.959313132910728
+    },
+    "percentiles": {
+      "IF": 0.7777777777777778,
+      "LOF": 0.7277777777777777,
+      "ECOD": 0.8555555555555555
+    },
+    "ensemble": 0.7870370370370371,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-15",
+    "product": "uva",
+    "destination": "TEST-15",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.047765269988342574,
+      "LOF": 1.027733076070049,
+      "ECOD": 8.506256542227062
+    },
+    "percentiles": {
+      "IF": 0.7277777777777777,
+      "LOF": 0.5555555555555556,
+      "ECOD": 0.8388888888888889
+    },
+    "ensemble": 0.7074074074074074,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-16",
+    "product": "uva",
+    "destination": "TEST-16",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.03314516389358968,
+      "LOF": 1.0571278976600165,
+      "ECOD": 9.528407664800694
+    },
+    "percentiles": {
+      "IF": 0.7777777777777778,
+      "LOF": 0.6944444444444444,
+      "ECOD": 0.8944444444444445
+    },
+    "ensemble": 0.7888888888888889,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-17",
+    "product": "uva",
+    "destination": "TEST-17",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.026483539875061135,
+      "LOF": 1.067750820304684,
+      "ECOD": 9.661939057425217
+    },
+    "percentiles": {
+      "IF": 0.8,
+      "LOF": 0.7277777777777777,
+      "ECOD": 0.9111111111111111
+    },
+    "ensemble": 0.812962962962963,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-18",
+    "product": "uva",
+    "destination": "TEST-18",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.054674490962203726,
+      "LOF": 0.9925933834102784,
+      "ECOD": 7.986847174769679
+    },
+    "percentiles": {
+      "IF": 0.6777777777777778,
+      "LOF": 0.2388888888888889,
+      "ECOD": 0.7666666666666667
+    },
+    "ensemble": 0.5611111111111111,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-19",
+    "product": "uva",
+    "destination": "TEST-19",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.03380022985496722,
+      "LOF": 1.0274590258603586,
+      "ECOD": 9.41062462914431
+    },
+    "percentiles": {
+      "IF": 0.7777777777777778,
+      "LOF": 0.5555555555555556,
+      "ECOD": 0.8888888888888888
+    },
+    "ensemble": 0.7407407407407408,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-100-20",
+    "product": "uva",
+    "destination": "TEST-20",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.035766592159469535,
+      "LOF": 1.2912222499500787,
+      "ECOD": 11.65914250086808
+    },
+    "percentiles": {
+      "IF": 0.9722222222222222,
+      "LOF": 0.9444444444444444,
+      "ECOD": 1.0
+    },
+    "ensemble": 0.9722222222222222,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-0",
+    "product": "arandano",
+    "destination": "TEST-00",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.18748577798383914,
+      "LOF": 13.794339380667733,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-100-1",
+    "product": "arandano",
+    "destination": "TEST-01",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.18748577798383914,
+      "LOF": 13.621154530723455,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-100-2",
+    "product": "arandano",
+    "destination": "TEST-02",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.18748577798383914,
+      "LOF": 14.624987666898804,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-100-3",
+    "product": "arandano",
+    "destination": "TEST-03",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.18748577798383914,
+      "LOF": 13.954038768731987,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-100-4",
+    "product": "arandano",
+    "destination": "TEST-04",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.18748577798383914,
+      "LOF": 13.731263101380383,
+      "ECOD": 20.793988125063304
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-100-5",
+    "product": "arandano",
+    "destination": "TEST-05",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.03586334209249609,
+      "LOF": 1.277917141967719,
+      "ECOD": 11.153593934202933
+    },
+    "percentiles": {
+      "IF": 0.9611111111111111,
+      "LOF": 0.9444444444444444,
+      "ECOD": 0.9944444444444445
+    },
+    "ensemble": 0.9666666666666667,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-6",
+    "product": "arandano",
+    "destination": "TEST-06",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.050611642119519074,
+      "LOF": 0.9993575661559438,
+      "ECOD": 7.924610632256679
+    },
+    "percentiles": {
+      "IF": 0.5388888888888889,
+      "LOF": 0.34444444444444444,
+      "ECOD": 0.75
+    },
+    "ensemble": 0.5444444444444444,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-7",
+    "product": "arandano",
+    "destination": "TEST-07",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.04611394861123136,
+      "LOF": 1.0142920520826841,
+      "ECOD": 8.244873037638571
+    },
+    "percentiles": {
+      "IF": 0.5833333333333334,
+      "LOF": 0.4388888888888889,
+      "ECOD": 0.8055555555555556
+    },
+    "ensemble": 0.6092592592592593,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-8",
+    "product": "arandano",
+    "destination": "TEST-08",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.03517690701013798,
+      "LOF": 1.2508162473590714,
+      "ECOD": 11.36490302787014
+    },
+    "percentiles": {
+      "IF": 0.9611111111111111,
+      "LOF": 0.9388888888888889,
+      "ECOD": 0.9944444444444445
+    },
+    "ensemble": 0.9648148148148148,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-9",
+    "product": "arandano",
+    "destination": "TEST-09",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.11404887417128595,
+      "LOF": 1.6841023563559863,
+      "ECOD": 14.38043792872031
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 1.0,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-10",
+    "product": "arandano",
+    "destination": "TEST-10",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.02905893111621405,
+      "LOF": 1.0554484392976418,
+      "ECOD": 9.52295381411823
+    },
+    "percentiles": {
+      "IF": 0.6944444444444444,
+      "LOF": 0.6277777777777778,
+      "ECOD": 0.9222222222222223
+    },
+    "ensemble": 0.7481481481481481,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-11",
+    "product": "arandano",
+    "destination": "TEST-11",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.010697366052335844,
+      "LOF": 1.149440973552559,
+      "ECOD": 9.903101114242103
+    },
+    "percentiles": {
+      "IF": 0.9388888888888889,
+      "LOF": 0.8777777777777778,
+      "ECOD": 0.9444444444444444
+    },
+    "ensemble": 0.9203703703703704,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-12",
+    "product": "arandano",
+    "destination": "TEST-12",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.028576989175328915,
+      "LOF": 1.0447025057517534,
+      "ECOD": 9.115160416250474
+    },
+    "percentiles": {
+      "IF": 0.6944444444444444,
+      "LOF": 0.5888888888888889,
+      "ECOD": 0.8888888888888888
+    },
+    "ensemble": 0.724074074074074,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-13",
+    "product": "arandano",
+    "destination": "TEST-13",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.03625533552284527,
+      "LOF": 1.023133702882758,
+      "ECOD": 8.662752548895117
+    },
+    "percentiles": {
+      "IF": 0.6611111111111111,
+      "LOF": 0.4777777777777778,
+      "ECOD": 0.8444444444444444
+    },
+    "ensemble": 0.6611111111111111,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-14",
+    "product": "arandano",
+    "destination": "TEST-14",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.021977229596100156,
+      "LOF": 1.055865405273935,
+      "ECOD": 9.246995205362508
+    },
+    "percentiles": {
+      "IF": 0.7388888888888889,
+      "LOF": 0.6277777777777778,
+      "ECOD": 0.8888888888888888
+    },
+    "ensemble": 0.7518518518518519,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-15",
+    "product": "arandano",
+    "destination": "TEST-15",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.009119688831197292,
+      "LOF": 1.1328847666036392,
+      "ECOD": 9.779275764129759
+    },
+    "percentiles": {
+      "IF": 0.8333333333333334,
+      "LOF": 0.8555555555555555,
+      "ECOD": 0.9388888888888889
+    },
+    "ensemble": 0.8759259259259259,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-16",
+    "product": "arandano",
+    "destination": "TEST-16",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.010945165358010267,
+      "LOF": 1.1235909663411319,
+      "ECOD": 10.547458130632618
+    },
+    "percentiles": {
+      "IF": 0.9388888888888889,
+      "LOF": 0.8333333333333334,
+      "ECOD": 0.9777777777777777
+    },
+    "ensemble": 0.9166666666666666,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-17",
+    "product": "arandano",
+    "destination": "TEST-17",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.047522151209349994,
+      "LOF": 0.9963134648131435,
+      "ECOD": 8.209154955036492
+    },
+    "percentiles": {
+      "IF": 0.5777777777777777,
+      "LOF": 0.31666666666666665,
+      "ECOD": 0.8
+    },
+    "ensemble": 0.5648148148148148,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-18",
+    "product": "arandano",
+    "destination": "TEST-18",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": -0.02889097314369038,
+      "LOF": 1.0434998403811266,
+      "ECOD": 9.172592465336349
+    },
+    "percentiles": {
+      "IF": 0.6944444444444444,
+      "LOF": 0.5888888888888889,
+      "ECOD": 0.8888888888888888
+    },
+    "ensemble": 0.724074074074074,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-19",
+    "product": "arandano",
+    "destination": "TEST-19",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.002089146368438044,
+      "LOF": 1.168893108014104,
+      "ECOD": 10.460446753642987
+    },
+    "percentiles": {
+      "IF": 0.9222222222222223,
+      "LOF": 0.9,
+      "ECOD": 0.9666666666666667
+    },
+    "ensemble": 0.9296296296296296,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-100-20",
+    "product": "arandano",
+    "destination": "TEST-20",
+    "week": "2021-12-06",
+    "raw_scores": {
+      "IF": 0.036761680958421805,
+      "LOF": 1.3377179569302338,
+      "ECOD": 12.663211511354822
+    },
+    "percentiles": {
+      "IF": 0.9611111111111111,
+      "LOF": 0.9611111111111111,
+      "ECOD": 0.9944444444444445
+    },
+    "ensemble": 0.9722222222222223,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-0",
+    "product": "palta",
+    "destination": "TEST-00",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.22706534718703442,
+      "LOF": 7.117374174387569,
+      "ECOD": 14.775467982499901
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9751243781094527,
+      "ECOD": 0.9751243781094527
+    },
+    "ensemble": 0.9784411276948589,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-101-1",
+    "product": "palta",
+    "destination": "TEST-01",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.22904784388238464,
+      "LOF": 7.3974568525786735,
+      "ECOD": 15.286293606265893
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9800995024875622,
+      "ECOD": 0.9900497512437811
+    },
+    "ensemble": 0.9850746268656717,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-101-2",
+    "product": "palta",
+    "destination": "TEST-02",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.22284565700045544,
+      "LOF": 7.288949702994104,
+      "ECOD": 15.691758714374057
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9751243781094527,
+      "ECOD": 0.9900497512437811
+    },
+    "ensemble": 0.9834162520729685,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-101-3",
+    "product": "palta",
+    "destination": "TEST-03",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.25769305480965876,
+      "LOF": 7.869394360501542,
+      "ECOD": 17.301196626808157
+    },
+    "percentiles": {
+      "IF": 0.9950248756218906,
+      "LOF": 1.0,
+      "ECOD": 0.9950248756218906
+    },
+    "ensemble": 0.9966832504145936,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-101-4",
+    "product": "palta",
+    "destination": "TEST-04",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.2643298144826748,
+      "LOF": 7.994123898006672,
+      "ECOD": 17.306159416150287
+    },
+    "percentiles": {
+      "IF": 0.9950248756218906,
+      "LOF": 1.0,
+      "ECOD": 0.9950248756218906
+    },
+    "ensemble": 0.9966832504145936,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-101-5",
+    "product": "palta",
+    "destination": "TEST-05",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.11220661912398244,
+      "LOF": 0.9887898348521638,
+      "ECOD": 5.69491689358212
+    },
+    "percentiles": {
+      "IF": 0.06467661691542288,
+      "LOF": 0.20398009950248755,
+      "ECOD": 0.3582089552238806
+    },
+    "ensemble": 0.20895522388059698,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-6",
+    "product": "palta",
+    "destination": "TEST-06",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.10722818321424882,
+      "LOF": 0.9843007895583421,
+      "ECOD": 5.877034181148524
+    },
+    "percentiles": {
+      "IF": 0.07462686567164178,
+      "LOF": 0.17412935323383086,
+      "ECOD": 0.417910447761194
+    },
+    "ensemble": 0.2222222222222222,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-7",
+    "product": "palta",
+    "destination": "TEST-07",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.10008772387482251,
+      "LOF": 0.9633599521918079,
+      "ECOD": 5.265565031602845
+    },
+    "percentiles": {
+      "IF": 0.11442786069651742,
+      "LOF": 0.03482587064676617,
+      "ECOD": 0.24378109452736318
+    },
+    "ensemble": 0.1310116086235489,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-8",
+    "product": "palta",
+    "destination": "TEST-08",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.012180523221911765,
+      "LOF": 1.3513506290341342,
+      "ECOD": 8.309422796653077
+    },
+    "percentiles": {
+      "IF": 0.8706467661691543,
+      "LOF": 0.9601990049751243,
+      "ECOD": 0.8805970149253731
+    },
+    "ensemble": 0.9038142620232174,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-9",
+    "product": "palta",
+    "destination": "TEST-09",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.08333747172631872,
+      "LOF": 1.0247912600450815,
+      "ECOD": 6.28987939655431
+    },
+    "percentiles": {
+      "IF": 0.2885572139303483,
+      "LOF": 0.5124378109452736,
+      "ECOD": 0.5174129353233831
+    },
+    "ensemble": 0.43946932006633493,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-10",
+    "product": "palta",
+    "destination": "TEST-10",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.1065168868789555,
+      "LOF": 0.9911473620816358,
+      "ECOD": 5.74841680332643
+    },
+    "percentiles": {
+      "IF": 0.0845771144278607,
+      "LOF": 0.22388059701492538,
+      "ECOD": 0.3781094527363184
+    },
+    "ensemble": 0.2288557213930348,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-11",
+    "product": "palta",
+    "destination": "TEST-11",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09931488448044029,
+      "LOF": 1.0025327262978994,
+      "ECOD": 6.036098875778212
+    },
+    "percentiles": {
+      "IF": 0.11442786069651742,
+      "LOF": 0.34328358208955223,
+      "ECOD": 0.48258706467661694
+    },
+    "ensemble": 0.31343283582089554,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-12",
+    "product": "palta",
+    "destination": "TEST-12",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.06285559664719237,
+      "LOF": 1.0866820741909025,
+      "ECOD": 7.627971655856324
+    },
+    "percentiles": {
+      "IF": 0.5323383084577115,
+      "LOF": 0.7711442786069652,
+      "ECOD": 0.8059701492537313
+    },
+    "ensemble": 0.703150912106136,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-13",
+    "product": "palta",
+    "destination": "TEST-13",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09901940092302203,
+      "LOF": 0.9865460914196827,
+      "ECOD": 5.857616095291422
+    },
+    "percentiles": {
+      "IF": 0.12437810945273632,
+      "LOF": 0.1890547263681592,
+      "ECOD": 0.4079601990049751
+    },
+    "ensemble": 0.24046434494195687,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-14",
+    "product": "palta",
+    "destination": "TEST-14",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.11778354755857906,
+      "LOF": 0.9718040553672334,
+      "ECOD": 5.1664741289586145
+    },
+    "percentiles": {
+      "IF": 0.024875621890547265,
+      "LOF": 0.06965174129353234,
+      "ECOD": 0.22885572139303484
+    },
+    "ensemble": 0.10779436152570482,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-15",
+    "product": "palta",
+    "destination": "TEST-15",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09510330352872942,
+      "LOF": 0.9653795704450013,
+      "ECOD": 5.532193694856794
+    },
+    "percentiles": {
+      "IF": 0.16417910447761194,
+      "LOF": 0.04477611940298507,
+      "ECOD": 0.29850746268656714
+    },
+    "ensemble": 0.1691542288557214,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-16",
+    "product": "palta",
+    "destination": "TEST-16",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.0555902327235237,
+      "LOF": 1.1206904361532273,
+      "ECOD": 7.493852200880246
+    },
+    "percentiles": {
+      "IF": 0.6268656716417911,
+      "LOF": 0.8258706467661692,
+      "ECOD": 0.7910447761194029
+    },
+    "ensemble": 0.747927031509121,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-17",
+    "product": "palta",
+    "destination": "TEST-17",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.06346157807708758,
+      "LOF": 1.076920357766125,
+      "ECOD": 7.27980337947192
+    },
+    "percentiles": {
+      "IF": 0.5323383084577115,
+      "LOF": 0.746268656716418,
+      "ECOD": 0.7611940298507462
+    },
+    "ensemble": 0.6799336650082918,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-18",
+    "product": "palta",
+    "destination": "TEST-18",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.12108182435180159,
+      "LOF": 0.961420918390034,
+      "ECOD": 4.572307041579658
+    },
+    "percentiles": {
+      "IF": 0.014925373134328358,
+      "LOF": 0.029850746268656716,
+      "ECOD": 0.11442786069651742
+    },
+    "ensemble": 0.05306799336650083,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-19",
+    "product": "palta",
+    "destination": "TEST-19",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09138453376610162,
+      "LOF": 1.0353834872883971,
+      "ECOD": 6.0246701799545885
+    },
+    "percentiles": {
+      "IF": 0.20398009950248755,
+      "LOF": 0.572139303482587,
+      "ECOD": 0.47761194029850745
+    },
+    "ensemble": 0.41791044776119396,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-101-20",
+    "product": "palta",
+    "destination": "TEST-20",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.10537775033714114,
+      "LOF": 0.988823540803442,
+      "ECOD": 5.903106421458299
+    },
+    "percentiles": {
+      "IF": 0.0845771144278607,
+      "LOF": 0.20398009950248755,
+      "ECOD": 0.4228855721393035
+    },
+    "ensemble": 0.23714759535655058,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-0",
+    "product": "uva",
+    "destination": "TEST-00",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.24509109205886126,
+      "LOF": 8.140008620902767,
+      "ECOD": 15.221755085128322
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9800995024875622,
+      "ECOD": 0.9800995024875622
+    },
+    "ensemble": 0.9817578772802653,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-101-1",
+    "product": "uva",
+    "destination": "TEST-01",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.20415541006605276,
+      "LOF": 8.731598734455513,
+      "ECOD": 17.994343807368104
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 0.9950248756218905,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-101-2",
+    "product": "uva",
+    "destination": "TEST-02",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.2365081804699527,
+      "LOF": 8.984420493791882,
+      "ECOD": 17.999306596710234
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 0.9950248756218905,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-101-3",
+    "product": "uva",
+    "destination": "TEST-03",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.20671202625892438,
+      "LOF": 8.697472905788608,
+      "ECOD": 17.306159416150287
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 1.0,
+      "ECOD": 1.0
+    },
+    "ensemble": 0.9950248756218905,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-101-4",
+    "product": "uva",
+    "destination": "TEST-04",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.22749505795330904,
+      "LOF": 8.618363849884421,
+      "ECOD": 16.895731518699993
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9900497512437811,
+      "ECOD": 1.0
+    },
+    "ensemble": 0.9917081260364843,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-101-5",
+    "product": "uva",
+    "destination": "TEST-05",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.06284092545649328,
+      "LOF": 1.0304710802293469,
+      "ECOD": 5.9526742181295385
+    },
+    "percentiles": {
+      "IF": 0.5771144278606966,
+      "LOF": 0.5621890547263682,
+      "ECOD": 0.4527363184079602
+    },
+    "ensemble": 0.5306799336650083,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-6",
+    "product": "uva",
+    "destination": "TEST-06",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.04735782951693451,
+      "LOF": 1.0745188506233267,
+      "ECOD": 6.606600685536201
+    },
+    "percentiles": {
+      "IF": 0.6865671641791045,
+      "LOF": 0.7213930348258707,
+      "ECOD": 0.6467661691542289
+    },
+    "ensemble": 0.6849087893864013,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-7",
+    "product": "uva",
+    "destination": "TEST-07",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.04071351353928426,
+      "LOF": 1.102026009250968,
+      "ECOD": 7.225639893942426
+    },
+    "percentiles": {
+      "IF": 0.7313432835820896,
+      "LOF": 0.7910447761194029,
+      "ECOD": 0.736318407960199
+    },
+    "ensemble": 0.7529021558872305,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-8",
+    "product": "uva",
+    "destination": "TEST-08",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.0867461472485287,
+      "LOF": 1.0261049208162452,
+      "ECOD": 6.177068551345401
+    },
+    "percentiles": {
+      "IF": 0.26865671641791045,
+      "LOF": 0.5373134328358209,
+      "ECOD": 0.527363184079602
+    },
+    "ensemble": 0.4444444444444445,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-9",
+    "product": "uva",
+    "destination": "TEST-09",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.11100095811731092,
+      "LOF": 0.9606357950353953,
+      "ECOD": 4.541687244419276
+    },
+    "percentiles": {
+      "IF": 0.03980099502487562,
+      "LOF": 0.024875621890547265,
+      "ECOD": 0.1044776119402985
+    },
+    "ensemble": 0.05638474295190713,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-10",
+    "product": "uva",
+    "destination": "TEST-10",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.03191280537693231,
+      "LOF": 1.098296704565328,
+      "ECOD": 7.262007538113301
+    },
+    "percentiles": {
+      "IF": 0.7711442786069652,
+      "LOF": 0.7910447761194029,
+      "ECOD": 0.7611940298507462
+    },
+    "ensemble": 0.7744610281923715,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-11",
+    "product": "uva",
+    "destination": "TEST-11",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.10932489497714237,
+      "LOF": 0.9765989533717473,
+      "ECOD": 5.108954179090218
+    },
+    "percentiles": {
+      "IF": 0.04477611940298507,
+      "LOF": 0.14427860696517414,
+      "ECOD": 0.21393034825870647
+    },
+    "ensemble": 0.13432835820895522,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-12",
+    "product": "uva",
+    "destination": "TEST-12",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09590137620600031,
+      "LOF": 0.9873887958944181,
+      "ECOD": 5.119765095194434
+    },
+    "percentiles": {
+      "IF": 0.14427860696517414,
+      "LOF": 0.23880597014925373,
+      "ECOD": 0.21393034825870647
+    },
+    "ensemble": 0.1990049751243781,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-13",
+    "product": "uva",
+    "destination": "TEST-13",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.04081876863156836,
+      "LOF": 1.1498009758006291,
+      "ECOD": 7.254627430815678
+    },
+    "percentiles": {
+      "IF": 0.7313432835820896,
+      "LOF": 0.8308457711442786,
+      "ECOD": 0.7512437810945274
+    },
+    "ensemble": 0.7711442786069652,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-14",
+    "product": "uva",
+    "destination": "TEST-14",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.01830516001315824,
+      "LOF": 1.1299626608570277,
+      "ECOD": 7.156647022455474
+    },
+    "percentiles": {
+      "IF": 0.8308457711442786,
+      "LOF": 0.8159203980099502,
+      "ECOD": 0.736318407960199
+    },
+    "ensemble": 0.7943615257048092,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-15",
+    "product": "uva",
+    "destination": "TEST-15",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.012187332119628858,
+      "LOF": 1.2248485285760404,
+      "ECOD": 8.338640920062636
+    },
+    "percentiles": {
+      "IF": 0.8656716417910447,
+      "LOF": 0.8955223880597015,
+      "ECOD": 0.8507462686567164
+    },
+    "ensemble": 0.8706467661691543,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-16",
+    "product": "uva",
+    "destination": "TEST-16",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.1137459879300613,
+      "LOF": 0.9721821745005597,
+      "ECOD": 4.738652077950601
+    },
+    "percentiles": {
+      "IF": 0.024875621890547265,
+      "LOF": 0.07462686567164178,
+      "ECOD": 0.13930348258706468
+    },
+    "ensemble": 0.07960199004975124,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-17",
+    "product": "uva",
+    "destination": "TEST-17",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.05844862857394578,
+      "LOF": 1.0899659991773771,
+      "ECOD": 6.720544944885419
+    },
+    "percentiles": {
+      "IF": 0.6318407960199005,
+      "LOF": 0.7761194029850746,
+      "ECOD": 0.681592039800995
+    },
+    "ensemble": 0.6965174129353233,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-18",
+    "product": "uva",
+    "destination": "TEST-18",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.03220144794584856,
+      "LOF": 1.139609998746738,
+      "ECOD": 7.359171286566947
+    },
+    "percentiles": {
+      "IF": 0.7711442786069652,
+      "LOF": 0.8159203980099502,
+      "ECOD": 0.7711442786069652
+    },
+    "ensemble": 0.7860696517412936,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-19",
+    "product": "uva",
+    "destination": "TEST-19",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.07298772508449514,
+      "LOF": 1.0395920000337024,
+      "ECOD": 6.339808369552979
+    },
+    "percentiles": {
+      "IF": 0.44776119402985076,
+      "LOF": 0.5970149253731343,
+      "ECOD": 0.5621890547263682
+    },
+    "ensemble": 0.5356550580431177,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-101-20",
+    "product": "uva",
+    "destination": "TEST-20",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.05480402338159568,
+      "LOF": 1.0688895391534592,
+      "ECOD": 6.575362935040922
+    },
+    "percentiles": {
+      "IF": 0.6467661691542289,
+      "LOF": 0.6965174129353234,
+      "ECOD": 0.6318407960199005
+    },
+    "ensemble": 0.6583747927031509,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-0",
+    "product": "arandano",
+    "destination": "TEST-00",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.2444665607625146,
+      "LOF": 7.880349806710393,
+      "ECOD": 16.384905894934004
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9900497512437811,
+      "ECOD": 0.9950248756218906
+    },
+    "ensemble": 0.990049751243781,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-101-1",
+    "product": "arandano",
+    "destination": "TEST-01",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.24768056983729647,
+      "LOF": 7.9523125829142405,
+      "ECOD": 16.895731518699993
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9950248756218906,
+      "ECOD": 0.9950248756218906
+    },
+    "ensemble": 0.9917081260364843,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-101-2",
+    "product": "arandano",
+    "destination": "TEST-02",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.23490629031041355,
+      "LOF": 7.85827992588076,
+      "ECOD": 16.20258433814005
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9900497512437811,
+      "ECOD": 0.9900497512437811
+    },
+    "ensemble": 0.988391376451078,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-101-3",
+    "product": "arandano",
+    "destination": "TEST-03",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.23596251799561718,
+      "LOF": 7.900811748335842,
+      "ECOD": 16.20258433814005
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9900497512437811,
+      "ECOD": 0.9900497512437811
+    },
+    "ensemble": 0.988391376451078,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-101-4",
+    "product": "arandano",
+    "destination": "TEST-04",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": 0.22912377618665225,
+      "LOF": 7.831654498187456,
+      "ECOD": 16.608049446248213
+    },
+    "percentiles": {
+      "IF": 0.9850746268656716,
+      "LOF": 0.9900497512437811,
+      "ECOD": 0.9950248756218906
+    },
+    "ensemble": 0.990049751243781,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-101-5",
+    "product": "arandano",
+    "destination": "TEST-05",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.06910998877040975,
+      "LOF": 1.0584876012418332,
+      "ECOD": 6.71893519650069
+    },
+    "percentiles": {
+      "IF": 0.4228855721393035,
+      "LOF": 0.6019900497512438,
+      "ECOD": 0.6318407960199005
+    },
+    "ensemble": 0.5522388059701493,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-6",
+    "product": "arandano",
+    "destination": "TEST-06",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.06507300092094215,
+      "LOF": 1.0897577094236233,
+      "ECOD": 7.272958369300053
+    },
+    "percentiles": {
+      "IF": 0.4577114427860697,
+      "LOF": 0.7014925373134329,
+      "ECOD": 0.7263681592039801
+    },
+    "ensemble": 0.6285240464344942,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-7",
+    "product": "arandano",
+    "destination": "TEST-07",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.06086360001542862,
+      "LOF": 1.0868135872165667,
+      "ECOD": 7.156845061865965
+    },
+    "percentiles": {
+      "IF": 0.4975124378109453,
+      "LOF": 0.6965174129353234,
+      "ECOD": 0.7014925373134329
+    },
+    "ensemble": 0.6318407960199005,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-8",
+    "product": "arandano",
+    "destination": "TEST-08",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09249908798878481,
+      "LOF": 0.9729449730382009,
+      "ECOD": 5.514789844508034
+    },
+    "percentiles": {
+      "IF": 0.13432835820895522,
+      "LOF": 0.1044776119402985,
+      "ECOD": 0.3283582089552239
+    },
+    "ensemble": 0.1890547263681592,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-9",
+    "product": "arandano",
+    "destination": "TEST-09",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.08976567286414477,
+      "LOF": 1.0038795144964092,
+      "ECOD": 5.528076479982877
+    },
+    "percentiles": {
+      "IF": 0.16417910447761194,
+      "LOF": 0.373134328358209,
+      "ECOD": 0.3283582089552239
+    },
+    "ensemble": 0.2885572139303483,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-10",
+    "product": "arandano",
+    "destination": "TEST-10",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.08728068028519115,
+      "LOF": 0.9946218602639032,
+      "ECOD": 5.970404736301669
+    },
+    "percentiles": {
+      "IF": 0.19900497512437812,
+      "LOF": 0.31343283582089554,
+      "ECOD": 0.4527363184079602
+    },
+    "ensemble": 0.3217247097844113,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-11",
+    "product": "arandano",
+    "destination": "TEST-11",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.0933846689856026,
+      "LOF": 0.969108138588936,
+      "ECOD": 5.2325573768238165
+    },
+    "percentiles": {
+      "IF": 0.11442786069651742,
+      "LOF": 0.0845771144278607,
+      "ECOD": 0.26865671641791045
+    },
+    "ensemble": 0.15588723051409617,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-12",
+    "product": "arandano",
+    "destination": "TEST-12",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09028163329572636,
+      "LOF": 0.9832582735405133,
+      "ECOD": 5.536768751226807
+    },
+    "percentiles": {
+      "IF": 0.15920398009950248,
+      "LOF": 0.21890547263681592,
+      "ECOD": 0.3283582089552239
+    },
+    "ensemble": 0.23548922056384744,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-13",
+    "product": "arandano",
+    "destination": "TEST-13",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.10502736858471218,
+      "LOF": 0.9713870950557707,
+      "ECOD": 4.645985778899865
+    },
+    "percentiles": {
+      "IF": 0.009950248756218905,
+      "LOF": 0.1044776119402985,
+      "ECOD": 0.15920398009950248
+    },
+    "ensemble": 0.09121061359867329,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-14",
+    "product": "arandano",
+    "destination": "TEST-14",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09843801786274997,
+      "LOF": 0.9692140922947858,
+      "ECOD": 5.048091360683829
+    },
+    "percentiles": {
+      "IF": 0.04975124378109453,
+      "LOF": 0.0845771144278607,
+      "ECOD": 0.23383084577114427
+    },
+    "ensemble": 0.12271973466003316,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-15",
+    "product": "arandano",
+    "destination": "TEST-15",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.09266718292237636,
+      "LOF": 0.9921972761880209,
+      "ECOD": 5.3937913719976756
+    },
+    "percentiles": {
+      "IF": 0.12437810945273632,
+      "LOF": 0.29850746268656714,
+      "ECOD": 0.2835820895522388
+    },
+    "ensemble": 0.23548922056384744,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-16",
+    "product": "arandano",
+    "destination": "TEST-16",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.059065835451106,
+      "LOF": 1.1217775797039047,
+      "ECOD": 6.70437391138187
+    },
+    "percentiles": {
+      "IF": 0.5124378109452736,
+      "LOF": 0.7761194029850746,
+      "ECOD": 0.6318407960199005
+    },
+    "ensemble": 0.6401326699834162,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-17",
+    "product": "arandano",
+    "destination": "TEST-17",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.004621253384434976,
+      "LOF": 1.2865667156216525,
+      "ECOD": 7.608830185609021
+    },
+    "percentiles": {
+      "IF": 0.8955223880597015,
+      "LOF": 0.9203980099502488,
+      "ECOD": 0.7711442786069652
+    },
+    "ensemble": 0.8623548922056385,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-18",
+    "product": "arandano",
+    "destination": "TEST-18",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.058000210511428674,
+      "LOF": 1.1047140744838626,
+      "ECOD": 7.455279926094008
+    },
+    "percentiles": {
+      "IF": 0.527363184079602,
+      "LOF": 0.7562189054726368,
+      "ECOD": 0.7611940298507462
+    },
+    "ensemble": 0.681592039800995,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-19",
+    "product": "arandano",
+    "destination": "TEST-19",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.0821804210873241,
+      "LOF": 1.004076188003073,
+      "ECOD": 5.886664008180162
+    },
+    "percentiles": {
+      "IF": 0.24875621890547264,
+      "LOF": 0.3781094527363184,
+      "ECOD": 0.43283582089552236
+    },
+    "ensemble": 0.35323383084577115,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-101-20",
+    "product": "arandano",
+    "destination": "TEST-20",
+    "week": "2021-12-13",
+    "raw_scores": {
+      "IF": -0.06700521502545986,
+      "LOF": 1.0187989962054806,
+      "ECOD": 6.5018496472703955
+    },
+    "percentiles": {
+      "IF": 0.43283582089552236,
+      "LOF": 0.4626865671641791,
+      "ECOD": 0.5920398009950248
+    },
+    "ensemble": 0.49585406301824214,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-0",
+    "product": "palta",
+    "destination": "TEST-00",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.15244525249024277,
+      "LOF": 5.146476001993033,
+      "ECOD": 14.009807067947035
+    },
+    "percentiles": {
+      "IF": 0.9684684684684685,
+      "LOF": 0.9819819819819819,
+      "ECOD": 0.9819819819819819
+    },
+    "ensemble": 0.9774774774774775,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-102-1",
+    "product": "palta",
+    "destination": "TEST-01",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.13579774976824965,
+      "LOF": 5.118198082175951,
+      "ECOD": 13.673334831325821
+    },
+    "percentiles": {
+      "IF": 0.963963963963964,
+      "LOF": 0.9819819819819819,
+      "ECOD": 0.9774774774774775
+    },
+    "ensemble": 0.9744744744744746,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-102-2",
+    "product": "palta",
+    "destination": "TEST-02",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.15812003992530266,
+      "LOF": 5.174717655210481,
+      "ECOD": 14.009807067947035
+    },
+    "percentiles": {
+      "IF": 0.972972972972973,
+      "LOF": 0.9819819819819819,
+      "ECOD": 0.9819819819819819
+    },
+    "ensemble": 0.978978978978979,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-102-3",
+    "product": "palta",
+    "destination": "TEST-03",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.1962881728525212,
+      "LOF": 5.358027068266926,
+      "ECOD": 15.911421442420755
+    },
+    "percentiles": {
+      "IF": 0.9864864864864865,
+      "LOF": 1.0,
+      "ECOD": 0.9954954954954955
+    },
+    "ensemble": 0.993993993993994,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-102-4",
+    "product": "palta",
+    "destination": "TEST-04",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.18386061328072256,
+      "LOF": 5.267240564123909,
+      "ECOD": 15.623739369968973
+    },
+    "percentiles": {
+      "IF": 0.9774774774774775,
+      "LOF": 0.9864864864864865,
+      "ECOD": 0.9954954954954955
+    },
+    "ensemble": 0.9864864864864865,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-palta-102-5",
+    "product": "palta",
+    "destination": "TEST-05",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.10248174992248749,
+      "LOF": 1.021160674699002,
+      "ECOD": 5.571657083871251
+    },
+    "percentiles": {
+      "IF": 0.2072072072072072,
+      "LOF": 0.46396396396396394,
+      "ECOD": 0.3918918918918919
+    },
+    "ensemble": 0.35435435435435436,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-6",
+    "product": "palta",
+    "destination": "TEST-06",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.05282622886942456,
+      "LOF": 1.1590341443403935,
+      "ECOD": 7.73014183289154
+    },
+    "percentiles": {
+      "IF": 0.7162162162162162,
+      "LOF": 0.8423423423423423,
+      "ECOD": 0.8378378378378378
+    },
+    "ensemble": 0.7987987987987988,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-7",
+    "product": "palta",
+    "destination": "TEST-07",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.14291861912965892,
+      "LOF": 0.9538600479355626,
+      "ECOD": 4.133719489599522
+    },
+    "percentiles": {
+      "IF": 0.018018018018018018,
+      "LOF": 0.0045045045045045045,
+      "ECOD": 0.07657657657657657
+    },
+    "ensemble": 0.03303303303303303,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-8",
+    "product": "palta",
+    "destination": "TEST-08",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.1308109951260258,
+      "LOF": 0.9666483365771604,
+      "ECOD": 4.2633242642210725
+    },
+    "percentiles": {
+      "IF": 0.04504504504504504,
+      "LOF": 0.06306306306306306,
+      "ECOD": 0.08558558558558559
+    },
+    "ensemble": 0.06456456456456457,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-9",
+    "product": "palta",
+    "destination": "TEST-09",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.11597959909691713,
+      "LOF": 1.0071786260578954,
+      "ECOD": 6.026575075698946
+    },
+    "percentiles": {
+      "IF": 0.11711711711711711,
+      "LOF": 0.35585585585585583,
+      "ECOD": 0.49099099099099097
+    },
+    "ensemble": 0.3213213213213213,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-10",
+    "product": "palta",
+    "destination": "TEST-10",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.14076450697463933,
+      "LOF": 0.9623729647063959,
+      "ECOD": 4.002728714775361
+    },
+    "percentiles": {
+      "IF": 0.02252252252252252,
+      "LOF": 0.04054054054054054,
+      "ECOD": 0.04054054054054054
+    },
+    "ensemble": 0.03453453453453453,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-11",
+    "product": "palta",
+    "destination": "TEST-11",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.14025039581817667,
+      "LOF": 0.9599850571641964,
+      "ECOD": 4.047777059798797
+    },
+    "percentiles": {
+      "IF": 0.02252252252252252,
+      "LOF": 0.03153153153153153,
+      "ECOD": 0.04954954954954955
+    },
+    "ensemble": 0.03453453453453453,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-12",
+    "product": "palta",
+    "destination": "TEST-12",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.11960279231065002,
+      "LOF": 0.9936172043559237,
+      "ECOD": 5.318954730315498
+    },
+    "percentiles": {
+      "IF": 0.11261261261261261,
+      "LOF": 0.23423423423423423,
+      "ECOD": 0.32882882882882886
+    },
+    "ensemble": 0.22522522522522523,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-13",
+    "product": "palta",
+    "destination": "TEST-13",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.13813126421938543,
+      "LOF": 0.9573842003888441,
+      "ECOD": 3.9631195766803144
+    },
+    "percentiles": {
+      "IF": 0.02702702702702703,
+      "LOF": 0.009009009009009009,
+      "ECOD": 0.04054054054054054
+    },
+    "ensemble": 0.02552552552552553,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-14",
+    "product": "palta",
+    "destination": "TEST-14",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.09695687017635529,
+      "LOF": 1.0762981028543481,
+      "ECOD": 5.101653454625516
+    },
+    "percentiles": {
+      "IF": 0.25675675675675674,
+      "LOF": 0.6936936936936937,
+      "ECOD": 0.26576576576576577
+    },
+    "ensemble": 0.40540540540540543,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-15",
+    "product": "palta",
+    "destination": "TEST-15",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.13822002410661716,
+      "LOF": 0.959691578471023,
+      "ECOD": 4.700572944835176
+    },
+    "percentiles": {
+      "IF": 0.02702702702702703,
+      "LOF": 0.02702702702702703,
+      "ECOD": 0.16216216216216217
+    },
+    "ensemble": 0.07207207207207207,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-16",
+    "product": "palta",
+    "destination": "TEST-16",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.07314445468040925,
+      "LOF": 1.1048367898979683,
+      "ECOD": 7.294823761633695
+    },
+    "percentiles": {
+      "IF": 0.509009009009009,
+      "LOF": 0.7522522522522522,
+      "ECOD": 0.7972972972972973
+    },
+    "ensemble": 0.6861861861861862,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-17",
+    "product": "palta",
+    "destination": "TEST-17",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.0954122559930124,
+      "LOF": 1.03970370506951,
+      "ECOD": 5.804850971038962
+    },
+    "percentiles": {
+      "IF": 0.27927927927927926,
+      "LOF": 0.5495495495495496,
+      "ECOD": 0.45495495495495497
+    },
+    "ensemble": 0.42792792792792794,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-18",
+    "product": "palta",
+    "destination": "TEST-18",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.13151299557555174,
+      "LOF": 0.9773941664527829,
+      "ECOD": 4.961891512250357
+    },
+    "percentiles": {
+      "IF": 0.04504504504504504,
+      "LOF": 0.1036036036036036,
+      "ECOD": 0.22072072072072071
+    },
+    "ensemble": 0.12312312312312312,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-19",
+    "product": "palta",
+    "destination": "TEST-19",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.115562290940954,
+      "LOF": 1.0134519105947541,
+      "ECOD": 5.352120028151154
+    },
+    "percentiles": {
+      "IF": 0.12162162162162163,
+      "LOF": 0.40540540540540543,
+      "ECOD": 0.32882882882882886
+    },
+    "ensemble": 0.2852852852852853,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-palta-102-20",
+    "product": "palta",
+    "destination": "TEST-20",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.08464907985190073,
+      "LOF": 1.062179250704804,
+      "ECOD": 5.88499890310361
+    },
+    "percentiles": {
+      "IF": 0.38738738738738737,
+      "LOF": 0.6486486486486487,
+      "ECOD": 0.4594594594594595
+    },
+    "ensemble": 0.49849849849849853,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-0",
+    "product": "uva",
+    "destination": "TEST-00",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.15184995484504138,
+      "LOF": 5.784324016226903,
+      "ECOD": 13.709702475496696
+    },
+    "percentiles": {
+      "IF": 0.9774774774774775,
+      "LOF": 0.972972972972973,
+      "ECOD": 0.9774774774774775
+    },
+    "ensemble": 0.975975975975976,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-102-1",
+    "product": "uva",
+    "destination": "TEST-01",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.18338661937908074,
+      "LOF": 5.660740885720475,
+      "ECOD": 13.198876851730706
+    },
+    "percentiles": {
+      "IF": 0.9819819819819819,
+      "LOF": 0.963963963963964,
+      "ECOD": 0.963963963963964
+    },
+    "ensemble": 0.96996996996997,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-102-2",
+    "product": "uva",
+    "destination": "TEST-02",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.10829052700412023,
+      "LOF": 5.815872874034053,
+      "ECOD": 14.808314764164805
+    },
+    "percentiles": {
+      "IF": 0.963963963963964,
+      "LOF": 0.972972972972973,
+      "ECOD": 0.990990990990991
+    },
+    "ensemble": 0.975975975975976,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-102-3",
+    "product": "uva",
+    "destination": "TEST-03",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.19088062881622692,
+      "LOF": 5.765538218104178,
+      "ECOD": 12.728873222484971
+    },
+    "percentiles": {
+      "IF": 0.990990990990991,
+      "LOF": 0.963963963963964,
+      "ECOD": 0.963963963963964
+    },
+    "ensemble": 0.9729729729729729,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-102-4",
+    "product": "uva",
+    "destination": "TEST-04",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.16500283223067258,
+      "LOF": 5.859441719408893,
+      "ECOD": 12.862404615109494
+    },
+    "percentiles": {
+      "IF": 0.9774774774774775,
+      "LOF": 0.9819819819819819,
+      "ECOD": 0.963963963963964
+    },
+    "ensemble": 0.9744744744744746,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-uva-102-5",
+    "product": "uva",
+    "destination": "TEST-05",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.10905439404599454,
+      "LOF": 0.9851441857607817,
+      "ECOD": 5.019591807361799
+    },
+    "percentiles": {
+      "IF": 0.10810810810810811,
+      "LOF": 0.16216216216216217,
+      "ECOD": 0.24324324324324326
+    },
+    "ensemble": 0.1711711711711712,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-6",
+    "product": "uva",
+    "destination": "TEST-06",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.12305279448305206,
+      "LOF": 0.9684195285359312,
+      "ECOD": 4.3055907905186475
+    },
+    "percentiles": {
+      "IF": 0.04954954954954955,
+      "LOF": 0.05855855855855856,
+      "ECOD": 0.09009009009009009
+    },
+    "ensemble": 0.06606606606606606,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-7",
+    "product": "uva",
+    "destination": "TEST-07",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.12288541316270818,
+      "LOF": 0.9857258460145779,
+      "ECOD": 4.7890681487499664
+    },
+    "percentiles": {
+      "IF": 0.04954954954954955,
+      "LOF": 0.16666666666666666,
+      "ECOD": 0.17567567567567569
+    },
+    "ensemble": 0.13063063063063063,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-8",
+    "product": "uva",
+    "destination": "TEST-08",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.08685832483033162,
+      "LOF": 1.1146808271945339,
+      "ECOD": 6.223138989208443
+    },
+    "percentiles": {
+      "IF": 0.38288288288288286,
+      "LOF": 0.8018018018018018,
+      "ECOD": 0.5945945945945946
+    },
+    "ensemble": 0.5930930930930931,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-9",
+    "product": "uva",
+    "destination": "TEST-09",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.13510609403772278,
+      "LOF": 0.9574588902569244,
+      "ECOD": 4.030178810658681
+    },
+    "percentiles": {
+      "IF": 0.0,
+      "LOF": 0.02252252252252252,
+      "ECOD": 0.04954954954954955
+    },
+    "ensemble": 0.024024024024024024,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-10",
+    "product": "uva",
+    "destination": "TEST-10",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.10827801870718418,
+      "LOF": 1.0038106402885387,
+      "ECOD": 4.931038410020354
+    },
+    "percentiles": {
+      "IF": 0.11711711711711711,
+      "LOF": 0.34234234234234234,
+      "ECOD": 0.21171171171171171
+    },
+    "ensemble": 0.22372372372372373,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-11",
+    "product": "uva",
+    "destination": "TEST-11",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.10091105880335621,
+      "LOF": 1.0363414532203223,
+      "ECOD": 5.333585511972804
+    },
+    "percentiles": {
+      "IF": 0.18468468468468469,
+      "LOF": 0.5540540540540541,
+      "ECOD": 0.32882882882882886
+    },
+    "ensemble": 0.35585585585585583,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-12",
+    "product": "uva",
+    "destination": "TEST-12",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.12537762440177103,
+      "LOF": 0.9794511443202939,
+      "ECOD": 4.5889046812976755
+    },
+    "percentiles": {
+      "IF": 0.036036036036036036,
+      "LOF": 0.11711711711711711,
+      "ECOD": 0.12162162162162163
+    },
+    "ensemble": 0.0915915915915916,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-13",
+    "product": "uva",
+    "destination": "TEST-13",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.11271846239676847,
+      "LOF": 0.9881297877896713,
+      "ECOD": 4.949322611515242
+    },
+    "percentiles": {
+      "IF": 0.0990990990990991,
+      "LOF": 0.18018018018018017,
+      "ECOD": 0.22072072072072071
+    },
+    "ensemble": 0.16666666666666666,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-14",
+    "product": "uva",
+    "destination": "TEST-14",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.11608577307261786,
+      "LOF": 1.030990395121941,
+      "ECOD": 4.716700316246489
+    },
+    "percentiles": {
+      "IF": 0.06756756756756757,
+      "LOF": 0.5225225225225225,
+      "ECOD": 0.14864864864864866
+    },
+    "ensemble": 0.24624624624624625,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-15",
+    "product": "uva",
+    "destination": "TEST-15",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.08618200336974363,
+      "LOF": 1.0379316961988398,
+      "ECOD": 5.391155363794281
+    },
+    "percentiles": {
+      "IF": 0.3918918918918919,
+      "LOF": 0.5540540540540541,
+      "ECOD": 0.34684684684684686
+    },
+    "ensemble": 0.4309309309309309,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-16",
+    "product": "uva",
+    "destination": "TEST-16",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.11388518580738105,
+      "LOF": 1.000269304951818,
+      "ECOD": 4.92812040386464
+    },
+    "percentiles": {
+      "IF": 0.0945945945945946,
+      "LOF": 0.32882882882882886,
+      "ECOD": 0.2072072072072072
+    },
+    "ensemble": 0.21021021021021022,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-17",
+    "product": "uva",
+    "destination": "TEST-17",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.07756572045743676,
+      "LOF": 1.0836870302021873,
+      "ECOD": 6.443626496464536
+    },
+    "percentiles": {
+      "IF": 0.47297297297297297,
+      "LOF": 0.7567567567567568,
+      "ECOD": 0.6396396396396397
+    },
+    "ensemble": 0.6231231231231231,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-18",
+    "product": "uva",
+    "destination": "TEST-18",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.09512088237745348,
+      "LOF": 1.0900997411074536,
+      "ECOD": 5.8889489901696965
+    },
+    "percentiles": {
+      "IF": 0.28378378378378377,
+      "LOF": 0.7702702702702703,
+      "ECOD": 0.4774774774774775
+    },
+    "ensemble": 0.5105105105105104,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-19",
+    "product": "uva",
+    "destination": "TEST-19",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.12588249169456756,
+      "LOF": 0.9576536140917572,
+      "ECOD": 3.9924384826758343
+    },
+    "percentiles": {
+      "IF": 0.036036036036036036,
+      "LOF": 0.02252252252252252,
+      "ECOD": 0.04954954954954955
+    },
+    "ensemble": 0.036036036036036036,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-uva-102-20",
+    "product": "uva",
+    "destination": "TEST-20",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.0023286350564666325,
+      "LOF": 1.2949498687259182,
+      "ECOD": 8.273228318875752
+    },
+    "percentiles": {
+      "IF": 0.8963963963963963,
+      "LOF": 0.9009009009009009,
+      "ECOD": 0.8558558558558559
+    },
+    "ensemble": 0.8843843843843843,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-0",
+    "product": "arandano",
+    "destination": "TEST-00",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.22068625276879106,
+      "LOF": 4.857220810243628,
+      "ECOD": 13.60434195983887
+    },
+    "percentiles": {
+      "IF": 0.9954954954954955,
+      "LOF": 0.9594594594594594,
+      "ECOD": 0.972972972972973
+    },
+    "ensemble": 0.975975975975976,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-102-1",
+    "product": "arandano",
+    "destination": "TEST-01",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.13926217958696263,
+      "LOF": 5.105150904030386,
+      "ECOD": 13.673334831325821
+    },
+    "percentiles": {
+      "IF": 0.9684684684684685,
+      "LOF": 0.972972972972973,
+      "ECOD": 0.972972972972973
+    },
+    "ensemble": 0.9714714714714715,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-102-2",
+    "product": "arandano",
+    "destination": "TEST-02",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.15639981159619754,
+      "LOF": 5.119940569887304,
+      "ECOD": 14.812809153752646
+    },
+    "percentiles": {
+      "IF": 0.9774774774774775,
+      "LOF": 0.9774774774774775,
+      "ECOD": 0.9954954954954955
+    },
+    "ensemble": 0.9834834834834835,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-102-3",
+    "product": "arandano",
+    "destination": "TEST-03",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.24457695306372196,
+      "LOF": 5.191216481150662,
+      "ECOD": 12.50572967117076
+    },
+    "percentiles": {
+      "IF": 1.0,
+      "LOF": 0.9954954954954955,
+      "ECOD": 0.9504504504504504
+    },
+    "ensemble": 0.981981981981982,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-102-4",
+    "product": "arandano",
+    "destination": "TEST-04",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": 0.12983293708584898,
+      "LOF": 5.180247800139756,
+      "ECOD": 14.92609779982119
+    },
+    "percentiles": {
+      "IF": 0.9684684684684685,
+      "LOF": 0.9954954954954955,
+      "ECOD": 0.9954954954954955
+    },
+    "ensemble": 0.9864864864864865,
+    "historical_reference": 0.25
+  },
+  {
+    "id": "artificial-arandano-102-5",
+    "product": "arandano",
+    "destination": "TEST-05",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.08755229466869996,
+      "LOF": 1.110135363432763,
+      "ECOD": 5.763698452635348
+    },
+    "percentiles": {
+      "IF": 0.2747747747747748,
+      "LOF": 0.7027027027027027,
+      "ECOD": 0.43243243243243246
+    },
+    "ensemble": 0.46996996996997,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-6",
+    "product": "arandano",
+    "destination": "TEST-06",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.13020510009462616,
+      "LOF": 0.9651268134719404,
+      "ECOD": 3.9691339324796835
+    },
+    "percentiles": {
+      "IF": 0.0,
+      "LOF": 0.04054054054054054,
+      "ECOD": 0.02252252252252252
+    },
+    "ensemble": 0.02102102102102102,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-7",
+    "product": "arandano",
+    "destination": "TEST-07",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.08133649124676079,
+      "LOF": 1.0865352540401667,
+      "ECOD": 6.404317146915254
+    },
+    "percentiles": {
+      "IF": 0.3153153153153153,
+      "LOF": 0.6486486486486487,
+      "ECOD": 0.5945945945945946
+    },
+    "ensemble": 0.5195195195195196,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-8",
+    "product": "arandano",
+    "destination": "TEST-08",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.06646118973318677,
+      "LOF": 1.121379473973946,
+      "ECOD": 6.678585675507183
+    },
+    "percentiles": {
+      "IF": 0.5,
+      "LOF": 0.7657657657657657,
+      "ECOD": 0.6531531531531531
+    },
+    "ensemble": 0.6396396396396397,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-9",
+    "product": "arandano",
+    "destination": "TEST-09",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.120786206092662,
+      "LOF": 0.9741775718682156,
+      "ECOD": 4.39884007448296
+    },
+    "percentiles": {
+      "IF": 0.03153153153153153,
+      "LOF": 0.09009009009009009,
+      "ECOD": 0.12612612612612611
+    },
+    "ensemble": 0.08258258258258257,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-10",
+    "product": "arandano",
+    "destination": "TEST-10",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.02310254358362268,
+      "LOF": 1.2707369600772658,
+      "ECOD": 7.86816974238102
+    },
+    "percentiles": {
+      "IF": 0.8063063063063063,
+      "LOF": 0.8963963963963963,
+      "ECOD": 0.8108108108108109
+    },
+    "ensemble": 0.8378378378378378,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-11",
+    "product": "arandano",
+    "destination": "TEST-11",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.08815152350734445,
+      "LOF": 1.0336768370125453,
+      "ECOD": 5.967369900536737
+    },
+    "percentiles": {
+      "IF": 0.2702702702702703,
+      "LOF": 0.4954954954954955,
+      "ECOD": 0.4864864864864865
+    },
+    "ensemble": 0.41741741741741745,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-12",
+    "product": "arandano",
+    "destination": "TEST-12",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.1172119696150472,
+      "LOF": 1.0085648592904841,
+      "ECOD": 5.0255134575245215
+    },
+    "percentiles": {
+      "IF": 0.04504504504504504,
+      "LOF": 0.3918918918918919,
+      "ECOD": 0.2747747747747748
+    },
+    "ensemble": 0.23723723723723725,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-13",
+    "product": "arandano",
+    "destination": "TEST-13",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.12577233177622166,
+      "LOF": 0.9626314437779128,
+      "ECOD": 4.128198627109372
+    },
+    "percentiles": {
+      "IF": 0.013513513513513514,
+      "LOF": 0.036036036036036036,
+      "ECOD": 0.05405405405405406
+    },
+    "ensemble": 0.03453453453453453,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-14",
+    "product": "arandano",
+    "destination": "TEST-14",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.12065415528120088,
+      "LOF": 0.9694605301395572,
+      "ECOD": 4.534813821600774
+    },
+    "percentiles": {
+      "IF": 0.03153153153153153,
+      "LOF": 0.07207207207207207,
+      "ECOD": 0.15765765765765766
+    },
+    "ensemble": 0.08708708708708708,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-15",
+    "product": "arandano",
+    "destination": "TEST-15",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.12336856423328885,
+      "LOF": 0.96302062640576,
+      "ECOD": 4.551055477929405
+    },
+    "percentiles": {
+      "IF": 0.02252252252252252,
+      "LOF": 0.036036036036036036,
+      "ECOD": 0.15765765765765766
+    },
+    "ensemble": 0.07207207207207207,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-16",
+    "product": "arandano",
+    "destination": "TEST-16",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.11178733288843157,
+      "LOF": 1.038705448049194,
+      "ECOD": 5.019890199970159
+    },
+    "percentiles": {
+      "IF": 0.06756756756756757,
+      "LOF": 0.5180180180180181,
+      "ECOD": 0.2747747747747748
+    },
+    "ensemble": 0.2867867867867868,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-17",
+    "product": "arandano",
+    "destination": "TEST-17",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.08274518877989462,
+      "LOF": 1.0604881818881455,
+      "ECOD": 6.093451739007816
+    },
+    "percentiles": {
+      "IF": 0.3153153153153153,
+      "LOF": 0.5900900900900901,
+      "ECOD": 0.5180180180180181
+    },
+    "ensemble": 0.4744744744744745,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-18",
+    "product": "arandano",
+    "destination": "TEST-18",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.12356274207368306,
+      "LOF": 0.9627043910971878,
+      "ECOD": 4.203781308275379
+    },
+    "percentiles": {
+      "IF": 0.02252252252252252,
+      "LOF": 0.036036036036036036,
+      "ECOD": 0.05855855855855856
+    },
+    "ensemble": 0.03903903903903904,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-19",
+    "product": "arandano",
+    "destination": "TEST-19",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.09188524006239945,
+      "LOF": 1.0406620256195245,
+      "ECOD": 5.7414753158506375
+    },
+    "percentiles": {
+      "IF": 0.22072072072072071,
+      "LOF": 0.5180180180180181,
+      "ECOD": 0.42792792792792794
+    },
+    "ensemble": 0.3888888888888889,
+    "historical_reference": 0.02
+  },
+  {
+    "id": "artificial-arandano-102-20",
+    "product": "arandano",
+    "destination": "TEST-20",
+    "week": "2021-12-20",
+    "raw_scores": {
+      "IF": -0.03697083207033652,
+      "LOF": 1.2489045819621514,
+      "ECOD": 7.4954944570958455
+    },
+    "percentiles": {
+      "IF": 0.6981981981981982,
+      "LOF": 0.8963963963963963,
+      "ECOD": 0.7792792792792793
+    },
+    "ensemble": 0.7912912912912913,
+    "historical_reference": 0.02
+  }
+]

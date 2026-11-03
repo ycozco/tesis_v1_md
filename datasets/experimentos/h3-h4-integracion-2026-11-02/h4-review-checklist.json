@@ -1,0 +1,16 @@
+{
+  "human_key_reviews_completed": 0,
+  "required": 30,
+  "keys_file": "datasets/experimentos/h4-controlado-v1/keys.json",
+  "pending_before_generation": [
+    "Review keys and abstention coverage policy",
+    "Review undefined-rate aggregation policy before results are seen",
+    "Freeze actual generator/version, prompt, corpus, embeddings, retrieval and attempts",
+    "Configure actual Ollama or explicitly authorized paid provider"
+  ],
+  "pending_after_generation": [
+    "Blindly atomize and grade all factual claims",
+    "Second-grade 45 stratified outputs independently or intra-rater after seven days",
+    "Report pre-adjudication agreement and kappa only if calculable"
+  ]
+}

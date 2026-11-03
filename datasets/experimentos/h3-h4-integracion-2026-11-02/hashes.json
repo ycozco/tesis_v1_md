@@ -1,0 +1,17 @@
+{
+  ".gitattributes": "f06202a408fef9b9ea69bb6b1cb8160dbb0378c5bb67a444d510d231813824c8",
+  "ecod-source-inspection.json": "eabb2a0481f63b952c2c7d4ceea813bd68059c710d7f97ae57aa446147d2a4b2",
+  "h3-artificial-analysis.json": "660d6c0021647459ba4b0fadca90cf7d93ce59bf5776e66385e5d9db2a36b416",
+  "h3-artificial-injections.json": "44d36223e976e9c73a0668910b36e9a784d934313a30af9933369b966d54596d",
+  "h3-artificial-labels.json": "be68ca5b2ed3a1201608f461e77ffeda6f2e64c55e5f420069958ec34cc628cc",
+  "h3-artificial-rubric-inputs.json": "7bbf9808111ac7523b9ba87d73c174692f9a2787daa3efa03fa02df33214d70b",
+  "h3-artificial-scores.json": "e8a80adea2910bc8f42cecfb80ff1d477100da6546edda593740b20a07915a10",
+  "h3-training-audit.json": "2f0a8361674ca616887892a14e96998ced983d3bfc9221c8f47015a54388a9bc",
+  "h4-blind-technical-fixture.json": "3a5dc06e3e1e5edfaf1c3834431506f7456504d2ca82b387d6f849f17f3d057b",
+  "h4-review-checklist.json": "0cf6fd564e44d34aed9d760d3835fa91bea47a22e3363cd83ab8cecb42117f66",
+  "historical-h3-gate.json": "33e6b1f7fd4f6e06d85815b372610ce0d199ddbf661dfdb5b9a45a9531596e15",
+  "README.md": "6fe4f8f277dc37682192d751520a6dbd8036ecc39d98e4d3d90bb33a894f4985",
+  "runtime-readiness.json": "b8788e081c690cd1b91cb0a8d88a05bdf20a1f6345b1b1e8bda5a00de63d9019",
+  "summary.json": "ca9aea442aa83dda4bfac6d807e4423740c0b6bc52594faef533c1c308e62f75",
+  "verification.json": "4d8953fe3a23d83d29c9496483e7ae3e642f5be94ebaa3eeb8f8e843da07fc38"
+}

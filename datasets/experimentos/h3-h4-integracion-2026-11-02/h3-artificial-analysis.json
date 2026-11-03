@@ -1,0 +1,978 @@
+{
+  "selections": {
+    "IF": {
+      "palta": [
+        "artificial-palta-100-0",
+        "artificial-palta-100-1",
+        "artificial-palta-100-2",
+        "artificial-palta-100-3"
+      ],
+      "uva": [
+        "artificial-uva-100-0",
+        "artificial-uva-100-1",
+        "artificial-uva-100-2",
+        "artificial-uva-100-3"
+      ],
+      "arandano": [
+        "artificial-arandano-100-0",
+        "artificial-arandano-100-1",
+        "artificial-arandano-100-2",
+        "artificial-arandano-100-3"
+      ]
+    },
+    "LOF": {
+      "palta": [
+        "artificial-palta-100-0",
+        "artificial-palta-100-1",
+        "artificial-palta-100-2",
+        "artificial-palta-100-3"
+      ],
+      "uva": [
+        "artificial-uva-100-0",
+        "artificial-uva-100-1",
+        "artificial-uva-100-2",
+        "artificial-uva-100-3"
+      ],
+      "arandano": [
+        "artificial-arandano-100-0",
+        "artificial-arandano-100-1",
+        "artificial-arandano-100-2",
+        "artificial-arandano-100-3"
+      ]
+    },
+    "ECOD": {
+      "palta": [
+        "artificial-palta-100-0",
+        "artificial-palta-100-1",
+        "artificial-palta-100-2",
+        "artificial-palta-100-3"
+      ],
+      "uva": [
+        "artificial-uva-100-0",
+        "artificial-uva-100-1",
+        "artificial-uva-100-2",
+        "artificial-uva-100-3"
+      ],
+      "arandano": [
+        "artificial-arandano-100-0",
+        "artificial-arandano-100-1",
+        "artificial-arandano-100-2",
+        "artificial-arandano-100-3"
+      ]
+    },
+    "ensemble": {
+      "palta": [
+        "artificial-palta-100-0",
+        "artificial-palta-100-1",
+        "artificial-palta-100-2",
+        "artificial-palta-100-3"
+      ],
+      "uva": [
+        "artificial-uva-100-0",
+        "artificial-uva-100-1",
+        "artificial-uva-100-2",
+        "artificial-uva-100-3"
+      ],
+      "arandano": [
+        "artificial-arandano-100-0",
+        "artificial-arandano-100-1",
+        "artificial-arandano-100-2",
+        "artificial-arandano-100-3"
+      ]
+    },
+    "historical_reference": {
+      "palta": [
+        "artificial-palta-100-0",
+        "artificial-palta-100-1",
+        "artificial-palta-100-2",
+        "artificial-palta-100-3"
+      ],
+      "uva": [
+        "artificial-uva-100-0",
+        "artificial-uva-100-1",
+        "artificial-uva-100-2",
+        "artificial-uva-100-3"
+      ],
+      "arandano": [
+        "artificial-arandano-100-0",
+        "artificial-arandano-100-1",
+        "artificial-arandano-100-2",
+        "artificial-arandano-100-3"
+      ]
+    }
+  },
+  "summaries": [
+    {
+      "method": "IF",
+      "product": "palta",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "IF",
+      "product": "palta",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "IF",
+      "product": "palta",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "IF",
+      "product": "uva",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "IF",
+      "product": "uva",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "IF",
+      "product": "uva",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "IF",
+      "product": "arandano",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "IF",
+      "product": "arandano",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "IF",
+      "product": "arandano",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "palta",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "palta",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "palta",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "uva",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "uva",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "uva",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "arandano",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "arandano",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "LOF",
+      "product": "arandano",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "palta",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "palta",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "palta",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "uva",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "uva",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "uva",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "arandano",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "arandano",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ECOD",
+      "product": "arandano",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "palta",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "palta",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "palta",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "uva",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "uva",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "uva",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "arandano",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "arandano",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "ensemble",
+      "product": "arandano",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "palta",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "palta",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "palta",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "uva",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "uva",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "uva",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "arandano",
+      "threshold": "0.1",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "arandano",
+      "threshold": "0.2",
+      "K": 4,
+      "q": 4,
+      "r": 0,
+      "u": 0,
+      "proportion_determinate": 1.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "method": "historical_reference",
+      "product": "arandano",
+      "threshold": "0.3",
+      "K": 4,
+      "q": 0,
+      "r": 4,
+      "u": 0,
+      "proportion_determinate": 0.0,
+      "indeterminacy_bounds_not_confidence_interval": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "overlaps": [
+    {
+      "product": "palta",
+      "left": "IF",
+      "right": "LOF",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "IF",
+      "right": "LOF",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "IF",
+      "right": "LOF",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "IF",
+      "right": "ECOD",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "IF",
+      "right": "ECOD",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "IF",
+      "right": "ECOD",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "IF",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "IF",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "IF",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "IF",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "IF",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "IF",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "LOF",
+      "right": "ECOD",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "LOF",
+      "right": "ECOD",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "LOF",
+      "right": "ECOD",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "LOF",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "LOF",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "LOF",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "LOF",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "LOF",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "LOF",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "ECOD",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "ECOD",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "ECOD",
+      "right": "ensemble",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "ECOD",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "ECOD",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "ECOD",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "palta",
+      "left": "ensemble",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "uva",
+      "left": "ensemble",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    },
+    {
+      "product": "arandano",
+      "left": "ensemble",
+      "right": "historical_reference",
+      "intersection": 4,
+      "union": 4,
+      "jaccard": 1.0
+    }
+  ]
+}

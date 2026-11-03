@@ -1,3 +1,8 @@
 {
+  "ejecucion/auditoria-elegibilidad.json": "215062fbb0ffa221ca384ad1c7a9c5d1503f045e3fe222527fb810d95d8499ff",
+  "ejecucion/elegibilidad-series.csv": "94652f76261e91e062c319215cff9cb8dcc6c7a3bb7832f4edc05db9ee2a656b",
+  "ejecucion/h4-revision-humana-pendiente.json": "70055621ae5f1c8cde1f43e8c8e20ce9e6cb60bcee6ece911e5f833fc6c18ad9",
+  "ejecucion/preflight-final.json": "0a742e420f05bf55a73fd7353c9e0300e144a70dd80dba58771b54d39f023f84",
+  "ejecucion/README.md": "ffb706b5529961bf1c53751177d8073485f878a02a8d5b8b3ccc16ca9c5738d7",
   "ruta-cierre-h1-h3-h4.md": "b0bdf10614d3dc335c5cbc0882bb3740bb34e30e3ebe78cd451d51f4971e4eb6"
 }

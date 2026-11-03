@@ -1,0 +1,48 @@
+{
+  "status": "not_ready",
+  "h2_status": "closed_not_evaluable_current_release",
+  "diagnostic_only_not_execution_authorization": true,
+  "final_test_executed_by_this_command": false,
+  "source_sha256": "b33b132c4d67fb79f5e27a7fa2e51ac8077664b06b73326b7a72933139d755fc",
+  "blockers": [
+    {
+      "code": "no_complete_week_certificates",
+      "component": "H1_H3"
+    },
+    {
+      "code": "no_historical_publication_certificates",
+      "component": "H1_H3"
+    },
+    {
+      "code": "calendar_and_protocol_not_frozen",
+      "component": "H1_H3"
+    },
+    {
+      "code": "no_verified_asof_eligible_final_rows",
+      "component": "H1_H3"
+    },
+    {
+      "code": "no_final_grid_development_selection",
+      "component": "H1_H3"
+    },
+    {
+      "code": "h4_keys_not_human_reviewed",
+      "reviewed": 0,
+      "required": 30,
+      "component": "H4"
+    },
+    {
+      "code": "h4_generator_and_retrieval_not_frozen",
+      "component": "H4"
+    }
+  ],
+  "evidence_sha256": {
+    "planificacion/2026-11-01/ejecucion/auditoria-expansion.json": "ed6875d348e138c223d5f3c21246e305a851c8c85556fe790d80e5c2da780cf3",
+    "datasets/tratamiento/2026-11-01-expansion/manifest.json": "e65fac97e96b0dc08abda2b5d6f45ba70f70082892bb73573a985cd23d6baf2a",
+    "datasets/experimentos/h4-controlado-v1/manifest.json": "da79cf39063757c0687456cc3ab6c04f15c70884244b26d146aa7b390a5456d2",
+    "datasets/experimentos/h4-controlado-v1/keys.json": "198f3a391195bd9f410ac9d978a44f7e6fb863dde5f642673cc7510dfbd0f6f9",
+    "planificacion/2026-11-01/ejecucion/environment-clean.json": "e33e5a2dc4abf87082764c5f1b5069d96a3f6dd20fcd97e1ec7fb5a15a1f976c",
+    "datasets/experimentos/h2-cierre-2026-11-01/decision.json": "64c90b58cd5630ed3af9ae5290d08694e51a54ca4199bc1dbf2204623935c04f"
+  },
+  "note": "Artifact presence does not certify scientific validity. No final runner is invoked."
+}

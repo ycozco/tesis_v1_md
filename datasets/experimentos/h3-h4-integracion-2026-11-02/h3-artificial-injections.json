@@ -1,0 +1,272 @@
+[
+  {
+    "id": "artificial-palta-100-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-100-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-100-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-100-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-100-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-100-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-100-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-100-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-100-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-100-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-100-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-100-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-100-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-100-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-100-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-101-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-101-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-101-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-101-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-101-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-101-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-101-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-101-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-101-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-101-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-101-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-101-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-101-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-101-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-101-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-102-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-102-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-102-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-102-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-palta-102-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-102-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-102-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-102-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-102-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-uva-102-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-102-0",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-102-1",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-102-2",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-102-3",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  },
+  {
+    "id": "artificial-arandano-102-4",
+    "kind": "artificial_residual_shift_and_persistent_25pct",
+    "residual_shift": 8,
+    "seed": 42
+  }
+]

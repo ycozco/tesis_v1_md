@@ -1,0 +1,8 @@
+{
+  "status": "not_executed_missing_eligible_final_forecasts_and_coverage",
+  "panel_sha256": "450daf64f9369159784d4e554c5e68fb26444d47a433b7adb1646af30260dbdc",
+  "cells_audited": 20154,
+  "eligible_historical_cells": 0,
+  "historical_final_scores_generated": 0,
+  "reason": "Final H1 forecasts are not selected/executed; coverage and publication remain unverified."
+}

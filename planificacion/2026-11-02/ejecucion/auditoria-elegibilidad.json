@@ -1,0 +1,14 @@
+{
+  "scope": "audit_only_not_final_experiment",
+  "series": 136,
+  "panel_cells": 20154,
+  "observed_partial": 3845,
+  "unknown": 16309,
+  "historical_eligible": 0,
+  "h4_review_cases": 30,
+  "human_reviews_performed": 0,
+  "paid_calls": 0,
+  "final_outputs": 0,
+  "panel_sha256": "450daf64f9369159784d4e554c5e68fb26444d47a433b7adb1646af30260dbdc",
+  "note": "Recorded publication does not independently certify date validity; origin/calendar/selection review remains necessary even for eligible cells."
+}

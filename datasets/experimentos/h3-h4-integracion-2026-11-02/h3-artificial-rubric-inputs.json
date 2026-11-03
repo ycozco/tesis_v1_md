@@ -1,0 +1,6995 @@
+[
+  {
+    "id": "artificial-palta-100-0",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-1",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-2",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-3",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-4",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-5",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-6",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-7",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-8",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-9",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-10",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-11",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-12",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-13",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-14",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-15",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-16",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-17",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-18",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-19",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-100-20",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-0",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-1",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-2",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-3",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-4",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-5",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-6",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-7",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-8",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-9",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-10",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-11",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-12",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-13",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-14",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-15",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-16",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-17",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-18",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-19",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-100-20",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-0",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-1",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-2",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-3",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-4",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-5",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-6",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-7",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-8",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-9",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-10",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-11",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-12",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-13",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-14",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-15",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-16",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-17",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-18",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-19",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-100-20",
+    "week": "2021-12-06",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-07",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-06",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-0",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-1",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-2",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-3",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-4",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-5",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-6",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-7",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-8",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-9",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-10",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-11",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-12",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-13",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-14",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-15",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-16",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-17",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-18",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-19",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-101-20",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-0",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-1",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-2",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-3",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-4",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-5",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-6",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-7",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-8",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-9",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-10",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-11",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-12",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-13",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-14",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-15",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-16",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-17",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-18",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-19",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-101-20",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-0",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-1",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-2",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-3",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-4",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-5",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-6",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-7",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-8",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-9",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-10",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-11",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-12",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-13",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-14",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-15",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-16",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-17",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-18",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-19",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-101-20",
+    "week": "2021-12-13",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-14",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-13",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-0",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-1",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-2",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-3",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-4",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-5",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-6",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-7",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-8",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-9",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-10",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-11",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-12",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-13",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-14",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-15",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-16",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-17",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-18",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-19",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-palta-102-20",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-0",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-1",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-2",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-3",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-4",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-5",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-6",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-7",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-8",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-9",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-10",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-11",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-12",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-13",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-14",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-15",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-16",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-17",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-18",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-19",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-uva-102-20",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-0",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-1",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-2",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-3",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-4",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 125.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-5",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-6",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-7",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-8",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-9",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-10",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-11",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-12",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-13",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-14",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-15",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-16",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-17",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-18",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-19",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  },
+  {
+    "id": "artificial-arandano-102-20",
+    "week": "2021-12-20",
+    "test_end": "2022-01-03",
+    "observations": [
+      {
+        "week": "2020-12-21",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2020-12-28",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-01-04",
+        "value": 100.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-20",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2021-12-27",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      },
+      {
+        "week": "2022-01-03",
+        "value": 102.0,
+        "coverage_state": "observed_certified"
+      }
+    ]
+  }
+]

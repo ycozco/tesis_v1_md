@@ -12,6 +12,12 @@ OUT=ROOT/'datasets/experimentos/h3-h4-integracion-2026-11-01'
 
 
 def main():
+    import argparse
+    global OUT
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--run-date', default='2026-11-01', choices=['2026-11-01','2026-11-02'])
+    args=parser.parse_args()
+    OUT=ROOT/f'datasets/experimentos/h3-h4-integracion-{args.run_date}'
     def read(name):return json.loads((OUT/name).read_text(encoding='utf-8'))
     scores=read('h3-artificial-scores.json');analysis=read('h3-artificial-analysis.json')
     labels=read('h3-artificial-labels.json');rubrics=read('h3-artificial-rubric-inputs.json')
