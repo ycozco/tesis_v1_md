@@ -7,6 +7,7 @@ Genera versiones interactivas y estáticas de documentos Markdown.
 import os
 import sys
 import json
+import shutil
 from pathlib import Path
 from datetime import datetime
 
@@ -38,7 +39,7 @@ class MarkdownToHTML:
         if output_dir is None:
             output_dir = resolve_output_dir()
         self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
         self.md = markdown.Markdown(
             extensions=[
                 'tables',
@@ -647,11 +648,15 @@ def main():
     
     combine_sections()
 
+    # Markdown image paths are relative to docs/, so preserve that layout in Pages.
+    images = docs_root / 'images'
+    if images.is_dir():
+        shutil.copytree(images, converter.output_dir / 'images', dirs_exist_ok=True)
+
     print(f"\n✅ Conversión completada:")
     print(f"   - {len(results)} archivos convertidos")
-    print(f"   - Tesis combinada: /app/output/tesis-completa.html")
-    print(f"   - Monolito canÃ³nico: /app/output/02-95-tesis.html")
-    print(f"   - Acceso web: http://localhost:8000/secciones")
+    print(f"   - Tesis combinada: {converter.output_dir / 'tesis-completa.html'}")
+    print(f"   - Monolito canónico: {converter.output_dir / '02-95-tesis.html'}")
 
     return results
 
