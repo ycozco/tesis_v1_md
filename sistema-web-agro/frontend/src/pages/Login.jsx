@@ -47,9 +47,9 @@ export default function Login() {
   }
 
   return (
-    <div className="bg-background text-on-background min-h-screen flex items-center justify-center relative overflow-hidden font-body-md">
+    <div className="research-shell research-login text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden font-body-md">
       {/* Background Texture */}
-      <div className="absolute inset-0 z-0">
+      <div className="research-login-decoration absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-surface-container-lowest via-background to-surface-container-highest"></div>
         <div className="absolute inset-0 grid-bg"></div>
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-pulse"></div>
@@ -63,7 +63,7 @@ export default function Login() {
           <h1 className="font-display-lg text-display-lg text-primary flex items-center justify-center gap-2 mb-2">
             <span className="material-symbols-outlined" style={{ fontSize: '48px', fontVariationSettings: "'FILL' 1" }}>eco</span>
           </h1>
-          <h2 className="font-headline-md text-headline-md text-on-surface tracking-tight">Exportaciones peruanas</h2>
+          <h2 className="font-headline-md text-headline-md text-on-surface tracking-tight">AgroScope Perú</h2>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-2">Palta, uva fresca y arándano · Análisis comparativo y pronóstico</p>
         </div>
         
@@ -94,9 +94,10 @@ export default function Login() {
                   className="input-glass w-full rounded-lg py-3 pl-10 pr-4 font-body-md text-body-md text-on-surface placeholder:text-outline-variant glass-input" 
                   id="identifier" 
                   name="identifier" 
-                  placeholder="ej. auditor1 o correo" 
+                  placeholder="Usuario o correo registrado"
                   required 
                   type="text"
+                  autoComplete="username"
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                 />
@@ -117,6 +118,7 @@ export default function Login() {
                   placeholder="Ingrese clave de acceso" 
                   required 
                   type={showPassword ? 'text' : 'password'}
+                  autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -136,7 +138,7 @@ export default function Login() {
             
             {/* Action Button */}
             <button 
-              className="w-full bg-primary-container text-on-primary-container font-headline-sm text-headline-sm rounded-lg py-3 px-6 mt-8 flex items-center justify-center gap-2 btn-glow transition-all duration-200 transform active:scale-95 disabled:opacity-50" 
+              className="research-action w-full font-semibold rounded-lg py-3 px-6 mt-8 flex items-center justify-center gap-2 disabled:opacity-50"
               type="submit"
               disabled={loading}
             >

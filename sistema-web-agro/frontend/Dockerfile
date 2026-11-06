@@ -1,13 +1,13 @@
 # Etapa 1: Construcción
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
 # Copiar archivos de dependencias
-COPY package.json .
+COPY package.json package-lock.json ./
 
 # Instalar dependencias
-RUN npm install
+RUN npm ci
 
 # Copiar el código fuente y construir
 COPY . .

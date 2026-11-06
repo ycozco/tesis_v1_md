@@ -7,6 +7,12 @@ from services import research_ai, codex_pilot
 router = APIRouter()
 
 
+@router.get('/sources')
+def source_catalogue(user=Depends(get_current_user)):
+    from services.source_status import catalogue
+    return catalogue()
+
+
 class Generation(BaseModel):
     model_config = ConfigDict(extra='forbid')
     case_id: str = Field(min_length=1, max_length=60)

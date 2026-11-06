@@ -1,70 +1,53 @@
-version: '3.8'
-
+name: agroscope-local
 services:
   db:
     image: pgvector/pgvector:pg15
-    container_name: agro_db
-    restart: always
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: agro_audit
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: agro_scope
+      POSTGRES_USER: agroscope
+      POSTGRES_PASSWORD: ${AGRO_DB_PASSWORD:-agroscope-local-db}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d agro_audit"]
+      test: [CMD-SHELL, 'pg_isready -U agroscope -d agro_scope']
       interval: 5s
       timeout: 5s
-      retries: 5
-
+      retries: 20
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: agro_backend
-    restart: always
-    ports:
-      - "5000:5000"
+      context: ..
+      dockerfile: sistema-web-agro/backend/Dockerfile.local
+    restart: unless-stopped
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/agro_audit
-      - FLASK_APP=app.py
-      - FLASK_ENV=production
-      - FLASK_DEBUG=0
-      - PYTHONUNBUFFERED=1
-      - APP_MODE=EXPERIMENT
+      DATABASE_URL: postgresql://agroscope:${AGRO_DB_PASSWORD:-agroscope-local-db}@db:5432/agro_scope
+      LOCAL_USERNAME: ${AGRO_LOCAL_USERNAME:-revision-ui}
+      LOCAL_PASSWORD: ${AGRO_LOCAL_PASSWORD:-SoloRevisionLocal2026!}
+      RESEARCH_ALLOW_LOCAL_AI: 'false'
+      RESEARCH_ALLOW_PAID_AI: 'false'
     volumes:
-      - ../data:/data
+      - research_state:/app/data
     depends_on:
       db:
         condition: service_healthy
-
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: agro_frontend
-    restart: always
+    build: ./frontend
+    restart: unless-stopped
     ports:
-      - "8050:8050"
+      - '127.0.0.1:${AGRO_WEB_PORT:-8050}:8050'
     depends_on:
-      - backend
-
-  backend_fastapi:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.fastapi
-    container_name: agro_backend_fastapi
-    restart: always
-    ports:
-      - "8003:8000"
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/agro_audit
-      - APP_MODE=EXPERIMENT
-    depends_on:
-      db:
+      backend:
         condition: service_healthy
-
+    healthcheck:
+      test: [CMD, wget, -q, --spider, 'http://127.0.0.1:8050/health']
+      interval: 10s
+      timeout: 5s
+      retries: 6
 volumes:
-  pgdata:
+  postgres_data:
+  research_state:

@@ -4,13 +4,14 @@ import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YA
 import ResearchProcess from '../components/ResearchProcess.jsx'
 import ResearchAI from '../components/ResearchAI.jsx'
 import ResearchOverview from '../components/ResearchOverview.jsx'
+import SourcePanel from '../components/SourcePanel.jsx'
 import useReducedMotion from '../lib/useReducedMotion.js'
 import { loadResearchSnapshot } from '../lib/loadResearchSnapshot.js'
 import { comparisonCsv } from '../lib/comparisonCsv.js'
 
 const products = { palta: 'Palta', uva: 'Uva fresca', arandano: 'Arándano' }
 const number = (v, decimals = 2) => v == null ? 'Sin dato' : Number(v).toLocaleString('es-PE', { maximumFractionDigits: decimals })
-const titles = { resumen: 'Resumen del prototipo', series: 'Series y comparación', pronosticos: 'Modelos y evaluación piloto', senales: 'Señales exploratorias', reportes: 'Reportes y evidencia', fuentes: 'Fuentes y cobertura', proceso: 'Proceso y auditoría', ia: 'IA y reportes' }
+const titles = { resumen: 'Panorama agroexportador', series: 'Explorar y comparar exportaciones', pronosticos: 'Pronósticos e incertidumbre', senales: 'Variaciones para revisar', reportes: 'Evidencia y reportes', fuentes: 'Datos y fuentes', proceso: 'Trazabilidad del resultado', ia: 'Asistente y respuestas archivadas' }
 const descriptions = {
   resumen: 'Explora las exportaciones disponibles y distingue resultados piloto, fuentes y pruebas pendientes.',
   series: 'Compara el valor unitario FOB y el volumen por producto, destino y semana ISO.',
@@ -22,7 +23,7 @@ const descriptions = {
   ia: 'Respuestas de Codex archivadas, borradores y procedencia de los proveedores.',
 }
 function Card({ label, value, detail }) {
-  return <article className="glass-card rounded-xl p-5"><p className="text-xs uppercase tracking-wider text-on-surface-variant">{label}</p><p className="font-headline-lg text-3xl text-primary mt-3 mb-2 break-words">{value}</p><p className="text-xs text-on-surface-variant leading-relaxed">{detail}</p></article>
+  return <article className="research-kpi glass-card rounded-xl p-5"><p className="text-xs uppercase tracking-wider text-on-surface-variant">{label}</p><p className="font-headline-lg text-3xl text-primary mt-3 mb-2 break-words">{value}</p><p className="text-xs text-on-surface-variant leading-relaxed">{detail}</p></article>
 }
 function Empty({ children }) { return <div role="status" className="glass-panel rounded-xl p-8 text-on-surface-variant text-sm">{children}</div> }
 function Table({ headings, children }) {
@@ -86,10 +87,14 @@ export default function ResearchDashboard() {
   }
   return <div key={view} className="space-y-6 research-enter">
     <header className="research-page-heading"><p className="text-xs text-primary uppercase tracking-widest mb-2">Sistema de información y pronóstico</p>
-      <div className="flex flex-wrap justify-between gap-3 items-start"><h1 className="font-headline-lg text-3xl md:text-4xl">{titles[view]}</h1><span className="glass-panel rounded-full px-3 py-2 text-xs text-primary border border-primary/20">Corte · 01 nov 2026</span></div>
+      <div className="flex flex-wrap justify-between gap-3 items-start"><h1 className="font-headline-lg text-3xl md:text-4xl">{titles[view]}</h1><span className="glass-panel rounded-full px-3 py-2 text-xs text-primary border border-primary/20">Corte local · {data.generated_on}</span></div>
       {view !== 'resumen' && <p className="text-on-surface-variant mt-3 text-sm leading-relaxed">{descriptions[view]}</p>}</header>
-    <div role="status" className="glass-panel rounded-xl px-4 py-3 text-sm text-on-surface-variant border-l-2 border-primary"><strong className="text-on-surface">Piloto · cobertura parcial</strong><details className="mt-1 text-xs"><summary className="cursor-pointer text-primary">Información</summary><p className="mt-2">Las semanas sin registros permanecen desconocidas. La prueba final no se ha ejecutado.</p></details></div>
+    <div role="status" className="research-notice text-sm"><strong>Cobertura parcial</strong><span>Las semanas sin registros permanecen desconocidas.</span><Link to="/dashboard?view=fuentes">Consultar alcance ↗</Link></div>
+    {view === 'resumen' && <section className="research-flow" aria-label="Flujo de análisis de la propuesta">
+      {[['01', 'Consultar', 'Filtros, productos, destinos y periodos'], ['02', 'Comparar', 'FOB, volumen y valor unitario'], ['03', 'Pronosticar', 'Modelo, horizonte e incertidumbre'], ['04', 'Verificar', 'Evidencia, reporte y trazabilidad']].map(([n, title, detail]) => <Link key={n} to={`/dashboard?view=${['resumen','series','pronosticos','reportes'][Number(n) - 1]}`} className="research-flow-step"><span>{n}</span><strong>{title}</strong><small>{detail}</small></Link>)}
+    </section>}
     {view === 'resumen' && <ResearchOverview data={data} />}
+    {view === 'fuentes' && <SourcePanel data={data} />}
     {view === 'proceso' && <ResearchProcess data={data} />}
     {view === 'ia' && <ResearchAI />}
     {['series', 'senales'].includes(view) && <section aria-label="Filtros de series" className="glass-card rounded-xl p-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -106,10 +111,10 @@ export default function ResearchDashboard() {
       {series.some(r => r.main != null || r.comparison != null) ? <section className="glass-card rounded-xl p-4 md:p-6" aria-label={`Serie semanal en ${unit}`}>
         <div className="flex flex-wrap justify-between gap-3 mb-5"><h2 className="font-headline-md text-lg">{target === 'unit_fob' ? 'Valor unitario FOB observado' : 'Volumen observado'}</h2><span className="text-xs text-on-surface-variant">{unit} · lunes de semana ISO</span></div>
         <div className="h-80 w-full"><ResponsiveContainer width="100%" height="100%"><LineChart data={series} margin={{ left: 8, right: 16, top: 8, bottom: 8 }}>
-          <CartesianGrid stroke="#3f4a3f" strokeDasharray="3 3" vertical={false} /><XAxis dataKey="week" tick={{ fill: '#becabc', fontSize: 11 }} minTickGap={45} /><YAxis width={78} tick={{ fill: '#becabc', fontSize: 11 }} tickFormatter={v => number(v, 0)} />
-          <Tooltip contentStyle={{ background: '#171d17', border: '1px solid #3f4a3f', borderRadius: 8 }} formatter={(v, name) => [`${number(v)} ${unit}`, name]} />
-          <Line type="linear" dataKey="main" name={selectedDestination} stroke="#76db8f" strokeWidth={2} dot={false} connectNulls={false} isAnimationActive={!reducedMotion} animationDuration={180} />
-          {selectedCompare && <Line type="linear" dataKey="comparison" name={selectedCompare} stroke="#89ceff" strokeWidth={2} dot={false} connectNulls={false} isAnimationActive={!reducedMotion} animationDuration={180} />}
+          <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} /><XAxis dataKey="week" tick={{ fill: '#64748b', fontSize: 11 }} minTickGap={45} /><YAxis width={78} tick={{ fill: '#64748b', fontSize: 11 }} tickFormatter={v => number(v, 0)} />
+          <Tooltip contentStyle={{ background: '#ffffff', color: '#17202a', border: '1px solid #dbe3ea', borderRadius: 8 }} formatter={(v, name) => [`${number(v)} ${unit}`, name]} />
+          <Line type="linear" dataKey="main" name={selectedDestination} stroke="#176b4d" strokeWidth={2.5} dot={false} connectNulls={false} isAnimationActive={!reducedMotion} animationDuration={180} />
+          {selectedCompare && <Line type="linear" dataKey="comparison" name={selectedCompare} stroke="#2563eb" strokeWidth={2.5} dot={false} connectNulls={false} isAnimationActive={!reducedMotion} animationDuration={180} />}
         </LineChart></ResponsiveContainer></div>
         <p className="text-xs text-on-surface-variant mt-4">{selectedDestination}: verde{selectedCompare ? ` · ${selectedCompare}: azul` : ''}. Los cortes de línea representan semanas desconocidas. FOB/kg = suma FOB / suma peso neto.</p>
       </section> : <Empty>No hay semanas recuperadas para estos filtros.</Empty>}
@@ -135,13 +140,13 @@ export default function ResearchDashboard() {
     </>}
     {view === 'fuentes' && <>
       <section className="grid sm:grid-cols-3 gap-4"><Card label="Registros conciliados" value={number(summary.rows, 0)} detail="Vista conservadora; registros aduaneros, no series temporales" /><Card label="Combinaciones" value={summary.series} detail="Producto–destino en el panel recuperado" /><Card label="Celdas desconocidas" value={number(summary.unknown_cells, 0)} detail="No imputadas como exportaciones cero" /></section>
-      <Table headings={['Fuente', 'Contenido recuperado', 'Uso y límite']}>
+      <Table headings={['Fuente', 'Contenido del corte local', 'Uso y límite']}>
         <tr><td className="p-4">SUNAT</td><td className="p-4">22 paquetes en el panel</td><td className="p-4">Cobertura parcial; publicación no reconstruida</td></tr>
         <tr><td className="p-4">BCRP</td><td className="p-4">{data.bcrp.total_months} meses</td><td className="p-4">Respaldos hasta junio 2026; disponibilidad histórica sin validar</td></tr>
         <tr><td className="p-4">SISAP</td><td className="p-4">{number(data.sisap.numeric_prices, 0)} precios</td><td className="p-4">Palta y uva; unidades específicas por verificar</td></tr>
         <tr><td className="p-4">NASA POWER</td><td className="p-4">3.217 días · cuatro parámetros</td><td className="p-4">Punto de Arequipa; origen productivo sin justificar</td></tr>
       </Table>
-      <section className="glass-card rounded-xl p-6"><h2 className="font-headline-md text-xl mb-3">Nueva recuperación histórica</h2><p className="text-sm text-on-surface-variant leading-relaxed">Los dos paquetes históricos adicionales ya se conciliaron en una versión ampliada: 24 paquetes y 101.546 registros. Los gráficos de esta vista mantienen el piloto anterior de 22 paquetes. Consulte Proceso y auditoría para verificar los siete artefactos actuales; cobertura y publicación histórica siguen pendientes.</p></section>
+      <section className="glass-card rounded-xl p-6"><h2 className="font-headline-md text-xl mb-3">Nueva recuperación histórica</h2><p className="text-sm text-on-surface-variant leading-relaxed">Los dos paquetes históricos adicionales ya se conciliaron en una versión ampliada: 24 paquetes y 101.546 registros. Los gráficos de esta vista mantienen el piloto anterior de 22 paquetes. Consulte Trazabilidad para verificar los siete artefactos actuales; cobertura y publicación histórica siguen pendientes.</p></section>
       <section className="glass-panel rounded-xl p-6"><h2 className="font-headline-md text-lg mb-3">Consultar procedencia</h2><ul className="flex flex-wrap gap-4 text-sm text-primary">{data.sources.map(s => <li key={s.name}><a href={s.url} target="_blank" rel="noreferrer" className="underline underline-offset-4">{s.name} ↗</a></li>)}</ul><a href={`${import.meta.env.BASE_URL}research/snapshot.json`} download="corte-investigacion.json" className="inline-block glass-input rounded-lg px-4 py-2 mt-5 text-sm">Descargar corte y referencias</a></section>
     </>}
   </div>

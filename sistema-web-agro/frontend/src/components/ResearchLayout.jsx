@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../App.jsx'
 
 const sections = [
-  ['resumen', 'space_dashboard', 'Resumen'],
-  ['series', 'monitoring', 'Series y destinos'],
-  ['pronosticos', 'query_stats', 'Modelos piloto'],
-  ['senales', 'radar', 'Señales exploratorias'],
-  ['reportes', 'description', 'Protocolo de reportes'],
-  ['fuentes', 'database', 'Fuentes y cobertura'],
-  ['proceso', 'account_tree', 'Proceso y auditoría'],
-  ['ia', 'neurology', 'Reportes e IA'],
+  ['resumen', 'space_dashboard', 'Panorama'],
+  ['series', 'compare_arrows', 'Explorar y comparar'],
+  ['pronosticos', 'query_stats', 'Pronósticos'],
+  ['senales', 'radar', 'Variaciones para revisar'],
+  ['reportes', 'description', 'Evidencia y reportes'],
+  ['fuentes', 'database', 'Datos y fuentes'],
+  ['proceso', 'account_tree', 'Trazabilidad'],
+  ['ia', 'neurology', 'Asistente y archivo'],
 ]
 
 export default function ResearchLayout({ children }) {
+  const [collapsed, setCollapsed] = useState(false)
+  const [mobileNav, setMobileNav] = useState(false)
   const { user, logout } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
@@ -21,31 +23,33 @@ export default function ResearchLayout({ children }) {
   const legacy = location.pathname !== '/dashboard'
   function leave() { logout(); navigate('/login') }
   return (
-    <div className="research-shell min-h-screen bg-background text-on-surface font-body-md">
+    <div className={`research-shell min-h-screen bg-background text-on-surface font-body-md ${collapsed ? 'research-nav-collapsed' : ''} ${mobileNav ? 'research-mobile-nav-open' : ''}`}>
       <a href="#research-main" className="research-skip">Saltar al contenido</a>
       <header className="research-topbar glass-panel border-b border-white/10 px-4 md:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
         <Link to="/dashboard" className="flex items-center gap-3 min-w-0">
           <span className="material-symbols-outlined text-primary text-3xl" aria-hidden="true">eco</span>
-          <div><p className="font-headline-md font-semibold text-primary text-xl">Exportaciones peruanas</p>
-            <p className="text-xs text-on-surface-variant">Palta · Uva fresca · Arándano</p></div>
+          <div><p className="font-headline-md font-semibold text-primary text-xl">AgroScope Perú</p>
+            <p className="text-xs text-on-surface-variant">Información y pronóstico agroexportador</p></div>
         </Link>
         <div className="flex items-center gap-4 text-sm">
+          <button className="research-mobile-toggle glass-input rounded-lg px-3 py-2" aria-controls="research-navigation" aria-expanded={mobileNav} onClick={() => setMobileNav(!mobileNav)}>{mobileNav ? 'Cerrar menú' : 'Menú'}</button>
           <span className="text-on-surface-variant hidden sm:inline">{user?.nombre || 'Investigación'}</span>
           <button onClick={leave} className="glass-input rounded-lg px-3 py-2 hover:text-primary">Cerrar sesión</button>
         </div>
       </header>
-      <div className="max-w-[1600px] mx-auto md:flex">
-        <aside className="research-sidebar md:w-60 md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 p-3 md:p-5">
-          <p className="hidden md:block text-xs tracking-widest uppercase text-on-surface-variant mb-5">Análisis comparativo</p>
+      <div className="research-workspace md:flex">
+        <aside id="research-navigation" className="research-sidebar md:w-60 md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 p-3 md:p-5">
+          <div className="research-nav-heading"><p className="research-nav-label text-xs tracking-widest uppercase text-on-surface-variant">Análisis</p><button className="research-nav-toggle glass-input rounded-lg p-2" aria-label={collapsed ? 'Ampliar navegación' : 'Plegar navegación'} aria-expanded={!collapsed} onClick={() => setCollapsed(!collapsed)}><span className="material-symbols-outlined" aria-hidden="true">{collapsed ? 'chevron_right' : 'chevron_left'}</span></button></div>
           <nav aria-label="Navegación principal" className="grid grid-cols-2 sm:grid-cols-4 md:flex md:flex-col gap-2 pb-1">
             {sections.map(([id, icon, label]) => (
-              <Link key={id} to={`/dashboard?view=${id}`} aria-current={!legacy && active === id ? 'page' : undefined}
+              <Link key={id} to={`/dashboard?view=${id}`} onClick={() => setMobileNav(false)} aria-current={!legacy && active === id ? 'page' : undefined}
+                title={collapsed ? label : undefined} aria-label={label}
                 className={`flex items-center gap-3 p-3 rounded-lg min-w-0 text-sm transition-colors ${!legacy && active === id ? 'bg-primary/15 text-primary border border-primary/25' : 'text-on-surface-variant hover:bg-white/5 border border-transparent'}`}>
-                <span className="material-symbols-outlined text-xl" aria-hidden="true">{icon}</span>{label}
+                <span className="material-symbols-outlined text-xl" aria-hidden="true">{icon}</span><span className="research-nav-label">{label}</span>
               </Link>
             ))}
           </nav>
-          <div className="hidden md:block glass-panel rounded-xl p-4 mt-8 text-xs leading-relaxed text-on-surface-variant">
+          <div className="research-nav-note hidden md:block glass-panel rounded-xl p-4 mt-8 text-xs leading-relaxed text-on-surface-variant">
             <p className="text-primary font-semibold mb-2">Corte documentado</p>
             Piloto retrospectivo de desarrollo. Cobertura parcial y prueba final pendiente.
           </div>
