@@ -97,3 +97,18 @@ Verificación de esta revisión: compilación Docker y cinco verificadores de da
 - **Evidencia funcional pendiente.** E1–E3 cuentan con pruebas de componentes. Falta reproducir los tres escenarios controlados completos en navegador, con entradas, resultados, versiones, exportaciones y capturas enlazadas. Este trabajo no usa el bloque final.
 - **H4 preparado para revisión.** El [registro de 30 revisiones](../planificacion/2026-11-02/ejecucion/h4-revision-humana-pendiente.json) identifica por SHA-256 cada clave. El ejecutor exige la revisión numérica, documental y de abstención, y comprueba los documentos devueltos contra el corpus congelado antes de llamar al generador. Las pruebas técnicas reproducen los 180 turnos con transporte simulado. Siguen pendientes la revisión humana, el congelamiento experimental, la validación del recuperador real, las 180 salidas reales y su evaluación ciega. H4 sigue sin evidencia experimental que la respalde.
 - **H1–H3.** H1/H3 requieren elegibilidad y calendario congelado. H2 sigue cerrada como no evaluable para la colección auditada.
+
+### Verificación del despliegue local
+
+Código desplegado y probado: `c86590fe72d7add94c28a73ce89df7c24c16a757`.
+
+| Artefacto activo | SHA-256 |
+| --- | --- |
+| Imagen del entrenador | `b4398823a948d3099257c905e9e305916a21fa22d993c750679e0e091102fb17` |
+| Imagen de la API | `390d55511b4c0dd4435062f6ecf24080f0d1e333525410bc77f12d2e53eb43a1` |
+| Imagen del frontend | `fb2ded204aa14e086e9e765054f67dc88aa76f9c0962006cc93e130f667d7069` |
+| Snapshot semanal | `82b026dab1ff0203be8bf67df4964435e12daad64bf3308f0a403957e64de569` |
+| Lock del entrenador | `1cb42ce70b48049dcc99cd0595e49ec29e1dbe0adf629141b71cfb753d317920` |
+| Archivo de 7.360 filas del piloto | `9c6091414034b7ccdd7688e90ae1be4a450d1adf97f2c8d7a81f65a941a2d7af` |
+
+Se verificaron HTTP 200 en Pronósticos, autenticación, descarga del mismo archivo desde la API y el frontend, consulta de estado del entrenador y siete pruebas de su protocolo dentro del contenedor. También pasaron `pip check`, 25 pruebas de protocolo y H4, cinco verificadores del frontend, `npm ci`, lint y compilación. La auditoría npm de producción registró cero alertas. La auditoría completa registró cinco altas y tres moderadas en el árbol de desarrollo, con Vite y PostCSS como dependencias directas afectadas.
