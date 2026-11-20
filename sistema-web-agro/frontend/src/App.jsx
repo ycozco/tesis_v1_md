@@ -1,5 +1,6 @@
-import React, { useState, lazy, Suspense, createContext, useContext } from 'react'
-import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
+import { useEffect, useState, lazy, Suspense, createContext, useContext } from 'react'
+import { sessionReturnPath } from './lib/sessionNavigation.js'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Layout from './components/ResearchLayout.jsx'
 import Login from './pages/Login.jsx'
 import Dashboard from './pages/ResearchDashboard.jsx'
@@ -20,72 +21,74 @@ export const useAuth = () => useContext(AuthContext)
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth()
+  const location = useLocation()
   if (!user) {
-    return <Navigate to="/login" replace />
+    return <Navigate to="/login" state={{ from: location.pathname + location.search }} replace />
   }
   return children
 }
 
 const AppContent = () => {
-  const { user, login, logout, condicion } = useAuth()
+  const { user } = useAuth()
+  const location = useLocation()
   return (
     <Suspense fallback={<p role="status" className="p-8 text-primary">Cargando sección…</p>}><Routes>
-      <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
-      
+      <Route path="/login" element={user ? <Navigate to={sessionReturnPath(location.state?.from)} replace /> : <Login />} />
+
       <Route path="/dashboard" element={
         <ProtectedRoute>
           <Layout><Dashboard /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/alerts" element={
         <ProtectedRoute>
           <Layout><Alerts /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/alert/:id_alerta" element={
         <ProtectedRoute>
           <Layout><Detail /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/history" element={
         <ProtectedRoute>
           <Layout><History /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/decision/:id_decision" element={
         <ProtectedRoute>
           <Layout><AuditDetail /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/config" element={
         <ProtectedRoute>
           <Layout><Config /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/integrity" element={
         <ProtectedRoute>
           <Layout><Integrity /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/users" element={
         <ProtectedRoute>
           <Layout><Users /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/telemetry" element={
         <ProtectedRoute>
           <Layout><Telemetry /></Layout>
         </ProtectedRoute>
       } />
-      
+
       <Route path="/data" element={
         <ProtectedRoute>
           <Layout><Data /></Layout>
@@ -102,7 +105,7 @@ export default function App() {
     const saved = localStorage.getItem('agro_user')
     try { return saved ? JSON.parse(saved) : null } catch { return null }
   })
-  
+
   const [token, setToken] = useState(() => {
     return localStorage.getItem('agro_token') || null
   })
@@ -120,9 +123,18 @@ export default function App() {
     localStorage.setItem('agro_condicion', condVal)
   }
 
+  useEffect(() => {
+    function expired() {
+      setUser(null); setToken(null); setCondicion(null)
+      for (const key of ['agro_user', 'agro_token', 'agro_condicion']) localStorage.removeItem(key)
+    }
+    window.addEventListener('agro-session-expired', expired)
+    return () => window.removeEventListener('agro-session-expired', expired)
+  }, [])
+
   const logout = () => {
     const username = user?.username || 'anonymous'
-    
+
     // Call logout endpoint
     fetch('/api/auth/logout', {
       method: 'POST',

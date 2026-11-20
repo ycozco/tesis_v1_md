@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'
 
 export default function Integrity() {
@@ -39,7 +39,6 @@ export default function Integrity() {
   }
 
   const {
-    fpr_by_product = { 'Palta': 0.128, 'Uva': 0.060, 'Arándano': 0.052, 'Mango': 0.040 },
     recall_by_export_group = { 'Pequeño (< $100K)': 0.82, 'Mediano ($100K - $140K)': 0.91, 'Grande (>= $140K)': 0.94 },
     demographic_parity_ratio = 0.94,
     f1_score_by_port = []
@@ -58,19 +57,19 @@ export default function Integrity() {
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-2xl">Análisis en tiempo real de sesgo de algoritmos de auditoría, impacto dispar y paridad demográfica a través de segmentos de exportación.</p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="glass-panel px-4 py-2 rounded-lg flex items-center gap-2">
+          <div className="ui-panel px-4 py-2 rounded-lg flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
             <span className="font-mono-data text-mono-data text-primary">SYS_NOMINAL</span>
           </div>
         </div>
       </div>
- 
+
       {/* Bento Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-card-gap">
-        
+
         {/* Alerts Panel (High Priority Alert) */}
         <div className="md:col-span-12 xl:col-span-4 flex flex-col gap-card-gap">
-          <div className="glass-card rounded-xl p-6 flex-1 relative overflow-hidden pulse-alert border-error/50">
+          <div className="ui-card rounded-xl p-6 flex-1 relative overflow-hidden pulse-alert border-error/50">
             <div className="absolute -right-10 -top-10 w-40 h-40 bg-error/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="flex items-center justify-between mb-6">
               <h3 className="font-headline-sm text-headline-sm text-error flex items-center gap-2 font-bold">
@@ -79,7 +78,7 @@ export default function Integrity() {
               </h3>
               <span className="font-label-md text-label-md text-error bg-error/10 px-2 py-1 rounded">SEV_1</span>
             </div>
-            
+
             <div className="space-y-4">
               <div className="bg-surface-container-high/50 border border-error/20 p-4 rounded-lg relative overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
@@ -95,7 +94,7 @@ export default function Integrity() {
                   <button className="text-[10px] uppercase tracking-wider bg-surface-variant text-on-surface-variant px-2.5 py-1 rounded hover:bg-surface-bright transition-colors">Reconocer</button>
                 </div>
               </div>
-              
+
               <div className="bg-surface-container-high/50 border border-outline/20 p-4 rounded-lg relative overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-tertiary"></div>
                 <div className="flex justify-between items-start mb-2">
@@ -109,11 +108,11 @@ export default function Integrity() {
             </div>
           </div>
         </div>
- 
+
         {/* Metrics Grid */}
         <div className="md:col-span-12 xl:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-card-gap">
           {/* Global Disparate Impact */}
-          <div className="glass-panel rounded-xl p-6 relative overflow-hidden group">
+          <div className="ui-panel rounded-xl p-6 relative overflow-hidden group">
             <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/10 to-transparent opacity-50"></div>
             <div className="flex justify-between items-start relative z-10">
               <div>
@@ -123,7 +122,7 @@ export default function Integrity() {
                 </div>
                 <div className="font-display-lg text-display-lg text-primary">{demographic_parity_ratio}</div>
               </div>
-              <div className="glass-panel p-2 rounded flex flex-col items-center justify-center">
+              <div className="ui-panel p-2 rounded flex flex-col items-center justify-center">
                 <span className="material-symbols-outlined text-primary mb-1">balance</span>
                 <span className="font-mono-data text-[10px] text-primary">JUSTO</span>
               </div>
@@ -140,9 +139,9 @@ export default function Integrity() {
               </div>
             </div>
           </div>
- 
+
           {/* Equal Opportunity Difference */}
-          <div className="glass-panel rounded-xl p-6 relative overflow-hidden group">
+          <div className="ui-panel rounded-xl p-6 relative overflow-hidden group">
             <div className="flex justify-between items-start relative z-10">
               <div>
                 <div className="flex items-center gap-2 mb-2">
@@ -153,7 +152,7 @@ export default function Integrity() {
                   -0.03 <span className="text-sm font-mono-data text-outline">Δ</span>
                 </div>
               </div>
-              <div className="glass-panel p-2 rounded flex flex-col items-center justify-center">
+              <div className="ui-panel p-2 rounded flex flex-col items-center justify-center">
                 <span className="material-symbols-outlined text-tertiary mb-1">analytics</span>
                 <span className="font-mono-data text-[10px] text-tertiary">ESTABLE</span>
               </div>
@@ -163,7 +162,7 @@ export default function Integrity() {
               <span className="text-primary">Dentro de Paridad</span>
             </div>
           </div>
- 
+
           {/* Custom Tooltip stats */}
           {(() => {
             window._StatsTooltip = ({ active, payload }) => {
@@ -183,14 +182,14 @@ export default function Integrity() {
               return null;
             };
           })()}
- 
+
           {/* Bar Chart: Crop stats */}
-          <div className="glass-panel rounded-xl p-6 md:col-span-2 flex flex-col h-80">
+          <div className="ui-panel rounded-xl p-6 md:col-span-2 flex flex-col h-80">
             <h3 className="font-headline-sm text-headline-sm text-on-surface mb-2">Desviación FOB Promedio y Límites por Cultivo</h3>
             <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Análisis de desvíos predictivos agregados por tipo de cultivo agroexportador</p>
             <div className="flex-grow min-h-0">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={fobByProduct} margin={{ top: 10, right: 10, bottom: 20, left: 0 }}>
+                <BarChart accessibilityLayer data={fobByProduct} margin={{ top: 10, right: 10, bottom: 20, left: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                   <XAxis dataKey="producto" stroke="#8e918f" />
                   <YAxis stroke="#8e918f" unit="%" />
@@ -211,14 +210,14 @@ export default function Integrity() {
             </div>
           </div>
         </div>
- 
+
       </div>
- 
+
       {/* Secondary charts row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-card-gap">
-        
+
         {/* Recall per Export Group */}
-        <div className="glass-panel rounded-xl p-6 flex flex-col h-[300px]">
+        <div className="ui-panel rounded-xl p-6 flex flex-col h-[300px]">
           <h3 className="font-headline-sm text-headline-sm text-on-surface mb-1">Sensibilidad por Tamaño de Agroexportadora</h3>
           <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Tasa de Verdaderos Positivos (Recall) por nivel de volumen de exportación</p>
           <div className="flex-grow flex flex-col justify-center space-y-4">
@@ -229,8 +228,8 @@ export default function Integrity() {
                   <span className="text-primary font-bold">{recallVal.toFixed(2)}</span>
                 </div>
                 <div className="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-primary/80 rounded-full shadow-[0_0_8px_#76db8f]" 
+                  <div
+                    className="h-full bg-primary/80 rounded-full shadow-[0_0_8px_#76db8f]"
                     style={{ width: `${recallVal * 100}%` }}
                   ></div>
                 </div>
@@ -240,16 +239,16 @@ export default function Integrity() {
         </div>
 
         {/* Prediction Error Histogram */}
-        <div className="glass-panel rounded-xl p-6 flex flex-col h-[300px]">
+        <div className="ui-panel rounded-xl p-6 flex flex-col h-[300px]">
           <h3 className="font-headline-sm text-headline-sm text-on-surface mb-1">Distribución de Errores de Predicción</h3>
           <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Error absoluto (FOB Declarado - FOB Esperado) en USD</p>
           <div className="flex-grow min-h-0">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={fobErrors} margin={{ top: 10, right: 10, bottom: 20, left: -20 }}>
+              <BarChart accessibilityLayer data={fobErrors} margin={{ top: 10, right: 10, bottom: 20, left: -20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                 <XAxis dataKey="rango" stroke="#8e918f" fontSize={10} />
                 <YAxis stroke="#8e918f" allowDecimals={false} fontSize={10} />
-                <Tooltip 
+                <Tooltip
                   contentStyle={{ backgroundColor: 'rgba(30,30,30,0.9)', borderColor: 'rgba(255,255,255,0.1)' }}
                   labelStyle={{ color: '#fff' }}
                 />
@@ -265,7 +264,7 @@ export default function Integrity() {
         </div>
 
         {/* F1-Score by destination port */}
-        <div className="glass-panel rounded-xl flex flex-col h-[300px] overflow-hidden">
+        <div className="ui-panel rounded-xl flex flex-col h-[300px] overflow-hidden">
           <div className="p-6 pb-2">
             <h3 className="font-headline-sm text-headline-sm text-on-surface">Puntaje F1 por Puerto de Destino</h3>
             <p className="font-body-sm text-body-sm text-on-surface-variant">Media armónica de precisión y sensibilidad por nodo logístico</p>
@@ -298,7 +297,7 @@ export default function Integrity() {
       </div>
 
       {/* Logs Section */}
-      <div className="glass-panel rounded-xl flex flex-col overflow-hidden mb-8">
+      <div className="ui-panel rounded-xl flex flex-col overflow-hidden mb-8">
         <div className="p-6 pb-2">
           <h3 className="font-headline-sm text-headline-sm text-on-surface">Logs de Decisiones del Experimento</h3>
         </div>

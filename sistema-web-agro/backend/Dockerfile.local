@@ -5,6 +5,7 @@ COPY sistema-web-agro/backend/requirements-local.lock /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 COPY sistema-web-agro/backend /app/sistema-web-agro/backend
 COPY datasets /app/datasets
+COPY sistema-web-agro/frontend/public/research/forecasts.json /app/sistema-web-agro/frontend/public/research/forecasts.json
 COPY pipeline /app/pipeline
 COPY tools/start_local_container.py /app/tools/start_local_container.py
 RUN useradd --uid 10001 --create-home agro && mkdir /app/data && chown agro:agro /app/data

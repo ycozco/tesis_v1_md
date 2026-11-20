@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Data() {
   const [uploading, setUploading] = useState(false)
@@ -163,7 +163,7 @@ export default function Data() {
       <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto space-y-card-gap">
-        
+
         {/* Page Header */}
         <div className="flex justify-between items-end mb-8">
           <div>
@@ -174,7 +174,7 @@ export default function Data() {
 
         {/* KPI Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-card-gap mb-8">
-          <div className="glass-panel rounded-xl p-6 relative overflow-hidden group">
+          <div className="ui-panel rounded-xl p-6 relative overflow-hidden group">
             <div className="absolute right-0 bottom-0 opacity-10">
               <span className="material-symbols-outlined text-[100px]" style={{ fontVariationSettings: "'FILL' 1" }}>dataset</span>
             </div>
@@ -185,7 +185,7 @@ export default function Data() {
               <span>+2 esta semana</span>
             </div>
           </div>
-          <div className="glass-panel rounded-xl p-6 relative overflow-hidden">
+          <div className="ui-panel rounded-xl p-6 relative overflow-hidden">
             <div className="absolute right-0 bottom-0 opacity-10">
               <span className="material-symbols-outlined text-[100px]" style={{ fontVariationSettings: "'FILL' 1" }}>table_rows</span>
             </div>
@@ -196,7 +196,7 @@ export default function Data() {
               <span>Validación de Consistencia OK</span>
             </div>
           </div>
-          <div className="glass-panel rounded-xl p-6 relative overflow-hidden">
+          <div className="ui-panel rounded-xl p-6 relative overflow-hidden">
             <div className="absolute right-0 bottom-0 opacity-10">
               <span className="material-symbols-outlined text-[100px]" style={{ fontVariationSettings: "'FILL' 1" }}>sync</span>
             </div>
@@ -211,24 +211,24 @@ export default function Data() {
 
         {/* Main Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-card-gap">
-          
+
           {/* Left Column: Datasets & Upload */}
           <div className="lg:col-span-1 flex flex-col space-y-card-gap">
             {/* Upload Zone */}
-            <div className="glass-panel rounded-xl p-6 flex flex-col">
+            <div className="ui-panel rounded-xl p-6 flex flex-col">
               <h2 className="font-headline-sm text-headline-sm text-on-surface mb-4 font-semibold">Ingesta de Datos</h2>
-              
-              <div 
-                className="border-2 border-dashed border-outline-variant rounded-lg p-8 flex flex-col items-center justify-center text-center transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 cursor-pointer relative" 
+
+              <div
+                className="border-2 border-dashed border-outline-variant rounded-lg p-8 flex flex-col items-center justify-center text-center transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 cursor-pointer relative"
                 id="dropzone"
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
               >
-                <input 
-                  type="file" 
-                  id="file-input" 
-                  className="hidden" 
-                  accept=".csv,.xlsx" 
+                <input
+                  type="file"
+                  id="file-input"
+                  className="hidden"
+                  accept=".csv,.xlsx"
                   onChange={handleFileSelect}
                 />
                 <label htmlFor="file-input" className="cursor-pointer flex flex-col items-center">
@@ -256,7 +256,7 @@ export default function Data() {
             </div>
 
             {/* Dataset List */}
-            <div className="glass-panel rounded-xl p-6 flex-grow">
+            <div className="ui-panel rounded-xl p-6 flex-grow">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="font-headline-sm text-headline-sm text-on-surface font-semibold">Datasets Activos</h2>
                 <button className="text-primary hover:text-primary-fixed transition-colors">
@@ -349,7 +349,7 @@ export default function Data() {
           </div>
 
           {/* Right Column: Data Preview */}
-          <div className="lg:col-span-2 glass-panel rounded-xl p-6 flex flex-col h-[700px]">
+          <div className="lg:col-span-2 ui-panel rounded-xl p-6 flex flex-col h-[700px]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
               <div>
                 <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center font-semibold">
@@ -385,7 +385,7 @@ export default function Data() {
                 </a>
               </div>
             </div>
-            
+
             {/* Table Container */}
             <div className="flex-grow overflow-auto border border-white/5 rounded-lg bg-surface-container-low/50 relative">
               <table className="w-full text-left border-collapse whitespace-nowrap">
@@ -409,7 +409,7 @@ export default function Data() {
         {/* RAG Biblioteca de Normativas */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-card-gap mt-8">
           {/* Form to add */}
-          <div className="lg:col-span-1 glass-panel rounded-xl p-6 flex flex-col">
+          <div className="lg:col-span-1 ui-panel rounded-xl p-6 flex flex-col">
             <h2 className="font-headline-sm text-headline-sm text-on-surface mb-4 font-semibold flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">add_box</span>
               Indexar Nueva Directiva (RAG)
@@ -417,7 +417,7 @@ export default function Data() {
             <form onSubmit={handleAddDoc} className="space-y-4 flex-grow flex flex-col">
               <div>
                 <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Título de la Normativa</label>
-                <input 
+                <input
                   type="text"
                   value={docTitle}
                   onChange={(e) => setDocTitle(e.target.value)}
@@ -426,10 +426,10 @@ export default function Data() {
                   required
                 />
               </div>
-              
+
               <div>
                 <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Categoría</label>
-                <select 
+                <select
                   value={docCategory}
                   onChange={(e) => setDocCategory(e.target.value)}
                   className="w-full bg-surface-container-low border border-outline/50 rounded-lg p-2.5 text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all"
@@ -440,10 +440,10 @@ export default function Data() {
                   <option value="OTROS">Otros Reglamentos</option>
                 </select>
               </div>
-              
+
               <div className="flex-grow flex flex-col">
                 <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Contenido Normativo</label>
-                <textarea 
+                <textarea
                   value={docContent}
                   onChange={(e) => setDocContent(e.target.value)}
                   placeholder="Ingrese el cuerpo textual completo para la indexación y vectorización semántica en pgvector..."
@@ -453,8 +453,8 @@ export default function Data() {
                 />
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={savingDoc}
                 className="w-full bg-primary text-on-primary font-label-md text-label-md py-2.5 px-4 rounded-lg hover:bg-primary-fixed transition-colors flex justify-center items-center gap-2 shadow-[0_0_15px_rgba(118,219,143,0.2)]"
               >
@@ -474,13 +474,13 @@ export default function Data() {
           </div>
 
           {/* List of indexed docs */}
-          <div className="lg:col-span-2 glass-panel rounded-xl p-6 flex flex-col h-[480px]">
+          <div className="lg:col-span-2 ui-panel rounded-xl p-6 flex flex-col h-[480px]">
             <h2 className="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">library_books</span>
               Biblioteca Normativa Activa (Indexada en pgvector)
             </h2>
             <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Regulaciones almacenadas con embeddings vectoriales de 384 dimensiones.</p>
-            
+
             <div className="flex-grow overflow-auto border border-white/5 rounded-lg bg-surface-container-low/50 relative">
               {loadingDocs ? (
                 <div className="flex items-center justify-center h-full">

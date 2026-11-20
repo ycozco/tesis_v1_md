@@ -35,6 +35,28 @@ services:
       interval: 10s
       timeout: 5s
       retries: 12
+  training:
+    image: agroscope-training:local
+    build:
+      context: ./training
+      args:
+        AGRO_SOURCE_REVISION: ${AGRO_SOURCE_REVISION:-}
+    restart: unless-stopped
+    cpus: 2
+    mem_limit: 4g
+    environment:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMBA_NUM_THREADS: '1'
+    volumes:
+      - ./frontend/public/research/snapshot.json:/input/snapshot.json:ro
+      - training_state:/state
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8010/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
   frontend:
     build: ./frontend
     restart: unless-stopped
@@ -51,3 +73,4 @@ services:
 volumes:
   postgres_data:
   research_state:
+  training_state:

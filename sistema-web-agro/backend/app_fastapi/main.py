@@ -10,7 +10,12 @@ from app_fastapi.core.config import settings
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     init_tables()
-    yield
+    from services.market_context import start, stop
+    start()
+    try:
+        yield
+    finally:
+        stop()
 
 app = FastAPI(
     title="Sistema de Supervisión Agroexportadora",

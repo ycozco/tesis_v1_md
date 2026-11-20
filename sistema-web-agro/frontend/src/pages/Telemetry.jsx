@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell } from 'recharts'
 
@@ -129,9 +129,9 @@ export default function Telemetry() {
 
       {/* Bento Grid layout */}
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-card-gap">
-        
+
         {/* Injector Panel */}
-        <div className="xl:col-span-6 glass-panel rounded-xl p-6 flex flex-col relative overflow-hidden">
+        <div className="xl:col-span-6 ui-panel rounded-xl p-6 flex flex-col relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-tertiary-container via-transparent to-transparent pointer-events-none"></div>
           <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4 font-semibold">
             <span className="material-symbols-outlined text-tertiary">precision_manufacturing</span>
@@ -140,12 +140,12 @@ export default function Telemetry() {
           <p className="font-body-sm text-body-sm text-on-surface-variant mb-6">
             Inyecta transacciones alteradas sintéticamente en la base de datos para validar la reacción en tiempo real de las 4 capas de IA.
           </p>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <button
               onClick={() => handleInjectAnomaly('precio')}
               disabled={injecting}
-              className="glass-panel p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-error/10 hover:border-error/30 transition-all text-center group border-white/5 active:scale-95"
+              className="ui-panel p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-error/10 hover:border-error/30 transition-all text-center group border-white/5 active:scale-95"
             >
               <span className="material-symbols-outlined text-error text-3xl group-hover:scale-110 transition-transform">price_change</span>
               <span className="font-label-md text-xs text-on-surface font-bold uppercase tracking-wider">Subvaloración FOB</span>
@@ -155,7 +155,7 @@ export default function Telemetry() {
             <button
               onClick={() => handleInjectAnomaly('temperatura')}
               disabled={injecting}
-              className="glass-panel p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-warning/10 hover:border-warning/30 transition-all text-center group border-white/5 active:scale-95"
+              className="ui-panel p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-warning/10 hover:border-warning/30 transition-all text-center group border-white/5 active:scale-95"
             >
               <span className="material-symbols-outlined text-orange-400 text-3xl group-hover:scale-110 transition-transform">thermostat</span>
               <span className="font-label-md text-xs text-on-surface font-bold uppercase tracking-wider">Falla de Frío</span>
@@ -165,7 +165,7 @@ export default function Telemetry() {
             <button
               onClick={() => handleInjectAnomaly('retraso')}
               disabled={injecting}
-              className="glass-panel p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-primary/10 hover:border-primary/30 transition-all text-center group border-white/5 active:scale-95"
+              className="ui-panel p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-primary/10 hover:border-primary/30 transition-all text-center group border-white/5 active:scale-95"
             >
               <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">schedule_send</span>
               <span className="font-label-md text-xs text-on-surface font-bold uppercase tracking-wider">Retraso Logístico</span>
@@ -179,7 +179,7 @@ export default function Telemetry() {
               <span>Log de Inyecciones de esta Sesión</span>
               <span className="text-[10px] text-primary">{injectedAlertsTotal} total</span>
             </h4>
-            
+
             {injecting && (
               <div className="flex items-center gap-2 text-tertiary justify-center py-2 bg-white/[0.02] border border-white/5 rounded-lg mb-2">
                 <span className="material-symbols-outlined animate-spin text-[16px]">sync</span>
@@ -218,7 +218,7 @@ export default function Telemetry() {
                     </div>
                   </div>
                 ))}
-                
+
                 {injectedAlerts.length < injectedAlertsTotal && (
                   <button
                     onClick={() => fetchInjectedAlerts(injectedAlertsPage + 1, true)}
@@ -238,7 +238,7 @@ export default function Telemetry() {
         </div>
 
         {/* Stress Testing and Run History */}
-        <div className="xl:col-span-6 glass-panel rounded-xl p-6 flex flex-col h-[360px]">
+        <div className="xl:col-span-6 ui-panel rounded-xl p-6 flex flex-col h-[360px]">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 font-semibold">
               <span className="material-symbols-outlined text-primary">dynamic_form</span>
@@ -262,7 +262,7 @@ export default function Telemetry() {
               )}
             </button>
           </div>
-          
+
           <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">
             Historial de ejecuciones de evaluación automatizada sobre el conjunto de testeo sintético de validación.
           </p>
@@ -297,16 +297,16 @@ export default function Telemetry() {
 
       {/* Model Benchmark Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-card-gap">
-        
+
         {/* Chart A: Multi-model evaluation benchmark */}
-        <div className="glass-panel rounded-xl p-6 flex flex-col h-[320px]">
+        <div className="ui-panel rounded-xl p-6 flex flex-col h-[320px]">
           <h3 className="font-headline-sm text-headline-sm text-on-surface mb-1">Benchmarking de Modelos (PR-AUC vs ROC-AUC)</h3>
           <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">
             Comparativa de rendimiento en base a semillas experimentales
           </p>
           <div className="flex-grow min-h-0">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={evaluation_metrics} margin={{ top: 10, right: 10, bottom: 20, left: -20 }}>
+              <BarChart accessibilityLayer data={evaluation_metrics} margin={{ top: 10, right: 10, bottom: 20, left: -20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                 <XAxis dataKey="metodo" stroke="#8e918f" fontSize={9} />
                 <YAxis stroke="#8e918f" domain={[0.6, 1.0]} fontSize={10} />
@@ -324,14 +324,14 @@ export default function Telemetry() {
         </div>
 
         {/* Chart B: Recall by Anomaly Type */}
-        <div className="glass-panel rounded-xl p-6 flex flex-col h-[320px]">
+        <div className="ui-panel rounded-xl p-6 flex flex-col h-[320px]">
           <h3 className="font-headline-sm text-headline-sm text-on-surface mb-1">Recall (Sensibilidad) por Tipo de Anomalía</h3>
           <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">
             Tasa de detección exitosa del ensemble propuesto según el vector de alteración
           </p>
           <div className="flex-grow min-h-0">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={recalls_by_type} layout="vertical" margin={{ top: 10, right: 20, bottom: 10, left: 30 }}>
+              <BarChart accessibilityLayer data={recalls_by_type} layout="vertical" margin={{ top: 10, right: 20, bottom: 10, left: 30 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                 <XAxis type="number" domain={[0.7, 1.0]} stroke="#8e918f" fontSize={10} />
                 <YAxis dataKey="tipo" type="category" stroke="#8e918f" fontSize={10} />
@@ -353,7 +353,7 @@ export default function Telemetry() {
       </div>
 
       {/* Real-time Participant Progress (Mantenido a petición del usuario) */}
-      <div className="glass-panel rounded-xl p-0 flex flex-col h-[350px] overflow-hidden mb-8">
+      <div className="ui-panel rounded-xl p-0 flex flex-col h-[350px] overflow-hidden mb-8">
         <div className="p-6 border-b border-white/5 flex justify-between items-center bg-surface-container-low/30">
           <div>
             <h3 className="font-headline-sm text-headline-sm text-on-surface">Registro de Auditores Asignados</h3>
@@ -367,7 +367,7 @@ export default function Telemetry() {
             <span className="font-mono-data text-mono-data text-primary text-xs font-bold">MONITOR_ACTIVO</span>
           </div>
         </div>
-        
+
         <div className="flex-grow overflow-auto">
           <table className="w-full text-left border-collapse">
             <thead>

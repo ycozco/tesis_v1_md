@@ -1,4 +1,3 @@
-import React from 'react'
 
 const paths = {
   dashboard: 'M3 3h7v7H3z M14 3h7v4h-7z M14 11h7v10h-7z M3 14h7v7H3z',

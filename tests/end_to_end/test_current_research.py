@@ -51,7 +51,11 @@ def test_e3_origin_target_age_reconstruction_and_alteration(tmp_path):
     assert emission.isocalendar().week == 21
     assert (emission_week-last_observed).days//7 == 3
     ledger = ResidualLedger()
-    key = ledger.predict('fixture-run-v1',('palta','TEST'),'unit_fob',emission,emission,3.)
+    target = emission_week + timedelta(weeks=1)
+    key = ledger.predict('fixture-run-v1', ('palta','TEST'), 'unit_fob', emission, target, 3.,
+                         origin_week=emission_week, last_observed_week=last_observed)
+    assert ledger.predictions[key]['horizon_weeks'] == 1
+    assert ledger.predictions[key]['observation_age_weeks'] == 3
     ledger.observe(key,4.,emission+timedelta(weeks=1),'a'*64)
     assert ledger.interval('fixture-run-v1',('palta','TEST'),'unit_fob',emission,3.)['past_errors'] == 0
     path = tmp_path/'ledger.json'

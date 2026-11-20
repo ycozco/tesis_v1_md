@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Config() {
   const [loading, setLoading] = useState(true)
@@ -66,7 +66,7 @@ export default function Config() {
   const handleTestConnection = () => {
     setTestingConnection(true)
     setTestResult(null)
-    
+
     // Simulate connection tests
     setTimeout(() => {
       setTestResult({
@@ -79,7 +79,7 @@ export default function Config() {
 
   const handleApplyChanges = async (e) => {
     e.preventDefault()
-    
+
     // Validate that weights sum up to approximately 1.00
     const sum = parseFloat(weightIF) + parseFloat(weightLOF) + parseFloat(weightECOD)
     if (Math.abs(sum - 1.0) > 0.01) {
@@ -142,8 +142,8 @@ export default function Config() {
             <p className="font-body-lg text-body-lg text-on-surface-variant">Gestión de Pipeline &amp; Ajuste de Hiperparámetros</p>
           </div>
           <div className="flex gap-4">
-            <button 
-              className="px-6 py-2 rounded glass-panel text-on-surface hover:text-primary transition-all font-label-md text-label-md uppercase tracking-wider flex items-center gap-2" 
+            <button
+              className="px-6 py-2 rounded ui-panel text-on-surface hover:text-primary transition-all font-label-md text-label-md uppercase tracking-wider flex items-center gap-2"
               id="btn-test"
               type="button"
               onClick={handleTestConnection}
@@ -151,8 +151,8 @@ export default function Config() {
               <span className="material-symbols-outlined text-[18px]">hub</span>
               Probar Conexión
             </button>
-            <button 
-              className="px-6 py-2 rounded bg-primary text-on-primary hover:bg-primary-fixed-dim transition-all font-label-md text-label-md uppercase tracking-wider flex items-center gap-2 shadow-[0_0_15px_rgba(118,219,143,0.3)] hover:shadow-[0_0_20px_rgba(118,219,143,0.5)] font-semibold" 
+            <button
+              className="px-6 py-2 rounded bg-primary text-on-primary hover:bg-primary-fixed-dim transition-all font-label-md text-label-md uppercase tracking-wider flex items-center gap-2 shadow-[0_0_15px_rgba(118,219,143,0.3)] hover:shadow-[0_0_20px_rgba(118,219,143,0.5)] font-semibold"
               id="btn-apply"
               type="submit"
             >
@@ -164,9 +164,9 @@ export default function Config() {
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-card-gap mb-8">
-          
+
           {/* Predictor Section (Span 8) */}
-          <section className="lg:col-span-8 glass-panel rounded-xl p-6 flex flex-col gap-6 relative overflow-hidden">
+          <section className="lg:col-span-8 ui-panel rounded-xl p-6 flex flex-col gap-6 relative overflow-hidden">
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
             <div className="flex justify-between items-start">
               <div>
@@ -177,7 +177,7 @@ export default function Config() {
                 <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Modelo central de pronóstico de valor aduanero</p>
               </div>
               <div className="relative group">
-                <select 
+                <select
                   className="appearance-none bg-surface-container-high border border-outline-variant text-on-surface rounded-lg px-4 py-2 pr-10 font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer"
                   value={activeModel}
                   onChange={(e) => handleModelChange(e.target.value)}
@@ -224,14 +224,14 @@ export default function Config() {
               <div className="flex items-center gap-3">
                 <span className="font-label-md text-label-md uppercase text-on-surface-variant">Variables Principales:</span>
                 <div className="flex bg-surface-container-high rounded-md p-1 border border-white/5">
-                  <button 
+                  <button
                     className={`px-3 py-1 rounded text-body-sm font-body-sm transition-colors ${shapTopK === 5 ? 'bg-surface-variant text-on-surface' : 'text-on-surface-variant hover:text-on-surface'}`}
                     type="button"
                     onClick={() => setShapTopK(5)}
                   >
                     Top 5
                   </button>
-                  <button 
+                  <button
                     className={`px-3 py-1 rounded text-body-sm font-body-sm transition-colors ${shapTopK === 8 ? 'bg-surface-variant text-on-surface' : 'text-on-surface-variant hover:text-on-surface'}`}
                     type="button"
                     onClick={() => setShapTopK(8)}
@@ -244,7 +244,7 @@ export default function Config() {
           </section>
 
           {/* RAG/LLM Config (Span 4) */}
-          <aside className="lg:col-span-4 glass-panel rounded-xl p-6 flex flex-col gap-6 relative">
+          <aside className="lg:col-span-4 ui-panel rounded-xl p-6 flex flex-col gap-6 relative">
             <div className="flex items-center gap-2 mb-2">
               <span className="material-symbols-outlined text-tertiary">memory</span>
               <h2 className="font-headline-md text-headline-md text-on-surface">Interrogador LLM</h2>
@@ -254,7 +254,7 @@ export default function Config() {
               <div className="flex flex-col gap-2">
                 <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Motor Proveedor</label>
                 <div className="relative">
-                  <select 
+                  <select
                     className="w-full appearance-none bg-surface-container-low border border-white/10 text-on-surface rounded-lg px-4 py-2 pr-10 font-body-md text-body-md focus:outline-none focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-colors cursor-pointer"
                     value={llmEngine}
                     onChange={(e) => setLlmEngine(e.target.value)}
@@ -272,11 +272,11 @@ export default function Config() {
                   <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Temperatura (Creatividad)</label>
                   <span className="font-mono-data text-mono-data text-tertiary data-value">{llmTemp}</span>
                 </div>
-                <input 
-                  className="w-full accent-tertiary cursor-pointer" 
-                  max="1" 
-                  min="0" 
-                  step="0.1" 
+                <input
+                  className="w-full accent-tertiary cursor-pointer"
+                  max="1"
+                  min="0"
+                  step="0.1"
                   type="range"
                   value={llmTemp}
                   onChange={(e) => setLlmTemp(parseFloat(e.target.value))}
@@ -289,18 +289,18 @@ export default function Config() {
                   <strong>Leyenda:</strong> Controla el grado de aleatoriedad del LLM al generar reportes RAG. Valores bajos (0.0 a 0.2) producen narrativas consistentes y rigurosamente apegadas a las normativas aduaneras indexadas.
                 </p>
               </div>
-              
+
               {/* Similarity Threshold */}
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center">
                   <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Corte de Similitud RAG</label>
                   <span className="font-mono-data text-mono-data text-tertiary data-value">{llmSimThresh}</span>
                 </div>
-                <input 
-                  className="w-full accent-tertiary cursor-pointer" 
-                  max="1" 
-                  min="0.5" 
-                  step="0.05" 
+                <input
+                  className="w-full accent-tertiary cursor-pointer"
+                  max="1"
+                  min="0.5"
+                  step="0.05"
                   type="range"
                   value={llmSimThresh}
                   onChange={(e) => setLlmSimThresh(parseFloat(e.target.value))}
@@ -311,9 +311,9 @@ export default function Config() {
               </div>
             </div>
           </aside>
- 
+
           {/* Ensemble Settings (Span 12) */}
-          <section className="lg:col-span-12 glass-panel rounded-xl p-6 flex flex-col gap-6">
+          <section className="lg:col-span-12 ui-panel rounded-xl p-6 flex flex-col gap-6">
             <header className="flex justify-between items-end border-b border-white/5 pb-4">
               <div>
                 <h2 className="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
@@ -326,11 +326,11 @@ export default function Config() {
                 <label className="font-label-md text-label-md text-error uppercase tracking-wider">Umbral de Alerta Global</label>
                 <div className="flex items-center gap-2">
                   <span className="font-headline-sm text-headline-sm text-error">{globalThreshold}</span>
-                  <input 
-                    type="range" 
-                    min="0.1" 
-                    max="0.9" 
-                    step="0.05" 
+                  <input
+                    type="range"
+                    min="0.1"
+                    max="0.9"
+                    step="0.05"
                     className="accent-error w-24 cursor-pointer"
                     value={globalThreshold}
                     onChange={(e) => setGlobalThreshold(parseFloat(e.target.value))}
@@ -342,7 +342,7 @@ export default function Config() {
                 </p>
               </div>
             </header>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Isolation Forest */}
               <div className="flex flex-col gap-3 group bg-white/[0.02] p-4 rounded-lg border border-white/5">
@@ -353,11 +353,11 @@ export default function Config() {
                   </div>
                   <span className="font-mono-data text-mono-data text-secondary bg-secondary/10 px-2 py-0.5 rounded">w: {weightIF}</span>
                 </div>
-                <input 
-                  className="w-full group-hover:opacity-100 opacity-80 transition-opacity accent-secondary cursor-pointer" 
-                  max="1" 
-                  min="0" 
-                  step="0.05" 
+                <input
+                  className="w-full group-hover:opacity-100 opacity-80 transition-opacity accent-secondary cursor-pointer"
+                  max="1"
+                  min="0"
+                  step="0.05"
                   type="range"
                   value={weightIF}
                   onChange={(e) => setWeightIF(parseFloat(e.target.value))}
@@ -366,7 +366,7 @@ export default function Config() {
                   <strong>Leyenda:</strong> Detecta valores atípicos globales aislando observaciones mediante árboles aleatorios. Muy efectivo para detectar anomalías extremas en volumen o FOB.
                 </p>
               </div>
-              
+
               {/* Local Outlier Factor */}
               <div className="flex flex-col gap-3 group bg-white/[0.02] p-4 rounded-lg border border-white/5">
                 <div className="flex justify-between items-center">
@@ -376,11 +376,11 @@ export default function Config() {
                   </div>
                   <span className="font-mono-data text-mono-data text-tertiary bg-tertiary/10 px-2 py-0.5 rounded">w: {weightLOF}</span>
                 </div>
-                <input 
-                  className="w-full group-hover:opacity-100 opacity-80 transition-opacity accent-tertiary cursor-pointer" 
-                  max="1" 
-                  min="0" 
-                  step="0.05" 
+                <input
+                  className="w-full group-hover:opacity-100 opacity-80 transition-opacity accent-tertiary cursor-pointer"
+                  max="1"
+                  min="0"
+                  step="0.05"
                   type="range"
                   value={weightLOF}
                   onChange={(e) => setWeightLOF(parseFloat(e.target.value))}
@@ -389,7 +389,7 @@ export default function Config() {
                   <strong>Leyenda:</strong> Compara la densidad local de cada punto con sus vecinos k-NN. Identifica anomalías locales (subvaluación sutil que parece normal globalmente).
                 </p>
               </div>
-              
+
               {/* ECOD */}
               <div className="flex flex-col gap-3 group bg-white/[0.02] p-4 rounded-lg border border-white/5">
                 <div className="flex justify-between items-center">
@@ -399,11 +399,11 @@ export default function Config() {
                   </div>
                   <span className="font-mono-data text-mono-data text-primary-fixed bg-primary-fixed/10 px-2 py-0.5 rounded">w: {weightECOD}</span>
                 </div>
-                <input 
-                  className="w-full group-hover:opacity-100 opacity-80 transition-opacity accent-primary-fixed cursor-pointer" 
-                  max="1" 
-                  min="0" 
-                  step="0.05" 
+                <input
+                  className="w-full group-hover:opacity-100 opacity-80 transition-opacity accent-primary-fixed cursor-pointer"
+                  max="1"
+                  min="0"
+                  step="0.05"
                   type="range"
                   value={weightECOD}
                   onChange={(e) => setWeightECOD(parseFloat(e.target.value))}
@@ -433,7 +433,7 @@ export default function Config() {
       {/* ----------------- CONNECTION TEST MODAL ----------------- */}
       {testingConnection && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass-modal max-w-md w-full rounded-xl p-6 relative border-t-4 border-t-primary">
+          <div className="ui-modal max-w-md w-full rounded-xl p-6 relative border-t-4 border-t-primary">
             <h3 className="font-headline-sm text-headline-sm text-on-surface mb-6 flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">hub</span>
               Prueba de Conexión de Pipeline
@@ -476,7 +476,7 @@ export default function Config() {
 
             {testResult && (
               <div className="flex justify-end">
-                <button 
+                <button
                   className="px-6 py-2 bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-fixed rounded transition-colors font-semibold"
                   onClick={() => setTestingConnection(false)}
                 >

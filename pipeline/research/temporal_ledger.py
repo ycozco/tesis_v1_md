@@ -22,18 +22,27 @@ class ResidualLedger:
         self.predictions = {}
         self.outcomes = {}
 
-    def predict(self, run_id, series, target, emission, target_week, prediction, embargo=0):
+    def predict(self, run_id, series, target, emission, target_week, prediction, embargo=0, *, origin_week=None, last_observed_week=None):
         emission, target_week = timestamp(emission), timestamp(target_week)
         if embargo not in (0, 4, 8):
             raise ValueError('Unsupported embargo')
         if emission != target_week:
             raise ValueError('Weekly horizon one: origin is start of target week')
+        calendar = {}
+        if origin_week is not None or last_observed_week is not None:
+            origin = timestamp(origin_week)
+            last = timestamp(last_observed_week)
+            age, remainder = divmod(origin - last, timedelta(weeks=1))
+            if target_week - origin != timedelta(weeks=1) or age < 0 or remainder:
+                raise ValueError('Invalid forecast origin or last observed week')
+            calendar = {'origin_week': origin, 'last_observed_week': last,
+                        'horizon_weeks': 1, 'observation_age_weeks': age}
         if not isfinite(prediction) or prediction < 0:
             raise ValueError('Presented prediction must be finite and nonnegative')
         key = (run_id, tuple(series), target, target_week, embargo)
         if key in self.predictions:
             raise ValueError('Prediction is immutable and cannot be overwritten')
-        self.predictions[key] = {'emission': emission, 'prediction': float(prediction)}
+        self.predictions[key] = {'emission': emission, 'prediction': float(prediction), **calendar}
         return key
 
     def observe(self, key, actual, published_at, vintage_sha256):
@@ -85,6 +94,7 @@ class ResidualLedger:
             outcome = self.outcomes.get(key)
             records.append({'run_id': key[0], 'series': list(key[1]), 'target': key[2],
                 'target_week': key[3].isoformat(), 'emission': prediction['emission'].isoformat(),
+                **{field: prediction[field].isoformat() for field in ('origin_week', 'last_observed_week') if field in prediction},
                 'embargo': key[4],
                 'prediction': prediction['prediction'],
                 'outcome': {**outcome, 'published_at': outcome['published_at'].isoformat()} if outcome else None})
@@ -107,7 +117,8 @@ class ResidualLedger:
         ledger = cls()
         for row in body['records']:
             key = ledger.predict(row['run_id'], row['series'], row['target'], row['emission'],
-                                 row['target_week'], row['prediction'], row['embargo'])
+                                 row['target_week'], row['prediction'], row['embargo'],
+                                 origin_week=row.get('origin_week'), last_observed_week=row.get('last_observed_week'))
             if row['outcome'] is not None:
                 outcome = row['outcome']
                 ledger.observe(key, outcome['actual'], outcome['published_at'], outcome['vintage_sha256'])

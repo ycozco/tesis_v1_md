@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../App.jsx'
 import SeverityPanel from '../components/SeverityPanel.jsx'
@@ -17,7 +17,6 @@ export default function Detail() {
   const [loadError, setLoadError] = useState(null)
   const [logsMinimized, setLogsMinimized] = useState(true)
   const logEndRef = useRef(null)
-  const logIntervalRef = useRef(null)
 
   const addLog = useCallback((msg, level = 'INFO') => {
     const ts = new Date().toLocaleTimeString('es-PE', { hour12: false })
@@ -30,7 +29,7 @@ export default function Detail() {
   const [justificationText, setJustificationText] = useState('')
   const [likertComprehension, setLikertComprehension] = useState(0)
   const [hoverLikert, setHoverLikert] = useState(0)
-  
+
   // Modal states
   const [showConfirmModal, setShowConfirmModal] = useState(false)
   const [activeRagDoc, setActiveRagDoc] = useState(null)
@@ -119,7 +118,7 @@ export default function Detail() {
               { icon: 'article', label: 'Capa 4 — RAG + Reporte LLM', done: logLines.length > 9 },
             ].map(({ icon, label, done }) => (
               <div key={label} className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-500 ${
-                done ? 'glass-panel border border-primary/30' : 'opacity-40'
+                done ? 'ui-panel border border-primary/30' : 'opacity-40'
               }`}>
                 <span className={`material-symbols-outlined text-[20px] ${
                   done ? 'text-primary' : 'text-on-surface-variant'
@@ -181,14 +180,13 @@ export default function Detail() {
         <span className="material-symbols-outlined text-error text-5xl">error</span>
         <h2 className="text-xl font-semibold text-error">Error al cargar el análisis</h2>
         <p className="text-on-surface-variant text-sm font-mono-data">{loadError}</p>
-        <button className="glass-panel px-5 py-2 rounded-lg text-sm" onClick={() => navigate('/alerts')}>Volver a Alertas</button>
+        <button className="ui-panel px-5 py-2 rounded-lg text-sm" onClick={() => navigate('/alerts')}>Volver a Alertas</button>
       </div>
     )
   }
 
   const { alert, explanations = [], decision } = data
   const isAudited = !!decision
-  const dev = alert.valor_fob_esperado > 0 ? (((alert.valor_fob_esperado - alert.valor_fob_declarado) / alert.valor_fob_esperado) * 100).toFixed(1) : '0.0'
 
   // Map API vector documents to the local database keys
   const fetchedRagDocs = {}
@@ -230,7 +228,7 @@ export default function Detail() {
 
     // Procesar líneas del informe para compilar títulos, listas y citas
     const lines = text.split('\n');
-    
+
     return lines.map((line, lineIdx) => {
       let trimmed = line.trim();
       if (!trimmed) return <div key={lineIdx} className="h-2"></div>;
@@ -305,7 +303,7 @@ export default function Detail() {
         // Parsear negritas (**bold**) y código (`code`) en el texto restante
         const boldAndCodeRegex = /(\*\*[^*]+\*\*|`[^`]+`)/g;
         const subParts = part.split(boldAndCodeRegex);
-        
+
         return subParts.map((subPart, subIdx) => {
           if (subPart.startsWith('**') && subPart.endsWith('**')) {
             return <strong key={`b-${partIdx}-${subIdx}`} className="text-on-surface font-semibold">{subPart.slice(2, -2)}</strong>;
@@ -381,7 +379,7 @@ export default function Detail() {
 
   return (
     <div className="flex-grow overflow-y-auto p-container-padding pb-24 md:pb-container-padding">
-      
+
       {/* Operation Header */}
       <div className="mb-gutter">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
@@ -398,35 +396,35 @@ export default function Detail() {
             </h2>
           </div>
           <div className="flex gap-3">
-            <button className="glass-panel px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-white/10 transition-colors flex items-center gap-2" onClick={() => navigate('/history')}>
+            <button className="ui-panel px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-white/10 transition-colors flex items-center gap-2" onClick={() => navigate('/history')}>
               <span className="material-symbols-outlined text-[18px]">history</span>
               Historial
             </button>
-            <button className="glass-panel px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-white/10 transition-colors flex items-center gap-2" onClick={() => window.print()}>
+            <button className="ui-panel px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-white/10 transition-colors flex items-center gap-2" onClick={() => window.print()}>
               <span className="material-symbols-outlined text-[18px]">download</span>
               Exportar
             </button>
           </div>
         </div>
-        
+
         {/* Meta Badges */}
         <div className="flex flex-wrap gap-2">
-          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
+          <div className="ui-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
             <span className="material-symbols-outlined text-[16px] text-on-surface-variant">corporate_fare</span>
             <span className="font-mono-data text-mono-data text-on-surface-variant">RUC:</span>
             <span className="font-mono-data text-mono-data text-on-surface">{alert.ruc_exportador}</span>
           </div>
-          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
+          <div className="ui-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
             <span className="material-symbols-outlined text-[16px] text-on-surface-variant">storefront</span>
             <span className="font-body-sm text-body-sm text-on-surface-variant">Empresa:</span>
             <span className="font-body-sm text-body-sm text-on-surface font-medium">{alert.razon_social}</span>
           </div>
-          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-secondary/50">
+          <div className="ui-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-secondary/50">
             <span className="material-symbols-outlined text-[16px] text-on-surface-variant">eco</span>
             <span className="font-body-sm text-body-sm text-on-surface-variant">Producto:</span>
             <span className="font-body-sm text-body-sm text-on-surface font-medium">{alert.producto}</span>
           </div>
-          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-tertiary/50">
+          <div className="ui-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-tertiary/50">
             <span className="material-symbols-outlined text-[16px] text-on-surface-variant">sailing</span>
             <span className="font-body-sm text-body-sm text-on-surface-variant">Destino:</span>
             <span className="font-body-sm text-body-sm text-on-surface font-medium">Rotterdam (NLD)</span>
@@ -482,10 +480,10 @@ export default function Detail() {
 
       {/* Grid Layout Principal */}
       <div className="flex flex-col gap-6 mt-6">
-        
+
         {/* Sección Superior: Métricas de Riesgo y Capas Analíticas */}
         <div className="w-full flex flex-col gap-6">
-          
+
           {/* Fila 1: Ensemble Card y Distribución de Probabilidad */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <SeverityPanel alert={alert} />
@@ -502,9 +500,9 @@ export default function Detail() {
 
         {/* Explicabilidad detallada y Acción */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6">
-          
+
           {/* Variables de Atribución SHAP con Datos */}
-          <div className="glass-panel rounded-xl p-5 flex flex-col">
+          <div className="ui-panel rounded-xl p-5 flex flex-col">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-label-md uppercase tracking-widest text-on-surface-variant text-sm font-bold">
                 Variables de Atribución SHAP
@@ -516,7 +514,7 @@ export default function Detail() {
             <p className="text-on-surface-variant text-xs mb-5 font-mono-sm leading-tight">
               Resumen de impacto detallado de variables seleccionadas y su valor registrado.
             </p>
-            
+
             <ul className="space-y-2">
               {(() => {
                 const maxShap = Math.max(...explanations.map(e => Math.abs(e.shap_value)), 1);
@@ -550,7 +548,7 @@ export default function Detail() {
                 })
               })()}
             </ul>
-            
+
             {(() => {
               const expectedFob = alert.valor_fob_esperado || 0;
               const shapSum = explanations.reduce((acc, cur) => acc + cur.shap_value, 0);
@@ -571,29 +569,29 @@ export default function Detail() {
           </div>
 
           {/* Adjudicación Rápida (Formulario de Acción) */}
-          <div className="glass-panel rounded-xl p-5 flex flex-col flex-1 min-h-[220px] justify-between">
+          <div className="ui-panel rounded-xl p-5 flex flex-col flex-1 min-h-[220px] justify-between">
             <h3 className="font-label-md uppercase tracking-widest text-on-surface-variant mb-4 text-sm font-bold">
               Adjudicación Rápida
             </h3>
-            
+
             <form className="flex-1 flex flex-col justify-between" onSubmit={handleFormSubmit}>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <button 
+                  <button
                     type="button"
                     onClick={() => !isAudited && setUserDecision(1)}
                     className={`flex-1 py-3 px-2 text-sm font-bold rounded border ${userDecision === 1 ? 'bg-error/20 border-error text-error' : 'border-white/10 text-on-surface-variant'} transition-colors`}
                   >
                     Anomalía (TP)
                   </button>
-                  <button 
+                  <button
                     type="button"
                     onClick={() => !isAudited && setUserDecision(0)}
                     className={`flex-1 py-3 px-2 text-sm font-bold rounded border ${userDecision === 0 ? 'bg-secondary/20 border-secondary text-secondary' : 'border-white/10 text-on-surface-variant'} transition-colors`}
                   >
                     Falsa Alarma
                   </button>
-                  <button 
+                  <button
                     type="button"
                     onClick={() => !isAudited && setUserDecision(2)}
                     className={`flex-1 py-3 px-2 text-sm font-bold rounded border ${userDecision === 2 ? 'bg-tertiary/20 border-tertiary text-tertiary' : 'border-white/10 text-on-surface-variant'} transition-colors`}
@@ -604,8 +602,8 @@ export default function Detail() {
 
                 <div className="space-y-2 mt-3">
                   <label className="font-label-md text-sm text-on-surface-variant uppercase font-bold">Justificación Técnica</label>
-                  <textarea 
-                    className="w-full bg-white/5 border border-white/10 rounded-lg p-3 font-mono-sm text-base focus:border-primary focus:ring-0 outline-none min-h-[100px] custom-scrollbar" 
+                  <textarea
+                    className="w-full bg-white/5 border border-white/10 rounded-lg p-3 font-mono-sm text-base focus:border-primary focus:ring-0 outline-none min-h-[100px] custom-scrollbar"
                     placeholder="Ingrese comentarios de auditoría..."
                     value={justificationText}
                     onChange={(e) => !isAudited && setJustificationText(e.target.value.slice(0, 250))}
@@ -619,7 +617,7 @@ export default function Detail() {
                   <span className="text-sm text-on-surface-variant uppercase font-bold">Calificación IA:</span>
                   <div className="flex gap-2">
                     {[1, 2, 3, 4, 5].map(starVal => (
-                      <button 
+                      <button
                         key={starVal}
                         className="transition-colors focus:outline-none"
                         type="button"
@@ -628,7 +626,7 @@ export default function Detail() {
                         onMouseLeave={() => !isAudited && setHoverLikert(0)}
                         disabled={isAudited}
                       >
-                        <span 
+                        <span
                           className={`material-symbols-outlined text-[20px] ${
                             starVal <= (hoverLikert || likertComprehension) ? 'text-primary' : 'text-on-surface-variant'
                           }`}
@@ -644,14 +642,14 @@ export default function Detail() {
 
               {!isAudited ? (
                 <div className="grid grid-cols-2 gap-3 pt-3">
-                  <button 
+                  <button
                     className="bg-primary text-on-primary font-label-md text-xs py-2 rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 font-bold"
                     type="submit"
                   >
                     <span className="material-symbols-outlined text-[16px]">gavel</span>
                     Adjudicar
                   </button>
-                  <button 
+                  <button
                     className="border border-white/10 text-white font-label-md text-xs py-2 rounded-lg hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-2"
                     type="button"
                     onClick={() => {
@@ -683,13 +681,13 @@ export default function Detail() {
       {(condicion === 'INTEGRADO' || condicion === 'ADMIN') && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 w-full">
           {/* Capa 4 RAG */}
-          <div className="glass-panel rounded-xl p-6 flex flex-col bg-white/[0.01] w-full">
+          <div className="ui-panel rounded-xl p-6 flex flex-col bg-white/[0.01] w-full">
             <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
               <span className="material-symbols-outlined text-primary">description</span>
               Capa 4: Narrativa Técnica de IA (Motor RAG)
             </h3>
             <p className="font-body-sm text-[12px] text-on-surface-variant mb-4">Sustentación jurídica y logística contextualizada.</p>
-            <div className="glass-panel bg-surface-container-low/40 rounded-lg p-5 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[600px] whitespace-pre-wrap flex-1">
+            <div className="ui-panel bg-surface-container-low/40 rounded-lg p-5 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[600px] whitespace-pre-wrap flex-1">
               {renderReportWithCitations(data.rag_report)}
             </div>
             <div className="mt-3 flex justify-end gap-2 text-on-surface-variant font-label-md text-[9px] uppercase tracking-wider">
@@ -710,7 +708,7 @@ export default function Detail() {
               <p className="text-[13px] text-on-surface-variant font-mono-sm mt-1">Generación metodológica de respuesta ante anomalías críticas de subvaluación y riesgo logístico</p>
             </div>
           </div>
-          
+
           <div className="flex flex-col gap-4 mt-4">
             <div className="bg-white/5 p-5 rounded-lg border border-white/10">
               <span className="font-mono-sm text-[12px] uppercase tracking-widest text-error font-bold block mb-2">🚨 Alerta Detectada en la DAM</span>
@@ -718,14 +716,14 @@ export default function Detail() {
                 El sistema ha identificado una <strong>subvaloración financiera crítica</strong> en la exportación de <strong>{alert.producto}</strong> registrada bajo el exportador <strong>{alert.razon_social}</strong>. El valor FOB declarado en esta aduana (${alert.valor_fob_declarado.toLocaleString('en-US')}) presenta una alarmante <strong>caída del {Math.abs(alert.valor_fob_esperado ? ((alert.valor_fob_esperado - alert.valor_fob_declarado)/alert.valor_fob_esperado)*100 : 0).toFixed(1)}%</strong> frente al precio normal que el mercado internacional pagaría por un volumen de {data?.alert?.peso_neto?.toLocaleString('en-US') ?? '-'} kg.
               </p>
             </div>
-            
+
             <div className="bg-white/5 p-5 rounded-lg border border-white/10">
               <span className="font-mono-sm text-[12px] uppercase tracking-widest text-primary font-bold block mb-2">🎯 Conclusión del Análisis de IA</span>
               <p className="font-body-lg text-[15px] text-on-surface leading-relaxed">
                 Se confirma un <strong>alto riesgo de fraude fiscal</strong> (Nivel de anomalía calculado: <strong>{alert.score_anomalia.toFixed(4)} / 1.0000</strong>). El motor de Inteligencia Artificial evaluó las condiciones físicas reales del envío y determinó que <strong>ni la temperatura de transporte ({data?.alert?.temperatura ?? '-'}°C) ni el posible retraso logístico en puerto ({data?.alert?.retraso_dias ?? '-'} días) justifican matemáticamente una pérdida de valor comercial tan pronunciada</strong>. La depreciación del precio declarado carece de sustento logístico.
               </p>
             </div>
-            
+
             <div className="bg-white/5 p-5 rounded-lg border border-white/10">
               <span className="font-mono-sm text-[12px] uppercase tracking-widest text-secondary-fixed-dim font-bold block mb-2">📋 Recomendación Operativa Inmediata</span>
               <p className="font-body-lg text-[15px] text-on-surface leading-relaxed">
@@ -735,7 +733,7 @@ export default function Detail() {
           </div>
 
           <div className="flex justify-end mt-2">
-            <button 
+            <button
               type="button"
               className="bg-error/20 text-error border border-error/30 hover:bg-error/30 transition-all font-label-md text-label-md py-2 px-5 rounded-lg flex items-center gap-2 font-bold"
               onClick={() => setShowCorrectionModal(true)}
@@ -748,7 +746,7 @@ export default function Detail() {
         </div>
       )}
       {/* Historial de la Empresa Exportadora */}
-      <div className="xl:col-span-12 glass-panel rounded-xl p-6">
+      <div className="xl:col-span-12 ui-panel rounded-xl p-6">
           <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-4">
             <span className="material-symbols-outlined text-primary">history_edu</span>
             Historial del Exportador (Comportamiento de Reincidencia)
@@ -803,7 +801,7 @@ export default function Detail() {
       {/* Modal 1: Confirmación de Adjudicación */}
       {showConfirmModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass-modal max-w-md w-full rounded-xl p-6 relative overflow-hidden">
+          <div className="ui-modal max-w-md w-full rounded-xl p-6 relative overflow-hidden">
             <h3 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined">gavel</span>
               Confirmar Adjudicación
@@ -811,7 +809,7 @@ export default function Detail() {
             <p className="font-body-md text-body-md text-on-surface-variant mb-6">
               ¿Está seguro de enviar esta decisión? Este registro se encriptará e inyectará en la base de datos de telemetría experimental para medir la eficiencia.
             </p>
-            
+
             <div className="space-y-3 font-mono-data text-xs text-on-surface bg-white/5 p-4 rounded-lg mb-6 border border-white/5">
               <div className="flex justify-between">
                 <span className="text-on-surface-variant">Clasificación:</span>
@@ -832,13 +830,13 @@ export default function Detail() {
             </div>
 
             <div className="flex justify-end gap-3">
-              <button 
+              <button
                 className="px-4 py-2 bg-transparent text-on-surface font-label-md text-label-md hover:bg-white/5 rounded transition-colors"
                 onClick={() => setShowConfirmModal(false)}
               >
                 Cancelar
               </button>
-              <button 
+              <button
                 className="px-6 py-2 bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-fixed rounded transition-colors shadow-[0_0_10px_rgba(118,219,143,0.3)] font-semibold"
                 onClick={handleConfirmDecision}
               >
@@ -852,8 +850,8 @@ export default function Detail() {
       {/* Modal 2: Citas Normativas RAG */}
       {activeRagDoc && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass-modal max-w-lg w-full rounded-xl p-6 relative border-t-4 border-t-primary">
-            <button 
+          <div className="ui-modal max-w-lg w-full rounded-xl p-6 relative border-t-4 border-t-primary">
+            <button
               className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface focus:outline-none"
               onClick={() => setActiveRagDoc(null)}
             >
@@ -867,7 +865,7 @@ export default function Detail() {
               {activeRagDoc.body}
             </div>
             <div className="flex justify-end">
-              <button 
+              <button
                 className="px-5 py-2 bg-primary/20 text-primary border border-primary/30 font-label-md text-label-md hover:bg-primary/30 rounded transition-colors"
                 onClick={() => setActiveRagDoc(null)}
               >
@@ -881,8 +879,8 @@ export default function Detail() {
       {/* Modal 3: Sustento de Plan de Corrección y Documentación */}
       {showCorrectionModal && (
         <div className="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass-modal max-w-2xl w-full rounded-xl p-6 relative border-t-4 border-t-error">
-            <button 
+          <div className="ui-modal max-w-2xl w-full rounded-xl p-6 relative border-t-4 border-t-error">
+            <button
               className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface focus:outline-none"
               onClick={() => setShowCorrectionModal(false)}
             >
@@ -892,7 +890,7 @@ export default function Detail() {
               <span className="material-symbols-outlined">gavel</span>
               Sustento Metodológico y Normativa Legal
             </h3>
-            
+
             <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar font-body-sm text-[13px] text-on-surface-variant leading-relaxed">
               <div className="bg-white/5 p-3 rounded-lg border border-white/5">
                 <h4 className="font-bold text-white mb-1 flex items-center gap-1.5">
@@ -936,7 +934,7 @@ export default function Detail() {
             </div>
 
             <div className="flex justify-end gap-3 mt-6 border-t border-white/10 pt-4">
-              <button 
+              <button
                 className="px-5 py-2 bg-error/20 text-error border border-error/30 font-label-md text-label-md hover:bg-error/30 rounded transition-colors"
                 onClick={() => setShowCorrectionModal(false)}
               >
@@ -950,8 +948,8 @@ export default function Detail() {
       {/* Modal 4: Leyenda de Variables */}
       {showLegendModal && (
         <div className="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass-modal max-w-lg w-full rounded-xl p-6 relative border-t-4 border-t-tertiary">
-            <button 
+          <div className="ui-modal max-w-lg w-full rounded-xl p-6 relative border-t-4 border-t-tertiary">
+            <button
               className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface focus:outline-none"
               onClick={() => setShowLegendModal(false)}
             >
@@ -971,7 +969,7 @@ export default function Detail() {
               </ul>
             </div>
             <div className="flex justify-end">
-              <button 
+              <button
                 className="px-5 py-2 bg-tertiary/20 text-tertiary border border-tertiary/30 font-label-md text-label-md hover:bg-tertiary/30 rounded transition-colors"
                 onClick={() => setShowLegendModal(false)}
               >
@@ -987,13 +985,13 @@ export default function Detail() {
         logsMinimized ? 'h-10' : 'h-[300px]'
       }`}>
         {/* Encabezado del Dock */}
-        <div 
+        <div
           className="flex items-center gap-2 px-4 py-2 border-b border-white/10 bg-[#111118] cursor-pointer hover:bg-[#181822] rounded-t-xl"
           onClick={() => setLogsMinimized(!logsMinimized)}
         >
           <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
           <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Módulos de IA (Pipeline Logs)</span>
-          
+
           <div className="ml-auto flex items-center gap-2">
             <span className="text-[9px] bg-white/10 px-2 py-0.5 rounded text-on-surface-variant">{logLines.length} Msg</span>
             <span className="material-symbols-outlined text-[16px] text-on-surface-variant transition-transform duration-300" style={{

@@ -1,0 +1,165 @@
+{
+  "scope": "development_diagnostic_not_final_validation",
+  "date": "2026-11-06",
+  "source_sha256": {
+    "predicciones-desarrollo-piloto.parquet": "891205466cad1bb1b239dff961d2b5a0da7b227d0339189f8a1161dc0a46a642",
+    "estado-intervalos-piloto.parquet": "c1c29417ee41c0c5aee4fba798b4f7ae0baa4fa7efaeed2b51262b09cb23c569"
+  },
+  "metric": "WAPE = 100 × suma errores absolutos / suma valores observados; ponderación por magnitud, no MAE macro.",
+  "diagnostics": [
+    {
+      "product": "palta",
+      "target": "unit_fob",
+      "methods": {
+        "xgb": {
+          "n": 157,
+          "mae": 0.23109237952165615,
+          "wape": 10.824264521399403
+        },
+        "lgb": {
+          "n": 157,
+          "mae": 0.22769210972866252,
+          "wape": 10.664997392990966
+        },
+        "naive": {
+          "n": 157,
+          "mae": 0.22147395380828017,
+          "wape": 10.373741728668131
+        }
+      }
+    },
+    {
+      "product": "uva",
+      "target": "unit_fob",
+      "methods": {
+        "xgb": {
+          "n": 364,
+          "mae": 0.3676889432980768,
+          "wape": 12.282450895600212
+        },
+        "lgb": {
+          "n": 364,
+          "mae": 0.3640104050293958,
+          "wape": 12.15957130817669
+        },
+        "naive": {
+          "n": 364,
+          "mae": 0.34650490188159344,
+          "wape": 11.574809414367566
+        }
+      }
+    },
+    {
+      "product": "arandano",
+      "target": "unit_fob",
+      "methods": {
+        "xgb": {
+          "n": 215,
+          "mae": 1.025463546017209,
+          "wape": 13.740751479841789
+        },
+        "lgb": {
+          "n": 215,
+          "mae": 1.0349667239586045,
+          "wape": 13.868089801002586
+        },
+        "naive": {
+          "n": 215,
+          "mae": 1.0320762636399992,
+          "wape": 13.829358929432791
+        }
+      }
+    },
+    {
+      "product": "palta",
+      "target": "volume_kg",
+      "methods": {
+        "xgb": {
+          "n": 157,
+          "mae": 381299.0347462181,
+          "wape": 36.506917798359254
+        },
+        "lgb": {
+          "n": 157,
+          "mae": 402147.7656988013,
+          "wape": 38.50304901750238
+        },
+        "naive": {
+          "n": 157,
+          "mae": 314034.6519617834,
+          "wape": 30.066787954592098
+        }
+      }
+    },
+    {
+      "product": "uva",
+      "target": "volume_kg",
+      "methods": {
+        "xgb": {
+          "n": 364,
+          "mae": 298588.0607126546,
+          "wape": 46.57901384696354
+        },
+        "lgb": {
+          "n": 364,
+          "mae": 402947.96474734816,
+          "wape": 62.85890596153046
+        },
+        "naive": {
+          "n": 364,
+          "mae": 222291.56021978028,
+          "wape": 34.6769446736336
+        }
+      }
+    },
+    {
+      "product": "arandano",
+      "target": "volume_kg",
+      "methods": {
+        "xgb": {
+          "n": 215,
+          "mae": 94274.81630697679,
+          "wape": 50.52629262119247
+        },
+        "lgb": {
+          "n": 215,
+          "mae": 133858.81185615805,
+          "wape": 71.74121109657221
+        },
+        "naive": {
+          "n": 215,
+          "mae": 50311.201986046515,
+          "wape": 26.964131177869852
+        }
+      }
+    }
+  ],
+  "findings": [
+    "En volumen, último valor supera a ambos modelos en WAPE en los tres productos.",
+    "El piloto usa una sola configuración pequeña por biblioteca, sin ajuste final de hiperparámetros.",
+    "Features: rezagos 0,1,2,3,12,51 y media4; sin indicadores explícitos de calendario/campaña ni covariables contextuales elegibles.",
+    "La disponibilidad histórica de las fuentes no está certificada; los huecos son desconocidos, no ceros."
+  ],
+  "next_steps": [
+    "Definir objetivo: cotización local o valor FOB unitario por producto/destino; no mezclar mercados y unidades.",
+    "Auditar unidades, variedad/calidad, registros duplicados, peso muy pequeño, revisión aduanera y cobertura de cada semana; conservar extremos legítimos.",
+    "Recuperar historia de campañas y fechas de publicación; no rellenar ausencia de archivos con cero.",
+    "Evaluar transformaciones de volumen log1p, calendario y campaña, pendientes y medias móviles sin información futura.",
+    "Comparar Naive/SeasonalNaive/AutoETS/AutoARIMA y GBDT con validación temporal por producto/destino, horizontes 1/2/4, en un experimento separado.",
+    "Elegir o combinar modelos usando solo ventanas de desarrollo; congelar protocolo antes de la prueba final.",
+    "Evaluar MAE/WAPE, sesgo y errores por temporada/destino; calibrar intervalos con suficientes residuos previos.",
+    "Publicar fecha del último dato y mostrar no disponible cuando no haya sustento; no acercar curvas artificialmente."
+  ],
+  "libraries": [
+    {
+      "name": "StatsForecast",
+      "url": "https://nixtlaverse.nixtla.io/statsforecast/docs/tutorials/crossvalidation.html",
+      "purpose": "Comparar modelos estadísticos y referencias mediante validación temporal."
+    },
+    {
+      "name": "AutoGluon TimeSeries",
+      "url": "https://auto.gluon.ai/stable/tutorials/timeseries/forecasting-indepth.html",
+      "purpose": "Experimento opcional de modelos y ensambles; requiere controles temporales y recursos."
+    }
+  ]
+}

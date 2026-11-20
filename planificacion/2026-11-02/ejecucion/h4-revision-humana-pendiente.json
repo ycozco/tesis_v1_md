@@ -3,360 +3,390 @@
     "case_id": "h4-controlled-palta-01",
     "scenario": "complete_data",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "fa91bc1870c3ff9cc47835e338773aa9f644d87790f2c1bde5ce28dd1d66e88b",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-02",
     "scenario": "incomplete_coverage",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "091e5c7ece34691f0bc8fff5ab1993472e923a23b8e9b2b9cce129f5de261e46",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-03",
     "scenario": "incompatible_commercial_level",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "88e2e6faec2bef1358346f7d7ef205f053497c150088789f1cb10aa0f31db5cf",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-04",
     "scenario": "incompatible_units",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "64234b137dbc39701277b5908eaad05e9c3326da6733f198b2444ba29c3022e0",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-05",
     "scenario": "unpublished_data",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "62c697e6c7d2ffd57ec799441a2b76e91384e3ce82e5f759ed83cefed7cd11f7",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-06",
     "scenario": "contradictory_document_version",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "49943c36d73b254d816200ba8b4d2bb5b1ed05b1ebe991c9ef20d941820fcba2",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-07",
     "scenario": "zero_denominator",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "134575ec745cb5db715882ff2adcff11969c58bb13f1e0b1fa1cfe1add2cf031",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-08",
     "scenario": "unsupported_claim",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "b58f0e70d3d2aefc1fc0fbac0be64ce4b97ef7dcfc2a71f796990fbc5f1a8c42",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-09",
     "scenario": "unsupported_causal_request",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "2eefa32cebd58b9316413865e0b751b4600247508c87e3f39f8b4397be3ac0e6",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-palta-10",
     "scenario": "period_difference",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "3ebc29c09a282ea63d136acfb13bcb639fab30d64ebaf6fa71ec7f584bb06674",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-01",
     "scenario": "complete_data",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "8743ee3aa3202ea149a0fd1d49ee377a898b3c291649b7ee05d2f4753a60a65d",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-02",
     "scenario": "incomplete_coverage",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "e432f9a7350e2d6c184f1ad96b5dc5ad0655d5a7dcc735add6991d5652b9b999",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-03",
     "scenario": "incompatible_commercial_level",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "3ac0edb579b9a63df94acfc666b00d27b915c8192cb6857f171d26647e211088",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-04",
     "scenario": "incompatible_units",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "6af6fd0b9600cba3f672c04599247f3ee44df85c482d9d48f0d92da312d9ea0e",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-05",
     "scenario": "unpublished_data",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "76e11ccb29821397d4725e8dca0d92e9712c7b2656044cd244fdd30cb335fed1",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-06",
     "scenario": "contradictory_document_version",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "f461d5e502eda549216af22ecdde612b3802d7e18a8d97d67d4597a96cf3835c",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-07",
     "scenario": "zero_denominator",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "3bdb06e93089d28d38f3536d2d012ced85fc495736681b9b591cbf6956444200",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-08",
     "scenario": "unsupported_claim",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "89668568f46d1e352dfc05d4d27256bca8ee2592921d01e7a19bc171fff7a9f4",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-09",
     "scenario": "unsupported_causal_request",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "38322e045f8e0b13e96fd8932241a566c772b78d2af4304a4c85289b5cdd4133",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-uva-10",
     "scenario": "period_difference",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "9485a216a81bab90e7f4f365d9ec95c8f10d1a4b2df77bac7d16feaafb8cd939",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-01",
     "scenario": "complete_data",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "427f11a30cecbe3d92cfa2c68821d038224a8770e39e9ebda40ef54fdff3e21a",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-02",
     "scenario": "incomplete_coverage",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "04786aa006e0df9eb70b715e09eb54e169e7795a1282432cd4694e1d52212891",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-03",
     "scenario": "incompatible_commercial_level",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "f27914ec851d1553827c1f4d35bfbece294d5a386b4887eb43c659a5279d176a",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-04",
     "scenario": "incompatible_units",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "ad364b925f0556ce8f164ca573a2ea74d3a521d0508237398f08352e5a58cc07",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-05",
     "scenario": "unpublished_data",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "07bdaf613ddb7efbfe539b21e579a41fe4d57ef8f8803665298a5f2d70ea0498",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-06",
     "scenario": "contradictory_document_version",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "3651b20d689853ae341484b1a904c519ba7ee806c6a72b7da0ffe16b4545aa4e",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-07",
     "scenario": "zero_denominator",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "c0960530d5fc919f6221fbe808d85a69f90652e66a1baac51d34fb0f627ce289",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-08",
     "scenario": "unsupported_claim",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "c92a9a2e418694c1b435e71f48d4b112e6c9b9d707cc4da4b5595189ce3dfdde",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-09",
     "scenario": "unsupported_causal_request",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "a69a94f15bfac8636e61f7c07a5f23e23bc282596a06271874451c7167a1e180",
+    "reviewer_id": null
   },
   {
     "case_id": "h4-controlled-arandano-10",
     "scenario": "period_difference",
     "current_review_status": "awaiting_human_review",
-    "human_reviewer": null,
     "reviewed_at": null,
     "numeric_key_checked": false,
     "documentary_key_checked": false,
     "abstention_policy_accepted": false,
     "decision": "pending_human_review",
-    "notes": ""
+    "notes": "",
+    "key_sha256": "48a36bb991d3bd1394a8219a36a59af3e12888c023f9a74c02ea2086179b9b26",
+    "reviewer_id": null
   }
 ]

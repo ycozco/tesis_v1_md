@@ -1,8 +1,7 @@
-import React from 'react'
 
 export default function ShapPanel({ explanations, handleOpenRag }) {
   return (
-    <div className="glass-panel rounded-xl p-4 flex flex-col justify-between">
+    <div className="ui-panel rounded-xl p-4 flex flex-col justify-between">
       <div className="flex items-center gap-2 mb-3">
         <span className="material-symbols-outlined text-tertiary text-[16px]">bar_chart</span>
         <h3 className="font-label-md uppercase tracking-widest text-on-surface-variant text-sm font-bold">
@@ -16,11 +15,11 @@ export default function ShapPanel({ explanations, handleOpenRag }) {
         {(() => {
           const topExplanations = explanations.slice(0, 4);
           const maxShap = Math.max(...topExplanations.map(e => Math.abs(e.shap_value)), 1);
-          
+
           return topExplanations.map((exp, index) => {
             const isPositive = exp.shap_value >= 0
             const absVal = (Math.abs(exp.shap_value) / maxShap) * 95;
-            
+
             return (
               <div key={exp.id_explicacion || index} className="space-y-1">
                 <div className="flex justify-between text-xs font-mono-sm uppercase font-bold">
@@ -30,7 +29,7 @@ export default function ShapPanel({ explanations, handleOpenRag }) {
                   </span>
                 </div>
                 <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden relative">
-                  <div 
+                  <div
                     className={`h-full rounded-full ${isPositive ? 'bg-primary' : 'bg-error'}`}
                     style={{ width: `${Math.max(absVal, 5)}%` }}
                   ></div>
@@ -43,7 +42,7 @@ export default function ShapPanel({ explanations, handleOpenRag }) {
           })
         })()}
       </div>
-      <button 
+      <button
         type="button"
         className="mt-4 w-full py-2 border border-white/10 rounded-lg text-xs font-label-md text-on-surface-variant hover:bg-white/5 hover:text-white transition-colors flex items-center justify-center gap-2 font-bold"
         onClick={() => handleOpenRag('LMY-IA-D115')}

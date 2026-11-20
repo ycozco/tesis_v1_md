@@ -1,5 +1,6 @@
 """Paired H4 orchestration. Evaluation keys never reach generator/retriever/verifier."""
 from copy import deepcopy
+from datetime import datetime
 from pipeline.research.h4_design import digest, require_execution_ready, CONFIGURATIONS
 
 
@@ -14,11 +15,15 @@ def apply_key_reviews(design,reviews):
     if len(reviews)!=30 or set(indexed)!={k['case_id'] for k in design['keys']}:
         raise ValueError('Thirty explicit case reviews required')
     result=deepcopy(design)
-    from datetime import datetime
     for key in result['keys']:
         review=indexed[key['case_id']]
         if review.get('decision')!='approved' or not review.get('reviewer_id'):
             raise ValueError('Human approval and reviewer identity required')
+        checks = ('numeric_key_checked', 'documentary_key_checked', 'abstention_policy_accepted')
+        if any(review.get(check) is not True for check in checks):
+            raise ValueError('Explicit numeric, documentary and abstention checks required')
+        if review.get('key_sha256') != digest(key):
+            raise ValueError('Review does not match the key version')
         timestamp=datetime.fromisoformat(review['reviewed_at'].replace('Z','+00:00'))
         if timestamp.tzinfo is None:raise ValueError('Review timestamp needs timezone')
         key.update(review_status='reviewed',human_review=deepcopy(review))
@@ -65,6 +70,17 @@ def run_pairs(design,freeze,generate,retrieve,verify,*,technical_fixture=False,f
         if freeze['corpus_sha256']!=digest(design['documents']):raise ValueError('Corpus differs from freeze')
         if freeze['prompt_sha256']!=digest(freeze['prompt']):raise ValueError('Prompt differs from freeze')
     cases={c['case_id']:c for c in design['cases']}
+    retrieved_by_case = {}
+    if not technical_fixture:
+        corpus = {document['id']: digest(document) for document in design['documents']}
+        for case_id, case in cases.items():
+            documents = retrieve(deepcopy(case['payload']), deepcopy(freeze))
+            ids = [document['id'] for document in documents]
+            if len(set(ids)) != len(ids) or len(ids) > freeze['retrieval_top_k']:
+                raise ValueError('Retrieved documents violate frozen top-k')
+            if any(corpus.get(document['id']) != digest(document) for document in documents):
+                raise ValueError('Retrieved document differs from frozen corpus')
+            retrieved_by_case[case_id] = deepcopy(documents)
     traces=[]
     for slot in design['schedule']:
         case=cases[slot['case_id']]
@@ -77,7 +93,10 @@ def run_pairs(design,freeze,generate,retrieve,verify,*,technical_fixture=False,f
             'final':None,'fallback':False}
         try:
             full=slot['configuration']=='full_RAG_and_validation'
-            documents=retrieve(deepcopy(payload),deepcopy(freeze)) if full else []
+            documents = []
+            if full:
+                documents = (retrieve(deepcopy(payload), deepcopy(freeze)) if technical_fixture
+                             else deepcopy(retrieved_by_case[case['case_id']]))
             trace['retrieved_document_ids']=[d['id'] for d in documents]
             correction=None
             for attempt in range(1+(int(freeze.get('correction_attempts',0)) if full else 0)):

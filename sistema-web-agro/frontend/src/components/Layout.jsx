@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   const { user, logout, condicion } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
-  
+
   const [searchTerm, setSearchTerm] = React.useState('')
   const [showNotifications, setShowNotifications] = React.useState(false)
 
@@ -15,7 +15,7 @@ export default function Layout({ children }) {
       navigate(`/alerts?search=${encodeURIComponent(searchTerm.trim())}`)
     }
   }
-  
+
   const activePage = location.pathname.split('/')[1] || 'dashboard'
 
   const handleLogoutClick = (e) => {
@@ -29,16 +29,16 @@ export default function Layout({ children }) {
 
   return (
     <div className="bg-background text-on-background font-body-md antialiased min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
-      
+
       {/* TopNavBar (Web) */}
       <nav className="hidden md:flex justify-between items-center px-container-padding w-full h-16 bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl docked full-width top-0 border-b border-white/10 shadow-sm z-40 fixed">
         <div className="flex items-center gap-6">
           <span className="font-headline-md text-headline-md font-bold text-primary tracking-tight">Supervisión de Inteligencia Aduanera</span>
           <div className="hidden lg:flex items-center gap-1 bg-surface-container-high rounded-full px-4 py-1.5 ml-4 border border-white/5">
             <span className="material-symbols-outlined text-primary text-sm mr-2">search</span>
-            <input 
-              className="bg-transparent border-none text-body-sm text-on-surface focus:ring-0 w-48 placeholder:text-on-surface-variant/50 p-0" 
-              placeholder="Buscar parámetros, dejas..." 
+            <input
+              className="bg-transparent border-none text-body-sm text-on-surface focus:ring-0 w-48 placeholder:text-on-surface-variant/50 p-0"
+              placeholder="Buscar parámetros, dejas..."
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -60,16 +60,16 @@ export default function Layout({ children }) {
           </ul>
           <div className="flex items-center gap-4 border-l border-white/10 pl-6">
             <div className="relative">
-              <button 
+              <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                aria-label="Notifications" 
+                aria-label="Notifications"
                 className="text-on-surface-variant hover:text-primary transition-colors active:scale-95 relative"
               >
                 <span className="material-symbols-outlined">notifications</span>
                 <span className="absolute top-0 right-0 w-2 h-2 bg-error rounded-full animate-pulse"></span>
               </button>
               {showNotifications && (
-                <div className="absolute right-0 mt-2 w-80 glass-panel bg-surface-container-high rounded-lg shadow-2xl p-4 border border-white/10 z-50 font-body-sm text-body-sm text-on-surface">
+                <div className="absolute right-0 mt-2 w-80 ui-panel bg-surface-container-high rounded-lg shadow-2xl p-4 border border-white/10 z-50 font-body-sm text-body-sm text-on-surface">
                   <div className="flex justify-between items-center border-b border-white/5 pb-2 mb-2 font-bold text-on-surface">
                     <span>Notificaciones Aduaneras</span>
                     <button className="text-xs text-primary hover:underline" onClick={() => setShowNotifications(false)}>Cerrar</button>
@@ -93,7 +93,7 @@ export default function Layout({ children }) {
             </button>
             <div className="flex items-center gap-2 ml-2">
               <span className="text-body-sm text-on-surface font-medium">{user?.rol === 'ADMIN' ? 'Administrador 01' : (user?.nombre || 'Auditor')}</span>
-              <div 
+              <div
                 className="w-8 h-8 rounded-full bg-primary/20 border border-primary/50 text-primary flex items-center justify-center cursor-pointer hover:bg-primary/30 transition-colors"
                 onClick={() => navigate('/users')}
               >
@@ -106,7 +106,7 @@ export default function Layout({ children }) {
 
       {/* Contenedor Lateral y Contenido Principal */}
       <div className="flex h-screen pt-16 md:pt-0">
-        
+
         {/* SideNavBar (Hidden on Mobile) */}
         <aside className="hidden md:flex flex-col py-6 bg-surface-container-lowest dark:bg-surface-container-lowest h-screen w-20 hover:w-64 transition-all duration-300 ease-in-out fixed left-0 top-0 z-50 border-r border-white/5 shadow-2xl group overflow-hidden">
           {/* Header */}
@@ -123,8 +123,8 @@ export default function Layout({ children }) {
           <nav className="flex-1 overflow-y-auto">
             <ul className="space-y-2">
               <li>
-                <Link 
-                  className={`flex items-center px-4 py-3 ${isActive('dashboard') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`} 
+                <Link
+                  className={`flex items-center px-4 py-3 ${isActive('dashboard') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`}
                   to="/dashboard"
                 >
                   <span className="material-symbols-outlined shrink-0">dashboard</span>
@@ -132,8 +132,8 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li>
-                <Link 
-                  className={`flex items-center px-4 py-3 ${isActive('alerts') || isActive('alert') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`} 
+                <Link
+                  className={`flex items-center px-4 py-3 ${isActive('alerts') || isActive('alert') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`}
                   to="/alerts"
                 >
                   <span className="material-symbols-outlined shrink-0">security_update_warning</span>
@@ -141,8 +141,8 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li>
-                <Link 
-                  className={`flex items-center px-4 py-3 ${isActive('data') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`} 
+                <Link
+                  className={`flex items-center px-4 py-3 ${isActive('data') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`}
                   to="/data"
                 >
                   <span className="material-symbols-outlined shrink-0">monitoring</span>
@@ -150,8 +150,8 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li>
-                <Link 
-                  className={`flex items-center px-4 py-3 ${isActive('history') || isActive('decision') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`} 
+                <Link
+                  className={`flex items-center px-4 py-3 ${isActive('history') || isActive('decision') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`}
                   to="/history"
                 >
                   <span className="material-symbols-outlined shrink-0">fact_check</span>
@@ -159,8 +159,8 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li>
-                <Link 
-                  className={`flex items-center px-4 py-3 ${isActive('config') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`} 
+                <Link
+                  className={`flex items-center px-4 py-3 ${isActive('config') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`}
                   to="/config"
                 >
                   <span className="material-symbols-outlined shrink-0">settings</span>
@@ -168,8 +168,8 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li>
-                <Link 
-                  className={`flex items-center px-4 py-3 ${isActive('integrity') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`} 
+                <Link
+                  className={`flex items-center px-4 py-3 ${isActive('integrity') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`}
                   to="/integrity"
                 >
                   <span className="material-symbols-outlined shrink-0">shield</span>
@@ -177,8 +177,8 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li>
-                <Link 
-                  className={`flex items-center px-4 py-3 ${isActive('users') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`} 
+                <Link
+                  className={`flex items-center px-4 py-3 ${isActive('users') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`}
                   to="/users"
                 >
                   <span className="material-symbols-outlined shrink-0">supervisor_account</span>
@@ -186,8 +186,8 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li>
-                <Link 
-                  className={`flex items-center px-4 py-3 ${isActive('telemetry') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`} 
+                <Link
+                  className={`flex items-center px-4 py-3 ${isActive('telemetry') ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-primary hover:bg-surface-variant/20'} rounded-lg mx-2 transition-all duration-300`}
                   to="/telemetry"
                 >
                   <span className="material-symbols-outlined shrink-0">science</span>
@@ -225,7 +225,7 @@ export default function Layout({ children }) {
         {/* Lienzo de Contenido Principal */}
         <main className="flex-1 md:ml-20 w-full overflow-y-auto bg-background px-4 md:px-container-padding py-8 md:pt-24 pb-24 relative z-10">
           {/* Global Environment Banner */}
-          <div className="mb-6 flex items-center justify-center w-full py-1.5 glass-panel rounded-md border-tertiary/30 bg-tertiary/5 text-tertiary font-mono-data text-mono-data uppercase">
+          <div className="mb-6 flex items-center justify-center w-full py-1.5 ui-panel rounded-md border-tertiary/30 bg-tertiary/5 text-tertiary font-mono-data text-mono-data uppercase">
             <span className="material-symbols-outlined text-[16px] mr-2">science</span>
             {condicion && (condicion === 'INTEGRADO' || condicion === 'AISLADO') ? (
               <span>ENTORNO DE PRUEBA · EVALUACIÓN EN CURSO ({condicion})</span>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function History() {
@@ -10,7 +10,7 @@ export default function History() {
   const fetchHistory = () => {
     setLoading(true)
     const param = condicion !== 'All' ? `?condicion=${condicion}` : ''
-    
+
     fetch(`/api/history${param}`)
       .then(res => res.json())
       .then(data => {
@@ -57,25 +57,25 @@ export default function History() {
           <h1 className="font-headline-lg text-headline-lg text-on-surface">Historial de Auditoría</h1>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Revisión de clasificaciones operativas previas y tiempos registrados.</p>
         </div>
-        <div className="flex flex-wrap items-center gap-4 glass-panel p-2 rounded-lg border border-white/5">
+        <div className="flex flex-wrap items-center gap-4 ui-panel p-2 rounded-lg border border-white/5">
           <div className="flex items-center gap-2 px-2">
             <span className="material-symbols-outlined text-primary text-sm">filter_list</span>
             <span className="font-label-md text-label-md text-on-surface-variant">Filtro Condición:</span>
           </div>
           <div className="flex gap-1 bg-surface-container-highest p-1 rounded-md">
-            <button 
+            <button
               className={`px-4 py-1.5 rounded font-label-md text-label-md transition-colors ${condicion === 'All' ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:bg-surface-variant/50'}`}
               onClick={() => setCondicion('All')}
             >
               Todos
             </button>
-            <button 
+            <button
               className={`px-4 py-1.5 rounded font-label-md text-label-md transition-colors ${condicion === 'INTEGRADO' ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:bg-surface-variant/50'}`}
               onClick={() => setCondicion('INTEGRADO')}
             >
               Condición A (Explicable)
             </button>
-            <button 
+            <button
               className={`px-4 py-1.5 rounded font-label-md text-label-md transition-colors ${condicion === 'AISLADO' ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:bg-surface-variant/50'}`}
               onClick={() => setCondicion('AISLADO')}
             >
@@ -86,7 +86,7 @@ export default function History() {
       </div>
 
       {/* Main Data Table Container */}
-      <div className="glass-panel rounded-xl overflow-hidden flex flex-col relative min-h-[450px]">
+      <div className="ui-panel rounded-xl overflow-hidden flex flex-col relative min-h-[450px]">
         {loading ? (
           <div className="flex-grow flex items-center justify-center">
             <span className="material-symbols-outlined text-primary text-4xl animate-spin">sync</span>
@@ -123,8 +123,8 @@ export default function History() {
                       <td className="py-3 px-4 text-center">
                         <div className="flex justify-center items-center gap-1 text-primary">
                           {[1, 2, 3, 4, 5].map(i => (
-                            <span 
-                              key={i} 
+                            <span
+                              key={i}
                               className="material-symbols-outlined text-[16px]"
                               style={{ fontVariationSettings: i <= decision.likert_comprehension ? "'FILL' 1" : "'FILL' 0" }}
                             >
@@ -143,7 +143,7 @@ export default function History() {
                         </span>
                       </td>
                       <td className="py-3 px-4 text-right">
-                        <button 
+                        <button
                           className="opacity-0 group-hover:opacity-100 transition-opacity bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 px-3 py-1.5 rounded font-label-md text-label-md"
                           onClick={() => navigate(`/decision/${decision.id_decision}`)}
                         >

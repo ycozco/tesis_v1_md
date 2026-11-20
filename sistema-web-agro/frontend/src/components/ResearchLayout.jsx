@@ -1,67 +1,39 @@
-import React, { useState } from 'react'
+import { MarketContextProvider, MarketTicker } from './MarketContext.jsx'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Leaf, LayoutDashboard, ArrowLeftRight, ChartNoAxesCombined, Radar, FileText, Database, Workflow, MessagesSquare, ChevronLeft, ChevronRight, LogOut, Menu, X, ArrowUpRight } from 'lucide-react'
 import { useAuth } from '../App.jsx'
-
 const sections = [
-  ['resumen', 'space_dashboard', 'Panorama'],
-  ['series', 'compare_arrows', 'Explorar y comparar'],
-  ['pronosticos', 'query_stats', 'Pronósticos'],
-  ['senales', 'radar', 'Variaciones para revisar'],
-  ['reportes', 'description', 'Evidencia y reportes'],
-  ['fuentes', 'database', 'Datos y fuentes'],
-  ['proceso', 'account_tree', 'Trazabilidad'],
-  ['ia', 'neurology', 'Asistente y archivo'],
+ ['resumen', LayoutDashboard, 'Panorama'], ['series', ArrowLeftRight, 'Explorar y comparar'],
+ ['pronosticos', ChartNoAxesCombined, 'Pronósticos'], ['senales', Radar, 'Variaciones para revisar'],
+ ['reportes', FileText, 'Evidencia y reportes'], ['fuentes', Database, 'Datos y fuentes'],
+ ['proceso', Workflow, 'Trazabilidad'], ['ia', MessagesSquare, 'Asistente y archivo'],
 ]
-
-export default function ResearchLayout({ children }) {
-  const [collapsed, setCollapsed] = useState(false)
-  const [mobileNav, setMobileNav] = useState(false)
-  const { user, logout } = useAuth()
-  const location = useLocation()
-  const navigate = useNavigate()
-  const active = new URLSearchParams(location.search).get('view') || 'resumen'
-  const legacy = location.pathname !== '/dashboard'
-  function leave() { logout(); navigate('/login') }
-  return (
-    <div className={`research-shell min-h-screen bg-background text-on-surface font-body-md ${collapsed ? 'research-nav-collapsed' : ''} ${mobileNav ? 'research-mobile-nav-open' : ''}`}>
-      <a href="#research-main" className="research-skip">Saltar al contenido</a>
-      <header className="research-topbar glass-panel border-b border-white/10 px-4 md:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
-        <Link to="/dashboard" className="flex items-center gap-3 min-w-0">
-          <span className="material-symbols-outlined text-primary text-3xl" aria-hidden="true">eco</span>
-          <div><p className="font-headline-md font-semibold text-primary text-xl">AgroScope Perú</p>
-            <p className="text-xs text-on-surface-variant">Información y pronóstico agroexportador</p></div>
-        </Link>
-        <div className="flex items-center gap-4 text-sm">
-          <button className="research-mobile-toggle glass-input rounded-lg px-3 py-2" aria-controls="research-navigation" aria-expanded={mobileNav} onClick={() => setMobileNav(!mobileNav)}>{mobileNav ? 'Cerrar menú' : 'Menú'}</button>
-          <span className="text-on-surface-variant hidden sm:inline">{user?.nombre || 'Investigación'}</span>
-          <button onClick={leave} className="glass-input rounded-lg px-3 py-2 hover:text-primary">Cerrar sesión</button>
-        </div>
-      </header>
-      <div className="research-workspace md:flex">
-        <aside id="research-navigation" className="research-sidebar md:w-60 md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 p-3 md:p-5">
-          <div className="research-nav-heading"><p className="research-nav-label text-xs tracking-widest uppercase text-on-surface-variant">Análisis</p><button className="research-nav-toggle glass-input rounded-lg p-2" aria-label={collapsed ? 'Ampliar navegación' : 'Plegar navegación'} aria-expanded={!collapsed} onClick={() => setCollapsed(!collapsed)}><span className="material-symbols-outlined" aria-hidden="true">{collapsed ? 'chevron_right' : 'chevron_left'}</span></button></div>
-          <nav aria-label="Navegación principal" className="grid grid-cols-2 sm:grid-cols-4 md:flex md:flex-col gap-2 pb-1">
-            {sections.map(([id, icon, label]) => (
-              <Link key={id} to={`/dashboard?view=${id}`} onClick={() => setMobileNav(false)} aria-current={!legacy && active === id ? 'page' : undefined}
-                title={collapsed ? label : undefined} aria-label={label}
-                className={`flex items-center gap-3 p-3 rounded-lg min-w-0 text-sm transition-colors ${!legacy && active === id ? 'bg-primary/15 text-primary border border-primary/25' : 'text-on-surface-variant hover:bg-white/5 border border-transparent'}`}>
-                <span className="material-symbols-outlined text-xl" aria-hidden="true">{icon}</span><span className="research-nav-label">{label}</span>
-              </Link>
-            ))}
-          </nav>
-          <div className="research-nav-note hidden md:block glass-panel rounded-xl p-4 mt-8 text-xs leading-relaxed text-on-surface-variant">
-            <p className="text-primary font-semibold mb-2">Corte documentado</p>
-            Piloto retrospectivo de desarrollo. Cobertura parcial y prueba final pendiente.
-          </div>
-        </aside>
-        <main id="research-main" tabIndex={-1} className="min-w-0 flex-1 p-4 md:p-8">
-          {legacy && <div role="status" className="glass-panel border border-error/30 rounded-xl p-4 mb-6 text-sm text-error">
-            Pantalla del prototipo anterior. Sus métricas y acciones no pertenecen a la evaluación actual de la tesis.
-            <Link to="/dashboard" className="underline ml-2">Volver al análisis actual</Link>
-          </div>}
-          {children}
-        </main>
-      </div>
-    </div>
-  )
+export default function ResearchLayout({children}) {
+ const [collapsed,setCollapsed]=useState(false),[mobile,setMobile]=useState(false)
+ const {user,logout}=useAuth(); const location=useLocation(), navigate=useNavigate()
+ const active=new URLSearchParams(location.search).get('view')||'resumen'
+ const legacy=location.pathname!=='/dashboard'
+ const current=sections.find(s=>s[0]===active)||sections[0]
+ const sectionUrl=id=>{const q=new URLSearchParams(location.search);q.set('view',id);return `/dashboard?${q}`}
+ useEffect(()=>{window.scrollTo({top:0,behavior:'instant'});document.getElementById('research-main')?.focus({preventScroll:true});setMobile(false)},[active])
+ useEffect(()=>{if(!mobile)return;const close=e=>{if(e.key==='Escape')setMobile(false)};window.addEventListener('keydown',close);return()=>window.removeEventListener('keydown',close)},[mobile])
+ function leave(){logout();navigate('/login')}
+ return <MarketContextProvider><div className={`research-shell observatory ${collapsed?'observatory-collapsed':''} ${mobile?'observatory-menu-open':''}`}>
+  <a href="#research-main" className="research-skip">Saltar al contenido</a>
+  {mobile&&<button className="observatory-scrim" aria-label="Cerrar navegación" onClick={()=>setMobile(false)} />}
+  <aside id="research-navigation" className="observatory-rail">
+   <Link to={sectionUrl('resumen')} className="observatory-brand"><Leaf size={30} strokeWidth={1.5} /><span>AgroScope<small>Perú · Observatorio agroexportador</small></span></Link>
+   <button className="observatory-fold" aria-label={collapsed?'Ampliar navegación':'Plegar navegación'} aria-expanded={!collapsed} onClick={()=>setCollapsed(!collapsed)}>{collapsed?<ChevronRight size={16}/>:<ChevronLeft size={16}/>}</button>
+   <p className="observatory-nav-label">Análisis de mercado</p>
+   <nav aria-label="Navegación principal">{sections.map(([id,Icon,label],i)=><React.Fragment key={id}>{i===4&&<p className="observatory-nav-label">Investigación y evidencia</p>}<Link to={sectionUrl(id)} title={label} aria-current={!legacy&&active===id?'page':undefined}><Icon size={18} strokeWidth={1.6}/><span>{label}</span>{!legacy&&active===id&&<span className="observatory-active-dot"/>}</Link></React.Fragment>)}</nav>
+   <div className="observatory-rail-bottom"><div className="observatory-pilot"><span className="observatory-pilot-label">Corte documentado <ArrowUpRight size={14}/></span><p>Piloto retrospectivo de desarrollo. Cobertura parcial y evaluación final pendiente.</p><Link to={sectionUrl('fuentes')}>Consultar los datos <span>→</span></Link></div>
+   <div className="observatory-account"><span className="observatory-avatar">{(user?.nombre||'R').slice(0,1)}</span><div><strong>{user?.nombre||'Investigación'}</strong><small>Entorno local</small></div><button aria-label="Cerrar sesión" title="Cerrar sesión" onClick={leave}><LogOut size={18}/></button></div></div>
+  </aside>
+  <div className="observatory-body">
+   <MarketTicker/>
+   <header className="observatory-topbar"><div><button className="observatory-mobile-toggle" aria-controls="research-navigation" aria-expanded={mobile} onClick={()=>setMobile(!mobile)} aria-label={mobile?'Cerrar menú':'Menú'}>{mobile?<X size={20}/>:<Menu size={20}/>}</button><span className="observatory-breadcrumb">Espacio de investigación <span>/</span> <strong>{current[2]}</strong></span></div><span className="observatory-environment"><i/>Datos del corte local</span></header>
+   <main id="research-main" tabIndex={-1}>{legacy&&<div role="status" className="research-notice">Pantalla del prototipo anterior. Sus métricas no pertenecen a la evaluación actual.<Link to={sectionUrl('resumen')}>Volver al análisis</Link></div>}{children}<footer className="observatory-footer"><span>AgroScope Perú · Información con procedencia</span><Link to={sectionUrl('proceso')}>Ver trazabilidad <ArrowUpRight size={13}/></Link></footer></main>
+  </div>
+ </div></MarketContextProvider>
 }

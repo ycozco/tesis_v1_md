@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from '../App.jsx'
 import ResearchIcon from './ResearchIcon.jsx'
 
@@ -28,11 +28,11 @@ export default function SourcePanel({ data }) {
   }, [token, attempt])
   const rows = result?.sources || data.sources.map((s, i) => ({ ...s, id: i, scope: scopes[i], status: 'unchecked' }))
   const lastWeek = data.weekly_rows.reduce((last, row) => row[6] === 'observed_partial' && row[2] > last ? row[2] : last, '')
-  return <section className="glass-card rounded-xl p-5 space-y-4" aria-label="Fuentes y actualización">
-    <div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="research-chart-title text-xl font-semibold"><ResearchIcon name="source" />Fuentes y actualización</h2><p className="text-xs text-on-surface-variant mt-2">Corte local: {data.generated_on} · Última semana con registros: {lastWeek}</p></div><button disabled={loading} className="glass-input research-button rounded-lg px-4 py-2 text-sm text-primary disabled:opacity-50" onClick={() => setAttempt(a => a + 1)}>{loading ? 'Consultando fuentes…' : 'Comprobar fuentes'}</button></div>
+  return <section className="ui-card rounded-xl p-5 space-y-4" aria-label="Fuentes y actualización">
+    <div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="research-chart-title text-xl font-semibold"><ResearchIcon name="source" />Fuentes y actualización</h2><p className="text-xs text-on-surface-variant mt-2">Corte local: {data.generated_on} · Última semana con registros: {lastWeek}</p></div><button disabled={loading} className="ui-input research-button rounded-lg px-4 py-2 text-sm text-primary disabled:opacity-50" onClick={() => setAttempt(a => a + 1)}>{loading ? 'Consultando fuentes…' : 'Comprobar fuentes'}</button></div>
     <p className="text-sm text-on-surface-variant">Los gráficos conservan el corte de investigación. La consulta externa verifica enlaces y obtiene contexto del BCRP; se renueva cada 15 minutos.</p>
     {error && <p role="alert" className="research-warning text-sm">{error}</p>}
-    <div className="research-source-grid">{rows.map(source => <article key={source.id} className="research-source-card">
+    <div className="research-source-grid observatory-source-catalog">{rows.map(source => <article key={source.id} className="research-source-card">
       <div className="flex flex-wrap items-center justify-between gap-2"><a href={source.url} target="_blank" rel="noreferrer" className="text-primary font-semibold underline underline-offset-4">{source.name} ↗</a><span className={`research-status ${source.status === 'available' ? 'is-success' : 'is-pending'}`}>{source.status === 'available' ? (source.id === 'bcrp' ? 'Serie consultada' : 'Enlace accesible') : source.status === 'unchecked' ? 'Sin verificar' : 'Consulta no disponible'}</span></div>
       <p className="text-sm text-on-surface-variant mt-3">{source.scope}</p>
       <p className="text-xs text-on-surface-variant mt-3">Última consulta: {date(source.checked_at)} · Lima</p>

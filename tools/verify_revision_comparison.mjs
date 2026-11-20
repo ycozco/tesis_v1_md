@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict'
+import { paddedDomain, seriesAnalysis, weekGrid } from '../sistema-web-agro/frontend/src/lib/revisionComparison.js'
+const rows = [1, 2, 3, 4].map((n, i) => ['uva', 'US', ['2026-09-28','2026-10-05','2026-10-12','2026-10-19'][i], n, n*100, n*1000])
+assert.deepEqual(weekGrid('2026-10-01','2026-10-19'), ['2026-10-05','2026-10-12','2026-10-19'])
+assert.deepEqual(weekGrid('2026-11-12','2026-11-05'), [])
+const a=seriesAnalysis(rows,'uva','US','unit_fob','2026-10-05','2026-10-19')
+assert.equal(a.ready,true); assert.equal(a.estimate,4); assert.equal(a.delta,100)
+assert.equal(seriesAnalysis(rows.filter(r=>r[2]!=='2026-10-05'),'uva','US','unit_fob','2026-10-05','2026-10-19').ready,false)
+assert.equal(seriesAnalysis(rows,'uva','US','unit_fob','2026-10-05','2026-10-12').estimate,null)
+assert.equal(seriesAnalysis(rows,'uva','US','unit_fob','2026-11-01','2026-11-12').observed.length,0)
+const missing=seriesAnalysis([...rows,['uva','US','2026-10-26',null,null,null]],'uva','US','unit_fob','2026-10-19','2026-10-26')
+assert.equal(missing.missing,1); assert.equal(missing.ready,false)
+const [lo,hi]=paddedDomain([7.5,7.48,null]);assert.ok(lo>7.4&&lo<7.48&&hi>7.5&&hi<7.6)
+assert.deepEqual(paddedDomain([]),[0,1]);assert.equal(paddedDomain([7.5,7.48],true)[0],0)
+assert.ok(paddedDomain([7.5,7.5])[1]>7.5)
+console.log('Comparación: fechas, huecos, escala fina y persistencia sin datos posteriores verificados.')

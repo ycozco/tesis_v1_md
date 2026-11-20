@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, BarChart, Bar, Cell, Legend } from 'recharts'
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Cell } from 'recharts'
 
 export default function Dashboard() {
   const [stats, setStats] = useState(null)
@@ -44,7 +44,6 @@ export default function Dashboard() {
   const {
     active_alerts_count = 0,
     total_alerts_count = 0,
-    avg_decision_time_s = 0,
     priority_alerts = [],
     recent_logs = []
   } = stats || {}
@@ -62,7 +61,7 @@ export default function Dashboard() {
             <span className="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
             SISTEMA EN LÍNEA
           </span>
-          <span className="font-mono-data text-mono-data text-on-surface-variant px-3 py-1.5 rounded glass-panel">
+          <span className="font-mono-data text-mono-data text-on-surface-variant px-3 py-1.5 rounded ui-panel">
             UTC-5 {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
           </span>
         </div>
@@ -71,7 +70,7 @@ export default function Dashboard() {
       {/* KPI Bento Grid */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {/* KPI 1: Active Alerts */}
-        <div className="glass-card rounded-xl p-5 relative overflow-hidden group">
+        <div className="ui-card rounded-xl p-5 relative overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-br from-error/5 to-transparent opacity-50"></div>
           <div className="relative z-10 flex flex-col h-full justify-between gap-4">
             <div className="flex justify-between items-start">
@@ -102,7 +101,7 @@ export default function Dashboard() {
         </div>
 
         {/* KPI 2: Operations Analyzed */}
-        <div className="glass-card rounded-xl p-5 relative overflow-hidden">
+        <div className="ui-card rounded-xl p-5 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50"></div>
           <div className="relative z-10 flex flex-col h-full justify-between gap-4">
             <div className="flex justify-between items-start">
@@ -121,7 +120,7 @@ export default function Dashboard() {
         </div>
 
         {/* KPI 3: Model F1-Score */}
-        <div className="glass-card rounded-xl p-5 relative overflow-hidden">
+        <div className="ui-card rounded-xl p-5 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent opacity-50"></div>
           <div className="relative z-10 flex flex-col h-full justify-between gap-4">
             <div className="flex justify-between items-start">
@@ -143,7 +142,7 @@ export default function Dashboard() {
         </div>
 
         {/* KPI 4: Stress Tests */}
-        <div className="glass-card rounded-xl p-5 relative overflow-hidden">
+        <div className="ui-card rounded-xl p-5 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-50"></div>
           <div className="relative z-10 flex flex-col h-full justify-between gap-4">
             <div className="flex justify-between items-start">
@@ -195,7 +194,7 @@ export default function Dashboard() {
           {/* Charts Container */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Chart 1: FOB Scatter Plot */}
-            <div className="glass-card rounded-xl p-6 h-104 flex flex-col">
+            <div className="ui-card rounded-xl p-6 h-104 flex flex-col">
               <div className="mb-4">
                 <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
                   <span className="material-symbols-outlined text-primary">scatter_plot</span>
@@ -209,18 +208,18 @@ export default function Dashboard() {
                 <ResponsiveContainer width="100%" height="100%">
                   <ScatterChart margin={{ top: 10, right: 10, bottom: 20, left: 10 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                    <XAxis 
-                      type="number" 
-                      dataKey="valor_fob_esperado" 
-                      name="FOB Esperado" 
+                    <XAxis
+                      type="number"
+                      dataKey="valor_fob_esperado"
+                      name="FOB Esperado"
                       unit=" USD"
                       stroke="#8e918f"
                       tickFormatter={(v) => `$${v/1000}k`}
                     />
-                    <YAxis 
-                      type="number" 
-                      dataKey="valor_fob_declarado" 
-                      name="FOB Declarado" 
+                    <YAxis
+                      type="number"
+                      dataKey="valor_fob_declarado"
+                      name="FOB Declarado"
                       unit=" USD"
                       stroke="#8e918f"
                       tickFormatter={(v) => `$${v/1000}k`}
@@ -243,7 +242,7 @@ export default function Dashboard() {
             </div>
 
             {/* Chart 2: Deviation Distribution */}
-            <div className="glass-card rounded-xl p-6 h-104 flex flex-col">
+            <div className="ui-card rounded-xl p-6 h-104 flex flex-col">
               <div className="mb-4">
                 <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
                   <span className="material-symbols-outlined text-primary">bar_chart</span>
@@ -255,11 +254,11 @@ export default function Dashboard() {
               </div>
               <div className="flex-1 min-h-0">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={distributionData} margin={{ top: 10, right: 10, bottom: 20, left: 0 }}>
+                  <BarChart accessibilityLayer data={distributionData} margin={{ top: 10, right: 10, bottom: 20, left: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                     <XAxis dataKey="rango" stroke="#8e918f" />
                     <YAxis stroke="#8e918f" allowDecimals={false} />
-                    <Tooltip 
+                    <Tooltip
                       contentStyle={{ backgroundColor: 'rgba(30,30,30,0.9)', borderColor: 'rgba(255,255,255,0.1)' }}
                       labelStyle={{ color: '#fff' }}
                     />
@@ -276,14 +275,14 @@ export default function Dashboard() {
           </div>
 
           {/* Priority Alerts Table */}
-          <div className="glass-card rounded-xl flex flex-col overflow-hidden">
+          <div className="ui-card rounded-xl flex flex-col overflow-hidden">
             <div className="p-6 border-b border-white/5 flex justify-between items-center bg-surface-container/20">
               <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
                 <span className="material-symbols-outlined text-error">policy</span>
                 Cola de Alertas Prioritarias
               </h2>
-              <button 
-                onClick={() => navigate('/alerts')} 
+              <button
+                onClick={() => navigate('/alerts')}
                 className="text-primary hover:text-primary-fixed text-sm font-label-md flex items-center gap-1 transition-colors"
               >
                 Ver Todo
@@ -321,8 +320,8 @@ export default function Dashboard() {
                         </div>
                       </td>
                       <td className="py-3 px-4 text-right">
-                        <Link 
-                          to={`/alert/${alert.id_alerta}`} 
+                        <Link
+                          to={`/alert/${alert.id_alerta}`}
                           className="inline-block px-3 py-1 bg-transparent border border-error text-error rounded hover:bg-error/10 transition-colors font-label-md text-label-md uppercase opacity-80 group-hover:opacity-100"
                         >
                           AUDITAR
@@ -342,7 +341,7 @@ export default function Dashboard() {
         </div>
 
         {/* Right Column (Activity Feed) */}
-        <div className="glass-card rounded-xl flex flex-col h-[calc(100vh-16rem)] min-h-[500px]">
+        <div className="ui-card rounded-xl flex flex-col h-[calc(100vh-16rem)] min-h-[500px]">
           <div className="p-6 border-b border-white/5 bg-surface-container/20 shrink-0">
             <h2 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
               <span className="material-symbols-outlined text-tertiary">history</span>

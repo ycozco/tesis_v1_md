@@ -9,7 +9,7 @@ export async function researchApi(path, token, options = {}) {
     })
     const body = await response.json()
     if (!response.ok) {
-      if (response.status === 401) throw new Error('La sesión no es válida para este backend. Cierre sesión e ingrese nuevamente.')
+      if (response.status === 401) { window.dispatchEvent(new Event('agro-session-expired')); throw new Error('La sesión venció. Ingrese nuevamente para continuar con sus filtros.') }
       throw new Error(body.detail?.message || (typeof body.detail === 'string' ? body.detail : 'La operación no pudo completarse.'))
     }
     return body

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 export default function AuditDetail() {
@@ -76,7 +76,7 @@ export default function AuditDetail() {
     if (!text) return null;
 
     const lines = text.split('\n');
-    
+
     return lines.map((line, lineIdx) => {
       let trimmed = line.trim();
       if (!trimmed) return <div key={lineIdx} className="h-2"></div>;
@@ -145,7 +145,7 @@ export default function AuditDetail() {
 
         const boldAndCodeRegex = /(\*\*[^*]+\*\*|`[^`]+`)/g;
         const subParts = part.split(boldAndCodeRegex);
-        
+
         return subParts.map((subPart, subIdx) => {
           if (subPart.startsWith('**') && subPart.endsWith('**')) {
             return <strong key={`b-${partIdx}-${subIdx}`} className="text-on-surface font-semibold">{subPart.slice(2, -2)}</strong>;
@@ -176,7 +176,7 @@ export default function AuditDetail() {
 
   return (
     <div className="flex-grow overflow-y-auto p-container-padding pb-24 md:pb-container-padding">
-      
+
       {/* Operation Header */}
       <div className="mb-gutter">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
@@ -192,28 +192,28 @@ export default function AuditDetail() {
               Auditoría de DAM #{alert.numero_dam}
             </h2>
           </div>
-          <button 
-            className="glass-panel px-5 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-white/10 transition-colors flex items-center gap-2"
+          <button
+            className="ui-panel px-5 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-white/10 transition-colors flex items-center gap-2"
             onClick={() => navigate('/history')}
           >
             <span className="material-symbols-outlined text-[18px]">arrow_back</span>
             Volver al Historial
           </button>
         </div>
-        
+
         {/* Meta Badges */}
         <div className="flex flex-wrap gap-2">
-          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
+          <div className="ui-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
             <span className="material-symbols-outlined text-[16px] text-on-surface-variant">corporate_fare</span>
             <span className="font-mono-data text-mono-data text-on-surface-variant">RUC:</span>
             <span className="font-mono-data text-mono-data text-on-surface">{alert.ruc_exportador}</span>
           </div>
-          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
+          <div className="ui-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-primary/50">
             <span className="material-symbols-outlined text-[16px] text-on-surface-variant">storefront</span>
             <span className="font-body-sm text-body-sm text-on-surface-variant">Empresa:</span>
             <span className="font-body-sm text-body-sm text-on-surface font-medium">{alert.razon_social}</span>
           </div>
-          <div className="glass-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-secondary/50">
+          <div className="ui-panel px-3 py-1.5 rounded-md flex items-center gap-2 border-l-2 border-l-secondary/50">
             <span className="material-symbols-outlined text-[16px] text-on-surface-variant">eco</span>
             <span className="font-body-sm text-body-sm text-on-surface-variant">Producto:</span>
             <span className="font-body-sm text-body-sm text-on-surface font-medium">{alert.producto}</span>
@@ -241,15 +241,15 @@ export default function AuditDetail() {
 
       {/* Grid Layout Principal */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
-        
+
         {/* Columna Izquierda: Métricas de Riesgo y Capas Analíticas (lg:col-span-8) */}
         <div className="lg:col-span-8 flex flex-col gap-6">
-          
+
           {/* Fila 1: Ensemble Card y Distribución de Probabilidad */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {/* Tarjeta de Severidad PyOD */}
-            <div className="glass-panel rounded-xl p-6 flex flex-col justify-center items-center relative overflow-hidden min-h-[220px]">
+            <div className="ui-panel rounded-xl p-6 flex flex-col justify-center items-center relative overflow-hidden min-h-[220px]">
               <div className="z-10 text-center space-y-2">
                 <span className="material-symbols-outlined text-4xl text-error">warning</span>
                 <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
@@ -265,7 +265,7 @@ export default function AuditDetail() {
             </div>
 
             {/* Distribución de Probabilidad y Métricas */}
-            <div className="glass-panel rounded-xl p-4 flex flex-col justify-between">
+            <div className="ui-panel rounded-xl p-4 flex flex-col justify-between">
               <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-2 text-[11px]">
                 Distribución de Probabilidad
               </h3>
@@ -298,16 +298,16 @@ export default function AuditDetail() {
 
           {/* GBDT Regressor & Atribución Variables SHAP Horizontal */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {/* Análisis Regresor GBDT */}
-            <div className="glass-panel rounded-xl p-4 flex flex-col justify-between min-h-[170px]">
+            <div className="ui-panel rounded-xl p-4 flex flex-col justify-between min-h-[170px]">
               <div className="flex items-center gap-2 mb-3">
                 <span className="material-symbols-outlined text-primary text-[16px]">analytics</span>
                 <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
                   Análisis Regresor GBDT
                 </h3>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div>
                   <p className="text-on-surface-variant font-label-md text-[10px] uppercase">FOB Declarado</p>
@@ -334,7 +334,7 @@ export default function AuditDetail() {
             </div>
 
             {/* Atribución de Variables SHAP (Barras Horizontales) */}
-            <div className="glass-panel rounded-xl p-4 flex flex-col justify-between">
+            <div className="ui-panel rounded-xl p-4 flex flex-col justify-between">
               <div className="flex items-center gap-2 mb-3">
                 <span className="material-symbols-outlined text-tertiary text-[16px]">bar_chart</span>
                 <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
@@ -355,7 +355,7 @@ export default function AuditDetail() {
                           </span>
                         </div>
                         <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden relative">
-                          <div 
+                          <div
                             className={`h-full rounded-full ${isPositive ? 'bg-error' : 'bg-tertiary'}`}
                             style={{ width: `${absVal}%` }}
                           ></div>
@@ -370,7 +370,7 @@ export default function AuditDetail() {
                 )}
               </div>
               {isIntegrated && (
-                <button 
+                <button
                   className="mt-2 w-full py-1.5 border border-white/10 rounded-lg text-[10px] font-label-md text-on-surface-variant hover:bg-white/5 hover:text-white transition-colors flex items-center justify-center gap-2"
                   onClick={() => handleOpenRag('LMY-IA-D115')}
                 >
@@ -386,16 +386,16 @@ export default function AuditDetail() {
 
         {/* Columna Derecha: Explicabilidad y Acción (lg:col-span-4) */}
         <div className="lg:col-span-4 flex flex-col gap-6">
-          
+
           {/* Variables de Atribución SHAP con Datos */}
-          <div className="glass-panel rounded-xl p-4 flex flex-col">
+          <div className="ui-panel rounded-xl p-4 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant text-[11px]">
                 Variables de Atribución SHAP
               </h3>
               <span className="material-symbols-outlined text-on-surface-variant text-sm">info</span>
             </div>
-            
+
             <ul className="space-y-2">
               {isIntegrated ? (
                 (() => {
@@ -433,7 +433,7 @@ export default function AuditDetail() {
               )}
             </ul>
             {isIntegrated && (() => {
-              const expectedFob = audit.valor_fob_esperado || 0;
+              const expectedFob = alert.valor_fob_esperado || 0;
               const shapSum = explanations.reduce((acc, cur) => acc + cur.shap_value, 0);
               const baseValue = expectedFob - shapSum;
               return (
@@ -452,11 +452,11 @@ export default function AuditDetail() {
           </div>
 
           {/* Adjudicación del Auditor (Métricas de Telemetría) */}
-          <div className="glass-panel rounded-xl p-4 flex flex-col justify-between border border-primary/20">
+          <div className="ui-panel rounded-xl p-4 flex flex-col justify-between border border-primary/20">
             <h3 className="font-label-md text-label-md uppercase tracking-widest text-primary mb-3 text-[11px]">
               Decisión Registrada (Trazabilidad)
             </h3>
-            
+
             <div className="space-y-3 font-mono-data text-xs text-on-surface">
               <div className="flex justify-between border-b border-white/5 pb-2">
                 <span className="text-on-surface-variant">Clasificación:</span>
@@ -476,8 +476,8 @@ export default function AuditDetail() {
                 <span className="text-on-surface-variant">Comprensión IA:</span>
                 <div className="flex text-primary gap-0.5">
                   {[1, 2, 3, 4, 5].map(i => (
-                    <span 
-                      key={i} 
+                    <span
+                      key={i}
                       className="material-symbols-outlined text-[14px]"
                       style={{ fontVariationSettings: i <= decision.likert_comprehension ? "'FILL' 1" : "'FILL' 0" }}
                     >
@@ -501,13 +501,13 @@ export default function AuditDetail() {
 
       {/* ----------------- CAPA 4 NARRATIVA TÉCNICA RAG ----------------- */}
       {isIntegrated && (
-        <div className="glass-panel rounded-xl p-6 mt-6 flex flex-col bg-white/[0.01]">
+        <div className="ui-panel rounded-xl p-6 mt-6 flex flex-col bg-white/[0.01]">
           <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-3">
             <span className="material-symbols-outlined text-primary">description</span>
             Capa 4: Narrativa Técnica de IA (Motor RAG)
           </h3>
           <p className="font-body-sm text-[12px] text-on-surface-variant mb-4">Sustentación jurídica y logística contextualizada registrada.</p>
-          <div className="glass-panel bg-surface-container-low/40 rounded-lg p-4 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[250px] whitespace-pre-wrap">
+          <div className="ui-panel bg-surface-container-low/40 rounded-lg p-4 border border-white/5 font-body-md text-body-md text-on-surface-variant leading-relaxed overflow-y-auto max-h-[250px] whitespace-pre-wrap">
             {renderReportWithCitations(data.rag_report)}
           </div>
           <div className="mt-3 flex justify-end gap-2 text-on-surface-variant font-label-md text-[9px] uppercase tracking-wider">
@@ -523,8 +523,8 @@ export default function AuditDetail() {
       {/* Modal Citas Normativas RAG */}
       {activeRagDoc && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass-modal max-w-lg w-full rounded-xl p-6 relative border-t-4 border-t-primary">
-            <button 
+          <div className="ui-modal max-w-lg w-full rounded-xl p-6 relative border-t-4 border-t-primary">
+            <button
               className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface focus:outline-none"
               onClick={() => setActiveRagDoc(null)}
             >
@@ -538,7 +538,7 @@ export default function AuditDetail() {
               {activeRagDoc.body}
             </div>
             <div className="flex justify-end">
-              <button 
+              <button
                 className="px-5 py-2 bg-primary/20 text-primary border border-primary/30 font-label-md text-label-md hover:bg-primary/30 rounded transition-colors"
                 onClick={() => setActiveRagDoc(null)}
               >

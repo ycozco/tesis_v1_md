@@ -1,6 +1,6 @@
 from copy import deepcopy
 import pytest
-from pipeline.research.h4_design import build_design
+from pipeline.research.h4_design import build_design, digest
 from pipeline.research.h4_runner import run_pairs,apply_key_reviews,validate_design_integrity
 from pipeline.research.h4_evaluation import grade_output,aggregate_paired
 from pipeline.research.h4_blind import blind_packet,require_repeat_delay,agreement
@@ -96,16 +96,37 @@ def test_agreement_requires_identical_atoms_and_repeat_is_delayed_seven_days():
     require_repeat_delay('2026-11-01T00:00:00Z','2026-11-08T00:00:00Z')
 
 
+def synthetic_key_reviews(design):
+    return [{'case_id':key['case_id'],'reviewer_id':'artificial-unit-test-reviewer-not-a-human-review',
+             'decision':'approved','reviewed_at':'2026-11-01T00:00:00Z',
+             'numeric_key_checked':True,'documentary_key_checked':True,
+             'abstention_policy_accepted':True,'key_sha256':digest(key)} for key in design['keys']]
+
+
 def test_supplied_review_fixture_rehashes_all_references_without_modifying_original():
     design=build_design()
-    reviews=[{'case_id':key['case_id'],'reviewer_id':'artificial-unit-test-reviewer-not-a-human-review',
-              'decision':'approved','reviewed_at':'2026-11-01T00:00:00Z'} for key in design['keys']]
+    reviews=synthetic_key_reviews(design)
     reviewed=apply_key_reviews(design,reviews)
     validate_design_integrity(reviewed)
     assert all(k['review_status']=='awaiting_human_review' for k in design['keys'])
     assert reviewed['cases'][0]['key_sha256']!=design['cases'][0]['key_sha256']
     with pytest.raises(ValueError,match='Thirty'):
         apply_key_reviews(design,reviews[:29])
+
+
+def test_retrieval_preflight_stops_generation_if_frozen_document_changes():
+    design, calls, generate, freeze = transports()
+    design = apply_key_reviews(design, synthetic_key_reviews(design))
+    freeze.update(generator_model='test-model-for-preflight', provider_id='ollama',
+                  corpus_sha256=digest(design['documents']), design_sha256=digest(design),
+                  prompt='fixed test prompt', prompt_sha256=digest('fixed test prompt'),
+                  chunking='whole_document', embedding_model_version='artificial',
+                  retrieval_top_k=1, retrieval_thresholds={}, temporal_filters={})
+    mutated = {**design['documents'][0], 'text':'modified'}
+    with pytest.raises(ValueError, match='differs from frozen corpus'):
+        run_pairs(design, freeze, generate, lambda _p, _f: [mutated],
+                  lambda _p, _d, _o: {'valid': True})
+    assert calls == []
 
 
 def test_numbers_cannot_be_hidden_from_factual_atom_denominator():

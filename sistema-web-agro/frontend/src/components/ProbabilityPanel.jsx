@@ -1,4 +1,3 @@
-import React from 'react'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts'
 
 export default function ProbabilityPanel({ alert }) {
@@ -38,9 +37,9 @@ export default function ProbabilityPanel({ alert }) {
   }
 
   return (
-    <div className="glass-panel rounded-xl p-6 flex flex-col justify-between h-full relative overflow-hidden">
+    <div className="ui-panel rounded-xl p-6 flex flex-col justify-between h-full relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-primary via-transparent to-transparent pointer-events-none"></div>
-      
+
       <div>
         <h3 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2 mb-1 font-semibold">
           <span className="material-symbols-outlined text-primary text-[24px]">analytics</span>
@@ -53,7 +52,7 @@ export default function ProbabilityPanel({ alert }) {
         {/* KDE Density Chart */}
         <div className="h-44 w-full relative mb-6">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={densityData} margin={{ top: 15, right: 15, bottom: 5, left: -25 }}>
+            <AreaChart accessibilityLayer data={densityData} margin={{ top: 15, right: 15, bottom: 5, left: -25 }}>
               <defs>
                 <linearGradient id="colorNormal" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#a3e635" stopOpacity={0.25}/>
@@ -68,18 +67,18 @@ export default function ProbabilityPanel({ alert }) {
               <XAxis dataKey="score" stroke="#8e918f" fontSize={10} domain={[0, 1.0]} tickFormatter={v => v.toFixed(1)} />
               <YAxis stroke="#8e918f" fontSize={10} hide />
               <Tooltip content={customTooltip} />
-              
+
               {/* Población Normal */}
               <Area type="monotone" dataKey="normal" stroke="#a3e635" strokeWidth={1.5} fillOpacity={1} fill="url(#colorNormal)" name="Frec. Normal" />
-              
+
               {/* Población Anómala */}
               <Area type="monotone" dataKey="anomalo" stroke="#ef4444" strokeWidth={1.5} fillOpacity={1} fill="url(#colorAnomalo)" name="Frec. Anómalo" />
-              
+
               {/* Línea de Umbral de Alerta */}
               <ReferenceLine x={0.65} stroke="rgba(255,255,255,0.3)" strokeDasharray="3 3" strokeWidth={1.5}>
                 <label value="Umbral (0.65)" offset={8} position="top" fill="rgba(255,255,255,0.5)" fontSize={9} className="font-mono-data" />
               </ReferenceLine>
-              
+
               {/* Línea del DAM Actual */}
               <ReferenceLine x={scoreActual} stroke="#38bdf8" strokeWidth={2.5} className="animate-pulse">
                 <label value={`DAM Actual (${scoreActual.toFixed(4)})`} offset={12} position="top" fill="#38bdf8" fontSize={10} className="font-mono-data font-bold" />
@@ -103,8 +102,8 @@ export default function ProbabilityPanel({ alert }) {
               <span>Máx: 1.00</span>
             </div>
             <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mt-1.5">
-              <div 
-                className={`h-full ${ifScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`} 
+              <div
+                className={`h-full ${ifScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`}
                 style={{ width: `${ifScore * 100}%` }}
               ></div>
             </div>
@@ -126,8 +125,8 @@ export default function ProbabilityPanel({ alert }) {
               <span>Máx: 1.00</span>
             </div>
             <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mt-1.5">
-              <div 
-                className={`h-full ${lofScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`} 
+              <div
+                className={`h-full ${lofScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`}
                 style={{ width: `${lofScore * 100}%` }}
               ></div>
             </div>
@@ -149,8 +148,8 @@ export default function ProbabilityPanel({ alert }) {
               <span>Máx: 1.00</span>
             </div>
             <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mt-1.5">
-              <div 
-                className={`h-full ${ecodScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`} 
+              <div
+                className={`h-full ${ecodScore >= 0.65 ? 'bg-error' : 'bg-[#a3e635]'}`}
                 style={{ width: `${ecodScore * 100}%` }}
               ></div>
             </div>

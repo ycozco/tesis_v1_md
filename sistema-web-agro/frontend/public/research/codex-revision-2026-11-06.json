@@ -1,0 +1,93 @@
+{
+  "tag": "codex-revision GPT6.1",
+  "reviewed_on": "2026-11-06",
+  "authorship": "Interpretación redactada por el asistente Codex en este chat. Etiqueta solicitada por el usuario; no acredita una versión técnica del modelo.",
+  "snapshot_date": "2026-11-01",
+  "source": "research/snapshot.json",
+  "source_sha256": "82b026dab1ff0203be8bf67df4964435e12daad64bf3308f0a403957e64de569",
+  "selection": "Últimas dos observaciones disponibles de cada producto hacia US en el corte local; no son datos nuevos descargados.",
+  "scope": "Revisión descriptiva de observaciones parciales. No es una nueva predicción ni una evaluación H4.",
+  "human_review": "pending",
+  "data_status": {
+    "obtained": "Colección parcial de registros SUNAT y fuentes contextuales.",
+    "treated": "Conciliación y agregación semanal disponibles; ausencias permanecen desconocidas.",
+    "projected": "Pronósticos retrospectivos piloto disponibles; prueba final no ejecutada. Estas tres revisiones usan valores observados."
+  },
+  "cases": [
+    {
+      "id": "revision-palta-2026-10-12",
+      "product": "palta",
+      "destination": "US",
+      "week": "2026-10-12",
+      "previous_week": "2026-10-05",
+      "observed": {
+        "unit_fob": 7.5,
+        "volume_kg": 15952.8,
+        "fob_usd": 119646
+      },
+      "previous": {
+        "unit_fob": 7.5,
+        "volume_kg": 15259.2,
+        "fob_usd": 114444
+      },
+      "change_pct": {
+        "unit_fob": 0,
+        "volume_kg": 4.545454545454541
+      },
+      "interpretation": "El valor unitario permanece en 7,50 USD/kg mientras aumenta el volumen registrado. La repetición del valor merece comprobar los registros de origen y la composición de los embarques antes de interpretarla como estabilidad del mercado.",
+      "next_action": "Contrastar declaraciones y cobertura de ambas semanas; comparar con más destinos y revisar la trazabilidad antes de tomar una decisión.",
+      "status": "observed_partial",
+      "forecast": false
+    },
+    {
+      "id": "revision-uva-2026-10-19",
+      "product": "uva",
+      "destination": "US",
+      "week": "2026-10-19",
+      "previous_week": "2026-10-12",
+      "observed": {
+        "unit_fob": 3.4332785014676745,
+        "volume_kg": 372289.6,
+        "fob_usd": 1278173.88
+      },
+      "previous": {
+        "unit_fob": 3.057341181393667,
+        "volume_kg": 1495190.68,
+        "fob_usd": 4571308.04
+      },
+      "change_pct": {
+        "unit_fob": 12.296217457243008,
+        "volume_kg": -75.10086138311135
+      },
+      "interpretation": "El valor unitario sube mientras el volumen registrado cae con fuerza. La combinación puede reflejar cambios de composición o cobertura; no permite concluir una contracción de la demanda ni atribuir causas comerciales.",
+      "next_action": "Contrastar declaraciones y cobertura de ambas semanas; comparar con más destinos y revisar la trazabilidad antes de tomar una decisión.",
+      "status": "observed_partial",
+      "forecast": false
+    },
+    {
+      "id": "revision-arandano-2026-10-19",
+      "product": "arandano",
+      "destination": "US",
+      "week": "2026-10-19",
+      "previous_week": "2026-10-12",
+      "observed": {
+        "unit_fob": 7.708269714131058,
+        "volume_kg": 457448.364,
+        "fob_usd": 3526135.37
+      },
+      "previous": {
+        "unit_fob": 7.744537618213197,
+        "volume_kg": 3949552.474,
+        "fob_usd": 30587457.71
+      },
+      "change_pct": {
+        "unit_fob": -0.46830302685658687,
+        "volume_kg": -88.41771651316462
+      },
+      "interpretation": "El valor unitario varía poco mientras el volumen registrado cae con fuerza. Conviene revisar cobertura y fechas de los embarques antes de interpretar la caída como un cambio productivo.",
+      "next_action": "Contrastar declaraciones y cobertura de ambas semanas; comparar con más destinos y revisar la trazabilidad antes de tomar una decisión.",
+      "status": "observed_partial",
+      "forecast": false
+    }
+  ]
+}

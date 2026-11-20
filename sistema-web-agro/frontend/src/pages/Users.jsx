@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Users() {
   const [users, setUsers] = useState([])
@@ -34,7 +34,7 @@ export default function Users() {
     if (!window.confirm(`¿Está seguro de reiniciar la telemetría de ${username}? Esto borrará todas sus decisiones.`)) {
       return
     }
-    
+
     try {
       const response = await fetch(`/api/users/${username}/reset-telemetry`, {
         method: 'POST'
@@ -65,7 +65,7 @@ export default function Users() {
           rol: newRol
         })
       })
-      
+
       if (response.ok) {
         alert('Usuario creado exitosamente.')
         setShowCreateModal(false)
@@ -90,7 +90,7 @@ export default function Users() {
 
   const handleToggleCondition = async (username, currentCond) => {
     const nextCond = currentCond === 'INTEGRADO' ? 'AISLADO' : 'INTEGRADO'
-    
+
     try {
       const response = await fetch('/api/users/update-condition', {
         method: 'POST',
@@ -122,15 +122,15 @@ export default function Users() {
   return (
     <div className="flex-1 overflow-y-auto p-container-padding">
       <div className="max-w-7xl mx-auto space-y-card-gap">
-        
+
         {/* Header */}
         <div className="flex justify-between items-end border-b border-white/10 pb-4 mb-6">
           <div>
             <h2 className="font-headline-lg text-headline-lg text-on-surface mb-1">Gestión de Usuarios</h2>
             <p className="font-body-md text-body-md text-on-surface-variant">Supervisión de telemetría y control de acceso al sistema.</p>
           </div>
-          <button 
-            className="glass-panel hover:bg-white/5 px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface border border-outline/30 hover:border-primary transition-colors flex items-center gap-2"
+          <button
+            className="ui-panel hover:bg-white/5 px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface border border-outline/30 hover:border-primary transition-colors flex items-center gap-2"
             onClick={() => setShowCreateModal(true)}
           >
             <span className="material-symbols-outlined text-[18px]">add</span>
@@ -145,18 +145,18 @@ export default function Users() {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-card-gap">
-            
+
             {/* Left Column: User Table (Spans 8 cols) */}
             <div className="lg:col-span-8 space-y-card-gap">
-              <div className="glass-panel rounded-xl overflow-hidden flex flex-col h-[600px]">
+              <div className="ui-panel rounded-xl overflow-hidden flex flex-col h-[600px]">
                 <div className="p-4 border-b border-white/10 bg-surface-container/20 flex justify-between items-center">
                   <h3 className="font-headline-sm text-headline-sm text-on-surface">Registro de Operativos</h3>
                   <div className="relative">
                     <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
-                    <input className="bg-transparent border border-white/10 rounded-lg pl-9 pr-4 py-1.5 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-0 focus:outline-none transition-colors w-64 glass-panel" placeholder="Buscar operativos..." type="text"/>
+                    <input className="bg-transparent border border-white/10 rounded-lg pl-9 pr-4 py-1.5 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-0 focus:outline-none transition-colors w-64 ui-panel" placeholder="Buscar operativos..." type="text"/>
                   </div>
                 </div>
-                
+
                 <div className="flex-1 overflow-auto">
                   <table className="w-full text-left border-collapse">
                     <thead className="sticky top-0 bg-surface-container-high/80 backdrop-blur-md border-b-2 border-primary z-10 font-label-md text-label-md text-on-surface-variant uppercase">
@@ -202,16 +202,16 @@ export default function Users() {
                           <td className="py-3 px-4">
                             {u.rol === 'AUDITOR' ? (
                               <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button 
-                                  className="p-1 text-on-surface-variant hover:text-primary transition-colors" 
+                                <button
+                                  className="p-1 text-on-surface-variant hover:text-primary transition-colors"
                                   title="Alternar Condición A/B"
                                   onClick={() => handleToggleCondition(u.username, u.condicion)}
                                 >
                                   <span className="material-symbols-outlined text-[18px]">swap_horiz</span>
                                 </button>
-                                <button 
-                                  className="p-1 text-on-surface-variant hover:text-error transition-colors" 
-                                  title="Reiniciar Sesión" 
+                                <button
+                                  className="p-1 text-on-surface-variant hover:text-error transition-colors"
+                                  title="Reiniciar Sesión"
                                   onClick={() => handleResetTelemetry(u.username)}
                                 >
                                   <span className="material-symbols-outlined text-[18px]">lock_reset</span>
@@ -226,10 +226,10 @@ export default function Users() {
                 </div>
               </div>
             </div>
-            
+
             {/* Right Column: Security Logs (Spans 4 cols) */}
             <div className="lg:col-span-4 space-y-card-gap">
-              <div className="glass-panel rounded-xl flex flex-col h-[600px] border-t-2 border-t-error">
+              <div className="ui-panel rounded-xl flex flex-col h-[600px] border-t-2 border-t-error">
                 <div className="p-4 border-b border-white/10 bg-surface-container/20 flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-error">gpp_bad</span>
@@ -237,15 +237,15 @@ export default function Users() {
                   </div>
                   <button className="text-on-surface-variant hover:text-primary transition-colors" onClick={fetchUsersAndLogs}><span className="material-symbols-outlined text-[20px]">refresh</span></button>
                 </div>
-                
+
                 <div className="flex-1 overflow-auto p-4 space-y-3 font-mono-data text-[12px] leading-tight">
                   {logs.map((log, idx) => {
                     const isCritical = log.evento.includes('UNAUTHORIZED') || log.evento.includes('FAILURE');
                     const isWarning = log.evento.includes('CHANGE_CONDITION') || log.evento.includes('RESET');
-                    
+
                     return (
-                      <div 
-                        key={log.id_log || idx} 
+                      <div
+                        key={log.id_log || idx}
                         className={`p-3 rounded border relative overflow-hidden ${
                           isCritical ? 'border-error/30 bg-error/5 pulse-critical' : isWarning ? 'border-secondary/30 bg-secondary/5' : 'border-white/10 bg-white/5'
                         }`}
@@ -253,7 +253,7 @@ export default function Users() {
                         {isCritical && <div className="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>}
                         {isWarning && <div className="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>}
                         {!isCritical && !isWarning && <div className="absolute left-0 top-0 bottom-0 w-1 bg-outline-variant"></div>}
-                        
+
                         <div className="flex justify-between items-start mb-1 text-on-surface-variant opacity-70">
                           <span>{log.fecha.split('T')[0]} {log.fecha.split('T')[1]?.split('.')[0]}</span>
                           <span className={`font-bold tracking-wider text-[9px] ${isCritical ? 'text-error' : isWarning ? 'text-secondary' : 'text-outline-variant'}`}>
@@ -281,7 +281,7 @@ export default function Users() {
       {/* Modal: Crear Nuevo Operativo */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass-modal max-w-md w-full rounded-xl p-6 relative overflow-hidden">
+          <div className="ui-modal max-w-md w-full rounded-xl p-6 relative overflow-hidden">
             <h3 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined">person_add</span>
               Registrar Nuevo Operativo
@@ -289,7 +289,7 @@ export default function Users() {
             <form onSubmit={handleCreateUser} className="space-y-4">
               <div>
                 <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Nombre Completo</label>
-                <input 
+                <input
                   type="text"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
@@ -300,7 +300,7 @@ export default function Users() {
               </div>
               <div>
                 <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Usuario (Username)</label>
-                <input 
+                <input
                   type="text"
                   value={newUsername}
                   onChange={(e) => setNewUsername(e.target.value)}
@@ -311,7 +311,7 @@ export default function Users() {
               </div>
               <div>
                 <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Correo Electrónico</label>
-                <input 
+                <input
                   type="email"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
@@ -322,7 +322,7 @@ export default function Users() {
               </div>
               <div>
                 <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Contraseña</label>
-                <input 
+                <input
                   type="password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
@@ -333,7 +333,7 @@ export default function Users() {
               </div>
               <div>
                 <label className="font-label-md text-label-md text-on-surface-variant block mb-1">Rol</label>
-                <select 
+                <select
                   value={newRol}
                   onChange={(e) => setNewRol(e.target.value)}
                   className="w-full bg-surface-container-low border border-outline/50 rounded-lg p-2.5 text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white/5 transition-all"
@@ -342,16 +342,16 @@ export default function Users() {
                   <option value="ADMIN">ADMIN (Acceso total)</option>
                 </select>
               </div>
-              
+
               <div className="flex gap-3 pt-4">
-                <button 
+                <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="flex-1 glass-panel hover:bg-white/5 py-2.5 rounded-lg font-label-md text-label-md text-on-surface-variant text-center transition-colors"
+                  className="flex-1 ui-panel hover:bg-white/5 py-2.5 rounded-lg font-label-md text-label-md text-on-surface-variant text-center transition-colors"
                 >
                   Cancelar
                 </button>
-                <button 
+                <button
                   type="submit"
                   className="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md text-label-md text-center hover:bg-primary-fixed transition-colors shadow-[0_0_10px_rgba(118,219,143,0.3)]"
                 >
